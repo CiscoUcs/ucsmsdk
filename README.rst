@@ -2,8 +2,8 @@
 ucsmsdk
 ===============================
 
-.. image:: https://img.shields.io/travis/vijayvikrant/ucsmsdk.svg
-        :target: https://travis-ci.org/vijayvikrant/ucsmsdk
+.. image:: https://img.shields.io/travis/CiscoUcs/ucsmsdk.svg
+        :target: https://travis-ci.org/CiscoUcs/ucsmsdk
 
 .. image:: https://img.shields.io/pypi/v/ucsmsdk.svg
         :target: https://pypi.python.org/pypi/ucsmsdk
@@ -12,14 +12,14 @@ ucsmsdk
 Python SDK for Cisco UCS
 
 * Apache License, Version 2.0 (the "License") 
-* Documentation: https://vijayvikrant.github.io/ucsmsdk_docs/
+* Documentation: https://CiscoUcs.github.io/ucsmsdk_docs/
 
 ===============================
 Installation
 ===============================
 .. code::
 
-    git clone https://github.com/vijayvikrant/ucsmsdk.git
+    git clone https://github.com/CiscoUcs/ucsmsdk.git
     cd ucsmsdk
     make install
 
