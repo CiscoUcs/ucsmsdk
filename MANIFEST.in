@@ -1,0 +1,16 @@
+include AUTHORS.rst
+include CONTRIBUTING.rst
+include HISTORY.rst
+include LICENSE
+include README.rst
+
+include ucsmsdk/ucsconfig.cfg
+
+recursive-include tests *
+recursive-include ucsmsdk/mometa *
+recursive-include ucsmsdk/methodmeta *
+recursive-include ucsmsdk/utils *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include docs *.rst conf.py Makefile make.bat

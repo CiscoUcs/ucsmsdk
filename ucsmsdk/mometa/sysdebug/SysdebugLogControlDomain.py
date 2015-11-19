@@ -1,0 +1,83 @@
+"""This module contains the general information for SysdebugLogControlDomain ManagedObject."""
+import sys, os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ucsmo import ManagedObject
+from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ucsmeta import VersionMeta
+sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
+
+class SysdebugLogControlDomainConsts():
+    LEVEL_CRIT = "crit"
+    LEVEL_DEBUG0 = "debug0"
+    LEVEL_DEBUG1 = "debug1"
+    LEVEL_DEBUG2 = "debug2"
+    LEVEL_DEBUG3 = "debug3"
+    LEVEL_DEBUG4 = "debug4"
+    LEVEL_INFO = "info"
+    LEVEL_MAJOR = "major"
+    LEVEL_MINOR = "minor"
+    LEVEL_WARN = "warn"
+    LEVEL_FLAG_FALSE = "false"
+    LEVEL_FLAG_NO = "no"
+    LEVEL_FLAG_TRUE = "true"
+    LEVEL_FLAG_YES = "yes"
+    NAME_SYSMGMT = "sysmgmt"
+    PERSIST_FALSE = "false"
+    PERSIST_NO = "no"
+    PERSIST_TRUE = "true"
+    PERSIST_YES = "yes"
+    RESET_FALSE = "false"
+    RESET_NO = "no"
+    RESET_TRUE = "true"
+    RESET_YES = "yes"
+
+
+class SysdebugLogControlDomain(ManagedObject):
+    """This is SysdebugLogControlDomain class."""
+
+    consts = SysdebugLogControlDomainConsts()
+    naming_props = set([u'name'])
+
+    mo_meta = MoMeta("SysdebugLogControlDomain", "sysdebugLogControlDomain", "domain-[name]", VersionMeta.Version101e, "InputOutput", 0x1ffL, [], ["admin", "operations"], [u'sysdebugLogControlEp'], [u'sysdebugLogControlDestinationFile', u'sysdebugLogControlDestinationSyslog', u'sysdebugLogControlModule'], ["Get"])
+
+    prop_meta = {
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "level": MoPropertyMeta("level", "level", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["crit", "debug0", "debug1", "debug2", "debug3", "debug4", "info", "major", "minor", "warn"], []), 
+        "level_flag": MoPropertyMeta("level_flag", "levelFlag", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10L, None, None, None, ["sysmgmt"], []), 
+        "persist": MoPropertyMeta("persist", "persist", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "reset": MoPropertyMeta("reset", "reset", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+    }
+
+    prop_map = {
+        "childAction": "child_action", 
+        "dn": "dn", 
+        "level": "level", 
+        "levelFlag": "level_flag", 
+        "name": "name", 
+        "persist": "persist", 
+        "reset": "reset", 
+        "rn": "rn", 
+        "sacl": "sacl", 
+        "status": "status", 
+    }
+
+    def __init__(self, parent_mo_or_dn, name, **kwargs):
+        self._dirty_mask = 0
+        self.name = name
+        self.child_action = None
+        self.level = None
+        self.level_flag = None
+        self.persist = None
+        self.reset = None
+        self.sacl = None
+        self.status = None
+
+        ManagedObject.__init__(self, "SysdebugLogControlDomain", parent_mo_or_dn, **kwargs)
+

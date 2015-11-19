@@ -1,0 +1,107 @@
+"""This module contains the general information for EquipmentPhysicalDef ManagedObject."""
+import sys, os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ucsmo import ManagedObject
+from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ucsmeta import VersionMeta
+sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
+
+class EquipmentPhysicalDefConsts():
+    DEPTH_NOT_APPLICABLE = "not-applicable"
+    HEIGHT_NOT_APPLICABLE = "not-applicable"
+    INT_ID_NONE = "none"
+    MAXIMUM_POWER_NOT_APPLICABLE = "not-applicable"
+    MAXIMUM_TEMPERATURE_NOT_APPLICABLE = "not-applicable"
+    MINIMUM_POWER_NOT_APPLICABLE = "not-applicable"
+    MINIMUM_TEMPERATURE_NOT_APPLICABLE = "not-applicable"
+    NOMINAL_POWER_NOT_APPLICABLE = "not-applicable"
+    NOMINAL_TEMPERATURE_NOT_APPLICABLE = "not-applicable"
+    POLICY_OWNER_LOCAL = "local"
+    POLICY_OWNER_PENDING_POLICY = "pending-policy"
+    POLICY_OWNER_POLICY = "policy"
+    WEIGHT_NOT_APPLICABLE = "not-applicable"
+    WIDTH_NOT_APPLICABLE = "not-applicable"
+
+
+class EquipmentPhysicalDef(ManagedObject):
+    """This is EquipmentPhysicalDef class."""
+
+    consts = EquipmentPhysicalDefConsts()
+    naming_props = set([])
+
+    mo_meta = MoMeta("EquipmentPhysicalDef", "equipmentPhysicalDef", "physical", VersionMeta.Version101e, "InputOutput", 0x7fL, [], [""], [u'adaptorFruCapProvider', u'diagSrvCapProvider', u'equipmentBaseBoardCapProvider', u'equipmentBladeBiosCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentFanModuleCapProvider', u'equipmentFexCapProvider', u'equipmentGemCapProvider', u'equipmentGraphicsCardCapProvider', u'equipmentHostIfCapProvider', u'equipmentIOCardCapProvider', u'equipmentLocalDiskCapProvider', u'equipmentLocalDiskControllerCapProvider', u'equipmentMemoryUnitCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentProcessorUnitCapProvider', u'equipmentPsuCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentStorageDevBridgeCapProvider', u'equipmentStorageSasExpanderCapProvider', u'equipmentSwitchCapProvider', u'equipmentSwitchIOCardCapProvider', u'equipmentSystemFruCapProvider', u'equipmentTpmCapProvider'], [], ["Get"])
+
+    prop_meta = {
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "depth": MoPropertyMeta("depth", "depth", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2L, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "height": MoPropertyMeta("height", "height", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
+        "maximum_power": MoPropertyMeta("maximum_power", "maximumPower", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "maximum_temperature": MoPropertyMeta("maximum_temperature", "maximumTemperature", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "minimum_power": MoPropertyMeta("minimum_power", "minimumPower", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "minimum_temperature": MoPropertyMeta("minimum_temperature", "minimumTemperature", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "nominal_power": MoPropertyMeta("nominal_power", "nominalPower", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "nominal_temperature": MoPropertyMeta("nominal_temperature", "nominalTemperature", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "operating_voltages": MoPropertyMeta("operating_voltages", "operatingVoltages", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "weight": MoPropertyMeta("weight", "weight", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "width": MoPropertyMeta("width", "width", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+    }
+
+    prop_map = {
+        "childAction": "child_action", 
+        "depth": "depth", 
+        "descr": "descr", 
+        "dn": "dn", 
+        "height": "height", 
+        "intId": "int_id", 
+        "maximumPower": "maximum_power", 
+        "maximumTemperature": "maximum_temperature", 
+        "minimumPower": "minimum_power", 
+        "minimumTemperature": "minimum_temperature", 
+        "name": "name", 
+        "nominalPower": "nominal_power", 
+        "nominalTemperature": "nominal_temperature", 
+        "operatingVoltages": "operating_voltages", 
+        "policyLevel": "policy_level", 
+        "policyOwner": "policy_owner", 
+        "rn": "rn", 
+        "sacl": "sacl", 
+        "status": "status", 
+        "weight": "weight", 
+        "width": "width", 
+    }
+
+    def __init__(self, parent_mo_or_dn, **kwargs):
+        self._dirty_mask = 0
+        self.child_action = None
+        self.depth = None
+        self.descr = None
+        self.height = None
+        self.int_id = None
+        self.maximum_power = None
+        self.maximum_temperature = None
+        self.minimum_power = None
+        self.minimum_temperature = None
+        self.name = None
+        self.nominal_power = None
+        self.nominal_temperature = None
+        self.operating_voltages = None
+        self.policy_level = None
+        self.policy_owner = None
+        self.sacl = None
+        self.status = None
+        self.weight = None
+        self.width = None
+
+        ManagedObject.__init__(self, "EquipmentPhysicalDef", parent_mo_or_dn, **kwargs)
+

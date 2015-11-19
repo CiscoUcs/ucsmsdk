@@ -1,0 +1,81 @@
+"""This module contains the general information for EquipmentServiceDef ManagedObject."""
+import sys, os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ucsmo import ManagedObject
+from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ucsmeta import VersionMeta
+sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
+
+class EquipmentServiceDefConsts():
+    CAN_BE_FRUED_FALSE = "false"
+    CAN_BE_FRUED_NO = "no"
+    CAN_BE_FRUED_TRUE = "true"
+    CAN_BE_FRUED_YES = "yes"
+    INT_ID_NONE = "none"
+    POLICY_OWNER_LOCAL = "local"
+    POLICY_OWNER_PENDING_POLICY = "pending-policy"
+    POLICY_OWNER_POLICY = "policy"
+    REMOVAL_CONDITIONS_NOT_APPLICABLE = "Not Applicable"
+    REMOVAL_CONDITIONS_REMOVABLE_WHEN_OFF = "Removable when off"
+    REMOVAL_CONDITIONS_REMOVABLE_WHEN_ON_OR_OFF = "Removable when on or off"
+    REMOVAL_CONDITIONS_UNKNOWN = "Unknown"
+
+
+class EquipmentServiceDef(ManagedObject):
+    """This is EquipmentServiceDef class."""
+
+    consts = EquipmentServiceDefConsts()
+    naming_props = set([])
+
+    mo_meta = MoMeta("EquipmentServiceDef", "equipmentServiceDef", "service", VersionMeta.Version101e, "InputOutput", 0x7fL, [], [""], [u'adaptorFruCapProvider', u'diagSrvCapProvider', u'equipmentBaseBoardCapProvider', u'equipmentBladeBiosCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentFanModuleCapProvider', u'equipmentFexCapProvider', u'equipmentGemCapProvider', u'equipmentGraphicsCardCapProvider', u'equipmentHostIfCapProvider', u'equipmentIOCardCapProvider', u'equipmentLocalDiskCapProvider', u'equipmentLocalDiskControllerCapProvider', u'equipmentMemoryUnitCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentProcessorUnitCapProvider', u'equipmentPsuCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentStorageDevBridgeCapProvider', u'equipmentStorageSasExpanderCapProvider', u'equipmentSwitchCapProvider', u'equipmentSwitchIOCardCapProvider', u'equipmentSystemFruCapProvider', u'equipmentTpmCapProvider'], [], ["Get"])
+
+    prop_meta = {
+        "can_be_fr_ued": MoPropertyMeta("can_be_fr_ued", "canBeFRUed", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2L, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "removal_conditions": MoPropertyMeta("removal_conditions", "removalConditions", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Not Applicable", "Removable when off", "Removable when on or off", "Unknown"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "service_philosophy": MoPropertyMeta("service_philosophy", "servicePhilosophy", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+    }
+
+    prop_map = {
+        "canBeFRUed": "can_be_fr_ued", 
+        "childAction": "child_action", 
+        "descr": "descr", 
+        "dn": "dn", 
+        "intId": "int_id", 
+        "name": "name", 
+        "policyLevel": "policy_level", 
+        "policyOwner": "policy_owner", 
+        "removalConditions": "removal_conditions", 
+        "rn": "rn", 
+        "sacl": "sacl", 
+        "servicePhilosophy": "service_philosophy", 
+        "status": "status", 
+    }
+
+    def __init__(self, parent_mo_or_dn, **kwargs):
+        self._dirty_mask = 0
+        self.can_be_fr_ued = None
+        self.child_action = None
+        self.descr = None
+        self.int_id = None
+        self.name = None
+        self.policy_level = None
+        self.policy_owner = None
+        self.removal_conditions = None
+        self.sacl = None
+        self.service_philosophy = None
+        self.status = None
+
+        ManagedObject.__init__(self, "EquipmentServiceDef", parent_mo_or_dn, **kwargs)
+

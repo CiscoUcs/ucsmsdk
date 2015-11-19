@@ -1,0 +1,29 @@
+"""This module contains the meta information of OrgResolveElements ExternalMethod."""
+import sys, os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from ucscoremeta import MethodMeta, MethodPropertyMeta
+sys.path.remove(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+method_meta = MethodMeta("OrgResolveElements", "orgResolveElements", "Version142b")
+
+prop_meta = {
+    "cookie": MethodPropertyMeta("Cookie", "cookie", "Xs:string", "Version142b", "InputOutput", False),
+    "dn": MethodPropertyMeta("Dn", "dn", "ReferenceObject", "Version142b", "InputOutput", False),
+    "in_class": MethodPropertyMeta("InClass", "inClass", "NamingClassId", "Version142b", "Input", False),
+    "in_filter": MethodPropertyMeta("InFilter", "inFilter", "FilterFilter", "Version142b", "Input", True),
+    "in_hierarchical": MethodPropertyMeta("InHierarchical", "inHierarchical", "Xs:string", "Version142b", "Input", False),
+    "in_single_level": MethodPropertyMeta("InSingleLevel", "inSingleLevel", "Xs:string", "Version142b", "Input", False),
+    "out_configs": MethodPropertyMeta("OutConfigs", "outConfigs", "ConfigMap", "Version142b", "Output", True),
+}
+
+prop_map = {
+    "cookie": "cookie",
+    "dn": "dn",
+    "inClass": "in_class",
+    "inFilter": "in_filter",
+    "inHierarchical": "in_hierarchical",
+    "inSingleLevel": "in_single_level",
+    "outConfigs": "out_configs",
+}
+

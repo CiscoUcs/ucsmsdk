@@ -1,0 +1,58 @@
+"""This module contains the general information for SwVirtL3Intf ManagedObject."""
+import sys, os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ucsmo import ManagedObject
+from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ucsmeta import VersionMeta
+sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
+
+class SwVirtL3IntfConsts():
+    pass
+
+
+class SwVirtL3Intf(ManagedObject):
+    """This is SwVirtL3Intf class."""
+
+    consts = SwVirtL3IntfConsts()
+    naming_props = set([u'name'])
+
+    mo_meta = MoMeta("SwVirtL3Intf", "swVirtL3Intf", "l3-vlan-[name]", VersionMeta.Version221b, "InputOutput", 0x1fL, [], ["read-only"], [u'swEthLanFlowMon'], [], [None])
+
+    prop_meta = {
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "ip_address": MoPropertyMeta("ip_address", "ipAddress", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 256, """((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version221b, MoPropertyMeta.NAMING, 0x4L, None, None, """[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
+        "netmask": MoPropertyMeta("netmask", "netmask", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 256, """((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x10L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "vlan_id": MoPropertyMeta("vlan_id", "vlanId", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-4093"]), 
+    }
+
+    prop_map = {
+        "childAction": "child_action", 
+        "dn": "dn", 
+        "ipAddress": "ip_address", 
+        "name": "name", 
+        "netmask": "netmask", 
+        "rn": "rn", 
+        "sacl": "sacl", 
+        "status": "status", 
+        "vlanId": "vlan_id", 
+    }
+
+    def __init__(self, parent_mo_or_dn, name, **kwargs):
+        self._dirty_mask = 0
+        self.name = name
+        self.child_action = None
+        self.ip_address = None
+        self.netmask = None
+        self.sacl = None
+        self.status = None
+        self.vlan_id = None
+
+        ManagedObject.__init__(self, "SwVirtL3Intf", parent_mo_or_dn, **kwargs)
+
