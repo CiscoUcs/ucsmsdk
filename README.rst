@@ -36,3 +36,9 @@ Features
 * Samples directory for more real world use cases
 * Integrating the sphinx framework for documentation
 * PEP8 Compliance
+
+
+Get Involved
+------------
+    Join us on slack - ucspython
+    Email vvb at cisco dot com for an invitation to the slack channel
