@@ -132,7 +132,7 @@ def _get_class_id_for_rn(rn, prev_class_id=None):
         else:
             continue
 
-    for child_class_id in mo_meta.child_field_names:
+    for child_class_id in mo_meta.children:
         child_mo_meta = ucscoreutils.get_mo_property_meta(child_class_id,
                                                           "mo_meta")
         if child_mo_meta is None:
@@ -412,7 +412,7 @@ def _form_python_cmdlet(class_node, key, tag, import_list):
             if prop_ucs is None:
                 continue
 
-            if not gmo_flag:
+            if not gmo_flag and prop_ucs in peer_class_prop_map:
                 prop_py = peer_class_prop_map[prop_ucs]
                 if peer_class_prop_meta[prop_py].access != 3:
                     if class_status & _ClassStatus.CREATED == \
@@ -522,7 +522,7 @@ def _form_python_sub_cmdlet(class_node, key, mo_tag, parent_mo_tag,
             if prop_ucs is None:
                 continue
 
-            if not gmo_flag:
+            if not gmo_flag and prop_ucs in peer_class_prop_map:
                 prop_py = peer_class_prop_map[prop_ucs]
                 if peer_class_prop_meta[prop_py].access != 3:
                     if class_status & _ClassStatus.CREATED == \
@@ -530,7 +530,9 @@ def _form_python_sub_cmdlet(class_node, key, mo_tag, parent_mo_tag,
                         if prop_ucs not in peer_class_naming_props:
                             continue
                     else:
-                        prop_py = prop_ucs
+                        continue
+            else:
+                prop_py = prop_ucs
 
             property_map[prop_py] = value
 
