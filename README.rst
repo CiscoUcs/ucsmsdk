@@ -19,6 +19,10 @@ Installation
 ===============================
 .. code::
 
+    Install pip:
+        wget https://bootstrap.pypa.io/get-pip.py
+        python get-pip.py
+
     git clone https://github.com/CiscoUcs/ucsmsdk.git
     cd ucsmsdk
     make install
@@ -40,5 +44,5 @@ Features
 
 Get Involved
 ------------
-    Join us on slack - ucspython
-    Email vvb at cisco dot com for an invitation to the slack channel
+* Join us on slack - ucspython
+* Email vvb at cisco dot com for an invitation to the slack channel
