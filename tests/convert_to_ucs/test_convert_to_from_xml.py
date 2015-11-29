@@ -324,3 +324,38 @@ def test_004_convert_from_xml_sp_disassociate():
     </configConfMos>
     '''
     convert_to_ucs_python(xml=True, request=xml_str, dump_xml=True)
+
+def test_005_convert_from_xml():
+    xml_str = '''
+    <configConfMos inHierarchical="false">
+    <inConfigs>
+     <pair key="fabric/lan/A/phys-slot-1-port-10">
+      <fabricEthLanEp adminSpeed="10gbps" adminState="enabled"
+      autoNegotiate="no" dn="fabric/lan/A/phys-slot-1-port-10"
+      ethLinkProfileName="default" flowCtrlPolicy="default"
+      name="" portId="10" sacl="addchild,del,mod" slotId="1"
+      status="created" usrLbl="">
+        </fabricEthLanEp>
+     </pair>
+    </inConfigs>
+    </configConfMos>
+    '''
+
+    convert_to_ucs_python(xml=True, request=xml_str, dump_xml=True)
+
+def test_006_convert_from_xml():
+    xml_str = '''
+    <configConfMos inHierarchical="false">
+    <inConfigs>
+     <pair key="sys/mgmt/fw-boot-def/bootunit-system">
+      <firmwareBootUnit adminState="triggered"
+      dn="sys/mgmt/fw-boot-def/bootunit-system" ignoreCompCheck="no"
+      mode="install" resetOnActivate="yes" sacl="addchild,del,mod"
+      skipValidation="yes" version="3.1(200.13)">
+        </firmwareBootUnit>
+     </pair>
+    </inConfigs>
+    </configConfMos>
+    '''
+
+    convert_to_ucs_python(xml=True, request=xml_str, dump_xml=True)

@@ -12,7 +12,7 @@
 # limitations under the License.
 
 from nose.tools import *
-from connection.info import custom_setup, custom_teardown
+from ..connection.info import custom_setup, custom_teardown
 
 handle = None
 

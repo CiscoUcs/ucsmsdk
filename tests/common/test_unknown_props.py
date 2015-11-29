@@ -27,7 +27,7 @@ def test_001_knownmo_unknownprop():
     obj = xc.from_xml_str(xml_str)
     obj.unknownProps = "known"
     xml_element = obj.to_xml()
-    expected = '<lsServer dn="ls-ra11" name="ra11" rn="ls-ra11" type="instance" unknownProps="known" usrLbl="b" />'
+    expected = '<lsServer dn="ls-ra11" name="ra11" type="instance" unknownProps="known" usrLbl="b" />'
     result_str = xc.to_xml_str(xml_element)
     assert_equal(result_str, expected)
 

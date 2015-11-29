@@ -107,6 +107,7 @@ def test_004_watch_mo_failure():
     print sp.rn
     ueh.add(managed_object=sp,
                               prop="usr_lbl",
+                              success_value=['success'],
                               failure_value=['failure'],
                               poll_sec=15)
 
@@ -131,6 +132,7 @@ def test_005_watch_mo_transient():
     print sp.rn
     ueh.add(managed_object=sp,
                               prop="usr_lbl",
+                              success_value=['success'],
                               transient_value=['transient'],
                               poll_sec=15)
 
@@ -138,6 +140,10 @@ def test_005_watch_mo_transient():
     print wb_list
 
     time.sleep(10)
+    sp.usr_lbl = "transient"
+    handle.set_mo(sp)
+    handle.commit()
+    time.sleep(30)
     sp.usr_lbl = "success"
     handle.set_mo(sp)
     handle.commit()

@@ -18,7 +18,7 @@ import ucsmsdk.ucsxmlcodec as xc
 def test_001_mo_to_xml():
     from ucsmsdk.mometa.fabric.FabricVsan import FabricVsan
 
-    expected = '<fabricVsan dn="org-root/net-test" name="test" rn="net-test" status="modified" />'
+    expected = '<fabricVsan dn="org-root/net-test" name="test" status="modified" />'
 
     mo = FabricVsan("org-root", "test")
     mo.status = "modified"
