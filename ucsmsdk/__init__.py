@@ -12,17 +12,6 @@
 # limitations under the License.
 
 
-# from ucshandle import *
-# from mometa import *
-# from methodmeta import *
-# from ucscore import *
-# from ucsexception import *
-# from utils import *
-
-from ucscoreutils import load_ucs_config
-load_ucs_config()
-
-
 # init logging
 import logging
 
