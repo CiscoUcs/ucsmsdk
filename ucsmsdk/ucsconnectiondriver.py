@@ -11,14 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-try:
-    import requests
-
-    requests.packages.urllib3.disable_warnings()
-except Exception as e:
-    print e.message
-
+import sys
+import os
 import urllib2
+import httplib
+import socket
+import ssl
+
 import logging
 
 log = logging.getLogger('ucs')
@@ -38,111 +37,111 @@ class SmartRedirectHandler(urllib2.HTTPRedirectHandler):
         return resp_status
 
 
+class TLS1Handler(urllib2.HTTPSHandler):
+    """Like HTTPSHandler but more specific"""
+
+    def __init__(self):
+        urllib2.HTTPSHandler.__init__(self)
+
+    def https_open(self, req):
+        return self.do_open(TLS1Connection, req)
+
+
+class TLS1Connection(httplib.HTTPSConnection):
+    """Like HTTPSConnection but more specific"""
+
+    def __init__(self, host, **kwargs):
+        httplib.HTTPSConnection.__init__(self, host, **kwargs)
+
+    def connect(self):
+        """Overrides HTTPSConnection.connect to specify TLS version"""
+        # Standard implementation from HTTPSConnection, which is not
+        # designed for extension, unfortunately
+        if sys.version_info >= (2, 7):
+            sock = socket.create_connection((self.host, self.port),
+                                            self.timeout, self.source_address)
+        elif sys.version_info >= (2, 6):
+            sock = socket.create_connection((self.host, self.port),
+                                            self.timeout)
+        else:
+            sock = socket.create_connection((self.host, self.port))
+
+        if getattr(self, '_tunnel_host', None):
+            self.sock = sock
+            self._tunnel()
+
+        # This is the only difference; default wrap_socket uses SSLv23
+        self.sock = ssl.wrap_socket(sock, self.key_file, self.cert_file,
+                                    ssl_version=ssl.PROTOCOL_TLSv1)
+
+
 class UrllibDriver(object):
     """
     To Add docstring
     """
 
-    def __init__(self, secure=True, proxy=None):
-        self.__secure = secure
+    def __init__(self, proxy=None):
+        self.__redirect_uri = None
         self.__proxy = proxy
+        self.__headers = {}
         self.__handlers = self.__get_handlers()
 
     def __get_handlers(self):
-        handlers = []
-        if not self.__secure:
-            handlers.append(SmartRedirectHandler)
+        handlers = [SmartRedirectHandler, TLS1Handler]
         if self.__proxy:
             proxy_handler = urllib2.ProxyHandler(
                 {'http': self.__proxy, 'https': self.__proxy})
             handlers.append(proxy_handler)
         return handlers
 
-    def __post_http_request(self, uri, data):
-        req = urllib2.Request(url=uri, data=data)
-        opener = urllib2.build_opener(*self.__handlers)
-        resp = opener.open(req)
-        if type(resp) is list:
-            if len(resp) == 2 and (resp[0] == 302 or resp[0] == 301):
-                uri = resp[1]
-                req = urllib2.Request(url=uri, data=data)
-                resp = urllib2.urlopen(req)
-        return resp
+    def add_header(self, header_prop, header_value):
+        self.__headers[header_prop] = header_value
 
-    def __post_https_request(self, uri, data):
-        req = urllib2.Request(url=uri, data=data)
-        opener = urllib2.build_opener(*self.__handlers)
-        resp = opener.open(req)
-        return resp
+    def remove_header(self, header_prop):
+        del self.__headers[header_prop]
+
+    @property
+    def redirect_uri(self):
+        return self.__redirect_uri
+
+    def __create_request(self, uri, data=None):
+        request_ = urllib2.Request(url=uri, data=data)
+        headers = self.__headers
+        for header in headers:
+            request_.add_header(header, headers[header])
+        return request_
 
     def get(self, uri):
         pass
 
-    def post(self, uri, data):
-        if self.__secure:
-            resp = self.__post_https_request(uri, data)
-        else:
-            resp = self.__post_http_request(uri, data)
+    def post(self, uri, data=None, show_traffic=False, read=True):
+        if self.__redirect_uri:
+            uri = self.__redirect_uri
+        request = self.__create_request(uri=uri, data=data)
+        if show_traffic:
+            log.debug('%s ====> %s' % (uri, data))
 
-        rsp = resp.read()
-        return rsp
+        opener = urllib2.build_opener(*self.__handlers)
+        response = opener.open(request)
 
+        if type(response) is list:
+            if len(response) == 2 and \
+                    (response[0] == 302 or response[0] == 301):
+                uri = response[1]
+                self.__redirect = True
+                self.__redirect_uri = uri
+                request = self.__create_request(uri=uri, data=data)
+                if show_traffic:
+                    log.debug('%s <==== %s' % (uri, data))
 
-class RequestDriver(object):
-    """
-    To Add docstring
-    """
-
-    def __init__(self):
-        self.__validate_certificate = False
-        self.__timeout = None
-
-    def validate_certificate(self):
-        self.__validate_certificate = True
-
-    def ignore_certificate(self):
-        self.__validate_certificate = False
-
-    def set_timeout(self, timeout):
-        self.__timeout = timeout
-
-    def __getr(self, url, verify, timeout):
-        """
-        To Add docstring
-        """
-        rsp = requests.get(url=url, verify=verify, timeout=timeout)
-        return rsp
-
-    def __postr(self, data, url, verify, timeout):
-        """
-        To Add docstring
-        """
-        rsp = requests.post(url=url, data=data, verify=verify, timeout=timeout,
-                            allow_redirects=False)
-        if rsp.status_code in [301, 302]:
-            url = rsp.headers['location']
-            return self.__postr(data, url, verify, timeout)
-        return rsp
-
-    def get(self, uri):
-        """
-        To Add docstring
-        uri:
-        """
-        return self.__getr(url=uri,
-                           verify=self.__validate_certificate,
-                           timeout=self.__timeout)
-
-    def post(self, uri, data):
-        """
-        To Add docstring
-        data:
-        """
-        rsp = self.__postr(data=data,
-                           url=uri,
-                           verify=self.__validate_certificate,
-                           timeout=self.__timeout)
-        return rsp.text
+                opener = urllib2.build_opener(*self.__handlers)
+                response = opener.open(request)
+                # response = urllib2.urlopen(request)
+        if read:
+            response = response.read()
+            if show_traffic:
+                log.debug('%s <==== %s' % (uri, response))
+        return response
 
 
 class UcsConnectionDriver(object):
@@ -150,18 +149,14 @@ class UcsConnectionDriver(object):
     To Add docstring
     """
 
-    def __init__(self, ucs_session, use_requests=False):
-        self.__use_requests = use_requests
+    def __init__(self, ucs_session):
+        self.__redirect = False
         self.__session = ucs_session
         self.__uri = self.__session.uri
         self.__secure = self.__session.secure
         self.__proxy = self.__session.proxy
 
-        if use_requests:
-            self.__driver = RequestDriver()
-        else:
-            self.__driver = UrllibDriver(secure=self.__secure,
-                                         proxy=self.__proxy)
+        self.__driver = UrllibDriver(proxy=self.__proxy)
 
     def get(self):
         """
@@ -178,7 +173,11 @@ class UcsConnectionDriver(object):
         :return:
         """
 
-        response_str = self.__driver.post(self.__uri, in_xml_str)
+        response_str = self.__driver.post(self.__uri, in_xml_str,
+                                          show_traffic=False)
+        if self.__driver.redirect_uri:
+            self.__session._AbstractSession__uri = self.__driver.redirect_uri
+
         return response_str
 
     def post(self, element, dump_xml=None):
@@ -195,21 +194,54 @@ class UcsConnectionDriver(object):
                 element.attrib['inPassword'] = ucsgenutils.encrypt_password(
                     self.__session.password, "cisco")
                 xml_str = xc.to_xml_str(element)
-                log.debug('%s ====> %s' % (self.__session.ucs, xml_str))
+                log.debug('%s ====> %s' % (self.__session.uri, xml_str))
                 element.attrib['inName'] = self.__session.username
                 element.attrib['inPassword'] = self.__session.password
                 xml_str = xc.to_xml_str(element)
             else:
                 xml_str = xc.to_xml_str(element)
-                log.debug('%s ====> %s' % (self.__session.ucs, xml_str))
+                log.debug('%s ====> %s' % (self.__session.uri, xml_str))
         else:
             xml_str = xc.to_xml_str(element)
 
         response_str = self.post_xml(xml_str)
         if dump_xml:
-            log.debug('%s <==== %s' % (self.__session.ucs, response_str))
+            log.debug('%s <==== %s' % (self.__session.uri, response_str))
 
         response = xc.from_xml_str(response_str)
         if response:
             return response
         return None
+
+    def download_file(self, url_suffix, file_dir, file_name):
+        from ucsgenutils import download_file
+        ucsm_uri = self.__session.uri
+        ucsm_uri = ucsm_uri.rstrip('/nuova')
+        file_url = "%s/%s" % (ucsm_uri, url_suffix)
+
+        self.__driver.add_header('Cookie', 'ucsm-cookie=%s'
+                                 % self.__session.cookie)
+
+        download_file(driver=self.__driver,
+                      file_url=file_url,
+                      file_dir=file_dir,
+                      file_name=file_name)
+
+        self.__driver.remove_header('Cookie')
+
+    def upload_file(self, url_suffix, file_dir, file_name):
+        from ucsgenutils import upload_file
+
+        ucsm_uri = self.__session.uri
+        ucsm_uri = ucsm_uri.rstrip('/nuova')
+        file_url = "%s/%s" % (ucsm_uri, url_suffix)
+
+        self.__driver.add_header('Cookie', 'ucsm-cookie=%s'
+                                 % self.__session.cookie)
+
+        upload_file(self.__driver,
+                    uri=file_url,
+                    file_dir=file_dir,
+                    file_name=file_name)
+
+        self.__driver.remove_header('Cookie')
