@@ -1,0 +1,197 @@
+# Copyright 2013 Cisco Systems, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#  http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+"""
+This module contains the api used to create and download tech_support file.
+"""
+
+import os
+import platform
+import time
+import datetime
+import logging
+from ..ucsexception import UcsValidationException, UcsWarning
+
+log = logging.getLogger('ucs')
+
+
+def get_ucs_tech_support(handle,
+                         ucs_manager=False,
+                         ucs_mgmt=False,
+                         chassis_id=None, cimc_id=None,
+                         adapter_id=None, iom_id=None,
+                         fex_id=None,
+                         rack_server_id=None, rack_adapter_id=None,
+                         remove_from_ucs=False,
+                         download_techsupp=True, file_dir=None, file_name=None,
+                         timeout_in_sec=600):
+    """
+        This operation creates and downloads the technical support data for
+        the respective UCSM.
+
+        Attributes:
+            handle (UcsHandle)
+            ucs_manager (boolean): by default False, if provided as True then
+                                technical support data for the entire UCSM
+                                instance will be created and downloaded.
+            ucs_mgmt (boolean): by default False,  if provided as True then
+                                technical support data for the entire UCSM
+                                management services(excluding fabric
+                                interconnects) will be created and downloaded.
+            chassis_id : chassis id.
+            cimc_id : for a specific chassis. Can be 'all' also.
+            adapter_id : for a specific chassis. Can be 'all' also.
+            iom_id :for a specific chassis. Can be 'all' also.
+            fex_id : id of a fabric extender.
+            rack_server_id : id of a rack server.
+            rack_adapter_id : adaptor_id for a specific rack server.
+                            Can be 'all' also.
+            remove_from_ucs (boolean): by default False, if specified as True
+                                    then the technical support data file will
+                                    be removed from the UCS.
+            download_techsupp (boolean): by default True, if True suggests to
+                                        download the tech support file.
+            file_dir (string): directory to download tech support file
+            file_name (string): name of the download tech support file
+            timeout_in_sec (number): specifies the time in seconds after that
+                                    the operation will terminate.
+
+        Example:
+            file_dir = "/home/user/techsupport"
+            file_name = "techsupp_ucs_mgmt.tar"
+            backup_ucs(handle, backup_type="config-logical",
+                        file_dir=test_support, file_name=file_name)
+            get_ucs_tech_support(handle,
+                                file_dir=file_dir,
+                                file_name=file_name,
+                                ucs_mgmt=True)
+    """
+    from ..mometa.top.TopSystem import TopSystem
+    from ..mometa.sysdebug.SysdebugTechSupport import SysdebugTechSupport, \
+                                                    SysdebugTechSupportConsts
+    from ..mometa.sysdebug.SysdebugTechSupFileRepository import \
+        SysdebugTechSupFileRepository
+    from ..mometa.sysdebug.SysdebugTechSupportCmdOpt import \
+        SysdebugTechSupportCmdOpt, SysdebugTechSupportCmdOptConsts
+
+    if download_techsupp:
+        if file_name is None:
+            raise UcsValidationException('provide file_name')
+        if file_dir is None:
+            raise UcsValidationException('provide dir_name')
+
+        if not file_name.endswith('.tar'):
+            raise UcsValidationException('file_name should end with .tar')
+
+        if not os.path.exists(file_dir):
+            os.makedirs(file_dir)
+
+    # Converting timedelta in to total seconds for Python version compatibility
+    dt1 = datetime.datetime(1970, 1, 1, 12, 0, 0, 0)
+    dt2 = datetime.datetime.utcnow()
+    time_delta = (dt2 - dt1)
+    creation_ts = time_delta.microseconds / 1000000 + \
+                  (time_delta.days * 24 * 60 * 60) + \
+                  time_delta.seconds
+
+    # create SysdebugTechSupport
+    top_system = TopSystem()
+    sysdebug_techsup_file_repo = SysdebugTechSupFileRepository(
+        parent_mo_or_dn=top_system)
+    sys_debug_tech_support = SysdebugTechSupport(
+        parent_mo_or_dn=sysdebug_techsup_file_repo,
+        creation_ts=str(creation_ts),
+        admin_state=SysdebugTechSupportConsts.ADMIN_STATE_START)
+
+    sys_debug_tech_support_cmd_opt = SysdebugTechSupportCmdOpt(
+        parent_mo_or_dn=sys_debug_tech_support)
+
+    # Parameter Set UCSM
+    if ucs_manager:
+        sys_debug_tech_support_cmd_opt.major_opt_type = \
+            SysdebugTechSupportCmdOptConsts.MAJOR_OPT_TYPE_UCSM
+    elif ucs_mgmt:
+        sys_debug_tech_support_cmd_opt.major_opt_type = \
+            SysdebugTechSupportCmdOptConsts.MAJOR_OPT_TYPE_UCSM_MGMT
+    elif chassis_id is not None:
+        if cimc_id is not None:
+            sys_debug_tech_support_cmd_opt.chassis_cimc_id = str(cimc_id)
+            sys_debug_tech_support_cmd_opt.chassis_id = str(chassis_id)
+            sys_debug_tech_support_cmd_opt.major_opt_type = \
+                SysdebugTechSupportCmdOptConsts.MAJOR_OPT_TYPE_CHASSIS
+
+            if adapter_id is None:
+                sys_debug_tech_support_cmd_opt.cimc_adapter_id = \
+                    SysdebugTechSupportCmdOptConsts.CIMC_ADAPTER_ID_ALL
+            else:
+                sys_debug_tech_support_cmd_opt.cimc_adapter_id = \
+                    str(adapter_id)
+        elif iom_id is not None:
+            sys_debug_tech_support_cmd_opt.chassis_iom_id = str(iom_id)
+            sys_debug_tech_support_cmd_opt.chassis_id = str(chassis_id)
+            sys_debug_tech_support_cmd_opt.major_opt_type = \
+                SysdebugTechSupportCmdOptConsts.MAJOR_OPT_TYPE_CHASSIS
+    elif rack_server_id is not None:
+        sys_debug_tech_support_cmd_opt.rack_server_id = str(iom_id)
+
+        if rack_adapter_id is None:
+            sys_debug_tech_support_cmd_opt.rack_server_adapter_id = \
+                SysdebugTechSupportCmdOptConsts.RACK_SERVER_ADAPTER_ID_ALL
+        else:
+            sys_debug_tech_support_cmd_opt.rack_server_adapter_id = \
+                str(rack_adapter_id)
+            sys_debug_tech_support_cmd_opt.major_opt_type = \
+                SysdebugTechSupportCmdOptConsts.MAJOR_OPT_TYPE_SERVER
+    elif fex_id is not None:
+        sys_debug_tech_support_cmd_opt.fab_ext_id = str(iom_id)
+        sys_debug_tech_support_cmd_opt.major_opt_type = \
+                SysdebugTechSupportCmdOptConsts.MAJOR_OPT_TYPE_FEX
+
+    handle.add_mo(sys_debug_tech_support)
+    handle.commit()
+
+    # poll for tech support to complete
+    duration = timeout_in_sec
+    poll_interval = 2
+    status = False
+
+    while True:
+        tech_support = handle.query_dn(sys_debug_tech_support.dn)
+        if tech_support.oper_state == \
+                SysdebugTechSupportConsts.OPER_STATE_AVAILABLE:
+            status = True
+        if status:
+            break
+        time.sleep(min(duration, poll_interval))
+        duration = max(0, (duration - poll_interval))
+        if duration == 0:
+            handle.remove_mo(tech_support)
+            handle.commit()
+            raise UcsValidationException('TechSupport file creation timed out')
+
+    # download tech support file
+    if download_techsupp:
+        url_suffix = "techsupport/" + tech_support.name
+        try:
+            handle.file_download(url_suffix=url_suffix,
+                                 dest_dir=file_dir,
+                                 file_name=file_name)
+        except Exception, err:
+            UcsWarning(str(err))
+
+    # remove tech support file from ucs
+    if remove_from_ucs:
+        handle.remove_mo(tech_support)
+        handle.commit()
+
+    return tech_support
