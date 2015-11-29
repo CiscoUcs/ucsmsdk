@@ -19,7 +19,6 @@ import os
 import platform
 import re
 import subprocess
-import urllib2
 
 from ucsexception import UcsWarning, UcsValidationException
 
@@ -54,6 +53,35 @@ def to_python_propname(word):
                         re.sub('([a-z0-9])([A-Z])', '\g<1>_\g<2>',(word,
                           to_safe_prop(word))[is_python_reserved(word)])
                              )))).lower()
+
+
+def convert_to_python_var_name(name):
+    """converts a ucs server variable to python recommended format
+
+        Attributes:
+        name (str): string to be converted to python recommended format
+    """
+    pattern = re.compile(r"(?<!^)(?=[A-Z])")
+    python_var = re.sub(pattern, '_', name).lower()
+    if python_var != "class":
+        return python_var
+    else:
+        return "class_"
+
+
+def word_l(word):
+    """ Method makes the first letter of the given string as lower case. """
+    return word[0].lower() + word[1:]
+
+
+def word_u(word):
+    """ Method makes the first letter of the given string as capital. """
+    return word[0].upper() + word[1:]
+
+
+def make_dn(rn_array):
+    """ Method forms Dn out of array of rns. """
+    return '/'.join(rn_array)
 
 
 class Progress(object):
@@ -93,19 +121,47 @@ class FileWithCallback(file):
         return data
 
 
-def word_l(word):
-    """ Method makes the first letter of the given string as lower case. """
-    return word[0].lower() + word[1:]
+def download_file(driver, file_url, file_dir, file_name):
+    import os
+    from sys import stdout
+
+    destination_file = os.path.join(file_dir, file_name)
+    response = driver.post(uri=file_url, read=False)
+
+    meta = response.info()
+    file_size = int(meta.getheaders("Content-Length")[0])
+    print "Downloading: %s Bytes: %s" % (file_name, file_size)
+
+    file_handle = open(destination_file, 'wb')
+    file_size_dl = 0
+    block_sz = 64L
+    while True:
+        r_buffer = response.read(128 * block_sz)
+        if not r_buffer:
+            break
+
+        file_size_dl += len(r_buffer)
+        file_handle.write(r_buffer)
+        status = r"%10d  [%3.2f%%]" % (
+            file_size_dl, file_size_dl * 100. / file_size)
+        status += chr(8) * (len(status) + 1)
+        stdout.write("\r%s" % status)
+        stdout.flush()
+    print "Downloading Finished."
+    file_handle.close()
 
 
-def word_u(word):
-    """ Method makes the first letter of the given string as capital. """
-    return word[0].upper() + word[1:]
+def upload_file(driver, uri, file_dir, file_name):
+    progress = Progress()
+    full_path = os.path.join(file_dir, file_name)
+    stream = FileWithCallback(full_path,
+                              'rb',
+                              progress.update,
+                              full_path)
 
-
-def make_dn(rn_array):
-    """ Method forms Dn out of array of rns. """
-    return '/'.join(rn_array)
+    response = driver.post(uri, data=stream)
+    if not response:
+        raise ValueError("failed to upload.")
 
 
 def check_registry_key(java_key):
@@ -244,38 +300,21 @@ def get_java_version():
     return java_ver_str
 
 
-def download_file(handle, source, destination):
+def get_md5_sum(filename):
+    """Method to get md5sum for the image.
+
+        Attributes:
+        filename (str): file for which md5sum is to be computed
     """
-    Method provides the functionality to download file from the UCS Central.
-    """
-    from sys import stdout
+    import hashlib
 
-    http_address = "%s/%s" % (handle.uri(), source)
-    file_name = http_address.split('/')[-1]
+    md5_obj = hashlib.md5()
+    file_handler = open(filename, 'rb')
+    for chunk in iter(lambda: file_handler.read(128 * md5_obj.block_size), ''):
+        md5_obj.update(chunk)
 
-    req = urllib2.Request(http_address)  # send the new url with the cookie.
-    req.add_header('Cookie', 'ucsm-cookie=%s' % (handle.cookie))
-    res = urllib2.urlopen(req)
-
-    meta = res.info()
-    file_size = int(meta.getheaders("Content-Length")[0])
-    print "Downloading: %s Bytes: %s" % (file_name, file_size)
-
-    out_file = open(destination, 'wb')
-    file_size_dl = 0
-    block_size = 8192
-    while True:
-        read_buffer = res.read(block_size)
-        if not read_buffer:
-            break
-        file_size_dl += len(read_buffer)
-        out_file.write(read_buffer)
-        status = r"%10d  [%3.2f%%]" % (
-            file_size_dl, file_size_dl * 100. / file_size)
-        status += chr(8) * (len(status) + 1)
-        stdout.write("\r%s" % status)
-        stdout.flush()
-    out_file.close()
+    file_handler.close()
+    return md5_obj.hexdigest()
 
 
 def get_sha_hash(input_string):
@@ -367,79 +406,3 @@ def decrypt_password(cipher, key):
 
     decrypted_password = password_stream.tostring()[:cipher_len]
     return decrypted_password
-
-
-def download_ext_file(url=None, credential=None, destination_path=None):
-    """Method to download the external file.
-
-        Attributes:
-        url (str): URL of the file to be downloaded
-        credential(str): credentials for file access
-        destination_path(str): path to which file should be downloaded
-    """
-    from sys import stdout
-
-    if not url:
-        raise UcsValidationException("url parameter is not provided.")
-    if not credential:
-        raise UcsValidationException("credential parameter is not provided.")
-    if not destination_path:
-        raise UcsValidationException("path parameter is not provided.")
-
-    file_name = os.path.basename(url)
-    destination_file = os.path.join(destination_path, file_name)
-    request = urllib2.Request(url)
-    request.add_header("Authorization", "Basic %s" % credential)
-    response = urllib2.urlopen(request)
-    meta = response.info()
-    file_size = int(meta.getheaders("Content-Length")[0])
-    print "Downloading: %s Bytes: %s" % (file_name, file_size)
-
-    file_handle = open(destination_file, 'wb')
-    file_size_dl = 0
-    block_sz = 64L
-    while True:
-        r_buffer = response.read(128 * block_sz)
-        if not r_buffer:
-            break
-
-        file_size_dl += len(r_buffer)
-        file_handle.write(r_buffer)
-        status = r"%10d  [%3.2f%%]" % (
-            file_size_dl, file_size_dl * 100. / file_size)
-        status += chr(8) * (len(status) + 1)
-        stdout.write("\r%s" % status)
-        stdout.flush()
-    print "Downloading Finished."
-    file_handle.close()
-
-
-def get_md5_sum(filename):
-    """Method to get md5sum for the image.
-
-        Attributes:
-        filename (str): file for which md5sum is to be computed
-    """
-    import hashlib
-
-    md5_obj = hashlib.md5()
-    file_handler = open(filename, 'rb')
-    for chunk in iter(lambda: file_handler.read(128 * md5_obj.block_size), ''):
-        md5_obj.update(chunk)
-
-    file_handler.close()
-    return md5_obj.hexdigest()
-
-
-def convert_to_python_var_name(name):
-    """converts a ucs server variable to python recommended format
-
-        Attributes:
-        name (str): string to be converted to python recommended format
-    """
-    pattern = re.compile(r"(?<!^)(?=[A-Z])")
-    python_var = re.sub(pattern, '_', name).lower()
-    if python_var != "class":
-        return python_var
-    else:
-        return "class_"

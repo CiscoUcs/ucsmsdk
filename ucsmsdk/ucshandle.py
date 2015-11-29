@@ -122,10 +122,23 @@ class UcsHandle(object):
         response = self.post(xml_element)
         if response.error_code != 0:
             raise ex.UcsException(response.error_code, response.error_descr)
+
         if hasattr(response, "out_config"):
             return response.out_config.child
+        elif hasattr(response, "out_configs"):
+            mo_list = []
+            pair_flag = False
+            for ch_ in response.out_configs.child:
+                if pair_flag or ch_.get_class_id() != "Pair":
+                    mo_list.append(ch_)
+                elif ch_.get_class_id() == "Pair":
+                    mo_list.extend(ch_.child)
+                    pair_flag = True
+            return mo_list
+        elif hasattr(response, "out_dns"):
+            return response.out_dns.child
         else:
-            return response.out_configs.child
+            return response
 
     def get_auth_token(self):
         auth_token = None
@@ -535,19 +548,56 @@ class UcsHandle(object):
             for out_mo in pair_.child:
                 out_mo.sync_mo(mo_dict[out_mo.dn])
 
-        dn_set = DnSet()
-        for dn_ in refresh_dict:
-            dn_obj = Dn()
-            dn_obj.value = dn_
-            dn_set.child_add(dn_obj)
+        if refresh_dict:
+            dn_set = DnSet()
+            for dn_ in refresh_dict:
+                dn_obj = Dn()
+                dn_obj.value = dn_
+                dn_set.child_add(dn_obj)
 
-        xml_element = mf.config_resolve_dns(cookie=self.__session.cookie,
-                                            in_dns=dn_set)
-        response = self.post(xml_element)
-        if response.error_code != 0:
-            raise ex.UcsException(response.error_code, response.error_descr)
+            xml_element = mf.config_resolve_dns(cookie=self.__session.cookie,
+                                                in_dns=dn_set)
+            response = self.post(xml_element)
+            if response.error_code != 0:
+                raise ex.UcsException(response.error_code,
+                                      response.error_descr)
 
-        for out_mo in response.out_configs.child:
-            out_mo.sync_mo(refresh_dict[out_mo.dn])
+            for out_mo in response.out_configs.child:
+                out_mo.sync_mo(refresh_dict[out_mo.dn])
 
         self.__to_commit = {}
+
+    def file_download(self, url_suffix, dest_dir, file_name):
+        """
+            Attributes:
+                url_suffix (str): suffix url to be appended to
+                    http\https://host:port/ to locate the file on the server
+                dest_dir (str): The directory to download to
+                file_name (str): The destination file name for the download
+
+            Example:
+                handle.file_download(url_suffix='backupfile/config_backup.xml',
+                                     dest_dir='/home/user/backup',
+                                     file_name='my_config_backup.xml')
+        """
+        return self.__session.driver.download_file(url_suffix, dest_dir,
+                                                   file_name)
+
+    def file_upload(self, url_suffix, source_dir, file_name):
+        """
+            Attributes:
+                url_suffix (str): suffix url to be appended to
+                    http\https://host:port/ to locate the file on the server
+                source_dir (str): The directory to upload from
+                file_name (str): The destination file name for the download
+
+            Example:
+                source_dir = "/home/user/backup"
+                file_name = "config_backup.xml"
+                uri_suffix = "operations/file-%s/importconfig.txt" % file_name
+                handle.file_upload(url_suffix=uri_suffix,
+                                source_dir=source_dir,
+                               file_name=file_name)
+        """
+        return self.__session.driver.upload_file(url_suffix, source_dir,
+                                                 file_name)

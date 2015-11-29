@@ -50,6 +50,9 @@ class UcsBase(object):
         """Getter Method of UcsBase Class"""
         return self._dirty_mask
 
+    def get_class_id(self):
+        return self._class_id
+
     def child_add(self, obj):
         """Method adds the child managed object."""
         self._child.append(obj)

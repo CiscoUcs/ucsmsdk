@@ -21,7 +21,7 @@ import urllib2
 
 from .. import ucsgenutils
 from ..ucsexception import UcsValidationException, UcsWarning
-
+from ..ucsconnectiondriver import UrllibDriver
 
 class _UcsCcoImageList:
     """Constant class for CCO Image list."""
@@ -72,7 +72,8 @@ class UcsCcoImage(object):
         return out_str
 
 
-def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None):
+def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None,
+                           proxy=None):
     """ Get the cco image list from the server."""
     import getpass
     import xml.dom
@@ -105,12 +106,12 @@ def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None):
 
     input_xml += ida_xml_query_footer
     # print input_xml
+
+    # sending url request
+    driver = UrllibDriver(proxy)
     credential = base64.encodestring('%s:%s' % (username, password))[:-1]
-    request = urllib2.Request(url, data=input_xml)
-    request.add_header("Authorization", "Basic %s" % credential)
-    response = urllib2.urlopen(request)
-    ida_xml_response = response.read()
-    # print ida_xml_response
+    driver.add_header("Authorization", "Basic %s" % credential)
+    ida_xml_response = driver.post(uri=url, data=input_xml)
     if not ida_xml_response:
         raise UcsValidationException("No Response from <%s>" % url)
 
@@ -168,23 +169,31 @@ def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None):
     return cco_image_list
 
 
-def get_ucs_cco_image(image=None, path_pattern=None):
+def get_ucs_cco_image(image, file_dir, proxy=None):
     """Download specific cco image."""
+
     if not image:
-        return
-    if not path_pattern:
-        raise UcsValidationException("Provide path_pattern.")
-    if not os.path.isdir(path_pattern):
-        raise UcsValidationException(
-            "Not the valid directory <%s>" % path_pattern)
+        raise UcsValidationException("Provide image.")
     if not isinstance(image, UcsCcoImage):
         raise UcsValidationException("Object is not of type UcsCcoImage")
 
+    if not file_dir:
+        raise UcsValidationException("Provide file_dir.")
+    if not os.path.isdir(file_dir):
+        raise UcsValidationException(
+            "Not the valid directory <%s>" % file_dir)
+
     image_url = image.url
     print "Processing Image " + str(image.image_name)
-    ucsgenutils.download_ext_file(image_url, image.network_credential,
-                                  path_pattern)
-    local_file = os.path.join(path_pattern, str(image.image_name))
+
+    driver = UrllibDriver(proxy)
+    driver.add_header("Authorization", "Basic %s" % image.network_credential)
+    ucsgenutils.download_file(driver,
+                              file_url=image_url,
+                              file_dir=file_dir,
+                              file_name=str(image.image_name))
+
+    local_file = os.path.join(file_dir, str(image.image_name))
 
     if not os.path.exists(local_file):
         raise UcsValidationException("url parameter is not provided.")

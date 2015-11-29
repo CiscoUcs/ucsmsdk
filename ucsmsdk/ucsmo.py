@@ -54,6 +54,7 @@ class ManagedObject(UcsBase):
         self.__status = None
         self.__parent_dn = None
         self.__xtra_props = {}
+        self.__xtra_props_dirty_mask = 0x1L
 
         self._rn_set()
         self._dn_set(parent_mo_or_dn)
@@ -124,6 +125,7 @@ class ManagedObject(UcsBase):
             # This needs to be handled so that the same sdk can work across
             # multiple ucs releases
             self.__xtra_props[name] = GenericProp(name, value, True)
+            self._dirty_mask |= self.__xtra_props_dirty_mask
             object.__setattr__(self, name, value)
 
     def __set_prop(self, name, value, mark_dirty=True, forced=False):
