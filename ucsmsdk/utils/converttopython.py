@@ -1172,6 +1172,34 @@ def _generate_clear_interval_cmdlet(xml_string):
     return cmdlet
 
 
+def _generate_config_conf_rename_cmdlet(xml_string):
+    doc = xml.dom.minidom.parseString(xml_string)
+    node = None
+    top_node = doc.documentElement
+    if top_node is None:
+        return
+
+    if top_node.localName == "configConfRename":
+        node = top_node
+    else:
+        print "Check if Method is <configConfRename>"
+        return
+
+    if node.hasAttribute('dn'):
+        dn = node.getAttribute('dn')
+    if node.hasAttribute('inNewName'):
+        in_new_name = node.getAttribute('inNewName')
+    if node.hasAttribute('inHierarchical'):
+        in_hierarchical = node.getAttribute('inHierarchical')
+    cmdlet = ""
+    cmdlet += 'xml_element = mf.config_conf_rename(' \
+              'cookie=handle.cookie, dn="%s", ' \
+              'in_new_name="%s", '\
+              'in_hierarchical="%s")' % (dn, in_new_name, in_hierarchical)
+    cmdlet += '\nhandle.process_xml_element(xml_element)\n'
+    return cmdlet
+
+
 # ---- END - OF - METHOD SPECIFIC - FUNCTION ----
 
 def _generate_cmdlets(xml_string):
@@ -1207,6 +1235,8 @@ def _generate_cmdlets(xml_string):
         cmdlet = _generate_multiple_clone_cmdlets(xml_string, False)
     elif category == "statsClearInterval":
         cmdlet = _generate_clear_interval_cmdlet(xml_string)
+    elif category == "configConfRename":
+        cmdlet = _generate_config_conf_rename_cmdlet(xml_string)
     # support for redirecting script output to respective file
     if _outfile_flag:
         _outfile = open(_outfile_path, 'a')

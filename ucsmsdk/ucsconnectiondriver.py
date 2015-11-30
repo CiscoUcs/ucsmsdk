@@ -114,11 +114,11 @@ class UrllibDriver(object):
     def get(self, uri):
         pass
 
-    def post(self, uri, data=None, show_traffic=False, read=True):
+    def post(self, uri, data=None, dump_xml=False, read=True):
         if self.__redirect_uri:
             uri = self.__redirect_uri
         request = self.__create_request(uri=uri, data=data)
-        if show_traffic:
+        if dump_xml:
             log.debug('%s ====> %s' % (uri, data))
 
         opener = urllib2.build_opener(*self.__handlers)
@@ -131,7 +131,7 @@ class UrllibDriver(object):
                 self.__redirect = True
                 self.__redirect_uri = uri
                 request = self.__create_request(uri=uri, data=data)
-                if show_traffic:
+                if dump_xml:
                     log.debug('%s <==== %s' % (uri, data))
 
                 opener = urllib2.build_opener(*self.__handlers)
@@ -139,7 +139,7 @@ class UrllibDriver(object):
                 # response = urllib2.urlopen(request)
         if read:
             response = response.read()
-            if show_traffic:
+            if dump_xml:
                 log.debug('%s <==== %s' % (uri, response))
         return response
 
@@ -169,33 +169,26 @@ class UcsConnectionDriver(object):
         """
         To Add docstring
         :param in_xml_str:
-        :param dump_xml:
         :return:
         """
 
         response_str = self.__driver.post(self.__uri, in_xml_str,
-                                          show_traffic=False)
+                                          dump_xml=False)
         if self.__driver.redirect_uri:
             self.__session._AbstractSession__uri = self.__driver.redirect_uri
 
         return response_str
 
-    def post(self, element, dump_xml=None):
-        import ucsgenutils
+    def post(self, element):
         import ucsxmlcodec as xc
 
-        if dump_xml is None:
-            dump_xml = self.__session.dump_xml
+        dump_xml = self.__session.dump_xml
 
         if dump_xml:
             if element.tag == "aaaLogin":
-                element.attrib['inName'] = ucsgenutils.encrypt_password(
-                    self.__session.username, "cisco")
-                element.attrib['inPassword'] = ucsgenutils.encrypt_password(
-                    self.__session.password, "cisco")
+                element.attrib['inPassword'] = "*********" 
                 xml_str = xc.to_xml_str(element)
                 log.debug('%s ====> %s' % (self.__session.uri, xml_str))
-                element.attrib['inName'] = self.__session.username
                 element.attrib['inPassword'] = self.__session.password
                 xml_str = xc.to_xml_str(element)
             else:

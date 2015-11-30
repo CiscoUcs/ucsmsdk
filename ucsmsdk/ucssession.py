@@ -74,14 +74,14 @@ class AbstractSession(object):
 
 class UcsSession(AbstractSession):
     def __init__(self, ip, username, password, port=None, secure=None,
-                 proxy=None, dump_xml=False):
+                 proxy=None):
         self.__ip = ip
         self.__username = username
         self.__password = password
         self.__port = port
         self.__secure = secure
         self.__proxy = proxy
-        self.__dump_xml = dump_xml
+        self.__dump_xml = False
         AbstractSession.__init__(self, self.__ip, self.__port, self.__secure)
 
         self.__ucs = ip

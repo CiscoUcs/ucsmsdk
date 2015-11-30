@@ -325,6 +325,7 @@ def test_004_convert_from_xml_sp_disassociate():
     '''
     convert_to_ucs_python(xml=True, request=xml_str, dump_xml=True)
 
+
 def test_005_convert_from_xml():
     xml_str = '''
     <configConfMos inHierarchical="false">
@@ -343,6 +344,7 @@ def test_005_convert_from_xml():
 
     convert_to_ucs_python(xml=True, request=xml_str, dump_xml=True)
 
+
 def test_006_convert_from_xml():
     xml_str = '''
     <configConfMos inHierarchical="false">
@@ -358,4 +360,15 @@ def test_006_convert_from_xml():
     </configConfMos>
     '''
 
+    convert_to_ucs_python(xml=True, request=xml_str, dump_xml=True)
+
+
+def test_007_convert_from_xml():
+    xml_str = '''
+    <configConfRename
+    dn="org-root/ls-test_clone"
+    inNewName="test_clone1111"
+    inHierarchical="false">
+    </configConfRename>
+    '''
     convert_to_ucs_python(xml=True, request=xml_str, dump_xml=True)

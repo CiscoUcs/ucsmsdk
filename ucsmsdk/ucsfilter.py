@@ -100,7 +100,7 @@ class ParseFilter(object):
 
 prop = pp.WordStart(pp.alphas) + pp.Word(pp.alphanums).setResultsName("prop")
 value = (pp.QuotedString("'") | pp.QuotedString('"') | pp.Word(
-    pp.printables)).setResultsName("value")
+    pp.printables, excludeChars=",")).setResultsName("value")
 types_ = pp.oneOf("re eq ne gt ge lt le").setResultsName("types")
 flags = pp.oneOf("C I").setResultsName("flags")
 comma = pp.Literal(',')

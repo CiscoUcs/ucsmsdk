@@ -36,17 +36,15 @@ class UcsHandle(object):
         port (int or None): The port number to be used during connection
         secure (bool or None): True for secure connection, otherwise False
         proxy (str): The proxy object to be used to connect
-        dump_xml (bool): True if xml transactions should be logged to console,
-                         otherwise False
 
     Example:
         handle = UcsHandle("192.168.1.1","admin","password")
     """
 
     def __init__(self, ip, username, password, port=None, secure=None,
-                 proxy=None, dump_xml=False):
+                 proxy=None):
         self.__session = UcsSession(ip, username, password, port, secure,
-                                    proxy, dump_xml)
+                                    proxy)
         self.__ucs_event_handle = None
         self.post = self.__session.driver.post
         self.post_xml = self.__session.driver.post_xml
