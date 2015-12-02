@@ -20,36 +20,24 @@ except ImportError:
 
 import ucsgenutils
 import ucscoreutils
-import ucsmethod
-import ucsmo
 import ucsexception as ex
-from ucsmeta import MO_CLASS_ID, METHOD_CLASS_ID
 
 
+def to_xml_str(elem):
+    return ET.tostring(elem)
 
-def to_xml_str(xml_element):
-    return ET.tostring(xml_element)
-
-
-def extract_root_element(xml_str):
-    root_element = ET.fromstring(xml_str)
-    return root_element
-
+def extract_root_elem(xml_str):
+    root_elem = ET.fromstring(xml_str)
+    return root_elem
 
 def from_xml_str(xml_str):
-    root_element = ET.fromstring(xml_str)
-    if root_element.tag == "error":
-        error_code = root_element.attrib['errorCode']
-        error_descr = root_element.attrib['errorDescr']
+    root_elem = ET.fromstring(xml_str)
+    if root_elem.tag == "error":
+        error_code = root_elem.attrib['errorCode']
+        error_descr = root_elem.attrib['errorDescr']
         raise ex.UcsException(error_code, error_descr)
 
-    class_id = ucsgenutils.word_u(root_element.tag)
-    response = ucscoreutils.get_ucs_obj(class_id, root_element)
-    # if class_id in METHOD_CLASS_ID:
-    #     response = ucsmethod.ExternalMethod(class_id)
-    # elif class_id in MO_CLASS_ID:
-    #     response = ucsmo.ManagedObject(class_id)
-    # else:
-    #     response = ucsmo.GenericMo(class_id)
-    response.from_xml(root_element)
+    class_id = ucsgenutils.word_u(root_elem.tag)
+    response = ucscoreutils.get_ucs_obj(class_id, root_elem)
+    response.from_xml(root_elem)
     return response

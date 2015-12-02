@@ -132,7 +132,10 @@ class ManagedObject(UcsBase):
         if not forced:
             prop_meta = self.prop_meta[name]
             if prop_meta.access != ucscoremeta.MoPropertyMeta.READ_WRITE:
-                raise ValueError("%s is not a read-write property." % name)
+                if getattr(self, name) is not None or \
+                                prop_meta.access != \
+                                ucscoremeta.MoPropertyMeta.CREATE_ONLY:
+                    raise ValueError("%s is not a read-write property." % name)
             if not prop_meta.validate_property_value(value):
                 raise ValueError("Invalid Value Exception - "
                                  "[%s]: Prop <%s>, Value<%s>. "
@@ -218,7 +221,7 @@ class ManagedObject(UcsBase):
 
         return rn_pattern
 
-    def to_xml(self, xml_doc=None, option=None, element_name=None):
+    def to_xml(self, xml_doc=None, option=None, elem_name=None):
         """ Method writes the xml representation of the managed object. """
         if option == WriteXmlOption.DIRTY and not self.is_dirty():
             log.debug("Object is not dirty")
@@ -226,7 +229,7 @@ class ManagedObject(UcsBase):
 
         xml_obj = self.elem_create(class_tag=self.mo_meta.xml_attribute,
                                    xml_doc=xml_doc,
-                                   override_tag=element_name)
+                                   override_tag=elem_name)
 
         for key in self.__dict__:
             if key != 'rn' and key in self.prop_meta:
@@ -259,12 +262,12 @@ class ManagedObject(UcsBase):
         self.child_to_xml(xml_obj, option)
         return xml_obj
 
-    def from_xml(self, element):
+    def from_xml(self, elem):
         """ Method updates the object from the xml representation of
          the managed object. """
-        if element.attrib:
+        if elem.attrib:
             if self.__class__.__name__ != "ManagedObject":
-                for attr_name, attr_value in element.attrib.iteritems():
+                for attr_name, attr_value in elem.attrib.iteritems():
                     if attr_name in self.prop_map:
                         attr_name = self.prop_map[attr_name]
                     else:
@@ -274,26 +277,26 @@ class ManagedObject(UcsBase):
                             False)
                     object.__setattr__(self, attr_name, attr_value)
             else:
-                for attr_name, attr_value in element.attrib.iteritems():
+                for attr_name, attr_value in elem.attrib.iteritems():
                     object.__setattr__(self, attr_name, attr_value)
 
         self.mark_clean()
 
-        child_elements = element.getchildren()
-        if child_elements:
-            for child_element in child_elements:
-                if not ET.iselement(child_element):
+        child_elems = elem.getchildren()
+        if child_elems:
+            for child_elem in child_elems:
+                if not ET.iselement(child_elem):
                     continue
 
                 if self.__class__.__name__ != "ManagedObject" and (
-                            child_element.tag in self.mo_meta.field_names):
+                            child_elem.tag in self.mo_meta.field_names):
                     pass
 
-                class_id = ucsgenutils.word_u(child_element.tag)
-                child_obj = ucscoreutils.get_ucs_obj(class_id, child_element,
+                class_id = ucsgenutils.word_u(child_elem.tag)
+                child_obj = ucscoreutils.get_ucs_obj(class_id, child_elem,
                                                      self)
                 self.child_add(child_obj)
-                child_obj.from_xml(child_element)
+                child_obj.from_xml(child_elem)
 
     def sync_mo(self, mo):  # TODO - Check with Rahul
         """ Method to return string representation of a managed object. """
@@ -324,34 +327,20 @@ class ManagedObject(UcsBase):
                            show_level)
 
 
-# class GenericMo(ManagedObject):
-#     """ This class handles the exceptional behaviour of
-#      Generic managed object. """
-#
-#     def __init__(self, mo, option):
-#         ManagedObject.__init__(self, mo.class_id)
-#         self._exclude_prop_list = []
-#         xml_doc = mo.write_xml(option=option)
-#         doc = ET.tostring(xml_doc)
-#         root_element = ET.fromstring(doc)
-#         self.load_from_xml(root_element, mo.handle)
-
-
 def generic_mo_from_xml(xml_str):
-    import ucsxmlcodec as xc
-    # xml_str = xc.to_xml_str(elem)
-    # # gmo = xc.from_xml_str(xml_str)
-    root_element = ET.fromstring(xml_str)
-    class_id = root_element.tag
+    root_elem = ET.fromstring(xml_str)
+    class_id = root_elem.tag
     gmo = GenericMo(class_id)
-    gmo.from_xml(root_element)
+    gmo.from_xml(root_elem)
     return gmo
 
-def generic_mo_from_xml_element(element):
+
+def generic_mo_from_xml_elem(elem):
     import ucsxmlcodec as xc
-    xml_str = xc.to_xml_str(element)
+    xml_str = xc.to_xml_str(elem)
     gmo = generic_mo_from_xml(xml_str)
     return gmo
+
 
 class GenericMo(UcsBase):
     """
@@ -460,7 +449,7 @@ class GenericMo(UcsBase):
         """Getter Method of GenericMO Class"""
         return self.__properties
 
-    def from_xml(self, element):
+    def from_xml(self, elem):
         """
             This method is form objects out of xml element.
             This is called internally from ucsxmlcode.from_xml_str
@@ -477,12 +466,12 @@ class GenericMo(UcsBase):
             Outputs:
                 <class 'ucsmsdk.ucsmo.GenericMo'>
         """
-        if element is None:
+        if elem is None:
             return None
 
-        self._class_id = element.tag
-        if element.attrib:
-            for name, value in element.attrib.iteritems():
+        self._class_id = elem.tag
+        if elem.attrib:
+            for name, value in elem.attrib.iteritems():
                 self.__dict__[name] = value
                 self.__properties[name] = str(value)
 
@@ -501,7 +490,7 @@ class GenericMo(UcsBase):
         # else:
         #     raise ValueError("Both rn and dn does not present.")
 
-        children = element.getchildren()
+        children = elem.getchildren()
         if children:
             for child in children:
                 if not ET.iselement(child):
@@ -539,10 +528,6 @@ class GenericMo(UcsBase):
                 mo_class_param_dict[param] = self.__properties[mo_param]
 
         p_dn = ""
-        # if "dn" in xml_element.attrib:
-        #     p_dn = os.path.dirname(xml_element.attrib["dn"])
-        # elif "rn" in xml_element.attrib and mo_obj:
-        #     p_dn = mo_obj.dn
 
         if 'topRoot' in mo_class.mo_meta.parents:
             mo_obj = mo_class(**mo_class_param_dict)
@@ -589,176 +574,3 @@ class GenericMo(UcsBase):
                     getattr(self, key)) + "\n"
 
             return out_str
-
-
-# class _GenericMo(ManagedObject):
-#     """ This class provides the functionality to create
-#     Generic managed objects. """
-#
-#     def __init__(self, xml_element=None, mo=None,
-#                  option=WriteXmlOption.ALL_CONFIG):
-#         ManagedObject.__init__(self, "GMO")
-#         self.__class_id = None
-#         self.dn = None
-#         self.rn = None
-#         self.properties = {}
-#         self.load_xml = xml_element
-#         self.mo = mo
-#         self.option = option
-#
-#         if xml_element:
-#             self.get_root_node(xml_element)
-#         if mo:
-#             self.from_managed_object()
-#
-#     def get_root_node(self, xml_string):
-#         """Convert XML to _GenericMO object"""
-#         root_element = ET.fromstring(xml_string)
-#         self.load_from_xml(root_element)
-#
-#     def get_attribute(self, attr):
-#         """Get Attribute of Generic Managed Object"""
-#         if attr in self.properties:
-#             return self.properties[attr]
-#         return None
-#
-#     def write_to_attributes(self, element):
-#         """Set Attribute of Generic Managed Object"""
-#         if element.attrib:
-#             for attr_name, attr_value in element.attrib.iteritems():
-#                 self.properties[attr_name] = attr_value
-#
-#     def load_from_xml(self, element):
-#         """Populate object using Xml Document Node"""
-#         self._class_id = element.tag
-#         meta_class_id = ucscoreutils.find_class_id_in_mo_meta_ignore_case(
-#             self._class_id)
-#
-#         if meta_class_id:
-#             self.__class_id = meta_class_id
-#
-#         if NamingPropertyId.DN in element.attrib:
-#             self.dn = element.attrib[NamingPropertyId.DN]
-#
-#         if self.dn:
-#             self.rn = os.path.basename(self.dn)
-#
-#         # Write the attribute and value to dictionary properties, as it is .
-#         self.write_to_attributes(element)
-#
-#         # Run the load_from_xml for each child_node recursively and
-#         # populate child list too.
-#         child_elements = element.getchildren()
-#         if child_elements:
-#             for child_element in child_elements:
-#                 if not ET.iselement(child_element):
-#                     continue
-#                 child = _GenericMo()
-#                 self.child.append(child)
-#                 child.load_from_xml(child_element)
-#
-#     def write_xml(self, xml_doc=None, option=None, element_name=None):
-#         """create Xml Document Node using object attributes"""
-#         if xml_doc is None:
-#             xml_obj = Element(self.__class_id)
-#         else:
-#             if element_name is None:
-#                 xml_obj = SubElement(xml_doc, self.__class_id)
-#             else:
-#                 xml_obj = SubElement(xml_doc, element_name)
-#
-#         for prop in self.__dict__['properties']:
-#             xml_obj.set(ucsgenutils.word_l(prop),
-#                         self.__dict__['properties'][prop])
-#         self.child_write_xml(xml_obj, option)
-#         return xml_obj
-#
-#     def to_managed_object(self):
-#         """
-#         Method creates and returns an object of ManagedObject class using
-#         the class_id and information from the Generic managed object.
-#         """
-#         from ucs import class_factory
-#
-#         cln = ucsgenutils.word_u(self.__class_id)
-#         mo = class_factory(cln)
-#         if mo and isinstance(mo, ManagedObject):
-#             meta_class_id = ucscoreutils.find_class_id_in_mo_meta_ignore_case(
-#                 self.__class_id)
-#             # mo.handle = self.__handle
-#             for prop in self.properties:
-#                 if ucsgenutils.word_u(prop) in ucscoreutils.get_property_list(
-#                         meta_class_id):
-#                     mo.set_attr(ucsgenutils.word_u(prop),
-#                                 self.properties[prop])
-#                 else:
-#                     UcsWarning("Property %s Not Exist in MO %s" % (
-#                         ucsgenutils.word_u(prop), meta_class_id))
-#
-#             if len(self.child):
-#                 for child in self.child:
-#                     moch = child.to_managed_object()
-#                     mo.child.append(moch)
-#             return mo
-#         else:
-#             return None
-#
-#     def from_managed_object(self):
-#         """
-#         Method creates and returns an object of _GenericMO class using
-#         the class_id and other information from the managed object.
-#         """
-#         if isinstance(self.mo, ManagedObject):
-#             self.__class_id = self.mo.class_id
-#             self.__handle = self.mo.handle
-#
-#             if self.mo.get_attr('Dn'):
-#                 self.dn = self.mo.get_attr('Dn')
-#
-#             if self.mo.get_attr('Rn'):
-#                 self.rn = self.mo.get_attr('Rn')
-#             elif self.dn:
-#                 self.rn = os.path.basename(self.dn)
-#
-#             for prop in ucscoreutils.get_property_list(self.mo.class_id):
-#                 self.properties[prop] = self.mo.get_attr(prop)
-#
-#             if len(self.mo.child):
-#                 for child in self.mo.child:
-#                     if not child.getattr('dn'):
-#                         _dn = self.mo.getattr('dn') + "/" + child.getattr('Rn')
-#                         child.setattr('dn', _dn)
-#                     gmo = _GenericMo(mo=child)
-#                     self.__child.append(gmo)
-#
-#     def __str__(self):
-#         tab_size = 8
-#         if isinstance(self, _GenericMo):
-#             out_str = "\n"
-#             out_str += 'class_id'.ljust(tab_size * 4) + ':' + str(
-#                 self.__dict__['__class_id']) + "\n"
-#             out_str += 'dn'.ljust(tab_size * 4) + ':' + str(
-#                 self.__dict__['dn']) + "\n"
-#             out_str += 'rn'.ljust(tab_size * 4) + ':' + str(
-#                 self.__dict__['rn']) + "\n"
-#             for key, value in self.__dict__['properties'].items():
-#                 out_str += key.ljust(tab_size * 4) + ':' + str(value) + "\n"
-#             for child in self.__child:
-#                 out_str += str(child) + "\n"
-#
-#             return out_str
-#
-#     def get_child_class_id(self, class_id):
-#         """
-#         Method extracts and returns the child object list same as
-#         the given class_id
-#         """
-#         child_list = []
-#         for child in self.child:
-#             if child.class_id.lower() == class_id.lower():
-#                 child_list.append(child)
-#         return child_list
-#
-#     def get_child(self):
-#         """ Method returns the child object. """
-#         return self.child

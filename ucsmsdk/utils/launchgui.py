@@ -18,7 +18,6 @@ This module contains the external api exposed by ucsmsdk package.
 
 import os
 import re
-import urllib2
 import urllib
 import subprocess
 import logging
@@ -27,7 +26,6 @@ from .. import ucsgenutils
 from ..ucsconstants import NamingId, YesOrNo
 from ..ucsexception import UcsWarning, UcsValidationException, UcsException
 from ..ucscoremeta import UcsVersion
-from ..import ucsmethodfactory as mf
 
 log = logging.getLogger('ucs')
 
@@ -64,6 +62,8 @@ def start_ucs_kvm_session(handle, service_profile=None, blade=None,
     - frame_title specifies the title of the frame window.
     """
     from ..mometa.mgmt.MgmtIf import MgmtIfConsts
+    from ..ucsmethodfactory import config_scope
+    from ..ucsmethodfactory import aaa_get_n_compute_auth_token_by_dn
 
     if (blade is not None and rack_unit is not None) or \
         (service_profile is not None and rack_unit is not None) or \
@@ -103,13 +103,13 @@ def start_ucs_kvm_session(handle, service_profile=None, blade=None,
         nvc[_ParamKvm.FRAME_TITLE] = frame_title
         nvc[_ParamKvm.KVM_PN_DN] = pn_dn
 
-        xml_element = mf.config_scope(cookie=handle.cookie,
+        elem = config_scope(cookie=handle.cookie,
                                       dn=pn_dn,
                                       in_class=NamingId.MGMT_IF,
                                       in_filter=None,
                                       in_recursive=YesOrNo.FALSE,
                                       in_hierarchical=YesOrNo.FALSE)
-        response = handle.post(xml_element)
+        response = handle.post(elem)
         if response.error_code == 0:
             for mgmt_if in response.out_configs.child:
                 if mgmt_if.subject == MgmtIfConsts.SUBJECT_BLADE and \
@@ -166,13 +166,13 @@ def start_ucs_kvm_session(handle, service_profile=None, blade=None,
     if (ip_address is None or ip_address == '0.0.0.0') and \
         service_profile is not None:
 
-        xml_element = mf.config_scope(cookie=handle.cookie,
+        elem = config_scope(cookie=handle.cookie,
                                       dn=pn_dn,
                                       in_class=NamingId.MGMT_IF,
                                       in_filter=None,
                                       in_recursive=YesOrNo.FALSE,
                                     in_hierarchical=YesOrNo.FALSE)
-        response = handle.post(xml_element)
+        response = handle.post(elem)
         if response.error_code == 0:
             for mgmt_if in response.out_configs.child:
                 if mgmt_if.subject == MgmtIfConsts.SUBJECT_BLADE and \
@@ -183,11 +183,11 @@ def start_ucs_kvm_session(handle, service_profile=None, blade=None,
         raise UcsValidationException("No assigned IP address to use.")
 
     nvc[_ParamKvm.KVM_IP_ADDR] = ip_address
-    xml_element = mf.aaa_get_n_compute_auth_token_by_dn(cookie=handle.cookie,
+    elem = aaa_get_n_compute_auth_token_by_dn(cookie=handle.cookie,
                                                     in_cookie=handle.cookie,
                                                     in_dn=pn_dn,
                                                     in_number_of=2)
-    response = handle.post(xml_element)
+    response = handle.post(elem)
     if response.error_code == 0:
         nvc[_ParamKvm.CENTRALE_PASSWORD] = response.out_tokens.split(',')[0]
         nvc[_ParamKvm.CENTRALE_USER] = response.out_user
@@ -224,26 +224,24 @@ def start_ucs_gui_session(handle, need_url=False):
             "Currently works with Windows OS and Ubuntu")
 
     jnlp_file = None
-    uri = handle.uri
-    uri = uri.rstrip('/nuova')
     try:
-        ucsm_url = "%s/ucsm/ucsm.jnlp" % uri
-        log.debug("UCSM URL: <%s>" % ucsm_url)
+        ucsm_gui_url = "%s/ucsm/ucsm.jnlp" % handle.uri
         if handle:
             auth_token = handle.get_auth_token()
             log.debug("AuthToken: <%s>" % auth_token)
             if auth_token:
-                ucsm_url = "%s?ucsmToken=%s" % (ucsm_url, auth_token)
+                ucsm_gui_url = "%s?ucsmToken=%s" % (ucsm_gui_url, auth_token)
 
-        log.debug("UCSM URL: <%s>" % ucsm_url)
+        log.debug("UCSM URL: <%s>" % ucsm_gui_url)
 
         if need_url:
-            return ucsm_url
+            return ucsm_gui_url
         else:
             javaws_path = ucsgenutils.get_java_installation_path()
             log.debug("javaws path: <%s>" % javaws_path)
             if javaws_path is not None:
-                source = urllib2.urlopen(ucsm_url).read()
+                # source = urllib2.urlopen(ucsm_url).read()
+                source = handle.post(uri=ucsm_gui_url)
                 jnlp_dir = tempfile.gettempdir()
                 log.debug("Temp Directory: <%s>" % jnlp_dir)
                 jnlp_file = os.path.join(jnlp_dir, "temp.jnlp")

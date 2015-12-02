@@ -282,14 +282,14 @@ class MoPropertyMeta(object):
             if match:
                 return True
             else:
-                error_msg = (self.name + "should adhere to regex" + pattern)
+                error_msg = (self.name + " should adhere to regex " + pattern)
         elif self.__restriction.value_set \
                 and len(self.__restriction.value_set) > 0:
             if input_value in self.__restriction.value_set:
                 return True
             else:
                 error_msg = (self.name + "valid values are" +
-                             self.__restriction.value_set)
+                             str(self.__restriction.value_set))
         if error_msg is not None:
             log.debug(error_msg)
             return False

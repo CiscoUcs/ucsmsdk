@@ -102,21 +102,21 @@ class UcsEventHandle(object):
         self.__event_chan_resp = None
         self.__dequeue_thread = None
 
-    def __get_mo_element(self, xml_str):
-        root = xc.extract_root_element(xml_str)
-        mo_elements = []
+    def __get_mo_elem(self, xml_str):
+        root = xc.extract_root_elem(xml_str)
+        mo_elems = []
         if root.tag == "methodVessel":
             for in_stimuli in root:
                 for cmce in in_stimuli:
                     for in_config in cmce:
-                        for mo_element in in_config:
-                            mo_elements.append(
-                                (mo_element, cmce.attrib.get('inEid')))
+                        for mo_elem in in_config:
+                            mo_elems.append(
+                                (mo_elem, cmce.attrib.get('inEid')))
         elif root.tag == "configMoChangeEvent":
             for in_config in root:
-                for mo_element in in_config:
-                    mo_elements.append(mo_element)
-        return mo_elements
+                for mo_elem in in_config:
+                    mo_elems.append(mo_elem)
+        return mo_elems
 
     def __enqueue_function(self):
         """
@@ -140,10 +140,10 @@ class UcsEventHandle(object):
                 self.__condition.acquire()
                 resp = self.__event_chan_resp.readline()
                 resp = self.__event_chan_resp.read(int(resp))
-                for mo_element in self.__get_mo_element(resp):
-                    gmo = ucsmo.generic_mo_from_xml_element(mo_element[0])
+                for mo_elem in self.__get_mo_elem(resp):
+                    gmo = ucsmo.generic_mo_from_xml_elem(mo_elem[0])
                     mce = MoChangeEvent(
-                                event_id=mo_element[1],
+                                event_id=mo_elem[1],
                                 mo=gmo.to_mo(),
                                 change_list=gmo.properties.keys())
 
@@ -197,8 +197,8 @@ class UcsEventHandle(object):
                         UcsWarning('Mo ' + managed_object.dn + ' not found.')
                         continue
                     # gmo = _GenericMo(mo=pmo, option=WriteXmlOption.ALL)
-                    xml_element = pmo.to_xml()
-                    xml_str = xc.to_xml_str(xml_element)
+                    elem = pmo.to_xml()
+                    xml_str = xc.to_xml_str(elem)
                     gmo = ucsmo.generic_mo_from_xml(xml_str)
                 else:
                     time_diff = datetime.datetime.now() - start_time
@@ -229,8 +229,8 @@ class UcsEventHandle(object):
                     continue
 
                 if mce is not None:
-                    xml_element = mce.mo.to_xml()
-                    xml_str = xc.to_xml_str(xml_element)
+                    elem = mce.mo.to_xml()
+                    xml_str = xc.to_xml_str(elem)
                     gmo = ucsmo.generic_mo_from_xml(xml_str)
                     # gmo = _GenericMo(mo=mce.mo, option=WriteXmlOption.ALL)
 

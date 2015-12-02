@@ -12,7 +12,6 @@
 # limitations under the License.
 
 import sys
-import os
 import urllib2
 import httplib
 import socket
@@ -75,7 +74,7 @@ class TLS1Connection(httplib.HTTPSConnection):
                                     ssl_version=ssl.PROTOCOL_TLSv1)
 
 
-class UrllibDriver(object):
+class UcsDriver(object):
     """
     To Add docstring
     """
@@ -142,99 +141,3 @@ class UrllibDriver(object):
             if dump_xml:
                 log.debug('%s <==== %s' % (uri, response))
         return response
-
-
-class UcsConnectionDriver(object):
-    """
-    To Add docstring
-    """
-
-    def __init__(self, ucs_session):
-        self.__redirect = False
-        self.__session = ucs_session
-        self.__uri = self.__session.uri
-        self.__secure = self.__session.secure
-        self.__proxy = self.__session.proxy
-
-        self.__driver = UrllibDriver(proxy=self.__proxy)
-
-    def get(self):
-        """
-        To Add docstring
-        :return:
-        """
-        return self.__driver.get()
-
-    def post_xml(self, in_xml_str):
-        """
-        To Add docstring
-        :param in_xml_str:
-        :return:
-        """
-
-        response_str = self.__driver.post(self.__uri, in_xml_str,
-                                          dump_xml=False)
-        if self.__driver.redirect_uri:
-            self.__session._AbstractSession__uri = self.__driver.redirect_uri
-
-        return response_str
-
-    def post(self, element):
-        import ucsxmlcodec as xc
-
-        dump_xml = self.__session.dump_xml
-
-        if dump_xml:
-            if element.tag == "aaaLogin":
-                element.attrib['inPassword'] = "*********" 
-                xml_str = xc.to_xml_str(element)
-                log.debug('%s ====> %s' % (self.__session.uri, xml_str))
-                element.attrib['inPassword'] = self.__session.password
-                xml_str = xc.to_xml_str(element)
-            else:
-                xml_str = xc.to_xml_str(element)
-                log.debug('%s ====> %s' % (self.__session.uri, xml_str))
-        else:
-            xml_str = xc.to_xml_str(element)
-
-        response_str = self.post_xml(xml_str)
-        if dump_xml:
-            log.debug('%s <==== %s' % (self.__session.uri, response_str))
-
-        response = xc.from_xml_str(response_str)
-        if response:
-            return response
-        return None
-
-    def download_file(self, url_suffix, file_dir, file_name):
-        from ucsgenutils import download_file
-        ucsm_uri = self.__session.uri
-        ucsm_uri = ucsm_uri.rstrip('/nuova')
-        file_url = "%s/%s" % (ucsm_uri, url_suffix)
-
-        self.__driver.add_header('Cookie', 'ucsm-cookie=%s'
-                                 % self.__session.cookie)
-
-        download_file(driver=self.__driver,
-                      file_url=file_url,
-                      file_dir=file_dir,
-                      file_name=file_name)
-
-        self.__driver.remove_header('Cookie')
-
-    def upload_file(self, url_suffix, file_dir, file_name):
-        from ucsgenutils import upload_file
-
-        ucsm_uri = self.__session.uri
-        ucsm_uri = ucsm_uri.rstrip('/nuova')
-        file_url = "%s/%s" % (ucsm_uri, url_suffix)
-
-        self.__driver.add_header('Cookie', 'ucsm-cookie=%s'
-                                 % self.__session.cookie)
-
-        upload_file(self.__driver,
-                    uri=file_url,
-                    file_dir=file_dir,
-                    file_name=file_name)
-
-        self.__driver.remove_header('Cookie')

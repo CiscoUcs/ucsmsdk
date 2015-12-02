@@ -25,12 +25,13 @@ import mometa
 import methodmeta
 import ucsmethod
 import ucsmo
-from ucsmeta import MO_CLASS_ID, METHOD_CLASS_ID, OTHER_TYPE_CLASS_ID, MO_CLASS_META
+from ucsmeta import MO_CLASS_ID, METHOD_CLASS_ID, OTHER_TYPE_CLASS_ID, \
+    MO_CLASS_META
 
 log = logging.getLogger('ucs')
 
 
-def get_ucs_obj(class_id, xml_element, mo_obj=None):
+def get_ucs_obj(class_id, elem, mo_obj=None):
     import inspect
 
     if class_id in METHOD_CLASS_ID:
@@ -41,15 +42,15 @@ def get_ucs_obj(class_id, xml_element, mo_obj=None):
         mo_class_param_dict = {}
         for param in mo_class_params:
             mo_param = mo_class.prop_meta[param].xml_attribute
-            if mo_param not in xml_element.attrib:
+            if mo_param not in elem.attrib:
                 mo_class_param_dict[param] = ""
                 continue
-            mo_class_param_dict[param] = xml_element.attrib[mo_param]
+            mo_class_param_dict[param] = elem.attrib[mo_param]
 
         p_dn = ""
-        if "dn" in xml_element.attrib:
-            p_dn = os.path.dirname(xml_element.attrib["dn"])
-        elif "rn" in xml_element.attrib and mo_obj:
+        if "dn" in elem.attrib:
+            p_dn = os.path.dirname(elem.attrib["dn"])
+        elif "rn" in elem.attrib and mo_obj:
             p_dn = mo_obj.dn
 
         if 'topRoot' in mo_class.mo_meta.parents:
@@ -67,12 +68,12 @@ def get_ucs_obj(class_id, xml_element, mo_obj=None):
     # version yet.
 
     p_dn = ""
-    if "dn" in xml_element.attrib:
-        p_dn = os.path.dirname(xml_element.attrib["dn"])
+    if "dn" in elem.attrib:
+        p_dn = os.path.dirname(elem.attrib["dn"])
     elif mo_obj:
         p_dn = mo_obj.dn
 
-    mo_obj = ucsmo.GenericMo(class_id=xml_element.tag, parent_mo_or_dn=p_dn, **xml_element.attrib)
+    mo_obj = ucsmo.GenericMo(class_id=elem.tag, parent_mo_or_dn=p_dn, **elem.attrib)
     return mo_obj
 
 
@@ -112,15 +113,15 @@ def load_class(class_id):
     return None
 
 
-def load_mo(element):
+def load_mo(elem):
     import inspect
 
-    mo_class_id = element.tag
+    mo_class_id = elem.tag
     mo_class = load_class(mo_class_id)
     mo_class_params = inspect.getargspec(mo_class.__init__)[0][2:]
     mo_class_param_dict = {}
     for param in mo_class_params:
-        mo_class_param_dict[param] = element.attrib[
+        mo_class_param_dict[param] = elem.attrib[
             mo_class.PROPERTY_MAP[param]]
 
     mo_obj = mo_class(parent_mo_or_dn="", **mo_class_param_dict)

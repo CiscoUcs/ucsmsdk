@@ -171,21 +171,21 @@ def _is_root_node(dom, tag_name):
 
 def _get_pair_nodes(root_node):
     """get pairnodes in a list."""
-    method_element = root_node
-    in_configs_element_list = method_element.getElementsByTagName("inConfigs")
-    in_configs_element = in_configs_element_list[0]
-    pair_elements_list = in_configs_element.getElementsByTagName("pair")
-    return pair_elements_list
+    method_elem = root_node
+    in_configs_elem_list = method_elem.getElementsByTagName("inConfigs")
+    in_configs_elem = in_configs_elem_list[0]
+    pair_elems_list = in_configs_elem.getElementsByTagName("pair")
+    return pair_elems_list
 
 
-def _get_only_element_child_node(node):
+def _get_only_elem_child_node(node):
     """use if parent only has single childnode."""
     child_list = [child_node for child_node in node.childNodes
                   if child_node.nodeType == child_node.ELEMENT_NODE]
     return child_list[0]
 
 
-def _get_element_child_nodes(node):
+def _get_elem_child_nodes(node):
     """use if parent has more than one child."""
     child_list = [child_node for child_node in node.childNodes if
                   child_node.nodeType == child_node.ELEMENT_NODE]
@@ -246,7 +246,7 @@ def _get_config_conf_cmdlet(node, is_pair_node):
 
     if is_pair_node:
         key = node.getAttribute(NamingPropertyId.KEY)
-        class_node = _get_only_element_child_node(node)
+        class_node = _get_only_elem_child_node(node)
         if class_node is None:
             return None
     else:
@@ -259,7 +259,7 @@ def _get_config_conf_cmdlet(node, is_pair_node):
 
     mo_tag = ""
     if class_node.hasChildNodes() and len(
-            _get_element_child_nodes(class_node)) > 0:
+            _get_elem_child_nodes(class_node)) > 0:
         mo_tag = "mo"
 
     import_list = []
@@ -269,11 +269,11 @@ def _get_config_conf_cmdlet(node, is_pair_node):
                                                        import_list)
 
     if class_node.hasChildNodes() and \
-                    len(_get_element_child_nodes(class_node)) > 0:
+                    len(_get_elem_child_nodes(class_node)) > 0:
         call_count = 1
         # cmdlet = "handle.start_ucs_transaction()" + "\n" + cmdlet
 
-        for child_node in _get_element_child_nodes(class_node):
+        for child_node in _get_elem_child_nodes(class_node):
             sub_cmdlet, import_list = _get_config_conf_sub_cmdlet(child_node,
                                                                   dn, mo_tag,
                                                                   call_count,
@@ -321,7 +321,7 @@ def _get_config_conf_sub_cmdlet(class_node, parent_dn, parent_mo_tag,
                                                            import_list)
 
     # Recursively cater to subnodes
-    for child_node in _get_element_child_nodes(class_node):
+    for child_node in _get_elem_child_nodes(class_node):
         sub_cmdlet, import_list = _get_config_conf_sub_cmdlet(child_node,
                                                               dn,
                                                               tag,
@@ -426,9 +426,9 @@ def _form_python_cmdlet(class_node, key, tag, import_list):
 
             property_map[prop_py] = value
 
-    tag_element = ""
+    tag_elem = ""
     if tag:
-        tag_element = tag + " = "
+        tag_elem = tag + " = "
 
     # make cmdlet
     if class_status & _ClassStatus.DELETED == _ClassStatus.DELETED or \
@@ -436,7 +436,7 @@ def _form_python_cmdlet(class_node, key, tag, import_list):
                             _ClassStatus.REMOVED == _ClassStatus.REMOVED:
         op_flag = "remove"
         cmdlet = "obj = handle.query_dn(\"%s\")\n%shandle.remove_mo(obj)" % (
-            key, tag_element)
+            key, tag_elem)
     elif class_status & _ClassStatus.CREATED == _ClassStatus.CREATED:
         op_flag = "add"
         if peer_class_id not in import_list:
@@ -576,7 +576,7 @@ def _generate_config_conf_cmdlets(xml_string):
     cmdlet = ""
 
     if len(top_node.getElementsByTagName("inConfigs")) != 0:
-        pair_nodes = _get_element_child_nodes(
+        pair_nodes = _get_elem_child_nodes(
             top_node.getElementsByTagName("inConfigs")[0])
     else:
         pair_nodes = None
@@ -586,7 +586,7 @@ def _generate_config_conf_cmdlets(xml_string):
         if node is None:
             return
 
-        node = _get_only_element_child_node(node)
+        node = _get_only_elem_child_node(node)
         if node is None:
             return
         cmdlet = _get_config_conf_cmdlet(node, False)
@@ -665,7 +665,7 @@ def _generate_config_resolve_cmdlet(xml_string, method):
         if top_node.hasAttribute("in_hierarchical"):
             in_hierarchical = top_node.getAttribute("in_hierarchical")
 
-        dn_nodes = _get_element_child_nodes(
+        dn_nodes = _get_elem_child_nodes(
             top_node.getElementsByTagName("inDns")[0])
         if dn_nodes is None:
             return
@@ -691,7 +691,7 @@ def _generate_config_resolve_cmdlet(xml_string, method):
         _or_count = 0
         _not_count = 0
         top_node = doc.documentElement
-        filter_node = _get_only_element_child_node(top_node)
+        filter_node = _get_only_elem_child_node(top_node)
         print filter_node
         if top_node is None or filter_node is None:
             return
@@ -723,7 +723,7 @@ def _generate_config_resolve_cmdlet(xml_string, method):
         if top_node.hasAttribute("in_hierarchical") is not None:
             in_hierarchical = top_node.getAttribute("in_hierarchical")
 
-        class_id_nodes = _get_element_child_nodes(
+        class_id_nodes = _get_elem_child_nodes(
             top_node.getElementsByTagName("inIds")[0])
 
         cmdlet = '\nfrom ucsmsdk.ucsbasetype import ClassIdSet, ClassId\n'
@@ -751,7 +751,7 @@ def _create_python_filter_code(parent_node, parent_filter_name):
     filter_name = ""
     temp_name = ""
 
-    for node in _get_element_child_nodes(parent_node):
+    for node in _get_elem_child_nodes(parent_node):
         if node.localName == "and":
             temp_name = "andFilter" + str(_and_count)
             _and_count += 1
@@ -880,8 +880,9 @@ def _generate_single_clone_cmdlets(xml_string, is_template):
         # %(dn, in_error_on_existing, sp_new_name, dest_org,
         # in_hierarchical_value)
 
-        cmdlet = '\nimport ucsmsdk.ucsmethodfactory as mf\n'
-        cmdlet += 'xml_element = mf.ls_instantiate_template(cookie=' \
+        cmdlet = '\nfrom ucsmsdk.ucsmethodfactory ' \
+                 'import ls_instantiate_template\n'
+        cmdlet += 'elem = ls_instantiate_template(cookie=' \
                   'handle.cookie, dn="%s", in_error_on_existing=' \
                   '"%s", in_server_name="%s", in_target_org=' \
                   '"%s", in_hierarchical=%s)' % (dn,
@@ -889,20 +890,20 @@ def _generate_single_clone_cmdlets(xml_string, is_template):
                                                  sp_new_name,
                                                  dest_org,
                                                  in_hierarchical_value)
-        cmdlet += '\nmo_list = handle.process_xml_element(xml_element)\n'
+        cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
     else:
         # cmdlet = "handle.ls_clone(dn=\"%s\", in_server_name=\"%s\",
         # in_target_org=\"%s\", in_hierarchical=%s)" %(dn, sp_new_name,
         # dest_org, in_hierarchical_value)
 
-        cmdlet = '\nimport ucsmsdk.ucsmethodfactory as mf\n'
-        cmdlet += 'xml_element = mf.ls_clone(cookie=handle.cookie, dn=' \
+        cmdlet = '\nfrom ucsmsdk.ucsmethodfactory import ls_clone\n'
+        cmdlet += 'elem = ls_clone(cookie=handle.cookie, dn=' \
                   '"%s", in_server_name="%s", in_target_org=' \
                   '"%s", in_hierarchical=%s)' % (dn,
                                                  sp_new_name,
                                                  dest_org,
                                                  in_hierarchical_value)
-        cmdlet += '\nmo_list = handle.process_xml_element(xml_element)\n'
+        cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
 
     return cmdlet
 
@@ -975,29 +976,29 @@ def _generate_ls_templatise_cmdlets(xml_string):
         # in_hierarchical=%s)" % (dn, dest_org, sp_new_name,
         # template_type, in_hierarchical_value)
 
-        cmdlet = '\nimport ucsmsdk.ucsmethodfactory as mf\n'
-        cmdlet += 'xml_element = mf.ls_templatise(cookie=handle.cookie,' \
+        cmdlet = '\nfrom ucsmsdk.ucsmethodfactory import ls_templatise\n'
+        cmdlet += 'elem = ls_templatise(cookie=handle.cookie,' \
                   'dn="%s", in_target_org="%s", in_template_name="%s", ' \
                   'in_template_type="%s", in_hierarchical=%s)' % (dn,
                                                         dest_org,
                                                         sp_new_name,
                                                         template_type,
                                                         in_hierarchical_value)
-        cmdlet += '\nmo_list = handle.process_xml_element(xml_element)\n'
+        cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
     else:
         # cmdlet = "handle.ls_templatise(dn=\"%s\", in_target_org=\"org-root\",
         #  in_template_name=\"%s\", in_template_type=\"%s\",
         # in_hierarchical=%s)" % (dn, sp_new_name, template_type,
         # in_hierarchical_value)
 
-        cmdlet = '\nimport ucsmsdk.ucsmethodfactory as mf\n'
-        cmdlet += 'xml_element = mf.ls_templatise(cookie=handle.cookie,' \
+        cmdlet = '\nfrom ucsmsdk.ucsmethodfactory import ls_templatise\n'
+        cmdlet += 'elem = ls_templatise(cookie=handle.cookie,' \
                   'dn="%s", in_target_org="org-root", in_template_name="%s", '\
                   'in_template_type="%s", in_hierarchical=%s)' % (dn,
                                                         sp_new_name,
                                                         template_type,
                                                         in_hierarchical_value)
-        cmdlet += '\nmo_list = handle.process_xml_element(xml_element)\n'
+        cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
 
     return cmdlet
 
@@ -1080,15 +1081,16 @@ def _generate_multiple_clone_cmdlets(xml_string, is_prefix_based):
         # in_target_org=\"%s\", in_hierarchical=%s)" % (dn, count, sp_name,
         # dest_org, in_hierarchical_value)
 
-        cmdlet = '\nimport ucsmsdk.ucsmethodfactory as mf\n'
-        cmdlet += 'xml_element = mf.ls_instantiate_n_template(' \
+        cmdlet = '\nfrom ucsmsdk.ucsmethodfactory import ' \
+                 'ls_instantiate_n_template\n'
+        cmdlet += 'elem = ls_instantiate_n_template(' \
                   'cookie=handle.cookie, dn=\%s", in_number_of=%s, ' \
                   'in_server_name_prefix_or_empty="%s", in_target_org="%s", ' \
                   'in_hierarchical=%s)' % (dn, count, sp_name, dest_org,
                                            in_hierarchical_value)
-        cmdlet += '\nmo_list = handle.process_xml_element(xml_element)\n'
+        cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
     else:
-        dn_nodes = _get_element_child_nodes(
+        dn_nodes = _get_elem_child_nodes(
             node.getElementsByTagName("inNameSet")[0])
         if dn_nodes is None or len(dn_nodes) < 1:
             print "Xml is corrupt. New names not available"
@@ -1097,7 +1099,8 @@ def _generate_multiple_clone_cmdlets(xml_string, is_prefix_based):
         new_names = "@("
         new_name_exists = False
         temp_dn = ""
-        cmdlet = '\nimport ucsmsdk.ucsmethodfactory as mf\n'
+        cmdlet = '\nfrom ucsmsdk.ucsmethodfactory import ' \
+                 'ls_instantiate_n_named_template\n'
         cmdlet += 'from ucsmsdk.ucsbasetype import DnSet, Dn\n\n'
         cmdlet += "dn_set = DnSet()" + "\n"
 
@@ -1129,14 +1132,14 @@ def _generate_multiple_clone_cmdlets(xml_string, is_prefix_based):
         # in_target_org=\"%s\", in_hierarchical=\"%s\")" %(dn,
         # in_error_on_existing, dest_org, in_hierarchical_value)
 
-        cmdlet += 'xml_element = mf.ls_instantiate_n_named_template(' \
+        cmdlet += 'elem = ls_instantiate_n_named_template(' \
                   'cookie=handle.cookie, dn="%s", in_error_on_existing=' \
                   '"%s", in_name_set=dn_set, in_target_org' \
                   '="%s", in_hierarchical="%s")' % (dn,
                                                     in_error_on_existing,
                                                     dest_org,
                                                     in_hierarchical_value)
-        cmdlet += '\nmo_list = handle.process_xml_element(xml_element)\n'
+        cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
     return cmdlet
 
 
@@ -1155,7 +1158,7 @@ def _generate_clear_interval_cmdlet(xml_string):
         return
 
     cmdlet = ""
-    dn_nodes = _get_element_child_nodes(node.getElementsByTagName("inDns")[0])
+    dn_nodes = _get_elem_child_nodes(node.getElementsByTagName("inDns")[0])
 
     if dn_nodes is None or len(dn_nodes) < 0:
         return
@@ -1191,12 +1194,12 @@ def _generate_config_conf_rename_cmdlet(xml_string):
         in_new_name = node.getAttribute('inNewName')
     if node.hasAttribute('inHierarchical'):
         in_hierarchical = node.getAttribute('inHierarchical')
-    cmdlet = ""
-    cmdlet += 'xml_element = mf.config_conf_rename(' \
+    cmdlet = "\nfrom ucsmsdk.ucsmethodfactory import config_conf_rename\n"
+    cmdlet += 'elem = config_conf_rename(' \
               'cookie=handle.cookie, dn="%s", ' \
               'in_new_name="%s", '\
               'in_hierarchical="%s")' % (dn, in_new_name, in_hierarchical)
-    cmdlet += '\nhandle.process_xml_element(xml_element)\n'
+    cmdlet += '\nhandle.process_xml_elem(elem)\n'
     return cmdlet
 
 

@@ -139,11 +139,11 @@ class AbstractFilter(UcsBase):
         self.tag_name = tag_name
         UcsBase.__init__(self, class_id)
 
-    def to_xml(self, xml_doc=None, option=None, element_name=None):
+    def to_xml(self, xml_doc=None, option=None, elem_name=None):
         """This method writes the xml representation of the Method object."""
         xml_obj = self.elem_create(class_tag=self.tag_name,
                                        xml_doc=xml_doc,
-                                       override_tag=element_name)
+                                       override_tag=elem_name)
         for key in self.__dict__:
             if key.startswith("_") or key == "tag_name":
                 continue
@@ -163,11 +163,11 @@ class BaseObject(UcsBase):
         self.tag_name = tag_name
         UcsBase.__init__(self, class_id)
 
-    def to_xml(self, xml_doc=None, option=None, element_name=None):
+    def to_xml(self, xml_doc=None, option=None, elem_name=None):
         """This method writes the xml representation of the Method object."""
         xml_obj = self.elem_create(class_tag=self.tag_name,
                                        xml_doc=xml_doc,
-                                       override_tag=element_name)
+                                       override_tag=elem_name)
         for key in self.__dict__:
             if key.startswith("_") or key == "tag_name":
                 continue
@@ -177,20 +177,20 @@ class BaseObject(UcsBase):
         self.child_to_xml(xml_obj, option)
         return xml_obj
 
-    def from_xml(self, element):
+    def from_xml(self, elem):
         """This method creates the object from the xml representation
         of the Method object."""
-        if element.attrib:
-            for attr_name, attr_value in element.attrib.iteritems():
+        if elem.attrib:
+            for attr_name, attr_value in elem.attrib.iteritems():
                 self.attr_set(ucsgenutils.word_u(attr_name), str(attr_value))
 
-        child_elements = element.getchildren()
-        if child_elements:
-            for child_element in child_elements:
-                if not ET.iselement(child_element):
+        child_elems = elem.getchildren()
+        if child_elems:
+            for child_elem in child_elems:
+                if not ET.iselement(child_elem):
                     continue
 
-                cln = ucsgenutils.word_u(child_element.tag)
-                child = ucscoreutils.get_ucs_obj(cln, child_element)
+                cln = ucsgenutils.word_u(child_elem.tag)
+                child = ucscoreutils.get_ucs_obj(cln, child_elem)
                 self._child.append(child)
-                child.from_xml(child_element)
+                child.from_xml(child_elem)

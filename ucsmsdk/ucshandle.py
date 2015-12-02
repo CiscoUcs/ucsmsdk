@@ -15,17 +15,16 @@
 import logging
 
 import ucsgenutils
-import ucsmethodfactory as mf
-import ucsexception as ex
-import ucscoreutils as coreutils
-from ucssession import UcsSession
+import ucscoreutils
+from ucsexception import UcsException
 from ucsconstants import NamingId
-from ucseventhandler import UcsEventHandle
+from ucssession import UcsSession
+from ucsmethodfactory import config_resolve_classes
 
 log = logging.getLogger('ucs')
 
 
-class UcsHandle(object):
+class UcsHandle(UcsSession):
     """
     Handle class is the user interface point for any Ucs related communication.
 
@@ -43,39 +42,20 @@ class UcsHandle(object):
 
     def __init__(self, ip, username, password, port=None, secure=None,
                  proxy=None):
-        self.__session = UcsSession(ip, username, password, port, secure,
-                                    proxy)
-        self.__ucs_event_handle = None
-        self.post = self.__session.driver.post
-        self.post_xml = self.__session.driver.post_xml
+        UcsSession.__init__(self, ip, username, password, port, secure, proxy)
         self.__to_commit = {}
-
-    @property
-    def ucs_event_handle(self):
-        if self.__ucs_event_handle is None:
-            self.__ucs_event_handle = UcsEventHandle(self)
-        return self.__ucs_event_handle
-
-    def __getattr__(self, item):
-        key = "_UcsSession__" + item
-        if hasattr(self.__session, key):
-            return getattr(self.__session, key)
-        elif hasattr(self.__session, item):
-            return getattr(self.__session, item)
-        else:
-            raise AttributeError
 
     def set_dump_xml(self):
         """
         Enables the xml request and response to be added to logs.
         """
-        self.__session._set_dump_xml()
+        self._set_dump_xml()
 
     def unset_dump_xml(self):
         """
         Disables the xml request and response to be added to logs.
         """
-        self.__session._unset_dump_xml()
+        self._unset_dump_xml()
 
     def login(self, auto_refresh=False, force=False):
         """
@@ -96,7 +76,7 @@ class UcsHandle(object):
 
             where handle is UcsHandle()
         """
-        return self.__session._login(auto_refresh, force)
+        return self._login(auto_refresh, force)
 
     def logout(self):
         """
@@ -114,12 +94,12 @@ class UcsHandle(object):
             where handle is UcsHandle()
         """
 
-        return self.__session._logout()
+        return self._logout()
 
-    def process_xml_element(self, xml_element):
-        response = self.post(xml_element)
+    def process_xml_elem(self, elem):
+        response = self.post_elem(elem)
         if response.error_code != 0:
-            raise ex.UcsException(response.error_code, response.error_descr)
+            raise UcsException(response.error_code, response.error_descr)
 
         if hasattr(response, "out_config"):
             return response.out_config.child
@@ -139,21 +119,23 @@ class UcsHandle(object):
             return response
 
     def get_auth_token(self):
+        from ucsmethodfactory import aaa_get_n_compute_auth_token_by_dn
+
         auth_token = None
         mo = self.query_classid(class_id=NamingId.COMPUTE_BLADE)
         if not mo:
             mo = self.query_classid(class_id=NamingId.COMPUTE_RACK_UNIT)
 
         if mo:
-            xml_element = mf.aaa_get_n_compute_auth_token_by_dn(
-                cookie=self.__session.cookie,
-                in_cookie=self.__session.cookie,
+            elem = aaa_get_n_compute_auth_token_by_dn(
+                cookie=self.cookie,
+                in_cookie=self.cookie,
                 in_dn=mo[0].dn,
                 in_number_of=1)
-            response = self.post(xml_element)
+            response = self.post_elem(elem)
             if response.error_code != 0:
-                raise ex.UcsException(response.error_code,
-                                      response.error_descr)
+                raise UcsException(response.error_code,
+                                   response.error_descr)
 
             # cat = self.AaaGetNComputeAuthTokenByDn(mo[0].Dn, 1, None)
             auth_token = response.out_tokens.split(',')[0]
@@ -176,6 +158,7 @@ class UcsHandle(object):
                                         "fabric/lan/net-101")
         """
         from ucsbasetype import DnSet, Dn
+        from ucsmethodfactory import config_resolve_dns
 
         if not dns:
             raise ValueError("Provide Comma Separated string of Dns")
@@ -191,11 +174,11 @@ class UcsHandle(object):
             dn_obj.value = dn_
             dn_set.child_add(dn_obj)
 
-        xml_element = mf.config_resolve_dns(cookie=self.__session.cookie,
-                                            in_dns=dn_set)
-        response = self.post(xml_element)
+        elem = config_resolve_dns(cookie=self.cookie,
+                                         in_dns=dn_set)
+        response = self.post_elem(elem)
         if response.error_code != 0:
-            raise ex.UcsException(response.error_code, response.error_descr)
+            raise UcsException(response.error_code, response.error_descr)
 
         for out_mo in response.out_configs.child:
             dn_dict[out_mo.dn] = out_mo
@@ -240,11 +223,11 @@ class UcsHandle(object):
 
             class_id_set.child_add(class_id_obj)
 
-        xml_element = mf.config_resolve_classes(cookie=self.__session.cookie,
-                                                in_ids=class_id_set)
-        response = self.post(xml_element)
+        elem = config_resolve_classes(cookie=self.cookie,
+                                             in_ids=class_id_set)
+        response = self.post_elem(elem)
         if response.error_code != 0:
-            raise ex.UcsException(response.error_code, response.error_descr)
+            raise UcsException(response.error_code, response.error_descr)
 
         for out_mo in response.out_configs.child:
             class_id_dict[out_mo._class_id].append(out_mo)
@@ -268,6 +251,7 @@ class UcsHandle(object):
         """
 
         from ucsbasetype import DnSet, Dn
+        from ucsmethodfactory import config_resolve_dns
 
         if not dn:
             raise ValueError("Provide dn.")
@@ -277,18 +261,18 @@ class UcsHandle(object):
         dn_obj.value = dn
         dn_set.child_add(dn_obj)
 
-        xml_element = mf.config_resolve_dns(cookie=self.__session.cookie,
-                                            in_dns=dn_set,
-                                            in_hierarchical=hierarchy)
-        response = self.post(xml_element)
+        elem = config_resolve_dns(cookie=self.cookie,
+                                         in_dns=dn_set,
+                                         in_hierarchical=hierarchy)
+        response = self.post_elem(elem)
         if response.error_code != 0:
-            raise ex.UcsException(response.error_code, response.error_descr)
+            raise UcsException(response.error_code, response.error_descr)
 
         if need_response:
             return response
 
         if hierarchy:
-            out_mo_list = coreutils.extract_molist_from_method_response(
+            out_mo_list = ucscoreutils.extract_molist_from_method_response(
                 response,
                 hierarchy)
             return out_mo_list
@@ -345,6 +329,7 @@ class UcsHandle(object):
 
         from ucsmeta import MO_CLASS_ID
         from ucsfilter import generate_infilter
+        from ucsmethodfactory import config_resolve_class
 
         if not class_id:
             raise ValueError("Provide Parameter class_id")
@@ -362,18 +347,19 @@ class UcsHandle(object):
         else:
             in_filter = None
 
-        xml_element = mf.config_resolve_class(cookie=self.__session.cookie,
+        elem = config_resolve_class(cookie=self.cookie,
                                               class_id=meta_class_id,
                                               in_filter=in_filter,
                                               in_hierarchical=hierarchy)
-        response = self.post(xml_element)
+        response = self.post_elem(elem)
         if response.error_code != 0:
-            raise ex.UcsException(response.error_code, response.error_descr)
+            raise UcsException(response.error_code, response.error_descr)
 
         if need_response:
             return response
 
-        out_mo_list = coreutils.extract_molist_from_method_response(response,
+        out_mo_list = ucscoreutils.extract_molist_from_method_response(
+                                                                    response,
                                                                     hierarchy)
         return out_mo_list
 
@@ -405,6 +391,7 @@ class UcsHandle(object):
 
         """
         from ucsmeta import MO_CLASS_ID
+        from ucsmethodfactory import config_resolve_children
 
         if not in_mo and not in_dn:
             raise ValueError('[Error]: GetChild: Provide in_mo or in_dn.')
@@ -422,16 +409,17 @@ class UcsHandle(object):
         else:
             meta_class_id = class_id
 
-        xml_element = mf.config_resolve_children(cookie=self.__session.cookie,
-                                                 class_id=meta_class_id,
-                                                 in_dn=parent_dn,
-                                                 in_filter=None,
-                                                 in_hierarchical=hierarchy)
-        response = self.post(xml_element)
+        elem = config_resolve_children(cookie=self.cookie,
+                                              class_id=meta_class_id,
+                                              in_dn=parent_dn,
+                                              in_filter=None,
+                                              in_hierarchical=hierarchy)
+        response = self.post_elem(elem)
         if response.error_code != 0:
-            raise ex.UcsException(response.error_code, response.error_descr)
+            raise UcsException(response.error_code, response.error_descr)
 
-        out_mo_list = coreutils.extract_molist_from_method_response(response,
+        out_mo_list = ucscoreutils.extract_molist_from_method_response(
+                                                                    response,
                                                                     hierarchy)
 
         return out_mo_list
@@ -512,6 +500,8 @@ class UcsHandle(object):
             handle.commit()
         """
         from ucsbasetype import ConfigMap, Dn, DnSet, Pair
+        from ucsmethodfactory import config_resolve_dns
+        from ucsmethodfactory import config_conf_mos
 
         refresh_dict = {}
         mo_dict = self.__to_commit
@@ -536,11 +526,11 @@ class UcsHandle(object):
             pair.child_add(mo_dict[mo_dn])
             config_map.child_add(pair)
 
-        xml_element = mf.config_conf_mos(self.__session.cookie, config_map,
+        elem = config_conf_mos(self.cookie, config_map,
                                          False)
-        response = self.post(xml_element)
+        response = self.post_elem(elem)
         if response.error_code != 0:
-            raise ex.UcsException(response.error_code, response.error_descr)
+            raise UcsException(response.error_code, response.error_descr)
 
         for pair_ in response.out_configs.child:
             for out_mo in pair_.child:
@@ -553,11 +543,11 @@ class UcsHandle(object):
                 dn_obj.value = dn_
                 dn_set.child_add(dn_obj)
 
-            xml_element = mf.config_resolve_dns(cookie=self.__session.cookie,
+            elem = config_resolve_dns(cookie=self.cookie,
                                                 in_dns=dn_set)
-            response = self.post(xml_element)
+            response = self.post_elem(elem)
             if response.error_code != 0:
-                raise ex.UcsException(response.error_code,
+                raise UcsException(response.error_code,
                                       response.error_descr)
 
             for out_mo in response.out_configs.child:
@@ -565,37 +555,3 @@ class UcsHandle(object):
 
         self.__to_commit = {}
 
-    def file_download(self, url_suffix, dest_dir, file_name):
-        """
-            Attributes:
-                url_suffix (str): suffix url to be appended to
-                    http\https://host:port/ to locate the file on the server
-                dest_dir (str): The directory to download to
-                file_name (str): The destination file name for the download
-
-            Example:
-                handle.file_download(url_suffix='backupfile/config_backup.xml',
-                                     dest_dir='/home/user/backup',
-                                     file_name='my_config_backup.xml')
-        """
-        return self.__session.driver.download_file(url_suffix, dest_dir,
-                                                   file_name)
-
-    def file_upload(self, url_suffix, source_dir, file_name):
-        """
-            Attributes:
-                url_suffix (str): suffix url to be appended to
-                    http\https://host:port/ to locate the file on the server
-                source_dir (str): The directory to upload from
-                file_name (str): The destination file name for the download
-
-            Example:
-                source_dir = "/home/user/backup"
-                file_name = "config_backup.xml"
-                uri_suffix = "operations/file-%s/importconfig.txt" % file_name
-                handle.file_upload(url_suffix=uri_suffix,
-                                source_dir=source_dir,
-                               file_name=file_name)
-        """
-        return self.__session.driver.upload_file(url_suffix, source_dir,
-                                                 file_name)

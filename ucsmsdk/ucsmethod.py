@@ -92,12 +92,12 @@ class ExternalMethod(UcsBase):
         self.response = "yes"
         # return self
 
-    def to_xml(self, xml_doc=None, option=None, element_name=None):
+    def to_xml(self, xml_doc=None, option=None, elem_name=None):
         """ Method writes the xml representation of the external
         method object. """
         xml_obj = self.elem_create(
             class_tag=self.__method_meta.xml_attribute, xml_doc=xml_doc,
-            override_tag=element_name)
+            override_tag=elem_name)
 
         for prop in self.__property_meta:
             if xml_obj.tag == "aaaLogout" and prop == "in_delay_secs" \
@@ -116,11 +116,11 @@ class ExternalMethod(UcsBase):
         self.child_to_xml(xml_obj, option)
         return xml_obj
 
-    def from_xml(self, element):  # , handle, modify_self=False, mo=None):
+    def from_xml(self, elem):  # , handle, modify_self=False, mo=None):
         """Method updates/fills the object from the xml representation
         of the external method object. """
-        if element.attrib:
-            for attr_name, attr_value in element.attrib.iteritems():
+        if elem.attrib:
+            for attr_name, attr_value in elem.attrib.iteritems():
                 if attr_name in self.__property_map:
                     attr = self.__property_map[attr_name]
                     method_prop_meta = self.__property_meta[attr]
@@ -133,12 +133,12 @@ class ExternalMethod(UcsBase):
                         ExternalMethod._external_method_attrs[attr_name],
                         str(attr_value))
 
-        child_elements = element.getchildren()
-        if child_elements:
-            for child_element in child_elements:
-                if not ET.iselement(child_element):
+        child_elems = elem.getchildren()
+        if child_elems:
+            for child_elem in child_elems:
+                if not ET.iselement(child_elem):
                     continue
-                child_name = child_element.tag
+                child_name = child_elem.tag
                 if child_name in self.__property_map:
                     child_name = self.__property_map[child_name]
                     method_prop_meta = self.__property_meta[
@@ -147,13 +147,13 @@ class ExternalMethod(UcsBase):
                             (method_prop_meta.is_complex_type):
                         child_obj = ucscoreutils.get_ucs_obj(
                             method_prop_meta.field_type,
-                            child_element)
+                            child_elem)
                         if child_obj is not None:
                             self.set_attr(child_name,
                                           child_obj)
                             # print child_method_obj.__dict__
                             child_obj.from_xml(
-                                child_element)
+                                child_elem)
 
     def __str__(self):
         tab_size = 8

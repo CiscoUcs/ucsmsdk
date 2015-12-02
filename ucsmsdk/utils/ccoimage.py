@@ -21,7 +21,7 @@ import urllib2
 
 from .. import ucsgenutils
 from ..ucsexception import UcsValidationException, UcsWarning
-from ..ucsconnectiondriver import UrllibDriver
+from ..ucsdriver import UcsDriver
 
 class _UcsCcoImageList:
     """Constant class for CCO Image list."""
@@ -108,7 +108,7 @@ def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None,
     # print input_xml
 
     # sending url request
-    driver = UrllibDriver(proxy)
+    driver = UcsDriver(proxy)
     credential = base64.encodestring('%s:%s' % (username, password))[:-1]
     driver.add_header("Authorization", "Basic %s" % credential)
     ida_xml_response = driver.post(uri=url, data=input_xml)
@@ -186,7 +186,7 @@ def get_ucs_cco_image(image, file_dir, proxy=None):
     image_url = image.url
     print "Processing Image " + str(image.image_name)
 
-    driver = UrllibDriver(proxy)
+    driver = UcsDriver(proxy)
     driver.add_header("Authorization", "Basic %s" % image.network_credential)
     ucsgenutils.download_file(driver,
                               file_url=image_url,

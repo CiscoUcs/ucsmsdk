@@ -16,20 +16,65 @@ import time
 import logging
 from threading import Timer
 
-import ucsexception as ex
-import ucsmethodfactory as mf
-from ucsconnectiondriver import UcsConnectionDriver
+from ucsexception import UcsException
+from ucsdriver import UcsDriver
 
 log = logging.getLogger('ucs')
 
-class AbstractSession(object):
-    """
-    To add docstring
-    """
 
-    def __init__(self, host, port, secure):
-        self.__host = host
+class UcsSession(object):
+    def __init__(self, ip, username, password, port=None, secure=None,
+                 proxy=None):
 
+        self.__ip = ip
+        self.__username = username
+        self.__password = password
+        self.__proxy = proxy
+        self.__uri = self.__create_uri(port, secure)
+
+        self.__ucs = ip
+        self.__cookie = None
+        self.__session_id = None
+        self.__version = None
+        self.__name = None
+        self.__refresh_period = None
+        self.__priv = None
+        self.__domains = None
+        self.__channel = None
+        self.__evt_channel = None
+
+        self.__refresh_timer = None
+        self.__force = False
+
+        self.__dump_xml = False
+        self.__redirect = False
+        self.__driver = UcsDriver(proxy=self.__proxy)
+
+    @property
+    def ucs(self):
+        return self.__ucs
+
+    @property
+    def cookie(self):
+        return self.__cookie
+
+    @property
+    def session_id(self):
+        return self.__session_id
+
+    @property
+    def version(self):
+        return self.__version
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def uri(self):
+        return self.__uri
+
+    def __create_uri(self, port, secure):
         if secure is not None and port is not None:
             self.__secure = secure
             self.__port = int(port)
@@ -54,67 +99,11 @@ class AbstractSession(object):
             self.__secure = True
             self.__port = 443
 
-        self.__uri = self.__create_uri()
-
-    @property
-    def secure(self):
-        return self.__secure
-
-    @property
-    def uri(self):
-        return self.__uri
-
-    def __create_uri(self):
         https_or_http = ("http", "https")[self.__secure]
-        host = self.__host
+        host = self.__ip
         port = str(self.__port)
-        uri = "%s://%s%s%s%s" % (https_or_http, host, ":", port, "/nuova")
+        uri = "%s://%s%s%s" % (https_or_http, host, ":", port)
         return uri
-
-
-class UcsSession(AbstractSession):
-    def __init__(self, ip, username, password, port=None, secure=None,
-                 proxy=None):
-        self.__ip = ip
-        self.__username = username
-        self.__password = password
-        self.__port = port
-        self.__secure = secure
-        self.__proxy = proxy
-        self.__dump_xml = False
-        AbstractSession.__init__(self, self.__ip, self.__port, self.__secure)
-
-        self.__ucs = ip
-        self.__cookie = None
-        self.__refresh_period = None
-        self.__priv = None
-        self.__domains = None
-        self.__channel = None
-        self.__evt_channel = None
-        self.__session_id = None
-        self.__version = None
-        self.__name = None
-
-        self.__refresh_timer = None
-        self.__force = False
-        self.__driver = UcsConnectionDriver(self)
-
-    @property
-    def driver(self):
-        return self.__driver
-
-    def __getattr__(self, item):
-        key = "_UcsSession__" + item
-        if hasattr(self, key):
-            return getattr(self, key)
-        else:
-            raise AttributeError
-
-    def _set_dump_xml(self):
-        self.__dump_xml = True
-
-    def _unset_dump_xml(self):
-        self.__dump_xml = False
 
     def __clear(self):
         self.__cookie = None
@@ -130,15 +119,118 @@ class UcsSession(AbstractSession):
 
     def __update(self, response):
         from ucscoremeta import UcsVersion
+
         self.__cookie = response.out_cookie
         self.__refresh_period = response.out_refresh_period
         self.__priv = response.out_priv
         self.__domains = response.out_domains
         self.__channel = response.out_channel
         self.__evt_channel = response.out_evt_channel
-        self.__session_id = response.out_session_id
+        self._session_id = response.out_session_id
         self.__version = UcsVersion(response.out_version)
         self.__name = response.out_name
+
+    def post(self, uri, data=None):
+        response = self.__driver.post(uri=uri, data=data)
+        return response
+
+    def post_xml(self, xml_str):
+        """
+        To Add docstring
+        :param xml_str:
+        :return:
+        """
+
+        ucsm_uri = self.__uri + "/nuova"
+        response_str = self.post(uri=ucsm_uri, data=xml_str)
+        if self.__driver.redirect_uri:
+            self.__uri = self.__driver.redirect_uri
+
+        return response_str
+
+    def post_elem(self, elem):
+        import ucsxmlcodec as xc
+
+        dump_xml = self.__dump_xml
+        if dump_xml:
+            if elem.tag == "aaaLogin":
+                elem.attrib['inPassword'] = "*********"
+                xml_str = xc.to_xml_str(elem)
+                log.debug('%s ====> %s' % (self.__uri, xml_str))
+                elem.attrib['inPassword'] = self.__password
+                xml_str = xc.to_xml_str(elem)
+            else:
+                xml_str = xc.to_xml_str(elem)
+                log.debug('%s ====> %s' % (self.__uri, xml_str))
+        else:
+            xml_str = xc.to_xml_str(elem)
+
+        response_str = self.post_xml(xml_str)
+        if dump_xml:
+            log.debug('%s <==== %s' % (self.__uri, response_str))
+
+        if response_str:
+            response = xc.from_xml_str(response_str)
+            return response
+
+        return None
+
+    def file_download(self, url_suffix, file_dir, file_name):
+        """
+            Attributes:
+                url_suffix (str): suffix url to be appended to
+                    http\https://host:port/ to locate the file on the server
+                dest_dir (str): The directory to download to
+                file_name (str): The destination file name for the download
+
+            Example:
+                handle.file_download(url_suffix='backupfile/config_backup.xml',
+                                     dest_dir='/home/user/backup',
+                                     file_name='my_config_backup.xml')
+        """
+        from ucsgenutils import download_file
+
+        file_url = "%s/%s" % (self.__uri, url_suffix)
+
+        self.__driver.add_header('Cookie', 'ucsm-cookie=%s'
+                                 % self.__cookie)
+
+        download_file(driver=self.__driver,
+                      file_url=file_url,
+                      file_dir=file_dir,
+                      file_name=file_name)
+
+        self.__driver.remove_header('Cookie')
+
+    def file_upload(self, url_suffix, file_dir, file_name):
+        """
+            Attributes:
+                url_suffix (str): suffix url to be appended to
+                    http\https://host:port/ to locate the file on the server
+                source_dir (str): The directory to upload from
+                file_name (str): The destination file name for the download
+
+            Example:
+                source_dir = "/home/user/backup"
+                file_name = "config_backup.xml"
+                uri_suffix = "operations/file-%s/importconfig.txt" % file_name
+                handle.file_upload(url_suffix=uri_suffix,
+                                source_dir=source_dir,
+                               file_name=file_name)
+        """
+        from ucsgenutils import upload_file
+
+        file_url = "%s/%s" % (self.__uri, url_suffix)
+
+        self.__driver.add_header('Cookie', 'ucsm-cookie=%s'
+                                 % self.__cookie)
+
+        upload_file(self.__driver,
+                    uri=file_url,
+                    file_dir=file_dir,
+                    file_name=file_name)
+
+        self.__driver.remove_header('Cookie')
 
     def __start_refresh_timer(self):
         """ Internal method to support auto-refresh functionality. """
@@ -146,7 +238,7 @@ class UcsSession(AbstractSession):
             interval = int(self.__refresh_period) - 60
         else:
             interval = 60
-        self.__refresh_timer = Timer(interval, self.refresh)
+        self.__refresh_timer = Timer(interval, self._refresh)
         # TODO:handle exit and logout active connections. revert from daemon
         self.__refresh_timer.setDaemon(True)
         self.__refresh_timer.start()
@@ -157,20 +249,23 @@ class UcsSession(AbstractSession):
             self.__refresh_timer.cancel()
             self.__refresh_timer = None
 
-    def refresh(self, auto_relogin=False):
+    def _refresh(self, auto_relogin=False):
         """
         Sends the aaaRefresh query to the UCS to refresh the connection
         (to prevent session expiration).
         """
+        from ucsmethodfactory import aaa_refresh
+
         self.__stop_refresh_timer()
 
-        element = mf.aaa_refresh(self.__cookie, self.__username,
-                                 self.__password)
-        response = self.__driver.post(element)
+        elem = aaa_refresh(self.__cookie,
+                              self.__username,
+                              self.__password)
+        response = self.post_elem(elem)
         if response.error_code != 0:
             self.__cookie = None
             if auto_relogin:
-                return self.login()
+                return self._login()
             return False
 
         self.__domains = response.out_domains
@@ -184,19 +279,20 @@ class UcsSession(AbstractSession):
 
     def __validate_connection(self):
         from mometa.top.TopSystem import TopSystem
+        from ucsmethodfactory import config_resolve_dn
 
         if self.__cookie is not None and self.__cookie != "":
             if not self.__force:
                 top_system = TopSystem()
-                element = mf.config_resolve_dn(cookie=self.__cookie,
-                                               dn=top_system.dn)
-                response = self.__driver.post(element)
+                elem = config_resolve_dn(cookie=self.__cookie,
+                                            dn=top_system.dn)
+                response = self.post_elem(elem)
                 if response.error_code != 0:
-                    raise ex.UcsException(response.error_code,
-                                          response.error_descr)
+                    raise UcsException(response.error_code,
+                                       response.error_descr)
                 return True
             else:
-                self.logout()
+                self._logout()
         return False
 
     def _login(self, auto_refresh=False, force=False):
@@ -207,25 +303,28 @@ class UcsSession(AbstractSession):
         from mometa.firmware.FirmwareRunning import FirmwareRunning, \
             FirmwareRunningConsts
         from ucscoremeta import UcsVersion
+        from ucsmethodfactory import aaa_login
+        from ucsmethodfactory import config_resolve_class
+        from ucsmethodfactory import config_resolve_dn
 
         if self.__validate_connection():
             return True
 
-        element = mf.aaa_login(in_name=self.__username,
-                               in_password=self.__password)
-        response = self.__driver.post(element)
+        elem = aaa_login(in_name=self.__username,
+                            in_password=self.__password)
+        response = self.post_elem(elem)
         if response.error_code != 0:
             self.__clear()
-            raise ex.UcsException(response.error_code, response.error_descr)
+            raise UcsException(response.error_code, response.error_descr)
         self.__update(response)
 
         # Verify not to connect to IMC
-        nw_element = mf.config_resolve_class(cookie=self.__cookie,
-                                             in_filter=None,
-                                             class_id="networkElement")
-        nw_element_response = self.__driver.post(nw_element)
+        nw_elem = config_resolve_class(cookie=self.__cookie,
+                                          in_filter=None,
+                                          class_id="networkElement")
+        nw_elem_response = self.post_elem(nw_elem)
         # To Do - returns error tag
-        if nw_element_response.error_code != 0:
+        if nw_elem_response.error_code != 0:
             self.__clear()
             return False
 
@@ -233,22 +332,22 @@ class UcsSession(AbstractSession):
         if response.out_version is None or response.out_version == "":
             firmware = FirmwareRunning(top_system,
                                        FirmwareRunningConsts.DEPLOYMENT_SYSTEM)
-            element = mf.config_resolve_dn(cookie=self.__cookie,
-                                           dn=firmware.dn)
-            response = self.__driver.post(element)
+            elem = config_resolve_dn(cookie=self.__cookie,
+                                        dn=firmware.dn)
+            response = self.post_elem(elem)
             if response.error_code != 0:
-                raise ex.UcsException(response.error_code,
-                                      response.error_descr)
+                raise UcsException(response.error_code,
+                                   response.error_descr)
             firmware = response.out_config.child[0]
-            self.__version = UcsVersion(firmware.version)
+            self._version = UcsVersion(firmware.version)
 
         top_system = TopSystem()
-        element = mf.config_resolve_dn(cookie=self.__cookie, dn=top_system.dn)
-        response = self.__driver.post(element)
+        elem = config_resolve_dn(cookie=self.__cookie, dn=top_system.dn)
+        response = self.post_elem(elem)
         if response.error_code != 0:
-            raise ex.UcsException(response.error_code, response.error_descr)
+            raise UcsException(response.error_code, response.error_descr)
         top_system = response.out_config.child[0]
-        self.__ucs = top_system.name
+        self._ucs = top_system.name
         self.__virtual_ipv4_address = top_system.address
 
         if auto_refresh:
@@ -261,6 +360,8 @@ class UcsSession(AbstractSession):
         To Do - Add docstring
         :return:
         """
+        from ucsmethodfactory import aaa_logout
+
         if self.__cookie is None:
             return True
 
@@ -269,16 +370,22 @@ class UcsSession(AbstractSession):
 
         if self.__cookie:
             # TO DO NewParam inDelaySec introduced in 224b
-            element = mf.aaa_logout(self.__cookie, 301)
-            response = self.__driver.post(element)
+            elem = aaa_logout(self.__cookie, 301)
+            response = self.post_elem(elem)
 
             if response.error_code == "555":
                 return True
 
             if response.error_code != 0:
-                raise ex.UcsException(response.error_code,
-                                      response.error_descr)
+                raise UcsException(response.error_code,
+                                   response.error_descr)
 
             self.__clear()
 
             return True
+
+    def _set_dump_xml(self):
+        self.__dump_xml = True
+
+    def _unset_dump_xml(self):
+        self.__dump_xml = False
