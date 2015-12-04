@@ -136,16 +136,16 @@ class AbstractFilter(UcsBase):
     """class AbstractFilter."""
 
     def __init__(self, class_id, tag_name=None):
-        self.tag_name = tag_name
+        self._tag_name = tag_name
         UcsBase.__init__(self, class_id)
 
     def to_xml(self, xml_doc=None, option=None, elem_name=None):
         """This method writes the xml representation of the Method object."""
-        xml_obj = self.elem_create(class_tag=self.tag_name,
+        xml_obj = self.elem_create(class_tag=self._tag_name,
                                        xml_doc=xml_doc,
                                        override_tag=elem_name)
         for key in self.__dict__:
-            if key.startswith("_") or key == "tag_name":
+            if key.startswith("_"):
                 continue
             elif key == "class_":
                 xml_obj.set("class", self.attr_get(key))
@@ -160,16 +160,16 @@ class BaseObject(UcsBase):
     """class BaseObject."""
 
     def __init__(self, class_id, tag_name=None):
-        self.tag_name = tag_name
+        self._tag_name = tag_name
         UcsBase.__init__(self, class_id)
 
     def to_xml(self, xml_doc=None, option=None, elem_name=None):
         """This method writes the xml representation of the Method object."""
-        xml_obj = self.elem_create(class_tag=self.tag_name,
+        xml_obj = self.elem_create(class_tag=self._tag_name,
                                        xml_doc=xml_doc,
                                        override_tag=elem_name)
         for key in self.__dict__:
-            if key.startswith("_") or key == "tag_name":
+            if key.startswith("_"):
                 continue
             else:
                 xml_obj.set(key, self.attr_get(key))
@@ -182,7 +182,8 @@ class BaseObject(UcsBase):
         of the Method object."""
         if elem.attrib:
             for attr_name, attr_value in elem.attrib.iteritems():
-                self.attr_set(ucsgenutils.word_u(attr_name), str(attr_value))
+                self.attr_set(ucsgenutils.convert_to_python_var_name(attr_name)
+                            , str(attr_value))
 
         child_elems = elem.getchildren()
         if child_elems:

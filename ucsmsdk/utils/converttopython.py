@@ -54,6 +54,7 @@ class _ClassStatus:
     MODIFIED = 2
     REMOVED = 4
     DELETED = 8
+    GET = 16
 
 
 # Function Definition
@@ -254,13 +255,21 @@ def _get_config_conf_cmdlet(node, is_pair_node):
         class_node = node
 
     dn = ""
+    mo_tag = ""
     if class_node.hasAttribute(NamingPropertyId.DN):
         dn = class_node.getAttribute(NamingPropertyId.DN)
 
-    mo_tag = ""
-    if class_node.hasChildNodes() and len(
-            _get_elem_child_nodes(class_node)) > 0:
+    if class_node.hasAttribute(
+            NamingPropertyId.STATUS) and \
+                    class_node.getAttribute(NamingPropertyId.STATUS) is not \
+                    None:
         mo_tag = "mo"
+    else:
+        if class_node.hasChildNodes() and len(
+                _get_elem_child_nodes(class_node)) > 0:
+            mo_tag = "obj"
+        else:
+            mo_tag = "mo"
 
     import_list = []
     cmdlet, op_flag, import_list = _form_python_cmdlet(class_node,
@@ -285,17 +294,25 @@ def _get_config_conf_cmdlet(node, is_pair_node):
                 call_count -= 1
 
                 # cmdlet += "\n" + "handle.complete_ucs_transaction()"
-    if op_flag:
-        if op_flag == "add":
-            cmdlet += "\n" + "handle.add_mo(mo)"
 
-        import_cmdlet = ""
-        for mo in import_list:
-            mo_folder = re.match("([a-z])+", ucsgenutils.word_l(mo)).group()
-            import_cmdlet += "from ucsmsdk.mometa.%s.%s import %s\n" % (
-                mo_folder, mo, mo)
-        import_cmdlet += "\n" + cmdlet
-        cmdlet = import_cmdlet
+    if op_flag in ["add", "addmodify", "set", "remove"] and mo_tag == "mo":
+        if op_flag == "add":
+            cmdlet += "\n" + "handle.add_mo(mo)\n"
+        # elif op_flag == "addmodify":
+        elif op_flag == "addmodify":
+            cmdlet += "\n" + "handle.add_mo(mo, True)\n"
+        elif op_flag == "set":
+            cmdlet += "\n" + "handle.set_mo(mo)\n"
+        elif op_flag == "remove":
+            cmdlet += "handle.remove_mo(mo)\n"
+
+    import_cmdlet = ""
+    for mo in import_list:
+        mo_folder = re.match("([a-z])+", ucsgenutils.word_l(mo)).group()
+        import_cmdlet += "from ucsmsdk.mometa.%s.%s import %s\n" % (
+            mo_folder, mo, mo)
+    import_cmdlet += "\n" + cmdlet
+    cmdlet = import_cmdlet
 
     return cmdlet
 
@@ -313,7 +330,10 @@ def _get_config_conf_sub_cmdlet(class_node, parent_dn, parent_mo_tag,
         dn = parent_dn + "/" + class_node.getAttribute(NamingPropertyId.RN)
 
     count = 1
-    tag = parent_mo_tag + "_" + str(parent_call_count)
+    if parent_mo_tag == "obj":
+        tag = "mo"
+    else:
+        tag = parent_mo_tag + "_" + str(parent_call_count)
     cmdlet, op_flag, import_list = _form_python_sub_cmdlet(class_node,
                                                            dn,
                                                            tag,
@@ -332,6 +352,17 @@ def _get_config_conf_sub_cmdlet(class_node, parent_dn, parent_mo_tag,
             cmdlet += "\n" + sub_cmdlet
         else:
             count -= 1
+
+    if op_flag in ["add", "addmodify", "set", "remove"] and tag == "mo":
+        if op_flag == "add":
+            cmdlet += "\n" + "handle.add_mo(mo)\n"
+        # elif op_flag == "addmodify":
+        elif op_flag == "addmodify":
+            cmdlet += "\n" + "handle.add_mo(mo, True)\n"
+        elif op_flag == "set":
+            cmdlet += "\n" + "handle.set_mo(mo)\n"
+        elif op_flag == "remove":
+            cmdlet += "handle.remove_mo(mo)\n"
 
     return cmdlet, import_list
 
@@ -359,7 +390,12 @@ def _form_python_cmdlet(class_node, key, tag, import_list):
         if Status.REMOVED in cs_list:
             class_status |= _ClassStatus.REMOVED
     else:
-        class_status = _ClassStatus.CREATED | _ClassStatus.MODIFIED
+        # class_status = _ClassStatus.CREATED | _ClassStatus.MODIFIED
+        if class_node.hasChildNodes() and \
+                    len(_get_elem_child_nodes(class_node)) > 0:
+            class_status = _ClassStatus.GET
+        else:
+            class_status = _ClassStatus.MODIFIED
 
     # support to handle unknown MOs
     if ucscoreutils.find_class_id_in_mo_meta_ignore_case(
@@ -372,18 +408,13 @@ def _form_python_cmdlet(class_node, key, tag, import_list):
 
     if not gmo_flag:
         peer_class_id = _first_capital(class_node.localName)
-        # peer_class_id_str = peer_class_id + ".class_id()"
-        # dn_str = '.DN'
-
         peer_class_ref = ucscoreutils.load_class(peer_class_id)
         peer_class_naming_props = peer_class_ref.naming_props
         peer_class_prop_map = peer_class_ref.prop_map
         peer_class_prop_meta = peer_class_ref.prop_meta
+        peer_class_mo_meta = peer_class_ref.mo_meta
 
     else:
-        # peer_class_id = ""
-        # peer_class_id_str = '"'+(class_node.localName)+'"'
-        # dn_str = '"dn"'
         pass
     # ToDo Add Generic Mo functionality
 
@@ -397,6 +428,15 @@ def _form_python_cmdlet(class_node, key, tag, import_list):
         parent_dn_str = '.DN'
 
     # create property map for attributes
+    attributes_dict = dict(class_node.attributes.items())
+    if "dn" in attributes_dict:
+        prop_dn = attributes_dict["dn"]
+        prop_rn = os.path.basename(prop_dn)
+    elif "rn" in attributes_dict:
+        prop_rn = attributes_dict["rn"]
+
+    naming_props_from_rn = ucscoreutils.get_naming_props(prop_rn,
+                                                         peer_class_mo_meta.rn)
 
     for attr, val in class_node.attributes.items():
         name = attr
@@ -414,49 +454,63 @@ def _form_python_cmdlet(class_node, key, tag, import_list):
 
             if not gmo_flag and prop_ucs in peer_class_prop_map:
                 prop_py = peer_class_prop_map[prop_ucs]
-                if peer_class_prop_meta[prop_py].access != 3:
-                    if class_status & _ClassStatus.CREATED == \
+                if peer_class_prop_meta[prop_py].access in [2, 4]:
+                    continue
+                elif peer_class_prop_meta[prop_py].access in [0, 1]:
+                    if class_status & _ClassStatus.CREATED != \
                             _ClassStatus.CREATED:
-                        if prop_ucs not in peer_class_naming_props:
-                            continue
-                    else:
                         continue
             else:
                 prop_py = prop_ucs
 
+            if not gmo_flag and prop_ucs in peer_class_prop_map:
+                prop_py = peer_class_prop_map[prop_ucs]
+                value_to_validate = value.strip('"')
+                if not peer_class_prop_meta[prop_py].validate_property_value(
+                        value_to_validate):
+                    continue
+
             property_map[prop_py] = value
 
-    tag_elem = ""
-    if tag:
-        tag_elem = tag + " = "
-
     # make cmdlet
-    if class_status & _ClassStatus.DELETED == _ClassStatus.DELETED or \
+    if class_status & _ClassStatus.GET == _ClassStatus.GET:
+        cmdlet = "%s = handle.query_dn(\"%s\")" % (tag, key)
+    elif class_status & _ClassStatus.DELETED == _ClassStatus.DELETED or \
                             class_status & \
                             _ClassStatus.REMOVED == _ClassStatus.REMOVED:
         op_flag = "remove"
-        cmdlet = "obj = handle.query_dn(\"%s\")\n%shandle.remove_mo(obj)" % (
-            key, tag_elem)
+        cmdlet = "%s = handle.query_dn(\"%s\")\n" % (
+            tag, key)
     elif class_status & _ClassStatus.CREATED == _ClassStatus.CREATED:
+        for naming_prop in peer_class_naming_props:
+            naming_prop_py = peer_class_prop_map[naming_prop]
+            if naming_prop_py not in property_map:
+                value_to_validate = naming_props_from_rn[naming_prop]
+                if peer_class_prop_meta[naming_prop_py].\
+                        validate_property_value(value_to_validate):
+                    property_map[naming_prop_py] = '"' + \
+                                                   value_to_validate + '"'
+
         op_flag = "add"
         if peer_class_id not in import_list:
             import_list.append(peer_class_id)
         if class_status & _ClassStatus.MODIFIED == _ClassStatus.MODIFIED:
+            op_flag = "addmodify"
             add_prop_map = ",".join(
                 [k + "=" + v for k, v in property_map.iteritems()])
-            cmdlet = 'mo = %s(parent_mo_or_dn="%s", %s)' % (
-                peer_class_id, parent_dn, add_prop_map)
+            cmdlet = '%s = %s(parent_mo_or_dn="%s", %s)' % (
+                tag, peer_class_id, parent_dn, add_prop_map)
         else:
             add_prop_map = ", ".join(
                 [k + "=" + v for k, v in property_map.iteritems()])
-            cmdlet = 'mo = %s(parent_mo_or_dn="%s", %s)' % (
-                peer_class_id, parent_dn, add_prop_map)
+            cmdlet = '%s = %s(parent_mo_or_dn="%s", %s)' % (
+                tag, peer_class_id, parent_dn, add_prop_map)
     elif class_status & _ClassStatus.MODIFIED == _ClassStatus.MODIFIED:
         op_flag = "set"
         set_prop_map = "\n".join(
-            ["obj." + k + " = " + v for k, v in property_map.iteritems()])
-        cmdlet = "obj = handle.query_dn(\"%s\")\n%s\nhandle.set_mo(obj) " % (
-            key, set_prop_map)
+            [tag + "." + k + " = " + v for k, v in property_map.iteritems()])
+        cmdlet = "%s = handle.query_dn(\"%s\")\n%s\n" % (
+            tag, key, set_prop_map)
     else:
         print "Throw Exception XML request status (%s) is invalid." % (
             class_node.getAttribute(NamingPropertyId.STATUS))
@@ -503,11 +557,22 @@ def _form_python_sub_cmdlet(class_node, key, mo_tag, parent_mo_tag,
         peer_class_naming_props = peer_class_ref.naming_props
         peer_class_prop_map = peer_class_ref.prop_map
         peer_class_prop_meta = peer_class_ref.prop_meta
+        peer_class_mo_meta = peer_class_ref.mo_meta
     else:
         pass
     # ToDo Add Generic Mo functionality
 
     # create property map for attributes
+    attributes_dict = dict(class_node.attributes.items())
+    if "dn" in attributes_dict:
+        prop_dn = attributes_dict["dn"]
+        prop_rn = os.path.basename(prop_dn)
+    elif "rn" in attributes_dict:
+        prop_rn = attributes_dict["rn"]
+
+    naming_props_from_rn = ucscoreutils.get_naming_props(prop_rn,
+                                                         peer_class_mo_meta.rn)
+
     for attr, val in class_node.attributes.items():
         name = attr
         value = '"' + val + '"'
@@ -524,15 +589,21 @@ def _form_python_sub_cmdlet(class_node, key, mo_tag, parent_mo_tag,
 
             if not gmo_flag and prop_ucs in peer_class_prop_map:
                 prop_py = peer_class_prop_map[prop_ucs]
-                if peer_class_prop_meta[prop_py].access != 3:
-                    if class_status & _ClassStatus.CREATED == \
+                if peer_class_prop_meta[prop_py].access in [2, 4]:
+                    continue
+                elif peer_class_prop_meta[prop_py].access in [0, 1]:
+                    if class_status & _ClassStatus.CREATED != \
                             _ClassStatus.CREATED:
-                        if prop_ucs not in peer_class_naming_props:
-                            continue
-                    else:
                         continue
             else:
                 prop_py = prop_ucs
+
+            if not gmo_flag and prop_ucs in peer_class_prop_map:
+                prop_py = peer_class_prop_map[prop_ucs]
+                value_to_validate = value.strip('"')
+                if not peer_class_prop_meta[prop_py].validate_property_value(
+                        value_to_validate):
+                    continue
 
             property_map[prop_py] = value
 
@@ -540,21 +611,40 @@ def _form_python_sub_cmdlet(class_node, key, mo_tag, parent_mo_tag,
     if class_status & _ClassStatus.DELETED == _ClassStatus.DELETED or \
                             class_status \
                             & _ClassStatus.REMOVED == _ClassStatus.REMOVED:
-        cmdlet = "obj = handle.query_dn(\"%s\")\n%shandle.remove_mo(obj)" % (
-            key, mo_tag)
+        op_flag = "remove"
+        cmdlet = "%s = handle.query_dn(\"%s\")\n" % (
+            mo_tag, key)
     elif class_status & _ClassStatus.CREATED == _ClassStatus.CREATED:
+        for naming_prop in peer_class_naming_props:
+            naming_prop_py = peer_class_prop_map[naming_prop]
+            if naming_prop_py not in property_map:
+                value_to_validate = naming_props_from_rn[naming_prop]
+                if peer_class_prop_meta[naming_prop_py].\
+                        validate_property_value(value_to_validate):
+                    property_map[naming_prop_py] = '"' + \
+                                                   value_to_validate + '"'
+
         op_flag = "add"
         if peer_class_id not in import_list:
             import_list.append(peer_class_id)
-        add_prop_map = ", ".join(
-            [k + "=" + v for k, v in property_map.iteritems()])
-        cmdlet = "%s = %s(parent_mo_or_dn=%s, %s)" % (
-            mo_tag, peer_class_id, parent_mo_tag, add_prop_map)
+        if class_status & _ClassStatus.MODIFIED == _ClassStatus.MODIFIED:
+            op_flag = "addmodify"
+            add_prop_map = ", ".join(
+                [k + "=" + v for k, v in property_map.iteritems()])
+            cmdlet = "%s = %s(parent_mo_or_dn=%s, %s)" % (
+                mo_tag, peer_class_id, parent_mo_tag, add_prop_map)
+        else:
+            add_prop_map = ", ".join(
+                [k + "=" + v for k, v in property_map.iteritems()])
+            cmdlet = "%s = %s(parent_mo_or_dn=%s, %s)" % (
+                mo_tag, peer_class_id, parent_mo_tag, add_prop_map)
     elif class_status & _ClassStatus.MODIFIED == _ClassStatus.MODIFIED:
+        op_flag = "set"
         set_prop_map = "\n".join(
-            ["obj." + k + " = " + v for k, v in property_map.iteritems()])
-        cmdlet = "obj = handle.query_dn(\"%s\")\n%s\nhandle.set_mo(obj)" % (
-            key, set_prop_map)
+            [mo_tag +
+             "." + k + " = " + v for k, v in property_map.iteritems()])
+        cmdlet = "%s = handle.query_dn(\"%s\")\n%s\n" % (
+            mo_tag, key, set_prop_map)
     else:
         print "Throw Exception XML request status (%s) is invalid." % (
             class_node.getAttribute(NamingPropertyId.STATUS))
