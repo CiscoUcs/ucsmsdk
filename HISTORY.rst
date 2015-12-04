@@ -3,7 +3,7 @@
 History
 -------
 
-0.1.0 (2015-01-11)
+0.9.0.0 (2015-01-11)
 ---------------------
 
 * Python SDK for UCS server management and related automation
