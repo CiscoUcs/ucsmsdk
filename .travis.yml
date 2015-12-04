@@ -1,16 +1,16 @@
-# Config file for automatic testing at travis-ci.org
-
 language: python
-
 python:
-  - "3.4"
-  - "3.3"
-  - "2.7"
-  - "2.6"
-    #- "pypy"
-
-# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+- '3.4'
+- '3.3'
+- '2.7'
+- '2.6'
 install: pip install -r requirements_dev.txt
-
-# command to run tests, e.g. python setup.py test
 script: make test-standalone
+deploy:
+  provider: pypi
+  user: ciscoucs
+  password:
+    secure: iLcM3y/fBi8NSNbmBRZE66417SoBs52ICjX/NaN5lwZk5S6S4QX5Syj+PzBKroD8TkF0LHcMny5pTmigClhxHmyNAQMuCTHaPKoWbAl7ju3W0IGvWjfpiYSrvmWiERS/iqEIpVOiXqyHX1rkhpOyYQ1YVRM6c5+bPzarrTnX8jExiEyWrou76aYQXSVjtq7Mu9qKC3dAIVgTOMugMzc+mBnuBslCFjl5KTeagM3eVOqu/nNv+UolG1Pl+vh+JySKj318rtVchvIGjSq6YvybZB6tm36edNfhoVjQvZJcYWp7XKpbQ9zJKBdhH61/OQVsZ/rHtupRN5Ez5iEx7zR0GB2pt5EScQ9EfQVLQC1hXW8EyffL9q95gxqDcBNXMoIetSkvoTAist5jtmncndZ56EaCuyrXGr+0rec/gk5Z3cDCFvzl5ke4J5gZSnFhP122QZTmc9CNWMhHfdt1i6gflI3PFvorIh62LB69brffK0VHNAGV4TC/4yOy434BCtMT5QmcSS4vHL+Q+1qqz1tz6yy5teqCNJ4qOuuhznjrylaO2Y+ELKBdA1LGYgcp1AE0HhD2xittwgwEWW9y9v/n+WSQwpScVhGLpBRS0svnMtUMZYroyqEGtEsWIW8iuJBXi2QHm1h2RO4WthUmM9zbesn136pSk8Lu0uYDndpMUs0=
+  on:
+    tags: true
+    repo: CiscoUcs/ucsmsdk
