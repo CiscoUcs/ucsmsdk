@@ -1,5 +1,5 @@
 ucsmsdk package
-==============
+===============
 
 Subpackages
 -----------
@@ -14,32 +14,23 @@ Submodules
 ----------
 
 ucsmsdk.ucsbasetype module
--------------------------
+--------------------------
 
 .. automodule:: ucsmsdk.ucsbasetype
     :members:
     :undoc-members:
     :show-inheritance:
 
-ucsmsdk.ucsconnectiondriver module
----------------------------------
+ucsmsdk.ucsconstants module
+---------------------------
 
-.. automodule:: ucsmsdk.ucsconnectiondriver
+.. automodule:: ucsmsdk.ucsconstants
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. commented 
-        ucsmsdk.ucsconstants module
-        --------------------------
-
-        .. automodule:: ucsmsdk.ucsconstants
-            :members:
-            :undoc-members:
-            :show-inheritance:
-
 ucsmsdk.ucscore module
----------------------
+----------------------
 
 .. automodule:: ucsmsdk.ucscore
     :members:
@@ -47,7 +38,7 @@ ucsmsdk.ucscore module
     :show-inheritance:
 
 ucsmsdk.ucscoremeta module
--------------------------
+--------------------------
 
 .. automodule:: ucsmsdk.ucscoremeta
     :members:
@@ -55,15 +46,23 @@ ucsmsdk.ucscoremeta module
     :show-inheritance:
 
 ucsmsdk.ucscoreutils module
---------------------------
+---------------------------
 
 .. automodule:: ucsmsdk.ucscoreutils
     :members:
     :undoc-members:
     :show-inheritance:
 
+ucsmsdk.ucsdriver module
+------------------------
+
+.. automodule:: ucsmsdk.ucsdriver
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ucsmsdk.ucseventhandler module
------------------------------
+------------------------------
 
 .. automodule:: ucsmsdk.ucseventhandler
     :members:
@@ -71,7 +70,7 @@ ucsmsdk.ucseventhandler module
     :show-inheritance:
 
 ucsmsdk.ucsexception module
---------------------------
+---------------------------
 
 .. automodule:: ucsmsdk.ucsexception
     :members:
@@ -79,7 +78,7 @@ ucsmsdk.ucsexception module
     :show-inheritance:
 
 ucsmsdk.ucsfilter module
------------------------
+------------------------
 
 .. automodule:: ucsmsdk.ucsfilter
     :members:
@@ -87,7 +86,7 @@ ucsmsdk.ucsfilter module
     :show-inheritance:
 
 ucsmsdk.ucsfiltertype module
----------------------------
+----------------------------
 
 .. automodule:: ucsmsdk.ucsfiltertype
     :members:
@@ -95,7 +94,7 @@ ucsmsdk.ucsfiltertype module
     :show-inheritance:
 
 ucsmsdk.ucsgenutils module
--------------------------
+--------------------------
 
 .. automodule:: ucsmsdk.ucsgenutils
     :members:
@@ -103,7 +102,7 @@ ucsmsdk.ucsgenutils module
     :show-inheritance:
 
 ucsmsdk.ucshandle module
------------------------
+------------------------
 
 .. automodule:: ucsmsdk.ucshandle
     :members:
@@ -111,7 +110,7 @@ ucsmsdk.ucshandle module
     :show-inheritance:
 
 ucsmsdk.ucsmeta module
----------------------
+----------------------
 
 .. automodule:: ucsmsdk.ucsmeta
     :members:
@@ -119,7 +118,7 @@ ucsmsdk.ucsmeta module
     :show-inheritance:
 
 ucsmsdk.ucsmethod module
------------------------
+------------------------
 
 .. automodule:: ucsmsdk.ucsmethod
     :members:
@@ -127,7 +126,7 @@ ucsmsdk.ucsmethod module
     :show-inheritance:
 
 ucsmsdk.ucsmethodfactory module
-------------------------------
+-------------------------------
 
 .. automodule:: ucsmsdk.ucsmethodfactory
     :members:
@@ -135,7 +134,7 @@ ucsmsdk.ucsmethodfactory module
     :show-inheritance:
 
 ucsmsdk.ucsmo module
--------------------
+--------------------
 
 .. automodule:: ucsmsdk.ucsmo
     :members:
@@ -143,7 +142,7 @@ ucsmsdk.ucsmo module
     :show-inheritance:
 
 ucsmsdk.ucssession module
-------------------------
+-------------------------
 
 .. automodule:: ucsmsdk.ucssession
     :members:
@@ -151,7 +150,7 @@ ucsmsdk.ucssession module
     :show-inheritance:
 
 ucsmsdk.ucsxmlcodec module
--------------------------
+--------------------------
 
 .. automodule:: ucsmsdk.ucsxmlcodec
     :members:
