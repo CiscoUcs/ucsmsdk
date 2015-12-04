@@ -51,6 +51,9 @@ lint:
 test:
 	python setup.py nosetests
 
+test-standalone:
+	nosetests tests/convert_to_ucs/
+
 test-all:
 	tox
 
