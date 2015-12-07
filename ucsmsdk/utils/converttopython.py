@@ -39,11 +39,12 @@ _or_count = 0
 _not_count = 0
 _multi_line_method = ["<configConfMo", "<lsInstantiateNNamedTemplate",
                       "<statsClearInterval", "<lsClone", "<lsTemplatise",
-                      "<lsInstantiateTemplate", "<lsInstantiateNTemplate"]
+                      "<lsInstantiateTemplate", "<lsInstantiateNTemplate",
+                      "<configConfRename"]
 _single_line_method = ["</configConfMo", "</lsInstantiateNNamedTemplate",
                        "</statsClearInterval", "</lsClone", "</lsTemplatise",
                        "</lsInstantiateTemplate", "</lsInstantiateNTemplate",
-                       "/>"]
+                       "/>", "</configConfRename"]
 
 
 # class declaration
@@ -1284,12 +1285,12 @@ def _generate_config_conf_rename_cmdlet(xml_string):
         in_new_name = node.getAttribute('inNewName')
     if node.hasAttribute('inHierarchical'):
         in_hierarchical = node.getAttribute('inHierarchical')
-    cmdlet = "\nfrom ucsmsdk.ucsmethodfactory import config_conf_rename\n"
+    cmdlet = "\nfrom ucsmsdk.ucsmethodfactory import config_conf_rename\n\n"
     cmdlet += 'elem = config_conf_rename(' \
               'cookie=handle.cookie, dn="%s", ' \
               'in_new_name="%s", '\
               'in_hierarchical="%s")' % (dn, in_new_name, in_hierarchical)
-    cmdlet += '\nhandle.process_xml_elem(elem)\n'
+    cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
     return cmdlet
 
 

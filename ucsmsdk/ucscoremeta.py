@@ -14,6 +14,7 @@
 """
 This module contains all the base classes for the Meta.
 """
+
 import re
 import logging
 
@@ -28,8 +29,13 @@ class WriteXmlOption(object):
 
 
 class UcsVersion(object):
-    """    This class handles the operations related to the UcsVersions.
-     It provides the functionality to compare Ucs version objects. """
+    """
+    This class handles the operations related to the UcsVersions.
+    It provides the functionality to compare Ucs version objects.
+
+    Attributes:
+        * version (str): version string
+    """
 
     def __init__(self, version):
         if version is None:
@@ -116,8 +122,10 @@ class UcsVersion(object):
 
 
 class MoPropertyRestriction(object):
-    """ This class handles the restriction information of the properties
-    of managed object. """
+    """
+    This class handles the restriction information of the properties
+    of managed object.
+    """
 
     def __init__(self, min_length=None, max_length=None, pattern=None,
                  value_set=None, range_val=None):
@@ -166,8 +174,11 @@ class MoPropertyRestriction(object):
 
 
 class MoPropertyMeta(object):
-    """    This class handles the meta information of the properties of
-    managed Object. """
+    """
+    This class handles the meta information of the properties of managed
+    Object.
+    """
+
     NAMING = 0
     CREATE_ONLY = 1
     READ_ONLY = 2
@@ -234,15 +245,16 @@ class MoPropertyMeta(object):
             if len(input_value) >= self.__restriction.min_length:
                 return True
             else:
-                error_msg = (self.name + " minimum character should be  " +
-                             self.__restriction.min_length)
+                error_msg = (str(self.name) +
+                             " minimum character should be  " +
+                             str(self.__restriction.min_length))
 
         if self.__restriction.max_length:
             if len(input_value) <= self.__restriction.max_length:
                 return True
             else:
-                error_msg = (self.name + " maximum character should be " +
-                             self.__restriction.max_length)
+                error_msg = (str(self.name) + " maximum character should be " +
+                             str(self.__restriction.max_length))
 
         if self.__restriction.range_val and str(input_value).isdigit() \
                 and len(self.__restriction.range_val) > 0:
@@ -264,31 +276,34 @@ class MoPropertyMeta(object):
             if fits_in_range:
                 return True
             else:
-                error_msg = ("Value " + value + " does not fit the range" +
-                             self.__restriction.range_val)
+                error_msg = ("Value " + str(value) +
+                             " does not fit the range" +
+                             str(self.__restriction.range_val))
 
         if self.__restriction.pattern and self.__restriction.value_set:
-            pattern = "^" + self.__restriction.pattern + "%s%s$" % (
+            pattern = "^" + str(self.__restriction.pattern) + "%s%s$" % (
                 '|' if self.__restriction.value_set else '',
                 '|'.join(['('+x+')' for x in self.__restriction.value_set]))
             match = re.match(pattern, input_value, 0)
             if match:
                 return True
             else:
-                error_msg = (self.name + " should adhere to regex " + pattern)
+                error_msg = (str(self.name) + " should adhere to regex " +
+                             str(pattern))
         elif self.__restriction.pattern:
             pattern = "^" + self.__restriction.pattern + "$"
             match = re.match(pattern, input_value, 0)
             if match:
                 return True
             else:
-                error_msg = (self.name + " should adhere to regex " + pattern)
+                error_msg = (str(self.name) + " should adhere to regex " +
+                             str(pattern))
         elif self.__restriction.value_set \
                 and len(self.__restriction.value_set) > 0:
             if input_value in self.__restriction.value_set:
                 return True
             else:
-                error_msg = (self.name + " valid values are " +
+                error_msg = (str(self.name) + " valid values are " +
                              str(self.__restriction.value_set))
         if error_msg is not None:
             log.debug(error_msg)
@@ -297,7 +312,10 @@ class MoPropertyMeta(object):
 
 
 class MoMeta(object):
-    """    This class handles the meta information of the managed Object. """
+    """
+    This class handles the meta information of the managed Object.
+    """
+
     ACCESS_TYPE_IO = "InputOutput"
     ACCESS_TYPE_OUTPUTONLY = "OutputOnly"
 
@@ -372,8 +390,10 @@ class MoMeta(object):
 
 
 class MethodPropertyMeta(object):
-    """ This class handles the meta information of the properties of
-    external method Object. """
+    """
+    This class handles the meta information of the properties of
+    external method Object.
+    """
 
     def __init__(self, name, xml_attribute, field_type, version, inp_out,
                  is_complex_type):
@@ -416,8 +436,10 @@ class MethodPropertyMeta(object):
 
 
 class MethodMeta(object):
-    """ This class handles the meta information of the meta property of
-     external method Object. """
+    """
+    This class handles the meta information of the meta property of
+    external method Object.
+    """
 
     def __init__(self, name, xml_attribute, version):
         self.__name = name
