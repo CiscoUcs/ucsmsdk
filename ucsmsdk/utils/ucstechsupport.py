@@ -38,31 +38,31 @@ def get_ucs_tech_support(handle,
     This operation creates and downloads the technical support data for
     the respective UCSM.
 
-    Attributes:
-        * handle (UcsHandle)
-        * ucs_manager (bool): by default False, if provided as True then
+    Args:
+        handle (UcsHandle)
+        ucs_manager (bool): by default False, if provided as True then
                             technical support data for the entire UCSM
                             instance will be created and downloaded.
-        * ucs_mgmt (bool): by default False,  if provided as True then
-                            technical support data for the entire UCSM
-                            management services(excluding fabric
-                            interconnects) will be created and downloaded.
-        * chassis_id (int): chassis id.
-        * cimc_id (int): for a specific chassis. Can be 'all' also.
-        * adapter_id (int): for a specific chassis. Can be 'all' also.
-        * iom_id (int): for a specific chassis. Can be 'all' also.
-        * fex_id (int): id of a fabric extender.
-        * rack_server_id (int): id of a rack server.
-        * rack_adapter_id (int): adaptor_id for a specific rack server.
-                                Can be 'all' also.
-        * remove_from_ucs (bool): by default False, if specified as True
-                                then the technical support data file will
-                                be removed from the UCS.
-        * download_techsupp (bool): by default True, if True suggests to
-                                    download the tech support file.
-        * file_dir (str): directory to download tech support file
-        * file_name (str): name of the download tech support file
-        * timeout_in_sec (int): specifies the time in seconds after that
+        ucs_mgmt (bool): by default False,  if provided as True then
+                          technical support data for the entire UCSM
+                          management services(excluding fabric
+                          interconnects) will be created and downloaded.
+        chassis_id (int): chassis id.
+        cimc_id (int): for a specific chassis. Can be 'all' also.
+        adapter_id (int): for a specific chassis. Can be 'all' also.
+        iom_id (int): for a specific chassis. Can be 'all' also.
+        fex_id (int): id of a fabric extender.
+        rack_server_id (int): id of a rack server.
+        rack_adapter_id (int): adaptor_id for a specific rack server.
+                              Can be 'all' also.
+        remove_from_ucs (bool): by default False, if specified as True
+                              then the technical support data file will
+                              be removed from the UCS.
+        download_techsupp (bool): by default True, if True suggests to
+                                  download the tech support file.
+        file_dir (str): directory to download tech support file
+        file_name (str): name of the download tech support file
+        timeout_in_sec (int): specifies the time in seconds after that
                                 the operation will terminate.
 
     Example:

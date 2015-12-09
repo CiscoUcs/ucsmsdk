@@ -36,12 +36,12 @@ def get_ucs_obj(class_id, elem, mo_obj=None):
     This creates object of type ExternalMethod or ManagedObject or GenericMo
     depending on element tag
 
-    Attributes:
-        * class_id (str): class_id
-        * elem (xml element): xml element
-        * mo_obj : parent object
+    Args:
+        class_id (str): class id
+        elem (xml element): xml element
+        mo_obj : parent managed object
 
-    Return:
+    Returns:
         object of type ExternalMethod or ManagedObject or GenericMo
     """
 
@@ -94,10 +94,10 @@ def load_module(module_name):
     """
     This loads the module into the current name space
 
-    Attributes:
-        * module_name (str): module_name
+    Args:
+        module_name (str): module_name
 
-    Return:
+    Returns:
         None
     """
 
@@ -123,10 +123,10 @@ def load_class(class_id):
     """
     This loads the class into the current name space
 
-    Attributes:
-        * class_id (str): class_id
+    Args:
+        class_id (str): class_id
 
-    Return:
+    Returns:
         MangedObject or ExtenalMethod Object or None
     """
 
@@ -150,10 +150,10 @@ def load_mo(elem):
     """
     This loads the managed object  into the current name space
 
-    Attributes:
-        * class_id (str): class_id
+    Args:
+        class_id (str): class_id
 
-    Return:
+    Returns:
         MangedObject
     """
 
@@ -210,21 +210,21 @@ def find_class_id_in_method_meta_ignore_case(class_id):
             return key
     return None
 
+
 def get_mo_property_meta(class_id, key):
     """
     Methods returns the mo property meta of the provided key for the given
     class_id.
 
-    Attributes:
-        * class_id (str): class_id of mo
-        * key (str): prop of class_id
+    Args:
+        class_id (str): class_id of mo
+        key (str): prop of class_id
 
-    Return:
+    Returns:
         Object of type MoPropertyMeta
 
     Example:
-        prop_meta = get_mo_property_meta(class_id="LsServer",
-                                         key="usr_lbl")
+        prop_meta = get_mo_property_meta(class_id="LsServer", key="usr_lbl")
     """
 
     class_obj = load_class(class_id)
@@ -266,18 +266,17 @@ def extract_molist_from_method_response(method_response,
     Methods extracts mo list from response received from ucs server i.e.
     external method object
 
-    Attributes:
-        * method_response (ExternalMethod Object): response
-        * in_hierarchical (bool): if True, return all the hierarchical child of
-          managed objects
+    Args:
+        method_response (ExternalMethod Object): response
+        in_hierarchical (bool): if True, return all the hierarchical child of
+                                    managed objects
 
-    Return:
+    Returns:
         List of ManagedObjects
 
     Example:
-        response = handle.query_dn("org-root", need_response=True)
-        molist = extract_molist_from_method_response(method_response=response,
-                                                     in_hierarchical=True)
+        response = handle.query_dn("org-root", need_response=True)\n
+        molist = extract_molist_from_method_response(method_response=response, in_hierarchical=True)
     """
 
     mo_list = []
@@ -307,21 +306,21 @@ def write_mo_tree(mo, level=0, break_level=None, show_level=[],
     """
     Prints tree structure of any managed object
 
-    Attributes:
-        * mo (object): ManagedObject
-        * level (int): by default zero
-        * break_level (int or None): last level to process
-        * show_level (int list): levels to display
-        * print_tree (bool): if True, print mo tree
-        * tree_dict (dict): by default {}
-        * dn (str): dn
+    Args:
+        mo (object): ManagedObject
+        level (int): by default zero
+        break_level (int or None): last level to process
+        show_level (int list): levels to display
+        print_tree (bool): if True, print mo tree
+        tree_dict (dict): by default {}
+        dn (str): dn
 
-    Return:
-        * dictionary
+    Returns:
+        dictionary
 
     Example:
-        mo=handle.query_dn("org-root")
-        tree_dict = write_mo_tree(mo, break_level=3, show_level=[1, 3])
+        mo=handle.query_dn("org-root")\n
+        tree_dict = write_mo_tree(mo, break_level=3, show_level=[1, 3])\n
     """
 
     if not mo.dn:
@@ -387,19 +386,19 @@ def extract_mo_tree_from_config_method_response(method_response,
     """
     extracts tree structure of any managed object from config method response
 
-    Attributes:
-        * method_response (object): ExternalMethod
-        * break_level (int or None): last level to process
-        * show_level (int list): levels to display
-        * print_tree (bool): if True, print mo tree
-        * tree_dict (dict): by default {}
+    Args:
+        method_response (object): ExternalMethod
+        break_level (int or None): last level to process
+        show_level (int list): levels to display
+        print_tree (bool): if True, print mo tree
+        tree_dict (dict): by default {}
 
-    Return:
-        * dictionary
+    Returns:
+        dictionary
 
     Example:
-        response=handle.query_dn("org-root", need_response=True)
-        tree_dict = write_mo_tree(response, break_level=3, show_level=[1, 3])
+        response=handle.query_dn("org-root", need_response=True)\n
+        tree_dict = write_mo_tree(response, break_level=3, show_level=[1, 3])\n
     """
 
     current_mo_list = method_response.out_configs.child
@@ -415,18 +414,18 @@ def print_mo_hierarchy(class_id, level=0, break_level=None, show_level=[]):
     """
     print hierarchy of class_id
 
-    Attributes:
-        * class_id (str): class id
-        * level (int): by default zero
-        * break_level (int or None): last level to process
-        * show_level (int list): levels to display
+    Args:
+        class_id (str): class id
+        level (int): by default zero
+        break_level (int or None): last level to process
+        show_level (int list): levels to display
 
-    Return:
-        * dictionary
+    Returns:
+        dictionary
 
     Example:
-        response=handle.query_dn("org-root", need_response=True)
-        tree_dict = write_mo_tree(response, break_level=3, show_level=[1, 3])
+        response=handle.query_dn("org-root", need_response=True)\n
+        tree_dict = write_mo_tree(response, break_level=3, show_level=[1, 3])\n
     """
 
     indent = " "
@@ -458,16 +457,15 @@ def get_naming_props(rn_str, rn_pattern):
     """
     extract naming property and its value from a given rn and its pattern
 
-    Attributes:
-        * rn_str (str): rn value
-        * rn_pattern (str): rn pattern from mo_meta
+    Args:
+        rn_str (str): rn value
+        rn_pattern (str): rn pattern from mo_meta
 
-    Return:
-        * dictionary
+    Returns:
+        dictionary
 
     Example:
-        naming_props = get_naming_props(rn_str="ls-test_sp",
-                                        rn_pattern="ls-[name]")
+        naming_props = get_naming_props(rn_str="ls-test_sp", rn_pattern="ls-[name]")
     """
 
     rn_regex = re.sub(r"\[(.+?)\]", r"(?P<\1>.+)", rn_pattern)

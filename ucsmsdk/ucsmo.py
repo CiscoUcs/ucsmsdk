@@ -152,13 +152,13 @@ class ManagedObject(UcsBase):
         """
         Internal method to set the properties after validation
 
-        Attributes:
-            * name (str): property name
-            * value (str): property value
-            * mark_dirty (bool): if True, property will be part of xml request
-            * forced (bool): if True, set the value without validation
+        Args:
+            name (str): property name
+            value (str): property value
+            mark_dirty (bool): if True, property will be part of xml request
+            forced (bool): if True, set the value without validation
 
-        Return:
+        Returns:
             None
         """
 
@@ -421,9 +421,9 @@ class GenericMo(UcsBase):
     """
     This class implements a Generic Managed Object.
 
-    Attributes:
-        * class_id (str): class id of managed object
-        * parent_mo_or_dn (ManagedObject or str): parent managed object or dn
+    Args:
+        class_id (str): class id of managed object
+        parent_mo_or_dn (ManagedObject or str): parent managed object or dn
     """
 
     # Every variable that should not be a part of the final xml
@@ -478,25 +478,25 @@ class GenericMo(UcsBase):
         This method returns the xml element node for the current object
         with it's hierarchy.
 
-        Attributes:
+        Args:
             xml_doc: document to which the Mo attributes are added.
                     Can be None.
             option: not required for Generic Mo class object
 
         Example:
-            from ucsmsdk.ucsmo import GenericMo
-            args = {"a": 1, "b": 2, "c":3}
-            obj = GenericMo("testLsA", "org-root", **args)
-            obj1 = GenericMo("testLsB", "org-root", **args)
-            obj.add_child(obj1)
-            elem = obj.write_xml()
+            from ucsmsdk.ucsmo import GenericMo\n
+            args = {"a": 1, "b": 2, "c":3}\n
+            obj = GenericMo("testLsA", "org-root", **args)\n
+            obj1 = GenericMo("testLsB", "org-root", **args)\n
+            obj.add_child(obj1)\n
+            elem = obj.write_xml()\n
 
-            import ucsmsdk.ucsxmlcodec as xc
-            xc.to_xml_str(elem)
+            import ucsmsdk.ucsxmlcodec as xc\n
+            xc.to_xml_str(elem)\n
 
         Output:
-            '<testLsA a="1" b="2" c="3" dn="org-root/" rn="">
-                <testLsB a="1" b="2" c="3" dn="org-root/" rn="" />
+            '<testLsA a="1" b="2" c="3" dn="org-root/" rn="">\n
+                <testLsB a="1" b="2" c="3" dn="org-root/" rn="" />\n
             </testLsA>'
         """
 
@@ -523,11 +523,10 @@ class GenericMo(UcsBase):
 
         Example:
             xml = '<testLsA a="1" b="2" c="3" dn="org-root/" rn="">
-            <testLsB a="1" b="2" c="3" dn="org-root/" rn="" /></testLsA>'
-            obj = xc.from_xml_str(xml)
+            <testLsB a="1" b="2" c="3" dn="org-root/" rn="" /></testLsA>'\n
+            obj = xc.from_xml_str(xml)\n
 
-            print type(obj)
-            print type(obj.
+            print type(obj)\n
 
         Outputs:
             <class 'ucsmsdk.ucsmo.GenericMo'>

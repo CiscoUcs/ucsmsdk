@@ -106,11 +106,11 @@ class UcsSession(object):
         """
         Generates UCSM URI used for connection
 
-        Attributes:
-            * port (int): port The port number to be used during connection
-            * secure (bool or None): True for secure connection otherwise False
+        Args:
+            port (int): port The port number to be used during connection
+            secure (bool or None): True for secure connection otherwise False
 
-        Return:
+        Returns:
             uri (str)
 
         Example:
@@ -184,11 +184,11 @@ class UcsSession(object):
         """
         sends the request and receives the response from ucsm server
 
-        Attributes:
-            * uri (str): URI of the  the UCS Server
-            * data (str): request data to send via post request
+        Args:
+            uri (str): URI of the  the UCS Server
+            data (str): request data to send via post request
 
-        Return:
+        Returns:
             response xml string
 
         Example:
@@ -202,10 +202,10 @@ class UcsSession(object):
         """
         sends the xml request and receives the response from ucsm server
 
-        Attributes:
-            * xml_str (str): xml string
+        Args:
+            xml_str (str): xml string
 
-        Return:
+        Returns:
             response xml string
 
         Example:
@@ -224,10 +224,10 @@ class UcsSession(object):
         sends the request and receives the response from ucsm server using xml
         element
 
-        Attributes:
-            * elem (xml element)
+        Args:
+            elem (xml element)
 
-        Return:
+        Returns:
             response xml string
 
         Example:
@@ -264,19 +264,17 @@ class UcsSession(object):
         """
         Downloads the file from ucsm server
 
-        Attributes:
-            * url_suffix (str): suffix url to be appended to
-              http\https://host:port/ to locate the file on the server
-            * file_dir (str): The directory to download to
-            * file_name (str): The destination file name for the download
+        Args:
+            url_suffix (str): suffix url to be appended to
+                    http\https://host:port/ to locate the file on the server
+            file_dir (str): The directory to download to
+            file_name (str): The destination file name for the download
 
         Returns:
             None
 
         Example:
-            file_download(url_suffix='backupfile/config_backup.xml',
-                                 dest_dir='/home/user/backup',
-                                 file_name='my_config_backup.xml')
+            file_download(url_suffix='backupfile/config_backup.xml', dest_dir='/home/user/backup', file_name='my_config_backup.xml')
         """
 
         from ucsgenutils import download_file
@@ -297,7 +295,7 @@ class UcsSession(object):
         """
         Uploads the file on UCSM server.
 
-        Attributes:
+        Args:
             url_suffix (str): suffix url to be appended to
                 http\https://host:port/ to locate the file on the server
             source_dir (str): The directory to upload from
@@ -307,12 +305,10 @@ class UcsSession(object):
             None
 
         Example:
-            source_dir = "/home/user/backup"
-            file_name = "config_backup.xml"
-            uri_suffix = "operations/file-%s/importconfig.txt" % file_name
-            file_upload(url_suffix=uri_suffix,
-                            source_dir=source_dir,
-                           file_name=file_name)
+            source_dir = "/home/user/backup"\n
+            file_name = "config_backup.xml"\n
+            uri_suffix = "operations/file-%s/importconfig.txt" % file_name\n
+            file_upload(url_suffix=uri_suffix, source_dir=source_dir, file_name=file_name)
         """
 
         from ucsgenutils import upload_file
@@ -408,13 +404,13 @@ class UcsSession(object):
         """
         Internal method responsible to do a login on UCSM server.
 
-        Attributes:
-            * auto_refresh (bool): if set to True, it refresh the cookie
-              continuously
-            * force (bool): if set to True it reconnects even if cookie exists
-              and is valid for respective connection.
+        Args:
+            auto_refresh (bool): if set to True, it refresh the cookie
+                                    continuously
+            force (bool): if set to True it reconnects even if cookie exists
+                                    and is valid for respective connection.
 
-        Return:
+        Returns:
             True on successful connect
         """
 
@@ -478,10 +474,10 @@ class UcsSession(object):
         """
         Internal method to disconnect from ucsm server.
 
-        Attributes:
-            * None
+        Args:
+            None
 
-        Return:
+        Returns:
             True on successful disconnect
 
         """

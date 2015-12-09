@@ -1399,51 +1399,46 @@ def convert_to_ucs_python(log_path=None, xml=False, request=None,
     This operation generates python script from ucsm gui using ucsm logs
     or directly from ucs logfile or xml request.
 
-    Attributes:
-        * log_path (str): ucsm guilog path, if code unable to find the ucsm
-          guilog path you can specify the path using this parameter.
-        * xml (bool): if True, generates python script using xml request.
-        * request (str): xml request
-        * gui_log (bool): if True, generates python script using ucsm logfile
-        * path (str): path of the file containing xml request or ucsm logfile
-        * literal_path (str): path of the file containing xml request or
-          ucsm logfile
-        * dump_to_file (bool): if True, dump the code to file
-        * dump_file_path (str): path of file where to dump generated code.
-        * dump_xml (bool): if True, display the xml extracted for generating
-          code
+    Args:
+        log_path (str): ucsm guilog path, if code unable to find the ucsm
+              guilog path you can specify the path using this parameter.
+        xml (bool): if True, generates python script using xml request.
+        request (str): xml request
+        gui_log (bool): if True, generates python script using ucsm logfile
+        path (str): path of the file containing xml request or ucsm logfile
+        literal_path (str): path of the file containing xml request or
+              ucsm logfile
+        dump_to_file (bool): if True, dump the code to file
+        dump_file_path (str): path of file where to dump generated code.
+        dump_xml (bool): if True, display the xml extracted for generating
+              code
 
-        Manadatory - M, Optional - O
+    Examples:
         * Optional in all param set - dump_to_file, dump_file_path, dump_xml
 
         * param set 1:
-        ---------------------------------------------------------------
-        convert_to_ucs_python()
-
-        convert_to_ucs_python(dump_xml=True)
-
-        file_path = r"/home/user/pythoncode.py"
-        convert_to_ucs_python(dump_to_file=True,
+            convert_to_ucs_python()\n
+            convert_to_ucs_python(dump_xml=True)\n
+            file_path = r"/home/user/pythoncode.py"\n
+            convert_to_ucs_python(dump_to_file=True,
                               dump_file_path=file_path,
-                              dump_xml=True)
+                              dump_xml=True)\n
 
         * param set 2:
-        ---------------------------------------------------------------
-        xml_str='''
-         <configConfRename
-         dn="org-root/ls-ra1"
-         inNewName="ra2"
-         inHierarchical="false">
-         </configConfRename>'''
-        convert_to_ucs_python(xml=True, request=xml_str)
+            xml_str='''
+             <configConfRename
+             dn="org-root/ls-ra1"
+             inNewName="ra2"
+             inHierarchical="false">
+             </configConfRename>'''\n
+            convert_to_ucs_python(xml=True, request=xml_str)\n
 
-        file_path = "\home\user\ucsmxml\configrequest.xml"
-        convert_to_ucs_python(xml=True, path=file_path)
+            file_path = "\home\user\ucsmxml\configrequest.xml"\n
+            convert_to_ucs_python(xml=True, path=file_path)\n
 
         * param set 3:
-        ---------------------------------------------------------------
-        file_path = "\home\user\ucsmlog\centrale_14804.log"
-        convert_to_ucs_python(gui_log=True, path=file_path)
+            file_path = "\home\user\ucsmlog\centrale_14804.log"\n
+            convert_to_ucs_python(gui_log=True, path=file_path)\n
     """
 
     print "### Please review the generated cmdlets before deployment.\n"

@@ -28,24 +28,22 @@ class UcsHandle(UcsSession):
     """
     Handle class is the user interface point for any Ucs related communication.
 
-    Attributes:
-        * ip (str): The IP or Hostname of the UCS Server
-        * username (str): The username as configured on the UCS Server
-        * password (str): The password as configured on the UCS Server
-        * port (int or None): The port number to be used during connection
-        * secure (bool or None): True for secure connection, otherwise False
-        * proxy (str): The proxy object to be used to connect
+    Args:
+        ip (str): The IP or Hostname of the UCS Server
+        username (str): The username as configured on the UCS Server
+        password (str): The password as configured on the UCS Server
+        port (int or None): The port number to be used during connection
+        secure (bool or None): True for secure connection, otherwise False
+        proxy (str): The proxy object to be used to connect
 
     Example:
-        handle = UcsHandle("192.168.1.1","admin","password")
-        handle = UcsHandle("192.168.1.1","admin","password", secure=True)
-        handle = UcsHandle("192.168.1.1","admin","password", secure=False)
-        handle = UcsHandle("192.168.1.1","admin","password", port=80)
-        handle = UcsHandle("192.168.1.1","admin","password", port=443)
-        handle = UcsHandle("192.168.1.1","admin","password", port=100,
-                            secure=True)
-        handle = UcsHandle("192.168.1.1","admin","password", port=100,
-                            secure=False)
+        handle = UcsHandle("192.168.1.1","admin","password")\n
+        handle = UcsHandle("192.168.1.1","admin","password", secure=True)\n
+        handle = UcsHandle("192.168.1.1","admin","password", secure=False)\n
+        handle = UcsHandle("192.168.1.1","admin","password", port=80)\n
+        handle = UcsHandle("192.168.1.1","admin","password", port=443)\n
+        handle = UcsHandle("192.168.1.1","admin","password", port=100, secure=True)\n
+        handle = UcsHandle("192.168.1.1","admin","password", port=100, secure=False)\n
     """
 
     def __init__(self, ip, username, password, port=None, secure=None,
@@ -71,20 +69,20 @@ class UcsHandle(UcsSession):
         """
         Connects to ucsm connected using respective UcsHandle.
 
-        Attributes:
-            * auto_refresh (bool): if set to True, it refresh the cookie
-              continuously
-            * force (bool): if set to True it reconnects even if cookie exists
-              and is valid for respective connection.
+        Args:
+            auto_refresh (bool): if set to True, it refresh the cookie
+                continuously
+            force (bool): if set to True it reconnects even if cookie exists
+                and is valid for respective connection.
 
-        Return:
+        Returns:
             True on successful connect
 
         Example:
-            handle.login()
-            handle.login(auto_refresh=True)
-            handle.login(force=True)
-            handle.login(auto_refresh=True, force=True)
+            handle.login()\n
+            handle.login(auto_refresh=True)\n
+            handle.login(force=True)\n
+            handle.login(auto_refresh=True, force=True)\n
 
             where handle is UcsHandle()
         """
@@ -95,10 +93,10 @@ class UcsHandle(UcsSession):
         """
         Disconnects from ucsm connected using respective UcsHandle.
 
-        Attributes:
-            * None
+        Args:
+            None
 
-        Return:
+        Returns:
             True on successful disconnect
 
         Example:
@@ -113,17 +111,14 @@ class UcsHandle(UcsSession):
         """
         Processes xml element returned by method factory methods.
 
-        Attributes:
-            * elem (xml element object)
+        Args:
+            elem (xml element object)
 
-        Return:
+        Returns:
             mo list or external method object
 
         Example:
-            elem = ucsmethodfactory.config_find_dns_by_class_id(
-                                                        cookie=handle.cookie,
-                                                        class_id="LsServer",
-                                                        in_filter=None)
+            elem = ucsmethodfactory.config_find_dns_by_class_id(cookie=handle.cookie, class_id="LsServer", in_filter=None)\n
             dn_objs = handle.process_xml_elem(elem)
         """
 
@@ -152,10 +147,10 @@ class UcsHandle(UcsSession):
         """
             Get ucsm auto token.
 
-        Attributes:
-            * None
+        Args:
+            None
 
-        Return:
+        Returns:
             auth_token (str)
 
         Example:
@@ -191,16 +186,15 @@ class UcsHandle(UcsSession):
         """
         Find objects using a comma separated string of distinguished name.
 
-        Attributes:
-            * dns (comma separated strings): distinguished names to be
-              queried for
+        Args:
+            dns (comma separated strings): distinguished names to be
+                queried for
 
-        Return:
+        Returns:
             Dictionary {dn: object}
 
         Example:
-            obj = handle.lookup_by_dns("fabric/lan/net-100",
-                                        "fabric/lan/net-101")
+            obj = handle.lookup_by_dns("fabric/lan/net-100", "fabric/lan/net-101")
         """
 
         from ucsbasetype import DnSet, Dn
@@ -235,15 +229,14 @@ class UcsHandle(UcsSession):
         """
         Find objects using a comma separated string of class ids.
 
-        Attributes:
-            * class_ids (comma separated strings): class_id to be queried for
+        Args:
+            class_ids (comma separated strings): Class Ids to be queried for
 
-        Return:
+        Returns:
             Dictionary {class_id: [list of object]}
 
         Example:
-            obj = handle.lookup_by_dns("OrgOrg",
-                                       "LsServer")
+            obj = handle.lookup_by_dns("OrgOrg", "LsServer")
         """
 
         # ToDo - How to handle unknown class_id
@@ -285,24 +278,23 @@ class UcsHandle(UcsSession):
         """
         Find an object using it's distinguished name.
 
-        Attributes:
-            * dn (str): distinguished name of the object to be queried for.
-            * hierarchy(bool): if set to True will return all the child
-                               hierarchical objects.
-            * need_response(bool): if set to True will return only response
-                                  object.
+        Args:
+            dn (str): distinguished name of the object to be queried for.
+            hierarchy(bool): if set to True will return all the child
+                             hierarchical objects.
+            need_response(bool): if set to True will return only response
+                                object.
 
-        Return:
-            managedobject or None   by default
-            managedobject list      if hierarchy=True
-            externalmethod object   if need_response=True
+        Returns:
+            managedobject or None   by default\n
+            managedobject list      if hierarchy=True\n
+            externalmethod object   if need_response=True\n
 
         Example:
-            obj = handle.lookup_by_dn("fabric/lan/net-100")
-            obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True)
-            obj = handle.lookup_by_dn("fabric/lan/net-100", need_response=True)
-            obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True,
-                                                            need_response=True)
+            obj = handle.lookup_by_dn("fabric/lan/net-100")\n
+            obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True)\n
+            obj = handle.lookup_by_dn("fabric/lan/net-100", need_response=True)\n
+            obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True, need_response=True)\n
         """
 
         from ucsbasetype import DnSet, Dn
@@ -342,47 +334,42 @@ class UcsHandle(UcsSession):
         """
         Find an object using it's class id.
 
-        Attributes:
-            * class_id (str): class id of the object to be queried for.
-            * filter_str(str): query objects with specific property with
-                               specific value or pattern specifying value.
+        Args:
+            class_id (str): class id of the object to be queried for.
+            filter_str(str): query objects with specific property with specific value or pattern specifying value.
 
-                        (property_name, "property_value, type="filter_type")
-                        property_name: Name of the Property
-                        property_value: Value of the property (str or regular
-                                                               expression)
-                        filter_type: eq - equal to
-                                     ne - not equal to
-                                     ge - greater than or equal to
-                                     gt - greater than
-                                     le - less than or equal to
-                                     lt - less than
-                                     re - regular expression
+                      (property_name, "property_value, type="filter_type")\n
+                      property_name: Name of the Property\n
+                      property_value: Value of the property (str or regular expression)\n
+                      filter_type: eq - equal to\n
+                                   ne - not equal to\n
+                                   ge - greater than or equal to\n
+                                   gt - greater than\n
+                                   le - less than or equal to\n
+                                   lt - less than\n
+                                   re - regular expression\n
 
-                        logical filter type: not, and, or
+                      logical filter type: not, and, or\n
 
-                        e.g. '(dn,"org-root/ls-C1_B1", type="eq") or
-                        (name, "event", type="re", flag="I")'
-            * hierarchy(bool): if set to True will return all the child
-                               hierarchical objects.
-            * need_response(bool): if set to True will return only response
-                                  object.
+                      e.g. '(dn,"org-root/ls-C1_B1", type="eq") or (name, "event", type="re", flag="I")'\n
+            hierarchy(bool): if set to True will return all the child
+                             hierarchical objects.
+            need_response(bool): if set to True will return only response
+                                object.
 
 
-        Return:
-            managedobjectlist or None   by default
-            managedobjectlist or None   if hierarchy=True
-            methodresponse              if need_response=True
+        Returns:
+            managedobjectlist or None   by default\n
+            managedobjectlist or None   if hierarchy=True\n
+            methodresponse              if need_response=True\n
 
         Example:
-            obj = handle.query_classid(class_id="LsServer")
-            obj = handle.query_classid(class_id="LsServer", hierarchy=True)
-            obj = handle.query_classid(class_id="LsServer", need_response=True)
+            obj = handle.query_classid(class_id="LsServer")\n
+            obj = handle.query_classid(class_id="LsServer", hierarchy=True)\n
+            obj = handle.query_classid(class_id="LsServer", need_response=True)\n
 
-            filter_str = '(dn,"org-root/ls-C1_B1", type="eq") or
-                            (name, "event", type="re", flag="I")'
-            obj = handle.query_classid(class_id="LsServer",
-                                        filter_str=filter_str)
+            filter_str = '(dn,"org-root/ls-C1_B1", type="eq") or (name, "event", type="re", flag="I")'\n
+            obj = handle.query_classid(class_id="LsServer", filter_str=filter_str)\n
         """
 
         # ToDo - How to handle unknown class_id
@@ -429,25 +416,25 @@ class UcsHandle(UcsSession):
         Find all or specific class_id children object of a given managed object
         or a given dn.
 
-        Attributes:
-            * in_mo (managed object): query children managed object under this
-                                      object.
-            * in_dn (dn string): query children managed object for a
-                                 given managed object of the respective dn.
-            * class_id(str): by default None, if given find only specific
-                             children object for a given class_id.
-            * hierarchy(bool): if set to True will return all the child
-                               hierarchical objects.
+        Args:
+            in_mo (managed object): query children managed object under this
+                                        object.
+            in_dn (dn string): query children managed object for a
+                                given managed object of the respective dn.
+            class_id(str): by default None, if given find only specific
+                            children object for a given class_id.
+            hierarchy(bool): if set to True will return all the child
+                              hierarchical objects.
 
-        Return:
-            managedobjectlist or None   by default
-            managedobjectlist or None   if hierarchy=True
+        Returns:
+            managedobjectlist or None   by default\n
+            managedobjectlist or None   if hierarchy=True\n
 
         Example:
-            mo_list = handle.query_children(in_mo=mo)
-            mo_list = handle.query_children(in_mo=mo, class_id="classid")
-            mo_list = handle.query_children(in_dn=dn)
-            mo_list = handle.query_children(in_dn=dn, class_id="classid")
+            mo_list = handle.query_children(in_mo=mo)\n
+            mo_list = handle.query_children(in_mo=mo, class_id="classid")\n
+            mo_list = handle.query_children(in_dn=dn)\n
+            mo_list = handle.query_children(in_dn=dn, class_id="classid")\n
         """
 
         from ucsmeta import MO_CLASS_ID
@@ -488,17 +475,17 @@ class UcsHandle(UcsSession):
         """
         Adds an object to the UCSM.
 
-        Attributes:
-            * mo (managedobject): ManagedObject to be added.
-            * modify_present(bool): if set to True, overwrite the existing
-                                    object.
+        Args:
+            mo (managedobject): ManagedObject to be added.
+            modify_present (bool): if set to True, overwrite the existing
+                                      object.
 
-        Return:
+        Returns:
             None
 
         Example:
-            obj = handle.add_mo(mo)
-            handle.commit()
+            obj = handle.add_mo(mo)\n
+            handle.commit()\n
         """
 
         if modify_present in ucsgenutils.AFFIRMATIVE_LIST:
@@ -512,15 +499,15 @@ class UcsHandle(UcsSession):
         """
         Modifies configuration of an object.
 
-        Attributes:
-            * mo (managedobject): ManagedObject with modified properties.
+        Args:
+            mo (managedobject): ManagedObject with modified properties.
 
-        Return:
+        Returns:
             None
 
         Example:
-            obj = handle.set_mo(mo)
-            handle.commit()
+            obj = handle.set_mo(mo)\n
+            handle.commit()\n
         """
 
         mo.status = "modified"
@@ -530,15 +517,15 @@ class UcsHandle(UcsSession):
         """
         Removes object from UCSM.
 
-        Attributes:
-            * mo (managedobject): ManagedObject to be removed.
+        Args:
+            mo (managedobject): ManagedObject to be removed.
 
-        Return:
+        Returns:
             None
 
         Example:
-            obj = handle.remove_mo(mo)
-            handle.commit()
+            obj = handle.remove_mo(mo)\n
+            handle.commit()\n
         """
 
         mo.status = "deleted"
@@ -553,11 +540,14 @@ class UcsHandle(UcsSession):
         Add, modify or remove using add_mo(), set_mo() and remove_mo()
         respectively.
 
-        Return:
+        Args:
+            None
+
+        Returns:
             None
 
         Example:
-            handle.commit()
+            handle.commit()\n
         """
 
         from ucsbasetype import ConfigMap, Dn, DnSet, Pair
@@ -620,7 +610,10 @@ class UcsHandle(UcsSession):
         """
         clears the commit buffer
 
-        Return:
+        Args:
+            None
+
+        Returns:
             None
 
         Example:

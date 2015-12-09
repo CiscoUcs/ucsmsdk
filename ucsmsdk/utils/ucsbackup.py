@@ -30,22 +30,22 @@ def backup_ucs(handle, backup_type, file_dir, file_name, timeout_in_sec=600,
     """
     This operation creates and download the backup of ucs.
 
-    Attributes:
-        * handle (UcsHandle)
-        * backup_type (str): specifies the type of backup
-                        i.e. fullstate/config-logical/config-system/
-                        config-all
-        * file_dir (str): directory to download ucs backup file
-        * file_name (str): backup file name to be imported
-        * timeout_in_sec (number) : time in seconds for which method waits
-                                for the backUp file to generate else exit.
-        * preserve_pooled_values (boolean): by default False
+    Args:
+        handle (UcsHandle)
+        backup_type (str): specifies the type of backup
+                      i.e. fullstate/config-logical/config-system/
+                      config-all
+        file_dir (str): directory to download ucs backup file
+        file_name (str): backup file name to be imported
+        timeout_in_sec (number) : time in seconds for which method waits
+                              for the backUp file to generate else exit.
+        preserve_pooled_values (boolean): by default False
 
     Example:
-        file_dir = "/home/user/backup"
-        file_name = "config_backup.xml"
+        file_dir = "/home/user/backup"\n
+        file_name = "config_backup.xml"\n
         backup_ucs(handle, backup_type="config-logical",
-                    file_dir=test_support, file_name=file_name)
+                    file_dir=test_support, file_name=file_name)\n
     """
 
     from ..mometa.mgmt.MgmtBackup import MgmtBackup, MgmtBackupConsts
@@ -147,20 +147,19 @@ def import_ucs_backup(handle, file_dir, file_name, merge=False):
     and logical configuration files. User can perform an import while the
     system is up and running.
 
-    Attributes:
-        * handle (UcsHandle)
-        * file_dir (str): directory contains ucs backup file
-        * file_name (str): backup file name to be imported
-        * merge (boolean): specifies whether to merge the backup
-          configuration with the existing UCSM configuration
+    Args:
+        handle (UcsHandle)
+        file_dir (str): directory contains ucs backup file
+        file_name (str): backup file name to be imported
+        merge (boolean): specifies whether to merge the backup
+                        configuration with the existing UCSM configuration
 
     Example:
-        file_dir = "/home/user/backup"
-        file_name = "config_backup.xml"
-        import_ucs_backup(handle, file_dir=file_dir, file_name=file_name)
-
+        file_dir = "/home/user/backup"\n
+        file_name = "config_backup.xml"\n
+        import_ucs_backup(handle, file_dir=file_dir, file_name=file_name)\n
         import_ucs_backup(handle, file_dir=file_dir, file_name=file_name,
-                        merge=True)
+                        merge=True)\n
     """
 
     from ..mometa.top.TopSystem import TopSystem

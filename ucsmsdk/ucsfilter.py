@@ -152,17 +152,16 @@ def generate_infilter(class_id, filter_str, is_meta_class_id):
     """
     Create FilterFilter object
 
-    Attributes:
-        * class_id (str): class_id
-        * filter_str (str): filter expression
-        * is_meta_class_id (bool)
+    Args:
+        class_id (str): class_id
+        filter_str (str): filter expression
+        is_meta_class_id (bool)
 
-    Return:
+    Returns:
         True on successful connect
 
     Example:
-        generate_infilter("LsServer", '("usr_lbl, "mysp", type="eq", flag="I)',
-                          True)
+        generate_infilter("LsServer", '("usr_lbl, "mysp", type="eq", flag="I)', True)
     """
 
     ParseFilter.class_id = class_id

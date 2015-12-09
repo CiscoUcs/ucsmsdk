@@ -383,21 +383,19 @@ class UcsEventHandle(object):
         subscribe for the event channel from UCS and can monitor those events
         for any specific success value or failure value for a managed object.
 
-        - class_id specifies the class name for which events should
-        be monitored.
-
-        - managed_object specifies a particular managed object that user wants
-        to monitor. prop specifies the the property of the managed object
-        which will be monitored.
-        success_value, failure_value, transient_value specifies the respective
-        scenarios(success, failure etc) about the prop of managed object.
-
-        - poll_sec specifies the time in seconds for polling event.
-
-        - timeout_sec specifies the time after which method should stop
-        polling or timeOut.
-        - call_back specifies the call Back Method or operation that can be
-        given to this method
+        Args:
+            class_id (str) - specifies the class name for which events should be monitored.
+            managed_object (object) - specifies a particular managed object that
+                user wants to monitor. prop specifies the the property of the
+                managed object which will be monitored.
+            success_value - specifies the success values of a ManagedObject Prop
+            failure_value - specifies the failure values of a ManagedObject Prop
+            transient_value - specifies transient values of a ManagedObject Prop 
+            poll_sec - specifies the time in seconds for polling event.
+            timeout_sec - specifies the time after which method should stop 
+                            polling or timeOut.
+            call_back - specifies the call Back Method or operation that can be
+                            given to this method
         """
 
         if class_id is not None and managed_object is None:

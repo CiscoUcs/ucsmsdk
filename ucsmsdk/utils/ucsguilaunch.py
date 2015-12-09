@@ -30,14 +30,14 @@ def ucs_gui_launch(handle, need_url=False):
     """
     This operation launch ucs gui.
 
-    Attributes:
-        * handle (UcsHandle)
-        * need_url (bool): if true, it returns url to launch gui and will not
-          launch gui
+    Args:
+        handle (UcsHandle)
+        need_url (bool): if true, it returns url to launch gui and will not
+                            launch gui
 
     Example:
-        ucs_gui_launch(handle)
-        ucs_gui_launch(handle, need_url=True)
+        ucs_gui_launch(handle)\n
+        ucs_gui_launch(handle, need_url=True)\n
     """
 
     import tempfile

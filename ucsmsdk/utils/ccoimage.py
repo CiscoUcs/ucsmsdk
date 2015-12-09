@@ -82,13 +82,13 @@ def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None,
     """
     Gets the list of available cco images
 
-    Attributes:
-        * username (str): username to connect to image server
-        * password (str): password to connect to image server
-        * mdf_id_list (list): list of mdf id
-        * proxy (str): proxy used for connection
+    Args:
+        username (str): username to connect to image server
+        password (str): password to connect to image server
+        mdf_id_list (list): list of mdf id
+        proxy (str): proxy used for connection
 
-    Return:
+    Returns:
         List of UcsCcoImage objects
 
     Example:
@@ -193,17 +193,17 @@ def get_ucs_cco_image(image, file_dir, proxy=None):
     """
     Downloads the cco image
 
-    Attributes:
-        * image (object): object of type UcsCcoImage
-        * file_dir (str): directory to download image
-        * proxy (str): proxy used for connection
+    Args:
+        image (object): object of type UcsCcoImage
+        file_dir (str): directory to download image
+        proxy (str): proxy used for connection
 
-    Return:
+    Returns:
         None
 
     Example:
-        image_list = get_ucs_cco_image_list("username", "password")
-        get_ucs_cco_image(image=image_list[0], file_dir="/home/user/images")
+        image_list = get_ucs_cco_image_list("username", "password")\n
+        get_ucs_cco_image(image=image_list[0], file_dir="/home/user/images")\n
     """
 
     if not image:

@@ -79,8 +79,8 @@ class UcsDriver(object):
     This class is responsible to create http and https connection using urllib
     library.
 
-    Attributes:
-        * proxy (str): The proxy object to be used to connect
+    Args:
+        proxy (str): The proxy object to be used to connect
 
     Example:
         driver = UcsDriver(proxy="192.168.1.1:80")
@@ -108,16 +108,16 @@ class UcsDriver(object):
         """
         Adds header to http/ https web request
 
-        Attributes:
-            * header_prop (str): header name
-            * header (str): header value
+        Args:
+            header_prop (str): header name
+            header (str): header value
 
-        Return:
+        Returns:
             None
 
         Example:
-            driver=UcsDriver()
-            driver.add_header('Cookie', 'xxxxxxxxxxxxxx')
+            driver=UcsDriver()\n
+            driver.add_header('Cookie', 'xxxxxxxxxxxxxx')\n
         """
 
         self.__headers[header_prop] = header_value
@@ -126,15 +126,15 @@ class UcsDriver(object):
         """
         Removes header from http/ https web request
 
-        Attributes:
-            * header_prop (str): header name
+        Args:
+            header_prop (str): header name
 
-        Return:
+        Returns:
             None
 
         Example:
-            driver=UcsDriver()
-            driver.remove_header('Cookie')
+            driver=UcsDriver()\n
+            driver.remove_header('Cookie')\n
         """
 
         del self.__headers[header_prop]
@@ -151,11 +151,11 @@ class UcsDriver(object):
         """
         Internal method to create http/https web request
 
-        Attributes:
-            * uri (str): protocol://web_address:port
-            * data (str): data to send over web request
+        Args:
+            uri (str): protocol://web_address:port
+            data (str): data to send over web request
 
-        Return:
+        Returns:
             web request object
         """
 
@@ -172,14 +172,13 @@ class UcsDriver(object):
         """
         sends the web request and receives the response from ucsm server
 
-        Attributes:
-            * uri (str): URI of the  the UCS Server
-            * data (str): request data to send via post request
-            * dump_xml (bool): if True, displays request and response
-            * read (bool): if True, returns response.read() else returns
-              object.
+        Args:
+            uri (str): URI of the  the UCS Server
+            data (str): request data to send via post request
+            dump_xml (bool): if True, displays request and response
+            read (bool): if True, returns response.read() else returns object.
 
-        Return:
+        Returns:
             response xml string or response object
 
         Example:

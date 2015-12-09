@@ -27,10 +27,10 @@ def to_xml_str(elem):
     """
     Converts xml element to xml string.
 
-    Attributes:
-        * elem (xml element)
+    Args:
+        elem (xml element)
 
-    Return:
+    Returns:
         xml string
 
     Example:
@@ -39,14 +39,15 @@ def to_xml_str(elem):
 
     return ET.tostring(elem)
 
+
 def extract_root_elem(xml_str):
     """
     extracts root xml element from xml string.
 
-    Attributes:
-        * xml_str (str): xml string
+    Args:
+        xml_str (str): xml string
 
-    Return:
+    Returns:
         xml element
 
     Example:
@@ -61,22 +62,23 @@ def extract_root_elem(xml_str):
     root_elem = ET.fromstring(xml_str)
     return root_elem
 
+
 def from_xml_str(xml_str):
     """
     Generates response object from the given xml string.
 
-    Attributes:
-        * xml_str (str): xml string
+    Args:
+        xml_str (str): xml string
 
-    Return:
+    Returns:
         object (external method or managed object or generic managed object)
 
     Example:
-        xml_str='''
-        <lsServer dn="org-root/ls-testsp" dynamicConPolicyName="test"
-        extIPPoolName="ext-mgmt" name="testsp" />
-        '''
-        root_element = extract_root_elem(xml_str)
+        xml_str='''\n
+        <lsServer dn="org-root/ls-testsp" dynamicConPolicyName="test"\n
+        extIPPoolName="ext-mgmt" name="testsp" />\n
+        '''\n
+        root_element = extract_root_elem(xml_str)\n
     """
 
     root_elem = ET.fromstring(xml_str)

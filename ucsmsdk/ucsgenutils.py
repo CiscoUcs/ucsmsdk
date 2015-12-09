@@ -72,8 +72,8 @@ def to_python_propname(word):
 def convert_to_python_var_name(name):
     """converts a ucs server variable to python recommended format
 
-    Attributes:
-        * name (str): string to be converted to python recommended format
+    Args:
+        name (str): string to be converted to python recommended format
     """
 
     pattern = re.compile(r"(?<!^)(?=[A-Z])")
@@ -144,21 +144,18 @@ def download_file(driver, file_url, file_dir, file_name):
     """
     Downloads the file from web server
 
-    Attributes:
-        * driver (UcsDriver)
-        * file_url (str): url to download the file
-        * file_dir (str): The directory to download to
-        * file_name (str): The destination file name for the download
+    Args:
+        driver (UcsDriver)
+        file_url (str): url to download the file
+        file_dir (str): The directory to download to
+        file_name (str): The destination file name for the download
 
     Returns:
         None
 
     Example:
-        driver = UcsDriver()
-        download_file(driver=UcsDriver(),
-                      file_url="http://fileurl",
-                      file_dir='/home/user/backup',
-                      file_name='my_config_backup.xml')
+        driver = UcsDriver()\n
+        download_file(driver=UcsDriver(), file_url="http://fileurl", file_dir='/home/user/backup', file_name='my_config_backup.xml')
     """
 
     import os
@@ -194,21 +191,18 @@ def upload_file(driver, uri, file_dir, file_name):
     """
     Uploads the file on web server
 
-    Attributes:
-        * driver (UcsDriver)
-        * uri (str): url to upload the file
-        * file_dir (str): The directory to download to
-        * file_name (str): The destination file name for the download
+    Args:
+        driver (UcsDriver)
+        uri (str): url to upload the file
+        file_dir (str): The directory to download to
+        file_name (str): The destination file name for the download
 
     Returns:
         None
 
     Example:
-        driver = UcsDriver()
-        upload_file(driver=UcsDriver(),
-                    uri="http://fileurl",
-                    file_dir='/home/user/backup',
-                    file_name='my_config_backup.xml')
+        driver = UcsDriver()\n
+        upload_file(driver=UcsDriver(), uri="http://fileurl", file_dir='/home/user/backup', file_name='my_config_backup.xml')
     """
 
     progress = Progress()
@@ -249,7 +243,7 @@ def is_binary_in_path(path, binary):
     """
     Checks if the given binary is available in the specified path.
 
-    Return:
+    Returns:
         True or False (Boolean)
     """
     import os
@@ -371,8 +365,8 @@ def get_md5_sum(filename):
     """
     Method to get md5sum for the image.
 
-    Attributes:
-        * filename (str): file for which md5sum is to be computed
+    Args:
+        filename (str): file for which md5sum is to be computed
     """
 
     import hashlib
@@ -390,8 +384,8 @@ def get_sha_hash(input_string):
     """
     Method returns the sha hash digest for a given string.
 
-    Attributes:
-        * input_string (str): the input string for which sha has to be computed
+    Args:
+        input_string (str): the input string for which sha has to be computed
     """
 
     import hashlib
@@ -422,9 +416,9 @@ def encrypt_password(password, key):
     """
     Encrypts the password using the given key.
 
-    Attributes:
-        * password (str): password to be encrypted
-        * key (str): key to be used to encrypt the password
+    Args:
+        password (str): password to be encrypted
+        key (str): key to be used to encrypt the password
     """
 
     from time import time
