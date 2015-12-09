@@ -22,18 +22,18 @@ class FabricNetflowMonitorRef(ManagedObject):
     consts = FabricNetflowMonitorRefConsts()
     naming_props = set([u'nfMonitorName', u'direction'])
 
-    mo_meta = MoMeta("FabricNetflowMonitorRef", "fabricNetflowMonitorRef", "flow-monitor-[nf_monitor_name]-dir-[direction]", VersionMeta.Version221b, "InputOutput", 0x7fL, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricNetflowMonSession'], [u'faultInst'], [None])
+    mo_meta = MoMeta("FabricNetflowMonitorRef", "fabricNetflowMonitorRef", "flow-monitor-[nf_monitor_name]-dir-[direction]", VersionMeta.Version221b, "InputOutput", 0xffL, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricNetflowMonSession'], [u'faultInst'], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "direction": MoPropertyMeta("direction", "direction", "string", VersionMeta.Version221b, MoPropertyMeta.NAMING, 0x2L, None, None, None, ["receive", "transmit"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "index": MoPropertyMeta("index", "index", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, [], ["0-2"]), 
-        "nf_monitor_name": MoPropertyMeta("nf_monitor_name", "nfMonitorName", "string", VersionMeta.Version221b, MoPropertyMeta.NAMING, 0x10L, None, None, """[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "direction": MoPropertyMeta("direction", "direction", "string", VersionMeta.Version221b, MoPropertyMeta.NAMING, 0x4L, None, None, None, ["receive", "transmit"], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "index": MoPropertyMeta("index", "index", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, [], ["0-2"]), 
+        "nf_monitor_name": MoPropertyMeta("nf_monitor_name", "nfMonitorName", "string", VersionMeta.Version221b, MoPropertyMeta.NAMING, 0x20L, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
         "oper_nf_monitor_name": MoPropertyMeta("oper_nf_monitor_name", "operNfMonitorName", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x40L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x80L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
     }
 

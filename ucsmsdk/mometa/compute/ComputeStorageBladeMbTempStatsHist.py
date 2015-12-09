@@ -37,31 +37,31 @@ class ComputeStorageBladeMbTempStatsHist(ManagedObject):
     consts = ComputeStorageBladeMbTempStatsHistConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("ComputeStorageBladeMbTempStatsHist", "computeStorageBladeMbTempStatsHist", "[id]", VersionMeta.Version302a, "OutputOnly", 0x7L, [], ["read-only"], [u'computeStorageBladeMbTempStats'], [], [None])
+    mo_meta = MoMeta("ComputeStorageBladeMbTempStatsHist", "computeStorageBladeMbTempStatsHist", "[id]", VersionMeta.Version302c, "OutputOnly", 0xfL, [], ["read-only"], [u'computeStorageBladeMbTempStats'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302a, MoPropertyMeta.INTERNAL, None, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x1L, 0, 256, None, [], []), 
-        "front_temp": MoPropertyMeta("front_temp", "frontTemp", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "front_temp_avg": MoPropertyMeta("front_temp_avg", "frontTempAvg", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "front_temp_max": MoPropertyMeta("front_temp_max", "frontTempMax", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "front_temp_min": MoPropertyMeta("front_temp_min", "frontTempMin", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "id": MoPropertyMeta("id", "id", "ulong", VersionMeta.Version302a, MoPropertyMeta.NAMING, None, None, None, None, [], []), 
-        "left_rear_temp": MoPropertyMeta("left_rear_temp", "leftRearTemp", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "left_rear_temp_avg": MoPropertyMeta("left_rear_temp_avg", "leftRearTempAvg", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "left_rear_temp_max": MoPropertyMeta("left_rear_temp_max", "leftRearTempMax", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "left_rear_temp_min": MoPropertyMeta("left_rear_temp_min", "leftRearTempMin", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "most_recent": MoPropertyMeta("most_recent", "mostRecent", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "right_rear_temp": MoPropertyMeta("right_rear_temp", "rightRearTemp", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "right_rear_temp_avg": MoPropertyMeta("right_rear_temp_avg", "rightRearTempAvg", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "right_rear_temp_max": MoPropertyMeta("right_rear_temp_max", "rightRearTempMax", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "right_rear_temp_min": MoPropertyMeta("right_rear_temp_min", "rightRearTempMin", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x4L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "suspect": MoPropertyMeta("suspect", "suspect", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "thresholded": MoPropertyMeta("thresholded", "thresholded", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "front_temp": MoPropertyMeta("front_temp", "frontTemp", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "front_temp_avg": MoPropertyMeta("front_temp_avg", "frontTempAvg", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "front_temp_max": MoPropertyMeta("front_temp_max", "frontTempMax", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "front_temp_min": MoPropertyMeta("front_temp_min", "frontTempMin", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "id": MoPropertyMeta("id", "id", "ulong", VersionMeta.Version302c, MoPropertyMeta.NAMING, None, None, None, None, [], []), 
+        "left_rear_temp": MoPropertyMeta("left_rear_temp", "leftRearTemp", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "left_rear_temp_avg": MoPropertyMeta("left_rear_temp_avg", "leftRearTempAvg", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "left_rear_temp_max": MoPropertyMeta("left_rear_temp_max", "leftRearTempMax", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "left_rear_temp_min": MoPropertyMeta("left_rear_temp_min", "leftRearTempMin", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "most_recent": MoPropertyMeta("most_recent", "mostRecent", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "right_rear_temp": MoPropertyMeta("right_rear_temp", "rightRearTemp", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "right_rear_temp_avg": MoPropertyMeta("right_rear_temp_avg", "rightRearTempAvg", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "right_rear_temp_max": MoPropertyMeta("right_rear_temp_max", "rightRearTempMax", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "right_rear_temp_min": MoPropertyMeta("right_rear_temp_min", "rightRearTempMin", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "suspect": MoPropertyMeta("suspect", "suspect", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "thresholded": MoPropertyMeta("thresholded", "thresholded", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
     }
 
     prop_map = {

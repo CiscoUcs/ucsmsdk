@@ -24,22 +24,22 @@ class AaaSessionInfo(ManagedObject):
     consts = AaaSessionInfoConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("AaaSessionInfo", "aaaSessionInfo", "term-[id]", VersionMeta.Version212a, "InputOutput", 0xfffL, [], ["aaa", "admin"], [u'aaaSessionInfoTable'], [], [None])
+    mo_meta = MoMeta("AaaSessionInfo", "aaaSessionInfo", "term-[id]", VersionMeta.Version212a, "InputOutput", 0x1fffL, [], ["aaa", "admin"], [u'aaaSessionInfoTable'], [], [None])
 
     prop_meta = {
-        "address": MoPropertyMeta("address", "address", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x1L, 0, 510, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dest_ip": MoPropertyMeta("dest_ip", "destIp", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x4L, 0, 510, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "etime": MoPropertyMeta("etime", "etime", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, """([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
-        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version212a, MoPropertyMeta.NAMING, 0x20L, 1, 510, None, [], []), 
-        "priv": MoPropertyMeta("priv", "priv", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x40L, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, ["all", "kvm", "sol", "vmedia"], []), 
-        "user": MoPropertyMeta("user", "user", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x400L, 0, 510, None, [], []), 
-        "user_type": MoPropertyMeta("user_type", "userType", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x800L, None, None, None, ["ipmi", "local", "remote"], []), 
+        "address": MoPropertyMeta("address", "address", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x2L, 0, 510, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dest_ip": MoPropertyMeta("dest_ip", "destIp", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x8L, 0, 510, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "etime": MoPropertyMeta("etime", "etime", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
+        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version212a, MoPropertyMeta.NAMING, 0x40L, 1, 510, None, [], []), 
+        "priv": MoPropertyMeta("priv", "priv", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x80L, 0, 510, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, 0x100L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, ["all", "kvm", "sol", "vmedia"], []), 
+        "user": MoPropertyMeta("user", "user", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x800L, 0, 510, None, [], []), 
+        "user_type": MoPropertyMeta("user_type", "userType", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, None, ["ipmi", "local", "remote"], []), 
     }
 
     prop_map = {

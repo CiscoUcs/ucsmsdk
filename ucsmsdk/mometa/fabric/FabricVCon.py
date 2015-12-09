@@ -43,23 +43,23 @@ class FabricVCon(ManagedObject):
     consts = FabricVConConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("FabricVCon", "fabricVCon", "vcon-[id]", VersionMeta.Version111j, "InputOutput", 0x7ffL, [], ["admin", "ext-lan-policy", "ls-config-policy", "ls-network", "ls-network-policy", "ls-server-policy", "ls-storage-policy"], [u'fabricVConProfile', u'lsServer'], [], ["Add", "Get", "Set"])
+    mo_meta = MoMeta("FabricVCon", "fabricVCon", "vcon-[id]", VersionMeta.Version111j, "InputOutput", 0xfffL, [], ["admin", "ext-lan-policy", "ls-config-policy", "ls-network", "ls-network-policy", "ls-server-policy", "ls-storage-policy"], [u'fabricVConProfile', u'lsServer'], [], ["Add", "Get", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
         "equipment_dn": MoPropertyMeta("equipment_dn", "equipmentDn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "fabric": MoPropertyMeta("fabric", "fabric", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["A", "B", "NONE", "any"], []), 
-        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version111j, MoPropertyMeta.NAMING, 0x8L, None, None, None, ["1", "2", "3", "4"], []), 
-        "inst_type": MoPropertyMeta("inst_type", "instType", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["auto", "manual", "policy"], []), 
-        "placement": MoPropertyMeta("placement", "placement", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["auto", "physical"], []), 
-        "prop_acl": MoPropertyMeta("prop_acl", "propAcl", "ulong", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "select": MoPropertyMeta("select", "select", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, ["all", "assigned-only", "dynamic-only", "exclude-dynamic", "exclude-unassigned", "exclude-usnic", "unassigned-only", "usnic-only"], []), 
-        "share": MoPropertyMeta("share", "share", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, ["different-transport", "exclusive-only", "exclusive-preferred", "same-transport", "shared"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x200L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x400L, None, None, """((fc|ethernet|defaultValue),){0,2}(fc|ethernet|defaultValue){0,1}""", [], []), 
+        "fabric": MoPropertyMeta("fabric", "fabric", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["A", "B", "NONE", "any"], []), 
+        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version111j, MoPropertyMeta.NAMING, 0x10L, None, None, None, ["1", "2", "3", "4"], []), 
+        "inst_type": MoPropertyMeta("inst_type", "instType", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["auto", "manual", "policy"], []), 
+        "placement": MoPropertyMeta("placement", "placement", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["auto", "physical"], []), 
+        "prop_acl": MoPropertyMeta("prop_acl", "propAcl", "ulong", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "select": MoPropertyMeta("select", "select", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, ["all", "assigned-only", "dynamic-only", "exclude-dynamic", "exclude-unassigned", "exclude-usnic", "unassigned-only", "usnic-only"], []), 
+        "share": MoPropertyMeta("share", "share", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, ["different-transport", "exclusive-only", "exclusive-preferred", "same-transport", "shared"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x400L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x800L, None, None, r"""((fc|ethernet|defaultValue),){0,2}(fc|ethernet|defaultValue){0,1}""", [], []), 
     }
 
     prop_map = {

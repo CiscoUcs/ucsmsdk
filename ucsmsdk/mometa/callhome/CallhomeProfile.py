@@ -29,20 +29,20 @@ class CallhomeProfile(ManagedObject):
     consts = CallhomeProfileConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("CallhomeProfile", "callhomeProfile", "profile-[name]", VersionMeta.Version101e, "InputOutput", 0x3ffL, [], ["admin", "operations"], [u'callhomeEp'], [u'callhomeDest'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("CallhomeProfile", "callhomeProfile", "profile-[name]", VersionMeta.Version101e, "InputOutput", 0x7ffL, [], ["admin", "operations"], [u'callhomeEp'], [u'callhomeDest'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "alert_groups": MoPropertyMeta("alert_groups", "alertGroups", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1L, None, None, """((diagnostic|all|syslogPort|inventory|system|license|environmental|test|linecard|lifeCycle|ciscoTac|supervisor),){0,11}(diagnostic|all|syslogPort|inventory|system|license|environmental|test|linecard|lifeCycle|ciscoTac|supervisor){0,1}""", [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "format": MoPropertyMeta("format", "format", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["fullTxt", "shortTxt", "xml"], []), 
-        "level": MoPropertyMeta("level", "level", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["critical", "debug", "disaster", "fatal", "major", "minor", "normal", "notification", "warning"], []), 
-        "max_size": MoPropertyMeta("max_size", "maxSize", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, [], ["1-5000000"]), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80L, None, None, """[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x100L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "alert_groups": MoPropertyMeta("alert_groups", "alertGroups", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2L, None, None, r"""((diagnostic|all|syslogPort|inventory|system|license|environmental|test|linecard|lifeCycle|ciscoTac|supervisor),){0,11}(diagnostic|all|syslogPort|inventory|system|license|environmental|test|linecard|lifeCycle|ciscoTac|supervisor){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "format": MoPropertyMeta("format", "format", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["fullTxt", "shortTxt", "xml"], []), 
+        "level": MoPropertyMeta("level", "level", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["critical", "debug", "disaster", "fatal", "major", "minor", "normal", "notification", "warning"], []), 
+        "max_size": MoPropertyMeta("max_size", "maxSize", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, [], ["1-5000000"]), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x100L, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x200L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

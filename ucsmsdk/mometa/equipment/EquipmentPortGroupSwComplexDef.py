@@ -11,6 +11,7 @@ sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 class EquipmentPortGroupSwComplexDefConsts():
     ASIC_CARMEL = "carmel"
     ASIC_GATOS = "gatos"
+    ASIC_TRIDENT2 = "trident2"
     ASIC_UNKNOWN = "unknown"
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
@@ -24,21 +25,21 @@ class EquipmentPortGroupSwComplexDef(ManagedObject):
     consts = EquipmentPortGroupSwComplexDefConsts()
     naming_props = set([u'asic'])
 
-    mo_meta = MoMeta("EquipmentPortGroupSwComplexDef", "equipmentPortGroupSwComplexDef", "port-group-sw-complex-def[asic]", VersionMeta.Version201m, "InputOutput", 0xffL, [], [""], [u'equipmentSwitchCapProvider'], [u'equipmentPortSwComplexRef'], ["Get"])
+    mo_meta = MoMeta("EquipmentPortGroupSwComplexDef", "equipmentPortGroupSwComplexDef", "port-group-sw-complex-def[asic]", VersionMeta.Version201m, "InputOutput", 0x1ffL, [], [""], [u'equipmentSwitchCapProvider'], [u'equipmentPortSwComplexRef'], ["Get"])
 
     prop_meta = {
-        "asic": MoPropertyMeta("asic", "asic", "string", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x1L, None, None, None, ["carmel", "gatos", "unknown"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x4L, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "asic": MoPropertyMeta("asic", "asic", "string", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x2L, None, None, None, ["carmel", "gatos", "trident2", "unknown"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x10L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["local", "pending-policy", "policy"], []), 
         "port_capacity": MoPropertyMeta("port_capacity", "portCapacity", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x80L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "sw_complex_capacity": MoPropertyMeta("sw_complex_capacity", "swComplexCapacity", "ushort", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "vif_capacity": MoPropertyMeta("vif_capacity", "vifCapacity", "ushort", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
     }

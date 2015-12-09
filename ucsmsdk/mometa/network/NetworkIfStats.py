@@ -25,19 +25,19 @@ class NetworkIfStats(ManagedObject):
     consts = NetworkIfStatsConsts()
     naming_props = set([u'type', u'units'])
 
-    mo_meta = MoMeta("NetworkIfStats", "networkIfStats", "if-stat-[type]-[units]", VersionMeta.Version101e, "InputOutput", 0x3fL, [], ["read-only"], [u'adaptorHostEthIf', u'adaptorHostFcIf', u'adaptorHostIscsiIf', u'adaptorHostScsiIf', u'adaptorHostServiceEthIf', u'etherPIo', u'fcPIo'], [], ["Get"])
+    mo_meta = MoMeta("NetworkIfStats", "networkIfStats", "if-stat-[type]-[units]", VersionMeta.Version101e, "InputOutput", 0x7fL, [], ["read-only"], [u'adaptorHostEthIf', u'adaptorHostFcIf', u'adaptorHostIscsiIf', u'adaptorHostScsiIf', u'adaptorHostServiceEthIf', u'etherPIo', u'fcPIo'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
         "r_in": MoPropertyMeta("r_in", "in", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "out": MoPropertyMeta("out", "out", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rin": MoPropertyMeta("rin", "rin", "ulong", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10L, None, None, None, ["broadcast", "generic", "multicast", "total", "unicast"], []), 
-        "units": MoPropertyMeta("units", "units", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20L, None, None, None, ["octets", "packets", "raw"], []), 
+        "rin": MoPropertyMeta("rin", "rin", "ulong", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20L, None, None, None, ["broadcast", "generic", "multicast", "total", "unicast"], []), 
+        "units": MoPropertyMeta("units", "units", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x40L, None, None, None, ["octets", "packets", "raw"], []), 
     }
 
     prop_map = {

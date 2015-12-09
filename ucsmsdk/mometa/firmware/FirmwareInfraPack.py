@@ -32,26 +32,26 @@ class FirmwareInfraPack(ManagedObject):
     consts = FirmwareInfraPackConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("FirmwareInfraPack", "firmwareInfraPack", "fw-infra-pack-[name]", VersionMeta.Version211a, "InputOutput", 0xfffL, [], ["admin"], [u'orgOrg'], [u'firmwarePackItem'], ["Get", "Set"])
+    mo_meta = MoMeta("FirmwareInfraPack", "firmwareInfraPack", "fw-infra-pack-[name]", VersionMeta.Version211a, "InputOutput", 0x1fffL, [], ["admin"], [u'orgOrg'], [u'firmwarePackItem'], ["Get", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2L, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "force_deploy": MoPropertyMeta("force_deploy", "forceDeploy", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x4L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "force_deploy": MoPropertyMeta("force_deploy", "forceDeploy", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["false", "no", "true", "yes"], []), 
         "infra_bundle_name": MoPropertyMeta("infra_bundle_name", "infraBundleName", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "infra_bundle_version": MoPropertyMeta("infra_bundle_version", "infraBundleVersion", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10L, 0, 510, None, [], []), 
+        "infra_bundle_version": MoPropertyMeta("infra_bundle_version", "infraBundleVersion", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20L, 0, 510, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
-        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["one-shot", "staged"], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x40L, None, None, """[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
+        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["one-shot", "staged"], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x80L, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, ["local", "pending-policy", "policy"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x100L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x200L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "skip_validation": MoPropertyMeta("skip_validation", "skipValidation", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "stage_size": MoPropertyMeta("stage_size", "stageSize", "ushort", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x400L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "update_trigger": MoPropertyMeta("update_trigger", "updateTrigger", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x800L, None, None, """([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["immediate"], []), 
+        "stage_size": MoPropertyMeta("stage_size", "stageSize", "ushort", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x800L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "update_trigger": MoPropertyMeta("update_trigger", "updateTrigger", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["immediate"], []), 
     }
 
     prop_map = {

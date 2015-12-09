@@ -14,6 +14,7 @@ class SwVlanGroupConsts():
     SWITCH_ID_NONE = "NONE"
     TYPE_COMPRESSED = "compressed"
     TYPE_UNCOMPRESSED = "uncompressed"
+    TYPE_VP_COMPRESSED = "vp-compressed"
 
 
 class SwVlanGroup(ManagedObject):
@@ -22,18 +23,19 @@ class SwVlanGroup(ManagedObject):
     consts = SwVlanGroupConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("SwVlanGroup", "swVlanGroup", "vlan-group-[id]", VersionMeta.Version211a, "InputOutput", 0x1fL, [], ["read-only"], [u'swEthLanBorder'], [u'swVlanRef'], [None])
+    mo_meta = MoMeta("SwVlanGroup", "swVlanGroup", "vlan-group-[id]", VersionMeta.Version211a, "InputOutput", 0x3fL, [], ["read-only"], [u'swEthLanBorder'], [u'swVIFRef', u'swVlanRef'], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x4L, None, None, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x8L, None, None, None, [], []), 
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "pv_score": MoPropertyMeta("pv_score", "pvScore", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["compressed", "uncompressed"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["compressed", "uncompressed", "vp-compressed"], []), 
     }
 
     prop_map = {
@@ -41,6 +43,7 @@ class SwVlanGroup(ManagedObject):
         "dn": "dn", 
         "id": "id", 
         "peerDn": "peer_dn", 
+        "pvScore": "pv_score", 
         "rn": "rn", 
         "sacl": "sacl", 
         "status": "status", 
@@ -53,6 +56,7 @@ class SwVlanGroup(ManagedObject):
         self.id = id
         self.child_action = None
         self.peer_dn = None
+        self.pv_score = None
         self.sacl = None
         self.status = None
         self.switch_id = None

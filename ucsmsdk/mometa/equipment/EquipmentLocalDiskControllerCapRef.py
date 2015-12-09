@@ -19,18 +19,18 @@ class EquipmentLocalDiskControllerCapRef(ManagedObject):
     consts = EquipmentLocalDiskControllerCapRefConsts()
     naming_props = set([u'vendor', u'model', u'revision'])
 
-    mo_meta = MoMeta("EquipmentLocalDiskControllerCapRef", "equipmentLocalDiskControllerCapRef", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version142b, "InputOutput", 0x7fL, [], [""], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentLocalDiskControllerCapRef", "equipmentLocalDiskControllerCapRef", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version142b, "InputOutput", 0xffL, [], [""], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version142b, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version142b, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
         "is_supported": MoPropertyMeta("is_supported", "isSupported", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []), 
-        "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version142b, MoPropertyMeta.NAMING, 0x4L, 1, 510, None, [], []), 
-        "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version142b, MoPropertyMeta.NAMING, 0x8L, 1, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version142b, MoPropertyMeta.READ_WRITE, 0x20L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version142b, MoPropertyMeta.NAMING, 0x40L, 1, 510, None, [], []), 
+        "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version142b, MoPropertyMeta.NAMING, 0x8L, 1, 510, None, [], []), 
+        "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version142b, MoPropertyMeta.NAMING, 0x10L, 1, 510, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version142b, MoPropertyMeta.READ_WRITE, 0x40L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version142b, MoPropertyMeta.NAMING, 0x80L, 1, 510, None, [], []), 
     }
 
     prop_map = {

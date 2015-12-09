@@ -18,18 +18,18 @@ class AdaptorHostethHwAddrCap(ManagedObject):
     consts = AdaptorHostethHwAddrCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorHostethHwAddrCap", "adaptorHostethHwAddrCap", "hwaddr-hosteth", VersionMeta.Version141i, "InputOutput", 0x3fL, [], ["read-only"], [u'adaptorFruCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("AdaptorHostethHwAddrCap", "adaptorHostethHwAddrCap", "hwaddr-hosteth", VersionMeta.Version141i, "InputOutput", 0x7fL, [], ["read-only"], [u'adaptorFruCapProvider'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "legacy_mac_offset1": MoPropertyMeta("legacy_mac_offset1", "legacyMacOffset1", "byte", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "legacy_mac_offset2": MoPropertyMeta("legacy_mac_offset2", "legacyMacOffset2", "byte", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "mac_offset1": MoPropertyMeta("mac_offset1", "macOffset1", "byte", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, [], []), 
-        "mac_offset2": MoPropertyMeta("mac_offset2", "macOffset2", "byte", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "legacy_mac_offset1": MoPropertyMeta("legacy_mac_offset1", "legacyMacOffset1", "byte", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "legacy_mac_offset2": MoPropertyMeta("legacy_mac_offset2", "legacyMacOffset2", "byte", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "mac_offset1": MoPropertyMeta("mac_offset1", "macOffset1", "byte", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, [], []), 
+        "mac_offset2": MoPropertyMeta("mac_offset2", "macOffset2", "byte", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x40L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

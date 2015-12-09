@@ -29,23 +29,23 @@ class EquipmentPOSTCode(ManagedObject):
     consts = EquipmentPOSTCodeConsts()
     naming_props = set([u'localId'])
 
-    mo_meta = MoMeta("EquipmentPOSTCode", "equipmentPOSTCode", "code-[local_id]", VersionMeta.Version101e, "InputOutput", 0xffL, [], ["read-only"], [u'equipmentPOSTCodeReporter', u'equipmentPOSTCodeTemplate'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentPOSTCode", "equipmentPOSTCode", "code-[local_id]", VersionMeta.Version101e, "InputOutput", 0x1ffL, [], ["read-only"], [u'equipmentPOSTCodeReporter', u'equipmentPOSTCodeTemplate'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "code": MoPropertyMeta("code", "code", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x2L, 0, 510, None, [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,384}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "global_id": MoPropertyMeta("global_id", "globalId", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x8L, None, None, None, ["No Errors"], ["0-4294967295"]), 
-        "local_id": MoPropertyMeta("local_id", "localId", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10L, None, None, None, ["No Errors"], ["0-4294967295"]), 
-        "method": MoPropertyMeta("method", "method", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, """((POST|defaultValue|config-check|diag-check|sel-check),){0,4}(POST|defaultValue|config-check|diag-check|sel-check){0,1}""", [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "code": MoPropertyMeta("code", "code", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x4L, 0, 510, None, [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,384}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "global_id": MoPropertyMeta("global_id", "globalId", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x10L, None, None, None, ["No Errors"], ["0-4294967295"]), 
+        "local_id": MoPropertyMeta("local_id", "localId", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20L, None, None, None, ["No Errors"], ["0-4294967295"]), 
+        "method": MoPropertyMeta("method", "method", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""((POST|defaultValue|config-check|diag-check|sel-check),){0,4}(POST|defaultValue|config-check|diag-check|sel-check){0,1}""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "recoverable": MoPropertyMeta("recoverable", "recoverable", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["non-recoverable", "recoverable", "unknown"], []), 
-        "recovery_action": MoPropertyMeta("recovery_action", "recoveryAction", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,384}""", [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "recovery_action": MoPropertyMeta("recovery_action", "recoveryAction", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,384}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "severity": MoPropertyMeta("severity", "severity", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cleared", "condition", "critical", "info", "major", "minor", "warning"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

@@ -21,21 +21,21 @@ class LicenseSourceFile(ManagedObject):
     consts = LicenseSourceFileConsts()
     naming_props = set([u'id', u'line'])
 
-    mo_meta = MoMeta("LicenseSourceFile", "licenseSourceFile", "src-[id]:[line]", VersionMeta.Version141i, "InputOutput", 0x3fL, [], ["read-only"], [u'licenseInstance'], [], ["Get"])
+    mo_meta = MoMeta("LicenseSourceFile", "licenseSourceFile", "src-[id]:[line]", VersionMeta.Version141i, "InputOutput", 0x7fL, [], ["read-only"], [u'licenseInstance'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "exp": MoPropertyMeta("exp", "exp", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, """([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "exp": MoPropertyMeta("exp", "exp", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []), 
         "host_id": MoPropertyMeta("host_id", "hostId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x4L, 1, 32, None, [], []), 
-        "line": MoPropertyMeta("line", "line", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x8L, 1, 510, None, [], []), 
+        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x8L, 1, 32, None, [], []), 
+        "line": MoPropertyMeta("line", "line", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x10L, 1, 510, None, [], []), 
         "pak": MoPropertyMeta("pak", "pak", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "quant": MoPropertyMeta("quant", "quant", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "sig": MoPropertyMeta("sig", "sig", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x40L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["feature", "increment", "upgrade"], []), 
     }
 

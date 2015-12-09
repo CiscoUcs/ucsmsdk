@@ -18,19 +18,19 @@ class VnicIpV6StaticAddr(ManagedObject):
     consts = VnicIpV6StaticAddrConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicIpV6StaticAddr", "vnicIpV6StaticAddr", "ipv6-static-addr", VersionMeta.Version221b, "InputOutput", 0x1ffL, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], [u'mgmtVnet', u'vnicIPv6If'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicIpV6StaticAddr", "vnicIpV6StaticAddr", "ipv6-static-addr", VersionMeta.Version221b, "InputOutput", 0x3ffL, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], [u'mgmtVnet', u'vnicIPv6If'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x1L, 0, 256, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "def_gw": MoPropertyMeta("def_gw", "defGw", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x4L, 0, 256, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "prefix": MoPropertyMeta("prefix", "prefix", "byte", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, [], ["1-127"]), 
-        "prim_dns": MoPropertyMeta("prim_dns", "primDns", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x20L, 0, 256, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "sec_dns": MoPropertyMeta("sec_dns", "secDns", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x80L, 0, 256, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x100L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "def_gw": MoPropertyMeta("def_gw", "defGw", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x8L, 0, 256, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "prefix": MoPropertyMeta("prefix", "prefix", "byte", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, [], ["1-127"]), 
+        "prim_dns": MoPropertyMeta("prim_dns", "primDns", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x40L, 0, 256, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sec_dns": MoPropertyMeta("sec_dns", "secDns", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x100L, 0, 256, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

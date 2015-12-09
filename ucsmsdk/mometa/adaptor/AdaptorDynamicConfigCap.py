@@ -21,18 +21,18 @@ class AdaptorDynamicConfigCap(ManagedObject):
     consts = AdaptorDynamicConfigCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorDynamicConfigCap", "adaptorDynamicConfigCap", "cap-dynamic-config", VersionMeta.Version302a, "InputOutput", 0x3fL, [], ["admin", "pn-policy", "read-only"], [u'adaptorFruCapProvider'], [], [None])
+    mo_meta = MoMeta("AdaptorDynamicConfigCap", "adaptorDynamicConfigCap", "cap-dynamic-config", VersionMeta.Version302c, "InputOutput", 0x7fL, [], ["admin", "pn-policy", "read-only"], [u'adaptorFruCapProvider'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302a, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "dynamic_params": MoPropertyMeta("dynamic_params", "dynamicParams", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x4L, None, None, """((defaultValue|unknown|vlan),){0,2}(defaultValue|unknown|vlan){0,1}""", [], []), 
-        "fw_version_hi": MoPropertyMeta("fw_version_hi", "fwVersionHi", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "fw_version_lo": MoPropertyMeta("fw_version_lo", "fwVersionLo", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "fw_version_oper": MoPropertyMeta("fw_version_oper", "fwVersionOper", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["gt", "lt", "none", "range"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "dynamic_params": MoPropertyMeta("dynamic_params", "dynamicParams", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""((defaultValue|unknown|vlan),){0,2}(defaultValue|unknown|vlan){0,1}""", [], []), 
+        "fw_version_hi": MoPropertyMeta("fw_version_hi", "fwVersionHi", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "fw_version_lo": MoPropertyMeta("fw_version_lo", "fwVersionLo", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "fw_version_oper": MoPropertyMeta("fw_version_oper", "fwVersionOper", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["gt", "lt", "none", "range"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x40L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

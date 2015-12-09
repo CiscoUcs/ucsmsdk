@@ -33,24 +33,24 @@ class ProcessorQual(ManagedObject):
     consts = ProcessorQualConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ProcessorQual", "processorQual", "cpu", VersionMeta.Version101e, "InputOutput", 0x3fffL, [], ["admin", "pn-policy"], [u'computeQual'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("ProcessorQual", "processorQual", "cpu", VersionMeta.Version101e, "InputOutput", 0x7fffL, [], ["admin", "pn-policy"], [u'computeQual'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "arch": MoPropertyMeta("arch", "arch", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1L, None, None, None, ["Dual-Core_Opteron", "Intel_P4_C", "Opteron", "Pentium_4", "Turion_64", "Xeon", "Xeon_MP", "any"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "max_cores": MoPropertyMeta("max_cores", "maxCores", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["unspecified"], ["0-65535"]), 
-        "max_procs": MoPropertyMeta("max_procs", "maxProcs", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["unspecified"], ["0-65535"]), 
-        "max_threads": MoPropertyMeta("max_threads", "maxThreads", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["unspecified"], ["0-65535"]), 
-        "min_cores": MoPropertyMeta("min_cores", "minCores", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["unspecified"], ["0-65535"]), 
-        "min_procs": MoPropertyMeta("min_procs", "minProcs", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, ["unspecified"], ["0-65535"]), 
-        "min_threads": MoPropertyMeta("min_threads", "minThreads", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, ["unspecified"], ["0-65535"]), 
-        "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x200L, None, None, """[ !#$%\(\)\*\+,\-\./:;\?@\[\\\]\^_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x400L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "speed": MoPropertyMeta("speed", "speed", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800L, None, None, None, ["unspecified"], ["0-4294967295"]), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "stepping": MoPropertyMeta("stepping", "stepping", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000L, None, None, None, ["unspecified"], ["0-4294967295"]), 
+        "arch": MoPropertyMeta("arch", "arch", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["Dual-Core_Opteron", "Intel_P4_C", "Opteron", "Pentium_4", "Turion_64", "Xeon", "Xeon_MP", "any"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "max_cores": MoPropertyMeta("max_cores", "maxCores", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["unspecified"], ["0-65535"]), 
+        "max_procs": MoPropertyMeta("max_procs", "maxProcs", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["unspecified"], ["0-65535"]), 
+        "max_threads": MoPropertyMeta("max_threads", "maxThreads", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["unspecified"], ["0-65535"]), 
+        "min_cores": MoPropertyMeta("min_cores", "minCores", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, ["unspecified"], ["0-65535"]), 
+        "min_procs": MoPropertyMeta("min_procs", "minProcs", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, ["unspecified"], ["0-65535"]), 
+        "min_threads": MoPropertyMeta("min_threads", "minThreads", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, ["unspecified"], ["0-65535"]), 
+        "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x400L, None, None, r"""[ !#$%\(\)\*\+,\-\./:;\?@\[\\\]\^_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x800L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "speed": MoPropertyMeta("speed", "speed", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, None, ["unspecified"], ["0-4294967295"]), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "stepping": MoPropertyMeta("stepping", "stepping", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000L, None, None, None, ["unspecified"], ["0-4294967295"]), 
     }
 
     prop_map = {

@@ -27,6 +27,7 @@ class StorageRaidBatteryConsts():
     CAPACITY_PERCENTAGE_EMPTY = "empty"
     CAPACITY_PERCENTAGE_FULL = "full"
     CAPACITY_PERCENTAGE_NOT_APPLICABLE = "not-applicable"
+    CONNECTION_PROTOCOL_NVME = "NVME"
     CONNECTION_PROTOCOL_SAS = "SAS"
     CONNECTION_PROTOCOL_SATA = "SATA"
     CONNECTION_PROTOCOL_UNSPECIFIED = "unspecified"
@@ -76,6 +77,7 @@ class StorageRaidBatteryConsts():
     OPERABILITY_QUALIFIER_UNKNOWN = "unknown"
     PRESENCE_EMPTY = "empty"
     PRESENCE_EQUIPPED = "equipped"
+    PRESENCE_EQUIPPED_DEPRECATED = "equipped-deprecated"
     PRESENCE_EQUIPPED_IDENTITY_UNESTABLISHABLE = "equipped-identity-unestablishable"
     PRESENCE_EQUIPPED_NOT_PRIMARY = "equipped-not-primary"
     PRESENCE_EQUIPPED_SLAVE = "equipped-slave"
@@ -90,7 +92,6 @@ class StorageRaidBatteryConsts():
     PRESENCE_NOT_SUPPORTED = "not-supported"
     PRESENCE_UNAUTHORIZED = "unauthorized"
     PRESENCE_UNKNOWN = "unknown"
-    SIZE_UNKNOWN = "unknown"
     TEMPERATURE_NOT_APPLICABLE = "not-applicable"
 
 
@@ -100,35 +101,35 @@ class StorageRaidBattery(ManagedObject):
     consts = StorageRaidBatteryConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("StorageRaidBattery", "storageRaidBattery", "raid-battery", VersionMeta.Version131c, "InputOutput", 0x1ffL, [], ["read-only"], [u'storageController'], [u'faultInst', u'storageOperation', u'storageTransportableFlashModule'], ["Get"])
+    mo_meta = MoMeta("StorageRaidBattery", "storageRaidBattery", "raid-battery", VersionMeta.Version131c, "InputOutput", 0x3ffL, [], ["read-only"], [u'storageController'], [u'faultInst', u'storageOperation', u'storageTransportableFlashModule'], ["Get"])
 
     prop_meta = {
-        "battery_type": MoPropertyMeta("battery_type", "batteryType", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x1L, None, None, None, ["battery", "supercap", "unknown"], []), 
+        "battery_type": MoPropertyMeta("battery_type", "batteryType", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["battery", "supercap", "unknown"], []), 
         "bbu_status": MoPropertyMeta("bbu_status", "bbuStatus", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["failure-predicted", "learn-cycle-active", "learn-cycle-needed", "microcode-update-reqd", "no-flash-space", "not-present", "not-supported", "optimal", "premium-feature-reqd", "replacement-needed", "unknown"], []), 
         "block_size": MoPropertyMeta("block_size", "blockSize", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unknown"], ["0-4294967295"]), 
-        "capacity_percentage": MoPropertyMeta("capacity_percentage", "capacityPercentage", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["empty", "full", "not-applicable"], ["0-101"]), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x4L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "connection_protocol": MoPropertyMeta("connection_protocol", "connectionProtocol", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["SAS", "SATA", "unspecified"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, [], []), 
+        "capacity_percentage": MoPropertyMeta("capacity_percentage", "capacityPercentage", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["empty", "full", "not-applicable"], ["0-101"]), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x8L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "connection_protocol": MoPropertyMeta("connection_protocol", "connectionProtocol", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NVME", "SAS", "SATA", "unspecified"], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, [], []), 
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []), 
         "learn_cycle_requested": MoPropertyMeta("learn_cycle_requested", "learnCycleRequested", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "true", "unknown"], []), 
         "learn_mode": MoPropertyMeta("learn_mode", "learnMode", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto", "disabled", "unknown", "warn"], []), 
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "next_learn_cycle_ts": MoPropertyMeta("next_learn_cycle_ts", "nextLearnCycleTs", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, """([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["unknown"], []), 
+        "next_learn_cycle_ts": MoPropertyMeta("next_learn_cycle_ts", "nextLearnCycleTs", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["unknown"], []), 
         "number_of_blocks": MoPropertyMeta("number_of_blocks", "numberOfBlocks", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unknown"], ["0-4294967295"]), 
-        "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
-        "operability_qualifier": MoPropertyMeta("operability_qualifier", "operabilityQualifier", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["unknown"], []), 
+        "operability_qualifier": MoPropertyMeta("operability_qualifier", "operabilityQualifier", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["unknown"], []), 
         "operability_qualifier_reason": MoPropertyMeta("operability_qualifier_reason", "operabilityQualifierReason", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
+        "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "size": MoPropertyMeta("size", "size", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unknown"], ["0-4294967295"]), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x80L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "temperature": MoPropertyMeta("temperature", "temperature", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "size": MoPropertyMeta("size", "size", "ulong", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "temperature": MoPropertyMeta("temperature", "temperature", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
     }
 

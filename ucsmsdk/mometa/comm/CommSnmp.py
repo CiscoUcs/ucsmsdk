@@ -25,6 +25,8 @@ class CommSnmpConsts():
     PROTO_NONE = "none"
     PROTO_TCP = "tcp"
     PROTO_UDP = "udp"
+    SNMP_OPER_STATE_DISABLED = "disabled"
+    SNMP_OPER_STATE_ENABLED = "enabled"
 
 
 class CommSnmp(ManagedObject):
@@ -33,28 +35,29 @@ class CommSnmp(ManagedObject):
     consts = CommSnmpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommSnmp", "commSnmp", "snmp-svc", VersionMeta.Version101e, "InputOutput", 0xfffL, [], ["aaa", "admin"], [u'commSvcEp'], [u'commSnmpTrap', u'commSnmpUser', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("CommSnmp", "commSnmp", "snmp-svc", VersionMeta.Version101e, "InputOutput", 0x1fffL, [], ["aaa", "admin"], [u'commSvcEp'], [u'commSnmpTrap', u'commSnmpUser', u'faultInst'], ["Get", "Set"])
 
     prop_meta = {
-        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1L, None, None, None, ["disabled", "enabled"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "community": MoPropertyMeta("community", "community", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, None, None, """[!#$%\)\*\+,\-\./:<=\[\]\^_\{\}~a-zA-Z0-9]{0,32}""", [], []), 
+        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["disabled", "enabled"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "community": MoPropertyMeta("community", "community", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""[!#$%\)\*\+,\-\./:<=\[\]\^_\{\}~a-zA-Z0-9]{0,32}""", [], []), 
         "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applied", "ok"], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
-        "is_set_snmp_secure": MoPropertyMeta("is_set_snmp_secure", "isSetSnmpSecure", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["false", "no", "true", "yes"], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x40L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "is_set_snmp_secure": MoPropertyMeta("is_set_snmp_secure", "isSetSnmpSecure", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x80L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "oper_port": MoPropertyMeta("oper_port", "operPort", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-65535"]), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, ["local", "pending-policy", "policy"], []), 
         "port": MoPropertyMeta("port", "port", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-65535"]), 
         "proto": MoPropertyMeta("proto", "proto", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["all", "none", "tcp", "udp"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x100L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "sys_contact": MoPropertyMeta("sys_contact", "sysContact", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400L, 0, 255, None, [], []), 
-        "sys_location": MoPropertyMeta("sys_location", "sysLocation", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x800L, 0, 510, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x200L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "snmp_oper_state": MoPropertyMeta("snmp_oper_state", "snmpOperState", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "sys_contact": MoPropertyMeta("sys_contact", "sysContact", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x800L, 0, 255, None, [], []), 
+        "sys_location": MoPropertyMeta("sys_location", "sysLocation", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x1000L, 0, 510, None, [], []), 
     }
 
     prop_map = {
@@ -74,6 +77,7 @@ class CommSnmp(ManagedObject):
         "proto": "proto", 
         "rn": "rn", 
         "sacl": "sacl", 
+        "snmpOperState": "snmp_oper_state", 
         "status": "status", 
         "sysContact": "sys_contact", 
         "sysLocation": "sys_location", 
@@ -95,6 +99,7 @@ class CommSnmp(ManagedObject):
         self.port = None
         self.proto = None
         self.sacl = None
+        self.snmp_oper_state = None
         self.status = None
         self.sys_contact = None
         self.sys_location = None

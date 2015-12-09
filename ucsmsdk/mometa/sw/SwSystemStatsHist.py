@@ -9,6 +9,18 @@ sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 
 class SwSystemStatsHistConsts():
+    CORRECTABLE_PARITY_ERROR_NOT_APPLICABLE = "not-applicable"
+    CORRECTABLE_PARITY_ERROR_AVG_NOT_APPLICABLE = "not-applicable"
+    CORRECTABLE_PARITY_ERROR_MAX_NOT_APPLICABLE = "not-applicable"
+    CORRECTABLE_PARITY_ERROR_MIN_NOT_APPLICABLE = "not-applicable"
+    KERNEL_MEM_FREE_NOT_APPLICABLE = "not-applicable"
+    KERNEL_MEM_FREE_AVG_NOT_APPLICABLE = "not-applicable"
+    KERNEL_MEM_FREE_MAX_NOT_APPLICABLE = "not-applicable"
+    KERNEL_MEM_FREE_MIN_NOT_APPLICABLE = "not-applicable"
+    KERNEL_MEM_TOTAL_NOT_APPLICABLE = "not-applicable"
+    KERNEL_MEM_TOTAL_AVG_NOT_APPLICABLE = "not-applicable"
+    KERNEL_MEM_TOTAL_MAX_NOT_APPLICABLE = "not-applicable"
+    KERNEL_MEM_TOTAL_MIN_NOT_APPLICABLE = "not-applicable"
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -25,12 +37,24 @@ class SwSystemStatsHist(ManagedObject):
     consts = SwSystemStatsHistConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("SwSystemStatsHist", "swSystemStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0x7L, [], ["read-only"], [u'swSystemStats'], [], ["Get"])
+    mo_meta = MoMeta("SwSystemStatsHist", "swSystemStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xfL, [], ["read-only"], [u'swSystemStats'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x1L, 0, 256, None, [], []), 
+        "correctable_parity_error": MoPropertyMeta("correctable_parity_error", "CorrectableParityError", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "correctable_parity_error_avg": MoPropertyMeta("correctable_parity_error_avg", "CorrectableParityErrorAvg", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "correctable_parity_error_max": MoPropertyMeta("correctable_parity_error_max", "CorrectableParityErrorMax", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "correctable_parity_error_min": MoPropertyMeta("correctable_parity_error_min", "CorrectableParityErrorMin", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
         "id": MoPropertyMeta("id", "id", "ulong", VersionMeta.Version111j, MoPropertyMeta.NAMING, None, None, None, None, [], []), 
+        "kernel_mem_free": MoPropertyMeta("kernel_mem_free", "kernelMemFree", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_free_avg": MoPropertyMeta("kernel_mem_free_avg", "kernelMemFreeAvg", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_free_max": MoPropertyMeta("kernel_mem_free_max", "kernelMemFreeMax", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_free_min": MoPropertyMeta("kernel_mem_free_min", "kernelMemFreeMin", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_total": MoPropertyMeta("kernel_mem_total", "kernelMemTotal", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_total_avg": MoPropertyMeta("kernel_mem_total_avg", "kernelMemTotalAvg", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_total_max": MoPropertyMeta("kernel_mem_total_max", "kernelMemTotalMax", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_total_min": MoPropertyMeta("kernel_mem_total_min", "kernelMemTotalMin", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "load": MoPropertyMeta("load", "load", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_avg": MoPropertyMeta("load_avg", "loadAvg", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_max": MoPropertyMeta("load_max", "loadMax", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -44,18 +68,30 @@ class SwSystemStatsHist(ManagedObject):
         "mem_cached_max": MoPropertyMeta("mem_cached_max", "memCachedMax", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "mem_cached_min": MoPropertyMeta("mem_cached_min", "memCachedMin", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "most_recent": MoPropertyMeta("most_recent", "mostRecent", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x4L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "suspect": MoPropertyMeta("suspect", "suspect", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "thresholded": MoPropertyMeta("thresholded", "thresholded", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, """([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
+        "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
     }
 
     prop_map = {
+        "CorrectableParityError": "correctable_parity_error", 
+        "CorrectableParityErrorAvg": "correctable_parity_error_avg", 
+        "CorrectableParityErrorMax": "correctable_parity_error_max", 
+        "CorrectableParityErrorMin": "correctable_parity_error_min", 
         "childAction": "child_action", 
         "dn": "dn", 
         "id": "id", 
+        "kernelMemFree": "kernel_mem_free", 
+        "kernelMemFreeAvg": "kernel_mem_free_avg", 
+        "kernelMemFreeMax": "kernel_mem_free_max", 
+        "kernelMemFreeMin": "kernel_mem_free_min", 
+        "kernelMemTotal": "kernel_mem_total", 
+        "kernelMemTotalAvg": "kernel_mem_total_avg", 
+        "kernelMemTotalMax": "kernel_mem_total_max", 
+        "kernelMemTotalMin": "kernel_mem_total_min", 
         "load": "load", 
         "loadAvg": "load_avg", 
         "loadMax": "load_max", 
@@ -80,7 +116,19 @@ class SwSystemStatsHist(ManagedObject):
     def __init__(self, parent_mo_or_dn, id, **kwargs):
         self._dirty_mask = 0
         self.id = id
+        self.correctable_parity_error = None
+        self.correctable_parity_error_avg = None
+        self.correctable_parity_error_max = None
+        self.correctable_parity_error_min = None
         self.child_action = None
+        self.kernel_mem_free = None
+        self.kernel_mem_free_avg = None
+        self.kernel_mem_free_max = None
+        self.kernel_mem_free_min = None
+        self.kernel_mem_total = None
+        self.kernel_mem_total_avg = None
+        self.kernel_mem_total_max = None
+        self.kernel_mem_total_min = None
         self.load = None
         self.load_avg = None
         self.load_max = None

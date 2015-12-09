@@ -21,7 +21,7 @@ class ComputePCIeFatalStats(ManagedObject):
     consts = ComputePCIeFatalStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputePCIeFatalStats", "computePCIeFatalStats", "pciefat-stats", VersionMeta.Version111j, "OutputOnly", 0x7L, [], ["admin", "operations", "read-only"], [u'computeBoard'], [], ["Get"])
+    mo_meta = MoMeta("ComputePCIeFatalStats", "computePCIeFatalStats", "pciefat-stats", VersionMeta.Version111j, "OutputOnly", 0xfL, [], ["admin", "operations", "read-only"], [u'computeBoard'], [], ["Get"])
 
     prop_meta = {
         "acs_violation_errors": MoPropertyMeta("acs_violation_errors", "acsViolationErrors", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -35,8 +35,8 @@ class ComputePCIeFatalStats(ManagedObject):
         "acs_violation_errors1_week_h": MoPropertyMeta("acs_violation_errors1_week_h", "acsViolationErrors1WeekH", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "acs_violation_errors2_weeks": MoPropertyMeta("acs_violation_errors2_weeks", "acsViolationErrors2Weeks", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "acs_violation_errors2_weeks_h": MoPropertyMeta("acs_violation_errors2_weeks_h", "acsViolationErrors2WeeksH", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x1L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
         "intervals": MoPropertyMeta("intervals", "intervals", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "malformed_tlp_errors": MoPropertyMeta("malformed_tlp_errors", "malformedTLPErrors", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "malformed_tlp_errors15_min": MoPropertyMeta("malformed_tlp_errors15_min", "malformedTLPErrors15Min", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -60,9 +60,9 @@ class ComputePCIeFatalStats(ManagedObject):
         "poisoned_tlp_errors1_week_h": MoPropertyMeta("poisoned_tlp_errors1_week_h", "poisonedTLPErrors1WeekH", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "poisoned_tlp_errors2_weeks": MoPropertyMeta("poisoned_tlp_errors2_weeks", "poisonedTLPErrors2Weeks", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "poisoned_tlp_errors2_weeks_h": MoPropertyMeta("poisoned_tlp_errors2_weeks_h", "poisonedTLPErrors2WeeksH", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x4L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "surprise_link_down_errors": MoPropertyMeta("surprise_link_down_errors", "surpriseLinkDownErrors", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "surprise_link_down_errors15_min": MoPropertyMeta("surprise_link_down_errors15_min", "surpriseLinkDownErrors15Min", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "surprise_link_down_errors15_min_h": MoPropertyMeta("surprise_link_down_errors15_min_h", "surpriseLinkDownErrors15MinH", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -76,7 +76,7 @@ class ComputePCIeFatalStats(ManagedObject):
         "surprise_link_down_errors2_weeks_h": MoPropertyMeta("surprise_link_down_errors2_weeks_h", "surpriseLinkDownErrors2WeeksH", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "suspect": MoPropertyMeta("suspect", "suspect", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "thresholded": MoPropertyMeta("thresholded", "thresholded", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, """([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
+        "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
         "update": MoPropertyMeta("update", "update", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
     }
 

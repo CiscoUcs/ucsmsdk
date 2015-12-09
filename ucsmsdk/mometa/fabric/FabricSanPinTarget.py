@@ -23,26 +23,32 @@ class FabricSanPinTarget(ManagedObject):
     consts = FabricSanPinTargetConsts()
     naming_props = set([u'fabricId'])
 
-    mo_meta = MoMeta("FabricSanPinTarget", "fabricSanPinTarget", "target-[fabric_id]", VersionMeta.Version101e, "InputOutput", 0x3fL, [], ["admin", "ext-san-config", "ext-san-policy"], [u'fabricSanPinGroup'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricSanPinTarget", "fabricSanPinTarget", "target-[fabric_id]", VersionMeta.Version101e, "InputOutput", 0x3ffL, [], ["admin", "ext-san-config", "ext-san-policy"], [u'fabricSanPinGroup'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, 0, 256, None, [], []), 
-        "fabric_id": MoPropertyMeta("fabric_id", "fabricId", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8L, None, None, None, ["A", "B", "NONE", "dual"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", None, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, [], ["0-40"]), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, 0, 256, None, [], []), 
+        "fabric_id": MoPropertyMeta("fabric_id", "fabricId", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20L, None, None, None, ["A", "B", "NONE", "dual"], []), 
+        "port_id": MoPropertyMeta("port_id", "portId", "uint", None, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, [], ["0-4"]), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", None, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, [], ["0-2"]), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "target_status": MoPropertyMeta("target_status", "targetStatus", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["invalid", "valid"], []), 
     }
 
     prop_map = {
+        "aggrPortId": "aggr_port_id", 
         "childAction": "child_action", 
         "dn": "dn", 
         "epDn": "ep_dn", 
         "fabricId": "fabric_id", 
+        "portId": "port_id", 
         "rn": "rn", 
         "sacl": "sacl", 
+        "slotId": "slot_id", 
         "status": "status", 
         "targetStatus": "target_status", 
     }
@@ -50,9 +56,12 @@ class FabricSanPinTarget(ManagedObject):
     def __init__(self, parent_mo_or_dn, fabric_id, **kwargs):
         self._dirty_mask = 0
         self.fabric_id = fabric_id
+        self.aggr_port_id = None
         self.child_action = None
         self.ep_dn = None
+        self.port_id = None
         self.sacl = None
+        self.slot_id = None
         self.status = None
         self.target_status = None
 

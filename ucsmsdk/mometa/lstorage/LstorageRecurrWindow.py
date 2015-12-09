@@ -31,24 +31,24 @@ class LstorageRecurrWindow(ManagedObject):
     consts = LstorageRecurrWindowConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("LstorageRecurrWindow", "lstorageRecurrWindow", "recurr-window-[name]", VersionMeta.Version302a, "InputOutput", 0x1fffL, [], ["admin", "ls-compute", "ls-config", "ls-server"], [u'lstorageSvcSched', u'trigLocalSched', u'trigSched'], [], [None])
+    mo_meta = MoMeta("LstorageRecurrWindow", "lstorageRecurrWindow", "recurr-window-[name]", VersionMeta.Version302c, "InputOutput", 0x3fffL, [], ["admin", "ls-compute", "ls-config", "ls-server"], [u'lstorageSvcSched', u'trigLocalSched', u'trigSched'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302a, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "concur_cap": MoPropertyMeta("concur_cap", "concurCap", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["unlimited"], ["0-65535"]), 
-        "day": MoPropertyMeta("day", "day", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["Friday", "Monday", "Saturday", "Sunday", "Thursday", "Tuesday", "Wednesday", "every-day", "every-hour", "every-month"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "dom": MoPropertyMeta("dom", "dom", "byte", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, [], ["1-31"]), 
-        "hour": MoPropertyMeta("hour", "hour", "ushort", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, [], ["0-23"]), 
-        "job_count": MoPropertyMeta("job_count", "jobCount", "uint", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "minute": MoPropertyMeta("minute", "minute", "ushort", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, [], ["0-59"]), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version302a, MoPropertyMeta.NAMING, 0x80L, None, None, """[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
-        "proc_break": MoPropertyMeta("proc_break", "procBreak", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, """[0-9]+:([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]{1,3})?""", ["none"], ["0-4294967295"]), 
-        "proc_cap": MoPropertyMeta("proc_cap", "procCap", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, ["unlimited"], ["0-65535"]), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x400L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x800L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "time_cap": MoPropertyMeta("time_cap", "timeCap", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, """[0-9]+:([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]{1,3})?""", ["none"], ["0-4294967295"]), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "concur_cap": MoPropertyMeta("concur_cap", "concurCap", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["unlimited"], ["0-65535"]), 
+        "day": MoPropertyMeta("day", "day", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["Friday", "Monday", "Saturday", "Sunday", "Thursday", "Tuesday", "Wednesday", "every-day", "every-hour", "every-month"], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "dom": MoPropertyMeta("dom", "dom", "byte", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, [], ["1-31"]), 
+        "hour": MoPropertyMeta("hour", "hour", "ushort", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, [], ["0-23"]), 
+        "job_count": MoPropertyMeta("job_count", "jobCount", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "minute": MoPropertyMeta("minute", "minute", "ushort", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, [], ["0-59"]), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x100L, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
+        "proc_break": MoPropertyMeta("proc_break", "procBreak", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""[0-9]+:([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]{1,3})?""", ["none"], ["0-4294967295"]), 
+        "proc_cap": MoPropertyMeta("proc_cap", "procCap", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, ["unlimited"], ["0-65535"]), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x800L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "time_cap": MoPropertyMeta("time_cap", "timeCap", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x2000L, None, None, r"""[0-9]+:([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]{1,3})?""", ["none"], ["0-4294967295"]), 
     }
 
     prop_map = {

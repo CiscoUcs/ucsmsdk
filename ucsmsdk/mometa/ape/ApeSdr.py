@@ -79,6 +79,60 @@ class ApeSdrConsts():
     EVENT_READING_TYPE_SENSOR_SPECIFIC = "SENSOR_SPECIFIC"
     EVENT_READING_TYPE_THRESHOLD = "THRESHOLD"
     EVENT_READING_TYPE_UNKNOWN = "UNKNOWN"
+    INSTANCE_ADD_IN_CARD = "ADD_IN_CARD"
+    INSTANCE_BATTERY = "BATTERY"
+    INSTANCE_BOOT_ERROR = "BOOT_ERROR"
+    INSTANCE_BUTTON = "BUTTON"
+    INSTANCE_CABLE_INTERCONNECT = "CABLE_INTERCONNECT"
+    INSTANCE_CHASSIS = "CHASSIS"
+    INSTANCE_CHIP_SET = "CHIP_SET"
+    INSTANCE_COOLING_DEVICE = "COOLING_DEVICE"
+    INSTANCE_CRITICAL_INTERRUPT = "CRITICAL_INTERRUPT"
+    INSTANCE_CURRENT = "CURRENT"
+    INSTANCE_DRIVE_SLOT = "DRIVE_SLOT"
+    INSTANCE_ENTITY_PRESENCE = "ENTITY_PRESENCE"
+    INSTANCE_EVENT_LOGGING_DISABLED = "EVENT_LOGGING_DISABLED"
+    INSTANCE_FAN = "FAN"
+    INSTANCE_FRU_STATE = "FRU_STATE"
+    INSTANCE_LAN = "LAN"
+    INSTANCE_MANAGEMENT_SUBSYSTEM_HEALTH = "MANAGEMENT_SUBSYSTEM_HEALTH"
+    INSTANCE_MEMORY = "MEMORY"
+    INSTANCE_MICROCONTROLLER_COPROCESSOR = "MICROCONTROLLER_COPROCESSOR"
+    INSTANCE_MODULE_BOARD = "MODULE_BOARD"
+    INSTANCE_MONITOR_ASIC_IC = "MONITOR_ASIC_IC"
+    INSTANCE_OEM1 = "OEM1"
+    INSTANCE_OEM2 = "OEM2"
+    INSTANCE_OEM3 = "OEM3"
+    INSTANCE_OEM4 = "OEM4"
+    INSTANCE_OEM5 = "OEM5"
+    INSTANCE_OEM7 = "OEM7"
+    INSTANCE_OS_BOOT = "OS_BOOT"
+    INSTANCE_OS_CRITICAL_STOP = "OS_CRITICAL_STOP"
+    INSTANCE_OTHER_FRU = "OTHER_FRU"
+    INSTANCE_OTHER_UNITS_BASED_SENSOR = "OTHER_UNITS_BASED_SENSOR"
+    INSTANCE_PHYSICAL_SECURITY = "PHYSICAL_SECURITY"
+    INSTANCE_PLATFORM_ALERT = "PLATFORM_ALERT"
+    INSTANCE_PLATFORM_SECURITY = "PLATFORM_SECURITY"
+    INSTANCE_POWER_MEMORY_RESIZE = "POWER_MEMORY_RESIZE"
+    INSTANCE_POWER_SUPPLY = "POWER_SUPPLY"
+    INSTANCE_POWER_UNIT = "POWER_UNIT"
+    INSTANCE_PROCESSOR = "PROCESSOR"
+    INSTANCE_SESSION_AUDIT = "SESSION_AUDIT"
+    INSTANCE_SLOT_CONNECTOR = "SLOT_CONNECTOR"
+    INSTANCE_SYSTEM_ACPI_POWER_STATE = "SYSTEM_ACPI_POWER_STATE"
+    INSTANCE_SYSTEM_BOOT_INITIATED = "SYSTEM_BOOT_INITIATED"
+    INSTANCE_SYSTEM_EVENT = "SYSTEM_EVENT"
+    INSTANCE_SYSTEM_FIRMWARE_PROGRESS = "SYSTEM_FIRMWARE_PROGRESS"
+    INSTANCE_TEMPERATURE = "TEMPERATURE"
+    INSTANCE_TERMINATOR = "TERMINATOR"
+    INSTANCE_UNKNOWN = "UNKNOWN"
+    INSTANCE_VERSION_CHANGE = "VERSION_CHANGE"
+    INSTANCE_VOLTAGE = "VOLTAGE"
+    INSTANCE_WATCHDOG_1 = "WATCHDOG_1"
+    INSTANCE_WATCHDOG_2 = "WATCHDOG_2"
+    SDR_TYPE_COMPACT_SENSOR_RECORD = "COMPACT_SENSOR_RECORD"
+    SDR_TYPE_FULL_SENSOR_RECORD = "FULL_SENSOR_RECORD"
+    SDR_TYPE_UNKNOWN_RECORD = "UNKNOWN_RECORD"
     SENSOR_TYPE_ADD_IN_CARD = "ADD_IN_CARD"
     SENSOR_TYPE_BATTERY = "BATTERY"
     SENSOR_TYPE_BOOT_ERROR = "BOOT_ERROR"
@@ -234,31 +288,33 @@ class ApeSdr(ManagedObject):
     consts = ApeSdrConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("ApeSdr", "apeSdr", "sdr-[id]", VersionMeta.Version101e, "InputOutput", 0x1fffffL, [], ["read-only"], [u'apeMcTable'], [], [None])
+    mo_meta = MoMeta("ApeSdr", "apeSdr", "sdr-[id]", VersionMeta.Version101e, "InputOutput", 0xffffffL, [], ["read-only"], [u'apeMcTable'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "entity_type": MoPropertyMeta("entity_type", "entityType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["ADD_IN_CARD", "BACK_PANEL_BOARD", "BATTERY", "BIOS", "CABLE_INTERCONNECT", "CHASSIS_BACK_PANEL_BOARD", "CMC", "CONNECTIVITY_SWITCH", "COOLING_UNIT", "DEVICE_BAY", "DISK", "DISK_DRIVE_BAY", "DRIVE_BACKPLANE", "EXTERNAL_ENVIRONMENT", "FAN_COOLING", "FRONT_PANEL_BOARD", "GROUP", "IBMC", "IO_MODULE", "IPMI_CHANNEL", "MEMORY_DEVICE", "MEMORY_MODULE", "MGMT_CONTROLLER_FIRMWARE", "OPERATING_SYSTEM", "OTHER", "OTHER_CHASSIS_BOARD", "OTHER_SYSTEM_BOARD", "PCI_BUS", "PCI_EXPRESS_BUS", "PERIPHERAL", "PERIPHERAL_BAY", "POWER_MANAGEMENT_BOARD", "POWER_MODULE", "POWER_SUPPLY", "POWER_SYSTEM_BOARD", "POWER_UNIT", "PROCESSING_BLADE", "PROCESSOR", "PROCESSOR_BOARD", "PROCESSOR_FRONT_SIDE_BUS", "PROCESSOR_IO_MODULE", "PROCESSOR_MEMORY_MODULE", "PROCESSOR_MODULE", "REMOTE_MGMT_COMM_DEVICE", "SATA_SAS_BUS", "SCSI_BUS", "SUB_CHASSIS", "SYSTEM_BOARD", "SYSTEM_BUS", "SYSTEM_CHASSIS", "SYSTEM_INTERNAL_EXPANSION_BOARD", "SYSTEM_MANAGEMENT_MODULE", "SYSTEM_MANAGEMENT_SOFTWARE", "UNKNOWN", "UNSPECIFIED"], []), 
-        "event_reading_type": MoPropertyMeta("event_reading_type", "eventReadingType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["DISCRETE_ACPI_POWER", "DISCRETE_AVAILABILITY", "DISCRETE_DEVICE_ENABLE", "DISCRETE_DEVICE_PRESENCE", "DISCRETE_LIMIT_EXCEEDED", "DISCRETE_PERFORMANCE_MET", "DISCRETE_PREDICTIVE_FAILURE", "DISCRETE_REDUNDANCY", "DISCRETE_SEVERITY", "DISCRETE_STATE", "DISCRETE_USAGE", "OEM1", "SENSOR_SPECIFIC", "THRESHOLD", "UNKNOWN"], []), 
-        "hysterisis_down": MoPropertyMeta("hysterisis_down", "hysterisisDown", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, 0, 510, None, [], []), 
-        "hysterisis_up": MoPropertyMeta("hysterisis_up", "hysterisisUp", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, 0, 510, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x40L, None, None, None, [], []), 
-        "instance": MoPropertyMeta("instance", "instance", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x200L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "sensor_id": MoPropertyMeta("sensor_id", "sensorId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, [], []), 
-        "sensor_type": MoPropertyMeta("sensor_type", "sensorType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800L, None, None, None, ["ADD_IN_CARD", "BATTERY", "BOOT_ERROR", "BUTTON", "CABLE_INTERCONNECT", "CHASSIS", "CHIP_SET", "COOLING_DEVICE", "CRITICAL_INTERRUPT", "CURRENT", "DRIVE_SLOT", "ENTITY_PRESENCE", "EVENT_LOGGING_DISABLED", "FAN", "FRU_STATE", "LAN", "MANAGEMENT_SUBSYSTEM_HEALTH", "MEMORY", "MICROCONTROLLER_COPROCESSOR", "MODULE_BOARD", "MONITOR_ASIC_IC", "OEM1", "OEM2", "OEM3", "OEM4", "OEM5", "OEM7", "OS_BOOT", "OS_CRITICAL_STOP", "OTHER_FRU", "OTHER_UNITS_BASED_SENSOR", "PHYSICAL_SECURITY", "PLATFORM_ALERT", "PLATFORM_SECURITY", "POWER_MEMORY_RESIZE", "POWER_SUPPLY", "POWER_UNIT", "PROCESSOR", "SESSION_AUDIT", "SLOT_CONNECTOR", "SYSTEM_ACPI_POWER_STATE", "SYSTEM_BOOT_INITIATED", "SYSTEM_EVENT", "SYSTEM_FIRMWARE_PROGRESS", "TEMPERATURE", "TERMINATOR", "UNKNOWN", "VERSION_CHANGE", "VOLTAGE", "WATCHDOG_1", "WATCHDOG_2"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "threshold_lc": MoPropertyMeta("threshold_lc", "thresholdLc", "float", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000L, None, None, None, [], []), 
-        "threshold_lnc": MoPropertyMeta("threshold_lnc", "thresholdLnc", "float", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000L, None, None, None, [], []), 
-        "threshold_lnr": MoPropertyMeta("threshold_lnr", "thresholdLnr", "float", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000L, None, None, None, [], []), 
-        "threshold_uc": MoPropertyMeta("threshold_uc", "thresholdUc", "float", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10000L, None, None, None, [], []), 
-        "threshold_unc": MoPropertyMeta("threshold_unc", "thresholdUnc", "float", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20000L, None, None, None, [], []), 
-        "threshold_unr": MoPropertyMeta("threshold_unr", "thresholdUnr", "float", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000L, None, None, None, [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80000L, None, None, None, ["COMPACT_SENSOR_RECORD", "FULL_SENSOR_RECORD", "UNKNOWN_RECORD"], []), 
-        "units": MoPropertyMeta("units", "units", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100000L, None, None, None, ["AMPS", "BECQUERELS", "BITS", "BYTES", "CANDELA", "CENTIMETERS", "CFM", "CHARACTERS", "COLLISIONS", "COLOR_TEMP_DEG_K", "CORRECTABLE_ERRORS", "COULOMBS", "CUBIC_CENTIMETERS", "CUBIC_FEET", "CUBIC_INCHS", "CUBIC_METERS", "CYCLES", "DAY", "DECIBELS", "DEGREES_C", "DEGREES_F", "DEGREES_K", "DWORDS", "DbA", "DbC", "ERRORS", "FARADS", "FATAL_ERRORS", "FEET", "FL_OZ", "FOOT_POUNDS", "GAUSS", "GBITS", "GBYTES", "GILBERTS", "GRAMS", "GRAVITIES", "GRAYS", "HENRIES", "HITS", "HOUR", "HZ", "INCHES", "JOULES", "KBITS", "KBYTES", "KPA", "LINES", "LITERS", "LUMENS", "LUX", "MBITS", "MBYTES", "MESSAGES", "METERS", "MHENRIES", "MIL", "MILLIMETERS", "MINUTE", "MISSES", "MOLES", "MSECONDS", "NEWTONS", "NITS", "OHMS", "OUNCES", "OUNCE_INCHES", "OVERRUNS", "PACKETS", "POUNDS", "PPM", "PSI", "QWORDS", "RADIANS", "RESETS", "RETRIES", "REVOLUTIONS", "RPM", "SECONDS", "SERADIANS", "SIEMENS", "SIEVERTS", "UFARADS", "UNCORRECTABLE_ERRORS", "UNDERRUNS", "UNSPECIFIED", "USECONDS", "VA", "VOLTS", "WATTS", "WEEK", "WORDS", "reserved1"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "entity_type": MoPropertyMeta("entity_type", "entityType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["ADD_IN_CARD", "BACK_PANEL_BOARD", "BATTERY", "BIOS", "CABLE_INTERCONNECT", "CHASSIS_BACK_PANEL_BOARD", "CMC", "CONNECTIVITY_SWITCH", "COOLING_UNIT", "DEVICE_BAY", "DISK", "DISK_DRIVE_BAY", "DRIVE_BACKPLANE", "EXTERNAL_ENVIRONMENT", "FAN_COOLING", "FRONT_PANEL_BOARD", "GROUP", "IBMC", "IO_MODULE", "IPMI_CHANNEL", "MEMORY_DEVICE", "MEMORY_MODULE", "MGMT_CONTROLLER_FIRMWARE", "OPERATING_SYSTEM", "OTHER", "OTHER_CHASSIS_BOARD", "OTHER_SYSTEM_BOARD", "PCI_BUS", "PCI_EXPRESS_BUS", "PERIPHERAL", "PERIPHERAL_BAY", "POWER_MANAGEMENT_BOARD", "POWER_MODULE", "POWER_SUPPLY", "POWER_SYSTEM_BOARD", "POWER_UNIT", "PROCESSING_BLADE", "PROCESSOR", "PROCESSOR_BOARD", "PROCESSOR_FRONT_SIDE_BUS", "PROCESSOR_IO_MODULE", "PROCESSOR_MEMORY_MODULE", "PROCESSOR_MODULE", "REMOTE_MGMT_COMM_DEVICE", "SATA_SAS_BUS", "SCSI_BUS", "SUB_CHASSIS", "SYSTEM_BOARD", "SYSTEM_BUS", "SYSTEM_CHASSIS", "SYSTEM_INTERNAL_EXPANSION_BOARD", "SYSTEM_MANAGEMENT_MODULE", "SYSTEM_MANAGEMENT_SOFTWARE", "UNKNOWN", "UNSPECIFIED"], ["0-4294967295"]), 
+        "event_reading_type": MoPropertyMeta("event_reading_type", "eventReadingType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["DISCRETE_ACPI_POWER", "DISCRETE_AVAILABILITY", "DISCRETE_DEVICE_ENABLE", "DISCRETE_DEVICE_PRESENCE", "DISCRETE_LIMIT_EXCEEDED", "DISCRETE_PERFORMANCE_MET", "DISCRETE_PREDICTIVE_FAILURE", "DISCRETE_REDUNDANCY", "DISCRETE_SEVERITY", "DISCRETE_STATE", "DISCRETE_USAGE", "OEM1", "SENSOR_SPECIFIC", "THRESHOLD", "UNKNOWN"], ["0-4294967295"]), 
+        "hysterisis_down": MoPropertyMeta("hysterisis_down", "hysterisisDown", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, 0, 510, None, [], []), 
+        "hysterisis_up": MoPropertyMeta("hysterisis_up", "hysterisisUp", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, 0, 510, None, [], []), 
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80L, None, None, None, [], []), 
+        "instance": MoPropertyMeta("instance", "instance", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, ["ADD_IN_CARD", "BATTERY", "BOOT_ERROR", "BUTTON", "CABLE_INTERCONNECT", "CHASSIS", "CHIP_SET", "COOLING_DEVICE", "CRITICAL_INTERRUPT", "CURRENT", "DRIVE_SLOT", "ENTITY_PRESENCE", "EVENT_LOGGING_DISABLED", "FAN", "FRU_STATE", "LAN", "MANAGEMENT_SUBSYSTEM_HEALTH", "MEMORY", "MICROCONTROLLER_COPROCESSOR", "MODULE_BOARD", "MONITOR_ASIC_IC", "OEM1", "OEM2", "OEM3", "OEM4", "OEM5", "OEM7", "OS_BOOT", "OS_CRITICAL_STOP", "OTHER_FRU", "OTHER_UNITS_BASED_SENSOR", "PHYSICAL_SECURITY", "PLATFORM_ALERT", "PLATFORM_SECURITY", "POWER_MEMORY_RESIZE", "POWER_SUPPLY", "POWER_UNIT", "PROCESSOR", "SESSION_AUDIT", "SLOT_CONNECTOR", "SYSTEM_ACPI_POWER_STATE", "SYSTEM_BOOT_INITIATED", "SYSTEM_EVENT", "SYSTEM_FIRMWARE_PROGRESS", "TEMPERATURE", "TERMINATOR", "UNKNOWN", "VERSION_CHANGE", "VOLTAGE", "WATCHDOG_1", "WATCHDOG_2"], ["0-4294967295"]), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, 0, 510, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x400L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sdr_type": MoPropertyMeta("sdr_type", "sdr_type", "string", None, MoPropertyMeta.READ_WRITE, 0x800L, None, None, None, ["COMPACT_SENSOR_RECORD", "FULL_SENSOR_RECORD", "UNKNOWN_RECORD"], []), 
+        "sensor_id": MoPropertyMeta("sensor_id", "sensorId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, None, [], []), 
+        "sensor_type": MoPropertyMeta("sensor_type", "sensorType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000L, None, None, None, ["ADD_IN_CARD", "BATTERY", "BOOT_ERROR", "BUTTON", "CABLE_INTERCONNECT", "CHASSIS", "CHIP_SET", "COOLING_DEVICE", "CRITICAL_INTERRUPT", "CURRENT", "DRIVE_SLOT", "ENTITY_PRESENCE", "EVENT_LOGGING_DISABLED", "FAN", "FRU_STATE", "LAN", "MANAGEMENT_SUBSYSTEM_HEALTH", "MEMORY", "MICROCONTROLLER_COPROCESSOR", "MODULE_BOARD", "MONITOR_ASIC_IC", "OEM1", "OEM2", "OEM3", "OEM4", "OEM5", "OEM7", "OS_BOOT", "OS_CRITICAL_STOP", "OTHER_FRU", "OTHER_UNITS_BASED_SENSOR", "PHYSICAL_SECURITY", "PLATFORM_ALERT", "PLATFORM_SECURITY", "POWER_MEMORY_RESIZE", "POWER_SUPPLY", "POWER_UNIT", "PROCESSOR", "SESSION_AUDIT", "SLOT_CONNECTOR", "SYSTEM_ACPI_POWER_STATE", "SYSTEM_BOOT_INITIATED", "SYSTEM_EVENT", "SYSTEM_FIRMWARE_PROGRESS", "TEMPERATURE", "TERMINATOR", "UNKNOWN", "VERSION_CHANGE", "VOLTAGE", "WATCHDOG_1", "WATCHDOG_2"], []), 
+        "sensor_type": MoPropertyMeta("sensor_type", "sensor_type", "uint", None, MoPropertyMeta.READ_WRITE, 0x4000L, None, None, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "threshold_lc": MoPropertyMeta("threshold_lc", "thresholdLc", "float", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10000L, None, None, None, [], []), 
+        "threshold_lnc": MoPropertyMeta("threshold_lnc", "thresholdLnc", "float", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20000L, None, None, None, [], []), 
+        "threshold_lnr": MoPropertyMeta("threshold_lnr", "thresholdLnr", "float", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000L, None, None, None, [], []), 
+        "threshold_uc": MoPropertyMeta("threshold_uc", "thresholdUc", "float", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80000L, None, None, None, [], []), 
+        "threshold_unc": MoPropertyMeta("threshold_unc", "thresholdUnc", "float", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100000L, None, None, None, [], []), 
+        "threshold_unr": MoPropertyMeta("threshold_unr", "thresholdUnr", "float", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200000L, None, None, None, [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400000L, None, None, None, ["COMPACT_SENSOR_RECORD", "FULL_SENSOR_RECORD", "UNKNOWN_RECORD"], []), 
+        "units": MoPropertyMeta("units", "units", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800000L, None, None, None, ["AMPS", "BECQUERELS", "BITS", "BYTES", "CANDELA", "CENTIMETERS", "CFM", "CHARACTERS", "COLLISIONS", "COLOR_TEMP_DEG_K", "CORRECTABLE_ERRORS", "COULOMBS", "CUBIC_CENTIMETERS", "CUBIC_FEET", "CUBIC_INCHS", "CUBIC_METERS", "CYCLES", "DAY", "DECIBELS", "DEGREES_C", "DEGREES_F", "DEGREES_K", "DWORDS", "DbA", "DbC", "ERRORS", "FARADS", "FATAL_ERRORS", "FEET", "FL_OZ", "FOOT_POUNDS", "GAUSS", "GBITS", "GBYTES", "GILBERTS", "GRAMS", "GRAVITIES", "GRAYS", "HENRIES", "HITS", "HOUR", "HZ", "INCHES", "JOULES", "KBITS", "KBYTES", "KPA", "LINES", "LITERS", "LUMENS", "LUX", "MBITS", "MBYTES", "MESSAGES", "METERS", "MHENRIES", "MIL", "MILLIMETERS", "MINUTE", "MISSES", "MOLES", "MSECONDS", "NEWTONS", "NITS", "OHMS", "OUNCES", "OUNCE_INCHES", "OVERRUNS", "PACKETS", "POUNDS", "PPM", "PSI", "QWORDS", "RADIANS", "RESETS", "RETRIES", "REVOLUTIONS", "RPM", "SECONDS", "SERADIANS", "SIEMENS", "SIEVERTS", "UFARADS", "UNCORRECTABLE_ERRORS", "UNDERRUNS", "UNSPECIFIED", "USECONDS", "VA", "VOLTS", "WATTS", "WEEK", "WORDS", "reserved1"], []), 
     }
 
     prop_map = {
@@ -273,8 +329,10 @@ class ApeSdr(ManagedObject):
         "name": "name", 
         "rn": "rn", 
         "sacl": "sacl", 
+        "sdr_type": "sdr_type", 
         "sensorId": "sensor_id", 
         "sensorType": "sensor_type", 
+        "sensor_type": "sensor_type", 
         "status": "status", 
         "thresholdLc": "threshold_lc", 
         "thresholdLnc": "threshold_lnc", 
@@ -297,7 +355,9 @@ class ApeSdr(ManagedObject):
         self.instance = None
         self.name = None
         self.sacl = None
+        self.sdr_type = None
         self.sensor_id = None
+        self.sensor_type = None
         self.sensor_type = None
         self.status = None
         self.threshold_lc = None

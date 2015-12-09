@@ -18,19 +18,19 @@ class FirmwareSpec(ManagedObject):
     consts = FirmwareSpecConsts()
     naming_props = set([u'bundleVersion'])
 
-    mo_meta = MoMeta("FirmwareSpec", "firmwareSpec", "fw-spec-bundle-version-[bundle_version]", VersionMeta.Version141i, "InputOutput", 0x1fL, [], [""], [u'adaptorFruCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("FirmwareSpec", "firmwareSpec", "fw-spec-bundle-version-[bundle_version]", VersionMeta.Version141i, "InputOutput", 0x3fL, [], [""], [u'adaptorFruCapProvider'], [], ["Get"])
 
     prop_meta = {
-        "bundle_version": MoPropertyMeta("bundle_version", "bundleVersion", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x1L, 1, 510, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "bundle_version": MoPropertyMeta("bundle_version", "bundleVersion", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x2L, 1, 510, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
         "eth_efi_version": MoPropertyMeta("eth_efi_version", "ethEFIVersion", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "eth_option_rom_version": MoPropertyMeta("eth_option_rom_version", "ethOptionRomVersion", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "fc_fw_version": MoPropertyMeta("fc_fw_version", "fcFWVersion", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "fc_option_rom_version": MoPropertyMeta("fc_option_rom_version", "fcOptionRomVersion", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

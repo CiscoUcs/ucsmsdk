@@ -22,20 +22,20 @@ class CimcvmediaExtMgmtRuleEntry(ManagedObject):
     consts = CimcvmediaExtMgmtRuleEntryConsts()
     naming_props = set([u'mappingName'])
 
-    mo_meta = MoMeta("CimcvmediaExtMgmtRuleEntry", "cimcvmediaExtMgmtRuleEntry", "ext-mgmt-rule-[mapping_name]", VersionMeta.Version222c, "InputOutput", 0x1fL, [], ["read-only"], [u'cimcvmediaActualMountList'], [], ["Get"])
+    mo_meta = MoMeta("CimcvmediaExtMgmtRuleEntry", "cimcvmediaExtMgmtRuleEntry", "ext-mgmt-rule-[mapping_name]", VersionMeta.Version222c, "InputOutput", 0x3fL, [], ["read-only"], [u'cimcvmediaActualMountList'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "ext_mgmt_ip_addr": MoPropertyMeta("ext_mgmt_ip_addr", "extMgmtIpAddr", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, """((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
-        "mapping_name": MoPropertyMeta("mapping_name", "mappingName", "string", VersionMeta.Version222c, MoPropertyMeta.NAMING, 0x4L, None, None, """[a-zA-Z0-9][a-zA-Z0-9_.:-]{0,63}""", [], []), 
-        "mgmt_if_ip_addr": MoPropertyMeta("mgmt_if_ip_addr", "mgmtIfIpAddr", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, """((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "ext_mgmt_ip_addr": MoPropertyMeta("ext_mgmt_ip_addr", "extMgmtIpAddr", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "mapping_name": MoPropertyMeta("mapping_name", "mappingName", "string", VersionMeta.Version222c, MoPropertyMeta.NAMING, 0x8L, None, None, r"""[a-zA-Z0-9][a-zA-Z0-9_.:-]{0,63}""", [], []), 
+        "mgmt_if_ip_addr": MoPropertyMeta("mgmt_if_ip_addr", "mgmtIfIpAddr", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
         "mount_protocol": MoPropertyMeta("mount_protocol", "mountProtocol", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cifs", "http", "https", "nfs", "unknown"], []), 
-        "remote_ip_addr": MoPropertyMeta("remote_ip_addr", "remoteIpAddr", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, """((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "remote_ip_addr": MoPropertyMeta("remote_ip_addr", "remoteIpAddr", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
         "remote_port": MoPropertyMeta("remote_port", "remotePort", "uint", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x10L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

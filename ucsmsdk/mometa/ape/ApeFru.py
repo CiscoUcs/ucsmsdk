@@ -72,41 +72,44 @@ class ApeFru(ManagedObject):
     consts = ApeFruConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("ApeFru", "apeFru", "fru-[id]", VersionMeta.Version101e, "InputOutput", 0xfffffffL, [], ["read-only"], [u'apeMcTable'], [], [None])
+    mo_meta = MoMeta("ApeFru", "apeFru", "fru-[id]", VersionMeta.Version101e, "InputOutput", 0x7fffffffL, [], ["read-only"], [u'apeMcTable'], [], [None])
 
     prop_meta = {
-        "board_manufacturer": MoPropertyMeta("board_manufacturer", "boardManufacturer", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1L, 0, 510, None, [], []), 
-        "board_mfg_time": MoPropertyMeta("board_mfg_time", "boardMfgTime", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, [], []), 
-        "board_part_no": MoPropertyMeta("board_part_no", "boardPartNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, 0, 510, None, [], []), 
-        "board_product_name": MoPropertyMeta("board_product_name", "boardProductName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, 0, 510, None, [], []), 
-        "board_serial_no": MoPropertyMeta("board_serial_no", "boardSerialNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, 0, 510, None, [], []), 
-        "board_vid": MoPropertyMeta("board_vid", "boardVid", "string", VersionMeta.Version203a, MoPropertyMeta.READ_WRITE, 0x20L, 0, 510, None, [], []), 
-        "chassis_part_no": MoPropertyMeta("chassis_part_no", "chassisPartNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, 0, 510, None, [], []), 
-        "chassis_serial_no": MoPropertyMeta("chassis_serial_no", "chassisSerialNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, 0, 510, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x100L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "control_plane_mac1": MoPropertyMeta("control_plane_mac1", "controlPlaneMac1", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, None, None, """(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
-        "control_plane_mac2": MoPropertyMeta("control_plane_mac2", "controlPlaneMac2", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400L, None, None, """(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
-        "data_plane_mac1": MoPropertyMeta("data_plane_mac1", "dataPlaneMac1", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800L, None, None, """(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
-        "data_plane_mac2": MoPropertyMeta("data_plane_mac2", "dataPlaneMac2", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, """(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
-        "data_plane_wwn1": MoPropertyMeta("data_plane_wwn1", "dataPlaneWwn1", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000L, 0, 256, """(([A-Fa-f0-9][A-Fa-f0-9]:){7}[A-Fa-f0-9][A-Fa-f0-9])|0""", [], []), 
-        "data_plane_wwn2": MoPropertyMeta("data_plane_wwn2", "dataPlaneWwn2", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000L, 0, 256, """(([A-Fa-f0-9][A-Fa-f0-9]:){7}[A-Fa-f0-9][A-Fa-f0-9])|0""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8000L, 0, 256, None, [], []), 
-        "entity_type": MoPropertyMeta("entity_type", "entityType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10000L, None, None, None, ["ADD_IN_CARD", "BACK_PANEL_BOARD", "BATTERY", "BIOS", "CABLE_INTERCONNECT", "CHASSIS_BACK_PANEL_BOARD", "CMC", "CONNECTIVITY_SWITCH", "COOLING_UNIT", "DEVICE_BAY", "DISK", "DISK_DRIVE_BAY", "DRIVE_BACKPLANE", "EXTERNAL_ENVIRONMENT", "FAN_COOLING", "FRONT_PANEL_BOARD", "GROUP", "IBMC", "IO_MODULE", "IPMI_CHANNEL", "MEMORY_DEVICE", "MEMORY_MODULE", "MGMT_CONTROLLER_FIRMWARE", "OPERATING_SYSTEM", "OTHER", "OTHER_CHASSIS_BOARD", "OTHER_SYSTEM_BOARD", "PCI_BUS", "PCI_EXPRESS_BUS", "PERIPHERAL", "PERIPHERAL_BAY", "POWER_MANAGEMENT_BOARD", "POWER_MODULE", "POWER_SUPPLY", "POWER_SYSTEM_BOARD", "POWER_UNIT", "PROCESSING_BLADE", "PROCESSOR", "PROCESSOR_BOARD", "PROCESSOR_FRONT_SIDE_BUS", "PROCESSOR_IO_MODULE", "PROCESSOR_MEMORY_MODULE", "PROCESSOR_MODULE", "REMOTE_MGMT_COMM_DEVICE", "SATA_SAS_BUS", "SCSI_BUS", "SUB_CHASSIS", "SYSTEM_BOARD", "SYSTEM_BUS", "SYSTEM_CHASSIS", "SYSTEM_INTERNAL_EXPANSION_BOARD", "SYSTEM_MANAGEMENT_MODULE", "SYSTEM_MANAGEMENT_SOFTWARE", "UNKNOWN", "UNSPECIFIED"], []), 
-        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20000L, None, None, None, [], []), 
-        "instance": MoPropertyMeta("instance", "instance", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000L, None, None, None, [], []), 
-        "product_asset_tag": MoPropertyMeta("product_asset_tag", "productAssetTag", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80000L, 0, 510, None, [], []), 
-        "product_manufacturer": MoPropertyMeta("product_manufacturer", "productManufacturer", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100000L, 0, 510, None, [], []), 
-        "product_name": MoPropertyMeta("product_name", "productName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200000L, 0, 510, None, [], []), 
-        "product_part_no": MoPropertyMeta("product_part_no", "productPartNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400000L, 0, 510, None, [], []), 
-        "product_serial_no": MoPropertyMeta("product_serial_no", "productSerialNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800000L, 0, 510, None, [], []), 
-        "product_version_no": MoPropertyMeta("product_version_no", "productVersionNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000000L, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x2000000L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000000L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000000L, None, None, None, [], []), 
+        "board_fru": MoPropertyMeta("board_fru", "boardFru", "string", None, MoPropertyMeta.READ_WRITE, 0x2L, 0, 510, None, [], []), 
+        "board_manufacturer": MoPropertyMeta("board_manufacturer", "boardManufacturer", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, 0, 510, None, [], []), 
+        "board_mfg_time": MoPropertyMeta("board_mfg_time", "boardMfgTime", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, [], []), 
+        "board_part_no": MoPropertyMeta("board_part_no", "boardPartNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, 0, 510, None, [], []), 
+        "board_product_name": MoPropertyMeta("board_product_name", "boardProductName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, 0, 510, None, [], []), 
+        "board_serial_no": MoPropertyMeta("board_serial_no", "boardSerialNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, 0, 510, None, [], []), 
+        "board_vid": MoPropertyMeta("board_vid", "boardVid", "string", VersionMeta.Version203a, MoPropertyMeta.READ_WRITE, 0x80L, 0, 510, None, [], []), 
+        "chassis_part_no": MoPropertyMeta("chassis_part_no", "chassisPartNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, 0, 510, None, [], []), 
+        "chassis_serial_no": MoPropertyMeta("chassis_serial_no", "chassisSerialNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, 0, 510, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x400L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "control_plane_mac1": MoPropertyMeta("control_plane_mac1", "controlPlaneMac1", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800L, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
+        "control_plane_mac2": MoPropertyMeta("control_plane_mac2", "controlPlaneMac2", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
+        "data_plane_mac1": MoPropertyMeta("data_plane_mac1", "dataPlaneMac1", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000L, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
+        "data_plane_mac2": MoPropertyMeta("data_plane_mac2", "dataPlaneMac2", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000L, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
+        "data_plane_wwn1": MoPropertyMeta("data_plane_wwn1", "dataPlaneWwn1", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000L, 0, 256, r"""(([A-Fa-f0-9][A-Fa-f0-9]:){7}[A-Fa-f0-9][A-Fa-f0-9])|0""", [], []), 
+        "data_plane_wwn2": MoPropertyMeta("data_plane_wwn2", "dataPlaneWwn2", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10000L, 0, 256, r"""(([A-Fa-f0-9][A-Fa-f0-9]:){7}[A-Fa-f0-9][A-Fa-f0-9])|0""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20000L, 0, 256, None, [], []), 
+        "entity_type": MoPropertyMeta("entity_type", "entityType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000L, None, None, None, ["ADD_IN_CARD", "BACK_PANEL_BOARD", "BATTERY", "BIOS", "CABLE_INTERCONNECT", "CHASSIS_BACK_PANEL_BOARD", "CMC", "CONNECTIVITY_SWITCH", "COOLING_UNIT", "DEVICE_BAY", "DISK", "DISK_DRIVE_BAY", "DRIVE_BACKPLANE", "EXTERNAL_ENVIRONMENT", "FAN_COOLING", "FRONT_PANEL_BOARD", "GROUP", "IBMC", "IO_MODULE", "IPMI_CHANNEL", "MEMORY_DEVICE", "MEMORY_MODULE", "MGMT_CONTROLLER_FIRMWARE", "OPERATING_SYSTEM", "OTHER", "OTHER_CHASSIS_BOARD", "OTHER_SYSTEM_BOARD", "PCI_BUS", "PCI_EXPRESS_BUS", "PERIPHERAL", "PERIPHERAL_BAY", "POWER_MANAGEMENT_BOARD", "POWER_MODULE", "POWER_SUPPLY", "POWER_SYSTEM_BOARD", "POWER_UNIT", "PROCESSING_BLADE", "PROCESSOR", "PROCESSOR_BOARD", "PROCESSOR_FRONT_SIDE_BUS", "PROCESSOR_IO_MODULE", "PROCESSOR_MEMORY_MODULE", "PROCESSOR_MODULE", "REMOTE_MGMT_COMM_DEVICE", "SATA_SAS_BUS", "SCSI_BUS", "SUB_CHASSIS", "SYSTEM_BOARD", "SYSTEM_BUS", "SYSTEM_CHASSIS", "SYSTEM_INTERNAL_EXPANSION_BOARD", "SYSTEM_MANAGEMENT_MODULE", "SYSTEM_MANAGEMENT_SOFTWARE", "UNKNOWN", "UNSPECIFIED"], ["0-4294967295"]), 
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80000L, None, None, None, [], []), 
+        "instance": MoPropertyMeta("instance", "instance", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100000L, None, None, None, [], []), 
+        "product_asset_tag": MoPropertyMeta("product_asset_tag", "productAssetTag", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200000L, 0, 510, None, [], []), 
+        "product_fru": MoPropertyMeta("product_fru", "productFru", "string", None, MoPropertyMeta.READ_WRITE, 0x400000L, 0, 510, None, [], []), 
+        "product_manufacturer": MoPropertyMeta("product_manufacturer", "productManufacturer", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800000L, 0, 510, None, [], []), 
+        "product_name": MoPropertyMeta("product_name", "productName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000000L, 0, 510, None, [], []), 
+        "product_part_no": MoPropertyMeta("product_part_no", "productPartNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000000L, 0, 510, None, [], []), 
+        "product_serial_no": MoPropertyMeta("product_serial_no", "productSerialNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000000L, 0, 510, None, [], []), 
+        "product_version_no": MoPropertyMeta("product_version_no", "productVersionNo", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000000L, 0, 510, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10000000L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20000000L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000000L, None, None, None, [], []), 
     }
 
     prop_map = {
+        "boardFru": "board_fru", 
         "boardManufacturer": "board_manufacturer", 
         "boardMfgTime": "board_mfg_time", 
         "boardPartNo": "board_part_no", 
@@ -127,6 +130,7 @@ class ApeFru(ManagedObject):
         "id": "id", 
         "instance": "instance", 
         "productAssetTag": "product_asset_tag", 
+        "productFru": "product_fru", 
         "productManufacturer": "product_manufacturer", 
         "productName": "product_name", 
         "productPartNo": "product_part_no", 
@@ -141,6 +145,7 @@ class ApeFru(ManagedObject):
     def __init__(self, parent_mo_or_dn, id, **kwargs):
         self._dirty_mask = 0
         self.id = id
+        self.board_fru = None
         self.board_manufacturer = None
         self.board_mfg_time = None
         self.board_part_no = None
@@ -159,6 +164,7 @@ class ApeFru(ManagedObject):
         self.entity_type = None
         self.instance = None
         self.product_asset_tag = None
+        self.product_fru = None
         self.product_manufacturer = None
         self.product_name = None
         self.product_part_no = None

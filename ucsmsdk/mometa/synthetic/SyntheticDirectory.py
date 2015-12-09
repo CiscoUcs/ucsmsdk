@@ -18,29 +18,29 @@ class SyntheticDirectory(ManagedObject):
     consts = SyntheticDirectoryConsts()
     naming_props = set([u'ino'])
 
-    mo_meta = MoMeta("SyntheticDirectory", "syntheticDirectory", "dir-[ino]", VersionMeta.Version101e, "InputOutput", 0x7ffffL, [], ["admin"], [u'syntheticDirectory', u'topSystem'], [u'syntheticDirectory', u'syntheticFile'], ["Get"])
+    mo_meta = MoMeta("SyntheticDirectory", "syntheticDirectory", "dir-[ino]", VersionMeta.Version101e, "InputOutput", 0xfffffL, [], ["admin"], [u'syntheticDirectory', u'topSystem'], [u'syntheticDirectory', u'syntheticFile'], ["Get"])
 
     prop_meta = {
-        "atime": MoPropertyMeta("atime", "atime", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1L, None, None, None, [], []), 
-        "blksize": MoPropertyMeta("blksize", "blksize", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, [], []), 
-        "blocks": MoPropertyMeta("blocks", "blocks", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x8L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "ctime": MoPropertyMeta("ctime", "ctime", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, [], []), 
-        "dev": MoPropertyMeta("dev", "dev", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "gid": MoPropertyMeta("gid", "gid", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, [], []), 
-        "ino": MoPropertyMeta("ino", "ino", "ulong", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x100L, None, None, None, [], []), 
-        "mode": MoPropertyMeta("mode", "mode", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, [], []), 
-        "mtime": MoPropertyMeta("mtime", "mtime", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800L, 0, 510, None, [], []), 
-        "nlink": MoPropertyMeta("nlink", "nlink", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, None, [], []), 
-        "path": MoPropertyMeta("path", "path", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000L, 0, 510, None, [], []), 
-        "rdev": MoPropertyMeta("rdev", "rdev", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000L, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8000L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "size": MoPropertyMeta("size", "size", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10000L, None, None, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20000L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "uid": MoPropertyMeta("uid", "uid", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000L, None, None, None, [], []), 
+        "atime": MoPropertyMeta("atime", "atime", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, [], []), 
+        "blksize": MoPropertyMeta("blksize", "blksize", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, [], []), 
+        "blocks": MoPropertyMeta("blocks", "blocks", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x10L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "ctime": MoPropertyMeta("ctime", "ctime", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, [], []), 
+        "dev": MoPropertyMeta("dev", "dev", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
+        "gid": MoPropertyMeta("gid", "gid", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, [], []), 
+        "ino": MoPropertyMeta("ino", "ino", "ulong", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x200L, None, None, None, [], []), 
+        "mode": MoPropertyMeta("mode", "mode", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, [], []), 
+        "mtime": MoPropertyMeta("mtime", "mtime", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800L, None, None, None, [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000L, 0, 510, None, [], []), 
+        "nlink": MoPropertyMeta("nlink", "nlink", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000L, None, None, None, [], []), 
+        "path": MoPropertyMeta("path", "path", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000L, 0, 510, None, [], []), 
+        "rdev": MoPropertyMeta("rdev", "rdev", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000L, None, None, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10000L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "size": MoPropertyMeta("size", "size", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20000L, None, None, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "uid": MoPropertyMeta("uid", "uid", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80000L, None, None, None, [], []), 
     }
 
     prop_map = {

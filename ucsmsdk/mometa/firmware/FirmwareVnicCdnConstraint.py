@@ -18,16 +18,17 @@ class FirmwareVnicCdnConstraint(ManagedObject):
     consts = FirmwareVnicCdnConstraintConsts()
     naming_props = set([u'type'])
 
-    mo_meta = MoMeta("FirmwareVnicCdnConstraint", "firmwareVnicCdnConstraint", "constraint-vnic-cdn-[type]", VersionMeta.Version224a, "InputOutput", 0x1fL, [], [""], [u'firmwareConstraints'], [], [None])
+    mo_meta = MoMeta("FirmwareVnicCdnConstraint", "firmwareVnicCdnConstraint", "constraint-vnic-cdn-[type]", VersionMeta.Version224b, "InputOutput", 0x3fL, [], [""], [u'firmwareConstraints'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224a, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "min_bios_version": MoPropertyMeta("min_bios_version", "minBiosVersion", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "min_cimc_version": MoPropertyMeta("min_cimc_version", "minCimcVersion", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version224a, MoPropertyMeta.NAMING, 0x10L, 1, 510, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "min_bios_version": MoPropertyMeta("min_bios_version", "minBiosVersion", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "min_cimc_version": MoPropertyMeta("min_cimc_version", "minCimcVersion", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version224b, MoPropertyMeta.NAMING, 0x20L, 1, 510, None, [], []), 
     }
 
     prop_map = {
@@ -36,6 +37,7 @@ class FirmwareVnicCdnConstraint(ManagedObject):
         "minBiosVersion": "min_bios_version", 
         "minCimcVersion": "min_cimc_version", 
         "rn": "rn", 
+        "sacl": "sacl", 
         "status": "status", 
         "type": "type", 
     }
@@ -46,6 +48,7 @@ class FirmwareVnicCdnConstraint(ManagedObject):
         self.child_action = None
         self.min_bios_version = None
         self.min_cimc_version = None
+        self.sacl = None
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareVnicCdnConstraint", parent_mo_or_dn, **kwargs)

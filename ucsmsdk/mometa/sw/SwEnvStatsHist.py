@@ -9,6 +9,10 @@ sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 
 class SwEnvStatsHistConsts():
+    DONNER_NOT_APPLICABLE = "not-applicable"
+    DONNER_AVG_NOT_APPLICABLE = "not-applicable"
+    DONNER_MAX_NOT_APPLICABLE = "not-applicable"
+    DONNER_MIN_NOT_APPLICABLE = "not-applicable"
     FAN_CTRLR_INLET1_NOT_APPLICABLE = "not-applicable"
     FAN_CTRLR_INLET1_AVG_NOT_APPLICABLE = "not-applicable"
     FAN_CTRLR_INLET1_MAX_NOT_APPLICABLE = "not-applicable"
@@ -49,6 +53,14 @@ class SwEnvStatsHistConsts():
     SUSPECT_NO = "no"
     SUSPECT_TRUE = "true"
     SUSPECT_YES = "yes"
+    TD2_NOT_APPLICABLE = "not-applicable"
+    TD2_AVG_NOT_APPLICABLE = "not-applicable"
+    TD2_MAX_NOT_APPLICABLE = "not-applicable"
+    TD2_MIN_NOT_APPLICABLE = "not-applicable"
+    TIBURON_NOT_APPLICABLE = "not-applicable"
+    TIBURON_AVG_NOT_APPLICABLE = "not-applicable"
+    TIBURON_MAX_NOT_APPLICABLE = "not-applicable"
+    TIBURON_MIN_NOT_APPLICABLE = "not-applicable"
 
 
 class SwEnvStatsHist(ManagedObject):
@@ -57,11 +69,15 @@ class SwEnvStatsHist(ManagedObject):
     consts = SwEnvStatsHistConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("SwEnvStatsHist", "swEnvStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0x7L, [], ["read-only"], [u'swEnvStats'], [], ["Get"])
+    mo_meta = MoMeta("SwEnvStatsHist", "swEnvStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xfL, [], ["read-only"], [u'swEnvStats'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x1L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "donner": MoPropertyMeta("donner", "donner", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "donner_avg": MoPropertyMeta("donner_avg", "donnerAvg", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "donner_max": MoPropertyMeta("donner_max", "donnerMax", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "donner_min": MoPropertyMeta("donner_min", "donnerMin", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "fan_ctrlr_inlet1": MoPropertyMeta("fan_ctrlr_inlet1", "fanCtrlrInlet1", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "fan_ctrlr_inlet1_avg": MoPropertyMeta("fan_ctrlr_inlet1_avg", "fanCtrlrInlet1Avg", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "fan_ctrlr_inlet1_max": MoPropertyMeta("fan_ctrlr_inlet1_max", "fanCtrlrInlet1Max", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
@@ -96,17 +112,29 @@ class SwEnvStatsHist(ManagedObject):
         "psu_ctrlr_inlet2_avg": MoPropertyMeta("psu_ctrlr_inlet2_avg", "psuCtrlrInlet2Avg", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "psu_ctrlr_inlet2_max": MoPropertyMeta("psu_ctrlr_inlet2_max", "psuCtrlrInlet2Max", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "psu_ctrlr_inlet2_min": MoPropertyMeta("psu_ctrlr_inlet2_min", "psuCtrlrInlet2Min", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x4L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "suspect": MoPropertyMeta("suspect", "suspect", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "td2": MoPropertyMeta("td2", "td2", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "td2_avg": MoPropertyMeta("td2_avg", "td2Avg", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "td2_max": MoPropertyMeta("td2_max", "td2Max", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "td2_min": MoPropertyMeta("td2_min", "td2Min", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "thresholded": MoPropertyMeta("thresholded", "thresholded", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, """([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
+        "tiburon": MoPropertyMeta("tiburon", "tiburon", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "tiburon_avg": MoPropertyMeta("tiburon_avg", "tiburonAvg", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "tiburon_max": MoPropertyMeta("tiburon_max", "tiburonMax", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "tiburon_min": MoPropertyMeta("tiburon_min", "tiburonMin", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
     }
 
     prop_map = {
         "childAction": "child_action", 
         "dn": "dn", 
+        "donner": "donner", 
+        "donnerAvg": "donner_avg", 
+        "donnerMax": "donner_max", 
+        "donnerMin": "donner_min", 
         "fanCtrlrInlet1": "fan_ctrlr_inlet1", 
         "fanCtrlrInlet1Avg": "fan_ctrlr_inlet1_avg", 
         "fanCtrlrInlet1Max": "fan_ctrlr_inlet1_max", 
@@ -145,7 +173,15 @@ class SwEnvStatsHist(ManagedObject):
         "sacl": "sacl", 
         "status": "status", 
         "suspect": "suspect", 
+        "td2": "td2", 
+        "td2Avg": "td2_avg", 
+        "td2Max": "td2_max", 
+        "td2Min": "td2_min", 
         "thresholded": "thresholded", 
+        "tiburon": "tiburon", 
+        "tiburonAvg": "tiburon_avg", 
+        "tiburonMax": "tiburon_max", 
+        "tiburonMin": "tiburon_min", 
         "timeCollected": "time_collected", 
     }
 
@@ -153,6 +189,10 @@ class SwEnvStatsHist(ManagedObject):
         self._dirty_mask = 0
         self.id = id
         self.child_action = None
+        self.donner = None
+        self.donner_avg = None
+        self.donner_max = None
+        self.donner_min = None
         self.fan_ctrlr_inlet1 = None
         self.fan_ctrlr_inlet1_avg = None
         self.fan_ctrlr_inlet1_max = None
@@ -189,7 +229,15 @@ class SwEnvStatsHist(ManagedObject):
         self.sacl = None
         self.status = None
         self.suspect = None
+        self.td2 = None
+        self.td2_avg = None
+        self.td2_max = None
+        self.td2_min = None
         self.thresholded = None
+        self.tiburon = None
+        self.tiburon_avg = None
+        self.tiburon_max = None
+        self.tiburon_min = None
         self.time_collected = None
 
         ManagedObject.__init__(self, "SwEnvStatsHist", parent_mo_or_dn, **kwargs)

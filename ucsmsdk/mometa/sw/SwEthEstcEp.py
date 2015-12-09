@@ -16,6 +16,9 @@ class SwEthEstcEpConsts():
     ADMIN_SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
+    AUTO_NEGOTIATE_AUTO = "auto"
+    AUTO_NEGOTIATE_NONE = "none"
+    AUTO_NEGOTIATE_UNSET = "unset"
     CDP_DISABLED = "disabled"
     CDP_ENABLED = "enabled"
     CHASSIS_ID_N_A = "N/A"
@@ -65,46 +68,47 @@ class SwEthEstcEp(ManagedObject):
     consts = SwEthEstcEpConsts()
     naming_props = set([u'slotId', u'portId'])
 
-    mo_meta = MoMeta("SwEthEstcEp", "swEthEstcEp", "ethestc-ep-slot-[slot_id]port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3fffL, [], ["read-only"], [u'swEthLanBorder', u'swSubGroup'], [u'swEthTargetEp', u'swVlan'], ["Get"])
+    mo_meta = MoMeta("SwEthEstcEp", "swEthEstcEp", "ethestc-ep-slot-[slot_id]port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x7fffL, [], ["read-only"], [u'swEthLanBorder', u'swSubGroup'], [u'swEthTargetEp', u'swVlan'], ["Get"])
 
     prop_meta = {
-        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x1L, None, None, None, ["10gbps", "1gbps", "20gbps", "40gbps", "indeterminate"], []), 
-        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["disabled", "enabled"], []), 
-        "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "border_aggr_port_id": MoPropertyMeta("border_aggr_port_id", "borderAggrPortId", "uint", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, [], []), 
-        "border_port_id": MoPropertyMeta("border_port_id", "borderPortId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, [], []), 
-        "border_slot_id": MoPropertyMeta("border_slot_id", "borderSlotId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, [], []), 
+        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["10gbps", "1gbps", "20gbps", "40gbps", "indeterminate"], []), 
+        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["disabled", "enabled"], []), 
+        "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "auto_negotiate": MoPropertyMeta("auto_negotiate", "autoNegotiate", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto", "none", "unset"], []), 
+        "border_aggr_port_id": MoPropertyMeta("border_aggr_port_id", "borderAggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, [], []), 
+        "border_port_id": MoPropertyMeta("border_port_id", "borderPortId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, [], []), 
+        "border_slot_id": MoPropertyMeta("border_slot_id", "borderSlotId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, [], []), 
         "cdp": MoPropertyMeta("cdp", "cdp", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x20L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x40L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "cos_value": MoPropertyMeta("cos_value", "cosValue", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "forge_mac": MoPropertyMeta("forge_mac", "forgeMac", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allow", "deny"], []), 
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []), 
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []), 
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "pending", "repurposed"], []), 
-        "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, """((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "pc_id": MoPropertyMeta("pc_id", "pcId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "peer_aggr_port_id": MoPropertyMeta("peer_aggr_port_id", "peerAggrPortId", "uint", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "peer_aggr_port_id": MoPropertyMeta("peer_aggr_port_id", "peerAggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "peer_chassis_id": MoPropertyMeta("peer_chassis_id", "peerChassisId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]), 
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "pin_group_name": MoPropertyMeta("pin_group_name", "pinGroupName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100L, 0, 510, None, [], []), 
-        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x200L, None, None, None, [], []), 
-        "port_mode": MoPropertyMeta("port_mode", "portMode", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, ["access", "trunk"], []), 
+        "pin_group_name": MoPropertyMeta("pin_group_name", "pinGroupName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x200L, 0, 510, None, [], []), 
+        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x400L, None, None, None, [], []), 
+        "port_mode": MoPropertyMeta("port_mode", "portMode", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x800L, None, None, None, ["access", "trunk"], []), 
         "priority_flow_ctrl": MoPropertyMeta("priority_flow_ctrl", "priorityFlowCtrl", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto", "on"], []), 
         "recv_flow_ctrl": MoPropertyMeta("recv_flow_ctrl", "recvFlowCtrl", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["off", "on"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x800L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x1000L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "send_flow_ctrl": MoPropertyMeta("send_flow_ctrl", "sendFlowCtrl", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["off", "on"], []), 
-        "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x1000L, None, None, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2000L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x2000L, None, None, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4000L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
-        "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, """((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, """((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
+        "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
         "uplink_fail_action": MoPropertyMeta("uplink_fail_action", "uplinkFailAction", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["link-down", "warning"], []), 
     }
 
@@ -112,6 +116,7 @@ class SwEthEstcEp(ManagedObject):
         "adminSpeed": "admin_speed", 
         "adminState": "admin_state", 
         "aggrPortId": "aggr_port_id", 
+        "autoNegotiate": "auto_negotiate", 
         "borderAggrPortId": "border_aggr_port_id", 
         "borderPortId": "border_port_id", 
         "borderSlotId": "border_slot_id", 
@@ -156,6 +161,7 @@ class SwEthEstcEp(ManagedObject):
         self.admin_speed = None
         self.admin_state = None
         self.aggr_port_id = None
+        self.auto_negotiate = None
         self.border_aggr_port_id = None
         self.border_port_id = None
         self.border_slot_id = None

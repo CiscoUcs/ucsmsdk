@@ -9,6 +9,7 @@ sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 
 class FirmwareBootUnitConsts():
+    ADMIN_STATE_FORCE_TRIGGER = "force-trigger"
     ADMIN_STATE_TRIGGER = "trigger"
     ADMIN_STATE_TRIGGERED = "triggered"
     IGNORE_COMP_CHECK_FALSE = "false"
@@ -51,25 +52,25 @@ class FirmwareBootUnit(ManagedObject):
     consts = FirmwareBootUnitConsts()
     naming_props = set([u'type'])
 
-    mo_meta = MoMeta("FirmwareBootUnit", "firmwareBootUnit", "bootunit-[type]", VersionMeta.Version101e, "InputOutput", 0x7ffL, [], ["admin"], [u'firmwareBootDefinition'], [u'faultInst', u'firmwareInstallable'], ["Get", "Set"])
+    mo_meta = MoMeta("FirmwareBootUnit", "firmwareBootUnit", "bootunit-[type]", VersionMeta.Version101e, "InputOutput", 0xfffL, [], ["admin"], [u'firmwareBootDefinition'], [u'faultInst', u'firmwareInstallable'], ["Get", "Set"])
 
     prop_meta = {
-        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1L, None, None, None, ["trigger", "triggered"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "ignore_comp_check": MoPropertyMeta("ignore_comp_check", "ignoreCompCheck", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["force-trigger", "trigger", "triggered"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "ignore_comp_check": MoPropertyMeta("ignore_comp_check", "ignoreCompCheck", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["false", "no", "true", "yes"], []), 
         "image": MoPropertyMeta("image", "image", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["backup", "running"], []), 
-        "inv_tag": MoPropertyMeta("inv_tag", "invTag", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["install", "upgrade"], []), 
+        "inv_tag": MoPropertyMeta("inv_tag", "invTag", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["install", "upgrade"], []), 
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["activating", "auto-activating", "auto-updating", "bad-image", "failed", "faulty-state", "pending-next-boot", "pending-power-cycle", "ready", "rebooting", "rebuilding", "scheduled", "set-startup", "throttled", "updating", "upgrading"], []), 
         "prev_version": MoPropertyMeta("prev_version", "prevVersion", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "reset_on_activate": MoPropertyMeta("reset_on_activate", "resetOnActivate", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["false", "no", "true", "yes"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "skip_validation": MoPropertyMeta("skip_validation", "skipValidation", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, ["false", "no", "true", "yes"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x200L, None, None, """((kernel|system|combined|boot-loader),){0,3}(kernel|system|combined|boot-loader){0,1}""", [], []), 
-        "version": MoPropertyMeta("version", "version", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400L, 0, 510, None, [], []), 
+        "reset_on_activate": MoPropertyMeta("reset_on_activate", "resetOnActivate", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "skip_validation": MoPropertyMeta("skip_validation", "skipValidation", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x400L, None, None, r"""((kernel|system|combined|boot-loader),){0,3}(kernel|system|combined|boot-loader){0,1}""", [], []), 
+        "version": MoPropertyMeta("version", "version", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800L, 0, 510, None, [], []), 
     }
 
     prop_map = {

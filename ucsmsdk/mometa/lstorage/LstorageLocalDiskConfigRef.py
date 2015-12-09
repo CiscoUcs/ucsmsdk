@@ -22,17 +22,17 @@ class LstorageLocalDiskConfigRef(ManagedObject):
     consts = LstorageLocalDiskConfigRefConsts()
     naming_props = set([u'slotNum'])
 
-    mo_meta = MoMeta("LstorageLocalDiskConfigRef", "lstorageLocalDiskConfigRef", "slot-[slot_num]", VersionMeta.Version224a, "InputOutput", 0x7fL, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageDiskGroupConfigDef', u'lstorageDiskGroupConfigPolicy'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LstorageLocalDiskConfigRef", "lstorageLocalDiskConfigRef", "slot-[slot_num]", VersionMeta.Version224b, "InputOutput", 0xffL, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageDiskGroupConfigDef', u'lstorageDiskGroupConfigPolicy'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224a, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "role": MoPropertyMeta("role", "role", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["ded-hot-spare", "glob-hot-spare", "normal", "unknown"], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "slot_num": MoPropertyMeta("slot_num", "slotNum", "ushort", VersionMeta.Version224a, MoPropertyMeta.NAMING, 0x10L, None, None, None, [], ["1-24", "1-4"]), 
-        "span_id": MoPropertyMeta("span_id", "spanId", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["unspecified"], ["0-8"]), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "role": MoPropertyMeta("role", "role", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["ded-hot-spare", "glob-hot-spare", "normal", "unknown"], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "slot_num": MoPropertyMeta("slot_num", "slotNum", "ushort", VersionMeta.Version224b, MoPropertyMeta.NAMING, 0x20L, None, None, None, [], ["1-24", "1-4"]), 
+        "span_id": MoPropertyMeta("span_id", "spanId", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["unspecified"], ["0-8"]), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x80L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

@@ -31,25 +31,25 @@ class NwctrlDefinition(ManagedObject):
     consts = NwctrlDefinitionConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("NwctrlDefinition", "nwctrlDefinition", "nwctrl-[name]", VersionMeta.Version102d, "InputOutput", 0xfffL, [], ["admin", "ls-network", "ls-network-policy"], [u'fabricEthEstcCloud', u'orgOrg', u'policySystemEp'], [u'dpsecMac'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("NwctrlDefinition", "nwctrlDefinition", "nwctrl-[name]", VersionMeta.Version102d, "InputOutput", 0x1fffL, [], ["admin", "ls-network", "ls-network-policy"], [u'fabricEthEstcCloud', u'orgOrg', u'policySystemEp'], [u'dpsecMac'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "cdp": MoPropertyMeta("cdp", "cdp", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x1L, None, None, None, ["disabled", "enabled"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x4L, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version102d, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "cdp": MoPropertyMeta("cdp", "cdp", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["disabled", "enabled"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version102d, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
-        "lldp_receive": MoPropertyMeta("lldp_receive", "lldpReceive", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["disabled", "enabled"], []), 
-        "lldp_transmit": MoPropertyMeta("lldp_transmit", "lldpTransmit", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["disabled", "enabled"], []), 
-        "mac_register_mode": MoPropertyMeta("mac_register_mode", "macRegisterMode", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["all-host-vlans", "only-native-vlan"], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version102d, MoPropertyMeta.NAMING, 0x80L, None, None, """[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
+        "lldp_receive": MoPropertyMeta("lldp_receive", "lldpReceive", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["disabled", "enabled"], []), 
+        "lldp_transmit": MoPropertyMeta("lldp_transmit", "lldpTransmit", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["disabled", "enabled"], []), 
+        "mac_register_mode": MoPropertyMeta("mac_register_mode", "macRegisterMode", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, ["all-host-vlans", "only-native-vlan"], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version102d, MoPropertyMeta.NAMING, 0x100L, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, ["local", "pending-policy", "policy"], []), 
-        "prop_acl": MoPropertyMeta("prop_acl", "propAcl", "ulong", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version102d, MoPropertyMeta.READ_ONLY, 0x200L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x400L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "uplink_fail_action": MoPropertyMeta("uplink_fail_action", "uplinkFailAction", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x800L, None, None, None, ["link-down", "warning"], []), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "prop_acl": MoPropertyMeta("prop_acl", "propAcl", "ulong", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version102d, MoPropertyMeta.READ_ONLY, 0x400L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x800L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "uplink_fail_action": MoPropertyMeta("uplink_fail_action", "uplinkFailAction", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, None, ["link-down", "warning"], []), 
     }
 
     prop_map = {

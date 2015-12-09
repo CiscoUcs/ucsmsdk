@@ -18,17 +18,18 @@ class AdaptorUplinkPortStats(ManagedObject):
     consts = AdaptorUplinkPortStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorUplinkPortStats", "adaptorUplinkPortStats", "", VersionMeta.Version251a, "InputOutput", 0xfL, [], ["read-only"], [], [], ["Get"])
+    mo_meta = MoMeta("AdaptorUplinkPortStats", "adaptorUplinkPortStats", "", VersionMeta.Version251a, "InputOutput", 0x1fL, [], ["read-only"], [], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "crc": MoPropertyMeta("crc", "crc", "uint", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
         "frame_tx": MoPropertyMeta("frame_tx", "frameTx", "uint", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "in_range": MoPropertyMeta("in_range", "inRange", "uint", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "port_id": MoPropertyMeta("port_id", "portId", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "too_long": MoPropertyMeta("too_long", "tooLong", "uint", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "too_short": MoPropertyMeta("too_short", "tooShort", "uint", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
     }
@@ -41,6 +42,7 @@ class AdaptorUplinkPortStats(ManagedObject):
         "inRange": "in_range", 
         "portId": "port_id", 
         "rn": "rn", 
+        "sacl": "sacl", 
         "status": "status", 
         "tooLong": "too_long", 
         "tooShort": "too_short", 
@@ -53,6 +55,7 @@ class AdaptorUplinkPortStats(ManagedObject):
         self.frame_tx = None
         self.in_range = None
         self.port_id = None
+        self.sacl = None
         self.status = None
         self.too_long = None
         self.too_short = None

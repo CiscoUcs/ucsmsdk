@@ -41,19 +41,19 @@ class FirmwarePackItem(ManagedObject):
     consts = FirmwarePackItemConsts()
     naming_props = set([u'hwVendor', u'hwModel', u'type'])
 
-    mo_meta = MoMeta("FirmwarePackItem", "firmwarePackItem", "pack-image-[hw_vendor]|[hw_model]|[type]", VersionMeta.Version101e, "InputOutput", 0xffL, [], ["admin"], [u'firmwareCatalogPack', u'firmwareComputeHostPack', u'firmwareComputeMgmtPack', u'firmwareComputeStoragePack', u'firmwareInfraPack'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FirmwarePackItem", "firmwarePackItem", "pack-image-[hw_vendor]|[hw_model]|[type]", VersionMeta.Version101e, "InputOutput", 0x1ffL, [], ["admin"], [u'firmwareCatalogPack', u'firmwareComputeHostPack', u'firmwareComputeMgmtPack', u'firmwareComputeStoragePack', u'firmwareInfraPack'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "hw_model": MoPropertyMeta("hw_model", "hwModel", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x4L, 1, 510, None, [], []), 
-        "hw_vendor": MoPropertyMeta("hw_vendor", "hwVendor", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8L, 1, 510, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "hw_model": MoPropertyMeta("hw_model", "hwModel", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8L, 1, 510, None, [], []), 
+        "hw_vendor": MoPropertyMeta("hw_vendor", "hwVendor", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10L, 1, 510, None, [], []), 
         "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["missing", "present", "unknown"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x40L, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "iocard", "local-disk", "psu", "sas-expander", "storage-controller", "storage-dev-bridge", "storage-node-controller", "switch-kernel", "switch-software", "system", "unspecified"], []), 
-        "version": MoPropertyMeta("version", "version", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, 0, 510, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80L, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "iocard", "local-disk", "psu", "sas-expander", "storage-controller", "storage-dev-bridge", "storage-node-controller", "switch-kernel", "switch-software", "system", "unspecified"], []), 
+        "version": MoPropertyMeta("version", "version", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, 0, 510, None, [], []), 
     }
 
     prop_map = {

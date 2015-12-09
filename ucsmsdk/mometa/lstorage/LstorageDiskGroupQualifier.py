@@ -28,20 +28,20 @@ class LstorageDiskGroupQualifier(ManagedObject):
     consts = LstorageDiskGroupQualifierConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LstorageDiskGroupQualifier", "lstorageDiskGroupQualifier", "disk-group-qual", VersionMeta.Version224a, "InputOutput", 0x3ffL, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageDiskGroupConfigDef', u'lstorageDiskGroupConfigPolicy'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LstorageDiskGroupQualifier", "lstorageDiskGroupQualifier", "disk-group-qual", VersionMeta.Version224b, "InputOutput", 0x7ffL, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageDiskGroupConfigDef', u'lstorageDiskGroupConfigPolicy'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224a, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "drive_type": MoPropertyMeta("drive_type", "driveType", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["HDD", "SSD", "unspecified"], []), 
-        "min_drive_size": MoPropertyMeta("min_drive_size", "minDriveSize", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["unspecified"], ["0-10240"]), 
-        "num_ded_hot_spares": MoPropertyMeta("num_ded_hot_spares", "numDedHotSpares", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["unspecified"], ["0-24"]), 
-        "num_drives": MoPropertyMeta("num_drives", "numDrives", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["unspecified"], ["0-24"]), 
-        "num_glob_hot_spares": MoPropertyMeta("num_glob_hot_spares", "numGlobHotSpares", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["unspecified"], ["0-24"]), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "use_remaining_disks": MoPropertyMeta("use_remaining_disks", "useRemainingDisks", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "drive_type": MoPropertyMeta("drive_type", "driveType", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["HDD", "SSD", "unspecified"], []), 
+        "min_drive_size": MoPropertyMeta("min_drive_size", "minDriveSize", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["unspecified"], ["0-10240"]), 
+        "num_ded_hot_spares": MoPropertyMeta("num_ded_hot_spares", "numDedHotSpares", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["unspecified"], ["0-24"]), 
+        "num_drives": MoPropertyMeta("num_drives", "numDrives", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["unspecified"], ["0-24"]), 
+        "num_glob_hot_spares": MoPropertyMeta("num_glob_hot_spares", "numGlobHotSpares", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, ["unspecified"], ["0-24"]), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x100L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "use_remaining_disks": MoPropertyMeta("use_remaining_disks", "useRemainingDisks", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, ["false", "no", "true", "yes"], []), 
     }
 
     prop_map = {

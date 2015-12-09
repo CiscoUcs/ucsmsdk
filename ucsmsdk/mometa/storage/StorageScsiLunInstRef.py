@@ -37,25 +37,25 @@ class StorageScsiLunInstRef(ManagedObject):
     consts = StorageScsiLunInstRefConsts()
     naming_props = set([u'lunItemName'])
 
-    mo_meta = MoMeta("StorageScsiLunInstRef", "storageScsiLunInstRef", "lun-inst-ref-[lun_item_name]", VersionMeta.Version302a, "InputOutput", 0x7ffL, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'lsServer'], [u'faultInst'], [None])
+    mo_meta = MoMeta("StorageScsiLunInstRef", "storageScsiLunInstRef", "lun-inst-ref-[lun_item_name]", VersionMeta.Version302c, "InputOutput", 0xfffL, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'lsServer'], [u'faultInst'], [None])
 
     prop_meta = {
-        "admin_name": MoPropertyMeta("admin_name", "adminName", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x1L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["offline", "online", "undeployed"], []), 
-        "auto_aquired": MoPropertyMeta("auto_aquired", "autoAquired", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["false", "no", "true", "yes"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302a, MoPropertyMeta.INTERNAL, 0x8L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["applied", "apply-failed", "applying", "not-applied", "not-in-use", "orphaned"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "lun_dn": MoPropertyMeta("lun_dn", "lunDn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x20L, 0, 256, None, [], []), 
-        "lun_item_dn": MoPropertyMeta("lun_item_dn", "lunItemDn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "lun_item_name": MoPropertyMeta("lun_item_name", "lunItemName", "string", VersionMeta.Version302a, MoPropertyMeta.NAMING, 0x40L, 1, 32, None, [], []), 
-        "lun_mask_id": MoPropertyMeta("lun_mask_id", "lunMaskId", "ushort", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-255"]), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "size": MoPropertyMeta("size", "size", "ulong", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, [], ["1-10240"]), 
-        "snapshot_admin_state": MoPropertyMeta("snapshot_admin_state", "snapshotAdminState", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, ["abort-replication", "create", "create-lun-replica", "replication-restore", "set-replication-offline", "set-replication-online", "undefined"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x400L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "volume_dn": MoPropertyMeta("volume_dn", "volumeDn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "admin_name": MoPropertyMeta("admin_name", "adminName", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x2L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["offline", "online", "undeployed"], []), 
+        "auto_aquired": MoPropertyMeta("auto_aquired", "autoAquired", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x10L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["applied", "apply-failed", "applying", "not-applied", "not-in-use", "orphaned"], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
+        "lun_dn": MoPropertyMeta("lun_dn", "lunDn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x40L, 0, 256, None, [], []), 
+        "lun_item_dn": MoPropertyMeta("lun_item_dn", "lunItemDn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "lun_item_name": MoPropertyMeta("lun_item_name", "lunItemName", "string", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x80L, 1, 32, None, [], []), 
+        "lun_mask_id": MoPropertyMeta("lun_mask_id", "lunMaskId", "ushort", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-255"]), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x100L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "size": MoPropertyMeta("size", "size", "ulong", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, [], ["1-10240"]), 
+        "snapshot_admin_state": MoPropertyMeta("snapshot_admin_state", "snapshotAdminState", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, ["abort-replication", "create", "create-lun-replica", "replication-restore", "set-replication-offline", "set-replication-online", "undefined"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x800L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "volume_dn": MoPropertyMeta("volume_dn", "volumeDn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
     }
 
     prop_map = {

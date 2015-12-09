@@ -21,14 +21,15 @@ class EquipmentLocalDiskControllerTypeDef(ManagedObject):
     consts = EquipmentLocalDiskControllerTypeDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentLocalDiskControllerTypeDef", "equipmentLocalDiskControllerTypeDef", "controller-type", VersionMeta.Version224a, "InputOutput", 0x1fL, [], [""], [u'equipmentLocalDiskControllerCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentLocalDiskControllerTypeDef", "equipmentLocalDiskControllerTypeDef", "controller-type", VersionMeta.Version224b, "InputOutput", 0x3fL, [], [""], [u'equipmentLocalDiskControllerCapProvider'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224a, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "is_flash_life_left_supported": MoPropertyMeta("is_flash_life_left_supported", "isFlashLifeLeftSupported", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["false", "no", "true", "yes"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "is_flash_life_left_supported": MoPropertyMeta("is_flash_life_left_supported", "isFlashLifeLeftSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {
@@ -36,6 +37,7 @@ class EquipmentLocalDiskControllerTypeDef(ManagedObject):
         "dn": "dn", 
         "isFlashLifeLeftSupported": "is_flash_life_left_supported", 
         "rn": "rn", 
+        "sacl": "sacl", 
         "status": "status", 
     }
 
@@ -43,6 +45,7 @@ class EquipmentLocalDiskControllerTypeDef(ManagedObject):
         self._dirty_mask = 0
         self.child_action = None
         self.is_flash_life_left_supported = None
+        self.sacl = None
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentLocalDiskControllerTypeDef", parent_mo_or_dn, **kwargs)

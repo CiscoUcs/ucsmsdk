@@ -24,21 +24,22 @@ class ComputePooledEnclosureComputeSlot(ManagedObject):
     consts = ComputePooledEnclosureComputeSlotConsts()
     naming_props = set([u'chassisId', u'slotId', u'serverInstanceId'])
 
-    mo_meta = MoMeta("ComputePooledEnclosureComputeSlot", "computePooledEnclosureComputeSlot", "server-[chassis_id]-[slot_id]-[server_instance_id]", VersionMeta.Version251a, "InputOutput", 0x7fL, [], ["admin", "pn-policy"], [u'computePool'], [], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("ComputePooledEnclosureComputeSlot", "computePooledEnclosureComputeSlot", "server-[chassis_id]-[slot_id]-[server_instance_id]", VersionMeta.Version251a, "InputOutput", 0xffL, [], ["admin", "pn-policy"], [u'computePool'], [], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "assigned": MoPropertyMeta("assigned", "assigned", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "assigned_to_dn": MoPropertyMeta("assigned_to_dn", "assignedToDn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x1L, None, None, None, ["N/A"], ["1-255"]), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x2L, None, None, None, ["N/A"], ["1-255"]), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
         "owner": MoPropertyMeta("owner", "owner", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["management", "policy"], []), 
         "poolable_dn": MoPropertyMeta("poolable_dn", "poolableDn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "prev_assigned_to_dn": MoPropertyMeta("prev_assigned_to_dn", "prevAssignedToDn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "server_instance_id": MoPropertyMeta("server_instance_id", "serverInstanceId", "uint", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x10L, None, None, None, [], ["1-8"]), 
-        "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x20L, None, None, None, [], ["1-8"]), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "server_instance_id": MoPropertyMeta("server_instance_id", "serverInstanceId", "uint", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x20L, None, None, None, [], ["1-8"]), 
+        "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x40L, None, None, None, [], ["1-8"]), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x80L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {
@@ -51,6 +52,7 @@ class ComputePooledEnclosureComputeSlot(ManagedObject):
         "poolableDn": "poolable_dn", 
         "prevAssignedToDn": "prev_assigned_to_dn", 
         "rn": "rn", 
+        "sacl": "sacl", 
         "serverInstanceId": "server_instance_id", 
         "slotId": "slot_id", 
         "status": "status", 
@@ -67,6 +69,7 @@ class ComputePooledEnclosureComputeSlot(ManagedObject):
         self.owner = None
         self.poolable_dn = None
         self.prev_assigned_to_dn = None
+        self.sacl = None
         self.status = None
 
         ManagedObject.__init__(self, "ComputePooledEnclosureComputeSlot", parent_mo_or_dn, **kwargs)

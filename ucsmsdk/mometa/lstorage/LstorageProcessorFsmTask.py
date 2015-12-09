@@ -23,18 +23,18 @@ class LstorageProcessorFsmTask(ManagedObject):
     consts = LstorageProcessorFsmTaskConsts()
     naming_props = set([u'item'])
 
-    mo_meta = MoMeta("LstorageProcessorFsmTask", "lstorageProcessorFsmTask", "task-[item]", VersionMeta.Version302a, "OutputOnly", 0x7L, [], [""], [u'lstorageProcessor'], [], [None])
+    mo_meta = MoMeta("LstorageProcessorFsmTask", "lstorageProcessorFsmTask", "task-[item]", VersionMeta.Version302c, "OutputOnly", 0xfL, [], [""], [u'lstorageProcessor'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302a, MoPropertyMeta.INTERNAL, None, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "completion": MoPropertyMeta("completion", "completion", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cancelled", "completed", "processing", "scheduled"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x1L, 0, 256, None, [], []), 
-        "flags": MoPropertyMeta("flags", "flags", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """(defaultValue){0,1}""", [], []), 
-        "item": MoPropertyMeta("item", "item", "string", VersionMeta.Version302a, MoPropertyMeta.NAMING, None, None, None, None, ["Configure", "nop"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "seq_id": MoPropertyMeta("seq_id", "seqId", "uint", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x4L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "completion": MoPropertyMeta("completion", "completion", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cancelled", "completed", "processing", "scheduled"], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "flags": MoPropertyMeta("flags", "flags", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""(defaultValue){0,1}""", [], []), 
+        "item": MoPropertyMeta("item", "item", "string", VersionMeta.Version302c, MoPropertyMeta.NAMING, None, None, None, None, ["Configure", "nop"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "seq_id": MoPropertyMeta("seq_id", "seqId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

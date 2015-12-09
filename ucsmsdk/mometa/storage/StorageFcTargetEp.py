@@ -21,17 +21,17 @@ class StorageFcTargetEp(ManagedObject):
     consts = StorageFcTargetEpConsts()
     naming_props = set([u'targetwwpn'])
 
-    mo_meta = MoMeta("StorageFcTargetEp", "storageFcTargetEp", "fc-target-ep-[targetwwpn]", VersionMeta.Version211a, "InputOutput", 0x7fL, [], ["admin", "ext-san-config", "ext-san-policy", "ls-storage", "ls-storage-policy"], [u'storageConnectionDef', u'storageConnectionPolicy'], [u'storageVsanRef'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("StorageFcTargetEp", "storageFcTargetEp", "fc-target-ep-[targetwwpn]", VersionMeta.Version211a, "InputOutput", 0xffL, [], ["admin", "ext-san-config", "ext-san-policy", "ls-storage", "ls-storage-policy"], [u'storageConnectionDef', u'storageConnectionPolicy'], [u'storageVsanRef'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2L, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "path": MoPropertyMeta("path", "path", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["A", "B", "NONE", "dual"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "targetwwpn": MoPropertyMeta("targetwwpn", "targetwwpn", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x40L, 0, 256, """(([A-Fa-f0-9][A-Fa-f0-9]:){7}[A-Fa-f0-9][A-Fa-f0-9])|0""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x4L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "path": MoPropertyMeta("path", "path", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["A", "B", "NONE", "dual"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "targetwwpn": MoPropertyMeta("targetwwpn", "targetwwpn", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x80L, 0, 256, r"""(([A-Fa-f0-9][A-Fa-f0-9]:){7}[A-Fa-f0-9][A-Fa-f0-9])|0""", [], []), 
     }
 
     prop_map = {

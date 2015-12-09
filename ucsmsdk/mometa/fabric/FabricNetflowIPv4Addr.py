@@ -20,18 +20,18 @@ class FabricNetflowIPv4Addr(ManagedObject):
     consts = FabricNetflowIPv4AddrConsts()
     naming_props = set([u'fabricId'])
 
-    mo_meta = MoMeta("FabricNetflowIPv4Addr", "fabricNetflowIPv4Addr", "ipv4-addr-[fabric_id]", VersionMeta.Version221b, "InputOutput", 0xffL, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'adaptorHostIscsiIf', u'adaptorVlan', u'swVlan', u'vnicEtherIf', u'vnicIPv4If'], [], [None])
+    mo_meta = MoMeta("FabricNetflowIPv4Addr", "fabricNetflowIPv4Addr", "ipv4-addr-[fabric_id]", VersionMeta.Version221b, "InputOutput", 0x1ffL, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'adaptorHostIscsiIf', u'adaptorVlan', u'swVlan', u'vnicEtherIf', u'vnicIPv4If'], [], [None])
 
     prop_meta = {
-        "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x1L, 0, 256, """((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "def_gw": MoPropertyMeta("def_gw", "defGw", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x4L, 0, 256, """((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "fabric_id": MoPropertyMeta("fabric_id", "fabricId", "string", VersionMeta.Version221b, MoPropertyMeta.NAMING, 0x10L, None, None, None, ["A", "B", "NONE"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x40L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "subnet": MoPropertyMeta("subnet", "subnet", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x80L, 0, 256, """((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2L, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "def_gw": MoPropertyMeta("def_gw", "defGw", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x8L, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "fabric_id": MoPropertyMeta("fabric_id", "fabricId", "string", VersionMeta.Version221b, MoPropertyMeta.NAMING, 0x20L, None, None, None, ["A", "B", "NONE"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x80L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "subnet": MoPropertyMeta("subnet", "subnet", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x100L, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
     }
 
     prop_map = {

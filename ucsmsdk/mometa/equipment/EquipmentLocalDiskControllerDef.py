@@ -13,6 +13,10 @@ class EquipmentLocalDiskControllerDefConsts():
     CONFIG_PARM_MOD_SUPPORTED_NO = "no"
     CONFIG_PARM_MOD_SUPPORTED_TRUE = "true"
     CONFIG_PARM_MOD_SUPPORTED_YES = "yes"
+    CONTROLLER_DEF_TYPE_EMBEDDED = "embedded"
+    CONTROLLER_DEF_TYPE_NONE = "none"
+    CONTROLLER_DEF_TYPE_NVME = "nvme"
+    CONTROLLER_DEF_TYPE_SLOT_BASED = "slot-based"
     FORCE_UPDATE_VERSION_FALSE = "false"
     FORCE_UPDATE_VERSION_NO = "no"
     FORCE_UPDATE_VERSION_TRUE = "true"
@@ -37,28 +41,30 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
     consts = EquipmentLocalDiskControllerDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentLocalDiskControllerDef", "equipmentLocalDiskControllerDef", "disk-controller", VersionMeta.Version131c, "InputOutput", 0x7fL, [], [""], [u'equipmentLocalDiskControllerCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentLocalDiskControllerDef", "equipmentLocalDiskControllerDef", "disk-controller", VersionMeta.Version131c, "InputOutput", 0xffL, [], [""], [u'equipmentLocalDiskControllerCapProvider'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "config_parm_mod_supported": MoPropertyMeta("config_parm_mod_supported", "configParmModSupported", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x2L, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "config_parm_mod_supported": MoPropertyMeta("config_parm_mod_supported", "configParmModSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "controller_def_type": MoPropertyMeta("controller_def_type", "controllerDefType", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["embedded", "none", "nvme", "slot-based"], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x4L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
         "force_update_version": MoPropertyMeta("force_update_version", "forceUpdateVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x8L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "oob_interface_supported": MoPropertyMeta("oob_interface_supported", "oobInterfaceSupported", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "oob_interface_supported": MoPropertyMeta("oob_interface_supported", "oobInterfaceSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["local", "pending-policy", "policy"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x40L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "tfm_supported": MoPropertyMeta("tfm_supported", "tfmSupported", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x80L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "tfm_supported": MoPropertyMeta("tfm_supported", "tfmSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
     }
 
     prop_map = {
         "childAction": "child_action", 
         "configParmModSupported": "config_parm_mod_supported", 
+        "controllerDefType": "controller_def_type", 
         "descr": "descr", 
         "dn": "dn", 
         "forceUpdateVersion": "force_update_version", 
@@ -77,6 +83,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         self._dirty_mask = 0
         self.child_action = None
         self.config_parm_mod_supported = None
+        self.controller_def_type = None
         self.descr = None
         self.force_update_version = None
         self.int_id = None

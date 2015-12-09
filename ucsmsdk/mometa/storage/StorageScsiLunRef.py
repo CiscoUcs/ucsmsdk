@@ -9,7 +9,7 @@ sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 
 class StorageScsiLunRefConsts():
-    pass
+    ID_UNSPECIFIED = "unspecified"
 
 
 class StorageScsiLunRef(ManagedObject):
@@ -18,18 +18,19 @@ class StorageScsiLunRef(ManagedObject):
     consts = StorageScsiLunRefConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("StorageScsiLunRef", "storageScsiLunRef", "scsi-lun-ref-[id]", VersionMeta.Version224a, "InputOutput", 0x1fL, [], ["read-only"], [u'storageLunReplica', u'storageLunSnapshot', u'storageScsiLun', u'storageVirtualDrive'], [], [None])
+    mo_meta = MoMeta("StorageScsiLunRef", "storageScsiLunRef", "scsi-lun-ref-[id]", VersionMeta.Version224b, "InputOutput", 0x3fL, [], ["read-only"], [u'storageLunReplica', u'storageLunSnapshot', u'storageScsiLun', u'storageVirtualDrive'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224a, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version224a, MoPropertyMeta.NAMING, 0x4L, None, None, None, [], []), 
-        "ls_dn": MoPropertyMeta("ls_dn", "lsDn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "lun_name": MoPropertyMeta("lun_name", "lunName", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "profile_dn": MoPropertyMeta("profile_dn", "profileDn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x10L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version224b, MoPropertyMeta.NAMING, 0x8L, None, None, None, ["unspecified"], ["0-4294967295"]), 
+        "ls_dn": MoPropertyMeta("ls_dn", "lsDn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "lun_name": MoPropertyMeta("lun_name", "lunName", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "pn_dn": MoPropertyMeta("pn_dn", "pnDn", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "profile_dn": MoPropertyMeta("profile_dn", "profileDn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {
@@ -38,6 +39,7 @@ class StorageScsiLunRef(ManagedObject):
         "id": "id", 
         "lsDn": "ls_dn", 
         "lunName": "lun_name", 
+        "pnDn": "pn_dn", 
         "profileDn": "profile_dn", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -50,6 +52,7 @@ class StorageScsiLunRef(ManagedObject):
         self.child_action = None
         self.ls_dn = None
         self.lun_name = None
+        self.pn_dn = None
         self.profile_dn = None
         self.sacl = None
         self.status = None

@@ -20,21 +20,21 @@ class ApeSwitchFirmwareInv(ManagedObject):
     consts = ApeSwitchFirmwareInvConsts()
     naming_props = set([u'fabric'])
 
-    mo_meta = MoMeta("ApeSwitchFirmwareInv", "apeSwitchFirmwareInv", "SwitchFirmwareInv-[fabric]", VersionMeta.Version131c, "InputOutput", 0x7ffL, [], ["read-only"], [u'apeDcosAgManager'], [], [None])
+    mo_meta = MoMeta("ApeSwitchFirmwareInv", "apeSwitchFirmwareInv", "SwitchFirmwareInv-[fabric]", VersionMeta.Version131c, "InputOutput", 0xfffL, [], ["read-only"], [u'apeDcosAgManager'], [], [None])
 
     prop_meta = {
-        "bios_version": MoPropertyMeta("bios_version", "biosVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x1L, 0, 510, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "fabric": MoPropertyMeta("fabric", "fabric", "string", VersionMeta.Version131c, MoPropertyMeta.NAMING, 0x8L, None, None, None, ["A", "B", "NONE"], []), 
-        "ks_startup_version": MoPropertyMeta("ks_startup_version", "ksStartupVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x10L, 0, 510, None, [], []), 
-        "ks_version": MoPropertyMeta("ks_version", "ksVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x20L, 0, 510, None, [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x40L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x100L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "sys_startup_version": MoPropertyMeta("sys_startup_version", "sysStartupVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x200L, 0, 510, None, [], []), 
-        "sys_version": MoPropertyMeta("sys_version", "sysVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x400L, 0, 510, None, [], []), 
+        "bios_version": MoPropertyMeta("bios_version", "biosVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x2L, 0, 510, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "fabric": MoPropertyMeta("fabric", "fabric", "string", VersionMeta.Version131c, MoPropertyMeta.NAMING, 0x10L, None, None, None, ["A", "B", "NONE"], []), 
+        "ks_startup_version": MoPropertyMeta("ks_startup_version", "ksStartupVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x20L, 0, 510, None, [], []), 
+        "ks_version": MoPropertyMeta("ks_version", "ksVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x40L, 0, 510, None, [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x80L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x100L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "sys_startup_version": MoPropertyMeta("sys_startup_version", "sysStartupVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x400L, 0, 510, None, [], []), 
+        "sys_version": MoPropertyMeta("sys_version", "sysVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x800L, 0, 510, None, [], []), 
     }
 
     prop_map = {

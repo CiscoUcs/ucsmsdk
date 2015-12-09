@@ -15,6 +15,7 @@ class FaultPolicyConsts():
     CLEAR_ACTION_RETAIN = "retain"
     CLEAR_INTERVAL_NEVER = "never"
     INT_ID_NONE = "none"
+    PINNING_EXPIRATION_INTERVAL_FOREVER = "forever"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
@@ -32,27 +33,28 @@ class FaultPolicy(ManagedObject):
     consts = FaultPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FaultPolicy", "faultPolicy", "fault-policy", VersionMeta.Version101e, "InputOutput", 0x1fffL, [], ["admin", "fault"], [u'faultHolder'], [], ["Get", "Set"])
+    mo_meta = MoMeta("FaultPolicy", "faultPolicy", "fault-policy", VersionMeta.Version101e, "InputOutput", 0x7fffL, [], ["admin", "fault"], [u'faultHolder'], [], ["Get", "Set"])
 
     prop_meta = {
-        "ack_action": MoPropertyMeta("ack_action", "ackAction", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x1L, None, None, None, ["delete-on-clear", "initial-severity"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "clear_action": MoPropertyMeta("clear_action", "clearAction", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["delete", "retain"], []), 
-        "clear_interval": MoPropertyMeta("clear_interval", "clearInterval", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, """(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["never"], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
-        "flap_interval": MoPropertyMeta("flap_interval", "flapInterval", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, [], ["5-3600"]), 
+        "ack_action": MoPropertyMeta("ack_action", "ackAction", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["delete-on-clear", "initial-severity"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "clear_action": MoPropertyMeta("clear_action", "clearAction", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["delete", "retain"], []), 
+        "clear_interval": MoPropertyMeta("clear_interval", "clearInterval", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["never"], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
+        "flap_interval": MoPropertyMeta("flap_interval", "flapInterval", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, [], ["5-3600"]), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "pinning_expiration_interval": MoPropertyMeta("pinning_expiration_interval", "pinningExpirationInterval", "string", None, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["forever"], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, ["local", "pending-policy", "policy"], []), 
-        "retention_interval": MoPropertyMeta("retention_interval", "retentionInterval", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, None, None, """(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["forever"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x400L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "size_limit": MoPropertyMeta("size_limit", "sizeLimit", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800L, None, None, None, ["max"], ["0-20000"]), 
-        "soak_interval": MoPropertyMeta("soak_interval", "soakInterval", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, """[0-9]{1,4}|(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["never"], ["0-4294967295"]), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "retention_interval": MoPropertyMeta("retention_interval", "retentionInterval", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800L, None, None, r"""(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["forever"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x1000L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "size_limit": MoPropertyMeta("size_limit", "sizeLimit", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000L, None, None, None, ["max"], ["0-20000"]), 
+        "soak_interval": MoPropertyMeta("soak_interval", "soakInterval", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[0-9]{1,4}|(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["never"], ["0-4294967295"]), 
         "soaking_severity": MoPropertyMeta("soaking_severity", "soakingSeverity", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["condition", "info", "warning"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {
@@ -65,6 +67,7 @@ class FaultPolicy(ManagedObject):
         "flapInterval": "flap_interval", 
         "intId": "int_id", 
         "name": "name", 
+        "pinningExpirationInterval": "pinning_expiration_interval", 
         "policyLevel": "policy_level", 
         "policyOwner": "policy_owner", 
         "retentionInterval": "retention_interval", 
@@ -86,6 +89,7 @@ class FaultPolicy(ManagedObject):
         self.flap_interval = None
         self.int_id = None
         self.name = None
+        self.pinning_expiration_interval = None
         self.policy_level = None
         self.policy_owner = None
         self.retention_interval = None

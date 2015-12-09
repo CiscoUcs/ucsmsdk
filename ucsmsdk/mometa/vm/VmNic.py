@@ -37,33 +37,33 @@ class VmNic(ManagedObject):
     consts = VmNicConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("VmNic", "vmNic", "nic-[name]", VersionMeta.Version101e, "InputOutput", 0x1fL, [], ["admin", "read-only"], [u'vmComputeEp', u'vmHv', u'vmInstance'], [u'adaptorEthPortBySizeLargeStats', u'adaptorEthPortBySizeSmallStats', u'adaptorEthPortErrStats', u'adaptorEthPortMcastStats', u'adaptorEthPortOutsizedStats', u'adaptorEthPortStats', u'adaptorFcPortStats', u'adaptorVnicStats', u'fabricEthMonSrcEp', u'fabricFcMonSrcEp', u'faultInst', u'vmVif', u'vmVlan'], ["Get"])
+    mo_meta = MoMeta("VmNic", "vmNic", "nic-[name]", VersionMeta.Version101e, "InputOutput", 0x3fL, [], ["admin", "read-only"], [u'vmComputeEp', u'vmHv', u'vmInstance'], [u'adaptorEthPortBySizeLargeStats', u'adaptorEthPortBySizeSmallStats', u'adaptorEthPortErrStats', u'adaptorEthPortMcastStats', u'adaptorEthPortOutsizedStats', u'adaptorEthPortStats', u'adaptorFcPortStats', u'adaptorVnicStats', u'fabricEthMonSrcEp', u'fabricFcMonSrcEp', u'faultInst', u'vmVif', u'vmVlan'], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "dvs_gen_port_id": MoPropertyMeta("dvs_gen_port_id", "dvsGenPortId", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "dvs_gen_port_id": MoPropertyMeta("dvs_gen_port_id", "dvsGenPortId", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "dvs_port_id": MoPropertyMeta("dvs_port_id", "dvsPortId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "dvs_switch_id": MoPropertyMeta("dvs_switch_id", "dvsSwitchId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "host_if_dn": MoPropertyMeta("host_if_dn", "hostIfDn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "mac_addr": MoPropertyMeta("mac_addr", "macAddr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, """(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x4L, 1, 31, None, [], []), 
+        "mac_addr": MoPropertyMeta("mac_addr", "macAddr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8L, 1, 31, None, [], []), 
         "owner": MoPropertyMeta("owner", "owner", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["conn_policy", "initiator_policy", "logical", "physical", "policy", "unknown"], []), 
         "ph_switch_id": MoPropertyMeta("ph_switch_id", "phSwitchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
         "profile_id": MoPropertyMeta("profile_id", "profileId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "profile_name": MoPropertyMeta("profile_name", "profileName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "status_change_ts": MoPropertyMeta("status_change_ts", "statusChangeTs", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, """([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
+        "profile_name": MoPropertyMeta("profile_name", "profileName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "status_change_ts": MoPropertyMeta("status_change_ts", "statusChangeTs", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ether", "fc", "ipc", "scsi", "unknown"], []), 
-        "uuid": MoPropertyMeta("uuid", "uuid", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, """(([0-9a-fA-F]){8}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){12})|0""", [], []), 
+        "uuid": MoPropertyMeta("uuid", "uuid", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F]){8}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){12})|0""", [], []), 
         "v_status": MoPropertyMeta("v_status", "vStatus", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["offline", "online", "unknown"], []), 
         "vc_dn": MoPropertyMeta("vc_dn", "vcDn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "vif_id": MoPropertyMeta("vif_id", "vifId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "vmnd_guid": MoPropertyMeta("vmnd_guid", "vmndGuid", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, """(([0-9a-fA-F]){8}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){12})|0""", [], []), 
-        "vmnd_name": MoPropertyMeta("vmnd_name", "vmndName", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "vmnd_guid": MoPropertyMeta("vmnd_guid", "vmndGuid", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F]){8}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){12})|0""", [], []), 
+        "vmnd_name": MoPropertyMeta("vmnd_name", "vmndName", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "vnic_dn": MoPropertyMeta("vnic_dn", "vnicDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
     }
 

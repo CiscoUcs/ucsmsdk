@@ -21,29 +21,29 @@ class ApeMenlo(ManagedObject):
     consts = ApeMenloConsts()
     naming_props = set([u'mac1'])
 
-    mo_meta = MoMeta("ApeMenlo", "apeMenlo", "Menlo-[mac1]", VersionMeta.Version101e, "InputOutput", 0x3ffffL, [], ["read-only"], [u'apeNicAgManager'], [u'apeMenloVnic', u'apePaloVnic'], [None])
+    mo_meta = MoMeta("ApeMenlo", "apeMenlo", "Menlo-[mac1]", VersionMeta.Version101e, "InputOutput", 0x7ffffL, [], ["read-only"], [u'apeNicAgManager'], [u'apeMenloVnic', u'apePaloVnic'], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "description": MoPropertyMeta("description", "description", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2L, 0, 510, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "fru_id": MoPropertyMeta("fru_id", "fruId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, 0, 510, None, [], []), 
-        "fw_update_timeout": MoPropertyMeta("fw_update_timeout", "fwUpdateTimeout", "ushort", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, [], []), 
-        "hw_version": MoPropertyMeta("hw_version", "hwVersion", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, 0, 510, None, [], []), 
-        "mac1": MoPropertyMeta("mac1", "mac1", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x40L, None, None, """(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
-        "mac2": MoPropertyMeta("mac2", "mac2", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, None, None, """(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "operation_timeout": MoPropertyMeta("operation_timeout", "operationTimeout", "ushort", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x400L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "description": MoPropertyMeta("description", "description", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, 0, 510, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "fru_id": MoPropertyMeta("fru_id", "fruId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, 0, 510, None, [], []), 
+        "fw_update_timeout": MoPropertyMeta("fw_update_timeout", "fwUpdateTimeout", "ushort", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, [], []), 
+        "hw_version": MoPropertyMeta("hw_version", "hwVersion", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, 0, 510, None, [], []), 
+        "mac1": MoPropertyMeta("mac1", "mac1", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80L, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
+        "mac2": MoPropertyMeta("mac2", "mac2", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "operation_timeout": MoPropertyMeta("operation_timeout", "operationTimeout", "ushort", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x800L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "start_event": MoPropertyMeta("start_event", "startEvent", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x800L, None, None, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "sw_backup_version": MoPropertyMeta("sw_backup_version", "swBackupVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x2000L, 0, 510, None, [], []), 
-        "sw_startup_version": MoPropertyMeta("sw_startup_version", "swStartupVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x4000L, 0, 510, None, [], []), 
-        "sw_version": MoPropertyMeta("sw_version", "swVersion", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000L, 0, 510, None, [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10000L, None, None, None, ["Menlo", "Oplin", "Palo", "Unknown"], []), 
-        "uplink_port_type": MoPropertyMeta("uplink_port_type", "uplinkPortType", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20000L, None, None, None, [], []), 
+        "start_event": MoPropertyMeta("start_event", "startEvent", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "sw_backup_version": MoPropertyMeta("sw_backup_version", "swBackupVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x4000L, 0, 510, None, [], []), 
+        "sw_startup_version": MoPropertyMeta("sw_startup_version", "swStartupVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x8000L, 0, 510, None, [], []), 
+        "sw_version": MoPropertyMeta("sw_version", "swVersion", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10000L, 0, 510, None, [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20000L, None, None, None, ["Menlo", "Oplin", "Palo", "Unknown"], []), 
+        "uplink_port_type": MoPropertyMeta("uplink_port_type", "uplinkPortType", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000L, None, None, None, [], []), 
     }
 
     prop_map = {

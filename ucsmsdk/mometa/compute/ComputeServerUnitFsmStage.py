@@ -13,17 +13,21 @@ class ComputeServerUnitFsmStageConsts():
     NAME_ACTIVATE_ADAPTOR_ACTIVATE_LOCAL = "ActivateAdaptorActivateLocal"
     NAME_ACTIVATE_ADAPTOR_ACTIVATE_PEER = "ActivateAdaptorActivatePeer"
     NAME_ACTIVATE_ADAPTOR_BEGIN = "ActivateAdaptorBegin"
+    NAME_ACTIVATE_ADAPTOR_CHECK_POWER_AVAILABILITY = "ActivateAdaptorCheckPowerAvailability"
     NAME_ACTIVATE_ADAPTOR_DEASSERT_RESET_BYPASS = "ActivateAdaptorDeassertResetBypass"
     NAME_ACTIVATE_ADAPTOR_FAIL = "ActivateAdaptorFail"
+    NAME_ACTIVATE_ADAPTOR_POWER_DEPLOY_WAIT = "ActivateAdaptorPowerDeployWait"
     NAME_ACTIVATE_ADAPTOR_POWER_ON = "ActivateAdaptorPowerOn"
     NAME_ACTIVATE_ADAPTOR_RESET = "ActivateAdaptorReset"
     NAME_ACTIVATE_ADAPTOR_SUCCESS = "ActivateAdaptorSuccess"
     NAME_ACTIVATE_BIOSACTIVATE = "ActivateBIOSActivate"
     NAME_ACTIVATE_BIOSBEGIN = "ActivateBIOSBegin"
+    NAME_ACTIVATE_BIOSCHECK_POWER_AVAILABILITY = "ActivateBIOSCheckPowerAvailability"
     NAME_ACTIVATE_BIOSCLEAR = "ActivateBIOSClear"
     NAME_ACTIVATE_BIOSFAIL = "ActivateBIOSFail"
     NAME_ACTIVATE_BIOSPOLL_ACTIVATE_STATUS = "ActivateBIOSPollActivateStatus"
     NAME_ACTIVATE_BIOSPOLL_CLEAR_STATUS = "ActivateBIOSPollClearStatus"
+    NAME_ACTIVATE_BIOSPOWER_DEPLOY_WAIT = "ActivateBIOSPowerDeployWait"
     NAME_ACTIVATE_BIOSPOWER_OFF = "ActivateBIOSPowerOff"
     NAME_ACTIVATE_BIOSPOWER_ON = "ActivateBIOSPowerOn"
     NAME_ACTIVATE_BIOSSUCCESS = "ActivateBIOSSuccess"
@@ -43,10 +47,14 @@ class ComputeServerUnitFsmStageConsts():
     NAME_ASSOCIATE_BOOT_HOST = "AssociateBootHost"
     NAME_ASSOCIATE_BOOT_PNUOS = "AssociateBootPnuos"
     NAME_ASSOCIATE_BOOT_WAIT = "AssociateBootWait"
+    NAME_ASSOCIATE_CALCULATE_VLAN_GROUP_FOR_HOST_OSLOCAL = "AssociateCalculateVlanGroupForHostOSLocal"
+    NAME_ASSOCIATE_CALCULATE_VLAN_GROUP_FOR_HOST_OSPEER = "AssociateCalculateVlanGroupForHostOSPeer"
+    NAME_ASSOCIATE_CHECK_POWER_AVAILABILITY = "AssociateCheckPowerAvailability"
     NAME_ASSOCIATE_CLEAR_BIOS_UPDATE = "AssociateClearBiosUpdate"
     NAME_ASSOCIATE_CONFIG_CIMC_VMEDIA = "AssociateConfigCimcVMedia"
     NAME_ASSOCIATE_CONFIG_EXT_MGMT_GW = "AssociateConfigExtMgmtGw"
     NAME_ASSOCIATE_CONFIG_EXT_MGMT_RULES = "AssociateConfigExtMgmtRules"
+    NAME_ASSOCIATE_CONFIG_FAN_SPEED = "AssociateConfigFanSpeed"
     NAME_ASSOCIATE_CONFIG_FLEX_FLASH = "AssociateConfigFlexFlash"
     NAME_ASSOCIATE_CONFIG_SO_L = "AssociateConfigSoL"
     NAME_ASSOCIATE_CONFIG_USER_ACCESS = "AssociateConfigUserAccess"
@@ -70,6 +78,8 @@ class ComputeServerUnitFsmStageConsts():
     NAME_ASSOCIATE_MARK_ADAPTER_FOR_REBOOT = "AssociateMarkAdapterForReboot"
     NAME_ASSOCIATE_NIC_CONFIG_HOST_OSLOCAL = "AssociateNicConfigHostOSLocal"
     NAME_ASSOCIATE_NIC_CONFIG_HOST_OSPEER = "AssociateNicConfigHostOSPeer"
+    NAME_ASSOCIATE_NIC_CONFIG_PARAMS_HOST_OSLOCAL = "AssociateNicConfigParamsHostOSLocal"
+    NAME_ASSOCIATE_NIC_CONFIG_PARAMS_HOST_OSPEER = "AssociateNicConfigParamsHostOSPeer"
     NAME_ASSOCIATE_NIC_CONFIG_PNU_OSLOCAL = "AssociateNicConfigPnuOSLocal"
     NAME_ASSOCIATE_NIC_CONFIG_PNU_OSPEER = "AssociateNicConfigPnuOSPeer"
     NAME_ASSOCIATE_NIC_CONFIG_SERVICE_INFRA_LOCAL = "AssociateNicConfigServiceInfraLocal"
@@ -94,12 +104,14 @@ class ComputeServerUnitFsmStageConsts():
     NAME_ASSOCIATE_POLL_BOARD_CTRL_UPDATE_STATUS = "AssociatePollBoardCtrlUpdateStatus"
     NAME_ASSOCIATE_POLL_CLEAR_BIOS_UPDATE_STATUS = "AssociatePollClearBiosUpdateStatus"
     NAME_ASSOCIATE_POWER_CYCLE_BOARD = "AssociatePowerCycleBoard"
+    NAME_ASSOCIATE_POWER_DEPLOY_WAIT = "AssociatePowerDeployWait"
     NAME_ASSOCIATE_POWER_ON = "AssociatePowerOn"
     NAME_ASSOCIATE_POWER_ON_PRE_CONFIG = "AssociatePowerOnPreConfig"
     NAME_ASSOCIATE_PRE_SANITIZE = "AssociatePreSanitize"
     NAME_ASSOCIATE_PREPARE_FOR_BOOT = "AssociatePrepareForBoot"
     NAME_ASSOCIATE_RESET_IBMC = "AssociateResetIBMC"
     NAME_ASSOCIATE_SANITIZE = "AssociateSanitize"
+    NAME_ASSOCIATE_SAS_EXPANDER_IMG_UPDATE = "AssociateSasExpanderImgUpdate"
     NAME_ASSOCIATE_SERIAL_DEBUG_PNU_OSCONNECT = "AssociateSerialDebugPnuOSConnect"
     NAME_ASSOCIATE_SERIAL_DEBUG_PNU_OSDISCONNECT = "AssociateSerialDebugPnuOSDisconnect"
     NAME_ASSOCIATE_SOL_REDIRECT_DISABLE = "AssociateSolRedirectDisable"
@@ -120,6 +132,7 @@ class ComputeServerUnitFsmStageConsts():
     NAME_ASSOCIATE_UNCONFIG_CIMC_VMEDIA = "AssociateUnconfigCimcVMedia"
     NAME_ASSOCIATE_UNCONFIG_EXT_MGMT_GW = "AssociateUnconfigExtMgmtGw"
     NAME_ASSOCIATE_UNCONFIG_EXT_MGMT_RULES = "AssociateUnconfigExtMgmtRules"
+    NAME_ASSOCIATE_UNLOCK_FIRMWARE_IMAGE = "AssociateUnlockFirmwareImage"
     NAME_ASSOCIATE_UPDATE_ADAPTOR_NW_FW_LOCAL = "AssociateUpdateAdaptorNwFwLocal"
     NAME_ASSOCIATE_UPDATE_ADAPTOR_NW_FW_PEER = "AssociateUpdateAdaptorNwFwPeer"
     NAME_ASSOCIATE_UPDATE_BIOS_REQUEST = "AssociateUpdateBiosRequest"
@@ -130,8 +143,10 @@ class ComputeServerUnitFsmStageConsts():
     NAME_ASSOCIATE_WAIT_FOR_ADAPTOR_NW_FW_UPDATE_PEER = "AssociateWaitForAdaptorNwFwUpdatePeer"
     NAME_ASSOCIATE_WAIT_FOR_IBMCFW_UPDATE = "AssociateWaitForIBMCFwUpdate"
     NAME_BIOS_RECOVERY_BEGIN = "BiosRecoveryBegin"
+    NAME_BIOS_RECOVERY_CHECK_POWER_AVAILABILITY = "BiosRecoveryCheckPowerAvailability"
     NAME_BIOS_RECOVERY_CLEANUP = "BiosRecoveryCleanup"
     NAME_BIOS_RECOVERY_FAIL = "BiosRecoveryFail"
+    NAME_BIOS_RECOVERY_POWER_DEPLOY_WAIT = "BiosRecoveryPowerDeployWait"
     NAME_BIOS_RECOVERY_PRE_SANITIZE = "BiosRecoveryPreSanitize"
     NAME_BIOS_RECOVERY_RESET = "BiosRecoveryReset"
     NAME_BIOS_RECOVERY_SANITIZE = "BiosRecoverySanitize"
@@ -151,8 +166,10 @@ class ComputeServerUnitFsmStageConsts():
     NAME_CIMC_SESSION_DELETE_SUCCESS = "CimcSessionDeleteSuccess"
     NAME_CMOS_RESET_BEGIN = "CmosResetBegin"
     NAME_CMOS_RESET_BLADE_POWER_ON = "CmosResetBladePowerOn"
+    NAME_CMOS_RESET_CHECK_POWER_AVAILABILITY = "CmosResetCheckPowerAvailability"
     NAME_CMOS_RESET_EXECUTE = "CmosResetExecute"
     NAME_CMOS_RESET_FAIL = "CmosResetFail"
+    NAME_CMOS_RESET_POWER_DEPLOY_WAIT = "CmosResetPowerDeployWait"
     NAME_CMOS_RESET_PRE_SANITIZE = "CmosResetPreSanitize"
     NAME_CMOS_RESET_RECONFIG_BIOS = "CmosResetReconfigBios"
     NAME_CMOS_RESET_RECONFIG_UUID = "CmosResetReconfigUuid"
@@ -172,6 +189,7 @@ class ComputeServerUnitFsmStageConsts():
     NAME_DECOMMISSION_CLEANUP_PORT_CONFIG_PEER = "DecommissionCleanupPortConfigPeer"
     NAME_DECOMMISSION_EXECUTE = "DecommissionExecute"
     NAME_DECOMMISSION_FAIL = "DecommissionFail"
+    NAME_DECOMMISSION_PRECLEANUP_PORT_CONFIG = "DecommissionPrecleanupPortConfig"
     NAME_DECOMMISSION_STOP_VMEDIA_LOCAL = "DecommissionStopVMediaLocal"
     NAME_DECOMMISSION_STOP_VMEDIA_PEER = "DecommissionStopVMediaPeer"
     NAME_DECOMMISSION_SUCCESS = "DecommissionSuccess"
@@ -189,6 +207,7 @@ class ComputeServerUnitFsmStageConsts():
     NAME_DISASSOCIATE_BMC_UNCONFIG_PNU_OS = "DisassociateBmcUnconfigPnuOS"
     NAME_DISASSOCIATE_BOOT_PNUOS = "DisassociateBootPnuos"
     NAME_DISASSOCIATE_BOOT_WAIT = "DisassociateBootWait"
+    NAME_DISASSOCIATE_CHECK_POWER_AVAILABILITY = "DisassociateCheckPowerAvailability"
     NAME_DISASSOCIATE_CONFIG_BIOS = "DisassociateConfigBios"
     NAME_DISASSOCIATE_CONFIG_FLEX_FLASH_SCRUB = "DisassociateConfigFlexFlashScrub"
     NAME_DISASSOCIATE_CONFIG_KVM_MGMT_DEFAULT_SETTING = "DisassociateConfigKvmMgmtDefaultSetting"
@@ -214,6 +233,7 @@ class ComputeServerUnitFsmStageConsts():
     NAME_DISASSOCIATE_PNU_OSSELF_TEST = "DisassociatePnuOSSelfTest"
     NAME_DISASSOCIATE_PNU_OSUNCONFIG = "DisassociatePnuOSUnconfig"
     NAME_DISASSOCIATE_PNU_OSVALIDATE = "DisassociatePnuOSValidate"
+    NAME_DISASSOCIATE_POWER_DEPLOY_WAIT = "DisassociatePowerDeployWait"
     NAME_DISASSOCIATE_POWER_ON = "DisassociatePowerOn"
     NAME_DISASSOCIATE_PRE_SANITIZE = "DisassociatePreSanitize"
     NAME_DISASSOCIATE_RESET_SECURE_BOOT_CONFIG = "DisassociateResetSecureBootConfig"
@@ -285,6 +305,7 @@ class ComputeServerUnitFsmStageConsts():
     NAME_FW_UPGRADE_BMC_UNCONFIG_PNU_OS = "FwUpgradeBmcUnconfigPnuOS"
     NAME_FW_UPGRADE_BOOT_PNUOS = "FwUpgradeBootPnuos"
     NAME_FW_UPGRADE_BOOT_WAIT = "FwUpgradeBootWait"
+    NAME_FW_UPGRADE_CHECK_POWER_AVAILABILITY = "FwUpgradeCheckPowerAvailability"
     NAME_FW_UPGRADE_CLEAR_BIOS_UPDATE = "FwUpgradeClearBiosUpdate"
     NAME_FW_UPGRADE_COPY_REMOTE = "FwUpgradeCopyRemote"
     NAME_FW_UPGRADE_DEASSERT_RESET_BYPASS = "FwUpgradeDeassertResetBypass"
@@ -302,6 +323,7 @@ class ComputeServerUnitFsmStageConsts():
     NAME_FW_UPGRADE_NIC_IMG_UPDATE = "FwUpgradeNicImgUpdate"
     NAME_FW_UPGRADE_NIC_UNCONFIG_PNU_OSLOCAL = "FwUpgradeNicUnconfigPnuOSLocal"
     NAME_FW_UPGRADE_NIC_UNCONFIG_PNU_OSPEER = "FwUpgradeNicUnconfigPnuOSPeer"
+    NAME_FW_UPGRADE_OOB_STORAGE_INVENTORY = "FwUpgradeOobStorageInventory"
     NAME_FW_UPGRADE_PNU_OSCATALOG = "FwUpgradePnuOSCatalog"
     NAME_FW_UPGRADE_PNU_OSCONFIG = "FwUpgradePnuOSConfig"
     NAME_FW_UPGRADE_PNU_OSIDENT = "FwUpgradePnuOSIdent"
@@ -316,10 +338,12 @@ class ComputeServerUnitFsmStageConsts():
     NAME_FW_UPGRADE_POLL_BOARD_CTRL_UPDATE_STATUS = "FwUpgradePollBoardCtrlUpdateStatus"
     NAME_FW_UPGRADE_POLL_CLEAR_BIOS_UPDATE_STATUS = "FwUpgradePollClearBiosUpdateStatus"
     NAME_FW_UPGRADE_POWER_CYCLE_BOARD = "FwUpgradePowerCycleBoard"
+    NAME_FW_UPGRADE_POWER_DEPLOY_WAIT = "FwUpgradePowerDeployWait"
     NAME_FW_UPGRADE_POWER_ON = "FwUpgradePowerOn"
     NAME_FW_UPGRADE_PRE_SANITIZE = "FwUpgradePreSanitize"
     NAME_FW_UPGRADE_RESET_IBMC = "FwUpgradeResetIBMC"
     NAME_FW_UPGRADE_SANITIZE = "FwUpgradeSanitize"
+    NAME_FW_UPGRADE_SAS_EXPANDER_IMG_UPDATE = "FwUpgradeSasExpanderImgUpdate"
     NAME_FW_UPGRADE_SERIAL_DEBUG_PNU_OSCONNECT = "FwUpgradeSerialDebugPnuOSConnect"
     NAME_FW_UPGRADE_SERIAL_DEBUG_PNU_OSDISCONNECT = "FwUpgradeSerialDebugPnuOSDisconnect"
     NAME_FW_UPGRADE_SHUTDOWN = "FwUpgradeShutdown"
@@ -336,6 +360,7 @@ class ComputeServerUnitFsmStageConsts():
     NAME_FW_UPGRADE_UNCONFIG_CIMC_VMEDIA = "FwUpgradeUnconfigCimcVMedia"
     NAME_FW_UPGRADE_UNCONFIG_EXT_MGMT_GW = "FwUpgradeUnconfigExtMgmtGw"
     NAME_FW_UPGRADE_UNCONFIG_EXT_MGMT_RULES = "FwUpgradeUnconfigExtMgmtRules"
+    NAME_FW_UPGRADE_UNLOCK_FIRMWARE_IMAGE = "FwUpgradeUnlockFirmwareImage"
     NAME_FW_UPGRADE_UPDATE_ADAPTOR_NW_FW_LOCAL = "FwUpgradeUpdateAdaptorNwFwLocal"
     NAME_FW_UPGRADE_UPDATE_ADAPTOR_NW_FW_PEER = "FwUpgradeUpdateAdaptorNwFwPeer"
     NAME_FW_UPGRADE_UPDATE_BIOS_REQUEST = "FwUpgradeUpdateBiosRequest"
@@ -349,18 +374,34 @@ class ComputeServerUnitFsmStageConsts():
     NAME_HARD_SHUTDOWN_FAIL = "HardShutdownFail"
     NAME_HARD_SHUTDOWN_SUCCESS = "HardShutdownSuccess"
     NAME_HARDRESET_BEGIN = "HardresetBegin"
+    NAME_HARDRESET_CHECK_POWER_AVAILABILITY = "HardresetCheckPowerAvailability"
     NAME_HARDRESET_EXECUTE = "HardresetExecute"
     NAME_HARDRESET_FAIL = "HardresetFail"
+    NAME_HARDRESET_POWER_DEPLOY_WAIT = "HardresetPowerDeployWait"
     NAME_HARDRESET_PRE_SANITIZE = "HardresetPreSanitize"
     NAME_HARDRESET_SANITIZE = "HardresetSanitize"
     NAME_HARDRESET_SUCCESS = "HardresetSuccess"
+    NAME_OOB_STORAGE_ADMIN_CONFIG_BEGIN = "OobStorageAdminConfigBegin"
+    NAME_OOB_STORAGE_ADMIN_CONFIG_BOOT_HOST = "OobStorageAdminConfigBootHost"
+    NAME_OOB_STORAGE_ADMIN_CONFIG_BOOT_WAIT = "OobStorageAdminConfigBootWait"
+    NAME_OOB_STORAGE_ADMIN_CONFIG_FAIL = "OobStorageAdminConfigFail"
+    NAME_OOB_STORAGE_ADMIN_CONFIG_OOB_STORAGE_CONFIG = "OobStorageAdminConfigOobStorageConfig"
+    NAME_OOB_STORAGE_ADMIN_CONFIG_OOB_STORAGE_INVENTORY = "OobStorageAdminConfigOobStorageInventory"
+    NAME_OOB_STORAGE_ADMIN_CONFIG_PRE_SANITIZE = "OobStorageAdminConfigPreSanitize"
+    NAME_OOB_STORAGE_ADMIN_CONFIG_SANITIZE = "OobStorageAdminConfigSanitize"
+    NAME_OOB_STORAGE_ADMIN_CONFIG_SHUTDOWN = "OobStorageAdminConfigShutdown"
+    NAME_OOB_STORAGE_ADMIN_CONFIG_SUCCESS = "OobStorageAdminConfigSuccess"
+    NAME_OOB_STORAGE_ADMIN_CONFIG_TEAR_DOWN_VMEDIA_LOCAL = "OobStorageAdminConfigTearDownVMediaLocal"
+    NAME_OOB_STORAGE_ADMIN_CONFIG_TEAR_DOWN_VMEDIA_PEER = "OobStorageAdminConfigTearDownVMediaPeer"
     NAME_POWER_CAP_BEGIN = "PowerCapBegin"
     NAME_POWER_CAP_CONFIG = "PowerCapConfig"
     NAME_POWER_CAP_FAIL = "PowerCapFail"
     NAME_POWER_CAP_SUCCESS = "PowerCapSuccess"
     NAME_POWERCYCLE_BEGIN = "PowercycleBegin"
+    NAME_POWERCYCLE_CHECK_POWER_AVAILABILITY = "PowercycleCheckPowerAvailability"
     NAME_POWERCYCLE_EXECUTE = "PowercycleExecute"
     NAME_POWERCYCLE_FAIL = "PowercycleFail"
+    NAME_POWERCYCLE_POWER_DEPLOY_WAIT = "PowercyclePowerDeployWait"
     NAME_POWERCYCLE_PRE_SANITIZE = "PowercyclePreSanitize"
     NAME_POWERCYCLE_SANITIZE = "PowercycleSanitize"
     NAME_POWERCYCLE_SUCCESS = "PowercycleSuccess"
@@ -399,8 +440,10 @@ class ComputeServerUnitFsmStageConsts():
     NAME_SOFT_SHUTDOWN_FAIL = "SoftShutdownFail"
     NAME_SOFT_SHUTDOWN_SUCCESS = "SoftShutdownSuccess"
     NAME_SOFTRESET_BEGIN = "SoftresetBegin"
+    NAME_SOFTRESET_CHECK_POWER_AVAILABILITY = "SoftresetCheckPowerAvailability"
     NAME_SOFTRESET_EXECUTE = "SoftresetExecute"
     NAME_SOFTRESET_FAIL = "SoftresetFail"
+    NAME_SOFTRESET_POWER_DEPLOY_WAIT = "SoftresetPowerDeployWait"
     NAME_SOFTRESET_PRE_SANITIZE = "SoftresetPreSanitize"
     NAME_SOFTRESET_SANITIZE = "SoftresetSanitize"
     NAME_SOFTRESET_SUCCESS = "SoftresetSuccess"
@@ -410,17 +453,21 @@ class ComputeServerUnitFsmStageConsts():
     NAME_SW_CONN_UPD_FAIL = "SwConnUpdFail"
     NAME_SW_CONN_UPD_SUCCESS = "SwConnUpdSuccess"
     NAME_TURNUP_BEGIN = "TurnupBegin"
+    NAME_TURNUP_CHECK_POWER_AVAILABILITY = "TurnupCheckPowerAvailability"
     NAME_TURNUP_EXECUTE = "TurnupExecute"
     NAME_TURNUP_FAIL = "TurnupFail"
+    NAME_TURNUP_POWER_DEPLOY_WAIT = "TurnupPowerDeployWait"
     NAME_TURNUP_SUCCESS = "TurnupSuccess"
     NAME_UNCONFIG_SO_LBEGIN = "UnconfigSoLBegin"
     NAME_UNCONFIG_SO_LEXECUTE = "UnconfigSoLExecute"
     NAME_UNCONFIG_SO_LFAIL = "UnconfigSoLFail"
     NAME_UNCONFIG_SO_LSUCCESS = "UnconfigSoLSuccess"
     NAME_UPDATE_ADAPTOR_BEGIN = "UpdateAdaptorBegin"
+    NAME_UPDATE_ADAPTOR_CHECK_POWER_AVAILABILITY = "UpdateAdaptorCheckPowerAvailability"
     NAME_UPDATE_ADAPTOR_FAIL = "UpdateAdaptorFail"
     NAME_UPDATE_ADAPTOR_POLL_UPDATE_STATUS_LOCAL = "UpdateAdaptorPollUpdateStatusLocal"
     NAME_UPDATE_ADAPTOR_POLL_UPDATE_STATUS_PEER = "UpdateAdaptorPollUpdateStatusPeer"
+    NAME_UPDATE_ADAPTOR_POWER_DEPLOY_WAIT = "UpdateAdaptorPowerDeployWait"
     NAME_UPDATE_ADAPTOR_POWER_OFF = "UpdateAdaptorPowerOff"
     NAME_UPDATE_ADAPTOR_POWER_ON = "UpdateAdaptorPowerOn"
     NAME_UPDATE_ADAPTOR_SUCCESS = "UpdateAdaptorSuccess"
@@ -434,10 +481,12 @@ class ComputeServerUnitFsmStageConsts():
     NAME_UPDATE_BIOSSUCCESS = "UpdateBIOSSuccess"
     NAME_UPDATE_BIOSUPDATE_REQUEST = "UpdateBIOSUpdateRequest"
     NAME_UPDATE_BOARD_CONTROLLER_BEGIN = "UpdateBoardControllerBegin"
+    NAME_UPDATE_BOARD_CONTROLLER_CHECK_POWER_AVAILABILITY = "UpdateBoardControllerCheckPowerAvailability"
     NAME_UPDATE_BOARD_CONTROLLER_FAIL = "UpdateBoardControllerFail"
     NAME_UPDATE_BOARD_CONTROLLER_POLL_BOARD_CTRL_POWER_CYCLE = "UpdateBoardControllerPollBoardCtrlPowerCycle"
     NAME_UPDATE_BOARD_CONTROLLER_POLL_UPDATE_STATUS = "UpdateBoardControllerPollUpdateStatus"
     NAME_UPDATE_BOARD_CONTROLLER_POWER_CYCLE_BOARD = "UpdateBoardControllerPowerCycleBoard"
+    NAME_UPDATE_BOARD_CONTROLLER_POWER_DEPLOY_WAIT = "UpdateBoardControllerPowerDeployWait"
     NAME_UPDATE_BOARD_CONTROLLER_PREPARE_FOR_UPDATE = "UpdateBoardControllerPrepareForUpdate"
     NAME_UPDATE_BOARD_CONTROLLER_SERVER_POWER_OFF = "UpdateBoardControllerServerPowerOff"
     NAME_UPDATE_BOARD_CONTROLLER_SERVER_POWER_ON = "UpdateBoardControllerServerPowerOn"
@@ -479,19 +528,20 @@ class ComputeServerUnitFsmStage(ManagedObject):
     consts = ComputeServerUnitFsmStageConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("ComputeServerUnitFsmStage", "computeServerUnitFsmStage", "stage-[name]", VersionMeta.Version251a, "OutputOnly", 0x7L, [], [""], [u'computeServerUnitFsm'], [], [None])
+    mo_meta = MoMeta("ComputeServerUnitFsmStage", "computeServerUnitFsmStage", "stage-[name]", VersionMeta.Version251a, "OutputOnly", 0xfL, [], [""], [u'computeServerUnitFsm'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, """[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x1L, 0, 256, None, [], []), 
-        "last_update_time": MoPropertyMeta("last_update_time", "lastUpdateTime", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, """([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version251a, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateAdaptorActivateLocal", "ActivateAdaptorActivatePeer", "ActivateAdaptorBegin", "ActivateAdaptorDeassertResetBypass", "ActivateAdaptorFail", "ActivateAdaptorPowerOn", "ActivateAdaptorReset", "ActivateAdaptorSuccess", "ActivateBIOSActivate", "ActivateBIOSBegin", "ActivateBIOSClear", "ActivateBIOSFail", "ActivateBIOSPollActivateStatus", "ActivateBIOSPollClearStatus", "ActivateBIOSPowerOff", "ActivateBIOSPowerOn", "ActivateBIOSSuccess", "ActivateBIOSUpdateTokens", "AssociateActivateAdaptorNwFwLocal", "AssociateActivateAdaptorNwFwPeer", "AssociateActivateBios", "AssociateActivateIBMCFw", "AssociateBegin", "AssociateBiosImgUpdate", "AssociateBiosPostCompletion", "AssociateBladePowerOff", "AssociateBmcConfigPnuOS", "AssociateBmcPreconfigPnuOSLocal", "AssociateBmcPreconfigPnuOSPeer", "AssociateBmcUnconfigPnuOS", "AssociateBootHost", "AssociateBootPnuos", "AssociateBootWait", "AssociateClearBiosUpdate", "AssociateConfigCimcVMedia", "AssociateConfigExtMgmtGw", "AssociateConfigExtMgmtRules", "AssociateConfigFlexFlash", "AssociateConfigSoL", "AssociateConfigUserAccess", "AssociateConfigUuid", "AssociateCopyRemote", "AssociateDeassertResetBypass", "AssociateDeleteCurlDownloadedImages", "AssociateDeleteImagesRemote", "AssociateDownloadImages", "AssociateFail", "AssociateGraphicsImageUpdate", "AssociateHagHostOSConnect", "AssociateHagPnuOSConnect", "AssociateHagPnuOSDisconnect", "AssociateHbaImgUpdate", "AssociateHostOSConfig", "AssociateHostOSIdent", "AssociateHostOSPolicy", "AssociateHostOSValidate", "AssociateLocalDiskFwUpdate", "AssociateMarkAdapterForReboot", "AssociateNicConfigHostOSLocal", "AssociateNicConfigHostOSPeer", "AssociateNicConfigPnuOSLocal", "AssociateNicConfigPnuOSPeer", "AssociateNicConfigServiceInfraLocal", "AssociateNicConfigServiceInfraPeer", "AssociateNicImgUpdate", "AssociateNicUnconfigPnuOSLocal", "AssociateNicUnconfigPnuOSPeer", "AssociateOobStorageConfig", "AssociateOobStorageInventory", "AssociatePnuOSCatalog", "AssociatePnuOSConfig", "AssociatePnuOSIdent", "AssociatePnuOSInventory", "AssociatePnuOSLocalDiskConfig", "AssociatePnuOSPolicy", "AssociatePnuOSSelfTest", "AssociatePnuOSUnloadDrivers", "AssociatePnuOSValidate", "AssociatePollBiosActivateStatus", "AssociatePollBiosUpdateStatus", "AssociatePollBoardCtrlPowerCycle", "AssociatePollBoardCtrlUpdateStatus", "AssociatePollClearBiosUpdateStatus", "AssociatePowerCycleBoard", "AssociatePowerOn", "AssociatePowerOnPreConfig", "AssociatePreSanitize", "AssociatePrepareForBoot", "AssociateResetIBMC", "AssociateSanitize", "AssociateSerialDebugPnuOSConnect", "AssociateSerialDebugPnuOSDisconnect", "AssociateSolRedirectDisable", "AssociateSolRedirectEnable", "AssociateStorageCtlrImgUpdate", "AssociateSuccess", "AssociateSwConfigHostOSLocal", "AssociateSwConfigHostOSPeer", "AssociateSwConfigPnuOSLocal", "AssociateSwConfigPnuOSPeer", "AssociateSwConfigPortNivLocal", "AssociateSwConfigPortNivPeer", "AssociateSwConfigServiceInfraLocal", "AssociateSwConfigServiceInfraPeer", "AssociateSwUnconfigPnuOSLocal", "AssociateSwUnconfigPnuOSPeer", "AssociateSyncPowerState", "AssociateUnconfigCimcVMedia", "AssociateUnconfigExtMgmtGw", "AssociateUnconfigExtMgmtRules", "AssociateUpdateAdaptorNwFwLocal", "AssociateUpdateAdaptorNwFwPeer", "AssociateUpdateBiosRequest", "AssociateUpdateBoardCtrlRequest", "AssociateUpdateIBMCFw", "AssociateVerifyFcZoneConfig", "AssociateWaitForAdaptorNwFwUpdateLocal", "AssociateWaitForAdaptorNwFwUpdatePeer", "AssociateWaitForIBMCFwUpdate", "BiosRecoveryBegin", "BiosRecoveryCleanup", "BiosRecoveryFail", "BiosRecoveryPreSanitize", "BiosRecoveryReset", "BiosRecoverySanitize", "BiosRecoverySetupVmediaLocal", "BiosRecoverySetupVmediaPeer", "BiosRecoveryShutdown", "BiosRecoveryStart", "BiosRecoveryStopVMediaLocal", "BiosRecoveryStopVMediaPeer", "BiosRecoverySuccess", "BiosRecoveryTeardownVmediaLocal", "BiosRecoveryTeardownVmediaPeer", "BiosRecoveryWait", "CimcSessionDeleteBegin", "CimcSessionDeleteExecute", "CimcSessionDeleteFail", "CimcSessionDeleteSuccess", "CmosResetBegin", "CmosResetBladePowerOn", "CmosResetExecute", "CmosResetFail", "CmosResetPreSanitize", "CmosResetReconfigBios", "CmosResetReconfigUuid", "CmosResetSanitize", "CmosResetSuccess", "ConfigBoardBegin", "ConfigBoardConfigMemoryPolicy", "ConfigBoardFail", "ConfigBoardSuccess", "ConfigSoLBegin", "ConfigSoLExecute", "ConfigSoLFail", "ConfigSoLSuccess", "DecommissionBegin", "DecommissionCleanupCIMC", "DecommissionCleanupPortConfigLocal", "DecommissionCleanupPortConfigPeer", "DecommissionExecute", "DecommissionFail", "DecommissionStopVMediaLocal", "DecommissionStopVMediaPeer", "DecommissionSuccess", "DecommissionUnconfigExtMgmtGw", "DecommissionUnconfigExtMgmtRules", "DiagnosticInterruptBegin", "DiagnosticInterruptExecute", "DiagnosticInterruptFail", "DiagnosticInterruptSuccess", "DisassociateBegin", "DisassociateBiosPostCompletion", "DisassociateBmcConfigPnuOS", "DisassociateBmcPreconfigPnuOSLocal", "DisassociateBmcPreconfigPnuOSPeer", "DisassociateBmcUnconfigPnuOS", "DisassociateBootPnuos", "DisassociateBootWait", "DisassociateConfigBios", "DisassociateConfigFlexFlashScrub", "DisassociateConfigKvmMgmtDefaultSetting", "DisassociateConfigUserAccess", "DisassociateDeassertResetBypass", "DisassociateFail", "DisassociateHagPnuOSConnect", "DisassociateHagPnuOSDisconnect", "DisassociateHandlePooling", "DisassociateNicConfigPnuOSLocal", "DisassociateNicConfigPnuOSPeer", "DisassociateNicUnconfigHostOSLocal", "DisassociateNicUnconfigHostOSPeer", "DisassociateNicUnconfigPnuOSLocal", "DisassociateNicUnconfigPnuOSPeer", "DisassociateNicUnconfigServiceInfraLocal", "DisassociateNicUnconfigServiceInfraPeer", "DisassociateOobDiskScrub", "DisassociatePnuOSCatalog", "DisassociatePnuOSIdent", "DisassociatePnuOSPolicy", "DisassociatePnuOSScrub", "DisassociatePnuOSSelfTest", "DisassociatePnuOSUnconfig", "DisassociatePnuOSValidate", "DisassociatePowerOn", "DisassociatePreSanitize", "DisassociateResetSecureBootConfig", "DisassociateSanitize", "DisassociateSerialDebugPnuOSConnect", "DisassociateSerialDebugPnuOSDisconnect", "DisassociateShutdown", "DisassociateSolRedirectDisable", "DisassociateSolRedirectEnable", "DisassociateSuccess", "DisassociateSwConfigPnuOSLocal", "DisassociateSwConfigPnuOSPeer", "DisassociateSwConfigPortNivLocal", "DisassociateSwConfigPortNivPeer", "DisassociateSwUnconfigHostOSLocal", "DisassociateSwUnconfigHostOSPeer", "DisassociateSwUnconfigPnuOSLocal", "DisassociateSwUnconfigPnuOSPeer", "DisassociateUnconfigBios", "DisassociateUnconfigCimcVMedia", "DisassociateUnconfigExtMgmtGw", "DisassociateUnconfigExtMgmtRules", "DisassociateUnconfigFlexFlash", "DisassociateUnconfigSoL", "DisassociateUnconfigUuid", "DisassociateVerifyFcZoneConfig", "DiscoverBegin", "DiscoverBiosPostCompletion", "DiscoverBladeBootWait", "DiscoverBmcConfigPnuOS", "DiscoverBmcInventory", "DiscoverBmcShutdownDiscovered", "DiscoverBootPnuos", "DiscoverCimcPresence", "DiscoverCleanupNicConfigLocal", "DiscoverCleanupNicConfigPeer", "DiscoverConfigUserAccess", "DiscoverFail", "DiscoverHandlePooling", "DiscoverPreSanitize", "DiscoverReadSmbios", "DiscoverSanitize", "DiscoverSuccess", "DiscoverUnconfigCimcVMedia", "DiscoverUnconfigExtMgmtGw", "DiscoverUnconfigExtMgmtRules", "EnableCimcSecureBootActivate", "EnableCimcSecureBootBegin", "EnableCimcSecureBootFail", "EnableCimcSecureBootPollUpdateStatus", "EnableCimcSecureBootReset", "EnableCimcSecureBootSuccess", "EnableCimcSecureBootUpdateRequest", "FlashControllerBegin", "FlashControllerFail", "FlashControllerSuccess", "FlashControllerUpdateFlashLife", "FwUpgradeActivateAdaptorNwFwLocal", "FwUpgradeActivateAdaptorNwFwPeer", "FwUpgradeActivateBios", "FwUpgradeActivateIBMCFw", "FwUpgradeBegin", "FwUpgradeBiosImgUpdate", "FwUpgradeBiosPostCompletion", "FwUpgradeBladePowerOff", "FwUpgradeBmcConfigPnuOS", "FwUpgradeBmcPreconfigPnuOSLocal", "FwUpgradeBmcPreconfigPnuOSPeer", "FwUpgradeBmcUnconfigPnuOS", "FwUpgradeBootPnuos", "FwUpgradeBootWait", "FwUpgradeClearBiosUpdate", "FwUpgradeCopyRemote", "FwUpgradeDeassertResetBypass", "FwUpgradeDeleteCurlDownloadedImages", "FwUpgradeDeleteImagesRemote", "FwUpgradeDownloadImages", "FwUpgradeFail", "FwUpgradeGraphicsImageUpdate", "FwUpgradeHagPnuOSConnect", "FwUpgradeHagPnuOSDisconnect", "FwUpgradeHbaImgUpdate", "FwUpgradeLocalDiskFwUpdate", "FwUpgradeNicConfigPnuOSLocal", "FwUpgradeNicConfigPnuOSPeer", "FwUpgradeNicImgUpdate", "FwUpgradeNicUnconfigPnuOSLocal", "FwUpgradeNicUnconfigPnuOSPeer", "FwUpgradePnuOSCatalog", "FwUpgradePnuOSConfig", "FwUpgradePnuOSIdent", "FwUpgradePnuOSInventory", "FwUpgradePnuOSPolicy", "FwUpgradePnuOSSelfTest", "FwUpgradePnuOSUnloadDrivers", "FwUpgradePnuOSValidate", "FwUpgradePollBiosActivateStatus", "FwUpgradePollBiosUpdateStatus", "FwUpgradePollBoardCtrlPowerCycle", "FwUpgradePollBoardCtrlUpdateStatus", "FwUpgradePollClearBiosUpdateStatus", "FwUpgradePowerCycleBoard", "FwUpgradePowerOn", "FwUpgradePreSanitize", "FwUpgradeResetIBMC", "FwUpgradeSanitize", "FwUpgradeSerialDebugPnuOSConnect", "FwUpgradeSerialDebugPnuOSDisconnect", "FwUpgradeShutdown", "FwUpgradeSolRedirectDisable", "FwUpgradeSolRedirectEnable", "FwUpgradeStorageCtlrImgUpdate", "FwUpgradeSuccess", "FwUpgradeSwConfigPnuOSLocal", "FwUpgradeSwConfigPnuOSPeer", "FwUpgradeSwConfigPortNivLocal", "FwUpgradeSwConfigPortNivPeer", "FwUpgradeSwUnconfigPnuOSLocal", "FwUpgradeSwUnconfigPnuOSPeer", "FwUpgradeUnconfigCimcVMedia", "FwUpgradeUnconfigExtMgmtGw", "FwUpgradeUnconfigExtMgmtRules", "FwUpgradeUpdateAdaptorNwFwLocal", "FwUpgradeUpdateAdaptorNwFwPeer", "FwUpgradeUpdateBiosRequest", "FwUpgradeUpdateBoardCtrlRequest", "FwUpgradeUpdateIBMCFw", "FwUpgradeWaitForAdaptorNwFwUpdateLocal", "FwUpgradeWaitForAdaptorNwFwUpdatePeer", "FwUpgradeWaitForIBMCFwUpdate", "HardShutdownBegin", "HardShutdownExecute", "HardShutdownFail", "HardShutdownSuccess", "HardresetBegin", "HardresetExecute", "HardresetFail", "HardresetPreSanitize", "HardresetSanitize", "HardresetSuccess", "PowerCapBegin", "PowerCapConfig", "PowerCapFail", "PowerCapSuccess", "PowercycleBegin", "PowercycleExecute", "PowercycleFail", "PowercyclePreSanitize", "PowercycleSanitize", "PowercycleSuccess", "ResetBmcBegin", "ResetBmcExecute", "ResetBmcFail", "ResetBmcSuccess", "ResetIpmiBegin", "ResetIpmiExecute", "ResetIpmiFail", "ResetIpmiSuccess", "ResetKvmBegin", "ResetKvmExecute", "ResetKvmFail", "ResetKvmSuccess", "ResetMemoryErrorsBegin", "ResetMemoryErrorsExecute", "ResetMemoryErrorsFail", "ResetMemoryErrorsSuccess", "ServiceInfraDeployBegin", "ServiceInfraDeployFail", "ServiceInfraDeployNicConfigLocal", "ServiceInfraDeployNicConfigPeer", "ServiceInfraDeploySuccess", "ServiceInfraDeploySwConfigLocal", "ServiceInfraDeploySwConfigPeer", "ServiceInfraWithdrawBegin", "ServiceInfraWithdrawFail", "ServiceInfraWithdrawNicUnConfigLocal", "ServiceInfraWithdrawNicUnConfigPeer", "ServiceInfraWithdrawSuccess", "ServiceInfraWithdrawSwUnConfigLocal", "ServiceInfraWithdrawSwUnConfigPeer", "SoftShutdownBegin", "SoftShutdownExecute", "SoftShutdownFail", "SoftShutdownSuccess", "SoftresetBegin", "SoftresetExecute", "SoftresetFail", "SoftresetPreSanitize", "SoftresetSanitize", "SoftresetSuccess", "SwConnUpdA", "SwConnUpdB", "SwConnUpdBegin", "SwConnUpdFail", "SwConnUpdSuccess", "TurnupBegin", "TurnupExecute", "TurnupFail", "TurnupSuccess", "UnconfigSoLBegin", "UnconfigSoLExecute", "UnconfigSoLFail", "UnconfigSoLSuccess", "UpdateAdaptorBegin", "UpdateAdaptorFail", "UpdateAdaptorPollUpdateStatusLocal", "UpdateAdaptorPollUpdateStatusPeer", "UpdateAdaptorPowerOff", "UpdateAdaptorPowerOn", "UpdateAdaptorSuccess", "UpdateAdaptorUpdateRequestLocal", "UpdateAdaptorUpdateRequestPeer", "UpdateBIOSBegin", "UpdateBIOSClear", "UpdateBIOSFail", "UpdateBIOSPollClearStatus", "UpdateBIOSPollUpdateStatus", "UpdateBIOSSuccess", "UpdateBIOSUpdateRequest", "UpdateBoardControllerBegin", "UpdateBoardControllerFail", "UpdateBoardControllerPollBoardCtrlPowerCycle", "UpdateBoardControllerPollUpdateStatus", "UpdateBoardControllerPowerCycleBoard", "UpdateBoardControllerPrepareForUpdate", "UpdateBoardControllerServerPowerOff", "UpdateBoardControllerServerPowerOn", "UpdateBoardControllerSuccess", "UpdateBoardControllerUpdateRequest", "clearTPMBegin", "clearTPMBiosPostCompletion", "clearTPMBladePowerOff", "clearTPMBladePowerOn", "clearTPMBootHost", "clearTPMClear", "clearTPMFail", "clearTPMPreSanitize", "clearTPMReadSmBios", "clearTPMReconfigBios", "clearTPMSanitize", "clearTPMSetupVmedia", "clearTPMStopVMediaLocal", "clearTPMStopVMediaPeer", "clearTPMSuccess", "clearTPMUnconfigVmedia", "nop", "updateExtUsersBegin", "updateExtUsersDeploy", "updateExtUsersFail", "updateExtUsersSuccess"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "last_update_time": MoPropertyMeta("last_update_time", "lastUpdateTime", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version251a, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateAdaptorActivateLocal", "ActivateAdaptorActivatePeer", "ActivateAdaptorBegin", "ActivateAdaptorCheckPowerAvailability", "ActivateAdaptorDeassertResetBypass", "ActivateAdaptorFail", "ActivateAdaptorPowerDeployWait", "ActivateAdaptorPowerOn", "ActivateAdaptorReset", "ActivateAdaptorSuccess", "ActivateBIOSActivate", "ActivateBIOSBegin", "ActivateBIOSCheckPowerAvailability", "ActivateBIOSClear", "ActivateBIOSFail", "ActivateBIOSPollActivateStatus", "ActivateBIOSPollClearStatus", "ActivateBIOSPowerDeployWait", "ActivateBIOSPowerOff", "ActivateBIOSPowerOn", "ActivateBIOSSuccess", "ActivateBIOSUpdateTokens", "AssociateActivateAdaptorNwFwLocal", "AssociateActivateAdaptorNwFwPeer", "AssociateActivateBios", "AssociateActivateIBMCFw", "AssociateBegin", "AssociateBiosImgUpdate", "AssociateBiosPostCompletion", "AssociateBladePowerOff", "AssociateBmcConfigPnuOS", "AssociateBmcPreconfigPnuOSLocal", "AssociateBmcPreconfigPnuOSPeer", "AssociateBmcUnconfigPnuOS", "AssociateBootHost", "AssociateBootPnuos", "AssociateBootWait", "AssociateCalculateVlanGroupForHostOSLocal", "AssociateCalculateVlanGroupForHostOSPeer", "AssociateCheckPowerAvailability", "AssociateClearBiosUpdate", "AssociateConfigCimcVMedia", "AssociateConfigExtMgmtGw", "AssociateConfigExtMgmtRules", "AssociateConfigFanSpeed", "AssociateConfigFlexFlash", "AssociateConfigSoL", "AssociateConfigUserAccess", "AssociateConfigUuid", "AssociateCopyRemote", "AssociateDeassertResetBypass", "AssociateDeleteCurlDownloadedImages", "AssociateDeleteImagesRemote", "AssociateDownloadImages", "AssociateFail", "AssociateGraphicsImageUpdate", "AssociateHagHostOSConnect", "AssociateHagPnuOSConnect", "AssociateHagPnuOSDisconnect", "AssociateHbaImgUpdate", "AssociateHostOSConfig", "AssociateHostOSIdent", "AssociateHostOSPolicy", "AssociateHostOSValidate", "AssociateLocalDiskFwUpdate", "AssociateMarkAdapterForReboot", "AssociateNicConfigHostOSLocal", "AssociateNicConfigHostOSPeer", "AssociateNicConfigParamsHostOSLocal", "AssociateNicConfigParamsHostOSPeer", "AssociateNicConfigPnuOSLocal", "AssociateNicConfigPnuOSPeer", "AssociateNicConfigServiceInfraLocal", "AssociateNicConfigServiceInfraPeer", "AssociateNicImgUpdate", "AssociateNicUnconfigPnuOSLocal", "AssociateNicUnconfigPnuOSPeer", "AssociateOobStorageConfig", "AssociateOobStorageInventory", "AssociatePnuOSCatalog", "AssociatePnuOSConfig", "AssociatePnuOSIdent", "AssociatePnuOSInventory", "AssociatePnuOSLocalDiskConfig", "AssociatePnuOSPolicy", "AssociatePnuOSSelfTest", "AssociatePnuOSUnloadDrivers", "AssociatePnuOSValidate", "AssociatePollBiosActivateStatus", "AssociatePollBiosUpdateStatus", "AssociatePollBoardCtrlPowerCycle", "AssociatePollBoardCtrlUpdateStatus", "AssociatePollClearBiosUpdateStatus", "AssociatePowerCycleBoard", "AssociatePowerDeployWait", "AssociatePowerOn", "AssociatePowerOnPreConfig", "AssociatePreSanitize", "AssociatePrepareForBoot", "AssociateResetIBMC", "AssociateSanitize", "AssociateSasExpanderImgUpdate", "AssociateSerialDebugPnuOSConnect", "AssociateSerialDebugPnuOSDisconnect", "AssociateSolRedirectDisable", "AssociateSolRedirectEnable", "AssociateStorageCtlrImgUpdate", "AssociateSuccess", "AssociateSwConfigHostOSLocal", "AssociateSwConfigHostOSPeer", "AssociateSwConfigPnuOSLocal", "AssociateSwConfigPnuOSPeer", "AssociateSwConfigPortNivLocal", "AssociateSwConfigPortNivPeer", "AssociateSwConfigServiceInfraLocal", "AssociateSwConfigServiceInfraPeer", "AssociateSwUnconfigPnuOSLocal", "AssociateSwUnconfigPnuOSPeer", "AssociateSyncPowerState", "AssociateUnconfigCimcVMedia", "AssociateUnconfigExtMgmtGw", "AssociateUnconfigExtMgmtRules", "AssociateUnlockFirmwareImage", "AssociateUpdateAdaptorNwFwLocal", "AssociateUpdateAdaptorNwFwPeer", "AssociateUpdateBiosRequest", "AssociateUpdateBoardCtrlRequest", "AssociateUpdateIBMCFw", "AssociateVerifyFcZoneConfig", "AssociateWaitForAdaptorNwFwUpdateLocal", "AssociateWaitForAdaptorNwFwUpdatePeer", "AssociateWaitForIBMCFwUpdate", "BiosRecoveryBegin", "BiosRecoveryCheckPowerAvailability", "BiosRecoveryCleanup", "BiosRecoveryFail", "BiosRecoveryPowerDeployWait", "BiosRecoveryPreSanitize", "BiosRecoveryReset", "BiosRecoverySanitize", "BiosRecoverySetupVmediaLocal", "BiosRecoverySetupVmediaPeer", "BiosRecoveryShutdown", "BiosRecoveryStart", "BiosRecoveryStopVMediaLocal", "BiosRecoveryStopVMediaPeer", "BiosRecoverySuccess", "BiosRecoveryTeardownVmediaLocal", "BiosRecoveryTeardownVmediaPeer", "BiosRecoveryWait", "CimcSessionDeleteBegin", "CimcSessionDeleteExecute", "CimcSessionDeleteFail", "CimcSessionDeleteSuccess", "CmosResetBegin", "CmosResetBladePowerOn", "CmosResetCheckPowerAvailability", "CmosResetExecute", "CmosResetFail", "CmosResetPowerDeployWait", "CmosResetPreSanitize", "CmosResetReconfigBios", "CmosResetReconfigUuid", "CmosResetSanitize", "CmosResetSuccess", "ConfigBoardBegin", "ConfigBoardConfigMemoryPolicy", "ConfigBoardFail", "ConfigBoardSuccess", "ConfigSoLBegin", "ConfigSoLExecute", "ConfigSoLFail", "ConfigSoLSuccess", "DecommissionBegin", "DecommissionCleanupCIMC", "DecommissionCleanupPortConfigLocal", "DecommissionCleanupPortConfigPeer", "DecommissionExecute", "DecommissionFail", "DecommissionPrecleanupPortConfig", "DecommissionStopVMediaLocal", "DecommissionStopVMediaPeer", "DecommissionSuccess", "DecommissionUnconfigExtMgmtGw", "DecommissionUnconfigExtMgmtRules", "DiagnosticInterruptBegin", "DiagnosticInterruptExecute", "DiagnosticInterruptFail", "DiagnosticInterruptSuccess", "DisassociateBegin", "DisassociateBiosPostCompletion", "DisassociateBmcConfigPnuOS", "DisassociateBmcPreconfigPnuOSLocal", "DisassociateBmcPreconfigPnuOSPeer", "DisassociateBmcUnconfigPnuOS", "DisassociateBootPnuos", "DisassociateBootWait", "DisassociateCheckPowerAvailability", "DisassociateConfigBios", "DisassociateConfigFlexFlashScrub", "DisassociateConfigKvmMgmtDefaultSetting", "DisassociateConfigUserAccess", "DisassociateDeassertResetBypass", "DisassociateFail", "DisassociateHagPnuOSConnect", "DisassociateHagPnuOSDisconnect", "DisassociateHandlePooling", "DisassociateNicConfigPnuOSLocal", "DisassociateNicConfigPnuOSPeer", "DisassociateNicUnconfigHostOSLocal", "DisassociateNicUnconfigHostOSPeer", "DisassociateNicUnconfigPnuOSLocal", "DisassociateNicUnconfigPnuOSPeer", "DisassociateNicUnconfigServiceInfraLocal", "DisassociateNicUnconfigServiceInfraPeer", "DisassociateOobDiskScrub", "DisassociatePnuOSCatalog", "DisassociatePnuOSIdent", "DisassociatePnuOSPolicy", "DisassociatePnuOSScrub", "DisassociatePnuOSSelfTest", "DisassociatePnuOSUnconfig", "DisassociatePnuOSValidate", "DisassociatePowerDeployWait", "DisassociatePowerOn", "DisassociatePreSanitize", "DisassociateResetSecureBootConfig", "DisassociateSanitize", "DisassociateSerialDebugPnuOSConnect", "DisassociateSerialDebugPnuOSDisconnect", "DisassociateShutdown", "DisassociateSolRedirectDisable", "DisassociateSolRedirectEnable", "DisassociateSuccess", "DisassociateSwConfigPnuOSLocal", "DisassociateSwConfigPnuOSPeer", "DisassociateSwConfigPortNivLocal", "DisassociateSwConfigPortNivPeer", "DisassociateSwUnconfigHostOSLocal", "DisassociateSwUnconfigHostOSPeer", "DisassociateSwUnconfigPnuOSLocal", "DisassociateSwUnconfigPnuOSPeer", "DisassociateUnconfigBios", "DisassociateUnconfigCimcVMedia", "DisassociateUnconfigExtMgmtGw", "DisassociateUnconfigExtMgmtRules", "DisassociateUnconfigFlexFlash", "DisassociateUnconfigSoL", "DisassociateUnconfigUuid", "DisassociateVerifyFcZoneConfig", "DiscoverBegin", "DiscoverBiosPostCompletion", "DiscoverBladeBootWait", "DiscoverBmcConfigPnuOS", "DiscoverBmcInventory", "DiscoverBmcShutdownDiscovered", "DiscoverBootPnuos", "DiscoverCimcPresence", "DiscoverCleanupNicConfigLocal", "DiscoverCleanupNicConfigPeer", "DiscoverConfigUserAccess", "DiscoverFail", "DiscoverHandlePooling", "DiscoverPreSanitize", "DiscoverReadSmbios", "DiscoverSanitize", "DiscoverSuccess", "DiscoverUnconfigCimcVMedia", "DiscoverUnconfigExtMgmtGw", "DiscoverUnconfigExtMgmtRules", "EnableCimcSecureBootActivate", "EnableCimcSecureBootBegin", "EnableCimcSecureBootFail", "EnableCimcSecureBootPollUpdateStatus", "EnableCimcSecureBootReset", "EnableCimcSecureBootSuccess", "EnableCimcSecureBootUpdateRequest", "FlashControllerBegin", "FlashControllerFail", "FlashControllerSuccess", "FlashControllerUpdateFlashLife", "FwUpgradeActivateAdaptorNwFwLocal", "FwUpgradeActivateAdaptorNwFwPeer", "FwUpgradeActivateBios", "FwUpgradeActivateIBMCFw", "FwUpgradeBegin", "FwUpgradeBiosImgUpdate", "FwUpgradeBiosPostCompletion", "FwUpgradeBladePowerOff", "FwUpgradeBmcConfigPnuOS", "FwUpgradeBmcPreconfigPnuOSLocal", "FwUpgradeBmcPreconfigPnuOSPeer", "FwUpgradeBmcUnconfigPnuOS", "FwUpgradeBootPnuos", "FwUpgradeBootWait", "FwUpgradeCheckPowerAvailability", "FwUpgradeClearBiosUpdate", "FwUpgradeCopyRemote", "FwUpgradeDeassertResetBypass", "FwUpgradeDeleteCurlDownloadedImages", "FwUpgradeDeleteImagesRemote", "FwUpgradeDownloadImages", "FwUpgradeFail", "FwUpgradeGraphicsImageUpdate", "FwUpgradeHagPnuOSConnect", "FwUpgradeHagPnuOSDisconnect", "FwUpgradeHbaImgUpdate", "FwUpgradeLocalDiskFwUpdate", "FwUpgradeNicConfigPnuOSLocal", "FwUpgradeNicConfigPnuOSPeer", "FwUpgradeNicImgUpdate", "FwUpgradeNicUnconfigPnuOSLocal", "FwUpgradeNicUnconfigPnuOSPeer", "FwUpgradeOobStorageInventory", "FwUpgradePnuOSCatalog", "FwUpgradePnuOSConfig", "FwUpgradePnuOSIdent", "FwUpgradePnuOSInventory", "FwUpgradePnuOSPolicy", "FwUpgradePnuOSSelfTest", "FwUpgradePnuOSUnloadDrivers", "FwUpgradePnuOSValidate", "FwUpgradePollBiosActivateStatus", "FwUpgradePollBiosUpdateStatus", "FwUpgradePollBoardCtrlPowerCycle", "FwUpgradePollBoardCtrlUpdateStatus", "FwUpgradePollClearBiosUpdateStatus", "FwUpgradePowerCycleBoard", "FwUpgradePowerDeployWait", "FwUpgradePowerOn", "FwUpgradePreSanitize", "FwUpgradeResetIBMC", "FwUpgradeSanitize", "FwUpgradeSasExpanderImgUpdate", "FwUpgradeSerialDebugPnuOSConnect", "FwUpgradeSerialDebugPnuOSDisconnect", "FwUpgradeShutdown", "FwUpgradeSolRedirectDisable", "FwUpgradeSolRedirectEnable", "FwUpgradeStorageCtlrImgUpdate", "FwUpgradeSuccess", "FwUpgradeSwConfigPnuOSLocal", "FwUpgradeSwConfigPnuOSPeer", "FwUpgradeSwConfigPortNivLocal", "FwUpgradeSwConfigPortNivPeer", "FwUpgradeSwUnconfigPnuOSLocal", "FwUpgradeSwUnconfigPnuOSPeer", "FwUpgradeUnconfigCimcVMedia", "FwUpgradeUnconfigExtMgmtGw", "FwUpgradeUnconfigExtMgmtRules", "FwUpgradeUnlockFirmwareImage", "FwUpgradeUpdateAdaptorNwFwLocal", "FwUpgradeUpdateAdaptorNwFwPeer", "FwUpgradeUpdateBiosRequest", "FwUpgradeUpdateBoardCtrlRequest", "FwUpgradeUpdateIBMCFw", "FwUpgradeWaitForAdaptorNwFwUpdateLocal", "FwUpgradeWaitForAdaptorNwFwUpdatePeer", "FwUpgradeWaitForIBMCFwUpdate", "HardShutdownBegin", "HardShutdownExecute", "HardShutdownFail", "HardShutdownSuccess", "HardresetBegin", "HardresetCheckPowerAvailability", "HardresetExecute", "HardresetFail", "HardresetPowerDeployWait", "HardresetPreSanitize", "HardresetSanitize", "HardresetSuccess", "OobStorageAdminConfigBegin", "OobStorageAdminConfigBootHost", "OobStorageAdminConfigBootWait", "OobStorageAdminConfigFail", "OobStorageAdminConfigOobStorageConfig", "OobStorageAdminConfigOobStorageInventory", "OobStorageAdminConfigPreSanitize", "OobStorageAdminConfigSanitize", "OobStorageAdminConfigShutdown", "OobStorageAdminConfigSuccess", "OobStorageAdminConfigTearDownVMediaLocal", "OobStorageAdminConfigTearDownVMediaPeer", "PowerCapBegin", "PowerCapConfig", "PowerCapFail", "PowerCapSuccess", "PowercycleBegin", "PowercycleCheckPowerAvailability", "PowercycleExecute", "PowercycleFail", "PowercyclePowerDeployWait", "PowercyclePreSanitize", "PowercycleSanitize", "PowercycleSuccess", "ResetBmcBegin", "ResetBmcExecute", "ResetBmcFail", "ResetBmcSuccess", "ResetIpmiBegin", "ResetIpmiExecute", "ResetIpmiFail", "ResetIpmiSuccess", "ResetKvmBegin", "ResetKvmExecute", "ResetKvmFail", "ResetKvmSuccess", "ResetMemoryErrorsBegin", "ResetMemoryErrorsExecute", "ResetMemoryErrorsFail", "ResetMemoryErrorsSuccess", "ServiceInfraDeployBegin", "ServiceInfraDeployFail", "ServiceInfraDeployNicConfigLocal", "ServiceInfraDeployNicConfigPeer", "ServiceInfraDeploySuccess", "ServiceInfraDeploySwConfigLocal", "ServiceInfraDeploySwConfigPeer", "ServiceInfraWithdrawBegin", "ServiceInfraWithdrawFail", "ServiceInfraWithdrawNicUnConfigLocal", "ServiceInfraWithdrawNicUnConfigPeer", "ServiceInfraWithdrawSuccess", "ServiceInfraWithdrawSwUnConfigLocal", "ServiceInfraWithdrawSwUnConfigPeer", "SoftShutdownBegin", "SoftShutdownExecute", "SoftShutdownFail", "SoftShutdownSuccess", "SoftresetBegin", "SoftresetCheckPowerAvailability", "SoftresetExecute", "SoftresetFail", "SoftresetPowerDeployWait", "SoftresetPreSanitize", "SoftresetSanitize", "SoftresetSuccess", "SwConnUpdA", "SwConnUpdB", "SwConnUpdBegin", "SwConnUpdFail", "SwConnUpdSuccess", "TurnupBegin", "TurnupCheckPowerAvailability", "TurnupExecute", "TurnupFail", "TurnupPowerDeployWait", "TurnupSuccess", "UnconfigSoLBegin", "UnconfigSoLExecute", "UnconfigSoLFail", "UnconfigSoLSuccess", "UpdateAdaptorBegin", "UpdateAdaptorCheckPowerAvailability", "UpdateAdaptorFail", "UpdateAdaptorPollUpdateStatusLocal", "UpdateAdaptorPollUpdateStatusPeer", "UpdateAdaptorPowerDeployWait", "UpdateAdaptorPowerOff", "UpdateAdaptorPowerOn", "UpdateAdaptorSuccess", "UpdateAdaptorUpdateRequestLocal", "UpdateAdaptorUpdateRequestPeer", "UpdateBIOSBegin", "UpdateBIOSClear", "UpdateBIOSFail", "UpdateBIOSPollClearStatus", "UpdateBIOSPollUpdateStatus", "UpdateBIOSSuccess", "UpdateBIOSUpdateRequest", "UpdateBoardControllerBegin", "UpdateBoardControllerCheckPowerAvailability", "UpdateBoardControllerFail", "UpdateBoardControllerPollBoardCtrlPowerCycle", "UpdateBoardControllerPollUpdateStatus", "UpdateBoardControllerPowerCycleBoard", "UpdateBoardControllerPowerDeployWait", "UpdateBoardControllerPrepareForUpdate", "UpdateBoardControllerServerPowerOff", "UpdateBoardControllerServerPowerOn", "UpdateBoardControllerSuccess", "UpdateBoardControllerUpdateRequest", "clearTPMBegin", "clearTPMBiosPostCompletion", "clearTPMBladePowerOff", "clearTPMBladePowerOn", "clearTPMBootHost", "clearTPMClear", "clearTPMFail", "clearTPMPreSanitize", "clearTPMReadSmBios", "clearTPMReconfigBios", "clearTPMSanitize", "clearTPMSetupVmedia", "clearTPMStopVMediaLocal", "clearTPMStopVMediaPeer", "clearTPMSuccess", "clearTPMUnconfigVmedia", "nop", "updateExtUsersBegin", "updateExtUsersDeploy", "updateExtUsersFail", "updateExtUsersSuccess"], []), 
         "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "retry": MoPropertyMeta("retry", "retry", "byte", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "stage_status": MoPropertyMeta("stage_status", "stageStatus", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["fail", "inProgress", "nop", "pending", "skip", "success", "throttled"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x4L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {
@@ -503,6 +553,7 @@ class ComputeServerUnitFsmStage(ManagedObject):
         "order": "order", 
         "retry": "retry", 
         "rn": "rn", 
+        "sacl": "sacl", 
         "stageStatus": "stage_status", 
         "status": "status", 
     }
@@ -515,6 +566,7 @@ class ComputeServerUnitFsmStage(ManagedObject):
         self.last_update_time = None
         self.order = None
         self.retry = None
+        self.sacl = None
         self.stage_status = None
         self.status = None
 

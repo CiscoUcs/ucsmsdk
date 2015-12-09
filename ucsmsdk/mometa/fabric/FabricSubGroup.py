@@ -28,24 +28,24 @@ class FabricSubGroup(ManagedObject):
     consts = FabricSubGroupConsts()
     naming_props = set([u'slotId', u'aggrPortId'])
 
-    mo_meta = MoMeta("FabricSubGroup", "fabricSubGroup", "slot-[slot_id]-aggr-port-[aggr_port_id]", VersionMeta.Version302a, "InputOutput", 0x7fL, [], ["admin", "ls-network", "ls-network-policy"], [u'fabricDceSwSrv', u'fabricDceSwSrvPc', u'fabricEthEstc', u'fabricEthEstcPc', u'fabricEthLan', u'fabricEthLanPc', u'fabricEthMon', u'fabricFcEstc', u'fabricFcSan', u'fabricFcoeSanPc'], [u'fabricDceSwSrvEp', u'fabricDceSwSrvPcEp', u'fabricEthEstcEp', u'fabricEthEstcPcEp', u'fabricEthLanEp', u'fabricEthLanPcEp', u'fabricEthMonDestEp', u'fabricFcoeEstcEp', u'fabricFcoeSanEp', u'fabricFcoeSanPcEp'], ["Add", "Get"])
+    mo_meta = MoMeta("FabricSubGroup", "fabricSubGroup", "slot-[slot_id]-aggr-port-[aggr_port_id]", VersionMeta.Version302c, "InputOutput", 0xffL, [], ["admin", "ls-network", "ls-network-policy"], [u'fabricDceSwSrv', u'fabricDceSwSrvPc', u'fabricEthEstc', u'fabricEthEstcPc', u'fabricEthLan', u'fabricEthLanPc', u'fabricEthMon', u'fabricFcEstc', u'fabricFcMon', u'fabricFcSan', u'fabricFcoeSanPc'], [u'fabricDceSwSrvEp', u'fabricDceSwSrvPcEp', u'fabricEthEstcEp', u'fabricEthEstcPcEp', u'fabricEthLanEp', u'fabricEthLanPcEp', u'fabricEthMonDestEp', u'fabricFcoeEstcEp', u'fabricFcoeSanEp', u'fabricFcoeSanPcEp'], ["Add", "Get"])
 
     prop_meta = {
-        "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302a, MoPropertyMeta.NAMING, 0x1L, None, None, None, [], ["1-48"]), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302a, MoPropertyMeta.INTERNAL, 0x2L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "lic_gp": MoPropertyMeta("lic_gp", "licGP", "ulong", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "lic_state": MoPropertyMeta("lic_state", "licState", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["license-expired", "license-graceperiod", "license-insufficient", "license-ok", "not-applicable", "unknown"], []), 
-        "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version302a, MoPropertyMeta.NAMING, 0x20L, None, None, None, [], ["1-4"]), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
-        "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
+        "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x2L, None, None, None, [], ["1-48"]), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "lic_gp": MoPropertyMeta("lic_gp", "licGP", "ulong", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "lic_state": MoPropertyMeta("lic_state", "licState", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["license-expired", "license-graceperiod", "license-insufficient", "license-ok", "not-applicable", "unknown"], []), 
+        "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x40L, None, None, None, [], ["1-4"]), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x80L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
+        "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
     }
 
     prop_map = {

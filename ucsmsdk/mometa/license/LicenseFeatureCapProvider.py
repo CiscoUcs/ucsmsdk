@@ -27,32 +27,32 @@ class LicenseFeatureCapProvider(ManagedObject):
     consts = LicenseFeatureCapProviderConsts()
     naming_props = set([u'featureName', u'licVendor', u'licVersion', u'vendor', u'model', u'revision'])
 
-    mo_meta = MoMeta("LicenseFeatureCapProvider", "licenseFeatureCapProvider", "feature-[feature_name]-[lic_vendor]|[lic_version]manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version141i, "InputOutput", 0x1fffL, [], [""], [u'capabilityCatalogue'], [], ["Get"])
+    mo_meta = MoMeta("LicenseFeatureCapProvider", "licenseFeatureCapProvider", "feature-[feature_name]-[lic_vendor]|[lic_version]manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version141i, "InputOutput", 0x3fffL, [], [""], [u'capabilityCatalogue'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "def_quant": MoPropertyMeta("def_quant", "defQuant", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "def_quant": MoPropertyMeta("def_quant", "defQuant", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, [], []), 
         "deleted": MoPropertyMeta("deleted", "deleted", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "deprecated": MoPropertyMeta("deprecated", "deprecated", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
         "element_load_failures": MoPropertyMeta("element_load_failures", "elementLoadFailures", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "elements_loaded": MoPropertyMeta("elements_loaded", "elementsLoaded", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "feature_name": MoPropertyMeta("feature_name", "featureName", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x8L, 1, 64, None, [], []), 
+        "feature_name": MoPropertyMeta("feature_name", "featureName", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x10L, 1, 64, None, [], []), 
         "gencount": MoPropertyMeta("gencount", "gencount", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "grace_period": MoPropertyMeta("grace_period", "gracePeriod", "ulong", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, [], []), 
-        "lic_vendor": MoPropertyMeta("lic_vendor", "licVendor", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x20L, 1, 510, None, [], []), 
-        "lic_version": MoPropertyMeta("lic_version", "licVersion", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x40L, 1, 510, None, [], []), 
+        "grace_period": MoPropertyMeta("grace_period", "gracePeriod", "ulong", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, [], []), 
+        "lic_vendor": MoPropertyMeta("lic_vendor", "licVendor", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x40L, 1, 510, None, [], []), 
+        "lic_version": MoPropertyMeta("lic_version", "licVersion", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x80L, 1, 510, None, [], []), 
         "load_errors": MoPropertyMeta("load_errors", "loadErrors", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_warnings": MoPropertyMeta("load_warnings", "loadWarnings", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "mgmt_plane_ver": MoPropertyMeta("mgmt_plane_ver", "mgmtPlaneVer", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x80L, 1, 510, None, [], []), 
-        "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x100L, 1, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x200L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x100L, 1, 510, None, [], []), 
+        "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x200L, 1, 510, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x400L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "sku": MoPropertyMeta("sku", "sku", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x800L, None, None, None, ["boolean", "counted"], []), 
-        "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x1000L, 1, 510, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x800L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, None, ["boolean", "counted"], []), 
+        "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x2000L, 1, 510, None, [], []), 
     }
 
     prop_map = {

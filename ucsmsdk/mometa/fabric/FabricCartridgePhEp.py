@@ -11,6 +11,10 @@ sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 class FabricCartridgePhEpConsts():
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
+    AUTO_NEGOTIATE_FALSE = "false"
+    AUTO_NEGOTIATE_NO = "no"
+    AUTO_NEGOTIATE_TRUE = "true"
+    AUTO_NEGOTIATE_YES = "yes"
     CHASSIS_ID_N_A = "N/A"
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
@@ -41,6 +45,8 @@ class FabricCartridgePhEpConsts():
     LIC_STATE_UNKNOWN = "unknown"
     OPER_STATE_DOWN = "down"
     OPER_STATE_ERROR_MISCONFIGURED = "error-misconfigured"
+    OPER_STATE_ERROR_UNSUPPORTED_MINI_SERVER_PORT = "error-unsupported-mini-server-port"
+    OPER_STATE_FAILED = "failed"
     OPER_STATE_UNKNOWN = "unknown"
     OPER_STATE_UP = "up"
     PEER_CHASSIS_ID_N_A = "N/A"
@@ -55,13 +61,15 @@ class FabricCartridgePhEp(ManagedObject):
     consts = FabricCartridgePhEpConsts()
     naming_props = set([u'vendor', u'model', u'serial'])
 
-    mo_meta = MoMeta("FabricCartridgePhEp", "fabricCartridgePhEp", "cart-ep-ven-[vendor]-mod-[model]-ser-[serial]", VersionMeta.Version251a, "InputOutput", 0x3ffL, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'fabricDceSrv'], [u'fabricLastAckedSlot', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("FabricCartridgePhEp", "fabricCartridgePhEp", "cart-ep-ven-[vendor]-mod-[model]-ser-[serial]", VersionMeta.Version251a, "InputOutput", 0xfffL, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'fabricDceSrv'], [u'fabricLastAckedSlot', u'faultInst'], ["Get", "Set"])
 
     prop_meta = {
-        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x1L, None, None, None, ["disabled", "enabled"], []), 
-        "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["N/A"], ["1-255"]), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, 0x4L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["disabled", "enabled"], []), 
+        "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "auto_negotiate": MoPropertyMeta("auto_negotiate", "autoNegotiate", "string", None, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["N/A"], ["1-255"]), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, 0x10L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []), 
@@ -69,29 +77,33 @@ class FabricCartridgePhEp(ManagedObject):
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["in-service", "migrate", "out-of-service", "out-of-service-slave"], []), 
         "lic_gp": MoPropertyMeta("lic_gp", "licGP", "ulong", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "lic_state": MoPropertyMeta("lic_state", "licState", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["license-expired", "license-graceperiod", "license-insufficient", "license-ok", "not-applicable", "unknown"], []), 
-        "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, """((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []), 
-        "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x10L, 1, 510, None, [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, """[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["down", "error-misconfigured", "unknown", "up"], []), 
+        "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []), 
+        "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x40L, 1, 510, None, [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x80L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["down", "error-misconfigured", "error-unsupported-mini-server-port", "failed", "unknown", "up"], []), 
         "oper_state_reason": MoPropertyMeta("oper_state_reason", "operStateReason", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "peer_aggr_port_id": MoPropertyMeta("peer_aggr_port_id", "peerAggrPortId", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "peer_chassis_id": MoPropertyMeta("peer_chassis_id", "peerChassisId", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]), 
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-48"]), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x80L, 1, 510, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x100L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x200L, 1, 510, None, [], []), 
         "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-4"]), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x400L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
-        "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, """((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, """((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
-        "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x200L, 1, 510, None, [], []), 
+        "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
+        "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x800L, 1, 510, None, [], []), 
     }
 
     prop_map = {
         "adminState": "admin_state", 
+        "aggrPortId": "aggr_port_id", 
+        "autoNegotiate": "auto_negotiate", 
         "chassisId": "chassis_id", 
         "childAction": "child_action", 
         "dn": "dn", 
@@ -107,6 +119,7 @@ class FabricCartridgePhEp(ManagedObject):
         "name": "name", 
         "operState": "oper_state", 
         "operStateReason": "oper_state_reason", 
+        "peerAggrPortId": "peer_aggr_port_id", 
         "peerChassisId": "peer_chassis_id", 
         "peerDn": "peer_dn", 
         "peerPortId": "peer_port_id", 
@@ -114,6 +127,7 @@ class FabricCartridgePhEp(ManagedObject):
         "portId": "port_id", 
         "revision": "revision", 
         "rn": "rn", 
+        "sacl": "sacl", 
         "serial": "serial", 
         "slotId": "slot_id", 
         "status": "status", 
@@ -129,6 +143,8 @@ class FabricCartridgePhEp(ManagedObject):
         self.model = model
         self.serial = serial
         self.admin_state = None
+        self.aggr_port_id = None
+        self.auto_negotiate = None
         self.chassis_id = None
         self.child_action = None
         self.ep_dn = None
@@ -142,12 +158,14 @@ class FabricCartridgePhEp(ManagedObject):
         self.name = None
         self.oper_state = None
         self.oper_state_reason = None
+        self.peer_aggr_port_id = None
         self.peer_chassis_id = None
         self.peer_dn = None
         self.peer_port_id = None
         self.peer_slot_id = None
         self.port_id = None
         self.revision = None
+        self.sacl = None
         self.slot_id = None
         self.status = None
         self.switch_id = None

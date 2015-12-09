@@ -46,21 +46,21 @@ class AdaptorCapQual(ManagedObject):
     consts = AdaptorCapQualConsts()
     naming_props = set([u'type'])
 
-    mo_meta = MoMeta("AdaptorCapQual", "adaptorCapQual", "cap-[type]", VersionMeta.Version101e, "InputOutput", 0x7fL, [], ["admin", "pn-policy"], [u'adaptorQual'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AdaptorCapQual", "adaptorCapQual", "cap-[type]", VersionMeta.Version101e, "InputOutput", 0xffL, [], ["admin", "pn-policy"], [u'adaptorQual'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x1L, None, None, """((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
         "fw_version_hi": MoPropertyMeta("fw_version_hi", "fwVersionHi", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "fw_version_lo": MoPropertyMeta("fw_version_lo", "fwVersionLo", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "fw_version_opr": MoPropertyMeta("fw_version_opr", "fwVersionOpr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["gt", "lt", "none", "range"], []), 
-        "maximum": MoPropertyMeta("maximum", "maximum", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["unspecified"], ["0-65535", "4294967295-4294967295"]), 
-        "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8L, None, None, """[ !#$%\(\)\*\+,\-\./:;\?@\[\\\]\^_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "maximum": MoPropertyMeta("maximum", "maximum", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["unspecified"], ["0-65535", "4294967295-4294967295"]), 
+        "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""[ !#$%\(\)\*\+,\-\./:;\?@\[\\\]\^_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "nf_version_lo": MoPropertyMeta("nf_version_lo", "nfVersionLo", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, """((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, """((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x40L, None, None, None, ["cdn-support", "eth-flow-monitoring-netflow", "eth-nvgre", "eth-nvgre-vmq", "eth-roce", "eth-vxlan", "fcoe", "non-virtualized-eth-if", "non-virtualized-fc-if", "path-encap-consolidated", "path-encap-virtual", "path-encap-virtual-ce", "protected-eth-if", "protected-fc-if", "protected-fcoe", "uplink-aggregation", "virtualized-ce-eth-if", "virtualized-eth-if", "virtualized-eth-sriov", "virtualized-eth-sriov-usnic", "virtualized-eth-vmq", "virtualized-fc-if", "virtualized-fc-sriov", "virtualized-scsi-if"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80L, None, None, None, ["cdn-support", "eth-flow-monitoring-netflow", "eth-nvgre", "eth-nvgre-vmq", "eth-roce", "eth-vxlan", "fcoe", "non-virtualized-eth-if", "non-virtualized-fc-if", "path-encap-consolidated", "path-encap-virtual", "path-encap-virtual-ce", "protected-eth-if", "protected-fc-if", "protected-fcoe", "uplink-aggregation", "virtualized-ce-eth-if", "virtualized-eth-if", "virtualized-eth-sriov", "virtualized-eth-sriov-usnic", "virtualized-eth-vmq", "virtualized-fc-if", "virtualized-fc-sriov", "virtualized-scsi-if"], []), 
     }
 
     prop_map = {
