@@ -12,7 +12,7 @@
 # limitations under the License.
 
 """
-This module contains the UcsSdk Core classes.
+This module contains the ManagedObject and GenericManagedObject Class.
 """
 
 import logging
@@ -36,7 +36,10 @@ from ucscore import UcsBase
 log = logging.getLogger('ucs')
 
 
-class GenericProp():
+class _GenericProp():
+    """
+    Internal class to handle the unknown property.
+    """
     def __init__(self, name, value, is_dirty):
         self.name = name
         self.value = value
@@ -44,7 +47,10 @@ class GenericProp():
 
 
 class ManagedObject(UcsBase):
-    """This class structures/represents all the managed objects."""
+    """
+    This class structures/represents all the managed objects.
+    """
+
     DUMMY_DIRTY = "0x1L"
     __internal_prop = frozenset(
         ["_dirty_mask", "_class_id", "_child", ''])
@@ -74,15 +80,25 @@ class ManagedObject(UcsBase):
 
     @property
     def parent_mo(self):
+        """Getter method of ManagedObject Class"""
+
         return self.__parent_mo
 
     def _rn_set(self):
+        """
+        Internal method to set rn
+        """
+
         if "prop_meta" in dir(self) and "rn" in self.prop_meta:
             self.rn = self.make_rn()
         else:
             self.rn = ""
 
     def _dn_set(self, pmo_or_dn):
+        """
+        Internal method to set dn
+        """
+
         if pmo_or_dn:
             if isinstance(pmo_or_dn, ManagedObject):
                 self.__parent_mo = pmo_or_dn
@@ -101,6 +117,10 @@ class ManagedObject(UcsBase):
             self.dn = ""
 
     def __setattr__(self, name, value):
+        """
+        overridden setattr method
+        """
+
         if "prop_meta" in dir(self) and name in self.prop_meta:
             if name in dir(self):
                 self.__set_prop(name, value)
@@ -124,11 +144,24 @@ class ManagedObject(UcsBase):
             # ucsmsdk with newer releases on the UCS.
             # This needs to be handled so that the same sdk can work across
             # multiple ucs releases
-            self.__xtra_props[name] = GenericProp(name, value, True)
+            self.__xtra_props[name] = _GenericProp(name, value, True)
             self._dirty_mask |= self.__xtra_props_dirty_mask
             object.__setattr__(self, name, value)
 
     def __set_prop(self, name, value, mark_dirty=True, forced=False):
+        """
+        Internal method to set the properties after validation
+
+        Attributes:
+            * name (str): property name
+            * value (str): property value
+            * mark_dirty (bool): if True, property will be part of xml request
+            * forced (bool): if True, set the value without validation
+
+        Return:
+            None
+        """
+
         if not forced:
             prop_meta = self.prop_meta[name]
             if prop_meta.access != ucscoremeta.MoPropertyMeta.READ_WRITE:
@@ -148,7 +181,10 @@ class ManagedObject(UcsBase):
         object.__setattr__(self, name, value)
 
     def __str__(self):
-        """ Method to return string representation of a managed object. """
+        """
+        Method to return string representation of a managed object.
+        """
+
         ts = 8
         out_str = "\n"
         out_str += "Managed Object\t\t\t:\t" + str(self._class_id) + "\n"
@@ -171,14 +207,20 @@ class ManagedObject(UcsBase):
         return out_str
 
     def mark_dirty(self):
-        """ This method marks the managed object dirty. """
+        """
+        This method marks the managed object dirty.
+        """
+
         if self.__class__.__name__ == "ManagedObject" and not self.is_dirty():
             self._dirty_mask = ManagedObject.DUMMY_DIRTY
         elif "mo_meta" in dir(self):
             self._dirty_mask = self.mo_meta.mask
 
     def is_dirty(self):
-        """ This method checks if managed object is dirty. """
+        """
+        This method checks if managed object is dirty.
+        """
+
         return self._dirty_mask != 0 or self.child_is_dirty()
 
     # Ideally an rn should never change across ucsm releases.
@@ -186,17 +228,28 @@ class ManagedObject(UcsBase):
     # These cause an issue, because we cannot parse them
     # the below is a special case to handle these cases
     def rn_is_special_case(self):
+        """
+        Method to handle if rn pattern is different across UCS Version
+        """
+
         if self.__class__.__name__ == "StorageLocalDiskPartition":
             return True
         return False
 
     def rn_get_special_case(self):
+        """
+        Method to handle if rn pattern is different across UCS Version
+        """
+
         if self.__class__.__name__ == "StorageLocalDiskPartition":
             # some version of ucs have rn "partition" instead of "partition-id"
             return "partition"
 
     def make_rn(self):
-        """ This method returns the Rn for a managed object. """
+        """
+        This method returns the Rn for a managed object.
+        """
+
         import re
 
         rn_pattern = self.mo_meta.rn
@@ -222,7 +275,10 @@ class ManagedObject(UcsBase):
         return rn_pattern
 
     def to_xml(self, xml_doc=None, option=None, elem_name=None):
-        """ Method writes the xml representation of the managed object. """
+        """
+        Method writes the xml representation of the managed object.
+        """
+
         if option == WriteXmlOption.DIRTY and not self.is_dirty():
             log.debug("Object is not dirty")
             return
@@ -263,15 +319,18 @@ class ManagedObject(UcsBase):
         return xml_obj
 
     def from_xml(self, elem):
-        """ Method updates the object from the xml representation of
-         the managed object. """
+        """
+        Method updates the object from the xml representation of the managed
+        object.
+        """
+
         if elem.attrib:
             if self.__class__.__name__ != "ManagedObject":
                 for attr_name, attr_value in elem.attrib.iteritems():
                     if attr_name in self.prop_map:
                         attr_name = self.prop_map[attr_name]
                     else:
-                        self.__xtra_props[attr_name] = GenericProp(
+                        self.__xtra_props[attr_name] = _GenericProp(
                             attr_name,
                             attr_value,
                             False)
@@ -298,8 +357,11 @@ class ManagedObject(UcsBase):
                 self.child_add(child_obj)
                 child_obj.from_xml(child_elem)
 
-    def sync_mo(self, mo):  # TODO - Check with Rahul
-        """ Method to return string representation of a managed object. """
+    def sync_mo(self, mo):
+        """
+        Method to return string representation of a managed object.
+        """
+
         for prop, prop_value in sorted(self.__dict__.iteritems()):
             if prop in ManagedObject.__internal_prop or prop.startswith(
                     "_ManagedObject__"):
@@ -308,7 +370,10 @@ class ManagedObject(UcsBase):
         return None
 
     def show_tree(self, level=0):
-        """ Method to return string representation of a managed object. """
+        """
+        Method to return string representation of a managed object.
+        """
+
         indent = "  "
         level_indent = "%s%s)" % (indent * level, level)
         # level_key_dn = "level_%s_dn" % (str(level))
@@ -320,7 +385,10 @@ class ManagedObject(UcsBase):
         return None
 
     def show_hierarchy(self, level=0, break_level=None, show_level=[]):
-        """ Method to return string representation of a managed object. """
+        """
+        Method to return string representation of a managed object.
+        """
+
         from ucscoreutils import print_mo_hierarchy
 
         print_mo_hierarchy(self._class_id, level, break_level,
@@ -328,6 +396,9 @@ class ManagedObject(UcsBase):
 
 
 def generic_mo_from_xml(xml_str):
+    """
+    create GenericMo object from xml string
+    """
     root_elem = ET.fromstring(xml_str)
     class_id = root_elem.tag
     gmo = GenericMo(class_id)
@@ -336,6 +407,10 @@ def generic_mo_from_xml(xml_str):
 
 
 def generic_mo_from_xml_elem(elem):
+    """
+    create GenericMo object from xml element
+    """
+
     import ucsxmlcodec as xc
     xml_str = xc.to_xml_str(elem)
     gmo = generic_mo_from_xml(xml_str)
@@ -344,14 +419,13 @@ def generic_mo_from_xml_elem(elem):
 
 class GenericMo(UcsBase):
     """
-        This class implements a Generic Managed Object.
+    This class implements a Generic Managed Object.
 
-        Ex:
-            args = {"a": 1, "b": 2, "c":3}
-            GenericMo("test", "org-root", **args)
-            GenericMo("test", "org-root", a = 1, b = 2, c = 3, d = 4)
-
+    Attributes:
+        * class_id (str): class id of managed object
+        * parent_mo_or_dn (ManagedObject or str): parent managed object or dn
     """
+
     # Every variable that should not be a part of the final xml
     # should start with a underscore in this class
     def __init__(self, class_id, parent_mo_or_dn=None, **kwargs):
@@ -399,15 +473,6 @@ class GenericMo(UcsBase):
         if self.__parent_mo:
             self.__parent_mo.child_add(self)
 
-            # if 'rn' not in dir(self):
-            #     if 'dn' in dir(self):
-            #         self.rn = os.path.basename(self.dn)
-            #     else:
-            #         self.rn = ""
-            #
-            # if 'dn' not in dir(self):
-            #     self.dn = self.__parent_dn + '/' + self.rn
-
     def to_xml(self, xml_doc=None, option=None):
         """
         This method returns the xml element node for the current object
@@ -434,6 +499,7 @@ class GenericMo(UcsBase):
                 <testLsB a="1" b="2" c="3" dn="org-root/" rn="" />
             </testLsA>'
         """
+
         if xml_doc is None:
             xml_obj = Element(ucsgenutils.word_l(self._class_id))
         else:
@@ -451,21 +517,22 @@ class GenericMo(UcsBase):
 
     def from_xml(self, elem):
         """
-            This method is form objects out of xml element.
-            This is called internally from ucsxmlcode.from_xml_str
-            method.
+        This method is form objects out of xml element.
+        This is called internally from ucsxmlcode.from_xml_str
+        method.
 
-            Example:
-                xml = '<testLsA a="1" b="2" c="3" dn="org-root/" rn="">
-                <testLsB a="1" b="2" c="3" dn="org-root/" rn="" /></testLsA>'
-                obj = xc.from_xml_str(xml)
+        Example:
+            xml = '<testLsA a="1" b="2" c="3" dn="org-root/" rn="">
+            <testLsB a="1" b="2" c="3" dn="org-root/" rn="" /></testLsA>'
+            obj = xc.from_xml_str(xml)
 
-                print type(obj)
-                print type(obj.
+            print type(obj)
+            print type(obj.
 
-            Outputs:
-                <class 'ucsmsdk.ucsmo.GenericMo'>
+        Outputs:
+            <class 'ucsmsdk.ucsmo.GenericMo'>
         """
+
         if elem is None:
             return None
 
@@ -505,6 +572,10 @@ class GenericMo(UcsBase):
                 child_obj.from_xml(child)
 
     def __get_mo_obj(self, class_id):
+        """
+        Internal methods to create managed object from class_id
+        """
+
         import inspect
 
         mo_class = ucscoreutils.load_class(class_id)
@@ -536,6 +607,10 @@ class GenericMo(UcsBase):
         return mo_obj
 
     def to_mo(self):
+        """
+        Converts GenericMo to ManagedObject
+        """
+
         import ucsmeta
 
         class_id = ucsgenutils.word_u(self._class_id)

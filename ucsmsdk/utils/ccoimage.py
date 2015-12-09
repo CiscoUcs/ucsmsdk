@@ -17,14 +17,14 @@ This module is responsible to download the ccoimage.
 """
 
 import os
-import urllib2
 
 from .. import ucsgenutils
 from ..ucsexception import UcsValidationException, UcsWarning
 from ..ucsdriver import UcsDriver
 
+
 class _UcsCcoImageList:
-    """Constant class for CCO Image list."""
+    """used as enum for cco image attributes"""
     IDAC_TAG_VERSION = "version"
     IDAC_TAG_IMAGE_NAME = "imageName"
     IDAC_TAG_URL = "url"
@@ -35,7 +35,9 @@ class _UcsCcoImageList:
 
 
 class UcsCcoImage(object):
-    """class UcsCcoImage."""
+    """
+    Describes the cco image
+    """
 
     def __init__(self):
         self.image_name = None
@@ -49,6 +51,9 @@ class UcsCcoImage(object):
         self.proxy = None
 
     def __str__(self):
+        """
+        Overridden str
+        """
         tab_size = 8
         out_str = "\n"
         out_str += str("image_name").ljust(tab_size * 4) + ':' + str(
@@ -74,7 +79,22 @@ class UcsCcoImage(object):
 
 def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None,
                            proxy=None):
-    """ Get the cco image list from the server."""
+    """
+    Gets the list of available cco images
+
+    Attributes:
+        * username (str): username to connect to image server
+        * password (str): password to connect to image server
+        * mdf_id_list (list): list of mdf id
+        * proxy (str): proxy used for connection
+
+    Return:
+        List of UcsCcoImage objects
+
+    Example:
+        image_list = get_ucs_cco_image_list("username", "password")
+    """
+
     import getpass
     import xml.dom
     import xml.dom.minidom
@@ -170,7 +190,21 @@ def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None,
 
 
 def get_ucs_cco_image(image, file_dir, proxy=None):
-    """Download specific cco image."""
+    """
+    Downloads the cco image
+
+    Attributes:
+        * image (object): object of type UcsCcoImage
+        * file_dir (str): directory to download image
+        * proxy (str): proxy used for connection
+
+    Return:
+        None
+
+    Example:
+        image_list = get_ucs_cco_image_list("username", "password")
+        get_ucs_cco_image(image=image_list[0], file_dir="/home/user/images")
+    """
 
     if not image:
         raise UcsValidationException("Provide image.")

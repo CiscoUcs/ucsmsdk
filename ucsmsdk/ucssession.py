@@ -23,9 +23,13 @@ log = logging.getLogger('ucs')
 
 
 class UcsSession(object):
+    """
+    UcsSession class is session interface for any Ucs related communication.
+    Parent class of UcsHandle, used internally by UcsHandle class.
+    """
+
     def __init__(self, ip, username, password, port=None, secure=None,
                  proxy=None):
-
         self.__ip = ip
         self.__username = username
         self.__password = password
@@ -52,29 +56,67 @@ class UcsSession(object):
 
     @property
     def ucs(self):
+        """
+        Getter method of UcsSession Class.
+        """
+
         return self.__ucs
 
     @property
     def cookie(self):
+        """
+        Getter method of UcsSession Class.
+        """
+
         return self.__cookie
 
     @property
     def session_id(self):
+        """
+        Getter method of UcsSession Class.
+        """
+
         return self.__session_id
 
     @property
     def version(self):
+        """
+        Getter method of UcsSession Class.
+        """
+
         return self.__version
 
     @property
     def name(self):
+        """
+        Getter method of UcsSession Class.
+        """
+
         return self.__name
 
     @property
     def uri(self):
+        """
+        Getter method of UcsSession Class.
+        """
+
         return self.__uri
 
     def __create_uri(self, port, secure):
+        """
+        Generates UCSM URI used for connection
+
+        Attributes:
+            * port (int): port The port number to be used during connection
+            * secure (bool or None): True for secure connection otherwise False
+
+        Return:
+            uri (str)
+
+        Example:
+            uri = __create_uri(port=443, secure=True)
+        """
+
         if secure is not None and port is not None:
             self.__secure = secure
             self.__port = int(port)
@@ -106,6 +148,10 @@ class UcsSession(object):
         return uri
 
     def __clear(self):
+        """
+        Internal method to clear the session variables
+        """
+
         self.__cookie = None
         self.__refresh_period = None
         self.__priv = None
@@ -118,6 +164,10 @@ class UcsSession(object):
         self.__last_update_time = str(time.asctime())
 
     def __update(self, response):
+        """
+        Internal method to update the session variables
+        """
+
         from ucscoremeta import UcsVersion
 
         self.__cookie = response.out_cookie
@@ -131,14 +181,35 @@ class UcsSession(object):
         self.__name = response.out_name
 
     def post(self, uri, data=None):
+        """
+        sends the request and receives the response from ucsm server
+
+        Attributes:
+            * uri (str): URI of the  the UCS Server
+            * data (str): request data to send via post request
+
+        Return:
+            response xml string
+
+        Example:
+            response = post("http://192.168.1.1:80", data=xml_str)
+        """
+
         response = self.__driver.post(uri=uri, data=data)
         return response
 
     def post_xml(self, xml_str):
         """
-        To Add docstring
-        :param xml_str:
-        :return:
+        sends the xml request and receives the response from ucsm server
+
+        Attributes:
+            * xml_str (str): xml string
+
+        Return:
+            response xml string
+
+        Example:
+            response = post_xml('<aaaLogin inName="user" inPassword="pass">')
         """
 
         ucsm_uri = self.__uri + "/nuova"
@@ -149,6 +220,20 @@ class UcsSession(object):
         return response_str
 
     def post_elem(self, elem):
+        """
+        sends the request and receives the response from ucsm server using xml
+        element
+
+        Attributes:
+            * elem (xml element)
+
+        Return:
+            response xml string
+
+        Example:
+            response = post_elem(elem=xml_element)
+        """
+
         import ucsxmlcodec as xc
 
         dump_xml = self.__dump_xml
@@ -177,17 +262,23 @@ class UcsSession(object):
 
     def file_download(self, url_suffix, file_dir, file_name):
         """
-            Attributes:
-                url_suffix (str): suffix url to be appended to
-                    http\https://host:port/ to locate the file on the server
-                dest_dir (str): The directory to download to
-                file_name (str): The destination file name for the download
+        Downloads the file from ucsm server
 
-            Example:
-                handle.file_download(url_suffix='backupfile/config_backup.xml',
-                                     dest_dir='/home/user/backup',
-                                     file_name='my_config_backup.xml')
+        Attributes:
+            * url_suffix (str): suffix url to be appended to
+              http\https://host:port/ to locate the file on the server
+            * file_dir (str): The directory to download to
+            * file_name (str): The destination file name for the download
+
+        Returns:
+            None
+
+        Example:
+            file_download(url_suffix='backupfile/config_backup.xml',
+                                 dest_dir='/home/user/backup',
+                                 file_name='my_config_backup.xml')
         """
+
         from ucsgenutils import download_file
 
         file_url = "%s/%s" % (self.__uri, url_suffix)
@@ -204,20 +295,26 @@ class UcsSession(object):
 
     def file_upload(self, url_suffix, file_dir, file_name):
         """
-            Attributes:
-                url_suffix (str): suffix url to be appended to
-                    http\https://host:port/ to locate the file on the server
-                source_dir (str): The directory to upload from
-                file_name (str): The destination file name for the download
+        Uploads the file on UCSM server.
 
-            Example:
-                source_dir = "/home/user/backup"
-                file_name = "config_backup.xml"
-                uri_suffix = "operations/file-%s/importconfig.txt" % file_name
-                handle.file_upload(url_suffix=uri_suffix,
-                                source_dir=source_dir,
-                               file_name=file_name)
+        Attributes:
+            url_suffix (str): suffix url to be appended to
+                http\https://host:port/ to locate the file on the server
+            source_dir (str): The directory to upload from
+            file_name (str): The destination file name for the download
+
+        Returns:
+            None
+
+        Example:
+            source_dir = "/home/user/backup"
+            file_name = "config_backup.xml"
+            uri_suffix = "operations/file-%s/importconfig.txt" % file_name
+            file_upload(url_suffix=uri_suffix,
+                            source_dir=source_dir,
+                           file_name=file_name)
         """
+
         from ucsgenutils import upload_file
 
         file_url = "%s/%s" % (self.__uri, url_suffix)
@@ -233,7 +330,10 @@ class UcsSession(object):
         self.__driver.remove_header('Cookie')
 
     def __start_refresh_timer(self):
-        """ Internal method to support auto-refresh functionality. """
+        """
+        Internal method to support auto-refresh functionality.
+        """
+
         if self.__refresh_period > 60:
             interval = int(self.__refresh_period) - 60
         else:
@@ -244,7 +344,10 @@ class UcsSession(object):
         self.__refresh_timer.start()
 
     def __stop_refresh_timer(self):
-        """ Internal method to support auto-refresh functionality. """
+        """
+        Internal method to support auto-refresh functionality.
+        """
+
         if self.__refresh_timer is not None:
             self.__refresh_timer.cancel()
             self.__refresh_timer = None
@@ -254,6 +357,7 @@ class UcsSession(object):
         Sends the aaaRefresh query to the UCS to refresh the connection
         (to prevent session expiration).
         """
+
         from ucsmethodfactory import aaa_refresh
 
         self.__stop_refresh_timer()
@@ -278,6 +382,11 @@ class UcsSession(object):
         return True
 
     def __validate_connection(self):
+        """
+        Internal method to validate if needs to reconnect or if exist use the
+        existing connection.
+        """
+
         from mometa.top.TopSystem import TopSystem
         from ucsmethodfactory import config_resolve_dn
 
@@ -297,8 +406,18 @@ class UcsSession(object):
 
     def _login(self, auto_refresh=False, force=False):
         """
-        To Do Add DocString
+        Internal method responsible to do a login on UCSM server.
+
+        Attributes:
+            * auto_refresh (bool): if set to True, it refresh the cookie
+              continuously
+            * force (bool): if set to True it reconnects even if cookie exists
+              and is valid for respective connection.
+
+        Return:
+            True on successful connect
         """
+
         from mometa.top.TopSystem import TopSystem
         from mometa.firmware.FirmwareRunning import FirmwareRunning, \
             FirmwareRunningConsts
@@ -357,9 +476,16 @@ class UcsSession(object):
 
     def _logout(self):
         """
-        To Do - Add docstring
-        :return:
+        Internal method to disconnect from ucsm server.
+
+        Attributes:
+            * None
+
+        Return:
+            True on successful disconnect
+
         """
+
         from ucsmethodfactory import aaa_logout
 
         if self.__cookie is None:
@@ -385,7 +511,13 @@ class UcsSession(object):
             return True
 
     def _set_dump_xml(self):
+        """
+        Internal method to set dump_xml to True
+        """
         self.__dump_xml = True
 
     def _unset_dump_xml(self):
+        """
+        Internal method to set dump_xml to False
+        """
         self.__dump_xml = False

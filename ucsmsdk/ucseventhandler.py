@@ -15,6 +15,7 @@
 This module is responsible for event handling of the events exposed by
 UCSM server.
 """
+
 from threading import Condition, Lock, Thread
 from Queue import Queue
 import datetime
@@ -103,6 +104,10 @@ class UcsEventHandle(object):
         self.__dequeue_thread = None
 
     def __get_mo_elem(self, xml_str):
+        """
+        Internal method to extract mo elements from xml string
+        """
+
         root = xc.extract_root_elem(xml_str)
         mo_elems = []
         if root.tag == "methodVessel":
@@ -123,7 +128,7 @@ class UcsEventHandle(object):
         Internal method used by add_event_handler.
         Provides functionality of enqueue/dequeue of the events and
         triggering callbacks.
-         """
+        """
 
         try:
             xml_query = '<eventSubscribe cookie="%s"/>' % self.__handle.cookie
@@ -160,18 +165,25 @@ class UcsEventHandle(object):
         Internal method to start the enqueue thread which adds the events in
         an internal queue.
         """
+
         self.__enqueue_thread = Thread(name="enqueue_thread",
                                        target=self.__enqueue_function)
         self.__enqueue_thread.daemon = True
         self.__enqueue_thread.start()
 
     def __thread_enqueue_stop(self):
-        """ Internal method to stop the enqueue thread. """
+        """
+        Internal method to stop the enqueue thread.
+        """
+
         self.__enqueue_thread = None
         self.__event_chan_resp = None
 
     def __dequeue_function(self):
-        """ Internal method to dequeue to events. """
+        """
+        Internal method to dequeue to events.
+        """
+
         while len(self.__wbs):
             self.__condition.acquire()
             lowest_timeout = None
@@ -303,7 +315,10 @@ class UcsEventHandle(object):
         return
 
     def __thread_dequeue_start(self):
-        """ Internal method to start dequeue thread. """
+        """
+        Internal method to start dequeue thread.
+        """
+
         self.__dequeue_thread = Thread(name="dequeue_thread",
                                        target=self.__dequeue_function)
         self.__dequeue_thread.daemon = True
@@ -322,6 +337,7 @@ class UcsEventHandle(object):
         """
         Internal method to add a watch block for starting event monitoring.
         """
+
         if self.__handle.cookie is None:
             return None
 
@@ -427,7 +443,9 @@ class UcsEventHandle(object):
         # log.debug(param_dict)
         if class_id is None and managed_object is None:
             def watch_all_filter(mce):
-                """Callback method to work on all events."""
+                """
+                Callback method to work on all events.
+                """
                 return True
 
             watch_block = self.watch_block_add(
@@ -466,7 +484,9 @@ class UcsEventHandle(object):
                                     callback=call_back)
             else:
                 def watch_none_filter(mce):
-                    """Callback method to ignore all events."""
+                    """
+                    Callback method to ignore all events.
+                    """
                     return False
 
                 watch_block = self.watch_block_add(
@@ -485,7 +505,10 @@ class UcsEventHandle(object):
         return watch_block
 
     def remove(self, watch_block):
-        """Removes an event handler."""
+        """
+        Removes an event handler.
+        """
+
         self.__wbs_lock.acquire()
         if watch_block in self.__wbs:
             self.watch_block_remove(watch_block)
@@ -494,7 +517,10 @@ class UcsEventHandle(object):
         self.__wbs_lock.release()
 
     def clean(self):
-        """Removes all the watch blocks from the event handler"""
+        """
+        Removes all the watch blocks from the event handler
+        """
+
         self.__wbs_lock.acquire()
         for each in self.__wbs:
             self.watch_block_remove(each)

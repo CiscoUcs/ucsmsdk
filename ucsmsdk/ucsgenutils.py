@@ -15,6 +15,7 @@
 """
 This module contains the SDK general utilities.
 """
+
 import os
 import platform
 import re
@@ -26,26 +27,39 @@ AFFIRMATIVE_LIST = ['true', 'True', 'TRUE', True, 'yes', 'Yes', 'YES']
 
 reserved_keywords = [
     "and", "as", "assert", "break", "class", "continue", "def", "del", "elif",
-    "else",
-    "except", "exec", "finally", "for", "from", "global", "if", "import", "in",
-    "is", "lambda", "not", "or", "pass", "print", "raise", "return", "try",
-    "while", "with", "yield"
-]
+    "else", "except", "exec", "finally", "for", "from", "global", "if",
+    "import", "in", "is", "lambda", "not", "or", "pass", "print", "raise",
+    "return", "try", "while", "with", "yield"]
 
 
 def is_python_reserved(word):
+    """
+    Check if it is python reserved word.
+    """
+
     return word in reserved_keywords
 
 
 def to_safe_prop(word):
-    return ('r_' + word if is_python_reserved(word) else word)
+    """
+    Check if it is python reserved word, if yes returns word after prefixing
+    it with 'r_'
+    """
+    return 'r_' + word if is_python_reserved(word) else word
 
 
 def from_safe_prop(word):
-    return (re.sub("^r_", "", word))
+    """
+    removes 'r_' from word.
+    """
+    return re.sub("^r_", "", word)
 
 
 def to_python_propname(word):
+    """
+    Converts any word to lowercase word separated by underscore
+    """
+
     return re.sub('_+', '_',
                   re.sub('^_', '',
                     re.sub('[/\-: +]', '_',
@@ -58,9 +72,10 @@ def to_python_propname(word):
 def convert_to_python_var_name(name):
     """converts a ucs server variable to python recommended format
 
-        Attributes:
-        name (str): string to be converted to python recommended format
+    Attributes:
+        * name (str): string to be converted to python recommended format
     """
+
     pattern = re.compile(r"(?<!^)(?=[A-Z])")
     python_var = re.sub(pattern, '_', name).lower()
     if python_var != "class":
@@ -71,16 +86,19 @@ def convert_to_python_var_name(name):
 
 def word_l(word):
     """ Method makes the first letter of the given string as lower case. """
+
     return word[0].lower() + word[1:]
 
 
 def word_u(word):
     """ Method makes the first letter of the given string as capital. """
+
     return word[0].upper() + word[1:]
 
 
 def make_dn(rn_array):
     """ Method forms Dn out of array of rns. """
+
     return '/'.join(rn_array)
 
 
@@ -92,6 +110,7 @@ class Progress(object):
 
     def update(self, total, size, name):
         """Internal method to show the progress of upload/download file."""
+
         from sys import stdout
 
         self._seen += size
@@ -102,7 +121,7 @@ class Progress(object):
 
 
 class FileWithCallback(file):
-    """Internal class to support external utilities."""
+    """Internal class to show the progress while reading file."""
 
     def __init__(self, path, mode, callback, *args):
         file.__init__(self, path, mode)
@@ -122,6 +141,26 @@ class FileWithCallback(file):
 
 
 def download_file(driver, file_url, file_dir, file_name):
+    """
+    Downloads the file from web server
+
+    Attributes:
+        * driver (UcsDriver)
+        * file_url (str): url to download the file
+        * file_dir (str): The directory to download to
+        * file_name (str): The destination file name for the download
+
+    Returns:
+        None
+
+    Example:
+        driver = UcsDriver()
+        download_file(driver=UcsDriver(),
+                      file_url="http://fileurl",
+                      file_dir='/home/user/backup',
+                      file_name='my_config_backup.xml')
+    """
+
     import os
     from sys import stdout
 
@@ -152,6 +191,26 @@ def download_file(driver, file_url, file_dir, file_name):
 
 
 def upload_file(driver, uri, file_dir, file_name):
+    """
+    Uploads the file on web server
+
+    Attributes:
+        * driver (UcsDriver)
+        * uri (str): url to upload the file
+        * file_dir (str): The directory to download to
+        * file_name (str): The destination file name for the download
+
+    Returns:
+        None
+
+    Example:
+        driver = UcsDriver()
+        upload_file(driver=UcsDriver(),
+                    uri="http://fileurl",
+                    file_dir='/home/user/backup',
+                    file_name='my_config_backup.xml')
+    """
+
     progress = Progress()
     full_path = os.path.join(file_dir, file_name)
     stream = FileWithCallback(full_path,
@@ -166,6 +225,7 @@ def upload_file(driver, uri, file_dir, file_name):
 
 def check_registry_key(java_key):
     """ Method checks for the java in the registry entries. """
+
     from _winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKey, \
         QueryValueEx
 
@@ -209,7 +269,7 @@ def get_binary_path(binary):
     Checks the environment PATH variable for the specified binary file.
     If found, it returns the path in which it was found.
 
-    Example usage:
+    Example:
         path = get_binary_path('javaws')
     """
     import os
@@ -224,10 +284,11 @@ def get_binary_path(binary):
 
 
 def get_java_installation_path():
-    """ Method returns the java installation path in the windows or
-    Linux environment. """
-    # Get JavaPath for Ubuntu
-    # if os.name == "posix":
+    """
+    Method returns the java installation path in the windows or
+    Linux environment.
+    """
+
     if platform.system() in ["Linux", "Darwin"]:
         path = os.environ.get('JAVA_HOME')
         # is javaws in $JAVA_HOME?
@@ -272,7 +333,10 @@ def get_java_installation_path():
 
 
 def check_output(*popenargs, **kwargs):
-    """Internal method to handle upload/download data from server."""
+    """
+    Internal method to handle upload/download data from server.
+    """
+
     if 'stdout' in kwargs:
         raise ValueError('stdout argument not allowed, it will be overridden.')
     process = subprocess.Popen(stdout=subprocess.PIPE, *popenargs, **kwargs)
@@ -287,7 +351,10 @@ def check_output(*popenargs, **kwargs):
 
 
 def get_java_version():
-    """Method to get java version."""
+    """
+    Method to get java version.
+    """
+
     try:
         subprocess.check_output
     except Exception:
@@ -301,11 +368,13 @@ def get_java_version():
 
 
 def get_md5_sum(filename):
-    """Method to get md5sum for the image.
-
-        Attributes:
-        filename (str): file for which md5sum is to be computed
     """
+    Method to get md5sum for the image.
+
+    Attributes:
+        * filename (str): file for which md5sum is to be computed
+    """
+
     import hashlib
 
     md5_obj = hashlib.md5()
@@ -318,18 +387,23 @@ def get_md5_sum(filename):
 
 
 def get_sha_hash(input_string):
-    """ Method returns the sha hash digest for a given string.
+    """
+    Method returns the sha hash digest for a given string.
 
-     Attributes:
-        input_string(str): the input string for which sha has to be computed
-     """
+    Attributes:
+        * input_string (str): the input string for which sha has to be computed
+    """
+
     import hashlib
 
     return hashlib.md5(input_string).digest()
 
 
 def expand_key(key, clen):
-    """ Internal method supporting encryption and decryption functionality. """
+    """
+    Internal method supporting encryption and decryption functionality.
+    """
+
     import hashlib
     from string import join
     from array import array
@@ -345,13 +419,14 @@ def expand_key(key, clen):
 
 
 def encrypt_password(password, key):
-    """ Encrypts the password using the given key.
+    """
+    Encrypts the password using the given key.
 
-        Attributes:
-        password (str): password to be encrypted
-        key (str): key to be used to encrypt the password
+    Attributes:
+        * password (str): password to be encrypted
+        * key (str): key to be used to encrypt the password
+    """
 
-     """
     from time import time
     from array import array
     import hmac
@@ -379,8 +454,11 @@ def encrypt_password(password, key):
 
 
 def decrypt_password(cipher, key):
-    """ Decrypts the password using the given key with which the password
-     was encrypted first. """
+    """
+    Decrypts the password using the given key with which the password
+    was encrypted first.
+    """
+
     import base64
     from array import array
 

@@ -1,17 +1,21 @@
-"""Copyright 2013 Cisco Systems, Inc.
+# Copyright 2013 Cisco Systems, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#  http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
- http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
 """
-"""This module generated the python script using UCS GUI, GUI logs."""
+This module generated the python script using UCS GUI, GUI logs and xml
+request.
+"""
+
 import os
 import sys
 import time
@@ -26,8 +30,9 @@ log = logging.getLogger('ucs')
 
 from .. import ucsgenutils
 from .. import ucscoreutils
-from ..ucsconstants import Status, NamingPropertyId
+from ..ucsconstants import Status, NamingPropertyId, YesOrNo
 from ..ucsexception import UcsValidationException
+
 
 # variable declaration
 _display_xml = False
@@ -49,7 +54,7 @@ _single_line_method = ["</configConfMo", "</lsInstantiateNNamedTemplate",
 
 # class declaration
 class _ClassStatus:
-    """Constant class for _ClassStatus."""
+    """enum for mo status."""
     NONE_ = 0
     CREATED = 1
     MODIFIED = 2
@@ -61,7 +66,10 @@ class _ClassStatus:
 # Function Definition
 # ---- START - OF - GENERIC - FUCNTION ----
 def _get_class_id_for_dn(dn):
-    """Get the ClassID for a given DN."""
+    """
+    Internal method to get the class id for a given dn
+    """
+
     rns = dn.split('/')
     class_id = None
     parent_class_id = None
@@ -76,7 +84,10 @@ def _get_class_id_for_dn(dn):
 
 
 def _get_class_id_for_rn(rn, prev_class_id=None):
-    """Get the ClassID for a given RN."""
+    """
+    Internal method to get the class id for a given rn
+    """
+
     if not prev_class_id:
         prev_class_id = "TopRoot"
 
@@ -147,7 +158,10 @@ def _get_class_id_for_rn(rn, prev_class_id=None):
 
 
 def _get_prop_name(prop):
-    """Modify the Property Name."""
+    """
+    Internal method to modify property name as python convention
+    """
+
     new_prop = re.sub('_+', '_',
                       re.sub('^_', '',
                              re.sub(r'[/\-: +]', '_',
@@ -157,13 +171,19 @@ def _get_prop_name(prop):
 
 
 def _first_capital(string):
-    """Makes first letter of string capital."""
+    """
+    Internal method to make first letter capital
+    """
+
     string = string[:1].upper() + string[1:]
     return string
 
 
 def _is_root_node(dom, tag_name):
-    """check if node is root node."""
+    """
+    Internal method to check if it root xml node
+    """
+
     root_node_tag_name = dom.documentElement.tag_name
     if root_node_tag_name == tag_name:
         return True
@@ -172,7 +192,10 @@ def _is_root_node(dom, tag_name):
 
 
 def _get_pair_nodes(root_node):
-    """get pairnodes in a list."""
+    """
+    Internal method to get "pair" nodes under root_node
+    """
+
     method_elem = root_node
     in_configs_elem_list = method_elem.getElementsByTagName("inConfigs")
     in_configs_elem = in_configs_elem_list[0]
@@ -181,21 +204,30 @@ def _get_pair_nodes(root_node):
 
 
 def _get_only_elem_child_node(node):
-    """use if parent only has single childnode."""
+    """
+    Internal method to return only first element child node
+    """
+
     child_list = [child_node for child_node in node.childNodes
                   if child_node.nodeType == child_node.ELEMENT_NODE]
     return child_list[0]
 
 
 def _get_elem_child_nodes(node):
-    """use if parent has more than one child."""
+    """
+    Internal method to return all element child nodes
+    """
+
     child_list = [child_node for child_node in node.childNodes if
                   child_node.nodeType == child_node.ELEMENT_NODE]
     return child_list
 
 
 def _dump_xml_on_screen(doc):
-    """used to dump xml on screen."""
+    """
+    Internal method to display xml extracted to generate sdk code.
+    """
+
     global _outfile_path, _outfile_flag
     xml_new = doc.toprettyxml(indent=" ")
     xml_new = re.sub(r"^.*?xml version.*\n", "", xml_new)
@@ -214,19 +246,11 @@ def _dump_xml_on_screen(doc):
         print "\n##### End-Of-XML #####\n"
 
 
-def _create_python_property_map(property_map):
-    """create a string of dictionary property_map."""
-    prop_map_str = "{"
-    for key, value in property_map.iteritems():
-        prop_map_str = prop_map_str + key + ":" + value + ", "
-
-    if prop_map_str != "{":
-        prop_map_str = prop_map_str[:-2]  # removes last 2 char
-    return prop_map_str + "}"
-
-
 def _check_if_any_list_value_in_string(listx, line):
-    """Returns True if any of the list value present in line."""
+    """
+    Internal method to test if any of the list value present in a line.
+    """
+
     flag = False
     for value in listx:
         if value in line:
@@ -235,11 +259,95 @@ def _check_if_any_list_value_in_string(listx, line):
     return flag
 
 
+def _create_property_map_from_node(class_node, class_status):
+    gmo_flag = False
+    property_map = {}
+
+    if ucscoreutils.find_class_id_in_mo_meta_ignore_case(
+            class_node.localName) is None:
+        gmo_flag = True
+
+    if not gmo_flag:
+        peer_class_id = _first_capital(class_node.localName)
+        peer_class_ref = ucscoreutils.load_class(peer_class_id)
+        peer_class_naming_props = peer_class_ref.naming_props
+        peer_class_prop_map = peer_class_ref.prop_map
+        peer_class_prop_meta = peer_class_ref.prop_meta
+        peer_class_mo_meta = peer_class_ref.mo_meta
+
+    # create property map for attributes
+    attributes_dict = dict(class_node.attributes.items())
+    if "dn" in attributes_dict:
+        prop_dn = attributes_dict["dn"]
+        prop_rn = os.path.basename(prop_dn)
+    elif "rn" in attributes_dict:
+        prop_rn = attributes_dict["rn"]
+
+    naming_props_py_from_rn = ucscoreutils.get_naming_props(prop_rn,
+                                                        peer_class_mo_meta.rn)
+
+    for attr, val in class_node.attributes.items():
+        name = attr
+        value = val
+
+        if name in ['dn', 'rn', 'status']:
+            continue
+
+        # prop_ucs : ucs naming convention
+        # prop_py  : python naming convention
+        # if name.lower() == "Filter".lower():
+        #     prop_ucs = "FilterValue"
+        # else:
+        #     prop_ucs = name
+        prop_ucs = name
+
+        if not gmo_flag and prop_ucs in peer_class_prop_map:
+            prop_py = peer_class_prop_map[prop_ucs]
+            prop_meta = peer_class_prop_meta[prop_py]
+            prop_access = prop_meta.access
+            if prop_access in [2, 4]:
+                continue
+            elif prop_access in [0, 1]:
+                if class_status & _ClassStatus.CREATED != \
+                        _ClassStatus.CREATED:
+                    continue
+            if not prop_meta.validate_property_value(val):
+                continue
+        else:
+            prop_py = prop_ucs
+
+        if "\\" in val:
+            value = 'r"' + str(val) + '"'
+        else:
+            value = '"' + str(val) + '"'
+
+        property_map[prop_py] = value
+
+    if class_status & _ClassStatus.CREATED == _ClassStatus.CREATED:
+        for naming_prop_ucs in peer_class_naming_props:
+            naming_prop_py = peer_class_prop_map[naming_prop_ucs]
+            if naming_prop_py not in property_map:
+                val = naming_props_py_from_rn[naming_prop_py]
+                if peer_class_prop_meta[naming_prop_py]. \
+                        validate_property_value(val):
+                    if "\\" in val:
+                        value = 'r"' + str(val) + '"'
+                    else:
+                        value = '"' + str(val) + '"'
+
+                    property_map[naming_prop_py] = value
+
+    return property_map
+
+
 # ---- END - OF - GENERIC - FUCNTION ----
 
 # ---- START - OF - METHOD SPECIFIC - FUNCTION ----
 def _get_config_conf_cmdlet(node, is_pair_node):
-    """Used in function _generate_config_conf_cmdlets."""
+    """
+    Internal method to process configConf request.
+    """
+
     cmdlet = ""
     if node is None:
         return None
@@ -273,54 +381,67 @@ def _get_config_conf_cmdlet(node, is_pair_node):
             mo_tag = "mo"
 
     import_list = []
-    cmdlet, op_flag, import_list = _form_python_cmdlet(class_node,
-                                                       key,
-                                                       mo_tag,
-                                                       import_list)
+    obj_flag = False
+
+    top_cmdlet, op_flag, import_list = _form_configconf_cmdlet(
+        class_node=class_node,
+        key=key,
+        tag=mo_tag,
+        import_list=import_list)
+    # print top_cmdlet
 
     if class_node.hasChildNodes() and \
                     len(_get_elem_child_nodes(class_node)) > 0:
         call_count = 1
-        # cmdlet = "handle.start_ucs_transaction()" + "\n" + cmdlet
-
+        cmdlet=""
         for child_node in _get_elem_child_nodes(class_node):
-            sub_cmdlet, import_list = _get_config_conf_sub_cmdlet(child_node,
-                                                                  dn, mo_tag,
-                                                                  call_count,
-                                                                  import_list)
+            sub_cmdlet, import_list, obj_flag = _get_config_conf_sub_cmdlet(
+                                                                child_node,
+                                                                dn, mo_tag,
+                                                                call_count,
+                                                                import_list,
+                                                                obj_flag)
+
             call_count += 1
             if sub_cmdlet is not None:
                 cmdlet += "\n" + sub_cmdlet
             else:
                 call_count -= 1
 
-                # cmdlet += "\n" + "handle.complete_ucs_transaction()"
-
     if op_flag in ["add", "addmodify", "set", "remove"] and mo_tag == "mo":
         if op_flag == "add":
             cmdlet += "\n" + "handle.add_mo(mo)\n"
-        # elif op_flag == "addmodify":
         elif op_flag == "addmodify":
             cmdlet += "\n" + "handle.add_mo(mo, True)\n"
         elif op_flag == "set":
             cmdlet += "\n" + "handle.set_mo(mo)\n"
         elif op_flag == "remove":
-            cmdlet += "handle.remove_mo(mo)\n"
+            cmdlet += "handle.remove_mo(mo)"
 
     import_cmdlet = ""
     for mo in import_list:
         mo_folder = re.match("([a-z])+", ucsgenutils.word_l(mo)).group()
         import_cmdlet += "from ucsmsdk.mometa.%s.%s import %s\n" % (
             mo_folder, mo, mo)
-    import_cmdlet += "\n" + cmdlet
-    cmdlet = import_cmdlet
 
-    return cmdlet
+    main_cmdlet = ""
+    if import_cmdlet:
+        main_cmdlet += "\n" + import_cmdlet
+    if mo_tag == "obj" and not obj_flag:
+        top_cmdlet=""
+
+    main_cmdlet += "\n" + top_cmdlet
+    main_cmdlet += cmdlet
+
+    return main_cmdlet
 
 
 def _get_config_conf_sub_cmdlet(class_node, parent_dn, parent_mo_tag,
-                                parent_call_count, import_list):
-    """Used in function _generate_config_conf_cmdlets."""
+                                parent_call_count, import_list, obj_flag):
+    """
+    Internal method to process configConf request.
+    """
+
     cmdlet = ""
     dn = ""
     # use_parent_mo = False ##if the parent mo should be used at this level
@@ -335,45 +456,62 @@ def _get_config_conf_sub_cmdlet(class_node, parent_dn, parent_mo_tag,
         tag = "mo"
     else:
         tag = parent_mo_tag + "_" + str(parent_call_count)
-    cmdlet, op_flag, import_list = _form_python_sub_cmdlet(class_node,
-                                                           dn,
-                                                           tag,
-                                                           parent_mo_tag,
-                                                           import_list)
+
+    cmdlet, op_flag, import_list = _form_configconf_cmdlet(
+        class_node=class_node,
+        key=dn,
+        tag=tag,
+        import_list=import_list,
+        parent_tag=parent_mo_tag,
+        sub_cmdlet=True)
 
     # Recursively cater to subnodes
     for child_node in _get_elem_child_nodes(class_node):
-        sub_cmdlet, import_list = _get_config_conf_sub_cmdlet(child_node,
-                                                              dn,
-                                                              tag,
-                                                              count,
-                                                              import_list)
+        sub_cmdlet, import_list, obj_flag = _get_config_conf_sub_cmdlet(
+                                                                  child_node,
+                                                                  dn,
+                                                                  tag,
+                                                                  count,
+                                                                  import_list,
+                                                                  obj_flag)
         count += 1
         if sub_cmdlet is not None:
             cmdlet += "\n" + sub_cmdlet
         else:
             count -= 1
 
-    if op_flag in ["add", "addmodify", "set", "remove"] and tag == "mo":
-        if op_flag == "add":
-            cmdlet += "\n" + "handle.add_mo(mo)\n"
-        # elif op_flag == "addmodify":
-        elif op_flag == "addmodify":
-            cmdlet += "\n" + "handle.add_mo(mo, True)\n"
-        elif op_flag == "set":
-            cmdlet += "\n" + "handle.set_mo(mo)\n"
-        elif op_flag == "remove":
-            cmdlet += "handle.remove_mo(mo)\n"
+    # if op_flag in ["add", "addmodify", "set", "remove"] and tag == "mo":
+    if op_flag == "add" and tag == "mo":
+        cmdlet += "\n" + "handle.add_mo(mo)\n"
+    if op_flag == "addmodify" and tag == "mo":
+        cmdlet += "\n" + "handle.add_mo(mo, True)\n"
+    if op_flag == "set":
+        cmdlet += "\n" + "handle.set_mo(mo)\n"
+    if op_flag == "remove":
+        cmdlet += "handle.remove_mo(%s)\n" % tag
 
-    return cmdlet, import_list
+    if not obj_flag:
+        if parent_mo_tag == "obj" and op_flag in ["add", "addmodify", "set"]:
+            obj_flag = True
+
+    return cmdlet, import_list, obj_flag
 
 
-def _form_python_cmdlet(class_node, key, tag, import_list):
-    """Used in function _generate_config_conf_cmdlets."""
+def _form_configconf_cmdlet(class_node, key, tag, import_list, parent_tag=None,
+                            sub_cmdlet=False):
+    """
+    Internal method to process configConf request.
+    """
+
     cmdlet = ""
     class_status = _ClassStatus.NONE_
-    property_map = {}
     op_flag = None
+    parent_dn = dirname(key)
+    peer_class_id = _first_capital(class_node.localName)
+
+    parent_class_id = _get_class_id_for_dn(parent_dn)
+    if parent_class_id is None:
+        parent_class_id = ""
 
     if class_node.hasAttribute(
             NamingPropertyId.STATUS) and \
@@ -391,121 +529,45 @@ def _form_python_cmdlet(class_node, key, tag, import_list):
         if Status.REMOVED in cs_list:
             class_status |= _ClassStatus.REMOVED
     else:
-        # class_status = _ClassStatus.CREATED | _ClassStatus.MODIFIED
-        if class_node.hasChildNodes() and \
-                    len(_get_elem_child_nodes(class_node)) > 0:
-            class_status = _ClassStatus.GET
+        if sub_cmdlet:
+            class_status = _ClassStatus.CREATED | _ClassStatus.MODIFIED
         else:
-            class_status = _ClassStatus.MODIFIED
-
-    # support to handle unknown MOs
-    if ucscoreutils.find_class_id_in_mo_meta_ignore_case(
-            class_node.localName) is None:
-        gmo_flag = True
-    else:
-        gmo_flag = False
-
-    parent_dn = dirname(key)
-
-    if not gmo_flag:
-        peer_class_id = _first_capital(class_node.localName)
-        peer_class_ref = ucscoreutils.load_class(peer_class_id)
-        peer_class_naming_props = peer_class_ref.naming_props
-        peer_class_prop_map = peer_class_ref.prop_map
-        peer_class_prop_meta = peer_class_ref.prop_meta
-        peer_class_mo_meta = peer_class_ref.mo_meta
-
-    else:
-        pass
-    # ToDo Add Generic Mo functionality
-
-    if _get_class_id_for_dn(parent_dn) is None:
-        parent_class_id = ""
-        parent_class_id_str = "None"
-        parent_dn_str = '"dn"'
-    else:
-        parent_class_id = _get_class_id_for_dn(parent_dn)
-        parent_class_id_str = parent_class_id + ".class_id()"
-        parent_dn_str = '.DN'
-
-    # create property map for attributes
-    attributes_dict = dict(class_node.attributes.items())
-    if "dn" in attributes_dict:
-        prop_dn = attributes_dict["dn"]
-        prop_rn = os.path.basename(prop_dn)
-    elif "rn" in attributes_dict:
-        prop_rn = attributes_dict["rn"]
-
-    naming_props_from_rn = ucscoreutils.get_naming_props(prop_rn,
-                                                         peer_class_mo_meta.rn)
-
-    for attr, val in class_node.attributes.items():
-        name = attr
-        value = '"' + val + '"'
-        if name != NamingPropertyId.DN and \
-                        name != NamingPropertyId.RN and \
-                        name != NamingPropertyId.STATUS:
-            if name.lower() == "Filter".lower():
-                prop_ucs = "FilterValue"
+            if class_node.hasChildNodes() and \
+                            len(_get_elem_child_nodes(class_node)) > 0:
+                class_status = _ClassStatus.GET
             else:
-                prop_ucs = name
+                class_status = _ClassStatus.CREATED | _ClassStatus.MODIFIED
 
-            if prop_ucs is None:
-                continue
+    property_map = _create_property_map_from_node(class_node, class_status)
 
-            if not gmo_flag and prop_ucs in peer_class_prop_map:
-                prop_py = peer_class_prop_map[prop_ucs]
-                if peer_class_prop_meta[prop_py].access in [2, 4]:
-                    continue
-                elif peer_class_prop_meta[prop_py].access in [0, 1]:
-                    if class_status & _ClassStatus.CREATED != \
-                            _ClassStatus.CREATED:
-                        continue
-            else:
-                prop_py = prop_ucs
-
-            if not gmo_flag and prop_ucs in peer_class_prop_map:
-                prop_py = peer_class_prop_map[prop_ucs]
-                value_to_validate = value.strip('"')
-                if not peer_class_prop_meta[prop_py].validate_property_value(
-                        value_to_validate):
-                    continue
-
-            property_map[prop_py] = value
+    parent_mo_or_dn = '"' + str(parent_dn) + '"'
+    if sub_cmdlet:
+        parent_mo_or_dn = parent_tag
 
     # make cmdlet
     if class_status & _ClassStatus.GET == _ClassStatus.GET:
+        op_flag = "get"
         cmdlet = "%s = handle.query_dn(\"%s\")" % (tag, key)
     elif class_status & _ClassStatus.DELETED == _ClassStatus.DELETED or \
                             class_status & \
                             _ClassStatus.REMOVED == _ClassStatus.REMOVED:
         op_flag = "remove"
-        cmdlet = "%s = handle.query_dn(\"%s\")\n" % (
-            tag, key)
+        cmdlet = "%s = handle.query_dn(\"%s\")\n" % (tag, key)
     elif class_status & _ClassStatus.CREATED == _ClassStatus.CREATED:
-        for naming_prop in peer_class_naming_props:
-            naming_prop_py = peer_class_prop_map[naming_prop]
-            if naming_prop_py not in property_map:
-                value_to_validate = naming_props_from_rn[naming_prop]
-                if peer_class_prop_meta[naming_prop_py].\
-                        validate_property_value(value_to_validate):
-                    property_map[naming_prop_py] = '"' + \
-                                                   value_to_validate + '"'
-
         op_flag = "add"
         if peer_class_id not in import_list:
             import_list.append(peer_class_id)
         if class_status & _ClassStatus.MODIFIED == _ClassStatus.MODIFIED:
             op_flag = "addmodify"
-            add_prop_map = ",".join(
+            add_prop_map = ", ".join(
                 [k + "=" + v for k, v in property_map.iteritems()])
-            cmdlet = '%s = %s(parent_mo_or_dn="%s", %s)' % (
-                tag, peer_class_id, parent_dn, add_prop_map)
+            cmdlet = '%s = %s(parent_mo_or_dn=%s, %s)' % (
+                tag, peer_class_id, parent_mo_or_dn, add_prop_map)
         else:
             add_prop_map = ", ".join(
                 [k + "=" + v for k, v in property_map.iteritems()])
-            cmdlet = '%s = %s(parent_mo_or_dn="%s", %s)' % (
-                tag, peer_class_id, parent_dn, add_prop_map)
+            cmdlet = '%s = %s(parent_mo_or_dn=%s, %s)' % (
+                tag, peer_class_id, parent_mo_or_dn, add_prop_map)
     elif class_status & _ClassStatus.MODIFIED == _ClassStatus.MODIFIED:
         op_flag = "set"
         set_prop_map = "\n".join(
@@ -519,145 +581,12 @@ def _form_python_cmdlet(class_node, key, tag, import_list):
     return cmdlet, op_flag, import_list
 
 
-def _form_python_sub_cmdlet(class_node, key, mo_tag, parent_mo_tag,
-                            import_list):
-    """Used in function _generate_config_conf_cmdlets."""
-    cmdlet = ""
-    class_status = _ClassStatus.NONE_
-    property_map = {}
-    op_flag = None
-
-    if class_node.hasAttribute(
-            NamingPropertyId.STATUS) and \
-                    class_node.getAttribute(NamingPropertyId.STATUS) is not \
-                    None:
-        cs_list = []
-        cs_list = class_node.getAttribute(NamingPropertyId.STATUS).split(',')
-        cs_list = [x.strip() for x in cs_list]
-        if Status.CREATED in cs_list:
-            class_status |= _ClassStatus.CREATED
-        if Status.MODIFIED in cs_list:
-            class_status |= _ClassStatus.MODIFIED
-        if Status.DELETED in cs_list:
-            class_status |= _ClassStatus.DELETED
-        if Status.REMOVED in cs_list:
-            class_status |= _ClassStatus.REMOVED
-    else:
-        class_status = _ClassStatus.CREATED | _ClassStatus.MODIFIED
-
-    # support to handle unknown MOs
-    if ucscoreutils.find_class_id_in_mo_meta_ignore_case(
-            class_node.localName) is None:
-        gmo_flag = True
-    else:
-        gmo_flag = False
-
-    if not gmo_flag:
-        peer_class_id = _first_capital(class_node.localName)
-        peer_class_ref = ucscoreutils.load_class(peer_class_id)
-        peer_class_naming_props = peer_class_ref.naming_props
-        peer_class_prop_map = peer_class_ref.prop_map
-        peer_class_prop_meta = peer_class_ref.prop_meta
-        peer_class_mo_meta = peer_class_ref.mo_meta
-    else:
-        pass
-    # ToDo Add Generic Mo functionality
-
-    # create property map for attributes
-    attributes_dict = dict(class_node.attributes.items())
-    if "dn" in attributes_dict:
-        prop_dn = attributes_dict["dn"]
-        prop_rn = os.path.basename(prop_dn)
-    elif "rn" in attributes_dict:
-        prop_rn = attributes_dict["rn"]
-
-    naming_props_from_rn = ucscoreutils.get_naming_props(prop_rn,
-                                                         peer_class_mo_meta.rn)
-
-    for attr, val in class_node.attributes.items():
-        name = attr
-        value = '"' + val + '"'
-        if name != NamingPropertyId.DN and \
-                        name != NamingPropertyId.RN and \
-                        name != NamingPropertyId.STATUS:
-            if name.lower() == "Filter".lower():
-                prop_ucs = "FilterValue"
-            else:
-                prop_ucs = name
-
-            if prop_ucs is None:
-                continue
-
-            if not gmo_flag and prop_ucs in peer_class_prop_map:
-                prop_py = peer_class_prop_map[prop_ucs]
-                if peer_class_prop_meta[prop_py].access in [2, 4]:
-                    continue
-                elif peer_class_prop_meta[prop_py].access in [0, 1]:
-                    if class_status & _ClassStatus.CREATED != \
-                            _ClassStatus.CREATED:
-                        continue
-            else:
-                prop_py = prop_ucs
-
-            if not gmo_flag and prop_ucs in peer_class_prop_map:
-                prop_py = peer_class_prop_map[prop_ucs]
-                value_to_validate = value.strip('"')
-                if not peer_class_prop_meta[prop_py].validate_property_value(
-                        value_to_validate):
-                    continue
-
-            property_map[prop_py] = value
-
-    # make cmdlet
-    if class_status & _ClassStatus.DELETED == _ClassStatus.DELETED or \
-                            class_status \
-                            & _ClassStatus.REMOVED == _ClassStatus.REMOVED:
-        op_flag = "remove"
-        cmdlet = "%s = handle.query_dn(\"%s\")\n" % (
-            mo_tag, key)
-    elif class_status & _ClassStatus.CREATED == _ClassStatus.CREATED:
-        for naming_prop in peer_class_naming_props:
-            naming_prop_py = peer_class_prop_map[naming_prop]
-            if naming_prop_py not in property_map:
-                value_to_validate = naming_props_from_rn[naming_prop]
-                if peer_class_prop_meta[naming_prop_py].\
-                        validate_property_value(value_to_validate):
-                    property_map[naming_prop_py] = '"' + \
-                                                   value_to_validate + '"'
-
-        op_flag = "add"
-        if peer_class_id not in import_list:
-            import_list.append(peer_class_id)
-        if class_status & _ClassStatus.MODIFIED == _ClassStatus.MODIFIED:
-            op_flag = "addmodify"
-            add_prop_map = ", ".join(
-                [k + "=" + v for k, v in property_map.iteritems()])
-            cmdlet = "%s = %s(parent_mo_or_dn=%s, %s)" % (
-                mo_tag, peer_class_id, parent_mo_tag, add_prop_map)
-        else:
-            add_prop_map = ", ".join(
-                [k + "=" + v for k, v in property_map.iteritems()])
-            cmdlet = "%s = %s(parent_mo_or_dn=%s, %s)" % (
-                mo_tag, peer_class_id, parent_mo_tag, add_prop_map)
-    elif class_status & _ClassStatus.MODIFIED == _ClassStatus.MODIFIED:
-        op_flag = "set"
-        set_prop_map = "\n".join(
-            [mo_tag +
-             "." + k + " = " + v for k, v in property_map.iteritems()])
-        cmdlet = "%s = handle.query_dn(\"%s\")\n%s\n" % (
-            mo_tag, key, set_prop_map)
-    else:
-        print "Throw Exception XML request status (%s) is invalid." % (
-            class_node.getAttribute(NamingPropertyId.STATUS))
-
-    return cmdlet, op_flag, import_list
-
-
 def _generate_config_conf_cmdlets(xml_string):
     """
-    Takes xmlstring, and generate script for configConfMos
+    Internal method which takes xmlstring, and generate script for configConfMo
     and configConfMos methods.
     """
+
     doc = xml.dom.minidom.parseString(xml_string)
     top_node = doc.documentElement
 
@@ -723,9 +652,11 @@ def _generate_config_conf_cmdlets(xml_string):
 
 def _generate_config_resolve_cmdlet(xml_string, method):
     """
-    Takes xmlstring, and generate script for configResolveDn,
-    configResolveDns, configResolveClass and configResolveClasses methods.
+    Internal method which takes xmlstring, and generate script for
+    configResolveDn, configResolveDns, configResolveClass and
+    configResolveClasses methods.
     """
+
     doc = xml.dom.minidom.parseString(xml_string)
     cmdlet = ""
     if not _is_root_node(doc, method):
@@ -741,11 +672,11 @@ def _generate_config_resolve_cmdlet(xml_string, method):
         if top_node.hasAttribute("in_hierarchical"):
             in_hierarchical = top_node.getAttribute("in_hierarchical")
         if in_hierarchical.lower() == "true":
-            in_hierarchical_value = "YesOrNo.TRUE"
+            in_hierarchical_value = YesOrNo.TRUE
         else:
-            in_hierarchical_value = "YesOrNo.FALSE"
+            in_hierarchical_value = YesOrNo.FALSE
 
-        cmdlet = "handle.config_resolve_dn(\"%s\", %s)" % (
+        cmdlet = 'handle.config_resolve_dn("%s", "%s")' % (
             dn, in_hierarchical_value)
     # <configResolveDns>
     elif method == "configResolveDns":
@@ -770,11 +701,11 @@ def _generate_config_resolve_cmdlet(xml_string, method):
                       "\"%s\")\ndn_set.child_add(dn)\n" % temp_dn
 
         if in_hierarchical.lower() == "true":
-            in_hierarchical_value = "YesOrNo.TRUE"
+            in_hierarchical_value = YesOrNo.TRUE
         else:
-            in_hierarchical_value = "YesOrNo.FALSE"
+            in_hierarchical_value = YesOrNo.FALSE
 
-        cmdlet += "handle.config_resolve_dns(dn_set, %s)" % \
+        cmdlet += 'handle.config_resolve_dns(dn_set, "%s")' % \
                   in_hierarchical_value
     # <configResolveClass>
     elif method == "configResolveClass":
@@ -796,14 +727,15 @@ def _generate_config_resolve_cmdlet(xml_string, method):
             class_id = top_node.getAttribute("class_id")
 
         if in_hierarchical.lower() == "true":
-            in_hierarchical_value = "YesOrNo.TRUE"
+            in_hierarchical_value = YesOrNo.TRUE
         else:
-            in_hierarchical_value = "YesOrNo.FALSE"
+            in_hierarchical_value = YesOrNo.FALSE
 
         cmdlet = "in_filter = FilterFilter()\n" + _create_python_filter_code(
             filter_node,
-            "inFilter") + "handle.config_resolve_class(\"%s\", in_filter, " \
-                          "%s)" % (class_id, in_hierarchical_value)
+            "inFilter") + 'handle.config_resolve_class(' \
+                          '"%s", in_filter, "%s")' % (class_id,
+                                                      in_hierarchical_value)
     # <configResolveClasses>
     elif method == "configResolveClasses":
         top_node = doc.documentElement
@@ -826,18 +758,21 @@ def _generate_config_resolve_cmdlet(xml_string, method):
                       "\"%s\")\nidSet.child_add(class_id)\n" % temp_class_id
 
         if in_hierarchical.lower() == "true":
-            in_hierarchical_value = "YesOrNo.TRUE"
+            in_hierarchical_value = YesOrNo.TRUE
         else:
-            in_hierarchical_value = "YesOrNo.FALSE"
+            in_hierarchical_value = YesOrNo.FALSE
 
-        cmdlet += "handle.config_resolve_classes(id_set, %s)" % \
+        cmdlet += 'handle.config_resolve_classes(id_set, "%s")' % \
                   in_hierarchical_value
 
     return cmdlet
 
 
 def _create_python_filter_code(parent_node, parent_filter_name):
-    """provide filter support."""
+    """
+    Internal method to provide filter support.
+    """
+
     cmdlet = ""
     filter_name = ""
     temp_name = ""
@@ -904,7 +839,11 @@ def _create_python_filter_code(parent_node, parent_filter_name):
 
 
 def _generate_single_clone_cmdlets(xml_string, is_template):
-    """Method to handle method <lsClone> and <lsInstantiateTemplate>."""
+    """
+    Internal method which takes xmlstring, and generate script for
+    lsClone and lsInstantiateTemplate methods.
+    """
+
     doc = xml.dom.minidom.parseString(xml_string)
     node = None
     top_node = doc.documentElement
@@ -936,11 +875,6 @@ def _generate_single_clone_cmdlets(xml_string, is_template):
     if node.hasAttribute("inTargetOrg"):
         dest_org = node.getAttribute("inTargetOrg")
 
-    # sp_name = re.sub(
-    # r"^(org-[\-\.:_a-zA-Z0-9]{1,16}/)*org-[\-\.:_a-zA-Z0-9]{1,16}/ls-",
-    #  "",
-    #  dn)
-    # source_org = ""
     match_object = re.match(
         r"^(org-[\-\.:_a-zA-Z0-9]{1,16}/)*org-[\-\.:_a-zA-Z0-9]{1,16}", dn)
     if match_object is not None:
@@ -956,41 +890,31 @@ def _generate_single_clone_cmdlets(xml_string, is_template):
         in_hierarchical = node.getAttribute("in_hierarchical")
 
     if in_hierarchical.lower() == "true":
-        in_hierarchical_value = "YesOrNo.TRUE"
+        in_hierarchical_value = YesOrNo.TRUE
     else:
-        in_hierarchical_value = "YesOrNo.FALSE"
+        in_hierarchical_value = YesOrNo.FALSE
 
     in_error_on_existing = ""
     if node.hasAttribute("inErrorOnExisting") is not None:
         in_error_on_existing = node.getAttribute("inErrorOnExisting")
 
     if is_template:
-        # cmdlet = "handle.ls_instantiate_template(dn=\"%s\",
-        # in_error_on_existing=\"%s\", in_server_name=\"%s\",
-        # in_target_org=\"%s\", in_hierarchical=%s)"
-        # %(dn, in_error_on_existing, sp_new_name, dest_org,
-        # in_hierarchical_value)
-
         cmdlet = '\nfrom ucsmsdk.ucsmethodfactory ' \
                  'import ls_instantiate_template\n'
         cmdlet += 'elem = ls_instantiate_template(cookie=' \
                   'handle.cookie, dn="%s", in_error_on_existing=' \
                   '"%s", in_server_name="%s", in_target_org=' \
-                  '"%s", in_hierarchical=%s)' % (dn,
+                  '"%s", in_hierarchical="%s")' % (dn,
                                                  in_error_on_existing,
                                                  sp_new_name,
                                                  dest_org,
                                                  in_hierarchical_value)
         cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
     else:
-        # cmdlet = "handle.ls_clone(dn=\"%s\", in_server_name=\"%s\",
-        # in_target_org=\"%s\", in_hierarchical=%s)" %(dn, sp_new_name,
-        # dest_org, in_hierarchical_value)
-
         cmdlet = '\nfrom ucsmsdk.ucsmethodfactory import ls_clone\n'
         cmdlet += 'elem = ls_clone(cookie=handle.cookie, dn=' \
                   '"%s", in_server_name="%s", in_target_org=' \
-                  '"%s", in_hierarchical=%s)' % (dn,
+                  '"%s", in_hierarchical="%s")' % (dn,
                                                  sp_new_name,
                                                  dest_org,
                                                  in_hierarchical_value)
@@ -1000,7 +924,11 @@ def _generate_single_clone_cmdlets(xml_string, is_template):
 
 
 def _generate_ls_templatise_cmdlets(xml_string):
-    """Function to handle method <lsTemplatise>."""
+    """
+    Internal method which takes xmlstring, and generate script for
+    lsTemplatise method.
+    """
+
     doc = xml.dom.minidom.parseString(xml_string)
     node = None
     top_node = doc.documentElement
@@ -1038,11 +966,6 @@ def _generate_ls_templatise_cmdlets(xml_string):
     if node.hasAttribute("inTargetOrg"):
         dest_org = node.getAttribute("inTargetOrg")
 
-    # sp_name = re.sub(
-    # r"^(org-[\-\.:_a-zA-Z0-9]{1,16}/)*org-[\-\.:_a-zA-Z0-9]{1,16}/ls-",
-    #  "", dn)
-    # source_org = ""
-
     match_object = re.match(
         r"^(org-[\-\.:_a-zA-Z0-9]{1,16}/)*org-[\-\.:_a-zA-Z0-9]{1,16}", dn)
     if match_object is not None:
@@ -1057,38 +980,30 @@ def _generate_ls_templatise_cmdlets(xml_string):
     if node.hasAttribute("in_hierarchical") is not None:
         in_hierarchical = node.getAttribute("in_hierarchical")
     if in_hierarchical.lower() == "true":
-        in_hierarchical_value = "YesOrNo.TRUE"
+        in_hierarchical_value = YesOrNo.TRUE
     else:
-        in_hierarchical_value = "YesOrNo.FALSE"
+        in_hierarchical_value = YesOrNo.FALSE
 
     if dest_org is not None:
-        # cmdlet = "handle.ls_templatise(dn=\"%s\", in_target_org=\"%s\",
-        # in_template_name=\"%s\", in_template_type=\"%s\",
-        # in_hierarchical=%s)" % (dn, dest_org, sp_new_name,
-        # template_type, in_hierarchical_value)
-
         cmdlet = '\nfrom ucsmsdk.ucsmethodfactory import ls_templatise\n'
         cmdlet += 'elem = ls_templatise(cookie=handle.cookie,' \
                   'dn="%s", in_target_org="%s", in_template_name="%s", ' \
-                  'in_template_type="%s", in_hierarchical=%s)' % (dn,
-                                                        dest_org,
-                                                        sp_new_name,
-                                                        template_type,
-                                                        in_hierarchical_value)
+                  'in_template_type="%s", in_hierarchical="%s")' % (dn,
+                                                      dest_org,
+                                                      sp_new_name,
+                                                      template_type,
+                                                      in_hierarchical_value)
         cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
     else:
-        # cmdlet = "handle.ls_templatise(dn=\"%s\", in_target_org=\"org-root\",
-        #  in_template_name=\"%s\", in_template_type=\"%s\",
-        # in_hierarchical=%s)" % (dn, sp_new_name, template_type,
-        # in_hierarchical_value)
-
         cmdlet = '\nfrom ucsmsdk.ucsmethodfactory import ls_templatise\n'
         cmdlet += 'elem = ls_templatise(cookie=handle.cookie,' \
-                  'dn="%s", in_target_org="org-root", in_template_name="%s", '\
-                  'in_template_type="%s", in_hierarchical=%s)' % (dn,
-                                                        sp_new_name,
-                                                        template_type,
-                                                        in_hierarchical_value)
+                  'dn="%s", in_target_org="org-root", ' \
+                  'in_template_name="%s", ' \
+                  'in_template_type="%s", ' \
+                  'in_hierarchical=%s)' % (dn,
+                                           sp_new_name,
+                                           template_type,
+                                           in_hierarchical_value)
         cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
 
     return cmdlet
@@ -1096,9 +1011,10 @@ def _generate_ls_templatise_cmdlets(xml_string):
 
 def _generate_multiple_clone_cmdlets(xml_string, is_prefix_based):
     """
-    Function to handle method <lsInstantiateNTemplate> and
-    <lsInstantiateNNamedTemplate>.
+    Internal method which takes xmlstring, and generate script for
+    lsInstantiateNTemplate and  lsInstantiateNNamedTemplate methods.
     """
+
     doc = xml.dom.minidom.parseString(xml_string)
     node = None
     top_node = doc.documentElement
@@ -1163,14 +1079,9 @@ def _generate_multiple_clone_cmdlets(xml_string, is_prefix_based):
             return
 
         if in_hierarchical.lower() == "true":
-            in_hierarchical_value = "YesOrNo.TRUE"
+            in_hierarchical_value = YesOrNo.TRUE
         else:
-            in_hierarchical_value = "YesOrNo.FALSE"
-
-        # cmdlet = "handle.ls_instantiate_n_template(dn=\"%s\",
-        # in_number_of=%s, in_server_name_prefix_or_empty=\"%s\",
-        # in_target_org=\"%s\", in_hierarchical=%s)" % (dn, count, sp_name,
-        # dest_org, in_hierarchical_value)
+            in_hierarchical_value = YesOrNo.FALSE
 
         cmdlet = '\nfrom ucsmsdk.ucsmethodfactory import ' \
                  'ls_instantiate_n_template\n'
@@ -1214,14 +1125,9 @@ def _generate_multiple_clone_cmdlets(xml_string, is_prefix_based):
         new_names += ")"
 
         if in_hierarchical.lower() == "true":
-            in_hierarchical_value = "YesOrNo.TRUE"
+            in_hierarchical_value = YesOrNo.TRUE
         else:
-            in_hierarchical_value = "YesOrNo.FALSE"
-
-        # cmdlet += "handle.ls_instantiate_n_named_template(dn=\"%s\",
-        # in_error_on_existing=\"%s\", in_name_set=dn_set,
-        # in_target_org=\"%s\", in_hierarchical=\"%s\")" %(dn,
-        # in_error_on_existing, dest_org, in_hierarchical_value)
+            in_hierarchical_value = YesOrNo.FALSE
 
         cmdlet += 'elem = ls_instantiate_n_named_template(' \
                   'cookie=handle.cookie, dn="%s", in_error_on_existing=' \
@@ -1235,7 +1141,11 @@ def _generate_multiple_clone_cmdlets(xml_string, is_prefix_based):
 
 
 def _generate_clear_interval_cmdlet(xml_string):
-    """Function to handle method <statsClearInterval>."""
+    """
+    Internal method which takes xmlstring, and generate script for
+    statsClearInterval method.
+    """
+
     doc = xml.dom.minidom.parseString(xml_string)
     node = None
     top_node = doc.documentElement
@@ -1267,6 +1177,11 @@ def _generate_clear_interval_cmdlet(xml_string):
 
 
 def _generate_config_conf_rename_cmdlet(xml_string):
+    """
+    Internal method which takes xmlstring, and generate script for
+    configConfRename method.
+    """
+
     doc = xml.dom.minidom.parseString(xml_string)
     node = None
     top_node = doc.documentElement
@@ -1288,7 +1203,7 @@ def _generate_config_conf_rename_cmdlet(xml_string):
     cmdlet = "\nfrom ucsmsdk.ucsmethodfactory import config_conf_rename\n\n"
     cmdlet += 'elem = config_conf_rename(' \
               'cookie=handle.cookie, dn="%s", ' \
-              'in_new_name="%s", '\
+              'in_new_name="%s", ' \
               'in_hierarchical="%s")' % (dn, in_new_name, in_hierarchical)
     cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
     return cmdlet
@@ -1297,11 +1212,17 @@ def _generate_config_conf_rename_cmdlet(xml_string):
 # ---- END - OF - METHOD SPECIFIC - FUNCTION ----
 
 def _generate_cmdlets(xml_string):
-    """checks which function to call for a specific method."""
+    """
+    Internal method which takes xmlstring, and identify which method to call
+    for a specific method.
+    """
+
+    doc = xml.dom.minidom.parseString(xml_string)
+
     cmdlet = ""
     global _display_xml, _outfile_path
     if _display_xml:
-        doc = xml.dom.minidom.parseString(xml_string)
+        # doc = xml.dom.minidom.parseString(xml_string)
         _dump_xml_on_screen(doc)
 
     category = ""
@@ -1347,9 +1268,10 @@ def _generate_cmdlets(xml_string):
 
 def _extract_xml(file_stream, line):
     """
-    This Extracts xmlstring from the file and calls the _generate_cmdlets()
-    on this xmlstring.
+    Internal method which extracts xmlstring from the file stream and calls the
+    _generate_cmdlets() on this xmlstring.
     """
+
     read_flag = False
     request_string = ""
     line_count = 0
@@ -1375,8 +1297,12 @@ def _extract_xml(file_stream, line):
         line = file_stream.readline()
 
 
-def _find_xml_requests_in_file_test(file_stream, gui_log):
-    """Depending on gui_log flag, calls the _extract_xml() internally."""
+def _find_xml_requests_in_file(file_stream, gui_log):
+    """
+    Internal method which depending on gui_log flag, calls the _extract_xml()
+    internally.
+    """
+
     # print "Inside _find_xml_requests_in_file_test"
     line = file_stream.readline()
     while line is not None:
@@ -1392,9 +1318,11 @@ def _find_xml_requests_in_file_test(file_stream, gui_log):
 
 def _if_path_or_literal_path(path, literal_path, gui_log):
     """
-    checks if path or literal_path present for the respective parameter set
-    and if exists then call _find_xml_requests_in_file_test().
+    Internal method which checks if path or literal_path present for the
+    respective parameter set and if exists then
+    call _find_xml_requests_in_file().
     """
+
     if path:
         if literal_path:
             print "Parameter <path> takes precedence over <literal_path>"
@@ -1406,12 +1334,15 @@ def _if_path_or_literal_path(path, literal_path, gui_log):
         return
 
     file_stream = open(file_path, 'r')
-    _find_xml_requests_in_file_test(file_stream, gui_log)
+    _find_xml_requests_in_file(file_stream, gui_log)
     file_stream.close()
 
 
 def _get_ucs_default_logpath_windows():
-    """_get_ucs_default_logpath_windows."""
+    """
+    Internal method to find ucsm logs path on windows os.
+    """
+
     if 'APPDATA' in os.environ.keys():
         log_file_path = os.getenv('APPDATA')
     else:
@@ -1425,14 +1356,20 @@ def _get_ucs_default_logpath_windows():
 
 
 def _get_ucs_default_logpath_linux():
-    """_get_ucs_default_logpath_linux."""
+    """
+    Internal method to find ucsm logs path on linux os.
+    """
+
     log_file_path = os.getenv('HOME')
     log_file_path += r"/.java/deployment/log/.ucsm/"
     return log_file_path
 
 
 def _get_ucs_default_logpath_osx():
-    """_get_ucs_default_logpath_osx."""
+    """
+    Internal method to find ucsm logs path on osx os.
+    """
+
     log_file_path = os.getenv('HOME')
     # log_file_path += r"/Library/Caches/Java/log/.ucsm"
     path = r"/Library/Application Support/Oracle/Java/Deployment/log/.ucsm"
@@ -1441,7 +1378,10 @@ def _get_ucs_default_logpath_osx():
 
 
 def _get_ucs_default_logpath_cygwin():
-    """_get_ucs_default_logpath_cygwin."""
+    """
+    Internal method to find ucsm logs path on cygwin os.
+    """
+
     log_file_path = os.getenv('APPDATA')
     log_file_path = log_file_path.replace("\\", "/")
     # TODO:
@@ -1451,20 +1391,61 @@ def _get_ucs_default_logpath_cygwin():
     return log_file_path
 
 
-def convert_to_ucs_python(log_path=None, xml=False, request=None, gui_log=False, path=None,
-                          literal_path=None, dump_to_file=False,
-                          dump_file_path=None, dump_xml=False):
+def convert_to_ucs_python(log_path=None, xml=False, request=None,
+                          gui_log=False, path=None, literal_path=None,
+                          dump_to_file=False, dump_file_path=None,
+                          dump_xml=False):
     """
-    By default this will generate python script for the action in UCSM GUI.
-    log_path : If by default code unable to identify the location of ucsm logs,
-    then use this parameter to specify the directory of ucsm logs.
-    xml=True & request="xmlstring": Generate Python Script for XML Request.
-    xml=True & path/LiteralPath: Generate Python script from the file
-    containing XML Request.
-    gui_log=True & path/LiteralPath: Generate Python script from the
-    UCSM GUI logfile.
-    displayXML=True will also dispaly corresponding XML Request.
+    This operation generates python script from ucsm gui using ucsm logs
+    or directly from ucs logfile or xml request.
+
+    Attributes:
+        * log_path (str): ucsm guilog path, if code unable to find the ucsm
+          guilog path you can specify the path using this parameter.
+        * xml (bool): if True, generates python script using xml request.
+        * request (str): xml request
+        * gui_log (bool): if True, generates python script using ucsm logfile
+        * path (str): path of the file containing xml request or ucsm logfile
+        * literal_path (str): path of the file containing xml request or
+          ucsm logfile
+        * dump_to_file (bool): if True, dump the code to file
+        * dump_file_path (str): path of file where to dump generated code.
+        * dump_xml (bool): if True, display the xml extracted for generating
+          code
+
+        Manadatory - M, Optional - O
+        * Optional in all param set - dump_to_file, dump_file_path, dump_xml
+
+        * param set 1:
+        ---------------------------------------------------------------
+        convert_to_ucs_python()
+
+        convert_to_ucs_python(dump_xml=True)
+
+        file_path = r"/home/user/pythoncode.py"
+        convert_to_ucs_python(dump_to_file=True,
+                              dump_file_path=file_path,
+                              dump_xml=True)
+
+        * param set 2:
+        ---------------------------------------------------------------
+        xml_str='''
+         <configConfRename
+         dn="org-root/ls-ra1"
+         inNewName="ra2"
+         inHierarchical="false">
+         </configConfRename>'''
+        convert_to_ucs_python(xml=True, request=xml_str)
+
+        file_path = "\home\user\ucsmxml\configrequest.xml"
+        convert_to_ucs_python(xml=True, path=file_path)
+
+        * param set 3:
+        ---------------------------------------------------------------
+        file_path = "\home\user\ucsmlog\centrale_14804.log"
+        convert_to_ucs_python(gui_log=True, path=file_path)
     """
+
     print "### Please review the generated cmdlets before deployment.\n"
     global _display_xml, _outfile_flag, _outfile_path, _outfile
     _display_xml = dump_xml
@@ -1522,13 +1503,6 @@ def convert_to_ucs_python(log_path=None, xml=False, request=None, gui_log=False,
                 log_file_path = None
                 return
 
-        # Get the latest logfile
-        # log_file_path =
-        # r"C:\Users\username\AppData\LocalLow\Sun\Java\Deployment\log\.ucsm"
-        # files = [ file
-        # for file in glob.glob(log_file_path + "\\" + "*")
-        # if os.path.isfile(file)]
-
         os.chdir(log_file_path)
         files = [file_ for file_ in glob.glob("centrale_*.log") if
                  os.path.isfile(file_)]
@@ -1548,7 +1522,7 @@ def convert_to_ucs_python(log_path=None, xml=False, request=None, gui_log=False,
             # line = file_stream.readline()
             # if line:
             #     _find_xml_requests_in_file_test(file_stream, True)
-            _find_xml_requests_in_file_test(file_stream, True)
+            _find_xml_requests_in_file(file_stream, True)
             time.sleep(2)
         file_stream.close()
 

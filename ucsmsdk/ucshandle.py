@@ -29,15 +29,23 @@ class UcsHandle(UcsSession):
     Handle class is the user interface point for any Ucs related communication.
 
     Attributes:
-        ip (str): The IP or Hostname of the UCS Server
-        username (str): The username as configured on the UCS Server
-        password (str): The password as configured on the UCS Server
-        port (int or None): The port number to be used during connection
-        secure (bool or None): True for secure connection, otherwise False
-        proxy (str): The proxy object to be used to connect
+        * ip (str): The IP or Hostname of the UCS Server
+        * username (str): The username as configured on the UCS Server
+        * password (str): The password as configured on the UCS Server
+        * port (int or None): The port number to be used during connection
+        * secure (bool or None): True for secure connection, otherwise False
+        * proxy (str): The proxy object to be used to connect
 
     Example:
         handle = UcsHandle("192.168.1.1","admin","password")
+        handle = UcsHandle("192.168.1.1","admin","password", secure=True)
+        handle = UcsHandle("192.168.1.1","admin","password", secure=False)
+        handle = UcsHandle("192.168.1.1","admin","password", port=80)
+        handle = UcsHandle("192.168.1.1","admin","password", port=443)
+        handle = UcsHandle("192.168.1.1","admin","password", port=100,
+                            secure=True)
+        handle = UcsHandle("192.168.1.1","admin","password", port=100,
+                            secure=False)
     """
 
     def __init__(self, ip, username, password, port=None, secure=None,
@@ -49,22 +57,25 @@ class UcsHandle(UcsSession):
         """
         Enables the xml request and response to be added to logs.
         """
+
         self._set_dump_xml()
 
     def unset_dump_xml(self):
         """
         Disables the xml request and response to be added to logs.
         """
+
         self._unset_dump_xml()
 
     def login(self, auto_refresh=False, force=False):
         """
-            Connects to ucsm connected using respective UcsHandle.
+        Connects to ucsm connected using respective UcsHandle.
 
         Attributes:
-            * auto_refresh, it refresh the cookie continuously if set to True
-            * force, if set to True it reconnects even if cookie exists and is
-              valid for respective connection.
+            * auto_refresh (bool): if set to True, it refresh the cookie
+              continuously
+            * force (bool): if set to True it reconnects even if cookie exists
+              and is valid for respective connection.
 
         Return:
             True on successful connect
@@ -73,14 +84,16 @@ class UcsHandle(UcsSession):
             handle.login()
             handle.login(auto_refresh=True)
             handle.login(force=True)
+            handle.login(auto_refresh=True, force=True)
 
             where handle is UcsHandle()
         """
+
         return self._login(auto_refresh, force)
 
     def logout(self):
         """
-            Disconnects from ucsm connected using respective UcsHandle.
+        Disconnects from ucsm connected using respective UcsHandle.
 
         Attributes:
             * None
@@ -97,6 +110,23 @@ class UcsHandle(UcsSession):
         return self._logout()
 
     def process_xml_elem(self, elem):
+        """
+        Processes xml element returned by method factory methods.
+
+        Attributes:
+            * elem (xml element object)
+
+        Return:
+            mo list or external method object
+
+        Example:
+            elem = ucsmethodfactory.config_find_dns_by_class_id(
+                                                        cookie=handle.cookie,
+                                                        class_id="LsServer",
+                                                        in_filter=None)
+            dn_objs = handle.process_xml_elem(elem)
+        """
+
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -119,6 +149,21 @@ class UcsHandle(UcsSession):
             return response
 
     def get_auth_token(self):
+        """
+            Get ucsm auto token.
+
+        Attributes:
+            * None
+
+        Return:
+            auth_token (str)
+
+        Example:
+            handle.get_auth_token()
+
+            where handle is UcsHandle()
+        """
+
         from ucsmethodfactory import aaa_get_n_compute_auth_token_by_dn
 
         auth_token = None
@@ -144,11 +189,11 @@ class UcsHandle(UcsSession):
 
     def query_dns(self, *dns):
         """
-            Find objects using a comma separated string of distinguished name.
+        Find objects using a comma separated string of distinguished name.
 
         Attributes:
             * dns (comma separated strings): distinguished names to be
-                queried for
+              queried for
 
         Return:
             Dictionary {dn: object}
@@ -157,6 +202,7 @@ class UcsHandle(UcsSession):
             obj = handle.lookup_by_dns("fabric/lan/net-100",
                                         "fabric/lan/net-101")
         """
+
         from ucsbasetype import DnSet, Dn
         from ucsmethodfactory import config_resolve_dns
 
@@ -187,7 +233,7 @@ class UcsHandle(UcsSession):
 
     def query_classids(self, *class_ids):
         """
-            Find objects using a comma separated string of class ids.
+        Find objects using a comma separated string of class ids.
 
         Attributes:
             * class_ids (comma separated strings): class_id to be queried for
@@ -199,6 +245,7 @@ class UcsHandle(UcsSession):
             obj = handle.lookup_by_dns("OrgOrg",
                                        "LsServer")
         """
+
         # ToDo - How to handle unknown class_id
         from ucsbasetype import ClassIdSet, ClassId
         from ucsmeta import MO_CLASS_ID
@@ -236,18 +283,26 @@ class UcsHandle(UcsSession):
 
     def query_dn(self, dn, hierarchy=False, need_response=False):
         """
-            Find an object using it's distinguished name.
+        Find an object using it's distinguished name.
 
         Attributes:
             * dn (str): distinguished name of the object to be queried for.
+            * hierarchy(bool): if set to True will return all the child
+                               hierarchical objects.
+            * need_response(bool): if set to True will return only response
+                                  object.
 
         Return:
             managedobject or None   by default
             managedobject list      if hierarchy=True
-            methodresponse          if need_response=True
+            externalmethod object   if need_response=True
 
         Example:
             obj = handle.lookup_by_dn("fabric/lan/net-100")
+            obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True)
+            obj = handle.lookup_by_dn("fabric/lan/net-100", need_response=True)
+            obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True,
+                                                            need_response=True)
         """
 
         from ucsbasetype import DnSet, Dn
@@ -285,7 +340,7 @@ class UcsHandle(UcsSession):
     def query_classid(self, class_id=None, filter_str=None, hierarchy=False,
                       need_response=False):
         """
-            Find an object using it's class id.
+        Find an object using it's class id.
 
         Attributes:
             * class_id (str): class id of the object to be queried for.
@@ -320,11 +375,16 @@ class UcsHandle(UcsSession):
             methodresponse              if need_response=True
 
         Example:
+            obj = handle.query_classid(class_id="LsServer")
+            obj = handle.query_classid(class_id="LsServer", hierarchy=True)
+            obj = handle.query_classid(class_id="LsServer", need_response=True)
+
             filter_str = '(dn,"org-root/ls-C1_B1", type="eq") or
                             (name, "event", type="re", flag="I")'
             obj = handle.query_classid(class_id="LsServer",
                                         filter_str=filter_str)
         """
+
         # ToDo - How to handle unknown class_id
 
         from ucsmeta import MO_CLASS_ID
@@ -366,8 +426,8 @@ class UcsHandle(UcsSession):
     def query_children(self, in_mo=None, in_dn=None, class_id=None,
                        hierarchy=False):
         """
-            Find all or specific class_id children object of a given
-            managed object or a given dn.
+        Find all or specific class_id children object of a given managed object
+        or a given dn.
 
         Attributes:
             * in_mo (managed object): query children managed object under this
@@ -388,8 +448,8 @@ class UcsHandle(UcsSession):
             mo_list = handle.query_children(in_mo=mo, class_id="classid")
             mo_list = handle.query_children(in_dn=dn)
             mo_list = handle.query_children(in_dn=dn, class_id="classid")
-
         """
+
         from ucsmeta import MO_CLASS_ID
         from ucsmethodfactory import config_resolve_children
 
@@ -410,10 +470,10 @@ class UcsHandle(UcsSession):
             meta_class_id = class_id
 
         elem = config_resolve_children(cookie=self.cookie,
-                                              class_id=meta_class_id,
-                                              in_dn=parent_dn,
-                                              in_filter=None,
-                                              in_hierarchical=hierarchy)
+                                       class_id=meta_class_id,
+                                       in_dn=parent_dn,
+                                       in_filter=None,
+                                       in_hierarchical=hierarchy)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -426,7 +486,7 @@ class UcsHandle(UcsSession):
 
     def add_mo(self, mo, modify_present=False):
         """
-            Adds an object to the UCSM.
+        Adds an object to the UCSM.
 
         Attributes:
             * mo (managedobject): ManagedObject to be added.
@@ -450,7 +510,7 @@ class UcsHandle(UcsSession):
 
     def set_mo(self, mo):
         """
-            Modifies configuration of an object.
+        Modifies configuration of an object.
 
         Attributes:
             * mo (managedobject): ManagedObject with modified properties.
@@ -468,7 +528,7 @@ class UcsHandle(UcsSession):
 
     def remove_mo(self, mo):
         """
-            Removes object from UCSM.
+        Removes object from UCSM.
 
         Attributes:
             * mo (managedobject): ManagedObject to be removed.
@@ -489,9 +549,9 @@ class UcsHandle(UcsSession):
 
     def commit(self):
         """
-            Sends the object to UCSM.
-            Added, modified or removed using add_mo(), set_mo()
-            and remove_mo() respectively.
+        Sends the object to UCSM.
+        Add, modify or remove using add_mo(), set_mo() and remove_mo()
+        respectively.
 
         Return:
             None
@@ -499,6 +559,7 @@ class UcsHandle(UcsSession):
         Example:
             handle.commit()
         """
+
         from ucsbasetype import ConfigMap, Dn, DnSet, Pair
         from ucsmethodfactory import config_resolve_dns
         from ucsmethodfactory import config_conf_mos
@@ -555,3 +616,15 @@ class UcsHandle(UcsSession):
 
         self.__to_commit = {}
 
+    def commit_buffer_discard(self):
+        """
+        clears the commit buffer
+
+        Return:
+            None
+
+        Example:
+            handle.commit_buffer_discard()
+        """
+
+        self.__to_commit = {}

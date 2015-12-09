@@ -32,11 +32,19 @@ types = {"eq": "EqFilter",
 
 
 class ParseFilter(object):
+    """
+    Supporting class to parse filter expression.
+    """
+
     class_id = None
     is_meta_classid = None
 
     @staticmethod
     def parse_filter_obj(sstr, loc, toks):
+        """
+        Supporting class to parse filter expression.
+        """
+
         # print toks[0] #logger
 
         prop_ = toks[0]["prop"]
@@ -71,6 +79,10 @@ class ParseFilter(object):
 
     @staticmethod
     def and_operator(str, loc, toks):
+        """
+        method to support logical 'and' operator expression
+        """
+
         # print  str, loc, toks
         # print toks[0][0::2]
         and_filter = AndFilter()
@@ -80,6 +92,10 @@ class ParseFilter(object):
 
     @staticmethod
     def or_operator(str, loc, toks):
+        """
+        method to support logical 'or' operator expression
+        """
+
         # print  str, loc, toks
         # print toks[0][0::2]
         or_filter = OrFilter()
@@ -89,6 +105,10 @@ class ParseFilter(object):
 
     @staticmethod
     def not_operator(self, str_, loc, toks):
+        """
+        method to support logical 'and' operator expression
+        """
+
         print str_, loc, toks
         print toks[0][1:]
         not_filter = NotFilter()
@@ -129,6 +149,22 @@ expr << pp.operatorPrecedence(semi_expression, [
 
 
 def generate_infilter(class_id, filter_str, is_meta_class_id):
+    """
+    Create FilterFilter object
+
+    Attributes:
+        * class_id (str): class_id
+        * filter_str (str): filter expression
+        * is_meta_class_id (bool)
+
+    Return:
+        True on successful connect
+
+    Example:
+        generate_infilter("LsServer", '("usr_lbl, "mysp", type="eq", flag="I)',
+                          True)
+    """
+
     ParseFilter.class_id = class_id
     ParseFilter.is_meta_classid = is_meta_class_id
     result = expr.parseString(filter_str)
@@ -145,6 +181,7 @@ def handle_filter_max_component_limit(handle, l_filter):
     together in complex filters(like and , or) so that the
     count of filters can be reduced.
     """
+
     from ucscore import AbstractFilter
     from ucsfiltertype import AndFilter, OrFilter
 
@@ -183,6 +220,10 @@ def handle_filter_max_component_limit(handle, l_filter):
 
 
 def create_basic_filter(filter_name, **kwargs):
+    """
+    Loads filter class
+    """
+
     import ucsmeta
     fq_module_name = ucsmeta.OTHER_TYPE_CLASS_ID[filter_name]
     module_import = __import__(fq_module_name, globals(), locals(),

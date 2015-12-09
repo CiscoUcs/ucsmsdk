@@ -16,7 +16,6 @@ This module contains the api used to create and download tech_support file.
 """
 
 import os
-import platform
 import time
 import datetime
 import logging
@@ -36,46 +35,117 @@ def get_ucs_tech_support(handle,
                          download_techsupp=True, file_dir=None, file_name=None,
                          timeout_in_sec=600):
     """
-        This operation creates and downloads the technical support data for
-        the respective UCSM.
+    This operation creates and downloads the technical support data for
+    the respective UCSM.
 
-        Attributes:
-            handle (UcsHandle)
-            ucs_manager (boolean): by default False, if provided as True then
-                                technical support data for the entire UCSM
-                                instance will be created and downloaded.
-            ucs_mgmt (boolean): by default False,  if provided as True then
-                                technical support data for the entire UCSM
-                                management services(excluding fabric
-                                interconnects) will be created and downloaded.
-            chassis_id : chassis id.
-            cimc_id : for a specific chassis. Can be 'all' also.
-            adapter_id : for a specific chassis. Can be 'all' also.
-            iom_id :for a specific chassis. Can be 'all' also.
-            fex_id : id of a fabric extender.
-            rack_server_id : id of a rack server.
-            rack_adapter_id : adaptor_id for a specific rack server.
-                            Can be 'all' also.
-            remove_from_ucs (boolean): by default False, if specified as True
-                                    then the technical support data file will
-                                    be removed from the UCS.
-            download_techsupp (boolean): by default True, if True suggests to
-                                        download the tech support file.
-            file_dir (string): directory to download tech support file
-            file_name (string): name of the download tech support file
-            timeout_in_sec (number): specifies the time in seconds after that
-                                    the operation will terminate.
+    Attributes:
+        * handle (UcsHandle)
+        * ucs_manager (bool): by default False, if provided as True then
+                            technical support data for the entire UCSM
+                            instance will be created and downloaded.
+        * ucs_mgmt (bool): by default False,  if provided as True then
+                            technical support data for the entire UCSM
+                            management services(excluding fabric
+                            interconnects) will be created and downloaded.
+        * chassis_id (int): chassis id.
+        * cimc_id (int): for a specific chassis. Can be 'all' also.
+        * adapter_id (int): for a specific chassis. Can be 'all' also.
+        * iom_id (int): for a specific chassis. Can be 'all' also.
+        * fex_id (int): id of a fabric extender.
+        * rack_server_id (int): id of a rack server.
+        * rack_adapter_id (int): adaptor_id for a specific rack server.
+                                Can be 'all' also.
+        * remove_from_ucs (bool): by default False, if specified as True
+                                then the technical support data file will
+                                be removed from the UCS.
+        * download_techsupp (bool): by default True, if True suggests to
+                                    download the tech support file.
+        * file_dir (str): directory to download tech support file
+        * file_name (str): name of the download tech support file
+        * timeout_in_sec (int): specifies the time in seconds after that
+                                the operation will terminate.
 
-        Example:
-            file_dir = "/home/user/techsupport"
-            file_name = "techsupp_ucs_mgmt.tar"
-            backup_ucs(handle, backup_type="config-logical",
-                        file_dir=test_support, file_name=file_name)
-            get_ucs_tech_support(handle,
-                                file_dir=file_dir,
-                                file_name=file_name,
-                                ucs_mgmt=True)
+    Example:
+        * M - Manadatory, O - Optional
+        * Note:
+          Mandatory in ALL param sets: file_dir, file_name
+          Optional in ALL param sets: timeout_in_sec, remove_from_ucs,
+                                      download_techsupp
+
+        * param set 1:
+        * M - ucs_manager
+        ---------------------------------------------------------------
+        file_dir = "/home/user/techsupp"
+        file_name = "techsupp_ucs_manager.tar"
+        get_ucs_tech_support(handle,
+                            file_dir=file_dir,
+                            file_name=file_name,
+                            ucs_manager=True)
+
+        get_ucs_tech_support(handle,
+                    file_dir=file_dir,
+                    file_name=file_name,
+                    ucs_manager=True,
+                    timeout_in_sec=300,
+                    remove_from_ucs=True)
+
+        * param set 2:
+        * M - ucs_manager
+        ---------------------------------------------------------------
+        file_dir = "/home/user/techsupp"
+        file_name = "techsupp_ucs_mgmt.tar"
+        get_ucs_tech_support(handle,
+                            file_dir=file_dir,
+                            file_name=file_name,
+                            ucs_mgmt=True)
+
+        * param set 3:
+        * M - chassis_id, cimc_id
+        * O - adapter_id
+        ---------------------------------------------------------------
+        file_dir = "/home/user/techsupp"
+        file_name = "techsupp_ucs_mgmt.tar"
+        get_ucs_tech_support(handle,
+                            file_dir=file_dir,
+                            file_name=file_name,
+                            chassis_id=1,
+                            cimc_id=1,
+                            adapter_id=1)
+
+        * param set 4:
+        * M - chassis_id, iom_id
+        ---------------------------------------------------------------
+        file_dir = "/home/user/techsupp"
+        file_name = "techsupp_ucs_mgmt.tar"
+        get_ucs_tech_support(handle,
+                            file_dir=file_dir,
+                            file_name=file_name,
+                            chassis_id=1,
+                            iom_id=1)
+
+        * param set 5:
+        * M - fex_id
+        ---------------------------------------------------------------
+        file_dir = "/home/user/techsupp"
+        file_name = "techsupp_ucs_mgmt.tar"
+        get_ucs_tech_support(handle,
+                            file_dir=file_dir,
+                            file_name=file_name,
+                            fex_id=1)
+
+        * param set 6:
+        * M - rack_server_id
+        * O - rack_adapter_id
+        ---------------------------------------------------------------
+        file_dir = "/home/user/techsupp"
+        file_name = "techsupp_ucs_mgmt.tar"
+        get_ucs_tech_support(handle,
+                            file_dir=file_dir,
+                            file_name=file_name,
+                            rack_server_id=1,
+                            rack_adapter_id=1)
     """
+
     from ..mometa.top.TopSystem import TopSystem
     from ..mometa.sysdebug.SysdebugTechSupport import SysdebugTechSupport, \
                                                     SysdebugTechSupportConsts

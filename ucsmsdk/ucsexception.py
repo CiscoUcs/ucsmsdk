@@ -16,21 +16,34 @@
 This module contains the SDK defined exceptions.
 """
 
+import logging
 
-def UcsWarning(string):
-    """ Method to throw warnings. """
-    import warnings
+log = logging.getLogger('ucs')
 
-    warnings.warn(string)
+def UcsWarning(warn_str):
+    """
+    Method to throw warnings.
+    """
+
+    # import warnings
+    #
+    # warnings.warn(string)
+    log.debug(warn_str)
 
 
 class UcsWrapperException(Exception):
-    """ Parent class for all ucswrapper exceptions. """
+    """
+    Parent class for all ucswrapper exceptions.
+    """
+
     pass
 
 
 class UcsLoginError(UcsWrapperException):
-    """LoginFailure Error"""
+    """
+    LoginFailure Error
+    """
+
     # message = 'Authentication failed'
 
     def __init__(self, message, error_code=None):
@@ -38,14 +51,18 @@ class UcsLoginError(UcsWrapperException):
 
 
 class UcsConnectionError(UcsWrapperException):
-    """ Cannot connect to UCS Manager. """
+    """
+    Cannot connect to UCS Manager.
+    """
 
     def __init__(self, message):
         super(UcsConnectionError, self).__init__(message)
 
 
 class UcsOperationError(UcsWrapperException):
-    """ Configuration Error. """
+    """
+    Configuration Error.
+    """
 
     def __init__(self, operation, error):
         message = "%s failed, error: %s" % (operation, error)
@@ -53,12 +70,17 @@ class UcsOperationError(UcsWrapperException):
 
 
 class UcsError(Exception):
-    """Base class for exceptions in Ucs module."""
+    """
+    Base class for exceptions in Ucs module.
+    """
+
     pass
 
 
 class UcsException(UcsError):
-    """Class to catch exception thrown from UCSM."""
+    """
+    Class to catch exception thrown from UCSM.
+    """
 
     def __init__(self, error_code, error_descr):
         self.__error_code = error_code
@@ -80,7 +102,9 @@ class UcsException(UcsError):
 
 
 class UcsValidationException(UcsError):
-    """Class to handle required attributes validation."""
+    """
+    Class to handle required attributes validation.
+    """
 
     def __init__(self, error_msg):
         self.__error_msg = error_msg

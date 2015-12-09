@@ -33,7 +33,7 @@ log = logging.getLogger('ucs')
 class UcsBase(object):
     """
     This class acts as the base class for ManagedObject, ExternalMethod
-    and AbstractFilter classes.
+    and AbstractFilter and BaseObject classes.
     """
 
     def __init__(self, class_id):

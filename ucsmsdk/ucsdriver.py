@@ -76,7 +76,14 @@ class TLS1Connection(httplib.HTTPSConnection):
 
 class UcsDriver(object):
     """
-    To Add docstring
+    This class is responsible to create http and https connection using urllib
+    library.
+
+    Attributes:
+        * proxy (str): The proxy object to be used to connect
+
+    Example:
+        driver = UcsDriver(proxy="192.168.1.1:80")
     """
 
     def __init__(self, proxy=None):
@@ -86,6 +93,10 @@ class UcsDriver(object):
         self.__handlers = self.__get_handlers()
 
     def __get_handlers(self):
+        """
+        Internal method to handle redirection and use TLS protocol.
+        """
+
         handlers = [SmartRedirectHandler, TLS1Handler]
         if self.__proxy:
             proxy_handler = urllib2.ProxyHandler(
@@ -94,16 +105,60 @@ class UcsDriver(object):
         return handlers
 
     def add_header(self, header_prop, header_value):
+        """
+        Adds header to http/ https web request
+
+        Attributes:
+            * header_prop (str): header name
+            * header (str): header value
+
+        Return:
+            None
+
+        Example:
+            driver=UcsDriver()
+            driver.add_header('Cookie', 'xxxxxxxxxxxxxx')
+        """
+
         self.__headers[header_prop] = header_value
 
     def remove_header(self, header_prop):
+        """
+        Removes header from http/ https web request
+
+        Attributes:
+            * header_prop (str): header name
+
+        Return:
+            None
+
+        Example:
+            driver=UcsDriver()
+            driver.remove_header('Cookie')
+        """
+
         del self.__headers[header_prop]
 
     @property
     def redirect_uri(self):
+        """
+        Getter method of UcsDriver class
+        """
+
         return self.__redirect_uri
 
     def __create_request(self, uri, data=None):
+        """
+        Internal method to create http/https web request
+
+        Attributes:
+            * uri (str): protocol://web_address:port
+            * data (str): data to send over web request
+
+        Return:
+            web request object
+        """
+
         request_ = urllib2.Request(url=uri, data=data)
         headers = self.__headers
         for header in headers:
@@ -114,6 +169,23 @@ class UcsDriver(object):
         pass
 
     def post(self, uri, data=None, dump_xml=False, read=True):
+        """
+        sends the web request and receives the response from ucsm server
+
+        Attributes:
+            * uri (str): URI of the  the UCS Server
+            * data (str): request data to send via post request
+            * dump_xml (bool): if True, displays request and response
+            * read (bool): if True, returns response.read() else returns
+              object.
+
+        Return:
+            response xml string or response object
+
+        Example:
+            response = post("http://192.168.1.1:80", data=xml_str)
+        """
+
         if self.__redirect_uri:
             uri = self.__redirect_uri
         request = self.__create_request(uri=uri, data=data)

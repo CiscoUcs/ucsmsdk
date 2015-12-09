@@ -24,13 +24,61 @@ import ucsexception as ex
 
 
 def to_xml_str(elem):
+    """
+    Converts xml element to xml string.
+
+    Attributes:
+        * elem (xml element)
+
+    Return:
+        xml string
+
+    Example:
+        xml_str = to_xml_str(elem=xml_element)
+    """
+
     return ET.tostring(elem)
 
 def extract_root_elem(xml_str):
+    """
+    extracts root xml element from xml string.
+
+    Attributes:
+        * xml_str (str): xml string
+
+    Return:
+        xml element
+
+    Example:
+        xml_str='''
+        <lsClone dn="org-root/ls-testsp" inHierarchical="false"
+        inServerName="test" inTargetOrg="">
+        </lsClone>
+        '''
+        root_element = extract_root_elem(xml_str)
+    """
+
     root_elem = ET.fromstring(xml_str)
     return root_elem
 
 def from_xml_str(xml_str):
+    """
+    Generates response object from the given xml string.
+
+    Attributes:
+        * xml_str (str): xml string
+
+    Return:
+        object (external method or managed object or generic managed object)
+
+    Example:
+        xml_str='''
+        <lsServer dn="org-root/ls-testsp" dynamicConPolicyName="test"
+        extIPPoolName="ext-mgmt" name="testsp" />
+        '''
+        root_element = extract_root_elem(xml_str)
+    """
+
     root_elem = ET.fromstring(xml_str)
     if root_elem.tag == "error":
         error_code = root_elem.attrib['errorCode']

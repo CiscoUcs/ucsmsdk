@@ -12,7 +12,7 @@
 # limitations under the License.
 
 """
-This module contains the UcsSdk Core classes.
+This module contains the UcsSdk Core utilities.
 """
 
 import os
@@ -32,6 +32,19 @@ log = logging.getLogger('ucs')
 
 
 def get_ucs_obj(class_id, elem, mo_obj=None):
+    """
+    This creates object of type ExternalMethod or ManagedObject or GenericMo
+    depending on element tag
+
+    Attributes:
+        * class_id (str): class_id
+        * elem (xml element): xml element
+        * mo_obj : parent object
+
+    Return:
+        object of type ExternalMethod or ManagedObject or GenericMo
+    """
+
     import inspect
 
     if class_id in METHOD_CLASS_ID:
@@ -78,6 +91,16 @@ def get_ucs_obj(class_id, elem, mo_obj=None):
 
 
 def load_module(module_name):
+    """
+    This loads the module into the current name space
+
+    Attributes:
+        * module_name (str): module_name
+
+    Return:
+        None
+    """
+
     module_name = ucsgenutils.word_u(module_name)
     if module_name and module_name in MO_CLASS_ID:
         fq_module_name = mometa.__name__ + ".%s" % module_name
@@ -97,6 +120,16 @@ def load_module(module_name):
 
 
 def load_class(class_id):
+    """
+    This loads the class into the current name space
+
+    Attributes:
+        * class_id (str): class_id
+
+    Return:
+        MangedObject or ExtenalMethod Object or None
+    """
+
     class_id = ucsgenutils.word_u(class_id)
     if class_id and class_id in MO_CLASS_ID:
         mod_class_id = ucsgenutils.word_l(class_id)
@@ -114,6 +147,16 @@ def load_class(class_id):
 
 
 def load_mo(elem):
+    """
+    This loads the managed object  into the current name space
+
+    Attributes:
+        * class_id (str): class_id
+
+    Return:
+        MangedObject
+    """
+
     import inspect
 
     mo_class_id = elem.tag
@@ -129,15 +172,19 @@ def load_mo(elem):
 
 
 def is_valid_class_id(class_id):
-    """ Methods checks whether the provided class_id is valid or not. """
+    """
+    Methods checks whether the provided class_id is valid or not."""
+
     if class_id in MO_CLASS_ID or class_id in METHOD_CLASS_ID:
         return True
     return False
 
 
 def find_class_id_in_mo_meta_ignore_case(class_id):
-    """ Methods whether class_id is valid or not . Given class is
-     case insensitive. """
+    """
+    Methods whether class_id is valid or not . Given class is case insensitive.
+    """
+
     if not class_id:
         return None
     if class_id in MO_CLASS_ID:
@@ -151,8 +198,10 @@ def find_class_id_in_mo_meta_ignore_case(class_id):
 
 
 def find_class_id_in_method_meta_ignore_case(class_id):
-    """ Methods whether class_id is valid or not . Given class
-    is case insensitive. """
+    """
+    Methods whether class_id is valid or not . Given class is case insensitive.
+    """
+
     if class_id in METHOD_CLASS_ID:
         return class_id
     l_class_id = class_id.lower()
@@ -162,9 +211,22 @@ def find_class_id_in_method_meta_ignore_case(class_id):
     return None
 
 def get_mo_property_meta(class_id, key):
-    """ Methods returns the mo property meta of the provided key for the given class_id.
-    :rtype : Object of type MoPropertyMeta
     """
+    Methods returns the mo property meta of the provided key for the given
+    class_id.
+
+    Attributes:
+        * class_id (str): class_id of mo
+        * key (str): prop of class_id
+
+    Return:
+        Object of type MoPropertyMeta
+
+    Example:
+        prop_meta = get_mo_property_meta(class_id="LsServer",
+                                         key="usr_lbl")
+    """
+
     class_obj = load_class(class_id)
     if key == "mo_meta":
         return class_obj.mo_meta
@@ -179,7 +241,9 @@ def get_mo_property_meta(class_id, key):
 
 
 def write_object(mo_or_list):
-    """This prints the managed object on the standard output."""
+    """
+    This prints the managed object on the standard output.
+    """
 
     if isinstance(mo_or_list, ucsmethod.ExternalMethod):
         if hasattr(mo_or_list, "out_configs"):
@@ -196,7 +260,26 @@ def write_object(mo_or_list):
         print mo_or_list
 
 
-def extract_molist_from_method_response(method_response, in_hierarchical=False):
+def extract_molist_from_method_response(method_response,
+                                        in_hierarchical=False):
+    """
+    Methods extracts mo list from response received from ucs server i.e.
+    external method object
+
+    Attributes:
+        * method_response (ExternalMethod Object): response
+        * in_hierarchical (bool): if True, return all the hierarchical child of
+          managed objects
+
+    Return:
+        List of ManagedObjects
+
+    Example:
+        response = handle.query_dn("org-root", need_response=True)
+        molist = extract_molist_from_method_response(method_response=response,
+                                                     in_hierarchical=True)
+    """
+
     mo_list = []
     if len(method_response.out_configs.child) == 0:
         return mo_list
@@ -221,6 +304,26 @@ def extract_molist_from_method_response(method_response, in_hierarchical=False):
 
 def write_mo_tree(mo, level=0, break_level=None, show_level=[],
                   print_tree=True, tree_dict={}, dn=None):
+    """
+    Prints tree structure of any managed object
+
+    Attributes:
+        * mo (object): ManagedObject
+        * level (int): by default zero
+        * break_level (int or None): last level to process
+        * show_level (int list): levels to display
+        * print_tree (bool): if True, print mo tree
+        * tree_dict (dict): by default {}
+        * dn (str): dn
+
+    Return:
+        * dictionary
+
+    Example:
+        mo=handle.query_dn("org-root")
+        tree_dict = write_mo_tree(mo, break_level=3, show_level=[1, 3])
+    """
+
     if not mo.dn:
         mo.dn = dn
     indent = "    "
@@ -281,6 +384,24 @@ def extract_mo_tree_from_config_method_response(method_response,
                                                 show_level=[],
                                                 print_tree=False,
                                                 tree_dict={}):
+    """
+    extracts tree structure of any managed object from config method response
+
+    Attributes:
+        * method_response (object): ExternalMethod
+        * break_level (int or None): last level to process
+        * show_level (int list): levels to display
+        * print_tree (bool): if True, print mo tree
+        * tree_dict (dict): by default {}
+
+    Return:
+        * dictionary
+
+    Example:
+        response=handle.query_dn("org-root", need_response=True)
+        tree_dict = write_mo_tree(response, break_level=3, show_level=[1, 3])
+    """
+
     current_mo_list = method_response.out_configs.child
     for current_mo in current_mo_list:
         level = 0
@@ -291,6 +412,23 @@ def extract_mo_tree_from_config_method_response(method_response,
 
 
 def print_mo_hierarchy(class_id, level=0, break_level=None, show_level=[]):
+    """
+    print hierarchy of class_id
+
+    Attributes:
+        * class_id (str): class id
+        * level (int): by default zero
+        * break_level (int or None): last level to process
+        * show_level (int list): levels to display
+
+    Return:
+        * dictionary
+
+    Example:
+        response=handle.query_dn("org-root", need_response=True)
+        tree_dict = write_mo_tree(response, break_level=3, show_level=[1, 3])
+    """
+
     indent = " "
     level_indent = "%s%s)" % (indent * level, level)
     class_id = ucsgenutils.word_u(class_id)
@@ -317,6 +455,21 @@ def print_mo_hierarchy(class_id, level=0, break_level=None, show_level=[]):
 
 
 def get_naming_props(rn_str, rn_pattern):
+    """
+    extract naming property and its value from a given rn and its pattern
+
+    Attributes:
+        * rn_str (str): rn value
+        * rn_pattern (str): rn pattern from mo_meta
+
+    Return:
+        * dictionary
+
+    Example:
+        naming_props = get_naming_props(rn_str="ls-test_sp",
+                                        rn_pattern="ls-[name]")
+    """
+
     rn_regex = re.sub(r"\[(.+?)\]", r"(?P<\1>.+)", rn_pattern)
     rn_regex_pat = re.compile(rn_regex)
     match_obj = re.match(rn_regex_pat, rn_str)
@@ -326,27 +479,3 @@ def get_naming_props(rn_str, rn_pattern):
         return {}
     naming_prop_dict = match_obj.groupdict()
     return naming_prop_dict
-
-
-def load_ucs_config():
-    from ConfigParser import SafeConfigParser
-
-    config_file = os.path.join(os.path.dirname(__file__), "ucsconfig.cfg")
-    parser = SafeConfigParser()
-    parser.read(config_file)
-
-    ssl_protocol = parser.get('ssl_connection', 'ssl_protocol').strip('"')
-    is_verify_certificate = parser.getboolean('ssl_connection',
-                                              'verify_certificate')
-
-    if not sys.version_info < (2, 6):
-        from functools import partial
-        import ssl
-
-        ssl_protocol_dict = {'TLSv1': ssl.PROTOCOL_TLSv1}
-
-        ssl.wrap_socket = partial(ssl.wrap_socket,
-                                  ssl_version=ssl_protocol_dict[ssl_protocol])
-
-        if not sys.version_info < (2, 7, 9) and not is_verify_certificate:
-            ssl._create_default_https_context = ssl._create_unverified_context
