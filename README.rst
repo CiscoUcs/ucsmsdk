@@ -8,9 +8,6 @@ ucsmsdk
 .. image:: https://img.shields.io/pypi/v/ucsmsdk.svg
         :target: https://pypi.python.org/pypi/ucsmsdk
 
-.. image:: https://ucspython.herokuapp.com/badge.svg 
-        :target: https://ucspython.herokuapp.com
-
 
 Python SDK for Cisco UCS
 
@@ -44,3 +41,7 @@ Features
 * Integrating the sphinx framework for documentation
 * PEP8 Compliance
 
+Slack:
+------
+* Slack requires registration, but the UcsPython team is open invitation to
+  anyone to register https://ucspython.herokuapp.com 
