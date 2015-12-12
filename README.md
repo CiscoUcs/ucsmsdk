@@ -1,34 +1,24 @@
-===============================
-ucsmsdk
-===============================
+[![](https://img.shields.io/travis/CiscoUcs/ucsmsdk.svg)](https://travis-ci.org/CiscoUcs/ucsmsdk)
+[![](https://ucspython.herokuapp.com/badge.svg)](https://ucspython.herokuapp.com)
+[![](https://img.shields.io/pypi/v/ucsmsdk.svg)](https://pypi.python.org/pypi/ucsmsdk)
 
-.. image:: https://img.shields.io/travis/CiscoUcs/ucsmsdk.svg
-        :target: https://travis-ci.org/CiscoUcs/ucsmsdk
-
-.. image:: https://img.shields.io/pypi/v/ucsmsdk.svg
-        :target: https://pypi.python.org/pypi/ucsmsdk
-
-
-Python SDK for Cisco UCS
+# Python SDK for Cisco UCS
 
 * Apache License, Version 2.0 (the "License") 
 * Documentation: https://CiscoUcs.github.io/ucsmsdk_docs/
 
-===============================
-Installation
-===============================
-.. code::
-
-    Install pip:
+## Installation
+```
+    - Install pip (skip if pip is already available):
         wget https://bootstrap.pypa.io/get-pip.py
         python get-pip.py
 
     git clone https://github.com/CiscoUcs/ucsmsdk.git
     cd ucsmsdk
     make install
+```
 
-Features
---------
+## Features
 
 * Python SDK for UCS server management and related automation
 * Supports every Managed Object exposed by Ucs
@@ -41,7 +31,8 @@ Features
 * Integrating the sphinx framework for documentation
 * PEP8 Compliance
 
-Slack:
-------
-* Slack requires registration, but the UcsPython team is open invitation to
-  anyone to register https://ucspython.herokuapp.com 
+
+## Community:
+
+* We are on Slack - slack requires registration, but the ucspython team is open invitation to
+  anyone to register [here](https://ucspython.herokuapp.com) 
