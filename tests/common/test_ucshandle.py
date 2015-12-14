@@ -18,6 +18,5 @@ from ucsmsdk.ucshandle import UcsHandle
 def test_001_create_handle():
     handle = UcsHandle("192.168.1.1", "admin", "my_extra_secure_password")
     assert_equal(handle.username, "admin")
-    assert_equal(handle.password, "my_extra_secure_password")
     assert_equal(handle.ip, "192.168.1.1")
 
