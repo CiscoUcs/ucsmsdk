@@ -56,50 +56,34 @@ class UcsSession(object):
 
     @property
     def ucs(self):
-        """
-        Getter method of UcsSession Class.
-        """
-
         return self.__ucs
 
     @property
-    def cookie(self):
-        """
-        Getter method of UcsSession Class.
-        """
+    def username(self):
+        return self.__username
 
+    @property
+    def ip(self):
+        return self.__ip
+
+    @property
+    def cookie(self):
         return self.__cookie
 
     @property
     def session_id(self):
-        """
-        Getter method of UcsSession Class.
-        """
-
         return self.__session_id
 
     @property
     def version(self):
-        """
-        Getter method of UcsSession Class.
-        """
-
         return self.__version
 
     @property
     def name(self):
-        """
-        Getter method of UcsSession Class.
-        """
-
         return self.__name
 
     @property
     def uri(self):
-        """
-        Getter method of UcsSession Class.
-        """
-
         return self.__uri
 
     def __create_uri(self, port, secure):
