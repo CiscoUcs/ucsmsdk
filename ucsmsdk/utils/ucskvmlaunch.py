@@ -12,7 +12,7 @@
 # limitations under the License.
 
 """
-This module contains the api used to launch ucs kvm.
+This module contains the APIs used to launch ucs kvm.
 """
 
 import urllib
@@ -28,9 +28,8 @@ log = logging.getLogger('ucs')
 
 
 class _ParamKvm(object):
-    """
-    Internal class to act as enum to support ucs_kvm_launch utility.
-    """
+    # Internal class to act as enum to support ucs_kvm_launch utility.
+
     CENTRALE_PASSWORD = "centralePassword"
     CENTRALE_USER = "centraleUser"
     DN = "dn"
@@ -46,7 +45,7 @@ class _ParamKvm(object):
 def ucs_kvm_launch(handle, service_profile=None, blade=None, rack_unit=None,
                    frame_title=None, need_url=False):
     """
-    This operation launch ucs kvm.
+    ucs_kvm_launch launches the kvm session for a specified server.
 
     Args:
         handle (UcsHandle)
@@ -54,19 +53,19 @@ def ucs_kvm_launch(handle, service_profile=None, blade=None, rack_unit=None,
         blade (ComputeBlade)
         rack_unit (ComputeRackUnit)
         frame_title (str): title of launched frame
-        need_url (bool): if true, it returns url to launch kvm and will not
-                            launch kvm session
+        need_url (bool): True/False,
+                         Returns URL to launch kvm, if True
 
     Example:
-        sp is LsServer object \n
+        # sp is service profile object \n
         ucs_kvm_launch(handle, service_profile=sp)\n
         ucs_kvm_launch(handle, service_profile=sp, frame_title="using sp")\n
         ucs_kvm_launch(handle, service_profile=sp, need_url=True)\n
 
-        blade1 is ComputeBlade object\n
+        # blade1 is ComputeBlade object\n
         ucs_kvm_launch(handle, blade=blade1)\n
 
-        rack1 is ComputeRackUnit object\n
+        # rack1 is ComputeRackUnit object\n
         ucs_kvm_launch(handle, rack_unit=rack1)\n
     """
 

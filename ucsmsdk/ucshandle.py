@@ -26,7 +26,7 @@ log = logging.getLogger('ucs')
 
 class UcsHandle(UcsSession):
     """
-    Handle class is the user interface point for any Ucs related communication.
+    UcsHandle class is the user interface point for any Ucs related communication.
 
     Args:
         ip (str): The IP or Hostname of the UCS Server
@@ -53,21 +53,22 @@ class UcsHandle(UcsSession):
 
     def set_dump_xml(self):
         """
-        Enables the xml request and response to be added to logs.
+        Enables the logging of xml requests and responses.
         """
 
         self._set_dump_xml()
 
     def unset_dump_xml(self):
         """
-        Disables the xml request and response to be added to logs.
+        Disables the logging of xml requests and responses.
         """
 
         self._unset_dump_xml()
 
     def login(self, auto_refresh=False, force=False):
         """
-        Connects to ucsm connected using respective UcsHandle.
+        Initiates a connection to the server referenced by the UcsHandle.
+        A cookie is populated in the UcsHandle, if the login is successful.
 
         Args:
             auto_refresh (bool): if set to True, it refresh the cookie
@@ -91,7 +92,7 @@ class UcsHandle(UcsSession):
 
     def logout(self):
         """
-        Disconnects from ucsm connected using respective UcsHandle.
+        Disconnects from the server referenced by the UcsHandle.
 
         Args:
             None
@@ -109,7 +110,10 @@ class UcsHandle(UcsSession):
 
     def process_xml_elem(self, elem):
         """
-        Processes xml element returned by method factory methods.
+        process_xml_elem is a helper method which posts xml elements to the
+        server and returns parsed response. It's role is to operate on the
+        output of methods from ucsmethodfactory, which return xml element
+        node(s).
 
         Args:
             elem (xml element object)
@@ -145,7 +149,7 @@ class UcsHandle(UcsSession):
 
     def get_auth_token(self):
         """
-            Get ucsm auto token.
+        Returns a token that is used for UCS authentication.
 
         Args:
             None
@@ -156,7 +160,6 @@ class UcsHandle(UcsSession):
         Example:
             handle.get_auth_token()
 
-            where handle is UcsHandle()
         """
 
         from ucsmethodfactory import aaa_get_n_compute_auth_token_by_dn
@@ -184,14 +187,15 @@ class UcsHandle(UcsSession):
 
     def query_dns(self, *dns):
         """
-        Find objects using a comma separated string of distinguished name.
+        Queries multiple obects from the server based of a comma separated list
+        of their distinguised names.
 
         Args:
             dns (comma separated strings): distinguished names to be
                 queried for
 
         Returns:
-            Dictionary {dn: object}
+            Dictionary {dn1: object, dn2: object2}
 
         Example:
             obj = handle.lookup_by_dns("fabric/lan/net-100", "fabric/lan/net-101")
@@ -227,13 +231,14 @@ class UcsHandle(UcsSession):
 
     def query_classids(self, *class_ids):
         """
-        Find objects using a comma separated string of class ids.
+        Queries multiple obects from the server based of a comma separated list
+        of their class Ids.
 
         Args:
             class_ids (comma separated strings): Class Ids to be queried for
 
         Returns:
-            Dictionary {class_id: [list of object]}
+        Dictionary {class_id1: [objects], class_id2: [objects]}
 
         Example:
             obj = handle.lookup_by_dns("OrgOrg", "LsServer")
@@ -276,14 +281,15 @@ class UcsHandle(UcsSession):
 
     def query_dn(self, dn, hierarchy=False, need_response=False):
         """
-        Find an object using it's distinguished name.
+        Finds an object using it's distinguished name.
 
         Args:
             dn (str): distinguished name of the object to be queried for.
-            hierarchy(bool): if set to True will return all the child
-                             hierarchical objects.
-            need_response(bool): if set to True will return only response
-                                object.
+            hierarchy(bool): True/False,
+                                get all objects in hierarchy if True
+            need_response(bool): True/False,
+                                return the response xml node, instead of parsed
+                                objects
 
         Returns:
             managedobject or None   by default\n
@@ -332,7 +338,7 @@ class UcsHandle(UcsSession):
     def query_classid(self, class_id=None, filter_str=None, hierarchy=False,
                       need_response=False):
         """
-        Find an object using it's class id.
+        Finds an object using it's class id.
 
         Args:
             class_id (str): class id of the object to be queried for.
@@ -413,8 +419,11 @@ class UcsHandle(UcsSession):
     def query_children(self, in_mo=None, in_dn=None, class_id=None,
                        hierarchy=False):
         """
-        Find all or specific class_id children object of a given managed object
-        or a given dn.
+        Finds children of a given managed object or distinguished name.
+        Arguments can be specified to query only a specific type(class_id)
+        of children.
+        Arguments can also be specified to query only direct children or the
+        entire hierarchy of children.
 
         Args:
             in_mo (managed object): query children managed object under this
@@ -473,12 +482,15 @@ class UcsHandle(UcsSession):
 
     def add_mo(self, mo, modify_present=False):
         """
-        Adds an object to the UCSM.
+        Adds a managed object to the UcsHandle commit buffer.
+        This method does not trigger a commit by itself.
+        This needs to be followed by a handle.commit() either immediately or
+        after more operations to ensure successful addition of object on server
 
         Args:
             mo (managedobject): ManagedObject to be added.
-            modify_present (bool): if set to True, overwrite the existing
-                                      object.
+            modify_present (bool): True/False,
+                                    overwrite existing object if True
 
         Returns:
             None
@@ -497,10 +509,15 @@ class UcsHandle(UcsSession):
 
     def set_mo(self, mo):
         """
-        Modifies configuration of an object.
+        Modifies a managed object and adds it to UcsHandle commit buffer (if
+         not already in it).
+        This method does not trigger a commit by itself.
+        This needs to be followed by a handle.commit() either immediately or
+        after more operations to ensure successful modification of object on
+        server.
 
         Args:
-            mo (managedobject): ManagedObject with modified properties.
+            mo (managedobject): Managed object with modified properties.
 
         Returns:
             None
@@ -515,10 +532,14 @@ class UcsHandle(UcsSession):
 
     def remove_mo(self, mo):
         """
-        Removes object from UCSM.
+        Removes a managed object.
+        This method does not trigger a commit by itself.
+        This needs to be followed by a handle.commit() either immediately or
+        after more operations to ensure successful removal of object from the
+        server.
 
         Args:
-            mo (managedobject): ManagedObject to be removed.
+            mo (managedobject): Managed object to be removed.
 
         Returns:
             None
@@ -536,9 +557,10 @@ class UcsHandle(UcsSession):
 
     def commit(self):
         """
-        Sends the object to UCSM.
-        Add, modify or remove using add_mo(), set_mo() and remove_mo()
-        respectively.
+        Commit the buffer to the server. Pushes all the configuration changes
+        so far to the server.
+        Configuration could be added to the commit buffer using add_mo(),
+        set_mo(), remove_mo() prior to making a handle.commit()
 
         Args:
             None
@@ -608,7 +630,7 @@ class UcsHandle(UcsSession):
 
     def commit_buffer_discard(self):
         """
-        clears the commit buffer
+        Discard the configuration changes in the commit buffer.
 
         Args:
             None
