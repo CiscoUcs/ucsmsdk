@@ -66,6 +66,7 @@ coverage:
 docs:
 	rm -f docs/ucsmsdk.rst
 	rm -f docs/modules.rst
+	rm -f docs/ucsmsdk.*
 	sphinx-apidoc -o docs/ ucsmsdk
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
