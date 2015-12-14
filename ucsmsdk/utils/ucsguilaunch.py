@@ -12,7 +12,7 @@
 # limitations under the License.
 
 """
-This module contains the api used to launch ucs gui.
+This module contains APIs used to launch the Java based UCSM GUI.
 """
 
 import os
@@ -28,12 +28,14 @@ log = logging.getLogger('ucs')
 
 def ucs_gui_launch(handle, need_url=False):
     """
-    This operation launch ucs gui.
+    ucs_gui_launch launches the Java based UCSM GUI.
+    This method requires the necessary Jdk to be in place, for it to be
+    successful.
 
     Args:
-        handle (UcsHandle)
-        need_url (bool): if true, it returns url to launch gui and will not
-                            launch gui
+        handle (UcsHandle): Ucs connection handle
+        need_url (bool): True/False,
+                         returns the URL to launch GUI, if True
 
     Example:
         ucs_gui_launch(handle)\n
@@ -47,7 +49,7 @@ def ucs_gui_launch(handle, need_url=False):
     os_support = ["Windows", "Linux", "Microsoft", "Darwin"]
     if platform.system() not in os_support:
         raise UcsValidationException(
-            "Currently works with Windows OS and Ubuntu")
+            "Unsupported operating system")
 
     jnlp_file = None
     try:
@@ -108,8 +110,8 @@ def ucs_gui_launch(handle, need_url=False):
                     os.remove(jnlp_file)
             else:
                 return None
-    except Exception:
+    except Exception, e:
         fileinput.close()
         if os.path.exists(jnlp_file):
             os.remove(jnlp_file)
-        raise
+        raise e

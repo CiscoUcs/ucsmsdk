@@ -12,7 +12,7 @@
 # limitations under the License.
 
 """
-This module contains the api used to take backup of ucs and import the backup.
+This module contains APIs to facilitate Ucs backup and import
 """
 
 import os
@@ -28,18 +28,18 @@ log = logging.getLogger('ucs')
 def backup_ucs(handle, backup_type, file_dir, file_name, timeout_in_sec=600,
                preserve_pooled_values=False):
     """
-    This operation creates and download the backup of ucs.
+    backup_ucs helps create and download Ucs backups.
 
     Args:
-        handle (UcsHandle)
-        backup_type (str): specifies the type of backup
-                      i.e. fullstate/config-logical/config-system/
-                      config-all
-        file_dir (str): directory to download ucs backup file
-        file_name (str): backup file name to be imported
+        handle (UcsHandle): Ucs Connection handle
+        backup_type (str): type of backup
+                        i.e. fullstate/config-logical/config-system/config-all
+        file_dir (str): directory to download ucs backup file to
+        file_name (str): name for the backup file
         timeout_in_sec (number) : time in seconds for which method waits
-                              for the backUp file to generate else exit.
-        preserve_pooled_values (boolean): by default False
+                              for the backUp file to generate before it exits.
+        preserve_pooled_values (boolean): True/False,
+                                            False - by default
 
     Example:
         file_dir = "/home/user/backup"\n
@@ -52,12 +52,12 @@ def backup_ucs(handle, backup_type, file_dir, file_name, timeout_in_sec=600,
     from ..mometa.top.TopSystem import TopSystem
 
     if not file_dir:
-        raise UcsValidationException("Provide file_dir")
+        raise UcsValidationException("Missing file_dir argument")
     if not file_name:
-        raise UcsValidationException("Provide file_name.")
+        raise UcsValidationException("Missing file_name argument")
 
     if backup_type is None:
-        raise UcsValidationException("Provide backup_type")
+        raise UcsValidationException("Missing backup_type argument")
 
     backup_types = ["config-all", "config-logical",
                     "config-system", "full-state"]
@@ -121,8 +121,6 @@ def backup_ucs(handle, backup_type, file_dir, file_name, timeout_in_sec=600,
             handle.commit()
             raise UcsValidationException('backup_ucs timed out')
 
-    print mgmt_backup  # BackUp Complete.
-
     # download backup
     file_source = "backupfile/" + file_name
     try:
@@ -137,21 +135,19 @@ def backup_ucs(handle, backup_type, file_dir, file_name, timeout_in_sec=600,
     handle.remove_mo(mgmt_backup)
     handle.commit()
 
-    print mgmt_backup
-
 
 def import_ucs_backup(handle, file_dir, file_name, merge=False):
     """
-    This operation will upload the UCSM backup taken earlier via GUI
+    This operation uploads a Ucs backup taken earlier via GUI
     or backup_ucs operation for all configuration, system configuration,
     and logical configuration files. User can perform an import while the
     system is up and running.
 
     Args:
-        handle (UcsHandle)
-        file_dir (str): directory contains ucs backup file
+        handle (UcsHandle): connection handle
+        file_dir (str): directory containing ucs backup file
         file_name (str): backup file name to be imported
-        merge (boolean): specifies whether to merge the backup
+        merge (boolean): True/False, specifies whether to merge the backup
                         configuration with the existing UCSM configuration
 
     Example:
@@ -166,9 +162,9 @@ def import_ucs_backup(handle, file_dir, file_name, merge=False):
     from ..mometa.mgmt.MgmtImporter import MgmtImporter, MgmtImporterConsts
 
     if not file_dir:
-        raise UcsValidationException("provide file_dir")
+        raise UcsValidationException("Missing file_dir argument")
     if not file_name:
-        raise UcsValidationException("provide file_name")
+        raise UcsValidationException("Missing file_name argument")
 
     file_path = os.path.join(file_dir, file_name)
     log.debug(file_path)

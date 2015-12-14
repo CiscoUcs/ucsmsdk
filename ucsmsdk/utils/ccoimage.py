@@ -13,7 +13,7 @@
 
 
 """
-This module is responsible to download the ccoimage.
+This module has helper methods to facilitate image download from CCO
 """
 
 import os
@@ -24,7 +24,7 @@ from ..ucsdriver import UcsDriver
 
 
 class _UcsCcoImageList:
-    """used as enum for cco image attributes"""
+    """enum for cco image attributes"""
     IDAC_TAG_VERSION = "version"
     IDAC_TAG_IMAGE_NAME = "imageName"
     IDAC_TAG_URL = "url"
@@ -36,7 +36,7 @@ class _UcsCcoImageList:
 
 class UcsCcoImage(object):
     """
-    Describes the cco image
+    Describes the cco image object
     """
 
     def __init__(self):
@@ -80,7 +80,7 @@ class UcsCcoImage(object):
 def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None,
                            proxy=None):
     """
-    Gets the list of available cco images
+    Gets the list of images available on CCO
 
     Args:
         username (str): username to connect to image server
@@ -191,12 +191,12 @@ def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None,
 
 def get_ucs_cco_image(image, file_dir, proxy=None):
     """
-    Downloads the cco image
+    Downloads image from CCO
 
     Args:
-        image (object): object of type UcsCcoImage
-        file_dir (str): directory to download image
-        proxy (str): proxy used for connection
+        image (UcsCcoImage): object of type UcsCcoImage
+        file_dir (str): directory to download image to
+        proxy (str): proxy (if any)
 
     Returns:
         None
@@ -207,15 +207,15 @@ def get_ucs_cco_image(image, file_dir, proxy=None):
     """
 
     if not image:
-        raise UcsValidationException("Provide image.")
+        raise UcsValidationException("Provide an image to be downloaded.")
     if not isinstance(image, UcsCcoImage):
         raise UcsValidationException("Object is not of type UcsCcoImage")
 
     if not file_dir:
-        raise UcsValidationException("Provide file_dir.")
+        raise UcsValidationException("Provide file_dir to download image to.")
     if not os.path.isdir(file_dir):
         raise UcsValidationException(
-            "Not the valid directory <%s>" % file_dir)
+            "Not a valid directory <%s>" % file_dir)
 
     image_url = image.url
     print "Processing Image " + str(image.image_name)
@@ -230,7 +230,7 @@ def get_ucs_cco_image(image, file_dir, proxy=None):
     local_file = os.path.join(file_dir, str(image.image_name))
 
     if not os.path.exists(local_file):
-        raise UcsValidationException("url parameter is not provided.")
+        raise UcsValidationException("URL parameter is not provided.")
 
     md5_sum = ucsgenutils.get_md5_sum(local_file)
     if not md5_sum:
@@ -244,5 +244,3 @@ def get_ucs_cco_image(image, file_dir, proxy=None):
         UcsWarning("Deleting file <%s> ....." % local_file)
         os.remove(local_file)
         return
-
-    print "Processing Image Completed."
