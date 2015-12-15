@@ -18,7 +18,6 @@ test_ucsmsdk
 
 Tests for `ucsmsdk` module.
 """
-# Dummy file
 import unittest
 
 
