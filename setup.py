@@ -44,7 +44,7 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
     ],
-    tests_require=['requests', 'nose', 'coverage', 'mock'],
+    tests_require=['nose'],
     test_suite='nose.collector',
     extras_require={
         'ssl': ['pyOpenSSL'],
