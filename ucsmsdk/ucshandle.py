@@ -387,8 +387,9 @@ class UcsHandle(UcsSession):
         if not class_id:
             raise ValueError("Provide Parameter class_id")
 
-        if ucsgenutils.word_u(class_id) in MO_CLASS_ID:
-            meta_class_id = ucsgenutils.word_l(class_id)
+        meta_class_id = ucscoreutils.find_class_id_in_mo_meta_ignore_case(
+                                                                class_id)
+        if meta_class_id:
             is_meta_class_id = True
         else:
             meta_class_id = class_id

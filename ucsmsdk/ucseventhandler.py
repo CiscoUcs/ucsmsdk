@@ -132,9 +132,8 @@ class UcsEventHandle(object):
 
         try:
             xml_query = '<eventSubscribe cookie="%s"/>' % self.__handle.cookie
-            uri = self.__handle.uri
-            req = urllib2.Request(url=uri, data=xml_query)
-            self.__event_chan_resp = urllib2.urlopen(req)
+            self.__event_chan_resp = self.__handle.post_xml(xml_str=xml_query,
+                                                            read=False)
         except Exception:
             return
 

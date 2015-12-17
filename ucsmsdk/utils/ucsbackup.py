@@ -125,7 +125,7 @@ def backup_ucs(handle, backup_type, file_dir, file_name, timeout_in_sec=600,
     file_source = "backupfile/" + file_name
     try:
         handle.file_download(url_suffix=file_source,
-                             dest_dir=file_dir,
+                             file_dir=file_dir,
                              file_name=file_name)
     except Exception, err:
         UcsWarning("Download Error.....")
@@ -173,8 +173,9 @@ def import_ucs_backup(handle, file_dir, file_name, merge=False):
                                      file_path)
 
     # create MgmtImporter
-    host_name = os.environ['COMPUTERNAME'].lower() + \
-                datetime.datetime.now().strftime('%Y%m%d%H%M')
+    # host_name = os.environ['COMPUTERNAME'].lower() + \
+    #             datetime.datetime.now().strftime('%Y%m%d%H%M')
+    host_name = "backup." + str(datetime.datetime.now().strftime('%Y%m%d%H%M'))
 
     top_system = TopSystem()
     mgmt_importer = MgmtImporter(parent_mo_or_dn=top_system,
@@ -190,7 +191,7 @@ def import_ucs_backup(handle, file_dir, file_name, merge=False):
 
     uri_suffix = "operations/file-%s/importconfig.txt" % file_name
     handle.file_upload(url_suffix=uri_suffix,
-                       source_dir=file_dir,
+                       file_dir=file_dir,
                        file_name=file_name)
 
     handle.add_mo(mgmt_importer)

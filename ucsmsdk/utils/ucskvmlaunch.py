@@ -118,7 +118,7 @@ def ucs_kvm_launch(handle, service_profile=None, blade=None, rack_unit=None,
                             in_recursive=YesOrNo.FALSE,
                             in_hierarchical=YesOrNo.FALSE)
 
-        response = handle.post(elem)
+        response = handle.post_elem(elem)
         if response.error_code == 0:
             for mgmt_if in response.out_configs.child:
                 if mgmt_if.subject == MgmtIfConsts.SUBJECT_BLADE and \
@@ -141,10 +141,14 @@ def ucs_kvm_launch(handle, service_profile=None, blade=None, rack_unit=None,
             if frame_title is None:
                 frame_title = handle.name + ':' + dn + ' KVM Console'
             nvc[_ParamKvm.FRAME_TITLE] = frame_title
+            sp_mo = service_profile
+        else:
+            sp_mo = handle.query_dn(dn)
+
 
         nvc[_ParamKvm.KVM_DN] = dn
 
-        sp_mo = service_profile
+        # sp_mo = service_profile
 
         if not sp_mo.pn_dn:
             raise UcsValidationException(
@@ -182,7 +186,7 @@ def ucs_kvm_launch(handle, service_profile=None, blade=None, rack_unit=None,
                             in_recursive=YesOrNo.FALSE,
                             in_hierarchical=YesOrNo.FALSE)
 
-        response = handle.post(elem)
+        response = handle.post_elem(elem)
         if response.error_code == 0:
             for mgmt_if in response.out_configs.child:
                 if mgmt_if.subject == MgmtIfConsts.SUBJECT_BLADE and \
@@ -197,7 +201,7 @@ def ucs_kvm_launch(handle, service_profile=None, blade=None, rack_unit=None,
                                               in_cookie=handle.cookie,
                                               in_dn=pn_dn,
                                               in_number_of=2)
-    response = handle.post(elem)
+    response = handle.post_elem(elem)
     if response.error_code == 0:
         nvc[_ParamKvm.CENTRALE_PASSWORD] = response.out_tokens.split(',')[0]
         nvc[_ParamKvm.CENTRALE_USER] = response.out_user
@@ -208,7 +212,6 @@ def ucs_kvm_launch(handle, service_profile=None, blade=None, rack_unit=None,
 
     nvc[_ParamKvm.TEMP_UNPW] = "true"
     uri = handle.uri
-    uri = uri.rstrip("/nuova")
     kvm_url = '%s/ucsm/kvm.jnlp?%s' % (uri, urllib.urlencode(nvc))
 
     if need_url:

@@ -37,15 +37,16 @@ class UcsSession(object):
         self.__uri = self.__create_uri(port, secure)
 
         self.__ucs = ip
+        self.__name = None
         self.__cookie = None
         self.__session_id = None
         self.__version = None
-        self.__name = None
         self.__refresh_period = None
         self.__priv = None
         self.__domains = None
         self.__channel = None
         self.__evt_channel = None
+        self.__last_update_time = None
 
         self.__refresh_timer = None
         self.__force = False
@@ -55,16 +56,28 @@ class UcsSession(object):
         self.__driver = UcsDriver(proxy=self.__proxy)
 
     @property
-    def ucs(self):
-        return self.__ucs
+    def ip(self):
+        return self.__ip
 
     @property
     def username(self):
         return self.__username
 
     @property
-    def ip(self):
-        return self.__ip
+    def proxy(self):
+        return self.__proxy
+
+    @property
+    def uri(self):
+        return self.__uri
+
+    @property
+    def ucs(self):
+        return self.__ucs
+
+    @property
+    def name(self):
+        return self.__name
 
     @property
     def cookie(self):
@@ -79,12 +92,28 @@ class UcsSession(object):
         return self.__version
 
     @property
-    def name(self):
-        return self.__name
+    def refresh_period(self):
+        return self.__refresh_period
 
     @property
-    def uri(self):
-        return self.__uri
+    def priv(self):
+        return self.__priv
+
+    @property
+    def domains(self):
+        return self.__domains
+
+    @property
+    def channel(self):
+        return self.__channel
+
+    @property
+    def evt_channel(self):
+        return self.__evt_channel
+
+    @property
+    def last_update_time(self):
+        return self.__last_update_time
 
     def __create_uri(self, port, secure):
         """
@@ -136,15 +165,15 @@ class UcsSession(object):
         Internal method to clear the session variables
         """
 
+        self.__name = None
         self.__cookie = None
+        self.__session_id = None
+        self.__version = None
         self.__refresh_period = None
         self.__priv = None
         self.__domains = None
         self.__channel = None
         self.__evt_channel = None
-        self.__session_id = None
-        self.__version = None
-        self.__name = None
         self.__last_update_time = str(time.asctime())
 
     def __update(self, response):
@@ -154,17 +183,18 @@ class UcsSession(object):
 
         from ucscoremeta import UcsVersion
 
+        self.__name = response.out_name
         self.__cookie = response.out_cookie
+        self.__session_id = response.out_session_id
+        self.__version = UcsVersion(response.out_version)
         self.__refresh_period = response.out_refresh_period
         self.__priv = response.out_priv
         self.__domains = response.out_domains
         self.__channel = response.out_channel
         self.__evt_channel = response.out_evt_channel
-        self._session_id = response.out_session_id
-        self.__version = UcsVersion(response.out_version)
-        self.__name = response.out_name
+        self.__last_update_time = str(time.asctime())
 
-    def post(self, uri, data=None):
+    def post(self, uri, data=None, read=True):
         """
         sends the request and receives the response from ucsm server
 
@@ -179,10 +209,10 @@ class UcsSession(object):
             response = post("http://192.168.1.1:80", data=xml_str)
         """
 
-        response = self.__driver.post(uri=uri, data=data)
+        response = self.__driver.post(uri=uri, data=data, read=read)
         return response
 
-    def post_xml(self, xml_str):
+    def post_xml(self, xml_str, read=True):
         """
         sends the xml request and receives the response from ucsm server
 
@@ -197,7 +227,7 @@ class UcsSession(object):
         """
 
         ucsm_uri = self.__uri + "/nuova"
-        response_str = self.post(uri=ucsm_uri, data=xml_str)
+        response_str = self.post(uri=ucsm_uri, data=xml_str, read=read)
         if self.__driver.redirect_uri:
             self.__uri = self.__driver.redirect_uri
 
@@ -352,10 +382,11 @@ class UcsSession(object):
                 return self._login()
             return False
 
-        self.__domains = response.out_domains
-        self.__priv = response.out_priv.split(',')
-        self.__refresh_period = int(response.out_refresh_period)
         self.__cookie = response.out_cookie
+        self.__refresh_period = int(response.out_refresh_period)
+        self.__priv = response.out_priv.split(',')
+        self.__domains = response.out_domains
+        self.__last_update_time = str(time.asctime())
 
         # re-enable the timer
         self.__start_refresh_timer()

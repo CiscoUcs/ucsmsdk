@@ -255,7 +255,7 @@ def get_ucs_tech_support(handle,
         url_suffix = "techsupport/" + tech_support.name
         try:
             handle.file_download(url_suffix=url_suffix,
-                                 dest_dir=file_dir,
+                                 file_dir=file_dir,
                                  file_name=file_name)
         except Exception, err:
             UcsWarning(str(err))
