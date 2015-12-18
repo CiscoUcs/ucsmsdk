@@ -139,9 +139,17 @@ class UcsEventHandle(object):
 
         try:
             while self.__event_chan_resp and len(self.__wbs):
+                # log.debug('waiting to acquire lock on %s' %
+                #           self.__enqueue_thread.name)
+                self.__condition.acquire()
+                # log.debug('condition acquired by %s' %
+                #           self.__enqueue_thread.name)
+
                 if self.__handle.cookie is None:
                     break
-                self.__condition.acquire()
+                if self.__event_chan_resp is None:
+                    break
+
                 resp = self.__event_chan_resp.readline()
                 resp = self.__event_chan_resp.read(int(resp))
                 for mo_elem in self.__get_mo_elem(resp):
@@ -154,10 +162,20 @@ class UcsEventHandle(object):
                     for watch_block in self.__wbs:
                         if watch_block.fmce(mce):
                             watch_block.enqueue(mce)
+                            # log.debug('condition notified by %s' %
+                            #           self.__enqueue_thread.name)
                             self.__condition.notify()
+
+                # log.debug('condition released by %s' %
+                #           self.__enqueue_thread.name)
                 self.__condition.release()
-        finally:
-            self.__condition.release()
+
+            if len(self.__wbs) == 0:
+                self.__condition.acquire()
+                self.__condition.notify()
+                self.__condition.release()
+        except:
+            raise
 
     def __thread_enqueue_start(self):
         """
@@ -167,16 +185,16 @@ class UcsEventHandle(object):
 
         self.__enqueue_thread = Thread(name="enqueue_thread",
                                        target=self.__enqueue_function)
-        self.__enqueue_thread.daemon = True
+        # self.__enqueue_thread.daemon = True
         self.__enqueue_thread.start()
 
-    def __thread_enqueue_stop(self):
-        """
-        Internal method to stop the enqueue thread.
-        """
-
-        self.__enqueue_thread = None
-        self.__event_chan_resp = None
+    # def __thread_enqueue_stop(self):
+    #     """
+    #     Internal method to stop the enqueue thread.
+    #     """
+    #
+    #     #self.__enqueue_thread = None
+    #     self.__event_chan_resp = None
 
     def __dequeue_function(self):
         """
@@ -184,7 +202,12 @@ class UcsEventHandle(object):
         """
 
         while len(self.__wbs):
+            # log.debug('waiting to acquire lock on %s' %
+            #               self.__dequeue_thread.name)
             self.__condition.acquire()
+            # log.debug('condition acquired by %s' %
+            #           self.__dequeue_thread.name)
+
             lowest_timeout = None
             wb_to_remove = []
 
@@ -205,9 +228,10 @@ class UcsEventHandle(object):
                 if poll_sec is not None and managed_object is not None:
                     pmo = self.__handle.query_dn(managed_object.dn)
                     if pmo is None:
-                        UcsWarning('Mo ' + managed_object.dn + ' not found.')
+                        UcsWarning('Mo ' +
+                                   managed_object.dn +
+                                   ' not found.')
                         continue
-                    # gmo = _GenericMo(mo=pmo, option=WriteXmlOption.ALL)
                     elem = pmo.to_xml()
                     xml_str = xc.to_xml_str(elem)
                     gmo = ucsmo.generic_mo_from_xml(xml_str)
@@ -234,7 +258,8 @@ class UcsEventHandle(object):
                     if mce is None:
                         continue
 
-                if managed_object is None:  # Means parameterset is not Mo
+                # Means parameter set is not Mo
+                if managed_object is None:
                     if watch_block.callback is not None:
                         watch_block.callback(mce)
                     continue
@@ -243,7 +268,6 @@ class UcsEventHandle(object):
                     elem = mce.mo.to_xml()
                     xml_str = xc.to_xml_str(elem)
                     gmo = ucsmo.generic_mo_from_xml(xml_str)
-                    # gmo = _GenericMo(mo=mce.mo, option=WriteXmlOption.ALL)
 
                 attributes = []
                 if mce is None:
@@ -263,9 +287,9 @@ class UcsEventHandle(object):
                         mce = MoChangeEvent(event_id=0, mo=pmo,
                                             change_list=prop)
 
-                    # check if any of the conditional checks match
-                    # if so, call the callback specified by the application
-                    # and remove the watch_block (deferred to outside the loop)
+            # check if any of the conditional checks match
+            # if so, call the callback specified by the application
+            # and remove the watch_block (deferred to outside the loop)
                     if (
                         (len(success_value) > 0 and
                                     prop_val in success_value) or
@@ -309,8 +333,14 @@ class UcsEventHandle(object):
             # were deleted in the above loop.
             # In that case, no need to wait for more events
             if len(self.__wbs):
+                # log.debug('condition wait by %s' %
+                #           self.__dequeue_thread.name)
                 self.__condition.wait(lowest_timeout)
-        self.__condition.release()
+
+            # log.debug('condition released by %s' %
+            #           self.__dequeue_thread.name)
+            self.__condition.release()
+
         return
 
     def __thread_dequeue_start(self):
@@ -320,14 +350,14 @@ class UcsEventHandle(object):
 
         self.__dequeue_thread = Thread(name="dequeue_thread",
                                        target=self.__dequeue_function)
-        self.__dequeue_thread.daemon = True
+        # self.__dequeue_thread.daemon = True
         self.__dequeue_thread.start()
 
-    def __thread_dequeue_stop(self):
-        """
-        Internal method to stop dequeue thread.
-        """
-        self.__dequeue_thread = None
+    # def __thread_dequeue_stop(self):
+    #     """
+    #     Internal method to stop dequeue thread.
+    #     """
+    #     self.__dequeue_thread = None
 
     def watch_block_add(self, params,
                         filter_callback,
@@ -361,9 +391,9 @@ class UcsEventHandle(object):
         if watch_block in self.__wbs:
             self.__wbs.remove(watch_block)
 
-        if len(self.__wbs) == 0:
-            self.__thread_enqueue_stop()
-            self.__thread_dequeue_stop()
+        # if len(self.__wbs) == 0:
+        #     self.__thread_enqueue_stop()
+        #     self.__thread_dequeue_stop()
 
     def add(self,
             class_id=None,
