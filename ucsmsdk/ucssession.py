@@ -408,8 +408,9 @@ class UcsSession(object):
                                             dn=top_system.dn)
                 response = self.post_elem(elem)
                 if response.error_code != 0:
-                    raise UcsException(response.error_code,
-                                       response.error_descr)
+                    # raise UcsException(response.error_code,
+                    #                    response.error_descr)
+                    return False
                 return True
             else:
                 self._logout()
@@ -436,6 +437,8 @@ class UcsSession(object):
         from ucsmethodfactory import aaa_login
         from ucsmethodfactory import config_resolve_class
         from ucsmethodfactory import config_resolve_dn
+
+        self.__force = force
 
         if self.__validate_connection():
             return True
