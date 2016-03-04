@@ -408,8 +408,6 @@ class UcsSession(object):
                                             dn=top_system.dn)
                 response = self.post_elem(elem)
                 if response.error_code != 0:
-                    # raise UcsException(response.error_code,
-                    #                    response.error_descr)
                     return False
                 return True
             else:
