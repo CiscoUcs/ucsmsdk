@@ -1,11 +1,9 @@
 """This module contains the general information for AaaConsoleAuth ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class AaaConsoleAuthConsts():
@@ -31,21 +29,21 @@ class AaaConsoleAuth(ManagedObject):
     consts = AaaConsoleAuthConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AaaConsoleAuth", "aaaConsoleAuth", "console-auth", VersionMeta.Version141i, "InputOutput", 0x3ffL, [], ["aaa", "admin"], [u'aaaAuthRealm'], [u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("AaaConsoleAuth", "aaaConsoleAuth", "console-auth", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["aaa", "admin"], [u'aaaAuthRealm'], [u'faultInst'], ["Get", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "oper_provider_group": MoPropertyMeta("oper_provider_group", "operProviderGroup", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 127, None, [], []), 
         "oper_realm": MoPropertyMeta("oper_realm", "operRealm", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ldap", "local", "none", "radius", "tacacs"], []), 
-        "provider_group": MoPropertyMeta("provider_group", "providerGroup", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20L, 0, 127, None, [], []), 
-        "realm": MoPropertyMeta("realm", "realm", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["ldap", "local", "none", "radius", "tacacs"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "use2_factor": MoPropertyMeta("use2_factor", "use2Factor", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, ["false", "no", "true", "yes"], []), 
+        "provider_group": MoPropertyMeta("provider_group", "providerGroup", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20, 0, 127, None, [], []), 
+        "realm": MoPropertyMeta("realm", "realm", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["ldap", "local", "none", "radius", "tacacs"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "use2_factor": MoPropertyMeta("use2_factor", "use2Factor", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["false", "no", "true", "yes"], []), 
     }
 
     prop_map = {

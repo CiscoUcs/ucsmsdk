@@ -1,11 +1,9 @@
 """This module contains the general information for AdaptorFcIfFC4StatsHist ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class AdaptorFcIfFC4StatsHistConsts():
@@ -50,7 +48,7 @@ class AdaptorFcIfFC4StatsHist(ManagedObject):
     consts = AdaptorFcIfFC4StatsHistConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("AdaptorFcIfFC4StatsHist", "adaptorFcIfFC4StatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xfL, [], ["read-only"], [u'adaptorFcIfFC4Stats'], [], ["Get"])
+    mo_meta = MoMeta("AdaptorFcIfFC4StatsHist", "adaptorFcIfFC4StatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], [u'adaptorFcIfFC4Stats'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
@@ -59,7 +57,7 @@ class AdaptorFcIfFC4StatsHist(ManagedObject):
         "control_requests_delta_avg": MoPropertyMeta("control_requests_delta_avg", "controlRequestsDeltaAvg", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 
         "control_requests_delta_max": MoPropertyMeta("control_requests_delta_max", "controlRequestsDeltaMax", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 
         "control_requests_delta_min": MoPropertyMeta("control_requests_delta_min", "controlRequestsDeltaMin", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "id": MoPropertyMeta("id", "id", "ulong", VersionMeta.Version111j, MoPropertyMeta.NAMING, None, None, None, None, [], []), 
         "input_megabytes": MoPropertyMeta("input_megabytes", "inputMegabytes", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 
         "input_megabytes_delta": MoPropertyMeta("input_megabytes_delta", "inputMegabytesDelta", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 
@@ -82,9 +80,9 @@ class AdaptorFcIfFC4StatsHist(ManagedObject):
         "output_requests_delta_avg": MoPropertyMeta("output_requests_delta_avg", "outputRequestsDeltaAvg", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 
         "output_requests_delta_max": MoPropertyMeta("output_requests_delta_max", "outputRequestsDeltaMax", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 
         "output_requests_delta_min": MoPropertyMeta("output_requests_delta_min", "outputRequestsDeltaMin", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "suspect": MoPropertyMeta("suspect", "suspect", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "thresholded": MoPropertyMeta("thresholded", "thresholded", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 

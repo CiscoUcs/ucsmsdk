@@ -17,11 +17,11 @@ It contains supporting classes for Filter and External Method.
 
 """
 
-import ucsgenutils
-import ucscoreutils as coreutils
-from ucsmethod import ExternalMethod
-from ucscoremeta import WriteXmlOption
-from ucsconstants import YesOrNo
+from . import ucsgenutils
+from . import ucscoreutils as coreutils
+from .ucsmethod import ExternalMethod
+from .ucscoremeta import WriteXmlOption
+from .ucsconstants import YesOrNo
 
 
 def aaa_change_self_password(cookie, in_confirm_new_password, in_new_password, in_old_password, in_user_name):
@@ -334,38 +334,28 @@ def ape_inject_stimuli(cookie, in_from_svc, in_stimuli, in_to_svc):
     return xml_request
 
 
-def ape_insert_new_chassis(cookie, in_config, in_device_primary_key, in_is_refresh, in_model, in_serial, in_sw_id, in_sw_port_id, in_sw_slot_id, in_vendor):
+def ape_insert_new_chassis(cookie, in_device_primary_key, in_model, in_serial, in_vendor):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ApeInsertNewChassis")
 
     method.cookie = cookie
-    method.in_config = in_config
     method.in_device_primary_key = in_device_primary_key
-    method.in_is_refresh = str(in_is_refresh)
     method.in_model = in_model
     method.in_serial = in_serial
-    method.in_sw_id = in_sw_id
-    method.in_sw_port_id = str(in_sw_port_id)
-    method.in_sw_slot_id = str(in_sw_slot_id)
     method.in_vendor = in_vendor
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
     return xml_request
 
 
-def ape_insert_new_fex(cookie, in_config, in_device_primary_key, in_is_refresh, in_model, in_serial, in_sw_id, in_sw_port_id, in_sw_slot_id, in_vendor):
+def ape_insert_new_fex(cookie, in_device_primary_key, in_model, in_serial, in_vendor):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ApeInsertNewFex")
 
     method.cookie = cookie
-    method.in_config = in_config
     method.in_device_primary_key = in_device_primary_key
-    method.in_is_refresh = str(in_is_refresh)
     method.in_model = in_model
     method.in_serial = in_serial
-    method.in_sw_id = in_sw_id
-    method.in_sw_port_id = str(in_sw_port_id)
-    method.in_sw_slot_id = str(in_sw_slot_id)
     method.in_vendor = in_vendor
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
@@ -455,6 +445,18 @@ def ape_mc_get_attribute(cookie, in_attribute_ids, in_mc_ip):
     return xml_request
 
 
+def ape_mc_get_attribute_data(cookie, in_attribute_id, in_mc_ip):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ApeMcGetAttributeData")
+
+    method.cookie = cookie
+    method.in_attribute_id = str(in_attribute_id)
+    method.in_mc_ip = in_mc_ip
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
 def ape_mc_get_bios_tokens(cookie, in_chassis_id, in_instance_id, in_slot_id):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ApeMcGetBiosTokens")
@@ -480,14 +482,12 @@ def ape_mc_get_fru(cookie, in_fru_ids, in_mc_ip):
     return xml_request
 
 
-def ape_mc_get_param(cookie, in_mc_address, in_mc_ip, in_param, in_param_ids):
+def ape_mc_get_param(cookie, in_mc_ip, in_param_ids):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ApeMcGetParam")
 
     method.cookie = cookie
-    method.in_mc_address = in_mc_address
     method.in_mc_ip = in_mc_ip
-    method.in_param = str(in_param)
     method.in_param_ids = in_param_ids
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
@@ -518,14 +518,12 @@ def ape_mc_get_sdr(cookie, in_mc_ip, in_sdr_ids):
     return xml_request
 
 
-def ape_mc_get_smbios(cookie, in_chassis_id, in_ip_addr, in_slot_id, in_update_cnt):
+def ape_mc_get_smbios(cookie, in_ip_addr, in_update_cnt):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ApeMcGetSmbios")
 
     method.cookie = cookie
-    method.in_chassis_id = str(in_chassis_id)
     method.in_ip_addr = in_ip_addr
-    method.in_slot_id = str(in_slot_id)
     method.in_update_cnt = in_update_cnt
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
@@ -538,6 +536,19 @@ def ape_mc_set(cookie, in_config):
 
     method.cookie = cookie
     method.in_config = in_config
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def ape_mc_set_attribute_data(cookie, in_action, in_config, in_mc_ip):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ApeMcSetAttributeData")
+
+    method.cookie = cookie
+    method.in_action = str(in_action)
+    method.in_config = in_config
+    method.in_mc_ip = in_mc_ip
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
     return xml_request
@@ -580,7 +591,7 @@ def ape_set_adaptor_firmware_version(cookie, in_adaptor_fw_version, in_adaptor_s
     return xml_request
 
 
-def ape_set_ape_sensor_reading(cookie, in_chassis_id, in_fault_level, in_instance_id, in_operation, in_sensor_name, in_server_id, in_slot_id):
+def ape_set_ape_sensor_reading(cookie, in_chassis_id, in_fault_level, in_instance_id, in_operation, in_sensor_name, in_slot_id):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ApeSetApeSensorReading")
 
@@ -590,7 +601,6 @@ def ape_set_ape_sensor_reading(cookie, in_chassis_id, in_fault_level, in_instanc
     method.in_instance_id = str(in_instance_id)
     method.in_operation = str(in_operation)
     method.in_sensor_name = str(in_sensor_name)
-    method.in_server_id = str(in_server_id)
     method.in_slot_id = str(in_slot_id)
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
@@ -933,18 +943,6 @@ def config_find_permitted(cookie, dn, in_class_id, in_filter, in_hierarchical=Ye
     return xml_request
 
 
-def config_find_storage_pack_dependencies(cookie, dn, in_storage_pack_dns):
-    """ Auto-generated UCS XML API Method. """
-    method = ExternalMethod("ConfigFindStoragePackDependencies")
-
-    method.cookie = cookie
-    method.dn = dn
-    method.in_storage_pack_dns = in_storage_pack_dns
-
-    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
-    return xml_request
-
-
 def config_get_estimate_impact(cookie, in_configs, in_deleted_dns, in_impact_analyzer_id, in_is_policy_full_config, in_source_connector_id):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ConfigGetEstimateImpact")
@@ -1006,19 +1004,6 @@ def config_install_all_impact(cookie, dn, in_blade_pack_version, in_host_pack_dn
     method.in_infra_pack_version = in_infra_pack_version
     method.in_m_series_pack_version = in_m_series_pack_version
     method.in_rack_pack_version = in_rack_pack_version
-
-    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
-    return xml_request
-
-
-def config_install_storage_all_impact(cookie, dn, in_storage_pack_dns, in_storage_pack_version):
-    """ Auto-generated UCS XML API Method. """
-    method = ExternalMethod("ConfigInstallStorageAllImpact")
-
-    method.cookie = cookie
-    method.dn = dn
-    method.in_storage_pack_dns = in_storage_pack_dns
-    method.in_storage_pack_version = in_storage_pack_version
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
     return xml_request

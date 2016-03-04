@@ -1,11 +1,9 @@
 """This module contains the general information for StatsCollectionPolicy ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class StatsCollectionPolicyConsts():
@@ -177,12 +175,12 @@ class StatsCollectionPolicy(ManagedObject):
     consts = StatsCollectionPolicyConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("StatsCollectionPolicy", "statsCollectionPolicy", "coll-policy-[name]", VersionMeta.Version102d, "InputOutput", 0x1ffL, [], ["admin", "operations"], [u'statsHolder'], [u'eventInst', u'faultInst', u'statsCollectionPolicyFsm', u'statsCollectionPolicyFsmTask'], ["Get", "Set"])
+    mo_meta = MoMeta("StatsCollectionPolicy", "statsCollectionPolicy", "coll-policy-[name]", VersionMeta.Version102d, "InputOutput", 0x1ff, [], ["admin", "operations"], [u'statsHolder'], [u'eventInst', u'faultInst', u'statsCollectionPolicyFsm', u'statsCollectionPolicyFsmTask'], ["Get", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "collection_interval": MoPropertyMeta("collection_interval", "collectionInterval", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x4L, None, None, None, ["1minute", "2minutes", "30seconds", "5minutes"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version102d, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "collection_interval": MoPropertyMeta("collection_interval", "collectionInterval", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["1minute", "2minutes", "30seconds", "5minutes"], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version102d, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "updateEpBegin", "updateEpFail", "updateEpSetEpA", "updateEpSetEpB", "updateEpSuccess"], []), 
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]), 
@@ -193,12 +191,12 @@ class StatsCollectionPolicy(ManagedObject):
         "fsm_stamp": MoPropertyMeta("fsm_stamp", "fsmStamp", "string", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []), 
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "updateEpBegin", "updateEpFail", "updateEpSetEpA", "updateEpSetEpB", "updateEpSuccess"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "ushort", VersionMeta.Version102d, MoPropertyMeta.CREATE_ONLY, 0x10L, None, None, None, [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version102d, MoPropertyMeta.NAMING, 0x20L, None, None, None, ["adapter", "chassis", "fex", "host", "port", "server", "unknown"], []), 
-        "reporting_interval": MoPropertyMeta("reporting_interval", "reportingInterval", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["15minutes", "2hours", "2minutes", "30minutes", "4hours", "60minutes", "8hours"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version102d, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "id": MoPropertyMeta("id", "id", "ushort", VersionMeta.Version102d, MoPropertyMeta.CREATE_ONLY, 0x10, None, None, None, [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version102d, MoPropertyMeta.NAMING, 0x20, None, None, None, ["adapter", "chassis", "fex", "host", "port", "server", "unknown"], []), 
+        "reporting_interval": MoPropertyMeta("reporting_interval", "reportingInterval", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["15minutes", "2hours", "2minutes", "30minutes", "4hours", "60minutes", "8hours"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version102d, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

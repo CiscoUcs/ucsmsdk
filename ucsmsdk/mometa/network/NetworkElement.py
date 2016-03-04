@@ -1,11 +1,9 @@
 """This module contains the general information for NetworkElement ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class NetworkElementConsts():
@@ -50,37 +48,37 @@ class NetworkElement(ManagedObject):
     consts = NetworkElementConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("NetworkElement", "networkElement", "switch-[id]", VersionMeta.Version101e, "InputOutput", 0x7ffL, [], ["admin", "ext-lan-config"], [u'topSystem'], [u'equipmentFan', u'equipmentFanModule', u'equipmentLocatorLed', u'equipmentPsu', u'equipmentSwitchCard', u'extmgmtIf', u'faultInst', u'firmwareStatus', u'mgmtController', u'mgmtHealthStatus', u'mgmtIPv6IfConfig', u'networkLanNeighbors', u'networkLldpNeighbors', u'networkOperLevel', u'networkSanNeighbors', u'nfsMountInst', u'storageItem', u'swAccessDomain', u'swCardEnvStats', u'swEnvStats', u'swEthLanBorder', u'swEthLanFlowMon', u'swEthLanMon', u'swExtUtility', u'swFabricZoneNs', u'swFcSanBorder', u'swFcSanMon', u'swPhys', u'swSystemStats', u'swUtilityDomain', u'swVlanPortNs'], ["Get", "Set"])
+    mo_meta = MoMeta("NetworkElement", "networkElement", "switch-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config"], [u'topSystem'], [u'equipmentFan', u'equipmentFanModule', u'equipmentLocatorLed', u'equipmentPsu', u'equipmentSwitchCard', u'extmgmtIf', u'faultInst', u'firmwareStatus', u'mgmtController', u'mgmtHealthStatus', u'mgmtIPv6IfConfig', u'networkLanNeighbors', u'networkLldpNeighbors', u'networkOperLevel', u'networkSanNeighbors', u'nfsMountInst', u'storageItem', u'swAccessDomain', u'swCardEnvStats', u'swEnvStats', u'swEthLanBorder', u'swEthLanFlowMon', u'swEthLanMon', u'swExtUtility', u'swFabricZoneNs', u'swFcSanBorder', u'swFcSanMon', u'swPhys', u'swSystemStats', u'swUtilityDomain', u'swVlanPortNs'], ["Get", "Set"])
 
     prop_meta = {
-        "admin_evac_state": MoPropertyMeta("admin_evac_state", "adminEvacState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["drain", "fill", "unknown"], []), 
+        "admin_evac_state": MoPropertyMeta("admin_evac_state", "adminEvacState", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["drain", "fill", "unknown"], []), 
         "admin_inband_if_state": MoPropertyMeta("admin_inband_if_state", "adminInbandIfState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disable", "enable"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "diff_memory": MoPropertyMeta("diff_memory", "diffMemory", "uint", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "expected_memory": MoPropertyMeta("expected_memory", "expectedMemory", "uint", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
-        "force_evac": MoPropertyMeta("force_evac", "forceEvac", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["false", "no", "true", "yes"], []), 
-        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20L, None, None, None, ["A", "B", "NONE"], []), 
+        "force_evac": MoPropertyMeta("force_evac", "forceEvac", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["false", "no", "true", "yes"], []), 
+        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20, None, None, None, ["A", "B", "NONE"], []), 
         "inband_if_gw": MoPropertyMeta("inband_if_gw", "inbandIfGw", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
         "inband_if_ip": MoPropertyMeta("inband_if_ip", "inbandIfIp", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
         "inband_if_mask": MoPropertyMeta("inband_if_mask", "inbandIfMask", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
         "inband_if_vnet": MoPropertyMeta("inband_if_vnet", "inbandIfVnet", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4090"]), 
         "inventory_status": MoPropertyMeta("inventory_status", "inventoryStatus", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|up|remote-eth-port-inventory|fc-pc-inventory|fc-port-inventory|switch-fru|vlan-comp-grp-inventory|switch-inventory|vlan-port-count|mgmt-port-inventory|card-inventory|xcvr-inventory|eth-pc-inventory|eth-port-inventory),){0,13}(defaultValue|up|remote-eth-port-inventory|fc-pc-inventory|fc-port-inventory|switch-fru|vlan-comp-grp-inventory|switch-inventory|vlan-port-count|mgmt-port-inventory|card-inventory|xcvr-inventory|eth-pc-inventory|eth-port-inventory){0,1}""", [], []), 
-        "min_active_fan": MoPropertyMeta("min_active_fan", "minActiveFan", "ushort", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "min_active_fan": MoPropertyMeta("min_active_fan", "minActiveFan", "ushort", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "oob_if_gw": MoPropertyMeta("oob_if_gw", "oobIfGw", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
-        "oob_if_ip": MoPropertyMeta("oob_if_ip", "oobIfIp", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "oob_if_gw": MoPropertyMeta("oob_if_gw", "oobIfGw", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "oob_if_ip": MoPropertyMeta("oob_if_ip", "oobIfIp", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
         "oob_if_mac": MoPropertyMeta("oob_if_mac", "oobIfMac", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
-        "oob_if_mask": MoPropertyMeta("oob_if_mask", "oobIfMask", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
-        "oper_evac_state": MoPropertyMeta("oper_evac_state", "operEvacState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["drain", "fill", "unknown"], []), 
+        "oob_if_mask": MoPropertyMeta("oob_if_mask", "oobIfMask", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "oper_evac_state": MoPropertyMeta("oper_evac_state", "operEvacState", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["drain", "fill", "unknown"], []), 
         "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["deprecated", "inoperable", "operable", "removed", "unknown"], []), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x200L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x200, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "shutdown_fan_removeal": MoPropertyMeta("shutdown_fan_removeal", "shutdownFanRemoveal", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "shutdown_fan_removeal": MoPropertyMeta("shutdown_fan_removeal", "shutdownFanRemoveal", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
         "total_memory": MoPropertyMeta("total_memory", "totalMemory", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 

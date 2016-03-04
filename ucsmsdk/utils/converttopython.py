@@ -16,6 +16,8 @@ This module generated the python script using UCS GUI, GUI logs and xml
 request.
 """
 
+from __future__ import print_function
+
 import os
 import sys
 import time
@@ -241,9 +243,9 @@ def _dump_xml_on_screen(doc):
         print >> _outfile, "\n##### End-Of-XML #####"
         _outfile.close()
     else:
-        print "\n##### Start-Of-XML #####\n"
-        print xml_new
-        print "\n##### End-Of-XML #####\n"
+        print("\n##### Start-Of-XML #####\n")
+        print(xml_new)
+        print("\n##### End-Of-XML #####\n")
 
 
 def _check_if_any_list_value_in_string(listx, line):
@@ -560,23 +562,23 @@ def _form_configconf_cmdlet(class_node, key, tag, import_list, parent_tag=None,
         if class_status & _ClassStatus.MODIFIED == _ClassStatus.MODIFIED:
             op_flag = "addmodify"
             add_prop_map = ", ".join(
-                [k + "=" + v for k, v in property_map.iteritems()])
+                [k + "=" + v for k, v in ucsgenutils.iteritems(property_map)])
             cmdlet = '%s = %s(parent_mo_or_dn=%s, %s)' % (
                 tag, peer_class_id, parent_mo_or_dn, add_prop_map)
         else:
             add_prop_map = ", ".join(
-                [k + "=" + v for k, v in property_map.iteritems()])
+                [k + "=" + v for k, v in ucsgenutils.iteritems(property_map)])
             cmdlet = '%s = %s(parent_mo_or_dn=%s, %s)' % (
                 tag, peer_class_id, parent_mo_or_dn, add_prop_map)
     elif class_status & _ClassStatus.MODIFIED == _ClassStatus.MODIFIED:
         op_flag = "set"
         set_prop_map = "\n".join(
-            [tag + "." + k + " = " + v for k, v in property_map.iteritems()])
+            [tag + "." + k + " = " + v for k, v in ucsgenutils.iteritems(property_map)])
         cmdlet = "%s = handle.query_dn(\"%s\")\n%s\n" % (
             tag, key, set_prop_map)
     else:
-        print "Throw Exception XML request status (%s) is invalid." % (
-            class_node.getAttribute(NamingPropertyId.STATUS))
+        print("Throw Exception XML request status (%s) is invalid." % (
+            class_node.getAttribute(NamingPropertyId.STATUS)))
 
     return cmdlet, op_flag, import_list
 
@@ -714,7 +716,7 @@ def _generate_config_resolve_cmdlet(xml_string, method):
         _not_count = 0
         top_node = doc.documentElement
         filter_node = _get_only_elem_child_node(top_node)
-        print filter_node
+        print(filter_node)
         if top_node is None or filter_node is None:
             return
 
@@ -861,14 +863,14 @@ def _generate_single_clone_cmdlets(xml_string, is_template):
     if node.hasAttribute(NamingPropertyId.DN):
         dn = node.getAttribute(NamingPropertyId.DN)
     else:
-        print "Attribute 'Dn' not available"  # writewarning in dotnet
+        print("Attribute 'Dn' not available")  # writewarning in dotnet
         return
 
     sp_new_name = ""
     if node.hasAttribute("inServerName"):
         sp_new_name = node.getAttribute("inServerName")
     else:
-        print "Attribute 'inServerName' not available"
+        print("Attribute 'inServerName' not available")
         return
 
     dest_org = ""
@@ -881,7 +883,7 @@ def _generate_single_clone_cmdlets(xml_string, is_template):
         # source_org = match_object.group(0)
         pass
     else:
-        print "Attribute 'Dn' is corrupt"
+        print("Attribute 'Dn' is corrupt")
         return
 
     cmdlet = ""
@@ -938,28 +940,28 @@ def _generate_ls_templatise_cmdlets(xml_string):
     if top_node.localName == "lsTemplatise":
         node = top_node
     else:
-        print "Check if Method is <lsTemplatise>"
+        print("Check if Method is <lsTemplatise>")
         return
 
     dn = ""
     if node.hasAttribute(NamingPropertyId.DN):
         dn = node.getAttribute(NamingPropertyId.DN)
     else:
-        print "Attribute 'Dn' not available"  # writewarning in dotnet
+        print("Attribute 'Dn' not available")  # writewarning in dotnet
         return
 
     sp_new_name = ""
     if node.hasAttribute("inTemplateName"):
         sp_new_name = node.getAttribute("inTemplateName")
     else:
-        print "Attribute 'inTemplateName' not available"
+        print("Attribute 'inTemplateName' not available")
         return
 
     template_type = ""
     if node.hasAttribute("inTemplateType"):
         template_type = node.getAttribute("inTemplateType")
     else:
-        print "Attribute 'inTemplateType' not available"
+        print("Attribute 'inTemplateType' not available")
         return
 
     dest_org = ""
@@ -972,7 +974,7 @@ def _generate_ls_templatise_cmdlets(xml_string):
         # source_org = match_object.group(0)
         pass
     else:
-        print "Attribute 'Dn' is corrupt"
+        print("Attribute 'Dn' is corrupt")
         return
 
     cmdlet = ""
@@ -1032,7 +1034,7 @@ def _generate_multiple_clone_cmdlets(xml_string, is_prefix_based):
     if node.hasAttribute(NamingPropertyId.DN):
         dn = node.getAttribute(NamingPropertyId.DN)
     else:
-        print "Attribute 'Dn' not available"  # writewarning in dotnet
+        print("Attribute 'Dn' not available")  # writewarning in dotnet
         return
 
     dest_org = ""
@@ -1050,7 +1052,7 @@ def _generate_multiple_clone_cmdlets(xml_string, is_prefix_based):
         # source_org = match_object.group(0)
         pass
     else:
-        print "Attribute 'Dn' is corrupt"
+        print("Attribute 'Dn' is corrupt")
         return
 
     cmdlet = ""
@@ -1068,14 +1070,14 @@ def _generate_multiple_clone_cmdlets(xml_string, is_prefix_based):
             # prefix = node.getAttribute("inServerNamePrefixOrEmpty")
             pass
         else:
-            print "Attribute 'inServerNamePrefixOrEmpty' not available"
+            print("Attribute 'inServerNamePrefixOrEmpty' not available")
             return
 
         count = 0
         if node.hasAttribute("inNumberOf") is not None:
             count = node.getAttribute("inNumberOf")
         else:
-            print "Attribute 'inNumberOf' not available"
+            print("Attribute 'inNumberOf' not available")
             return
 
         if in_hierarchical.lower() == "true":
@@ -1095,7 +1097,7 @@ def _generate_multiple_clone_cmdlets(xml_string, is_prefix_based):
         dn_nodes = _get_elem_child_nodes(
             node.getElementsByTagName("inNameSet")[0])
         if dn_nodes is None or len(dn_nodes) < 1:
-            print "Xml is corrupt. New names not available"
+            print("Xml is corrupt. New names not available")
             return
 
         new_names = "@("
@@ -1114,11 +1116,11 @@ def _generate_multiple_clone_cmdlets(xml_string, is_prefix_based):
                 cmdlet += "dn = Dn()\ndn.attr_set(\"value\"," \
                           "\"%s\")\ndn_set.child_add(dn)\n" % temp_dn
             else:
-                print "Xml is corrupt. New names not available"
+                print("Xml is corrupt. New names not available")
                 return
 
         if not new_name_exists:
-            print "Xml is corrupt. New names not available"
+            print("Xml is corrupt. New names not available")
             return
 
         new_names = new_names.rstrip(',')
@@ -1155,7 +1157,7 @@ def _generate_clear_interval_cmdlet(xml_string):
     if top_node.localName == "statsClearInterval":
         node = top_node
     else:
-        print "Check if Method is <statsClearInterval>"
+        print("Check if Method is <statsClearInterval>")
         return
 
     cmdlet = ""
@@ -1191,7 +1193,7 @@ def _generate_config_conf_rename_cmdlet(xml_string):
     if top_node.localName == "configConfRename":
         node = top_node
     else:
-        print "Check if Method is <configConfRename>"
+        print("Check if Method is <configConfRename>")
         return
 
     if node.hasAttribute('dn'):
@@ -1260,9 +1262,9 @@ def _generate_cmdlets(xml_string):
         print >> _outfile, '##### End-Of-PythonScript #####'
         _outfile.close()
     else:
-        print "##### Start-Of-PythonScript #####"
-        print cmdlet
-        print "##### End-Of-PythonScript #####"
+        print("##### Start-Of-PythonScript #####")
+        print(cmdlet)
+        print("##### End-Of-PythonScript #####")
     return
 
 
@@ -1325,12 +1327,12 @@ def _if_path_or_literal_path(path, literal_path, gui_log):
 
     if path:
         if literal_path:
-            print "Parameter <path> takes precedence over <literal_path>"
+            print("Parameter <path> takes precedence over <literal_path>")
         file_path = path
     elif literal_path:
         file_path = literal_path
     else:
-        print "Please provide path or literal_path"
+        print("Please provide path or literal_path")
         return
 
     file_stream = open(file_path, 'r')
@@ -1346,7 +1348,7 @@ def _get_ucs_default_logpath_windows():
     if 'APPDATA' in os.environ.keys():
         log_file_path = os.getenv('APPDATA')
     else:
-        print os.name
+        print(os.name)
         raise Exception('Not windows OS')
 
     if sys.getwindowsversion()[0] == 6:  # in case OS is Win 2008 or above
@@ -1433,15 +1435,15 @@ def convert_to_ucs_python(log_path=None, xml=False, request=None,
              </configConfRename>'''\n
             convert_to_ucs_python(xml=True, request=xml_str)\n
 
-            file_path = "\home\user\ucsmxml\configrequest.xml"\n
+            file_path = '/home/user/ucsmxml/configrequest.xml'\n
             convert_to_ucs_python(xml=True, path=file_path)\n
 
         * param set 3:
-            file_path = "\home\user\ucsmlog\centrale_14804.log"\n
+            file_path = '/home/user/ucsmlog/centrale_14804.log'\n
             convert_to_ucs_python(gui_log=True, path=file_path)\n
     """
 
-    print "### Please review the generated cmdlets before deployment.\n"
+    print("### Please review the generated cmdlets before deployment.\n")
     global _display_xml, _outfile_flag, _outfile_path, _outfile
     _display_xml = dump_xml
     _outfile_flag = dump_to_file
@@ -1449,28 +1451,28 @@ def convert_to_ucs_python(log_path=None, xml=False, request=None,
 
     if _outfile_flag in ucsgenutils.AFFIRMATIVE_LIST:
         if _outfile_path:
-            print "### Script Output is in file < " + _outfile_path + " >"
+            print("### Script Output is in file < " + _outfile_path + " >")
             _outfile = open(_outfile_path, 'w')
             _outfile.close()
             # _outfile = open(r"c:\work.txt", 'w+')
         else:
-            print "Provide dump_file_path"
+            print("Provide dump_file_path")
             return
     if xml in ucsgenutils.AFFIRMATIVE_LIST:
         if gui_log in ucsgenutils.AFFIRMATIVE_LIST:
-            print "parameter <xml> takes precedence over <gui_log>"
+            print("parameter <xml> takes precedence over <gui_log>")
         if request:
             _generate_cmdlets(request)
         elif path or literal_path:
             _if_path_or_literal_path(path, literal_path, False)
         else:
-            print "Provide request"
+            print("Provide request")
             return
     elif gui_log in ucsgenutils.AFFIRMATIVE_LIST:
         if path or literal_path:
             _if_path_or_literal_path(path, literal_path, True)
         else:
-            print "Provide path or literal_path"
+            print("Provide path or literal_path")
     else:
         if log_path:
             if not os.path.exists(log_path):
@@ -1494,7 +1496,7 @@ def convert_to_ucs_python(log_path=None, xml=False, request=None,
                 # Cygwin
                 log_file_path = _get_ucs_default_logpath_cygwin()
             else:
-                print "[Error]: Unsupported OS:", _platform
+                print("[Error]: Unsupported OS: %s" % _platform)
                 log_file_path = None
                 return
 
@@ -1504,8 +1506,8 @@ def convert_to_ucs_python(log_path=None, xml=False, request=None,
         files.sort(key=lambda x: os.path.getmtime(x), reverse=True)
         last_updated_file = files[0]
 
-        print "ucsm logfile: %s\n" % (
-            os.path.join(log_file_path, last_updated_file))
+        print("ucsm logfile: %s\n" % (
+            os.path.join(log_file_path, last_updated_file)))
 
         file_stream = open(last_updated_file, 'r')
         # read the file till the end
@@ -1524,4 +1526,4 @@ def convert_to_ucs_python(log_path=None, xml=False, request=None,
         # if _outfile_path:
         # _outfile.close()
 
-    print "### End of Convert-To-Python ###"
+    print("### End of Convert-To-Python ###")

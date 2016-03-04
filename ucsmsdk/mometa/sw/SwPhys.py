@@ -1,11 +1,9 @@
 """This module contains the general information for SwPhys ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class SwPhysConsts():
@@ -169,12 +167,12 @@ class SwPhys(ManagedObject):
     consts = SwPhysConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SwPhys", "swPhys", "phys", VersionMeta.Version201m, "InputOutput", 0x1fL, [], ["read-only"], [u'networkElement'], [u'eventInst', u'faultInst', u'swPhysEtherEp', u'swPhysFcEp', u'swPhysFsm', u'swPhysFsmTask', u'swSubGroup'], ["Get"])
+    mo_meta = MoMeta("SwPhys", "swPhys", "phys", VersionMeta.Version201m, "InputOutput", 0x1f, [], ["read-only"], [u'networkElement'], [u'eventInst', u'faultInst', u'swPhysEtherEp', u'swPhysFcEp', u'swPhysFsm', u'swPhysFsmTask', u'swSubGroup'], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "conf_mode": MoPropertyMeta("conf_mode", "confMode", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["failed", "in-progress", "none", "verifying"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, ["ConfPhysicalBegin", "ConfPhysicalConfigSwA", "ConfPhysicalConfigSwB", "ConfPhysicalFail", "ConfPhysicalPortInventorySwA", "ConfPhysicalPortInventorySwB", "ConfPhysicalSuccess", "ConfPhysicalVerifyPhysConfig", "nop"], []), 
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]), 
@@ -185,9 +183,9 @@ class SwPhys(ManagedObject):
         "fsm_stamp": MoPropertyMeta("fsm_stamp", "fsmStamp", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []), 
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, ["ConfPhysicalBegin", "ConfPhysicalConfigSwA", "ConfPhysicalConfigSwB", "ConfPhysicalFail", "ConfPhysicalPortInventorySwA", "ConfPhysicalPortInventorySwB", "ConfPhysicalSuccess", "ConfPhysicalVerifyPhysConfig", "nop"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

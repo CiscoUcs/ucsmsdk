@@ -1,11 +1,9 @@
 """This module contains the general information for PkiCertReq ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class PkiCertReqConsts():
@@ -18,30 +16,30 @@ class PkiCertReq(ManagedObject):
     consts = PkiCertReqConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PkiCertReq", "pkiCertReq", "certreq", VersionMeta.Version101e, "InputOutput", 0xfffffL, [], ["aaa", "admin"], [u'pkiKeyRing'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("PkiCertReq", "pkiCertReq", "certreq", VersionMeta.Version101e, "InputOutput", 0xfffff, [], ["aaa", "admin"], [u'pkiKeyRing'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "country": MoPropertyMeta("country", "country", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x4L, None, None, r"""^([A-Z]{2})?$""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "dns": MoPropertyMeta("dns", "dns", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""[\t\n\x0b\x0c\r \(\)\+,\-\./:@\^_a-zA-Z0-9]{0,255}""", [], []), 
-        "email": MoPropertyMeta("email", "email", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""[\t\n\x0b\x0c\r \(\)\+,\-\./:@\^_a-zA-Z0-9]{0,40}""", [], []), 
-        "ip": MoPropertyMeta("ip", "ip", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
-        "ip_a": MoPropertyMeta("ip_a", "ipA", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x80L, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
-        "ip_b": MoPropertyMeta("ip_b", "ipB", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x100L, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
-        "ipv6": MoPropertyMeta("ipv6", "ipv6", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x200L, 0, 256, None, [], []), 
-        "ipv6_a": MoPropertyMeta("ipv6_a", "ipv6A", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x400L, 0, 256, None, [], []), 
-        "ipv6_b": MoPropertyMeta("ipv6_b", "ipv6B", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x800L, 0, 256, None, [], []), 
-        "locality": MoPropertyMeta("locality", "locality", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, r"""[\t\n\x0b\x0c\r \(\)\+,\-\./:@\^_a-zA-Z0-9]{0,64}""", [], []), 
-        "org_name": MoPropertyMeta("org_name", "orgName", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x2000L, None, None, r"""[\t\n\x0b\x0c\r \(\)\+,\-\./:@\^_a-zA-Z0-9]{0,64}""", [], []), 
-        "org_unit_name": MoPropertyMeta("org_unit_name", "orgUnitName", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x4000L, None, None, r"""[\t\n\x0b\x0c\r \(\)\+,\-\./:@\^_a-zA-Z0-9]{0,64}""", [], []), 
-        "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000L, None, None, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "country": MoPropertyMeta("country", "country", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""^([A-Z]{2})?$""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "dns": MoPropertyMeta("dns", "dns", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\t\n\x0b\x0c\r \(\)\+,\-\./:@\^_a-zA-Z0-9]{0,255}""", [], []), 
+        "email": MoPropertyMeta("email", "email", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[\t\n\x0b\x0c\r \(\)\+,\-\./:@\^_a-zA-Z0-9]{0,40}""", [], []), 
+        "ip": MoPropertyMeta("ip", "ip", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "ip_a": MoPropertyMeta("ip_a", "ipA", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x80, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "ip_b": MoPropertyMeta("ip_b", "ipB", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x100, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "ipv6": MoPropertyMeta("ipv6", "ipv6", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x200, 0, 256, None, [], []), 
+        "ipv6_a": MoPropertyMeta("ipv6_a", "ipv6A", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x400, 0, 256, None, [], []), 
+        "ipv6_b": MoPropertyMeta("ipv6_b", "ipv6B", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x800, 0, 256, None, [], []), 
+        "locality": MoPropertyMeta("locality", "locality", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x1000, None, None, r"""[\t\n\x0b\x0c\r \(\)\+,\-\./:@\^_a-zA-Z0-9]{0,64}""", [], []), 
+        "org_name": MoPropertyMeta("org_name", "orgName", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x2000, None, None, r"""[\t\n\x0b\x0c\r \(\)\+,\-\./:@\^_a-zA-Z0-9]{0,64}""", [], []), 
+        "org_unit_name": MoPropertyMeta("org_unit_name", "orgUnitName", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""[\t\n\x0b\x0c\r \(\)\+,\-\./:@\^_a-zA-Z0-9]{0,64}""", [], []), 
+        "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000, None, None, None, [], []), 
         "req": MoPropertyMeta("req", "req", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10000L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "state": MoPropertyMeta("state", "state", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x20000L, None, None, r"""[\t\n\x0b\x0c\r \(\)\+,\-\./:@\^_a-zA-Z0-9]{0,64}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "subj_name": MoPropertyMeta("subj_name", "subjName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80000L, 0, 64, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10000, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "state": MoPropertyMeta("state", "state", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x20000, None, None, r"""[\t\n\x0b\x0c\r \(\)\+,\-\./:@\^_a-zA-Z0-9]{0,64}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "subj_name": MoPropertyMeta("subj_name", "subjName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80000, 0, 64, None, [], []), 
     }
 
     prop_map = {

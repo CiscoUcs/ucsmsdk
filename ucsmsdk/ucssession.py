@@ -16,8 +16,8 @@ import time
 import logging
 from threading import Timer
 
-from ucsexception import UcsException
-from ucsdriver import UcsDriver
+from .ucsexception import UcsException
+from .ucsdriver import UcsDriver
 
 log = logging.getLogger('ucs')
 
@@ -181,7 +181,7 @@ class UcsSession(object):
         Internal method to update the session variables
         """
 
-        from ucscoremeta import UcsVersion
+        from .ucscoremeta import UcsVersion
 
         self.__name = response.out_name
         self.__cookie = response.out_cookie
@@ -248,7 +248,7 @@ class UcsSession(object):
             response = post_elem(elem=xml_element)
         """
 
-        import ucsxmlcodec as xc
+        from . import ucsxmlcodec as xc
 
         dump_xml = self.__dump_xml
         if dump_xml:
@@ -398,8 +398,8 @@ class UcsSession(object):
         existing connection.
         """
 
-        from mometa.top.TopSystem import TopSystem
-        from ucsmethodfactory import config_resolve_dn
+        from .mometa.top.TopSystem import TopSystem
+        from .ucsmethodfactory import config_resolve_dn
 
         if self.__cookie is not None and self.__cookie != "":
             if not self.__force:
@@ -428,13 +428,13 @@ class UcsSession(object):
             True on successful connect
         """
 
-        from mometa.top.TopSystem import TopSystem
-        from mometa.firmware.FirmwareRunning import FirmwareRunning, \
+        from .mometa.top.TopSystem import TopSystem
+        from .mometa.firmware.FirmwareRunning import FirmwareRunning, \
             FirmwareRunningConsts
-        from ucscoremeta import UcsVersion
-        from ucsmethodfactory import aaa_login
-        from ucsmethodfactory import config_resolve_class
-        from ucsmethodfactory import config_resolve_dn
+        from .ucscoremeta import UcsVersion
+        from .ucsmethodfactory import aaa_login
+        from .ucsmethodfactory import config_resolve_class
+        from .ucsmethodfactory import config_resolve_dn
 
         self.__force = force
 
@@ -498,7 +498,7 @@ class UcsSession(object):
 
         """
 
-        from ucsmethodfactory import aaa_logout
+        from .ucsmethodfactory import aaa_logout
 
         if self.__cookie is None:
             return True

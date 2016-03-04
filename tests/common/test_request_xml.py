@@ -11,6 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import print_function
+
 from nose.tools import *
 from ..connection.info import custom_setup, custom_teardown
 
@@ -37,7 +39,7 @@ def commit():
     refresh_dict = {}
     mo_dict = to_commit
     if not mo_dict:
-        print "No Mo to be Committed"
+        print("No Mo to be Committed")
         return None
 
     config_map = ConfigMap()
@@ -80,7 +82,7 @@ def set_mo(mo):
         mo.status = "modified"
         to_commit[mo.dn] = mo
     else:
-        print "Nothing Modified"
+        print("Nothing Modified")
 
 
 def test_001_add_sp():
@@ -88,9 +90,9 @@ def test_001_add_sp():
     sp = LsServer(parent_mo_or_dn="org-root", name="test_sp")
     add_mo(mo=sp)
     xml_str = commit()
-    print xml_str
+    print(xml_str)
 
-    expected = '''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer dn="org-root/ls-test_sp" name="test_sp" status="created" /></pair></inConfigs></configConfMos>'''
+    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer dn="org-root/ls-test_sp" name="test_sp" status="created" /></pair></inConfigs></configConfMos>'''
     assert_equal(xml_str, expected)
 
 def test_002_add_hierarchy():
@@ -101,9 +103,9 @@ def test_002_add_hierarchy():
     sp = LsServer(parent_mo_or_dn=org, name="test_sp")
     add_mo(mo=org)
     xml_str = commit()
-    print xml_str
+    print(xml_str)
 
-    expected = '''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/org-test_org"><orgOrg dn="org-root/org-test_org" name="test_org" status="created"><lsServer dn="org-root/org-test_org/ls-test_sp" name="test_sp" /></orgOrg></pair></inConfigs></configConfMos>'''
+    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/org-test_org"><orgOrg dn="org-root/org-test_org" name="test_org" status="created"><lsServer dn="org-root/org-test_org/ls-test_sp" name="test_sp" /></orgOrg></pair></inConfigs></configConfMos>'''
     assert_equal(xml_str, expected)
 
 @with_setup(setup, teardown)
@@ -118,12 +120,12 @@ def test_003_get_then_set_sp():
     test_sp.descr = "change"
     set_mo(test_sp)
     xml_str = commit()
-    print xml_str
+    print(xml_str)
 
     handle.remove_mo(sp)
     handle.commit()
 
-    expected = '''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer descr="change" dn="org-root/ls-test_sp" status="modified" /></pair></inConfigs></configConfMos>'''
+    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer descr="change" dn="org-root/ls-test_sp" status="modified" /></pair></inConfigs></configConfMos>'''
     assert_equal(xml_str, expected)
 
 @with_setup(setup, teardown)
@@ -135,9 +137,9 @@ def test_004_get_org_and_add_sp_add_mo_sp():
 
     add_mo(sp)
     xml_str = commit()
-    print xml_str
+    print(xml_str)
 
-    expected = '''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer dn="org-root/ls-test_sp" name="test_sp" status="created" /></pair></inConfigs></configConfMos>'''
+    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer dn="org-root/ls-test_sp" name="test_sp" status="created" /></pair></inConfigs></configConfMos>'''
     assert_equal(xml_str, expected)
 
 @with_setup(setup, teardown)
@@ -149,7 +151,7 @@ def test_005_get_org_and_add_sp_set_mo_org():
 
     set_mo(org)
     xml_str = commit()
-    print xml_str
+    print(xml_str)
 
-    expected = '''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root"><orgOrg dn="org-root" status="modified"><lsServer dn="org-root/ls-test_sp" name="test_sp" /></orgOrg></pair></inConfigs></configConfMos>'''
+    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root"><orgOrg dn="org-root" status="modified"><lsServer dn="org-root/ls-test_sp" name="test_sp" /></orgOrg></pair></inConfigs></configConfMos>'''
     assert_equal(xml_str, expected)

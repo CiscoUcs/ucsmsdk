@@ -1,11 +1,9 @@
 """This module contains the general information for CommSvcEp ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class CommSvcEpConsts():
@@ -189,14 +187,14 @@ class CommSvcEp(ManagedObject):
     consts = CommSvcEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommSvcEp", "commSvcEp", "svc-ext", VersionMeta.Version101e, "InputOutput", 0xffL, [], ["aaa", "admin"], [u'topSystem'], [u'commCimcWebService', u'commCimxml', u'commDateTime', u'commDns', u'commEvtChannel', u'commHttp', u'commHttps', u'commShellSvcLimits', u'commSmashCLP', u'commSnmp', u'commSsh', u'commSvcEpFsm', u'commSvcEpFsmTask', u'commSyslog', u'commTelnet', u'commWebChannel', u'commWebSvcLimits', u'commWsman', u'commXmlClConnPolicy', u'eventInst', u'faultInst'], ["Get"])
+    mo_meta = MoMeta("CommSvcEp", "commSvcEp", "svc-ext", VersionMeta.Version101e, "InputOutput", 0xff, [], ["aaa", "admin"], [u'topSystem'], [u'commCimcWebService', u'commCimxml', u'commDateTime', u'commDns', u'commEvtChannel', u'commHttp', u'commHttps', u'commShellSvcLimits', u'commSmashCLP', u'commSnmp', u'commSsh', u'commSvcEpFsm', u'commSvcEpFsmTask', u'commSyslog', u'commTelnet', u'commWebChannel', u'commWebSvcLimits', u'commWsman', u'commXmlClConnPolicy', u'eventInst', u'faultInst'], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applied", "ok"], []), 
         "config_status_message": MoPropertyMeta("config_status_message", "configStatusMessage", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_flags": MoPropertyMeta("fsm_flags", "fsmFlags", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-4294967295"]), 
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "restartWebSvcBegin", "restartWebSvcFail", "restartWebSvcLocal", "restartWebSvcPeer", "restartWebSvcSuccess", "updateSvcEpBegin", "updateSvcEpFail", "updateSvcEpPropogateEpSettings", "updateSvcEpPropogateEpTimeZoneSettingsLocal", "updateSvcEpPropogateEpTimeZoneSettingsPeer", "updateSvcEpPropogateEpTimeZoneSettingsToAdaptorsLocal", "updateSvcEpPropogateEpTimeZoneSettingsToAdaptorsPeer", "updateSvcEpPropogateEpTimeZoneSettingsToFexIomLocal", "updateSvcEpPropogateEpTimeZoneSettingsToFexIomPeer", "updateSvcEpSetEpLocal", "updateSvcEpSetEpPeer", "updateSvcEpSuccess"], []), 
@@ -209,12 +207,12 @@ class CommSvcEp(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "restartWebSvcBegin", "restartWebSvcFail", "restartWebSvcLocal", "restartWebSvcPeer", "restartWebSvcSuccess", "updateSvcEpBegin", "updateSvcEpFail", "updateSvcEpPropogateEpSettings", "updateSvcEpPropogateEpTimeZoneSettingsLocal", "updateSvcEpPropogateEpTimeZoneSettingsPeer", "updateSvcEpPropogateEpTimeZoneSettingsToAdaptorsLocal", "updateSvcEpPropogateEpTimeZoneSettingsToAdaptorsPeer", "updateSvcEpPropogateEpTimeZoneSettingsToFexIomLocal", "updateSvcEpPropogateEpTimeZoneSettingsToFexIomPeer", "updateSvcEpSetEpLocal", "updateSvcEpSetEpPeer", "updateSvcEpSuccess"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x10L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["local", "pending-policy", "policy"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

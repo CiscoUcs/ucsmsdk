@@ -1,11 +1,9 @@
 """This module contains the general information for SwSystemStats ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class SwSystemStatsConsts():
@@ -33,24 +31,24 @@ class SwSystemStats(ManagedObject):
     consts = SwSystemStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SwSystemStats", "swSystemStats", "sysstats", VersionMeta.Version111j, "OutputOnly", 0xfL, [], ["admin", "operations", "read-only"], [u'networkElement'], [u'faultInst', u'swSystemStatsHist'], ["Get"])
+    mo_meta = MoMeta("SwSystemStats", "swSystemStats", "sysstats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'networkElement'], [u'faultInst', u'swSystemStatsHist'], ["Get"])
 
     prop_meta = {
-        "correctable_parity_error": MoPropertyMeta("correctable_parity_error", "CorrectableParityError", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "correctable_parity_error_avg": MoPropertyMeta("correctable_parity_error_avg", "CorrectableParityErrorAvg", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "correctable_parity_error_max": MoPropertyMeta("correctable_parity_error_max", "CorrectableParityErrorMax", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "correctable_parity_error_min": MoPropertyMeta("correctable_parity_error_min", "CorrectableParityErrorMin", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "correctable_parity_error": MoPropertyMeta("correctable_parity_error", "CorrectableParityError", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "correctable_parity_error_avg": MoPropertyMeta("correctable_parity_error_avg", "CorrectableParityErrorAvg", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "correctable_parity_error_max": MoPropertyMeta("correctable_parity_error_max", "CorrectableParityErrorMax", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "correctable_parity_error_min": MoPropertyMeta("correctable_parity_error_min", "CorrectableParityErrorMin", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "intervals": MoPropertyMeta("intervals", "intervals", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "kernel_mem_free": MoPropertyMeta("kernel_mem_free", "kernelMemFree", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "kernel_mem_free_avg": MoPropertyMeta("kernel_mem_free_avg", "kernelMemFreeAvg", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "kernel_mem_free_max": MoPropertyMeta("kernel_mem_free_max", "kernelMemFreeMax", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "kernel_mem_free_min": MoPropertyMeta("kernel_mem_free_min", "kernelMemFreeMin", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "kernel_mem_total": MoPropertyMeta("kernel_mem_total", "kernelMemTotal", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "kernel_mem_total_avg": MoPropertyMeta("kernel_mem_total_avg", "kernelMemTotalAvg", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "kernel_mem_total_max": MoPropertyMeta("kernel_mem_total_max", "kernelMemTotalMax", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "kernel_mem_total_min": MoPropertyMeta("kernel_mem_total_min", "kernelMemTotalMin", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_free": MoPropertyMeta("kernel_mem_free", "kernelMemFree", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_free_avg": MoPropertyMeta("kernel_mem_free_avg", "kernelMemFreeAvg", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_free_max": MoPropertyMeta("kernel_mem_free_max", "kernelMemFreeMax", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_free_min": MoPropertyMeta("kernel_mem_free_min", "kernelMemFreeMin", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_total": MoPropertyMeta("kernel_mem_total", "kernelMemTotal", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_total_avg": MoPropertyMeta("kernel_mem_total_avg", "kernelMemTotalAvg", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_total_max": MoPropertyMeta("kernel_mem_total_max", "kernelMemTotalMax", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
+        "kernel_mem_total_min": MoPropertyMeta("kernel_mem_total_min", "kernelMemTotalMin", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "load": MoPropertyMeta("load", "load", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_avg": MoPropertyMeta("load_avg", "loadAvg", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_max": MoPropertyMeta("load_max", "loadMax", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -63,9 +61,9 @@ class SwSystemStats(ManagedObject):
         "mem_cached_avg": MoPropertyMeta("mem_cached_avg", "memCachedAvg", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "mem_cached_max": MoPropertyMeta("mem_cached_max", "memCachedMax", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "mem_cached_min": MoPropertyMeta("mem_cached_min", "memCachedMin", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "suspect": MoPropertyMeta("suspect", "suspect", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "thresholded": MoPropertyMeta("thresholded", "thresholded", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 

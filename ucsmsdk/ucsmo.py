@@ -15,12 +15,14 @@
 This module contains the ManagedObject and GenericManagedObject Class.
 """
 
+from __future__ import print_function
+
 import logging
 import os
 
-import ucsgenutils
-import ucscoreutils
-import ucscoremeta
+from . import ucsgenutils
+from . import ucscoreutils
+from . import ucscoremeta
 
 try:
     import xml.etree.cElementTree as ET
@@ -29,9 +31,9 @@ except ImportError:
     import cElementTree as ET
     from cElementTree import Element, SubElement
 
-from ucscoremeta import WriteXmlOption
-from ucsexception import UcsValidationException, UcsWarning
-from ucscore import UcsBase
+from .ucscoremeta import WriteXmlOption
+from .ucsexception import UcsValidationException, UcsWarning
+from .ucscore import UcsBase
 
 log = logging.getLogger('ucs')
 
@@ -60,7 +62,7 @@ class ManagedObject(UcsBase):
         self.__status = None
         self.__parent_dn = None
         self.__xtra_props = {}
-        self.__xtra_props_dirty_mask = 0x1L
+        self.__xtra_props_dirty_mask = 0x1
 
         self._rn_set()
         self._dn_set(parent_mo_or_dn)
@@ -73,7 +75,7 @@ class ManagedObject(UcsBase):
             self.__parent_mo.child_add(self)
 
         if kwargs:
-            for prop_name, prop_value in kwargs.iteritems():
+            for prop_name, prop_value in ucsgenutils.iteritems(kwargs):
                 if prop_name not in self.prop_meta:
                     log.debug("Unknown property %s" % prop_name)
                 self.__set_prop(prop_name, prop_value)
@@ -189,7 +191,7 @@ class ManagedObject(UcsBase):
         out_str = "\n"
         out_str += "Managed Object\t\t\t:\t" + str(self._class_id) + "\n"
         out_str += "-" * len("Managed Object") + "\n"
-        for prop, prop_value in sorted(self.__dict__.iteritems()):
+        for prop, prop_value in sorted(ucsgenutils.iteritems(self.__dict__)):
             if prop in ManagedObject.__internal_prop or prop.startswith(
                     "_ManagedObject__"):
                 continue
@@ -326,7 +328,7 @@ class ManagedObject(UcsBase):
 
         if elem.attrib:
             if self.__class__.__name__ != "ManagedObject":
-                for attr_name, attr_value in elem.attrib.iteritems():
+                for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
                     if attr_name in self.prop_map:
                         attr_name = self.prop_map[attr_name]
                     else:
@@ -336,7 +338,7 @@ class ManagedObject(UcsBase):
                             False)
                     object.__setattr__(self, attr_name, attr_value)
             else:
-                for attr_name, attr_value in elem.attrib.iteritems():
+                for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
                     object.__setattr__(self, attr_name, attr_value)
 
         self.mark_clean()
@@ -362,7 +364,7 @@ class ManagedObject(UcsBase):
         Method to return string representation of a managed object.
         """
 
-        for prop, prop_value in sorted(self.__dict__.iteritems()):
+        for prop, prop_value in sorted(ucsgenutils.iteritems(self.__dict__)):
             if prop in ManagedObject.__internal_prop or prop.startswith(
                     "_ManagedObject__"):
                 continue
@@ -377,7 +379,7 @@ class ManagedObject(UcsBase):
         indent = "  "
         level_indent = "%s%s)" % (indent * level, level)
         # level_key_dn = "level_%s_dn" % (str(level))
-        print "%s %s[%s]" % (level_indent, self._class_id, self.dn)
+        print("%s %s[%s]" % (level_indent, self._class_id, self.dn))
         for ch_ in self.children:
             level += 1
             ch_.show_tree(level)
@@ -389,7 +391,7 @@ class ManagedObject(UcsBase):
         Method to return string representation of a managed object.
         """
 
-        from ucscoreutils import print_mo_hierarchy
+        from .ucscoreutils import print_mo_hierarchy
 
         print_mo_hierarchy(self._class_id, level, break_level,
                            show_level)
@@ -411,7 +413,7 @@ def generic_mo_from_xml_elem(elem):
     create GenericMo object from xml element
     """
 
-    import ucsxmlcodec as xc
+    from . import ucsxmlcodec as xc
     xml_str = xc.to_xml_str(elem)
     gmo = generic_mo_from_xml(xml_str)
     return gmo
@@ -450,7 +452,7 @@ class GenericMo(UcsBase):
         UcsBase.__init__(self, class_id)
 
         if kwargs:
-            for key, value in kwargs.iteritems():
+            for key, value in ucsgenutils.iteritems(kwargs):
                 self.__dict__[key] = str(value)
                 self.__properties[key] = str(value)
 
@@ -537,7 +539,7 @@ class GenericMo(UcsBase):
 
         self._class_id = elem.tag
         if elem.attrib:
-            for name, value in elem.attrib.iteritems():
+            for name, value in ucsgenutils.iteritems(elem.attrib):
                 self.__dict__[name] = value
                 self.__properties[name] = str(value)
 
@@ -610,7 +612,7 @@ class GenericMo(UcsBase):
         Converts GenericMo to ManagedObject
         """
 
-        import ucsmeta
+        from . import ucsmeta
 
         class_id = ucsgenutils.word_u(self._class_id)
         if class_id not in ucsmeta.MO_CLASS_ID:
@@ -641,10 +643,9 @@ class GenericMo(UcsBase):
             out_str += 'GenericMo'.ljust(ts * 4) + ':' + str(
                 self._class_id) + "\n"
             out_str += "-" * len("GenericMo") + "\n"
-            for key in self.__dict__:
-                if key.startswith('_'):
+            for prop, prop_val in sorted(ucsgenutils.iteritems(self.__dict__)):
+                if prop.startswith('_'):
                     continue
-                out_str += str(key).ljust(ts * 4) + ':' + str(
-                    getattr(self, key)) + "\n"
+                out_str += str(prop).ljust(ts * 4) + ':' + str(prop_val) + "\n"
 
             return out_str

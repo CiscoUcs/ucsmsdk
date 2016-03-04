@@ -1,11 +1,9 @@
 """This module contains the general information for ObserveObserved ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class ObserveObservedConsts():
@@ -189,13 +187,13 @@ class ObserveObserved(ManagedObject):
     consts = ObserveObservedConsts()
     naming_props = set([u'dataSrcSysId', u'id'])
 
-    mo_meta = MoMeta("ObserveObserved", "observeObserved", "observed-[data_src_sys_id]-[id]", VersionMeta.Version211a, "InputOutput", 0x3ffL, [], ["admin"], [u'extpolClient', u'extpolController', u'extpolProvider', u'extpolRegistry', u'observeObservedCont'], [u'eventInst', u'faultInst', u'observeFilter', u'observeObservedFsm', u'observeObservedFsmTask'], [None])
+    mo_meta = MoMeta("ObserveObserved", "observeObserved", "observed-[data_src_sys_id]-[id]", VersionMeta.Version211a, "InputOutput", 0x3ff, [], ["admin"], [u'extpolClient', u'extpolController', u'extpolProvider', u'extpolRegistry', u'observeObservedCont'], [u'eventInst', u'faultInst', u'observeFilter', u'observeObservedFsm', u'observeObservedFsmTask'], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "data_src_app_type": MoPropertyMeta("data_src_app_type", "dataSrcAppType", "string", VersionMeta.Version211a, MoPropertyMeta.CREATE_ONLY, 0x4L, 0, 510, None, [], []), 
-        "data_src_sys_id": MoPropertyMeta("data_src_sys_id", "dataSrcSysId", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x8L, None, None, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "data_src_app_type": MoPropertyMeta("data_src_app_type", "dataSrcAppType", "string", VersionMeta.Version211a, MoPropertyMeta.CREATE_ONLY, 0x4, 0, 510, None, [], []), 
+        "data_src_sys_id": MoPropertyMeta("data_src_sys_id", "dataSrcSysId", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["ResolveControllerFsmBegin", "ResolveControllerFsmExecute", "ResolveControllerFsmFail", "ResolveControllerFsmSuccess", "ResolvePolicyFsmBegin", "ResolvePolicyFsmExecute", "ResolvePolicyFsmFail", "ResolvePolicyFsmSuccess", "ResolveResourceFsmBegin", "ResolveResourceFsmExecute", "ResolveResourceFsmFail", "ResolveResourceFsmSuccess", "ResolveVMFsmBegin", "ResolveVMFsmExecute", "ResolveVMFsmFail", "ResolveVMFsmSuccess", "nop"], []), 
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]), 
@@ -207,13 +205,13 @@ class ObserveObserved(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["ResolveControllerFsmBegin", "ResolveControllerFsmExecute", "ResolveControllerFsmFail", "ResolveControllerFsmSuccess", "ResolvePolicyFsmBegin", "ResolvePolicyFsmExecute", "ResolvePolicyFsmFail", "ResolvePolicyFsmSuccess", "ResolveResourceFsmBegin", "ResolveResourceFsmExecute", "ResolveResourceFsmFail", "ResolveResourceFsmSuccess", "ResolveVMFsmBegin", "ResolveVMFsmExecute", "ResolveVMFsmFail", "ResolveVMFsmSuccess", "nop"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "gen_num": MoPropertyMeta("gen_num", "genNum", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "hierarchical": MoPropertyMeta("hierarchical", "hierarchical", "string", VersionMeta.Version211a, MoPropertyMeta.CREATE_ONLY, 0x20L, None, None, None, ["false", "no", "true", "yes"], []), 
-        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x40L, None, None, None, [], []), 
+        "hierarchical": MoPropertyMeta("hierarchical", "hierarchical", "string", VersionMeta.Version211a, MoPropertyMeta.CREATE_ONLY, 0x20, None, None, None, ["false", "no", "true", "yes"], []), 
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x40, None, None, None, [], []), 
         "is_deleted": MoPropertyMeta("is_deleted", "isDeleted", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "observed_dn": MoPropertyMeta("observed_dn", "observedDn", "string", VersionMeta.Version211a, MoPropertyMeta.CREATE_ONLY, 0x80L, 0, 256, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x100L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "observed_dn": MoPropertyMeta("observed_dn", "observedDn", "string", VersionMeta.Version211a, MoPropertyMeta.CREATE_ONLY, 0x80, 0, 256, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

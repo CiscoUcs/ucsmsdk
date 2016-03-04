@@ -15,7 +15,11 @@
 This module contains the APIs used to launch ucs kvm.
 """
 
-import urllib
+try:
+    from urllib import urlencode
+except:
+    from urllib.parse import urlencode
+
 import subprocess
 import logging
 
@@ -212,7 +216,7 @@ def ucs_kvm_launch(handle, service_profile=None, blade=None, rack_unit=None,
 
     nvc[_ParamKvm.TEMP_UNPW] = "true"
     uri = handle.uri
-    kvm_url = '%s/ucsm/kvm.jnlp?%s' % (uri, urllib.urlencode(nvc))
+    kvm_url = '%s/ucsm/kvm.jnlp?%s' % (uri, urlencode(nvc))
 
     if need_url:
         return kvm_url

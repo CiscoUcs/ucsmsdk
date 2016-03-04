@@ -1,11 +1,9 @@
 """This module contains the general information for LicenseFile ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class LicenseFileConsts():
@@ -195,12 +193,12 @@ class LicenseFile(ManagedObject):
     consts = LicenseFileConsts()
     naming_props = set([u'scope', u'id'])
 
-    mo_meta = MoMeta("LicenseFile", "licenseFile", "file-[scope]:[id]", VersionMeta.Version141i, "InputOutput", 0x1ffL, [], ["admin"], [u'licenseEp'], [u'eventInst', u'faultInst', u'licenseContents', u'licenseFileFsm', u'licenseFileFsmTask', u'licenseSource'], ["Get"])
+    mo_meta = MoMeta("LicenseFile", "licenseFile", "file-[scope]:[id]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["admin"], [u'licenseEp'], [u'eventInst', u'faultInst', u'licenseContents', u'licenseFileFsm', u'licenseFileFsmTask', u'licenseSource'], ["Get"])
 
     prop_meta = {
-        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["delete-failed", "delete-pending", "deleted", "deleting", "install-failed", "install-pending", "installed", "installing", "stale", "unknown", "validated"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["delete-failed", "delete-pending", "deleted", "deleting", "install-failed", "install-pending", "installed", "installing", "stale", "unknown", "validated"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, ["ClearBegin", "ClearFail", "ClearLocal", "ClearRemote", "ClearSuccess", "InstallBegin", "InstallFail", "InstallLocal", "InstallRemote", "InstallSuccess", "nop"], []), 
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]), 
@@ -211,14 +209,14 @@ class LicenseFile(ManagedObject):
         "fsm_stamp": MoPropertyMeta("fsm_stamp", "fsmStamp", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []), 
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, ["ClearBegin", "ClearFail", "ClearLocal", "ClearRemote", "ClearSuccess", "InstallBegin", "InstallFail", "InstallLocal", "InstallRemote", "InstallSuccess", "nop"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x10L, 1, 32, None, [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.CREATE_ONLY, 0x20L, None, None, r"""[\-\.:_a-zA-Z0-9]{1,64}""", [], []), 
+        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x10, 1, 32, None, [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.CREATE_ONLY, 0x20, None, None, r"""[\-\.:_a-zA-Z0-9]{1,64}""", [], []), 
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["delete-failed", "delete-pending", "deleted", "deleting", "install-failed", "install-pending", "installed", "installing", "stale", "unknown", "validated"], []), 
         "oper_state_descr": MoPropertyMeta("oper_state_descr", "operStateDescr", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "scope": MoPropertyMeta("scope", "scope", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x80L, None, None, None, ["A", "B", "server", "unknown"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "scope": MoPropertyMeta("scope", "scope", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x80, None, None, None, ["A", "B", "server", "unknown"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "version": MoPropertyMeta("version", "version", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
     }
 

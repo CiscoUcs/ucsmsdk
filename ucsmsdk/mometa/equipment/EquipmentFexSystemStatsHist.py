@@ -1,11 +1,9 @@
 """This module contains the general information for EquipmentFexSystemStatsHist ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class EquipmentFexSystemStatsHistConsts():
@@ -25,39 +23,39 @@ class EquipmentFexSystemStatsHist(ManagedObject):
     consts = EquipmentFexSystemStatsHistConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("EquipmentFexSystemStatsHist", "equipmentFexSystemStatsHist", "[id]", None, "OutputOnly", 0xfL, [], ["read-only"], [u'equipmentFexSystemStats'], [], [None])
+    mo_meta = MoMeta("EquipmentFexSystemStatsHist", "equipmentFexSystemStatsHist", "[id]", VersionMeta.Version311e, "OutputOnly", 0xf, [], ["read-only"], [u'equipmentFexSystemStats'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", None, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", None, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "ulong", None, MoPropertyMeta.NAMING, None, None, None, None, [], []), 
-        "kernel_mem_free": MoPropertyMeta("kernel_mem_free", "kernelMemFree", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "kernel_mem_free_avg": MoPropertyMeta("kernel_mem_free_avg", "kernelMemFreeAvg", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "kernel_mem_free_max": MoPropertyMeta("kernel_mem_free_max", "kernelMemFreeMax", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "kernel_mem_free_min": MoPropertyMeta("kernel_mem_free_min", "kernelMemFreeMin", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "kernel_mem_total": MoPropertyMeta("kernel_mem_total", "kernelMemTotal", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "kernel_mem_total_avg": MoPropertyMeta("kernel_mem_total_avg", "kernelMemTotalAvg", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "kernel_mem_total_max": MoPropertyMeta("kernel_mem_total_max", "kernelMemTotalMax", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "kernel_mem_total_min": MoPropertyMeta("kernel_mem_total_min", "kernelMemTotalMin", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "load": MoPropertyMeta("load", "load", "float", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "load_avg": MoPropertyMeta("load_avg", "loadAvg", "float", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "load_max": MoPropertyMeta("load_max", "loadMax", "float", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "load_min": MoPropertyMeta("load_min", "loadMin", "float", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "mem_available": MoPropertyMeta("mem_available", "memAvailable", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "mem_available_avg": MoPropertyMeta("mem_available_avg", "memAvailableAvg", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "mem_available_max": MoPropertyMeta("mem_available_max", "memAvailableMax", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "mem_available_min": MoPropertyMeta("mem_available_min", "memAvailableMin", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "mem_cached": MoPropertyMeta("mem_cached", "memCached", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "mem_cached_avg": MoPropertyMeta("mem_cached_avg", "memCachedAvg", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "mem_cached_max": MoPropertyMeta("mem_cached_max", "memCachedMax", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "mem_cached_min": MoPropertyMeta("mem_cached_min", "memCachedMin", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "most_recent": MoPropertyMeta("most_recent", "mostRecent", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", None, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", None, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "suspect": MoPropertyMeta("suspect", "suspect", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "thresholded": MoPropertyMeta("thresholded", "thresholded", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version311e, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
+        "id": MoPropertyMeta("id", "id", "ulong", VersionMeta.Version311e, MoPropertyMeta.NAMING, None, None, None, None, [], []), 
+        "kernel_mem_free": MoPropertyMeta("kernel_mem_free", "kernelMemFree", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "kernel_mem_free_avg": MoPropertyMeta("kernel_mem_free_avg", "kernelMemFreeAvg", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "kernel_mem_free_max": MoPropertyMeta("kernel_mem_free_max", "kernelMemFreeMax", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "kernel_mem_free_min": MoPropertyMeta("kernel_mem_free_min", "kernelMemFreeMin", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "kernel_mem_total": MoPropertyMeta("kernel_mem_total", "kernelMemTotal", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "kernel_mem_total_avg": MoPropertyMeta("kernel_mem_total_avg", "kernelMemTotalAvg", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "kernel_mem_total_max": MoPropertyMeta("kernel_mem_total_max", "kernelMemTotalMax", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "kernel_mem_total_min": MoPropertyMeta("kernel_mem_total_min", "kernelMemTotalMin", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "load": MoPropertyMeta("load", "load", "float", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "load_avg": MoPropertyMeta("load_avg", "loadAvg", "float", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "load_max": MoPropertyMeta("load_max", "loadMax", "float", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "load_min": MoPropertyMeta("load_min", "loadMin", "float", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "mem_available": MoPropertyMeta("mem_available", "memAvailable", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "mem_available_avg": MoPropertyMeta("mem_available_avg", "memAvailableAvg", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "mem_available_max": MoPropertyMeta("mem_available_max", "memAvailableMax", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "mem_available_min": MoPropertyMeta("mem_available_min", "memAvailableMin", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "mem_cached": MoPropertyMeta("mem_cached", "memCached", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "mem_cached_avg": MoPropertyMeta("mem_cached_avg", "memCachedAvg", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "mem_cached_max": MoPropertyMeta("mem_cached_max", "memCachedMax", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "mem_cached_min": MoPropertyMeta("mem_cached_min", "memCachedMin", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "most_recent": MoPropertyMeta("most_recent", "mostRecent", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "suspect": MoPropertyMeta("suspect", "suspect", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "thresholded": MoPropertyMeta("thresholded", "thresholded", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
     }
 
     prop_map = {

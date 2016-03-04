@@ -58,7 +58,7 @@ def test_002_create_gmo_using_param_dict():
     elem = obj.to_xml()
     xml_str = xc.to_xml_str(elem)
 
-    expected = '<testLsA a="1" b="2" c="3" dn="" rn=""><testLsB a="1" b="2" c="3" dn="" rn="" /></testLsA>'
+    expected = b'<testLsA a="1" b="2" c="3" dn="" rn=""><testLsB a="1" b="2" c="3" dn="" rn="" /></testLsA>'
 
     assert_equal(xml_str, expected)
 
@@ -70,7 +70,7 @@ def test_003_create_gmo_using_param_dict():
     elem = obj.to_xml()
     xml_str = xc.to_xml_str(elem)
 
-    expected = '<testLsA a="1" b="2" c="3" dn="org-root/parent" rn="parent"><testLsB dn="org-root/parent/child" rn="child" /></testLsA>'
+    expected = b'<testLsA a="1" b="2" c="3" dn="org-root/parent" rn="parent"><testLsB dn="org-root/parent/child" rn="child" /></testLsA>'
 
     assert_equal(xml_str, expected)
 
@@ -81,7 +81,7 @@ def test_004_create_gmo_using_parent_mo():
     elem = obj.to_xml()
     xml_str = xc.to_xml_str(elem)
 
-    expected = '<testLsA a="1" b="2" c="3" dn="org-root/parent" rn="parent"><testLsB dn="org-root/parent/child" rn="child" /></testLsA>'
+    expected = b'<testLsA a="1" b="2" c="3" dn="org-root/parent" rn="parent"><testLsB dn="org-root/parent/child" rn="child" /></testLsA>'
 
     assert_equal(xml_str, expected)
 

@@ -1,11 +1,9 @@
 """This module contains the general information for BiosVfPCISlotOptionROMEnable ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class BiosVfPCISlotOptionROMEnableConsts():
@@ -113,31 +111,31 @@ class BiosVfPCISlotOptionROMEnable(ManagedObject):
     consts = BiosVfPCISlotOptionROMEnableConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("BiosVfPCISlotOptionROMEnable", "biosVfPCISlotOptionROMEnable", "PCI-Slot-OptionROM-Enable", VersionMeta.Version202m, "InputOutput", 0xfffffL, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], [u'biosSettings', u'biosVProfile'], [], ["Get"])
+    mo_meta = MoMeta("BiosVfPCISlotOptionROMEnable", "biosVfPCISlotOptionROMEnable", "PCI-Slot-OptionROM-Enable", VersionMeta.Version202m, "InputOutput", 0xfffff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], [u'biosSettings', u'biosVProfile'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version202m, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "prop_acl": MoPropertyMeta("prop_acl", "propAcl", "ulong", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "supported_by_default": MoPropertyMeta("supported_by_default", "supportedByDefault", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []), 
-        "vp_pc_ie_slot_hba_option_rom": MoPropertyMeta("vp_pc_ie_slot_hba_option_rom", "vpPCIeSlotHBAOptionROM", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_pc_ie_slot_mlom_option_rom": MoPropertyMeta("vp_pc_ie_slot_mlom_option_rom", "vpPCIeSlotMLOMOptionROM", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_pc_ie_slot_n1_option_rom": MoPropertyMeta("vp_pc_ie_slot_n1_option_rom", "vpPCIeSlotN1OptionROM", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_pc_ie_slot_n2_option_rom": MoPropertyMeta("vp_pc_ie_slot_n2_option_rom", "vpPCIeSlotN2OptionROM", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_pc_ie_slot_sas_option_rom": MoPropertyMeta("vp_pc_ie_slot_sas_option_rom", "vpPCIeSlotSASOptionROM", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_slot10_state": MoPropertyMeta("vp_slot10_state", "vpSlot10State", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_slot1_state": MoPropertyMeta("vp_slot1_state", "vpSlot1State", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x800L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_slot2_state": MoPropertyMeta("vp_slot2_state", "vpSlot2State", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x1000L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_slot3_state": MoPropertyMeta("vp_slot3_state", "vpSlot3State", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x2000L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_slot4_state": MoPropertyMeta("vp_slot4_state", "vpSlot4State", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x4000L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_slot5_state": MoPropertyMeta("vp_slot5_state", "vpSlot5State", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x8000L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_slot6_state": MoPropertyMeta("vp_slot6_state", "vpSlot6State", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x10000L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_slot7_state": MoPropertyMeta("vp_slot7_state", "vpSlot7State", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x20000L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_slot8_state": MoPropertyMeta("vp_slot8_state", "vpSlot8State", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x40000L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
-        "vp_slot9_state": MoPropertyMeta("vp_slot9_state", "vpSlot9State", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x80000L, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version202m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "prop_acl": MoPropertyMeta("prop_acl", "propAcl", "ulong", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "supported_by_default": MoPropertyMeta("supported_by_default", "supportedByDefault", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []), 
+        "vp_pc_ie_slot_hba_option_rom": MoPropertyMeta("vp_pc_ie_slot_hba_option_rom", "vpPCIeSlotHBAOptionROM", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_pc_ie_slot_mlom_option_rom": MoPropertyMeta("vp_pc_ie_slot_mlom_option_rom", "vpPCIeSlotMLOMOptionROM", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_pc_ie_slot_n1_option_rom": MoPropertyMeta("vp_pc_ie_slot_n1_option_rom", "vpPCIeSlotN1OptionROM", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_pc_ie_slot_n2_option_rom": MoPropertyMeta("vp_pc_ie_slot_n2_option_rom", "vpPCIeSlotN2OptionROM", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_pc_ie_slot_sas_option_rom": MoPropertyMeta("vp_pc_ie_slot_sas_option_rom", "vpPCIeSlotSASOptionROM", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_slot10_state": MoPropertyMeta("vp_slot10_state", "vpSlot10State", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_slot1_state": MoPropertyMeta("vp_slot1_state", "vpSlot1State", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_slot2_state": MoPropertyMeta("vp_slot2_state", "vpSlot2State", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_slot3_state": MoPropertyMeta("vp_slot3_state", "vpSlot3State", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_slot4_state": MoPropertyMeta("vp_slot4_state", "vpSlot4State", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x4000, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_slot5_state": MoPropertyMeta("vp_slot5_state", "vpSlot5State", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x8000, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_slot6_state": MoPropertyMeta("vp_slot6_state", "vpSlot6State", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x10000, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_slot7_state": MoPropertyMeta("vp_slot7_state", "vpSlot7State", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x20000, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_slot8_state": MoPropertyMeta("vp_slot8_state", "vpSlot8State", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x40000, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
+        "vp_slot9_state": MoPropertyMeta("vp_slot9_state", "vpSlot9State", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x80000, None, None, None, ["disabled", "enabled", "legacy-only", "platform-default", "platform-recommended", "uefi-only"], []), 
         "vp_slot_mezz_state": MoPropertyMeta("vp_slot_mezz_state", "vpSlotMezzState", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled", "platform-default", "platform-recommended"], []), 
     }
 

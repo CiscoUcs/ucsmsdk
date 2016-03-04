@@ -17,8 +17,8 @@ This module contains the UcsSdk Core classes.
 
 import logging
 
-import ucsgenutils
-import ucscoreutils
+from . import ucsgenutils
+from . import ucscoreutils
 
 try:
     import xml.etree.cElementTree as ET
@@ -181,7 +181,7 @@ class BaseObject(UcsBase):
         """This method creates the object from the xml representation
         of the Method object."""
         if elem.attrib:
-            for attr_name, attr_value in elem.attrib.iteritems():
+            for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
                 self.attr_set(ucsgenutils.convert_to_python_var_name(attr_name)
                             , str(attr_value))
 

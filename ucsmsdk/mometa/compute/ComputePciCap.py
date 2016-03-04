@@ -1,11 +1,9 @@
 """This module contains the general information for ComputePciCap ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class ComputePciCapConsts():
@@ -22,18 +20,18 @@ class ComputePciCap(ManagedObject):
     consts = ComputePciCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputePciCap", "computePciCap", "pci", VersionMeta.Version111j, "InputOutput", 0x1ffL, [], ["read-only"], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider'], [u'computePciSlotScanDef'], ["Get"])
+    mo_meta = MoMeta("ComputePciCap", "computePciCap", "pci", VersionMeta.Version111j, "InputOutput", 0x1ff, [], ["read-only"], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider'], [u'computePciSlotScanDef'], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "max_bus_id_per_slot": MoPropertyMeta("max_bus_id_per_slot", "maxBusIdPerSlot", "ushort", VersionMeta.Version204a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, [], []), 
-        "num_of_phys_slots": MoPropertyMeta("num_of_phys_slots", "numOfPhysSlots", "byte", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, [], []), 
-        "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["ascending", "ascending-dual", "ascending-extended", "ascending-seq", "descending"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "starts_with": MoPropertyMeta("starts_with", "startsWith", "ushort", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "max_bus_id_per_slot": MoPropertyMeta("max_bus_id_per_slot", "maxBusIdPerSlot", "ushort", VersionMeta.Version204a, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], []), 
+        "num_of_phys_slots": MoPropertyMeta("num_of_phys_slots", "numOfPhysSlots", "byte", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], []), 
+        "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["ascending", "ascending-dual", "ascending-extended", "ascending-seq", "descending"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "starts_with": MoPropertyMeta("starts_with", "startsWith", "ushort", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

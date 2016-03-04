@@ -16,12 +16,20 @@
 This module contains the SDK general utilities.
 """
 
+from __future__ import print_function
+from __future__ import unicode_literals
+
 import os
+import sys
 import platform
 import re
 import subprocess
 
-from ucsexception import UcsWarning, UcsValidationException
+import logging
+
+log = logging.getLogger('ucs')
+
+from .ucsexception import UcsWarning, UcsValidationException
 
 AFFIRMATIVE_LIST = ['true', 'True', 'TRUE', True, 'yes', 'Yes', 'YES']
 
@@ -164,13 +172,23 @@ def download_file(driver, file_url, file_dir, file_name):
     destination_file = os.path.join(file_dir, file_name)
     response = driver.post(uri=file_url, read=False)
 
-    meta = response.info()
-    file_size = int(meta.getheaders("Content-Length")[0])
-    print "Downloading: %s Bytes: %s" % (file_name, file_size)
+    if sys.version_info > (3, 0):
+        # Python 3 code in this block
+        file_size = int(response.headers['Content-Length'])
+    else:
+        # Python 2 code in this block
+        file_size = int(response.info().getheaders("Content-Length")[0])
+
+
+    # meta = response.info()
+    # log.debug(meta)
+    # file_size = int(meta.getheaders("Content-Length")[0])
+    print("Downloading: %s Bytes: %s" % (file_name, file_size))
 
     file_handle = open(destination_file, 'wb')
     file_size_dl = 0
-    block_sz = 64L
+    #block_sz = 64L
+    block_sz = 64
     while True:
         r_buffer = response.read(128 * block_sz)
         if not r_buffer:
@@ -183,7 +201,7 @@ def download_file(driver, file_url, file_dir, file_name):
         status += chr(8) * (len(status) + 1)
         stdout.write("\r%s" % status)
         stdout.flush()
-    print "Downloading Finished."
+    print('Downloading Finished.')
     file_handle.close()
 
 
@@ -219,9 +237,12 @@ def upload_file(driver, uri, file_dir, file_name):
 
 def check_registry_key(java_key):
     """ Method checks for the java in the registry entries. """
-
-    from _winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKey, \
-        QueryValueEx
+    try:
+        from _winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKey, \
+            QueryValueEx
+    except:
+        from winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKey, \
+            QueryValueEx
 
     path = None
     try:
@@ -356,6 +377,8 @@ def get_java_version():
 
     java_ver_full_str = subprocess.check_output(["java", "-version"],
                                                 stderr=subprocess.STDOUT)
+
+    java_ver_full_str = java_ver_full_str.decode()
     java_ver_match = re.match(r'java version.*?"(.*?)"', java_ver_full_str)
     java_ver_str = java_ver_match.groups()[0]
     return java_ver_str
@@ -373,7 +396,7 @@ def get_md5_sum(filename):
 
     md5_obj = hashlib.md5()
     file_handler = open(filename, 'rb')
-    for chunk in iter(lambda: file_handler.read(128 * md5_obj.block_size), ''):
+    for chunk in iter(lambda: file_handler.read(128 * md5_obj.block_size), b''):
         md5_obj.update(chunk)
 
     file_handler.close()
@@ -478,3 +501,13 @@ def decrypt_password(cipher, key):
 
     decrypted_password = password_stream.tostring()[:cipher_len]
     return decrypted_password
+
+def iteritems(d):
+    """
+    Factor-out Py2-to-3 differences in dictionary item iterator methods
+    """
+
+    try:
+        return d.iteritems()
+    except AttributeError:
+        return d.items()

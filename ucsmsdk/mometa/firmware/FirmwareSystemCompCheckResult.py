@@ -1,11 +1,9 @@
 """This module contains the general information for FirmwareSystemCompCheckResult ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class FirmwareSystemCompCheckResultConsts():
@@ -18,8 +16,6 @@ class FirmwareSystemCompCheckResultConsts():
     SUBJECT_SAS_EXPANDER = "sas-expander"
     SUBJECT_SERVER = "server"
     SUBJECT_SERVICE_PROFILE = "service-profile"
-    SUBJECT_STORAGE_ARRAY_PROFILE = "storage-array-profile"
-    SUBJECT_STORAGE_BLADE = "storage-blade"
     SUBJECT_STORAGE_CONTROLLER = "storage-controller"
     SUBJECT_SWITCH = "switch"
     SUBJECT_SYSTEM = "system"
@@ -32,19 +28,19 @@ class FirmwareSystemCompCheckResult(ManagedObject):
     consts = FirmwareSystemCompCheckResultConsts()
     naming_props = set([u'keyDn'])
 
-    mo_meta = MoMeta("FirmwareSystemCompCheckResult", "firmwareSystemCompCheckResult", "fw-sys-CompCheckRes-[key_dn]", VersionMeta.Version211a, "InputOutput", 0x3fL, [], ["admin"], [u'firmwareSystem'], [], ["Get"])
+    mo_meta = MoMeta("FirmwareSystemCompCheckResult", "firmwareSystemCompCheckResult", "fw-sys-CompCheckRes-[key_dn]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin"], [u'firmwareSystem'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "key_descr": MoPropertyMeta("key_descr", "keyDescr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "key_dn": MoPropertyMeta("key_dn", "keyDn", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x8L, 1, 510, None, [], []), 
+        "key_dn": MoPropertyMeta("key_dn", "keyDn", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x8, 1, 510, None, [], []), 
         "non_comp_descr": MoPropertyMeta("non_comp_descr", "nonCompDescr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "non_comp_dns": MoPropertyMeta("non_comp_dns", "nonCompDns", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "subject": MoPropertyMeta("subject", "subject", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["adaptor", "bios", "board-controller", "cimc", "graphics-card", "iocard", "sas-expander", "server", "service-profile", "storage-array-profile", "storage-blade", "storage-controller", "switch", "system", "unknown"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "subject": MoPropertyMeta("subject", "subject", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["adaptor", "bios", "board-controller", "cimc", "graphics-card", "iocard", "sas-expander", "server", "service-profile", "storage-controller", "switch", "system", "unknown"], []), 
     }
 
     prop_map = {

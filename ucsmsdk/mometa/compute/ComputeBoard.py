@@ -1,11 +1,9 @@
 """This module contains the general information for ComputeBoard ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class ComputeBoardConsts():
@@ -18,9 +16,6 @@ class ComputeBoardConsts():
     CMOS_VOLTAGE_UPPER_CRITICAL = "upper-critical"
     CMOS_VOLTAGE_UPPER_NON_CRITICAL = "upper-non-critical"
     CMOS_VOLTAGE_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
-    CPU_TYPE_IVY_BRIDGE = "ivy-bridge"
-    CPU_TYPE_OTHER = "other"
-    CPU_TYPE_SANDY_BRIDGE = "sandy-bridge"
     OPER_POWER_DEGRADED = "degraded"
     OPER_POWER_ERROR = "error"
     OPER_POWER_FAILED = "failed"
@@ -168,14 +163,13 @@ class ComputeBoard(ManagedObject):
     consts = ComputeBoardConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeBoard", "computeBoard", "board", VersionMeta.Version101e, "InputOutput", 0x1fL, [], ["read-only"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [u'computeIOHub', u'computeMbPowerStats', u'computeMbTempStats', u'computePCIeFatalCompletionStats', u'computePCIeFatalProtocolStats', u'computePCIeFatalReceiveStats', u'computePCIeFatalStats', u'computeRackUnitMbTempStats', u'computeRtcBattery', u'computeStorageBladeMbTempStats', u'equipmentTpm', u'faultInst', u'graphicsCard', u'memoryArray', u'memoryBufferUnit', u'processorUnit', u'securityUnit', u'storageController', u'storageFlexFlashController', u'storageLocalDiskSlotEp', u'storageSasExpander'], ["Get"])
+    mo_meta = MoMeta("ComputeBoard", "computeBoard", "board", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [u'computeIOHub', u'computeMbPowerStats', u'computeMbTempStats', u'computePCIeFatalCompletionStats', u'computePCIeFatalProtocolStats', u'computePCIeFatalReceiveStats', u'computePCIeFatalStats', u'computeRackUnitMbTempStats', u'computeRtcBattery', u'equipmentTpm', u'faultInst', u'graphicsCard', u'memoryArray', u'memoryBufferUnit', u'processorUnit', u'securityUnit', u'storageController', u'storageFlexFlashController', u'storageLocalDiskSlotEp', u'storageSasExpander'], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "cmos_voltage": MoPropertyMeta("cmos_voltage", "cmosVoltage", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
-        "cpu_type": MoPropertyMeta("cpu_type", "cpuType", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ivy-bridge", "other", "sandy-bridge"], []), 
-        "cpu_type_description": MoPropertyMeta("cpu_type_description", "cpuTypeDescription", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "cpu_type_description": MoPropertyMeta("cpu_type_description", "cpuTypeDescription", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "fault_qualifier": MoPropertyMeta("fault_qualifier", "faultQualifier", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
@@ -189,10 +183,10 @@ class ComputeBoard(ManagedObject):
         "power_usage": MoPropertyMeta("power_usage", "powerUsage", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
         "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "voltage": MoPropertyMeta("voltage", "voltage", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
@@ -201,7 +195,6 @@ class ComputeBoard(ManagedObject):
     prop_map = {
         "childAction": "child_action", 
         "cmosVoltage": "cmos_voltage", 
-        "cpuType": "cpu_type", 
         "cpuTypeDescription": "cpu_type_description", 
         "dn": "dn", 
         "faultQualifier": "fault_qualifier", 
@@ -230,7 +223,6 @@ class ComputeBoard(ManagedObject):
         self._dirty_mask = 0
         self.child_action = None
         self.cmos_voltage = None
-        self.cpu_type = None
         self.cpu_type_description = None
         self.fault_qualifier = None
         self.id = None
