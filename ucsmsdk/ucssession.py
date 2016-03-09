@@ -291,7 +291,7 @@ class UcsSession(object):
             file_download(url_suffix='backupfile/config_backup.xml', dest_dir='/home/user/backup', file_name='my_config_backup.xml')
         """
 
-        from ucsgenutils import download_file
+        from .ucsgenutils import download_file
 
         file_url = "%s/%s" % (self.__uri, url_suffix)
 
@@ -325,7 +325,7 @@ class UcsSession(object):
             file_upload(url_suffix=uri_suffix, source_dir=source_dir, file_name=file_name)
         """
 
-        from ucsgenutils import upload_file
+        from .ucsgenutils import upload_file
 
         file_url = "%s/%s" % (self.__uri, url_suffix)
 
@@ -368,7 +368,7 @@ class UcsSession(object):
         (to prevent session expiration).
         """
 
-        from ucsmethodfactory import aaa_refresh
+        from .ucsmethodfactory import aaa_refresh
 
         self.__stop_refresh_timer()
 

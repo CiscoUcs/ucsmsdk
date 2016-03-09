@@ -128,14 +128,14 @@ class Progress(object):
         stdout.flush()
 
 
-class FileWithCallback(file):
+class FileWithCallback(object):
     """Internal class to show the progress while reading file."""
 
     def __init__(self, path, mode, callback, *args):
-        file.__init__(self, path, mode)
-        self.seek(0, 2)
-        self._total = self.tell()
-        self.seek(0)
+        self.file_handle = open(path, mode)
+        self.file_handle.seek(0, 2)
+        self._total = self.file_handle.tell()
+        self.file_handle.seek(0)
         self._callback = callback
         self._args = args
 
@@ -143,7 +143,7 @@ class FileWithCallback(file):
         return self._total
 
     def read(self, size):
-        data = file.read(self, size)
+        data = self.file_handle.read(size)
         self._callback(self._total, len(data), *self._args)
         return data
 
@@ -420,9 +420,12 @@ def expand_key(key, clen):
     """
     Internal method supporting encryption and decryption functionality.
     """
+    try:
+        xrange
+    except:
+        xrange = range
 
     import hashlib
-    from string import join
     from array import array
 
     blocks = (clen + 19) / 20
@@ -431,7 +434,7 @@ def expand_key(key, clen):
     for i_cnt in xrange(blocks):
         seed = hashlib.md5(key + seed).digest()
         x_key.append(seed)
-    j_str = join(x_key, '')
+    j_str = ''.join(x_key)
     return array('L', j_str)
 
 
@@ -448,6 +451,11 @@ def encrypt_password(password, key):
     from array import array
     import hmac
     import base64
+
+    try:
+        xrange
+    except:
+        xrange = range
 
     h_hash = get_sha_hash
     uhash = h_hash(','.join(str(x) for x in
@@ -478,6 +486,11 @@ def decrypt_password(cipher, key):
 
     import base64
     from array import array
+
+    try:
+        xrange
+    except:
+        xrange = range
 
     h_hash = get_sha_hash
 

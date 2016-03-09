@@ -179,8 +179,8 @@ def handle_filter_max_component_limit(handle, l_filter):
     count of filters can be reduced.
     """
 
-    from ucscore import AbstractFilter
-    from ucsfiltertype import AndFilter, OrFilter
+    from .ucscore import AbstractFilter
+    from .ucsfiltertype import AndFilter, OrFilter
 
     max_components = 10
     if l_filter is None or l_filter.child_count() <= max_components:
