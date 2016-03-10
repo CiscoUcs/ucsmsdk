@@ -15,6 +15,9 @@
 This module contains APIs used to launch the Java based UCSM GUI.
 """
 
+from __future__ import print_function
+from __future__ import unicode_literals
+
 import os
 import re
 import subprocess
@@ -76,7 +79,7 @@ def ucs_gui_launch(handle, need_url=False):
                 if os.path.exists(jnlp_file):
                     os.remove(jnlp_file)
 
-                jnlp_fh = open(jnlp_file, "w+")
+                jnlp_fh = open(jnlp_file, "wt+")
                 jnlp_fh.write(source)
                 jnlp_fh.close()
 
@@ -103,14 +106,17 @@ def ucs_gui_launch(handle, need_url=False):
                 log.debug("Enable Log String is %s." % debug_str)
                 for line in fileinput.input(jnlp_file, inplace=1):
                     if re.search(r'^\s*</resources>\s*$', line):
-                        print debug_str
-                    print line,
+                        # print debug_str
+                        print(debug_str)
+                    # print line,
+                    line = line.strip('\n') if line else line
+                    print(line)
                 subprocess.call([javaws_path, jnlp_file])
                 if os.path.exists(jnlp_file):
                     os.remove(jnlp_file)
             else:
                 return None
-    except Exception, e:
+    except Exception as e:
         fileinput.close()
         if os.path.exists(jnlp_file):
             os.remove(jnlp_file)

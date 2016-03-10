@@ -1,11 +1,9 @@
 """This module contains the general information for FirmwareDownloader ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class FirmwareDownloaderConsts():
@@ -176,13 +174,13 @@ class FirmwareDownloader(ManagedObject):
     consts = FirmwareDownloaderConsts()
     naming_props = set([u'fileName'])
 
-    mo_meta = MoMeta("FirmwareDownloader", "firmwareDownloader", "dnld-[file_name]", VersionMeta.Version101e, "InputOutput", 0xfffL, [], ["admin"], [u'firmwareCatalogue'], [u'eventInst', u'faultInst', u'firmwareDownloaderFsm', u'firmwareDownloaderFsmTask'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("FirmwareDownloader", "firmwareDownloader", "dnld-[file_name]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin"], [u'firmwareCatalogue'], [u'eventInst', u'faultInst', u'firmwareDownloaderFsm', u'firmwareDownloaderFsmTask'], ["Add", "Get", "Remove"])
 
     prop_meta = {
-        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["idle", "restart"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "file_name": MoPropertyMeta("file_name", "fileName", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10L, 1, 64, None, [], []), 
+        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["idle", "restart"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "file_name": MoPropertyMeta("file_name", "fileName", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, 1, 64, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["DownloadBegin", "DownloadCopyRemote", "DownloadDeleteLocal", "DownloadFail", "DownloadLocal", "DownloadSuccess", "DownloadUnpackLocal", "nop"], []), 
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]), 
@@ -194,15 +192,15 @@ class FirmwareDownloader(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["DownloadBegin", "DownloadCopyRemote", "DownloadDeleteLocal", "DownloadFail", "DownloadLocal", "DownloadSuccess", "DownloadUnpackLocal", "nop"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "image_size": MoPropertyMeta("image_size", "imageSize", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "protocol": MoPropertyMeta("protocol", "protocol", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["ftp", "local", "scp", "sftp", "tftp", "usbA", "usbB"], []), 
-        "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, [], []), 
-        "remote_path": MoPropertyMeta("remote_path", "remotePath", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x100L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "server": MoPropertyMeta("server", "server", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, 1, 64, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "protocol": MoPropertyMeta("protocol", "protocol", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["ftp", "local", "scp", "sftp", "tftp", "usbA", "usbB"], []), 
+        "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, [], []), 
+        "remote_path": MoPropertyMeta("remote_path", "remotePath", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "server": MoPropertyMeta("server", "server", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, 0, 64, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "transfer_state": MoPropertyMeta("transfer_state", "transferState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["downloaded", "downloading", "failed", "init"], []), 
-        "user": MoPropertyMeta("user", "user", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800L, 0, 510, None, [], []), 
+        "user": MoPropertyMeta("user", "user", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800, 0, 510, None, [], []), 
     }
 
     prop_map = {

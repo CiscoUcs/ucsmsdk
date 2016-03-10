@@ -1,9 +1,7 @@
 """This module contains the meta information of ApeConfigureCMCLIF ExternalMethod."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from ucscoremeta import MethodMeta, MethodPropertyMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
 method_meta = MethodMeta("ApeConfigureCMCLIF", "apeConfigureCMCLIF", "Version142b")
 

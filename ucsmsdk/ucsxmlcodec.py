@@ -18,9 +18,9 @@ except ImportError:
     import cElementTree as ET
     from cElementTree import Element, SubElement
 
-import ucsgenutils
-import ucscoreutils
-import ucsexception as ex
+from . import ucsgenutils
+from . import ucscoreutils
+from . import ucsexception as ex
 
 
 def to_xml_str(elem):

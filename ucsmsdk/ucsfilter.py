@@ -16,10 +16,10 @@ import re
 
 import pyparsing as pp
 
-import ucsgenutils
-import ucscoreutils
-from ucsfiltertype import OrFilter, AndFilter, NotFilter
-from ucsbasetype import FilterFilter
+from . import ucsgenutils
+from . import ucscoreutils
+from .ucsfiltertype import OrFilter, AndFilter, NotFilter
+from .ucsbasetype import FilterFilter
 
 types = {"eq": "EqFilter",
          "ne": "NeFilter",
@@ -109,8 +109,6 @@ class ParseFilter(object):
         method to support logical 'and' operator expression
         """
 
-        print str_, loc, toks
-        print toks[0][1:]
         not_filter = NotFilter()
 
         for op_filter in toks[0][1:]:
@@ -181,8 +179,8 @@ def handle_filter_max_component_limit(handle, l_filter):
     count of filters can be reduced.
     """
 
-    from ucscore import AbstractFilter
-    from ucsfiltertype import AndFilter, OrFilter
+    from .ucscore import AbstractFilter
+    from .ucsfiltertype import AndFilter, OrFilter
 
     max_components = 10
     if l_filter is None or l_filter.child_count() <= max_components:
@@ -223,10 +221,10 @@ def create_basic_filter(filter_name, **kwargs):
     Loads filter class
     """
 
-    import ucsmeta
+    from . import ucsmeta
     fq_module_name = ucsmeta.OTHER_TYPE_CLASS_ID[filter_name]
     module_import = __import__(fq_module_name, globals(), locals(),
-                               [filter_name])
+                               [filter_name], level=1)
     filter_obj = getattr(module_import, filter_name)()
     filter_obj.create(**kwargs)
     return filter_obj

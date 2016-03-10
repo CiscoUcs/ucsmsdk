@@ -15,18 +15,18 @@
 This module contains the UcsSdk Core utilities.
 """
 
+from __future__ import print_function
+
 import os
-import sys
 import re
 import logging
 
-import ucsgenutils
-import mometa
-import methodmeta
-import ucsmethod
-import ucsmo
-from ucsmeta import MO_CLASS_ID, METHOD_CLASS_ID, OTHER_TYPE_CLASS_ID, \
+from . import ucsgenutils
+from . import mometa
+from . import methodmeta
+from . ucsmeta import MO_CLASS_ID, METHOD_CLASS_ID, OTHER_TYPE_CLASS_ID, \
     MO_CLASS_META
+
 
 log = logging.getLogger('ucs')
 
@@ -46,6 +46,9 @@ def get_ucs_obj(class_id, elem, mo_obj=None):
     """
 
     import inspect
+
+    from . import ucsmethod
+    from . import ucsmo
 
     if class_id in METHOD_CLASS_ID:
         return ucsmethod.ExternalMethod(class_id)
@@ -115,7 +118,7 @@ def load_module(module_name):
     elif module_name and module_name in OTHER_TYPE_CLASS_ID:
         fq_module_name = OTHER_TYPE_CLASS_ID[module_name]
         module_import = __import__(fq_module_name, globals(), locals(),
-                                   [module_name])
+                                   [module_name], level=1)
         return module_import
 
 
@@ -245,6 +248,9 @@ def write_object(mo_or_list):
     This prints the managed object on the standard output.
     """
 
+    from . import ucsmethod
+    from . import ucsmo
+
     if isinstance(mo_or_list, ucsmethod.ExternalMethod):
         if hasattr(mo_or_list, "out_configs"):
             for child in mo_or_list.out_configs.child:
@@ -254,10 +260,10 @@ def write_object(mo_or_list):
         for mo in mo_or_list:
             if (isinstance(mo, ucsmo.ManagedObject) or
                     isinstance(mo, ucsmo.GenericMo)):
-                print mo
+                print(mo)
     elif (isinstance(mo_or_list, ucsmo.ManagedObject) or
             isinstance(mo_or_list, ucsmo.GenericMo)):
-        print mo_or_list
+        print(mo_or_list)
 
 
 def extract_molist_from_method_response(method_response,
@@ -357,9 +363,9 @@ def write_mo_tree(mo, level=0, break_level=None, show_level=[],
 
     if print_tree:
         if not show_level:
-            print "%s %s (%s)" % (level_indent, mo.dn, mo.class_id)
+            print("%s %s (%s)" % (level_indent, mo.dn, mo.class_id))
         elif level in show_level:
-            print "%s %s (%s)" % (level_indent, mo.dn, mo.class_id)
+            print("%s %s (%s)" % (level_indent, mo.dn, mo.class_id))
 
     for child in mo.child:
         child.mark_clean()
@@ -435,10 +441,10 @@ def print_mo_hierarchy(class_id, level=0, break_level=None, show_level=[]):
     if level == 0:
         parents = [ucsgenutils.word_u(parent) for parent in
                    MO_CLASS_META[class_id].parents]
-        print "[%s]" % (", ".join(sorted(parents)))
+        print("[%s]" % (", ".join(sorted(parents))))
 
     if level == 0 or not show_level or level in show_level:
-        print "%s%s" % (level_indent, ucsgenutils.word_u(class_id))
+        print("%s%s" % (level_indent, ucsgenutils.word_u(class_id)))
 
     children = sorted(MO_CLASS_META[class_id].children)
 

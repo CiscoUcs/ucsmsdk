@@ -1,11 +1,9 @@
 """This module contains the general information for PolicyControlEp ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class PolicyControlEpConsts():
@@ -173,14 +171,14 @@ class PolicyControlEp(ManagedObject):
     consts = PolicyControlEpConsts()
     naming_props = set([u'type'])
 
-    mo_meta = MoMeta("PolicyControlEp", "policyControlEp", "control-ep-[type]", VersionMeta.Version211a, "InputOutput", 0x1fffL, [], ["admin"], [u'topSystem'], [u'eventInst', u'faultInst', u'policyCentraleSync', u'policyCommunication', u'policyConfigBackup', u'policyControlEpFsm', u'policyControlEpFsmTask', u'policyDateTime', u'policyDiscovery', u'policyDns', u'policyEquipment', u'policyFault', u'policyIdResolvePolicy', u'policyInfraFirmware', u'policyMEp', u'policyMonitoring', u'policyPortConfig', u'policyPowerMgmt', u'policyPsu', u'policySecurity', u'policyStorageAutoConfig'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("PolicyControlEp", "policyControlEp", "control-ep-[type]", VersionMeta.Version211a, "InputOutput", 0x1fff, [], ["admin"], [u'topSystem'], [u'eventInst', u'faultInst', u'policyCentraleSync', u'policyCommunication', u'policyConfigBackup', u'policyControlEpFsm', u'policyControlEpFsmTask', u'policyDateTime', u'policyDiscovery', u'policyDns', u'policyEquipment', u'policyFault', u'policyIdResolvePolicy', u'policyInfraFirmware', u'policyMEp', u'policyMonitoring', u'policyPortConfig', u'policyPowerMgmt', u'policyPsu', u'policySecurity', u'policyStorageAutoConfig'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "ack_state": MoPropertyMeta("ack_state", "ackState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["acked", "no-ack"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "cleanup_mode": MoPropertyMeta("cleanup_mode", "cleanupMode", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["deep-remove-global", "localize-global"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "enc_secret": MoPropertyMeta("enc_secret", "encSecret", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20L, 1, 256, None, [], []), 
+        "ack_state": MoPropertyMeta("ack_state", "ackState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["acked", "no-ack"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "cleanup_mode": MoPropertyMeta("cleanup_mode", "cleanupMode", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["deep-remove-global", "localize-global"], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
+        "enc_secret": MoPropertyMeta("enc_secret", "encSecret", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, 1, 256, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["OperateBegin", "OperateFail", "OperateResolve", "OperateSuccess", "nop"], []), 
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]), 
@@ -194,15 +192,15 @@ class PolicyControlEp(ManagedObject):
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "registration_state": MoPropertyMeta("registration_state", "registrationState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["failed", "lost-visibility", "registered", "registering", "unregistered"], []), 
         "repair_state": MoPropertyMeta("repair_state", "repairState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["done", "not-done"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "secret": MoPropertyMeta("secret", "secret", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x80L, None, None, r"""[!""#%&'\(\)\*\+,\-\./:;<>@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{0,64}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "secret": MoPropertyMeta("secret", "secret", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""[!""#%&'\(\)\*\+,\-\./:;<>@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{0,64}""", [], []), 
         "state": MoPropertyMeta("state", "state", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ok", "out-of-sync"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "suspend_state": MoPropertyMeta("suspend_state", "suspendState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200L, None, None, None, ["off", "on"], []), 
-        "svc_reg_ip": MoPropertyMeta("svc_reg_ip", "svcRegIP", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x400L, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
-        "svc_reg_name": MoPropertyMeta("svc_reg_name", "svcRegName", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x800L, None, None, r"""^[A-Za-z]([A-Za-z0-9_.-]*[A-Za-z0-9])?([A-Za-z]([A-Za-z0-9._-]*[A-Za-z0-9])?)*$|^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$|^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})$|^:((:[0-9a-fA-F]{1,4}){1,7}|:)$""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x1000L, None, None, None, ["policy"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "suspend_state": MoPropertyMeta("suspend_state", "suspendState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["off", "on"], []), 
+        "svc_reg_ip": MoPropertyMeta("svc_reg_ip", "svcRegIP", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x400, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "svc_reg_name": MoPropertyMeta("svc_reg_name", "svcRegName", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""^[A-Za-z]([A-Za-z0-9_.-]*[A-Za-z0-9])?([A-Za-z]([A-Za-z0-9._-]*[A-Za-z0-9])?)*$|^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$|^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})$|^:((:[0-9a-fA-F]{1,4}){1,7}|:)$""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x1000, None, None, None, ["policy"], []), 
     }
 
     prop_map = {

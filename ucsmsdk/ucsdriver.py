@@ -11,11 +11,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import print_function
+from __future__ import unicode_literals
+
 import sys
-import urllib2
-import httplib
 import socket
 import ssl
+import urllib
+
+try:
+    import urllib2
+    import httplib
+except:
+    import urllib.request as urllib2
+    import http.client as httplib
+
 
 import logging
 
@@ -185,30 +195,34 @@ class UcsDriver(object):
             response = post("http://192.168.1.1:80", data=xml_str)
         """
 
-        if self.__redirect_uri:
-            uri = self.__redirect_uri
-        request = self.__create_request(uri=uri, data=data)
-        if dump_xml:
-            log.debug('%s ====> %s' % (uri, data))
-
-        opener = urllib2.build_opener(*self.__handlers)
-        response = opener.open(request)
-
-        if type(response) is list:
-            if len(response) == 2 and \
-                    (response[0] == 302 or response[0] == 301):
-                uri = response[1]
-                self.__redirect = True
-                self.__redirect_uri = uri
-                request = self.__create_request(uri=uri, data=data)
-                if dump_xml:
-                    log.debug('%s <==== %s' % (uri, data))
-
-                opener = urllib2.build_opener(*self.__handlers)
-                response = opener.open(request)
-                # response = urllib2.urlopen(request)
-        if read:
-            response = response.read()
+        try:
+            if self.__redirect_uri:
+                uri = self.__redirect_uri
+            request = self.__create_request(uri=uri, data=data)
             if dump_xml:
-                log.debug('%s <==== %s' % (uri, response))
-        return response
+                log.debug('%s ====> %s' % (uri, data))
+
+            opener = urllib2.build_opener(*self.__handlers)
+            response = opener.open(request)
+
+            if type(response) is list:
+                if len(response) == 2 and \
+                        (response[0] == 302 or response[0] == 301):
+                    uri = response[1]
+                    self.__redirect = True
+                    self.__redirect_uri = uri
+                    request = self.__create_request(uri=uri, data=data)
+                    if dump_xml:
+                        log.debug('%s <==== %s' % (uri, data))
+
+                    opener = urllib2.build_opener(*self.__handlers)
+                    response = opener.open(request)
+                    # response = urllib2.urlopen(request)
+            if read:
+                response = response.read().decode('utf-8')
+                if dump_xml:
+                    log.debug('%s <==== %s' % (uri, response))
+            return response
+        except urllib.error.HTTPError as e:
+            log.debug(e.headers)
+            raise

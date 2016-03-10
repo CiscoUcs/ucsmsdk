@@ -1,11 +1,9 @@
 """This module contains the general information for ExtvmmSwitchDelTask ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class ExtvmmSwitchDelTaskConsts():
@@ -164,15 +162,15 @@ class ExtvmmSwitchDelTask(ManagedObject):
     consts = ExtvmmSwitchDelTaskConsts()
     naming_props = set([u'swIntId'])
 
-    mo_meta = MoMeta("ExtvmmSwitchDelTask", "extvmmSwitchDelTask", "vsw-deltask-[sw_int_id]", VersionMeta.Version111j, "InputOutput", 0xffffL, [], ["admin", "ls-config", "ls-config-policy", "ls-network", "pn-policy"], [u'extvmmEp'], [u'eventInst', u'extvmmSwitchDelTaskFsm', u'extvmmSwitchDelTaskFsmTask', u'faultInst'], ["Get", "Remove"])
+    mo_meta = MoMeta("ExtvmmSwitchDelTask", "extvmmSwitchDelTask", "vsw-deltask-[sw_int_id]", VersionMeta.Version111j, "InputOutput", 0xffff, [], ["admin", "ls-config", "ls-config-policy", "ls-network", "pn-policy"], [u'extvmmEp'], [u'eventInst', u'extvmmSwitchDelTaskFsm', u'extvmmSwitchDelTaskFsmTask', u'faultInst'], ["Get", "Remove"])
 
     prop_meta = {
-        "cert_file": MoPropertyMeta("cert_file", "certFile", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2L, 0, 510, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dc_name": MoPropertyMeta("dc_name", "dcName", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,16}""", [], []), 
-        "dc_org": MoPropertyMeta("dc_org", "dcOrg", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,16}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
+        "cert_file": MoPropertyMeta("cert_file", "certFile", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2, 0, 510, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dc_name": MoPropertyMeta("dc_name", "dcName", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,16}""", [], []), 
+        "dc_org": MoPropertyMeta("dc_org", "dcOrg", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,16}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
         "ext_key": MoPropertyMeta("ext_key", "extKey", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, 1, 33, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "removeProviderBegin", "removeProviderFail", "removeProviderRemoveLocal", "removeProviderSuccess"], []), 
@@ -184,20 +182,20 @@ class ExtvmmSwitchDelTask(ManagedObject):
         "fsm_stamp": MoPropertyMeta("fsm_stamp", "fsmStamp", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []), 
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "removeProviderBegin", "removeProviderFail", "removeProviderRemoveLocal", "removeProviderSuccess"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
-        "host": MoPropertyMeta("host", "host", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, [], []), 
+        "host": MoPropertyMeta("host", "host", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
         "key_inst": MoPropertyMeta("key_inst", "keyInst", "ushort", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "org_path": MoPropertyMeta("org_path", "orgPath", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,16}""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "org_path": MoPropertyMeta("org_path", "orgPath", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,16}""", [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x400L, None, None, None, ["local", "pending-policy", "policy"], []), 
-        "port_value": MoPropertyMeta("port_value", "portValue", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x800L, None, None, None, ["default"], ["1-65355"]), 
-        "prov_int_id": MoPropertyMeta("prov_int_id", "provIntId", "string", VersionMeta.Version111j, MoPropertyMeta.CREATE_ONLY, 0x1000L, None, None, None, ["none"], ["0-4294967295"]), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "port_value": MoPropertyMeta("port_value", "portValue", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["default"], ["1-65355"]), 
+        "prov_int_id": MoPropertyMeta("prov_int_id", "provIntId", "string", VersionMeta.Version111j, MoPropertyMeta.CREATE_ONLY, 0x1000, None, None, None, ["none"], ["0-4294967295"]), 
         "provider": MoPropertyMeta("provider", "provider", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2000L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x4000L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "sw_int_id": MoPropertyMeta("sw_int_id", "swIntId", "string", VersionMeta.Version111j, MoPropertyMeta.NAMING, 0x8000L, None, None, None, ["none"], ["0-4294967295"]), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2000, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "sw_int_id": MoPropertyMeta("sw_int_id", "swIntId", "string", VersionMeta.Version111j, MoPropertyMeta.NAMING, 0x8000, None, None, None, ["none"], ["0-4294967295"]), 
         "sw_name": MoPropertyMeta("sw_name", "swName", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,16}""", [], []), 
     }
 

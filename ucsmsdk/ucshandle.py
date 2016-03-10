@@ -14,12 +14,12 @@
 
 import logging
 
-import ucsgenutils
-import ucscoreutils
-from ucsexception import UcsException
-from ucsconstants import NamingId
-from ucssession import UcsSession
-from ucsmethodfactory import config_resolve_classes
+from . import ucsgenutils
+from . import ucscoreutils
+from .ucsexception import UcsException
+from .ucsconstants import NamingId
+from .ucssession import UcsSession
+from .ucsmethodfactory import config_resolve_classes
 
 log = logging.getLogger('ucs')
 
@@ -162,7 +162,7 @@ class UcsHandle(UcsSession):
 
         """
 
-        from ucsmethodfactory import aaa_get_n_compute_auth_token_by_dn
+        from .ucsmethodfactory import aaa_get_n_compute_auth_token_by_dn
 
         auth_token = None
         mo = self.query_classid(class_id=NamingId.COMPUTE_BLADE)
@@ -201,8 +201,8 @@ class UcsHandle(UcsSession):
             obj = handle.lookup_by_dns("fabric/lan/net-100", "fabric/lan/net-101")
         """
 
-        from ucsbasetype import DnSet, Dn
-        from ucsmethodfactory import config_resolve_dns
+        from .ucsbasetype import DnSet, Dn
+        from .ucsmethodfactory import config_resolve_dns
 
         if not dns:
             raise ValueError("Provide Comma Separated string of Dns")
@@ -245,8 +245,8 @@ class UcsHandle(UcsSession):
         """
 
         # ToDo - How to handle unknown class_id
-        from ucsbasetype import ClassIdSet, ClassId
-        from ucsmeta import MO_CLASS_ID
+        from .ucsbasetype import ClassIdSet, ClassId
+        from .ucsmeta import MO_CLASS_ID
 
         if not class_ids:
             raise ValueError("Provide Comma Separated string of Class Ids")
@@ -303,8 +303,8 @@ class UcsHandle(UcsSession):
             obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True, need_response=True)\n
         """
 
-        from ucsbasetype import DnSet, Dn
-        from ucsmethodfactory import config_resolve_dns
+        from .ucsbasetype import DnSet, Dn
+        from .ucsmethodfactory import config_resolve_dns
 
         if not dn:
             raise ValueError("Provide dn.")
@@ -380,9 +380,8 @@ class UcsHandle(UcsSession):
 
         # ToDo - How to handle unknown class_id
 
-        from ucsmeta import MO_CLASS_ID
-        from ucsfilter import generate_infilter
-        from ucsmethodfactory import config_resolve_class
+        from .ucsfilter import generate_infilter
+        from .ucsmethodfactory import config_resolve_class
 
         if not class_id:
             raise ValueError("Provide Parameter class_id")
@@ -447,8 +446,8 @@ class UcsHandle(UcsSession):
             mo_list = handle.query_children(in_dn=dn, class_id="classid")\n
         """
 
-        from ucsmeta import MO_CLASS_ID
-        from ucsmethodfactory import config_resolve_children
+        from .ucsmeta import MO_CLASS_ID
+        from .ucsmethodfactory import config_resolve_children
 
         if not in_mo and not in_dn:
             raise ValueError('[Error]: GetChild: Provide in_mo or in_dn.')
@@ -573,9 +572,9 @@ class UcsHandle(UcsSession):
             handle.commit()\n
         """
 
-        from ucsbasetype import ConfigMap, Dn, DnSet, Pair
-        from ucsmethodfactory import config_resolve_dns
-        from ucsmethodfactory import config_conf_mos
+        from .ucsbasetype import ConfigMap, Dn, DnSet, Pair
+        from .ucsmethodfactory import config_resolve_dns
+        from .ucsmethodfactory import config_conf_mos
 
         refresh_dict = {}
         mo_dict = self.__to_commit

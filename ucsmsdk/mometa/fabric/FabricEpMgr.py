@@ -1,11 +1,9 @@
 """This module contains the general information for FabricEpMgr ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class FabricEpMgrConsts():
@@ -173,14 +171,14 @@ class FabricEpMgr(ManagedObject):
     consts = FabricEpMgrConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("FabricEpMgr", "fabricEpMgr", "[id]", VersionMeta.Version201m, "InputOutput", 0x3fL, [], ["admin"], [u'fabricEp'], [u'eventInst', u'fabricEpMgrFsm', u'fabricEpMgrFsmTask', u'faultInst'], ["Get"])
+    mo_meta = MoMeta("FabricEpMgr", "fabricEpMgr", "[id]", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["admin"], [u'fabricEp'], [u'eventInst', u'fabricEpMgrFsm', u'fabricEpMgrFsmTask', u'faultInst'], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "conf_mode": MoPropertyMeta("conf_mode", "confMode", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["apply-phys-trans", "conf-switch", "logical-config-invalid", "none", "validating-conf"], []), 
         "conf_qual": MoPropertyMeta("conf_qual", "confQual", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "conf_state": MoPropertyMeta("conf_state", "confState", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["logical-config-invalid", "ok"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_flags": MoPropertyMeta("fsm_flags", "fsmFlags", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-4294967295"]), 
@@ -193,10 +191,10 @@ class FabricEpMgr(ManagedObject):
         "fsm_stamp": MoPropertyMeta("fsm_stamp", "fsmStamp", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []), 
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, ["ConfigureApplyConfig", "ConfigureApplyPhysical", "ConfigureBegin", "ConfigureFail", "ConfigureSuccess", "ConfigureValidateConfiguration", "ConfigureWaitOnPhys", "nop"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x8L, None, None, None, ["A", "B", "NONE"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x8, None, None, None, ["A", "B", "NONE"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

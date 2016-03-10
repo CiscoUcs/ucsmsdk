@@ -1,11 +1,9 @@
 """This module contains the general information for EquipmentPsuStats ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class EquipmentPsuStatsConsts():
@@ -27,20 +25,20 @@ class EquipmentPsuStats(ManagedObject):
     consts = EquipmentPsuStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentPsuStats", "equipmentPsuStats", "stats", VersionMeta.Version111j, "OutputOnly", 0xfL, [], ["admin", "operations", "read-only"], [u'equipmentPsu'], [u'equipmentPsuStatsHist'], ["Get"])
+    mo_meta = MoMeta("EquipmentPsuStats", "equipmentPsuStats", "stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'equipmentPsu'], [u'equipmentPsuStatsHist'], ["Get"])
 
     prop_meta = {
-        "psu_i2_c_errors": MoPropertyMeta("psu_i2_c_errors", "PsuI2CErrors", "ulong", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "psu_i2_c_errors_delta": MoPropertyMeta("psu_i2_c_errors_delta", "PsuI2CErrorsDelta", "ulong", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "psu_i2_c_errors_delta_avg": MoPropertyMeta("psu_i2_c_errors_delta_avg", "PsuI2CErrorsDeltaAvg", "ulong", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "psu_i2_c_errors_delta_max": MoPropertyMeta("psu_i2_c_errors_delta_max", "PsuI2CErrorsDeltaMax", "ulong", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "psu_i2_c_errors_delta_min": MoPropertyMeta("psu_i2_c_errors_delta_min", "PsuI2CErrorsDeltaMin", "ulong", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "psu_i2_c_errors": MoPropertyMeta("psu_i2_c_errors", "PsuI2CErrors", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "psu_i2_c_errors_delta": MoPropertyMeta("psu_i2_c_errors_delta", "PsuI2CErrorsDelta", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "psu_i2_c_errors_delta_avg": MoPropertyMeta("psu_i2_c_errors_delta_avg", "PsuI2CErrorsDeltaAvg", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "psu_i2_c_errors_delta_max": MoPropertyMeta("psu_i2_c_errors_delta_max", "PsuI2CErrorsDeltaMax", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "psu_i2_c_errors_delta_min": MoPropertyMeta("psu_i2_c_errors_delta_min", "PsuI2CErrorsDeltaMin", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "ambient_temp": MoPropertyMeta("ambient_temp", "ambientTemp", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "ambient_temp_avg": MoPropertyMeta("ambient_temp_avg", "ambientTempAvg", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "ambient_temp_max": MoPropertyMeta("ambient_temp_max", "ambientTempMax", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "ambient_temp_min": MoPropertyMeta("ambient_temp_min", "ambientTempMin", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "input210v": MoPropertyMeta("input210v", "input210v", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "input210v_avg": MoPropertyMeta("input210v_avg", "input210vAvg", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "input210v_max": MoPropertyMeta("input210v_max", "input210vMax", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -68,9 +66,9 @@ class EquipmentPsuStats(ManagedObject):
         "output_power_min": MoPropertyMeta("output_power_min", "outputPowerMin", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "psu_temp1": MoPropertyMeta("psu_temp1", "psuTemp1", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "psu_temp2": MoPropertyMeta("psu_temp2", "psuTemp2", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "suspect": MoPropertyMeta("suspect", "suspect", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "thresholded": MoPropertyMeta("thresholded", "thresholded", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 

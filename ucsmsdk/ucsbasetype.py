@@ -19,7 +19,7 @@ ClassFactory Method: It returns the object of type ManagedObject, ExternalMethod
 or supporting classes available in this module for a given className.
 """
 
-from ucscore import BaseObject
+from .ucscore import BaseObject
 
 
 class Method(BaseObject):

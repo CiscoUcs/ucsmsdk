@@ -11,6 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import print_function
+
 from nose.tools import assert_equal 
 import ucsmsdk.ucsxmlcodec as xc
 from ucsmsdk.ucscoremeta import WriteXmlOption
@@ -27,7 +29,7 @@ def test_001_knownmo_unknownprop():
     obj = xc.from_xml_str(xml_str)
     obj.unknownProps = "known"
     xml_element = obj.to_xml()
-    expected = '<lsServer agentPolicyName="" dn="ls-ra11" name="ra11" type="instance" unknownProps="known" usrLbl="b" />'
+    expected = b'<lsServer agentPolicyName="" dn="ls-ra11" name="ra11" type="instance" unknownProps="known" usrLbl="b" />'
     result_str = xc.to_xml_str(xml_element)
     assert_equal(result_str, expected)
 
@@ -43,4 +45,4 @@ def test_002_knownmo_unknownprop():
     obj = xc.from_xml_str(xml_str)
     obj.unknownProps = "known"
     xml_element = obj.to_xml(option=WriteXmlOption.DIRTY)
-    print xc.to_xml_str(xml_element)
+    print(xc.to_xml_str(xml_element))

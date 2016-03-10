@@ -53,9 +53,9 @@ def test_001_sp_minimal():
     from ucsmsdk.ucscoremeta import WriteXmlOption
     obj = handle.query_dn("org-root/ls-test_sp")
     obj.usr_lbl = "new_label"
-    print xc.to_xml_str(obj.to_xml(option=WriteXmlOption.DIRTY))
-    print xc.to_xml_str(obj.to_xml(option=WriteXmlOption.ALL_CONFIG))
-    print xc.to_xml_str(obj.to_xml())
+    print(xc.to_xml_str(obj.to_xml(option=WriteXmlOption.DIRTY)))
+    print(xc.to_xml_str(obj.to_xml(option=WriteXmlOption.ALL_CONFIG)))
+    print(xc.to_xml_str(obj.to_xml()))
 
     ##########################################################
     # Delete the SP

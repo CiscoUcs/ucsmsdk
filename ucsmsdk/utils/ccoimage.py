@@ -16,12 +16,17 @@
 This module has helper methods to facilitate image download from CCO
 """
 
+from __future__ import print_function
+from __future__ import unicode_literals
+
 import os
+import logging
 
 from .. import ucsgenutils
 from ..ucsexception import UcsValidationException, UcsWarning
 from ..ucsdriver import UcsDriver
 
+log = logging.getLogger('ucs')
 
 class _UcsCcoImageList:
     """enum for cco image attributes"""
@@ -125,13 +130,21 @@ def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None,
             input_xml += ida_xml_query_mdf_id % mdf_id
 
     input_xml += ida_xml_query_footer
-    # print input_xml
+    log.debug(input_xml)
 
-    # sending url request
+    # base64encode for Authorization header
+    credential = base64.b64encode((username + ":" + password).encode()).decode(
+        'utf-8')
+    log.debug(credential)
+
+    # send request to server
     driver = UcsDriver(proxy)
-    credential = base64.encodestring('%s:%s' % (username, password))[:-1]
     driver.add_header("Authorization", "Basic %s" % credential)
-    ida_xml_response = driver.post(uri=url, data=input_xml)
+    ida_xml_response = driver.post(uri=url,
+                                   data=input_xml.encode(),
+                                   dump_xml=True,
+                                   read=True)
+
     if not ida_xml_response:
         raise UcsValidationException("No Response from <%s>" % url)
 
@@ -218,7 +231,7 @@ def get_ucs_cco_image(image, file_dir, proxy=None):
             "Not a valid directory <%s>" % file_dir)
 
     image_url = image.url
-    print "Processing Image " + str(image.image_name)
+    print("Processing Image " + str(image.image_name))
 
     driver = UcsDriver(proxy)
     driver.add_header("Authorization", "Basic %s" % image.network_credential)
@@ -238,7 +251,8 @@ def get_ucs_cco_image(image, file_dir, proxy=None):
         UcsWarning("Deleting file <%s> ....." % local_file)
         os.remove(local_file)
         return
-
+    log.debug(md5_sum)
+    log.debug(image.checksum_md5)
     if md5_sum != image.checksum_md5:
         UcsWarning("Incorrect md5sum for file <%s>" % local_file)
         UcsWarning("Deleting file <%s> ....." % local_file)

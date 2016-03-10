@@ -1,11 +1,9 @@
 """This module contains the general information for FaultSuppressPolicyItem ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class FaultSuppressPolicyItemConsts():
@@ -26,7 +24,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_ACTIVATION_FAILED = "activation-failed"
     CAUSE_ACTIVE_FAILED = "active-failed"
     CAUSE_ADAPTOR_MISMATCH = "adaptor-mismatch"
-    CAUSE_ADMIN_STATE_OFFLINE = "admin-state-offline"
     CAUSE_ANALYZE_IMPACT_FAILED = "analyze-impact-failed"
     CAUSE_ANOTHER_CONNECTION_ALREADY_ENABLED = "another-connection-already-enabled"
     CAUSE_ANY = "any"
@@ -67,7 +64,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_BMC_SHUTDOWN_DIAG_COMPLETED_FAILED = "bmc-shutdown-diag-completed-failed"
     CAUSE_BMC_SHUTDOWN_DISCOVERED_FAILED = "bmc-shutdown-discovered-failed"
     CAUSE_BMC_UNCONFIG_PNUOS_FAILED = "bmc-unconfig-pnuos-failed"
-    CAUSE_BMC_UPDATE_HOST_PRE_BOOT_FAILED = "bmc-update-host-pre-boot-failed"
     CAUSE_BOARD_CTRL_UPGRADED = "board-ctrl-upgraded"
     CAUSE_BOOT_HOST_FAILED = "boot-host-failed"
     CAUSE_BOOT_PNUOS_FAILED = "boot-pnuos-failed"
@@ -76,7 +72,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_CALCULATE_VLAN_GROUP_FOR_HOSTOSPEER_FAILED = "calculate-vlan-group-for-hostospeer-failed"
     CAUSE_CALLHOME_CONFIG_ERROR = "callhome-config-error"
     CAUSE_CAPACITY_EXCEEDED = "capacity-exceeded"
-    CAUSE_CAPACITY_PROBLEM = "capacity-problem"
     CAUSE_CARTRIDGE_MOVED = "cartridge-moved"
     CAUSE_CHASSIS_LIMIT_EXCEEDED = "chassis-limit-exceeded"
     CAUSE_CHECK_ADAPTOR_FW40GCAP_FAILED = "check-adaptor-fw40gcap-failed"
@@ -85,9 +80,7 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_CHECK_INVENTORY_STATUS_FAILED = "check-inventory-status-failed"
     CAUSE_CHECK_LICENSE_FAILED = "check-license-failed"
     CAUSE_CHECK_POWER_AVAILABILITY_FAILED = "check-power-availability-failed"
-    CAUSE_CIMC_BACKUP_TRIGGER_NOT_ENABLED = "cimc-backup-trigger-not-enabled"
     CAUSE_CIMC_FIRMWARE_MISMATCH = "cimc-firmware-mismatch"
-    CAUSE_CIMC_HEARTBEAT_TIMED_OUT = "cimc-heartbeat-timed-out"
     CAUSE_CIMC_PRESENCE_FAILED = "cimc-presence-failed"
     CAUSE_CIMCVLAN_CFG_LOCAL_FAILED = "cimcvlan-cfg-local-failed"
     CAUSE_CIMCVLAN_CFG_PEER_FAILED = "cimcvlan-cfg-peer-failed"
@@ -123,7 +116,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_CONFIG_CHASSIS_ID_FAILED = "config-chassis-id-failed"
     CAUSE_CONFIG_CIMCVMEDIA_FAILED = "config-cimcvmedia-failed"
     CAUSE_CONFIG_DISCOVERY_MODE_FAILED = "config-discovery-mode-failed"
-    CAUSE_CONFIG_DISK_FAILED = "config-disk-failed"
     CAUSE_CONFIG_ERROR = "config-error"
     CAUSE_CONFIG_EXT_MGMT_GW_FAILED = "config-ext-mgmt-gw-failed"
     CAUSE_CONFIG_EXT_MGMT_RULES_FAILED = "config-ext-mgmt-rules-failed"
@@ -134,21 +126,15 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_CONFIG_FLEX_FLASH_FAILED = "config-flex-flash-failed"
     CAUSE_CONFIG_FLEX_FLASH_SCRUB_FAILED = "config-flex-flash-scrub-failed"
     CAUSE_CONFIG_KVM_MGMT_DEFAULT_SETTING_FAILED = "config-kvm-mgmt-default-setting-failed"
-    CAUSE_CONFIG_LUN_FAILED = "config-lun-failed"
     CAUSE_CONFIG_MEMORY_POLICY_FAILED = "config-memory-policy-failed"
     CAUSE_CONFIG_MISSING = "config-missing"
-    CAUSE_CONFIG_NETWORK_FAILED = "config-network-failed"
     CAUSE_CONFIG_NIV_MODE_FAILED = "config-niv-mode-failed"
-    CAUSE_CONFIG_PLATFORM_FAILED = "config-platform-failed"
     CAUSE_CONFIG_SO_LFAILED = "config-so-lfailed"
-    CAUSE_CONFIG_STORAGE_REPLICATION_SERVICE_FAILED = "config-storage-replication-service-failed"
-    CAUSE_CONFIG_STORAGE_TARGET_IDENTITY_FAILED = "config-storage-target-identity-failed"
     CAUSE_CONFIG_SW_AFAILED = "config-sw-afailed"
     CAUSE_CONFIG_SW_BFAILED = "config-sw-bfailed"
     CAUSE_CONFIG_USER_ACCESS_FAILED = "config-user-access-failed"
     CAUSE_CONFIG_UUID_FAILED = "config-uuid-failed"
     CAUSE_CONFIGBMCPOWER_PARAMS_FAILED = "configbmcpower-params-failed"
-    CAUSE_CONFIGHASTATE_FAILED = "confighastate-failed"
     CAUSE_CONFIGURATION_APPLIED = "configuration-applied"
     CAUSE_CONFIGURATION_APPLYING = "configuration-applying"
     CAUSE_CONFIGURATION_ERROR = "configuration-error"
@@ -163,8 +149,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_CONFIGURE_VIF_NS_FAILED = "configure-vif-ns-failed"
     CAUSE_CONNECTION_UNUSED = "connection-unused"
     CAUSE_CONNECTIVITY_PROBLEM = "connectivity-problem"
-    CAUSE_CONNECTSMELOCAL_FAILED = "connectsmelocal-failed"
-    CAUSE_CONNECTSMEREMOTE_FAILED = "connectsmeremote-failed"
     CAUSE_COPY_ALL_IMAGES_TO_PEER_FAILED = "copy-all-images-to-peer-failed"
     CAUSE_COPY_CAT_FROM_REP_FAILED = "copy-cat-from-rep-failed"
     CAUSE_COPY_EXT_TO_LOCAL_FAILED = "copy-ext-to-local-failed"
@@ -193,6 +177,7 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_DELETE_REMOTE_FAILED = "delete-remote-failed"
     CAUSE_DELETE_SUB_FAILED = "delete-sub-failed"
     CAUSE_DEPLOY_FAILED = "deploy-failed"
+    CAUSE_DEPRECATED = "deprecated"
     CAUSE_DERIVE_CONFIG_FAILED = "derive-config-failed"
     CAUSE_DEVICE_SHARED_STORAGE_IO_ERROR = "device-shared-storage-IO-error"
     CAUSE_DEVICE_SHARED_STORAGE_ERROR = "device-shared-storage-error"
@@ -202,14 +187,10 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_DISABLE_FAILED = "disable-failed"
     CAUSE_DISABLE_SERVER_CONN_SW_AFAILED = "disable-server-conn-sw-afailed"
     CAUSE_DISABLE_SERVER_CONN_SW_BFAILED = "disable-server-conn-sw-bfailed"
-    CAUSE_DISABLE_STORAGE_TARGET_FAILED = "disable-storage-target-failed"
-    CAUSE_DISASSOC_STORAGE_CONTROLLER_FAILED = "disassoc-storage-controller-failed"
     CAUSE_DISASSOCIATION_FAILED = "disassociation-failed"
     CAUSE_DISCOVER_CHASSIS_FAILED = "discover-chassis-failed"
     CAUSE_DISCOVERY_FAILED = "discovery-failed"
     CAUSE_DISCOVERY_IN_PROGRESS = "discovery-in-progress"
-    CAUSE_DISK_WEAR_CRITICAL_THRESHOLD = "disk-wear-critical-threshold"
-    CAUSE_DISK_WEAR_NON_CRITICAL_THRESHOLD = "disk-wear-non-critical-threshold"
     CAUSE_DOMAIN_CONFIG_ERROR = "domain-config-error"
     CAUSE_DOWNLOAD_IMAGES_FAILED = "download-images-failed"
     CAUSE_DOWNLOAD_LOCAL_FAILED = "download-local-failed"
@@ -224,7 +205,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_ENABLE_PORT_FAILED = "enable-port-failed"
     CAUSE_ENABLE_SERVER_CONN_SW_AFAILED = "enable-server-conn-sw-afailed"
     CAUSE_ENABLE_SERVER_CONN_SW_BFAILED = "enable-server-conn-sw-bfailed"
-    CAUSE_ENABLE_STORAGE_TARGET_FAILED = "enable-storage-target-failed"
     CAUSE_END_INVENTORY_FAILED = "end-inventory-failed"
     CAUSE_EQUIPMENT_DEGRADED = "equipment-degraded"
     CAUSE_EQUIPMENT_DEPRECATED = "equipment-deprecated"
@@ -241,7 +221,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_EQUIPMENT_UNACKNOWLEDGED = "equipment-unacknowledged"
     CAUSE_EQUIPMENT_UNHEALTHY = "equipment-unhealthy"
     CAUSE_EVALUATE_ASSOCIATION_FAILED = "evaluate-association-failed"
-    CAUSE_EVALUATE_IDENTITY_FAILED = "evaluate-identity-failed"
     CAUSE_EVALUATE_STATUS_FAILED = "evaluate-status-failed"
     CAUSE_EXECUTE_AFAILED = "execute-afailed"
     CAUSE_EXECUTE_BFAILED = "execute-bfailed"
@@ -292,37 +271,15 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_HEALTH_LED_AMBER_BLINKING = "health-led-amber-blinking"
     CAUSE_HEALTH_MAJOR = "health-major"
     CAUSE_HEALTH_MINOR = "health-minor"
-    CAUSE_HEALTH_PROBLEM = "health-problem"
     CAUSE_HEALTH_WARNING = "health-warning"
-    CAUSE_HOST_BIOS_POST_COMPLETION_FAILED = "host-bios-post-completion-failed"
-    CAUSE_HOST_BMC_PRE_CONFIG_LOCAL_FAILED = "host-bmc-pre-config-local-failed"
-    CAUSE_HOST_BMC_PRE_CONFIG_PEER_FAILED = "host-bmc-pre-config-peer-failed"
-    CAUSE_HOST_BOOT_FAILED = "host-boot-failed"
-    CAUSE_HOST_BOOT_FOR_UPGRADE_FAILED = "host-boot-for-upgrade-failed"
-    CAUSE_HOST_BOOT_WAIT_FAILED = "host-boot-wait-failed"
     CAUSE_HOST_CATALOG_FAILED = "host-catalog-failed"
-    CAUSE_HOST_CLEAR_OS_INSTALL_STATUS_FAILED = "host-clear-os-install-status-failed"
     CAUSE_HOST_CONNECT_FAILED = "host-connect-failed"
     CAUSE_HOST_DISCONNECT_FAILED = "host-disconnect-failed"
     CAUSE_HOST_IDENT_FAILED = "host-ident-failed"
     CAUSE_HOST_INVENTORY_FAILED = "host-inventory-failed"
     CAUSE_HOST_POLICY_FAILED = "host-policy-failed"
-    CAUSE_HOST_POST_FIRST_BOOT_FAILED = "host-post-first-boot-failed"
-    CAUSE_HOST_POST_INSTALL_FAILED = "host-post-install-failed"
-    CAUSE_HOST_POST_UPGRADE_FAILED = "host-post-upgrade-failed"
-    CAUSE_HOST_PRE_FIRST_BOOT_FAILED = "host-pre-first-boot-failed"
-    CAUSE_HOST_PRE_INSTALL_FAILED = "host-pre-install-failed"
-    CAUSE_HOST_READ_SMBIOS_FAILED = "host-read-smbios-failed"
-    CAUSE_HOST_SERIAL_DEBUG_CONNECT_FAILED = "host-serial-debug-connect-failed"
-    CAUSE_HOST_SERIAL_DEBUG_DISCONNECT_FAILED = "host-serial-debug-disconnect-failed"
     CAUSE_HOST_SERVER_DIAG_FAILED = "host-server-diag-failed"
     CAUSE_HOST_SERVER_DIAG_STATUS_FAILED = "host-server-diag-status-failed"
-    CAUSE_HOST_SETUP_VMEDIA_LOCAL_FAILED = "host-setup-vmedia-local-failed"
-    CAUSE_HOST_SETUP_VMEDIA_PEER_FAILED = "host-setup-vmedia-peer-failed"
-    CAUSE_HOST_SOL_REDIRECT_DISABLE_FAILED = "host-sol-redirect-disable-failed"
-    CAUSE_HOST_SOL_REDIRECT_ENABLE_FAILED = "host-sol-redirect-enable-failed"
-    CAUSE_HOST_TEARDOWN_VMEDIA_LOCAL_FAILED = "host-teardown-vmedia-local-failed"
-    CAUSE_HOST_TEARDOWN_VMEDIA_PEER_FAILED = "host-teardown-vmedia-peer-failed"
     CAUSE_HOSTOSCONFIG_FAILED = "hostosconfig-failed"
     CAUSE_HOSTOSIDENT_FAILED = "hostosident-failed"
     CAUSE_HOSTOSPOLICY_FAILED = "hostospolicy-failed"
@@ -337,14 +294,11 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_INBAND_UNSUPPORTED_SERVER = "inband-unsupported-server"
     CAUSE_INCOMPATIBLE_SERVER_FIRMWARE = "incompatible-server-firmware"
     CAUSE_INCOMPATIBLE_SPEED = "incompatible-speed"
-    CAUSE_INITIATE_POLLBMCLOCAL_FAILED = "initiate-pollbmclocal-failed"
-    CAUSE_INITIATE_POLLBMCREMOTE_FAILED = "initiate-pollbmcremote-failed"
     CAUSE_INSUFFICIENT_RESOURCES = "insufficient-resources"
     CAUSE_INSUFFICIENTLY_EQUIPPED = "insufficiently-equipped"
     CAUSE_INTERFACE_FAILED = "interface-failed"
     CAUSE_INTERFACE_MISCONFIGURED = "interface-misconfigured"
     CAUSE_INTERNAL_BACKUP_FAILED = "internal-backup-failed"
-    CAUSE_INVALID_CONTROLLER_PROFILE_COUNT = "invalid-controller-profile-count"
     CAUSE_INVALID_KEYRING_CERTIFICATE = "invalid-keyring-certificate"
     CAUSE_INVALID_KEYRING_MODULUS = "invalid-keyring-modulus"
     CAUSE_INVALID_PINNING = "invalid-pinning"
@@ -424,7 +378,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_NO_ACK_FROM_BIOS = "no-ack-from-bios"
     CAUSE_NO_CAP_FAIL = "no-cap-fail"
     CAUSE_NO_VLAN_OPTIMIZATION = "no-vlan-optimization"
-    CAUSE_NO_VOLUME_SPACE = "no-volume-space"
     CAUSE_NON_EXISTENT_SCHEDULER = "non-existent-scheduler"
     CAUSE_NOT_SUPPORTED = "not-supported"
     CAUSE_OLD_CHASSIS_COMPONENT_FIRMWARE = "old-chassis-component-firmware"
@@ -436,8 +389,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_OPERATIONAL_STATE_DOWN = "operational-state-down"
     CAUSE_PAIR_FAILED = "pair-failed"
     CAUSE_PEER_FAILED = "peer-failed"
-    CAUSE_PERFORM_ERASE_FAILED = "perform-erase-failed"
-    CAUSE_PERFORM_HA_TAKE_OVER_FAILED = "perform-ha-take-over-failed"
     CAUSE_PERFORMANCE_PROBLEM = "performance-problem"
     CAUSE_PING_FAILED = "ping-failed"
     CAUSE_PINNING_MISCONFIG = "pinning-misconfig"
@@ -514,14 +465,9 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_PROVIDER_GROUP_ALREADY_EXISTS = "provider-group-already-exists"
     CAUSE_PROVIDER_GROUP_SIZE_EMPTY = "provider-group-size-empty"
     CAUSE_PROVISION_STORAGE_FAILED = "provision-storage-failed"
-    CAUSE_PSU_FAILURE = "psu-failure"
     CAUSE_PSU_INSUFFICIENT = "psu-insufficient"
     CAUSE_PSU_MIXED_MODE = "psu-mixed-mode"
     CAUSE_PSU_REDUNDANCY_FAIL = "psu-redundancy-fail"
-    CAUSE_RAIDGROUP_BAD = "raidgroup-bad"
-    CAUSE_RAIDGROUP_DEGRADED = "raidgroup-degraded"
-    CAUSE_RAIDGROUP_OFFLINE = "raidgroup-offline"
-    CAUSE_RAIDGROUP_REBUILDING = "raidgroup-rebuilding"
     CAUSE_READ_SM_BIOS_FAILED = "read-sm-bios-failed"
     CAUSE_READ_SMBIOS_FAILED = "read-smbios-failed"
     CAUSE_RECONFIG_BIOS_FAILED = "reconfig-bios-failed"
@@ -542,7 +488,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_REMOVEVMEDIA_PEER_FAILED = "removevmedia-peer-failed"
     CAUSE_REPORT_FAILED = "report-failed"
     CAUSE_REPORT_FAULT_INVENTORY_FAILED = "report-fault-inventory-failed"
-    CAUSE_REPORT_FULL_INVENTORY_FAILED = "report-full-inventory-failed"
     CAUSE_REPORT_ORG_INVENTORY_FAILED = "report-org-inventory-failed"
     CAUSE_REPORT_PHYSICAL_INVENTORY_FAILED = "report-physical-inventory-failed"
     CAUSE_REPORT_RESULTS_FAILED = "report-results-failed"
@@ -568,7 +513,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_RESOLVE_POLICIES_FAILED = "resolve-policies-failed"
     CAUSE_RESOLVE_SCHEDULE_FAILED = "resolve-schedule-failed"
     CAUSE_RESOLVE_STORAGE_SCHEDULE_FAILED = "resolve-storage-schedule-failed"
-    CAUSE_RESOLVE_VOLUMES_FAILED = "resolve-volumes-failed"
     CAUSE_RESTORE_CONFIG_FE_LOCAL_FAILED = "restore-config-fe-local-failed"
     CAUSE_RESTORE_CONFIG_FE_PEER_FAILED = "restore-config-fe-peer-failed"
     CAUSE_ROLE_CONFIG_ERROR = "role-config-error"
@@ -606,8 +550,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_SET_KEY_RING_LOCAL_FAILED = "set-key-ring-local-failed"
     CAUSE_SET_KEY_RING_PEER_FAILED = "set-key-ring-peer-failed"
     CAUSE_SET_LOCAL_FAILED = "set-local-failed"
-    CAUSE_SET_LOCATOR_LED_LOCAL_FAILED = "set-locator-led-local-failed"
-    CAUSE_SET_LOCATOR_LED_PEER_FAILED = "set-locator-led-peer-failed"
     CAUSE_SET_PEER_FAILED = "set-peer-failed"
     CAUSE_SET_REALM_LOCAL_FAILED = "set-realm-local-failed"
     CAUSE_SET_REALM_PEER_FAILED = "set-realm-peer-failed"
@@ -620,8 +562,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_SETUPVMEDIA_PEER_FAILED = "setupvmedia-peer-failed"
     CAUSE_SHAREDIOMODULE_INVENTORY_FAILED = "sharediomodule-inventory-failed"
     CAUSE_SHUTDOWN_FAILED = "shutdown-failed"
-    CAUSE_SLOT_POWER_CYCLE_FAILED = "slot-power-cycle-failed"
-    CAUSE_SMALL_VOLUME_SPACE = "small-volume-space"
     CAUSE_SNMP_CONFIG_ERROR = "snmp-config-error"
     CAUSE_SNMP_USER_CONFIG_ERROR = "snmp-user-config-error"
     CAUSE_SOL_REDIRECT_DISABLE_FAILED = "sol-redirect-disable-failed"
@@ -698,10 +638,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_UNCONFIG_UUID_FAILED = "unconfig-uuid-failed"
     CAUSE_UNCONFIG_VMEDIA_FAILED = "unconfig-vmedia-failed"
     CAUSE_UNCONFIGURATION_IN_PROGRESS = "unconfiguration-in-progress"
-    CAUSE_UNDEPLOY_NETWORK_FAILED = "undeploy-network-failed"
-    CAUSE_UNDEPLOY_PLATFORM_FAILED = "undeploy-platform-failed"
-    CAUSE_UNDEPLOY_STORAGE_FAILED = "undeploy-storage-failed"
-    CAUSE_UNDEPLOY_TARGET_IDENTITY_FAILED = "undeploy-target-identity-failed"
     CAUSE_UNDER_TEST = "under-test"
     CAUSE_UNEXPECTED_NUMBER_OF_LINKS = "unexpected-number-of-links"
     CAUSE_UNIDENTIFIABLE_FRU = "unidentifiable-fru"
@@ -715,7 +651,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_UNSUPPORTED_CONFIG = "unsupported-config"
     CAUSE_UNSUPPORTED_CONNECTIVITY = "unsupported-connectivity"
     CAUSE_UNSUPPORTED_CONNECTIVITY_CONFIGURATION = "unsupported-connectivity-configuration"
-    CAUSE_UNSUPPORTED_MODEL = "unsupported-model"
     CAUSE_UNSUPPORTED_POLICY_CONFIG = "unsupported-policy-config"
     CAUSE_UNSUPPORTED_TRANSCEIVER = "unsupported-transceiver"
     CAUSE_UPDATE_ADAPTOR_NW_FW_LOCAL_FAILED = "update-adaptor-nw-fw-local-failed"
@@ -746,7 +681,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_VALIDATE_POLICY_OWNERSHIP_FAILED = "validate-policy-ownership-failed"
     CAUSE_VALIDATE_REMOTE_FAILED = "validate-remote-failed"
     CAUSE_VERIFY_BREAKOUT_CONFIG_FAILED = "verify-breakout-config-failed"
-    CAUSE_VERIFY_CONFIG_FAILED = "verify-config-failed"
     CAUSE_VERIFY_FAILED = "verify-failed"
     CAUSE_VERIFY_FC_ZONE_CONFIG_FAILED = "verify-fc-zone-config-failed"
     CAUSE_VERIFY_GUID_FAILED = "verify-guid-failed"
@@ -754,9 +688,6 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_VERIFY_PHYS_CONFIG_FAILED = "verify-phys-config-failed"
     CAUSE_VERIFY_REGISTRATION_FAILED = "verify-registration-failed"
     CAUSE_VERIFY_REMOTE_FAILED = "verify-remote-failed"
-    CAUSE_VERIFY_REMOTE_STORAGE_CONFIG_FAILED = "verify-remote-storage-config-failed"
-    CAUSE_VERIFY_REPLICATION_CONFIG_FAILED = "verify-replication-config-failed"
-    CAUSE_VERIFY_SNAPSHOT_CONFIG_FAILED = "verify-snapshot-config-failed"
     CAUSE_VERSION_INCOMPATIBLE = "version-incompatible"
     CAUSE_VIF_DOWN = "vif-down"
     CAUSE_VIF_IDS_MISMATCH = "vif-ids-mismatch"
@@ -780,25 +711,11 @@ class FaultSuppressPolicyItemConsts():
     CAUSE_WAIT_FOR_COMMIT_STORAGE_FAILED = "wait-for-commit-storage-failed"
     CAUSE_WAIT_FOR_CONN_READY_FAILED = "wait-for-conn-ready-failed"
     CAUSE_WAIT_FOR_DEPLOY_FAILED = "wait-for-deploy-failed"
-    CAUSE_WAIT_FOR_DISASSOC_COMPLETION_FAILED = "wait-for-disassoc-completion-failed"
-    CAUSE_WAIT_FOR_ERASE_COMPLETION_FAILED = "wait-for-erase-completion-failed"
-    CAUSE_WAIT_FOR_INVENTORY_FAILED = "wait-for-inventory-failed"
     CAUSE_WAIT_FOR_MAINT_PERMISSION_FAILED = "wait-for-maint-permission-failed"
     CAUSE_WAIT_FOR_MAINT_WINDOW_FAILED = "wait-for-maint-window-failed"
-    CAUSE_WAIT_FOR_PLATFORM_BOOT_FAILED = "wait-for-platform-boot-failed"
-    CAUSE_WAIT_FOR_PLATFORM_CONFIG_FAILED = "wait-for-platform-config-failed"
-    CAUSE_WAIT_FOR_SERVER_ASSOC_FAILED = "wait-for-server-assoc-failed"
-    CAUSE_WAIT_FOR_SERVER_POWER_UP_FAILED = "wait-for-server-power-up-failed"
-    CAUSE_WAIT_FOR_SERVER_SHUTDOWN_FAILED = "wait-for-server-shutdown-failed"
     CAUSE_WAIT_FOR_STORAGE_PROVISION_FAILED = "wait-for-storage-provision-failed"
-    CAUSE_WAIT_FOR_UN_CONFIG_APPLIANCES_FAILED = "wait-for-un-config-appliances-failed"
-    CAUSE_WAIT_FOR_UNDEPLOY_STORAGE_FAILED = "wait-for-undeploy-storage-failed"
     CAUSE_WAIT_FOR_USER_ACK_FAILED = "wait-for-user-ack-failed"
-    CAUSE_WAIT_FORHAQUORUM_FAILED = "wait-forhaquorum-failed"
     CAUSE_WAIT_FORIBMCFW_UPDATE_FAILED = "wait-foribmcfw-update-failed"
-    CAUSE_WAIT_FOROSINSTALL_FAILED = "wait-forosinstall-failed"
-    CAUSE_WAIT_FOROSSTATUS_FAILED = "wait-forosstatus-failed"
-    CAUSE_WAIT_FORSMECONNECTION_FAILED = "wait-forsmeconnection-failed"
     CAUSE_WAIT_ON_PHYS_FAILED = "wait-on-phys-failed"
     TYPE_ANY = "any"
     TYPE_CONFIGURATION = "configuration"
@@ -813,7 +730,6 @@ class FaultSuppressPolicyItemConsts():
     TYPE_OPERATIONAL = "operational"
     TYPE_SECURITY = "security"
     TYPE_SERVER = "server"
-    TYPE_STORAGE = "storage"
     TYPE_SYSDEBUG = "sysdebug"
 
 
@@ -823,17 +739,17 @@ class FaultSuppressPolicyItem(ManagedObject):
     consts = FaultSuppressPolicyItemConsts()
     naming_props = set([u'type', u'cause'])
 
-    mo_meta = MoMeta("FaultSuppressPolicyItem", "faultSuppressPolicyItem", "item-[type]-[cause]", VersionMeta.Version211a, "InputOutput", 0xffL, [], ["admin", "fault"], [u'faultSuppressPolicy'], [], [None])
+    mo_meta = MoMeta("FaultSuppressPolicyItem", "faultSuppressPolicyItem", "item-[type]-[cause]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["read-only"], [u'faultSuppressPolicy'], [], [None])
 
     prop_meta = {
-        "cause": MoPropertyMeta("cause", "cause", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x2L, None, None, None, ["a-failed", "activate-adaptor-nw-fw-local-failed", "activate-adaptor-nw-fw-peer-failed", "activate-bios-failed", "activate-catalog-failed", "activate-failed", "activate-local-failed", "activate-localfi-failed", "activate-peer-failed", "activate-psu-failed", "activate-remotefi-failed", "activateibmcfw-failed", "activateiom-failed", "activateucsm-failed", "activation-failed", "active-failed", "adaptor-mismatch", "admin-state-offline", "analyze-impact-failed", "another-connection-already-enabled", "any", "apply-catalog-failed", "apply-config-failed", "apply-default-identifiers-failed", "apply-failed", "apply-identifiers-failed", "apply-maint-config-failed", "apply-physical-failed", "apply-policies-failed", "apply-template-failed", "arp-targets-config-error", "assignment-failed", "association-failed", "auto-firmware-upgrade", "b-failed", "backup-local-failed", "begin-failed", "begin-inventory-failed", "bios-img-update-failed", "bios-post-completion-failed", "blade-boot-failed", "blade-boot-pnuos-failed", "blade-boot-wait-failed", "blade-power-off-failed", "blade-power-on-failed", "blade-read-smbios-failed", "bmc-config-pnuos-failed", "bmc-configure-conn-local-failed", "bmc-configure-conn-peer-failed", "bmc-inventory-failed", "bmc-pre-config-pnuoslocal-failed", "bmc-pre-config-pnuospeer-failed", "bmc-preconfig-pnuoslocal-failed", "bmc-preconfig-pnuospeer-failed", "bmc-presence-failed", "bmc-shutdown-diag-completed-failed", "bmc-shutdown-discovered-failed", "bmc-unconfig-pnuos-failed", "bmc-update-host-pre-boot-failed", "board-ctrl-upgraded", "boot-host-failed", "boot-pnuos-failed", "boot-wait-failed", "calculate-vlan-group-for-hostoslocal-failed", "calculate-vlan-group-for-hostospeer-failed", "callhome-config-error", "capacity-exceeded", "capacity-problem", "cartridge-moved", "chassis-limit-exceeded", "check-adaptor-fw40gcap-failed", "check-assigned-default-identifiers-for-dup-failed", "check-assigned-identifiers-for-dup-failed", "check-inventory-status-failed", "check-license-failed", "check-power-availability-failed", "cimc-backup-trigger-not-enabled", "cimc-firmware-mismatch", "cimc-heartbeat-timed-out", "cimc-presence-failed", "cimcvlan-cfg-local-failed", "cimcvlan-cfg-peer-failed", "clean-old-data-failed", "clean-upvifs-failed", "cleanup-entries-failed", "cleanup-failed", "cleanup-local-failed", "cleanup-nic-config-local-failed", "cleanup-nic-config-peer-failed", "cleanup-peer-failed", "cleanup-port-config-local-failed", "cleanup-port-config-peer-failed", "cleanup-server-conn-sw-afailed", "cleanup-server-conn-sw-bfailed", "cleanup-vnics-local-failed", "cleanup-vnics-peer-failed", "cleanupcimc-failed", "clear-bios-update-failed", "clear-failed", "client-lost-connectivity", "cmc-vif-down", "cmcvlan-cfg-failed", "cmcvlan-cfg-peer-failed", "comm-svc-config-error", "commit-storage-failed", "compr-sets-exhausted", "condition-cause-configuration-failure", "condition-cause-fault", "condition-cause-kernel-mem-critical-threshold", "config-backup-outdated", "config-bios-failed", "config-chassis-id-failed", "config-cimcvmedia-failed", "config-discovery-mode-failed", "config-disk-failed", "config-error", "config-ext-mgmt-gw-failed", "config-ext-mgmt-rules-failed", "config-failed", "config-fan-speed-failed", "config-fe-local-failed", "config-fe-peer-failed", "config-flex-flash-failed", "config-flex-flash-scrub-failed", "config-kvm-mgmt-default-setting-failed", "config-lun-failed", "config-memory-policy-failed", "config-missing", "config-network-failed", "config-niv-mode-failed", "config-platform-failed", "config-so-lfailed", "config-storage-replication-service-failed", "config-storage-target-identity-failed", "config-sw-afailed", "config-sw-bfailed", "config-user-access-failed", "config-uuid-failed", "configbmcpower-params-failed", "confighastate-failed", "configuration-applied", "configuration-applying", "configuration-error", "configuration-failed", "configuration-failure", "configuration-in-progress", "configuration-mismatch", "configuration-not-applied", "configure-end-point-failed", "configure-failed", "configure-sw-mgmt-end-point-failed", "configure-vif-ns-failed", "connection-unused", "connectivity-problem", "connectsmelocal-failed", "connectsmeremote-failed", "copy-all-images-to-peer-failed", "copy-cat-from-rep-failed", "copy-ext-to-local-failed", "copy-ext-to-peer-failed", "copy-external-rep-to-remote-failed", "copy-img-from-rep-failed", "copy-primary-failed", "copy-remote-failed", "copy-sub-failed", "copy-to-local-failed", "copy-to-peer-failed", "copyiomimg-to-sub-failed", "create-local-failed", "create-remote-failed", "deassert-reset-bypass-failed", "debug-wait-failed", "decomission-failed", "decommissioned", "default-hostpack-missing", "default-hostpack-missing-versions", "defaultauth-config-error", "delete-curl-downloaded-images-failed", "delete-images-remote-failed", "delete-local-failed", "delete-primary-failed", "delete-remote-failed", "delete-sub-failed", "deploy-failed", "derive-config-failed", "device-shared-storage-IO-error", "device-shared-storage-error", "disable-afailed", "disable-bfailed", "disable-end-point-failed", "disable-failed", "disable-server-conn-sw-afailed", "disable-server-conn-sw-bfailed", "disable-storage-target-failed", "disassoc-storage-controller-failed", "disassociation-failed", "discover-chassis-failed", "discovery-failed", "discovery-in-progress", "disk-wear-critical-threshold", "disk-wear-non-critical-threshold", "domain-config-error", "download-images-failed", "download-local-failed", "duplicated-assigned", "election-failure", "empty-pin-group", "empty-pool", "enable-afailed", "enable-bfailed", "enable-chassis-failed", "enable-failed", "enable-port-failed", "enable-server-conn-sw-afailed", "enable-server-conn-sw-bfailed", "enable-storage-target-failed", "end-inventory-failed", "equipment-degraded", "equipment-deprecated", "equipment-disabled", "equipment-disconnected", "equipment-failed", "equipment-inaccessible", "equipment-inoperable", "equipment-inventory", "equipment-missing", "equipment-offline", "equipment-problem", "equipment-removed", "equipment-unacknowledged", "equipment-unhealthy", "evaluate-association-failed", "evaluate-identity-failed", "evaluate-status-failed", "execute-afailed", "execute-bfailed", "execute-failed", "execute-local-failed", "execute-peer-failed", "extra-primary-vlans", "extra-secondary-vlans", "extra-secondary-vlans-per-primary", "extra-vif", "fabricatraffic-test-status-failed", "fabricbtraffic-test-status-failed", "fail-failed", "fan-removal", "fault", "fc-portchannel-members-inconsistent-speed", "fc-storageport-npv-mode", "fc-zoning-enabled", "fcoe-storageport-npv-mode", "fcoe-uplink-port-channel-unsupported-fi-settings", "fcoe-uplink-unsupported-fi-settings", "fex-unsupported", "fi-b-querier-ip-empty-or-same-as-primary", "file-transfer-failed", "finalize-failed", "firmware-upgrade-problem", "format-failed", "fru-problem", "fsm-failed", "full-inventory-failed", "generate-log-wait-failed", "generate-report-failed", "get-version-failed", "graphics-image-update-failed", "group-cap-insufficient", "group-permit-unresolved", "ha-not-ready", "ha-ssh-keys-mismatched", "hag-connect-failed", "hag-disconnect-failed", "hag-hostosconnect-failed", "hag-pnuosconnect-failed", "hag-pnuosdisconnect-failed", "handle-pooling-failed", "hba-img-update-failed", "health-critical", "health-led-amber", "health-led-amber-blinking", "health-major", "health-minor", "health-problem", "health-warning", "host-bios-post-completion-failed", "host-bmc-pre-config-local-failed", "host-bmc-pre-config-peer-failed", "host-boot-failed", "host-boot-for-upgrade-failed", "host-boot-wait-failed", "host-catalog-failed", "host-clear-os-install-status-failed", "host-connect-failed", "host-disconnect-failed", "host-ident-failed", "host-inventory-failed", "host-policy-failed", "host-post-first-boot-failed", "host-post-install-failed", "host-post-upgrade-failed", "host-pre-first-boot-failed", "host-pre-install-failed", "host-read-smbios-failed", "host-serial-debug-connect-failed", "host-serial-debug-disconnect-failed", "host-server-diag-failed", "host-server-diag-status-failed", "host-setup-vmedia-local-failed", "host-setup-vmedia-peer-failed", "host-sol-redirect-disable-failed", "host-sol-redirect-enable-failed", "host-teardown-vmedia-local-failed", "host-teardown-vmedia-peer-failed", "hostosconfig-failed", "hostosident-failed", "hostospolicy-failed", "hostosvalidate-failed", "identify-failed", "identity-unestablishable", "image-cannot-boot", "image-deleted", "image-unusable", "in-maintenance", "inaccessible-vlan-referenced", "inband-unsupported-server", "incompatible-server-firmware", "incompatible-speed", "initiate-pollbmclocal-failed", "initiate-pollbmcremote-failed", "insufficient-resources", "insufficiently-equipped", "interface-failed", "interface-misconfigured", "internal-backup-failed", "invalid-controller-profile-count", "invalid-keyring-certificate", "invalid-keyring-modulus", "invalid-pinning", "invalid-server-group", "invalid-target", "invalid-trustpoint-cert-chain", "invalid-vlan-in-the-allowed-vlan-list", "inventory-failed", "kernel-mem-critical-threshold", "keyring-config-error", "leadershipChange", "license-file-not-deleted", "license-file-uninstallable", "license-graceperiod-10days", "license-graceperiod-119days", "license-graceperiod-30days", "license-graceperiod-60days", "license-graceperiod-90days", "license-graceperiod-entered", "license-graceperiod-expired", "license-insufficient", "limit-reached", "link-down", "link-misconnected", "link-missing", "load-catalog-failed", "local-disk-fw-update-failed", "local-failed", "local-internal-backup-failed", "locale-config-error", "locale-org-config-error", "log-capacity", "maintenance-failed", "management-services-failure", "management-services-unresponsive", "mark-adapter-for-reboot-failed", "membership-down", "memory-error", "mgmtif-down", "missing-primary-vlan", "mount-local-failed", "mount-peer-failed", "multiple-connection-policies", "named-inband-vlan-unresolved", "named-policy-unresolved", "named-vlan-unresolved", "native-vlan-not-found", "ndisc-targets-config-error", "near-max-limit", "new-link", "new-vnic-vcon-scheme-applied", "nic-config-hostoslocal-failed", "nic-config-hostospeer-failed", "nic-config-local-failed", "nic-config-params-hostoslocal-failed", "nic-config-params-hostospeer-failed", "nic-config-peer-failed", "nic-config-pnuoslocal-failed", "nic-config-pnuospeer-failed", "nic-config-service-infra-local-failed", "nic-config-service-infra-peer-failed", "nic-img-update-failed", "nic-inventory-local-failed", "nic-inventory-peer-failed", "nic-presence-local-failed", "nic-presence-peer-failed", "nic-un-config-local-failed", "nic-un-config-peer-failed", "nic-unconfig-hostoslocal-failed", "nic-unconfig-hostospeer-failed", "nic-unconfig-local-failed", "nic-unconfig-peer-failed", "nic-unconfig-pnuoslocal-failed", "nic-unconfig-pnuospeer-failed", "nic-unconfig-service-infra-local-failed", "nic-unconfig-service-infra-peer-failed", "no-ack-from-bios", "no-cap-fail", "no-vlan-optimization", "no-volume-space", "non-existent-scheduler", "not-supported", "old-chassis-component-firmware", "old-firmware", "oob-disk-scrub-failed", "oob-storage-config-failed", "oob-storage-inventory-failed", "operation-failed", "operational-state-down", "pair-failed", "peer-failed", "perform-erase-failed", "perform-ha-take-over-failed", "performance-problem", "ping-failed", "pinning-misconfig", "pinning-mismatch", "pld-firmware-mismatch", "pnuoscatalog-failed", "pnuosconfig-failed", "pnuosconn-status-failed", "pnuosconnectivity-failed", "pnuosident-failed", "pnuosinventory-failed", "pnuoslocal-disk-config-failed", "pnuospolicy-failed", "pnuospower-profiling-failed", "pnuosscrub-failed", "pnuosself-test-failed", "pnuosunconfig-failed", "pnuosunload-drivers-failed", "pnuosvalidate-failed", "poll-activate-of-localfi-failed", "poll-activate-of-remotefi-failed", "poll-activate-ofiom-failed", "poll-activate-ofucsm-failed", "poll-activate-status-failed", "poll-activation-failed", "poll-bios-activate-status-failed", "poll-bios-update-status-failed", "poll-board-ctrl-power-cycle-failed", "poll-board-ctrl-update-status-failed", "poll-clear-bios-update-status-failed", "poll-clear-status-failed", "poll-internal-backup-failed", "poll-update-ofiom-failed", "poll-update-status-failed", "poll-update-status-local-failed", "poll-update-status-peer-failed", "poll-wait-for-user-ack-failed", "port-failed", "port-inventory-sw-afailed", "port-inventory-sw-bfailed", "post-set-key-ring-local-failed", "post-set-key-ring-peer-failed", "power-budget-unavailable", "power-button-lock-config-failed", "power-cap-fail", "power-consumption-hit-limit", "power-cycle-board-failed", "power-cycle-failed", "power-deploy-wait-failed", "power-down", "power-off-failed", "power-off-reclaim-failed", "power-off-servers-failed", "power-off-wait-failed", "power-on-failed", "power-on-pre-config-failed", "power-problem", "powered-off", "pre-sanitize-failed", "precleanup-port-config-failed", "prepare-for-boot-failed", "prepare-for-update-failed", "primary-failed", "primary-vlan-missing-for-community", "primary-vlan-missing-for-isolated", "profile-config-incorrect", "propogate-ep-settings-failed", "propogate-ep-time-zone-settings-local-failed", "propogate-ep-time-zone-settings-peer-failed", "propogate-ep-time-zone-settings-to-adaptors-local-failed", "propogate-ep-time-zone-settings-to-adaptors-peer-failed", "propogate-ep-time-zone-settings-to-fex-iom-local-failed", "propogate-ep-time-zone-settings-to-fex-iom-peer-failed", "provider-group-already-exists", "provider-group-size-empty", "provision-storage-failed", "psu-failure", "psu-insufficient", "psu-mixed-mode", "psu-redundancy-fail", "raidgroup-bad", "raidgroup-degraded", "raidgroup-offline", "raidgroup-rebuilding", "read-sm-bios-failed", "read-smbios-failed", "reconfig-bios-failed", "reconfig-uuid-failed", "referenced-remote-vlan-unresolvable", "referenced-remote-vsan-unresolvable", "referenced-vlan-unresolvable", "referenced-vsan-unresolvable", "register-client-failed", "release-all-failed", "release-failed", "release-many-failed", "remote-failed", "remove-config-failed", "remove-failed", "remove-local-failed", "removevmedia-local-failed", "removevmedia-peer-failed", "report-failed", "report-fault-inventory-failed", "report-full-inventory-failed", "report-org-inventory-failed", "report-physical-inventory-failed", "report-results-failed", "report-storage-inventory-failed", "request-failed", "rescan-images-failed", "reset-failed", "reset-local-failed", "reset-remote-failed", "reset-secure-boot-config-failed", "resetibmc-failed", "resolve-all-failed", "resolve-boot-config-failed", "resolve-default-identifiers-failed", "resolve-distributable-failed", "resolve-distributable-names-failed", "resolve-failed", "resolve-identifiers-failed", "resolve-images-failed", "resolve-many-failed", "resolve-network-policies-failed", "resolve-network-templates-failed", "resolve-policies-failed", "resolve-schedule-failed", "resolve-storage-schedule-failed", "resolve-volumes-failed", "restore-config-fe-local-failed", "restore-config-fe-peer-failed", "role-config-error", "sanitize-failed", "sas-expander-img-update-failed", "satellite-connection-absent", "satellite-connection-init", "satellite-mis-connected", "secondary-failed", "send-bmc-profiling-done-failed", "send-bmc-profiling-init-failed", "serial-debug-connect-failed", "serial-debug-disconnect-failed", "serial-debug-pnuosconnect-failed", "serial-debug-pnuosdisconnect-failed", "server-assigned", "server-associated", "server-associating", "server-deassociating", "server-error", "server-failed", "server-identification-problem", "server-inaccessible", "server-moved", "server-power-off-failed", "server-power-on-failed", "server-unassigned", "server-unassociated", "servers-power-off-completion-failed", "set-diag-user-failed", "set-ep-afailed", "set-ep-bfailed", "set-ep-local-failed", "set-ep-peer-failed", "set-key-ring-local-failed", "set-key-ring-peer-failed", "set-local-failed", "set-locator-led-local-failed", "set-locator-led-peer-failed", "set-peer-failed", "set-realm-local-failed", "set-realm-peer-failed", "set-user-local-failed", "set-user-peer-failed", "setup-vmedia-failed", "setup-vmedia-local-failed", "setup-vmedia-peer-failed", "setupvmedia-local-failed", "setupvmedia-peer-failed", "sharediomodule-inventory-failed", "shutdown-failed", "slot-power-cycle-failed", "small-volume-space", "snmp-config-error", "snmp-user-config-error", "sol-redirect-disable-failed", "sol-redirect-enable-failed", "start-fabricatraffic-test-failed", "start-fabricbtraffic-test-failed", "start-failed", "stopvmedia-local-failed", "stopvmedia-peer-failed", "storage-ctlr-img-update-failed", "success-failed", "suppress-status-change", "suspend-mode-entered", "svnic-not-present", "sw-config-hostoslocal-failed", "sw-config-hostospeer-failed", "sw-config-local-failed", "sw-config-peer-failed", "sw-config-pnuoslocal-failed", "sw-config-pnuospeer-failed", "sw-config-port-niv-local-failed", "sw-config-port-niv-peer-failed", "sw-config-service-infra-local-failed", "sw-config-service-infra-peer-failed", "sw-configure-conn-local-failed", "sw-configure-conn-peer-failed", "sw-pnuosconnectivity-local-failed", "sw-pnuosconnectivity-peer-failed", "sw-un-config-local-failed", "sw-un-config-peer-failed", "sw-unconfig-hostoslocal-failed", "sw-unconfig-hostospeer-failed", "sw-unconfig-local-failed", "sw-unconfig-peer-failed", "sw-unconfig-pnuoslocal-failed", "sw-unconfig-pnuospeer-failed", "sw-unconfig-port-niv-local-failed", "sw-unconfig-port-niv-peer-failed", "sw-unconfigure-local-failed", "sw-unconfigure-peer-failed", "switch-failed", "sync-bladeaglocal-failed", "sync-bladeagremote-failed", "sync-failed", "sync-hostagentaglocal-failed", "sync-hostagentagremote-failed", "sync-nicaglocal-failed", "sync-nicagremote-failed", "sync-portaglocal-failed", "sync-portagremote-failed", "sync-power-state-failed", "tear-downvmedia-local-failed", "tear-downvmedia-peer-failed", "teardown-vmedia-local-failed", "teardown-vmedia-peer-failed", "tftp-server-error", "thermal-problem", "threshold-crossed", "timezone-file-not-exists", "tpm-on-slave-board", "transition", "ucsm-process-failure", "udld-link-down", "un-identify-local-failed", "un-identify-peer-failed", "unassociated", "unconfig-bios-failed", "unconfig-cimcvmedia-failed", "unconfig-ext-mgmt-gw-failed", "unconfig-ext-mgmt-rules-failed", "unconfig-flex-flash-failed", "unconfig-so-lfailed", "unconfig-user-access-failed", "unconfig-uuid-failed", "unconfig-vmedia-failed", "unconfiguration-in-progress", "undeploy-network-failed", "undeploy-platform-failed", "undeploy-storage-failed", "undeploy-target-identity-failed", "under-test", "unexpected-number-of-links", "unidentifiable-fru", "unknown", "unlock-firmware-image-failed", "unmount-local-failed", "unmount-peer-failed", "unpack-local-failed", "unregister-failed", "unsupported-cimc-firmware", "unsupported-config", "unsupported-connectivity", "unsupported-connectivity-configuration", "unsupported-model", "unsupported-policy-config", "unsupported-transceiver", "update-adaptor-nw-fw-local-failed", "update-adaptor-nw-fw-peer-failed", "update-bios-request-failed", "update-board-ctrl-request-failed", "update-connectivity-failed", "update-eth-flow-mon-failed", "update-eth-mon-failed", "update-fc-mon-failed", "update-flash-life-failed", "update-local-failed", "update-remote-failed", "update-request-failed", "update-request-local-failed", "update-request-peer-failed", "update-tokens-failed", "update-vlan-groups-failed", "update-zones-failed", "updateibmcfw-failed", "updateiom-failed", "upload-failed", "user-config-error", "user-locale-config-error", "user-role-config-error", "validate-configuration-failed", "validate-local-failed", "validate-policy-ownership-failed", "validate-remote-failed", "verify-breakout-config-failed", "verify-config-failed", "verify-failed", "verify-fc-zone-config-failed", "verify-guid-failed", "verify-local-failed", "verify-phys-config-failed", "verify-registration-failed", "verify-remote-failed", "verify-remote-storage-config-failed", "verify-replication-config-failed", "verify-snapshot-config-failed", "version-incompatible", "vif-down", "vif-ids-mismatch", "vlan-comp-grp-count-exceeds-limit", "vlan-compression", "vlan-conflict-permit", "vlan-error-assoc-primary", "vlan-mcast-policy-misconfigured", "vlan-misconfigured", "vlan-mismatch", "vlan-permit-unresolved", "vm-network-reference-incorrect", "vmedia-mount-inaccessible", "voltage-problem", "vsan-exceed-limit", "vsan-misconfigured", "wait-failed", "wait-for-adaptor-nw-fw-update-local-failed", "wait-for-adaptor-nw-fw-update-peer-failed", "wait-for-assoc-completion-failed", "wait-for-commit-storage-failed", "wait-for-conn-ready-failed", "wait-for-deploy-failed", "wait-for-disassoc-completion-failed", "wait-for-erase-completion-failed", "wait-for-inventory-failed", "wait-for-maint-permission-failed", "wait-for-maint-window-failed", "wait-for-platform-boot-failed", "wait-for-platform-config-failed", "wait-for-server-assoc-failed", "wait-for-server-power-up-failed", "wait-for-server-shutdown-failed", "wait-for-storage-provision-failed", "wait-for-un-config-appliances-failed", "wait-for-undeploy-storage-failed", "wait-for-user-ack-failed", "wait-forhaquorum-failed", "wait-foribmcfw-update-failed", "wait-forosinstall-failed", "wait-forosstatus-failed", "wait-forsmeconnection-failed", "wait-on-phys-failed"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x20L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x80L, None, None, None, ["any", "configuration", "connectivity", "environmental", "equipment", "forward", "fsm", "generic", "management", "network", "operational", "security", "server", "storage", "sysdebug"], []), 
+        "cause": MoPropertyMeta("cause", "cause", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x2, None, None, None, ["a-failed", "activate-adaptor-nw-fw-local-failed", "activate-adaptor-nw-fw-peer-failed", "activate-bios-failed", "activate-catalog-failed", "activate-failed", "activate-local-failed", "activate-localfi-failed", "activate-peer-failed", "activate-psu-failed", "activate-remotefi-failed", "activateibmcfw-failed", "activateiom-failed", "activateucsm-failed", "activation-failed", "active-failed", "adaptor-mismatch", "analyze-impact-failed", "another-connection-already-enabled", "any", "apply-catalog-failed", "apply-config-failed", "apply-default-identifiers-failed", "apply-failed", "apply-identifiers-failed", "apply-maint-config-failed", "apply-physical-failed", "apply-policies-failed", "apply-template-failed", "arp-targets-config-error", "assignment-failed", "association-failed", "auto-firmware-upgrade", "b-failed", "backup-local-failed", "begin-failed", "begin-inventory-failed", "bios-img-update-failed", "bios-post-completion-failed", "blade-boot-failed", "blade-boot-pnuos-failed", "blade-boot-wait-failed", "blade-power-off-failed", "blade-power-on-failed", "blade-read-smbios-failed", "bmc-config-pnuos-failed", "bmc-configure-conn-local-failed", "bmc-configure-conn-peer-failed", "bmc-inventory-failed", "bmc-pre-config-pnuoslocal-failed", "bmc-pre-config-pnuospeer-failed", "bmc-preconfig-pnuoslocal-failed", "bmc-preconfig-pnuospeer-failed", "bmc-presence-failed", "bmc-shutdown-diag-completed-failed", "bmc-shutdown-discovered-failed", "bmc-unconfig-pnuos-failed", "board-ctrl-upgraded", "boot-host-failed", "boot-pnuos-failed", "boot-wait-failed", "calculate-vlan-group-for-hostoslocal-failed", "calculate-vlan-group-for-hostospeer-failed", "callhome-config-error", "capacity-exceeded", "cartridge-moved", "chassis-limit-exceeded", "check-adaptor-fw40gcap-failed", "check-assigned-default-identifiers-for-dup-failed", "check-assigned-identifiers-for-dup-failed", "check-inventory-status-failed", "check-license-failed", "check-power-availability-failed", "cimc-firmware-mismatch", "cimc-presence-failed", "cimcvlan-cfg-local-failed", "cimcvlan-cfg-peer-failed", "clean-old-data-failed", "clean-upvifs-failed", "cleanup-entries-failed", "cleanup-failed", "cleanup-local-failed", "cleanup-nic-config-local-failed", "cleanup-nic-config-peer-failed", "cleanup-peer-failed", "cleanup-port-config-local-failed", "cleanup-port-config-peer-failed", "cleanup-server-conn-sw-afailed", "cleanup-server-conn-sw-bfailed", "cleanup-vnics-local-failed", "cleanup-vnics-peer-failed", "cleanupcimc-failed", "clear-bios-update-failed", "clear-failed", "client-lost-connectivity", "cmc-vif-down", "cmcvlan-cfg-failed", "cmcvlan-cfg-peer-failed", "comm-svc-config-error", "commit-storage-failed", "compr-sets-exhausted", "condition-cause-configuration-failure", "condition-cause-fault", "condition-cause-kernel-mem-critical-threshold", "config-backup-outdated", "config-bios-failed", "config-chassis-id-failed", "config-cimcvmedia-failed", "config-discovery-mode-failed", "config-error", "config-ext-mgmt-gw-failed", "config-ext-mgmt-rules-failed", "config-failed", "config-fan-speed-failed", "config-fe-local-failed", "config-fe-peer-failed", "config-flex-flash-failed", "config-flex-flash-scrub-failed", "config-kvm-mgmt-default-setting-failed", "config-memory-policy-failed", "config-missing", "config-niv-mode-failed", "config-so-lfailed", "config-sw-afailed", "config-sw-bfailed", "config-user-access-failed", "config-uuid-failed", "configbmcpower-params-failed", "configuration-applied", "configuration-applying", "configuration-error", "configuration-failed", "configuration-failure", "configuration-in-progress", "configuration-mismatch", "configuration-not-applied", "configure-end-point-failed", "configure-failed", "configure-sw-mgmt-end-point-failed", "configure-vif-ns-failed", "connection-unused", "connectivity-problem", "copy-all-images-to-peer-failed", "copy-cat-from-rep-failed", "copy-ext-to-local-failed", "copy-ext-to-peer-failed", "copy-external-rep-to-remote-failed", "copy-img-from-rep-failed", "copy-primary-failed", "copy-remote-failed", "copy-sub-failed", "copy-to-local-failed", "copy-to-peer-failed", "copyiomimg-to-sub-failed", "create-local-failed", "create-remote-failed", "deassert-reset-bypass-failed", "debug-wait-failed", "decomission-failed", "decommissioned", "default-hostpack-missing", "default-hostpack-missing-versions", "defaultauth-config-error", "delete-curl-downloaded-images-failed", "delete-images-remote-failed", "delete-local-failed", "delete-primary-failed", "delete-remote-failed", "delete-sub-failed", "deploy-failed", "deprecated", "derive-config-failed", "device-shared-storage-IO-error", "device-shared-storage-error", "disable-afailed", "disable-bfailed", "disable-end-point-failed", "disable-failed", "disable-server-conn-sw-afailed", "disable-server-conn-sw-bfailed", "disassociation-failed", "discover-chassis-failed", "discovery-failed", "discovery-in-progress", "domain-config-error", "download-images-failed", "download-local-failed", "duplicated-assigned", "election-failure", "empty-pin-group", "empty-pool", "enable-afailed", "enable-bfailed", "enable-chassis-failed", "enable-failed", "enable-port-failed", "enable-server-conn-sw-afailed", "enable-server-conn-sw-bfailed", "end-inventory-failed", "equipment-degraded", "equipment-deprecated", "equipment-disabled", "equipment-disconnected", "equipment-failed", "equipment-inaccessible", "equipment-inoperable", "equipment-inventory", "equipment-missing", "equipment-offline", "equipment-problem", "equipment-removed", "equipment-unacknowledged", "equipment-unhealthy", "evaluate-association-failed", "evaluate-status-failed", "execute-afailed", "execute-bfailed", "execute-failed", "execute-local-failed", "execute-peer-failed", "extra-primary-vlans", "extra-secondary-vlans", "extra-secondary-vlans-per-primary", "extra-vif", "fabricatraffic-test-status-failed", "fabricbtraffic-test-status-failed", "fail-failed", "fan-removal", "fault", "fc-portchannel-members-inconsistent-speed", "fc-storageport-npv-mode", "fc-zoning-enabled", "fcoe-storageport-npv-mode", "fcoe-uplink-port-channel-unsupported-fi-settings", "fcoe-uplink-unsupported-fi-settings", "fex-unsupported", "fi-b-querier-ip-empty-or-same-as-primary", "file-transfer-failed", "finalize-failed", "firmware-upgrade-problem", "format-failed", "fru-problem", "fsm-failed", "full-inventory-failed", "generate-log-wait-failed", "generate-report-failed", "get-version-failed", "graphics-image-update-failed", "group-cap-insufficient", "group-permit-unresolved", "ha-not-ready", "ha-ssh-keys-mismatched", "hag-connect-failed", "hag-disconnect-failed", "hag-hostosconnect-failed", "hag-pnuosconnect-failed", "hag-pnuosdisconnect-failed", "handle-pooling-failed", "hba-img-update-failed", "health-critical", "health-led-amber", "health-led-amber-blinking", "health-major", "health-minor", "health-warning", "host-catalog-failed", "host-connect-failed", "host-disconnect-failed", "host-ident-failed", "host-inventory-failed", "host-policy-failed", "host-server-diag-failed", "host-server-diag-status-failed", "hostosconfig-failed", "hostosident-failed", "hostospolicy-failed", "hostosvalidate-failed", "identify-failed", "identity-unestablishable", "image-cannot-boot", "image-deleted", "image-unusable", "in-maintenance", "inaccessible-vlan-referenced", "inband-unsupported-server", "incompatible-server-firmware", "incompatible-speed", "insufficient-resources", "insufficiently-equipped", "interface-failed", "interface-misconfigured", "internal-backup-failed", "invalid-keyring-certificate", "invalid-keyring-modulus", "invalid-pinning", "invalid-server-group", "invalid-target", "invalid-trustpoint-cert-chain", "invalid-vlan-in-the-allowed-vlan-list", "inventory-failed", "kernel-mem-critical-threshold", "keyring-config-error", "leadershipChange", "license-file-not-deleted", "license-file-uninstallable", "license-graceperiod-10days", "license-graceperiod-119days", "license-graceperiod-30days", "license-graceperiod-60days", "license-graceperiod-90days", "license-graceperiod-entered", "license-graceperiod-expired", "license-insufficient", "limit-reached", "link-down", "link-misconnected", "link-missing", "load-catalog-failed", "local-disk-fw-update-failed", "local-failed", "local-internal-backup-failed", "locale-config-error", "locale-org-config-error", "log-capacity", "maintenance-failed", "management-services-failure", "management-services-unresponsive", "mark-adapter-for-reboot-failed", "membership-down", "memory-error", "mgmtif-down", "missing-primary-vlan", "mount-local-failed", "mount-peer-failed", "multiple-connection-policies", "named-inband-vlan-unresolved", "named-policy-unresolved", "named-vlan-unresolved", "native-vlan-not-found", "ndisc-targets-config-error", "near-max-limit", "new-link", "new-vnic-vcon-scheme-applied", "nic-config-hostoslocal-failed", "nic-config-hostospeer-failed", "nic-config-local-failed", "nic-config-params-hostoslocal-failed", "nic-config-params-hostospeer-failed", "nic-config-peer-failed", "nic-config-pnuoslocal-failed", "nic-config-pnuospeer-failed", "nic-config-service-infra-local-failed", "nic-config-service-infra-peer-failed", "nic-img-update-failed", "nic-inventory-local-failed", "nic-inventory-peer-failed", "nic-presence-local-failed", "nic-presence-peer-failed", "nic-un-config-local-failed", "nic-un-config-peer-failed", "nic-unconfig-hostoslocal-failed", "nic-unconfig-hostospeer-failed", "nic-unconfig-local-failed", "nic-unconfig-peer-failed", "nic-unconfig-pnuoslocal-failed", "nic-unconfig-pnuospeer-failed", "nic-unconfig-service-infra-local-failed", "nic-unconfig-service-infra-peer-failed", "no-ack-from-bios", "no-cap-fail", "no-vlan-optimization", "non-existent-scheduler", "not-supported", "old-chassis-component-firmware", "old-firmware", "oob-disk-scrub-failed", "oob-storage-config-failed", "oob-storage-inventory-failed", "operation-failed", "operational-state-down", "pair-failed", "peer-failed", "performance-problem", "ping-failed", "pinning-misconfig", "pinning-mismatch", "pld-firmware-mismatch", "pnuoscatalog-failed", "pnuosconfig-failed", "pnuosconn-status-failed", "pnuosconnectivity-failed", "pnuosident-failed", "pnuosinventory-failed", "pnuoslocal-disk-config-failed", "pnuospolicy-failed", "pnuospower-profiling-failed", "pnuosscrub-failed", "pnuosself-test-failed", "pnuosunconfig-failed", "pnuosunload-drivers-failed", "pnuosvalidate-failed", "poll-activate-of-localfi-failed", "poll-activate-of-remotefi-failed", "poll-activate-ofiom-failed", "poll-activate-ofucsm-failed", "poll-activate-status-failed", "poll-activation-failed", "poll-bios-activate-status-failed", "poll-bios-update-status-failed", "poll-board-ctrl-power-cycle-failed", "poll-board-ctrl-update-status-failed", "poll-clear-bios-update-status-failed", "poll-clear-status-failed", "poll-internal-backup-failed", "poll-update-ofiom-failed", "poll-update-status-failed", "poll-update-status-local-failed", "poll-update-status-peer-failed", "poll-wait-for-user-ack-failed", "port-failed", "port-inventory-sw-afailed", "port-inventory-sw-bfailed", "post-set-key-ring-local-failed", "post-set-key-ring-peer-failed", "power-budget-unavailable", "power-button-lock-config-failed", "power-cap-fail", "power-consumption-hit-limit", "power-cycle-board-failed", "power-cycle-failed", "power-deploy-wait-failed", "power-down", "power-off-failed", "power-off-reclaim-failed", "power-off-servers-failed", "power-off-wait-failed", "power-on-failed", "power-on-pre-config-failed", "power-problem", "powered-off", "pre-sanitize-failed", "precleanup-port-config-failed", "prepare-for-boot-failed", "prepare-for-update-failed", "primary-failed", "primary-vlan-missing-for-community", "primary-vlan-missing-for-isolated", "profile-config-incorrect", "propogate-ep-settings-failed", "propogate-ep-time-zone-settings-local-failed", "propogate-ep-time-zone-settings-peer-failed", "propogate-ep-time-zone-settings-to-adaptors-local-failed", "propogate-ep-time-zone-settings-to-adaptors-peer-failed", "propogate-ep-time-zone-settings-to-fex-iom-local-failed", "propogate-ep-time-zone-settings-to-fex-iom-peer-failed", "provider-group-already-exists", "provider-group-size-empty", "provision-storage-failed", "psu-insufficient", "psu-mixed-mode", "psu-redundancy-fail", "read-sm-bios-failed", "read-smbios-failed", "reconfig-bios-failed", "reconfig-uuid-failed", "referenced-remote-vlan-unresolvable", "referenced-remote-vsan-unresolvable", "referenced-vlan-unresolvable", "referenced-vsan-unresolvable", "register-client-failed", "release-all-failed", "release-failed", "release-many-failed", "remote-failed", "remove-config-failed", "remove-failed", "remove-local-failed", "removevmedia-local-failed", "removevmedia-peer-failed", "report-failed", "report-fault-inventory-failed", "report-org-inventory-failed", "report-physical-inventory-failed", "report-results-failed", "report-storage-inventory-failed", "request-failed", "rescan-images-failed", "reset-failed", "reset-local-failed", "reset-remote-failed", "reset-secure-boot-config-failed", "resetibmc-failed", "resolve-all-failed", "resolve-boot-config-failed", "resolve-default-identifiers-failed", "resolve-distributable-failed", "resolve-distributable-names-failed", "resolve-failed", "resolve-identifiers-failed", "resolve-images-failed", "resolve-many-failed", "resolve-network-policies-failed", "resolve-network-templates-failed", "resolve-policies-failed", "resolve-schedule-failed", "resolve-storage-schedule-failed", "restore-config-fe-local-failed", "restore-config-fe-peer-failed", "role-config-error", "sanitize-failed", "sas-expander-img-update-failed", "satellite-connection-absent", "satellite-connection-init", "satellite-mis-connected", "secondary-failed", "send-bmc-profiling-done-failed", "send-bmc-profiling-init-failed", "serial-debug-connect-failed", "serial-debug-disconnect-failed", "serial-debug-pnuosconnect-failed", "serial-debug-pnuosdisconnect-failed", "server-assigned", "server-associated", "server-associating", "server-deassociating", "server-error", "server-failed", "server-identification-problem", "server-inaccessible", "server-moved", "server-power-off-failed", "server-power-on-failed", "server-unassigned", "server-unassociated", "servers-power-off-completion-failed", "set-diag-user-failed", "set-ep-afailed", "set-ep-bfailed", "set-ep-local-failed", "set-ep-peer-failed", "set-key-ring-local-failed", "set-key-ring-peer-failed", "set-local-failed", "set-peer-failed", "set-realm-local-failed", "set-realm-peer-failed", "set-user-local-failed", "set-user-peer-failed", "setup-vmedia-failed", "setup-vmedia-local-failed", "setup-vmedia-peer-failed", "setupvmedia-local-failed", "setupvmedia-peer-failed", "sharediomodule-inventory-failed", "shutdown-failed", "snmp-config-error", "snmp-user-config-error", "sol-redirect-disable-failed", "sol-redirect-enable-failed", "start-fabricatraffic-test-failed", "start-fabricbtraffic-test-failed", "start-failed", "stopvmedia-local-failed", "stopvmedia-peer-failed", "storage-ctlr-img-update-failed", "success-failed", "suppress-status-change", "suspend-mode-entered", "svnic-not-present", "sw-config-hostoslocal-failed", "sw-config-hostospeer-failed", "sw-config-local-failed", "sw-config-peer-failed", "sw-config-pnuoslocal-failed", "sw-config-pnuospeer-failed", "sw-config-port-niv-local-failed", "sw-config-port-niv-peer-failed", "sw-config-service-infra-local-failed", "sw-config-service-infra-peer-failed", "sw-configure-conn-local-failed", "sw-configure-conn-peer-failed", "sw-pnuosconnectivity-local-failed", "sw-pnuosconnectivity-peer-failed", "sw-un-config-local-failed", "sw-un-config-peer-failed", "sw-unconfig-hostoslocal-failed", "sw-unconfig-hostospeer-failed", "sw-unconfig-local-failed", "sw-unconfig-peer-failed", "sw-unconfig-pnuoslocal-failed", "sw-unconfig-pnuospeer-failed", "sw-unconfig-port-niv-local-failed", "sw-unconfig-port-niv-peer-failed", "sw-unconfigure-local-failed", "sw-unconfigure-peer-failed", "switch-failed", "sync-bladeaglocal-failed", "sync-bladeagremote-failed", "sync-failed", "sync-hostagentaglocal-failed", "sync-hostagentagremote-failed", "sync-nicaglocal-failed", "sync-nicagremote-failed", "sync-portaglocal-failed", "sync-portagremote-failed", "sync-power-state-failed", "tear-downvmedia-local-failed", "tear-downvmedia-peer-failed", "teardown-vmedia-local-failed", "teardown-vmedia-peer-failed", "tftp-server-error", "thermal-problem", "threshold-crossed", "timezone-file-not-exists", "tpm-on-slave-board", "transition", "ucsm-process-failure", "udld-link-down", "un-identify-local-failed", "un-identify-peer-failed", "unassociated", "unconfig-bios-failed", "unconfig-cimcvmedia-failed", "unconfig-ext-mgmt-gw-failed", "unconfig-ext-mgmt-rules-failed", "unconfig-flex-flash-failed", "unconfig-so-lfailed", "unconfig-user-access-failed", "unconfig-uuid-failed", "unconfig-vmedia-failed", "unconfiguration-in-progress", "under-test", "unexpected-number-of-links", "unidentifiable-fru", "unknown", "unlock-firmware-image-failed", "unmount-local-failed", "unmount-peer-failed", "unpack-local-failed", "unregister-failed", "unsupported-cimc-firmware", "unsupported-config", "unsupported-connectivity", "unsupported-connectivity-configuration", "unsupported-policy-config", "unsupported-transceiver", "update-adaptor-nw-fw-local-failed", "update-adaptor-nw-fw-peer-failed", "update-bios-request-failed", "update-board-ctrl-request-failed", "update-connectivity-failed", "update-eth-flow-mon-failed", "update-eth-mon-failed", "update-fc-mon-failed", "update-flash-life-failed", "update-local-failed", "update-remote-failed", "update-request-failed", "update-request-local-failed", "update-request-peer-failed", "update-tokens-failed", "update-vlan-groups-failed", "update-zones-failed", "updateibmcfw-failed", "updateiom-failed", "upload-failed", "user-config-error", "user-locale-config-error", "user-role-config-error", "validate-configuration-failed", "validate-local-failed", "validate-policy-ownership-failed", "validate-remote-failed", "verify-breakout-config-failed", "verify-failed", "verify-fc-zone-config-failed", "verify-guid-failed", "verify-local-failed", "verify-phys-config-failed", "verify-registration-failed", "verify-remote-failed", "version-incompatible", "vif-down", "vif-ids-mismatch", "vlan-comp-grp-count-exceeds-limit", "vlan-compression", "vlan-conflict-permit", "vlan-error-assoc-primary", "vlan-mcast-policy-misconfigured", "vlan-misconfigured", "vlan-mismatch", "vlan-permit-unresolved", "vm-network-reference-incorrect", "vmedia-mount-inaccessible", "voltage-problem", "vsan-exceed-limit", "vsan-misconfigured", "wait-failed", "wait-for-adaptor-nw-fw-update-local-failed", "wait-for-adaptor-nw-fw-update-peer-failed", "wait-for-assoc-completion-failed", "wait-for-commit-storage-failed", "wait-for-conn-ready-failed", "wait-for-deploy-failed", "wait-for-maint-permission-failed", "wait-for-maint-window-failed", "wait-for-storage-provision-failed", "wait-for-user-ack-failed", "wait-foribmcfw-update-failed", "wait-on-phys-failed"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x80, None, None, None, ["any", "configuration", "connectivity", "environmental", "equipment", "forward", "fsm", "generic", "management", "network", "operational", "security", "server", "sysdebug"], []), 
     }
 
     prop_map = {

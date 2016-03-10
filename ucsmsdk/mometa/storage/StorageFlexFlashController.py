@@ -1,11 +1,9 @@
 """This module contains the general information for StorageFlexFlashController ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class StorageFlexFlashControllerConsts():
@@ -361,15 +359,15 @@ class StorageFlexFlashController(ManagedObject):
     consts = StorageFlexFlashControllerConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("StorageFlexFlashController", "storageFlexFlashController", "storage-flexflash-[id]", VersionMeta.Version221b, "InputOutput", 0x3ffL, [], ["admin"], [u'computeBoard'], [u'eventInst', u'faultInst', u'firmwareRunning', u'storageFlexFlashCard', u'storageFlexFlashControllerFsm', u'storageFlexFlashControllerFsmTask', u'storageFlexFlashVirtualDrive', u'storageLocalDiskConfigDef'], ["Get"])
+    mo_meta = MoMeta("StorageFlexFlashController", "storageFlexFlashController", "storage-flexflash-[id]", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin"], [u'computeBoard'], [u'eventInst', u'faultInst', u'firmwareRunning', u'storageFlexFlashCard', u'storageFlexFlashControllerFsm', u'storageFlexFlashControllerFsmTask', u'storageFlexFlashVirtualDrive', u'storageLocalDiskConfigDef'], ["Get"])
 
     prop_meta = {
-        "admin_slot_number": MoPropertyMeta("admin_slot_number", "adminSlotNumber", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, ["1", "2", "NA"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "configured_mode": MoPropertyMeta("configured_mode", "configuredMode", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x8L, None, None, None, ["mirror", "unknown", "util"], []), 
+        "admin_slot_number": MoPropertyMeta("admin_slot_number", "adminSlotNumber", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["1", "2", "NA"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "configured_mode": MoPropertyMeta("configured_mode", "configuredMode", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["mirror", "unknown", "util"], []), 
         "controller_health": MoPropertyMeta("controller_health", "controllerHealth", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FFCH_ERROR_CARDS_ACCESS_ERROR", "FFCH_ERROR_CARD_SIZE_MISMATCH", "FFCH_ERROR_INCONSISTANT_METADATA_IGNORED", "FFCH_ERROR_INVALID_SIZE", "FFCH_ERROR_MEDIA_WRITE_PROTECTED", "FFCH_ERROR_OLD_FIRMWARE_RUNNING", "FFCH_ERROR_REBOOTED_DURING_REBUILD", "FFCH_ERROR_SD247_CARD_DETECTED", "FFCH_ERROR_SD253_WITH_UN_OR_SD247", "FFCH_ERROR_SD_CARD_NOT_CONFIGURED", "FFCH_ERROR_SECONDARY_UNHEALTHY_CARD", "FFCH_FLEXD_ERROR_IM_SD0_IGNORED_SD1", "FFCH_FLEXD_ERROR_IM_SD0_SD1_IGNORED", "FFCH_FLEXD_ERROR_IM_SD_CARDS_OP_MODE_MISMATCH", "FFCH_FLEXD_ERROR_IM_SD_HEALTHY_SD_UN_IGNORED", "FFCH_FLEXD_ERROR_IM_SD_UNHEALTHY_SD_UN_IGNORED", "FFCH_FLEXD_ERROR_SD_CARD0_HEALTHY_OP_MODE_MISMATCH", "FFCH_FLEXD_ERROR_SD_CARD0_UNHEALTHY_OP_MODE_MISMATCH", "FFCH_FLEXD_ERROR_SD_CARD1_HEALTHY_OP_MODE_MISMATCH", "FFCH_FLEXD_ERROR_SD_CARD1_UNHEALTHY_OP_MODE_MISMATCH", "FFCH_FLEXD_ERROR_SD_CARD_OP_MODE_MISMATCH", "FFCH_FLEXD_ERROR_SD_OP_MODE_MISMATCH_WITH_UN", "FFCH_INCONSISTENT_METADATA", "FFCH_METADATA_FAILURE", "FFCH_OK"], []), 
         "controller_state": MoPropertyMeta("controller_state", "controllerState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FFC_CONFIG", "FFC_FAILED", "FFC_INIT", "FFC_REBUILDING", "FFC_SOFTWARE_ERR", "FFC_UNINITALIZED", "FFC_USB_CONNECTED", "FFC_USB_CONNECTING", "FFC_USB_DISCONNECTED", "FFC_USB_DISCONNECTING", "FFC_WAIT_USER"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x10L, 0, 256, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "firmware_version": MoPropertyMeta("firmware_version", "firmwareVersion", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "flex_flash_type": MoPropertyMeta("flex_flash_type", "flexFlashType", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Astoria", "FX3S", "Unknown"], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
@@ -383,7 +381,7 @@ class StorageFlexFlashController(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, None, None, None, None, ["MOpsFormatBegin", "MOpsFormatFail", "MOpsFormatFormat", "MOpsFormatSuccess", "MOpsPairBegin", "MOpsPairFail", "MOpsPairPair", "MOpsPairSuccess", "MOpsResetBegin", "MOpsResetFail", "MOpsResetReset", "MOpsResetSuccess", "nop"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "has_error": MoPropertyMeta("has_error", "hasError", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["error", "no_error"], []), 
-        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version221b, MoPropertyMeta.NAMING, 0x20L, None, None, None, [], ["1-64"]), 
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version221b, MoPropertyMeta.NAMING, 0x20, None, None, None, [], ["1-64"]), 
         "is_card_mismatch": MoPropertyMeta("is_card_mismatch", "isCardMismatch", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["MATCH", "MISMATCH", "NA"], []), 
         "is_format_fsm_running": MoPropertyMeta("is_format_fsm_running", "isFormatFSMRunning", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA", "NO", "YES"], []), 
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
@@ -391,8 +389,8 @@ class StorageFlexFlashController(ManagedObject):
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
         "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
-        "operating_mode": MoPropertyMeta("operating_mode", "operatingMode", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["mirror", "unknown", "util"], []), 
-        "operation_request": MoPropertyMeta("operation_request", "operationRequest", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, ["format", "pair", "reset", "unknown"], []), 
+        "operating_mode": MoPropertyMeta("operating_mode", "operatingMode", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["mirror", "unknown", "util"], []), 
+        "operation_request": MoPropertyMeta("operation_request", "operationRequest", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["format", "pair", "reset", "unknown"], []), 
         "pci_addr": MoPropertyMeta("pci_addr", "pciAddr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "pci_slot": MoPropertyMeta("pci_slot", "pciSlot", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "perf": MoPropertyMeta("perf", "perf", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
@@ -403,10 +401,10 @@ class StorageFlexFlashController(ManagedObject):
         "raid_sync_support": MoPropertyMeta("raid_sync_support", "raidSyncSupport", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []), 
         "read_error_threshold": MoPropertyMeta("read_error_threshold", "readErrorThreshold", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x100L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FLASH", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 

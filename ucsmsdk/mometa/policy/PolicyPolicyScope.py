@@ -1,11 +1,9 @@
 """This module contains the general information for PolicyPolicyScope ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class PolicyPolicyScopeConsts():
@@ -281,13 +279,13 @@ class PolicyPolicyScope(ManagedObject):
     consts = PolicyPolicyScopeConsts()
     naming_props = set([u'policyType', u'resolveType', u'policyName'])
 
-    mo_meta = MoMeta("PolicyPolicyScope", "policyPolicyScope", "scope-[policy_type]-[resolve_type]-[policy_name]", VersionMeta.Version211a, "InputOutput", 0x1ffL, [], ["admin"], [u'policyPolicyScopeContext'], [u'eventInst', u'faultInst', u'policyPolicyRequestor', u'policyPolicyScopeFsm', u'policyPolicyScopeFsmTask'], [None])
+    mo_meta = MoMeta("PolicyPolicyScope", "policyPolicyScope", "scope-[policy_type]-[resolve_type]-[policy_name]", VersionMeta.Version211a, "InputOutput", 0x1ff, [], ["admin"], [u'policyPolicyScopeContext'], [u'eventInst', u'faultInst', u'policyPolicyRequestor', u'policyPolicyScopeFsm', u'policyPolicyScopeFsmTask'], [None])
 
     prop_meta = {
         "app_type": MoPropertyMeta("app_type", "appType", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "default_policy_name": MoPropertyMeta("default_policy_name", "defaultPolicyName", "string", VersionMeta.Version211a, MoPropertyMeta.CREATE_ONLY, 0x4L, 0, 510, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "default_policy_name": MoPropertyMeta("default_policy_name", "defaultPolicyName", "string", VersionMeta.Version211a, MoPropertyMeta.CREATE_ONLY, 0x4, 0, 510, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["ReleaseAllOperationFsmBegin", "ReleaseAllOperationFsmFail", "ReleaseAllOperationFsmReleaseAll", "ReleaseAllOperationFsmSuccess", "ReleaseAllPolicyFsmBegin", "ReleaseAllPolicyFsmFail", "ReleaseAllPolicyFsmReleaseAll", "ReleaseAllPolicyFsmSuccess", "ReleaseAllStorageFsmBegin", "ReleaseAllStorageFsmFail", "ReleaseAllStorageFsmReleaseAll", "ReleaseAllStorageFsmSuccess", "ReleaseManyOperationFsmBegin", "ReleaseManyOperationFsmFail", "ReleaseManyOperationFsmReleaseMany", "ReleaseManyOperationFsmSuccess", "ReleaseManyPolicyFsmBegin", "ReleaseManyPolicyFsmFail", "ReleaseManyPolicyFsmReleaseMany", "ReleaseManyPolicyFsmSuccess", "ReleaseManyStorageFsmBegin", "ReleaseManyStorageFsmFail", "ReleaseManyStorageFsmReleaseMany", "ReleaseManyStorageFsmSuccess", "ReleaseOperationFsmBegin", "ReleaseOperationFsmFail", "ReleaseOperationFsmRelease", "ReleaseOperationFsmSuccess", "ReleasePolicyFsmBegin", "ReleasePolicyFsmFail", "ReleasePolicyFsmRelease", "ReleasePolicyFsmSuccess", "ReleaseStorageFsmBegin", "ReleaseStorageFsmFail", "ReleaseStorageFsmRelease", "ReleaseStorageFsmSuccess", "ResolveAllOperationFsmBegin", "ResolveAllOperationFsmFail", "ResolveAllOperationFsmResolveAll", "ResolveAllOperationFsmSuccess", "ResolveAllPolicyFsmBegin", "ResolveAllPolicyFsmFail", "ResolveAllPolicyFsmResolveAll", "ResolveAllPolicyFsmSuccess", "ResolveAllStorageFsmBegin", "ResolveAllStorageFsmFail", "ResolveAllStorageFsmResolveAll", "ResolveAllStorageFsmSuccess", "ResolveManyOperationFsmBegin", "ResolveManyOperationFsmFail", "ResolveManyOperationFsmResolveMany", "ResolveManyOperationFsmSuccess", "ResolveManyPolicyFsmBegin", "ResolveManyPolicyFsmFail", "ResolveManyPolicyFsmResolveMany", "ResolveManyPolicyFsmSuccess", "ResolveManyStorageFsmBegin", "ResolveManyStorageFsmFail", "ResolveManyStorageFsmResolveMany", "ResolveManyStorageFsmSuccess", "nop"], []), 
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]), 
@@ -300,13 +298,13 @@ class PolicyPolicyScope(ManagedObject):
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "oper_status": MoPropertyMeta("oper_status", "operStatus", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ok", "released", "resolved"], []), 
         "owner": MoPropertyMeta("owner", "owner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["local", "pending-policy", "policy"], []), 
-        "policy_name": MoPropertyMeta("policy_name", "policyName", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x10L, 1, 510, None, [], []), 
-        "policy_type": MoPropertyMeta("policy_type", "policyType", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x20L, 1, 510, None, [], []), 
+        "policy_name": MoPropertyMeta("policy_name", "policyName", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x10, 1, 510, None, [], []), 
+        "policy_type": MoPropertyMeta("policy_type", "policyType", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x20, 1, 510, None, [], []), 
         "recursive": MoPropertyMeta("recursive", "recursive", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "resolve_type": MoPropertyMeta("resolve_type", "resolveType", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x40L, None, None, None, ["name", "rn"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x80L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "resolve_type": MoPropertyMeta("resolve_type", "resolveType", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x40, None, None, None, ["name", "rn"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

@@ -15,10 +15,7 @@
 This module contains the UcsSdk Core classes.
 """
 
-import logging
-
-import ucscoreutils
-from ucscore import UcsBase
+from __future__ import absolute_import
 
 try:
     import xml.etree.cElementTree as ET
@@ -27,14 +24,21 @@ except ImportError:
     import cElementTree as ET
     from cElementTree import Element, SubElement
 
+import logging
+
 log = logging.getLogger('ucs')
 
+
+from .ucscore import UcsBase
+from . import ucscoreutils
+from . import ucsgenutils
 
 class ExternalMethod(UcsBase):
     """
     This class represents the UCS Central Xml api's query/configuration
     methods.
     """
+
     _external_method_attrs = {'errorCode': 'error_code',
                               'errorDescr': 'error_descr',
                               'invocationResult': 'invocation_result',
@@ -101,7 +105,7 @@ class ExternalMethod(UcsBase):
 
         for prop in self.__property_meta:
             if xml_obj.tag == "aaaLogout" and prop == "in_delay_secs" \
-               and getattr(self, prop) > 300:
+               and int(getattr(self, prop)) > 300:
                 continue
             prop_meta = self.__property_meta[prop]
             if prop_meta.inp_out == "Output":
@@ -120,7 +124,7 @@ class ExternalMethod(UcsBase):
         """Method updates/fills the object from the xml representation
         of the external method object. """
         if elem.attrib:
-            for attr_name, attr_value in elem.attrib.iteritems():
+            for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
                 if attr_name in self.__property_map:
                     attr = self.__property_map[attr_name]
                     method_prop_meta = self.__property_meta[attr]
@@ -160,7 +164,7 @@ class ExternalMethod(UcsBase):
         out_str = "\n"
         out_str += "External Method\t\t\t:\t" + str(self._class_id) + "\n"
         out_str += "-" * len("External Method") + "\n"
-        for prop, prop_value in sorted(self.__dict__.iteritems()):
+        for prop, prop_value in sorted(ucsgenutils.iteritems(self.__dict__)):
             if "ExternalMethod" in prop:
                 continue
             out_str += str(prop).ljust(tab_size * 4) + ':' + str(

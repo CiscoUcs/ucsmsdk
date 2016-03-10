@@ -1,11 +1,9 @@
 """This module contains the general information for EpqosEgress ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class EpqosEgressConsts():
@@ -33,20 +31,20 @@ class EpqosEgress(ManagedObject):
     consts = EpqosEgressConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EpqosEgress", "epqosEgress", "egress", VersionMeta.Version101e, "InputOutput", 0x3ffL, [], ["admin", "ls-network", "ls-network-policy", "ls-qos-policy", "read-only"], [u'epqosDefinition'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("EpqosEgress", "epqosEgress", "egress", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ls-network", "ls-network-policy", "ls-qos-policy", "read-only"], [u'epqosDefinition'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "burst": MoPropertyMeta("burst", "burst", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2L, None, None, None, [], ["0-65535"]), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "host_control": MoPropertyMeta("host_control", "hostControl", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x10L, None, None, None, ["full", "full-with-exception", "none"], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "burst": MoPropertyMeta("burst", "burst", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], ["0-65535"]), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "host_control": MoPropertyMeta("host_control", "hostControl", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["full", "full-with-exception", "none"], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "oper_prio": MoPropertyMeta("oper_prio", "operPrio", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["best-effort", "bronze", "fc", "gold", "platinum", "silver"], []), 
-        "prio": MoPropertyMeta("prio", "prio", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40L, None, None, None, ["best-effort", "bronze", "fc", "gold", "platinum", "silver"], []), 
-        "rate": MoPropertyMeta("rate", "rate", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x80L, None, None, None, ["line-rate"], ["8-40000000"]), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x100L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "prio": MoPropertyMeta("prio", "prio", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["best-effort", "bronze", "fc", "gold", "platinum", "silver"], []), 
+        "rate": MoPropertyMeta("rate", "rate", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["line-rate"], ["8-40000000"]), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

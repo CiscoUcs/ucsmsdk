@@ -1,11 +1,9 @@
 """This module contains the general information for LicenseInstance ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class LicenseInstanceConsts():
@@ -178,13 +176,13 @@ class LicenseInstance(ManagedObject):
     consts = LicenseInstanceConsts()
     naming_props = set([u'scope'])
 
-    mo_meta = MoMeta("LicenseInstance", "licenseInstance", "inst-[scope]", VersionMeta.Version141i, "InputOutput", 0x3fL, [], ["admin"], [u'licenseFeature'], [u'eventInst', u'faultInst', u'licenseInstanceFsm', u'licenseInstanceFsmTask', u'licenseProp', u'licenseSourceFile', u'licenseTarget'], ["Get"])
+    mo_meta = MoMeta("LicenseInstance", "licenseInstance", "inst-[scope]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["admin"], [u'licenseFeature'], [u'eventInst', u'faultInst', u'licenseInstanceFsm', u'licenseInstanceFsmTask', u'licenseProp', u'licenseSourceFile', u'licenseTarget'], ["Get"])
 
     prop_meta = {
         "abs_quant": MoPropertyMeta("abs_quant", "absQuant", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "def_quant": MoPropertyMeta("def_quant", "defQuant", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "feature": MoPropertyMeta("feature", "feature", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 1, 64, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, ["UpdateFlexlmBegin", "UpdateFlexlmFail", "UpdateFlexlmLocal", "UpdateFlexlmRemote", "UpdateFlexlmSuccess", "nop"], []), 
@@ -200,11 +198,11 @@ class LicenseInstance(ManagedObject):
         "is_present": MoPropertyMeta("is_present", "isPresent", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["license-expired", "license-graceperiod", "license-insufficient", "license-ok", "not-applicable", "unknown"], []), 
         "peer_status": MoPropertyMeta("peer_status", "peerStatus", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["exceeds", "lacks", "matching", "no-peer", "unknown"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "scope": MoPropertyMeta("scope", "scope", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x10L, None, None, None, ["A", "B", "server", "unknown"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "scope": MoPropertyMeta("scope", "scope", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x10, None, None, None, ["A", "B", "server", "unknown"], []), 
         "sku": MoPropertyMeta("sku", "sku", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "subordinate_used_quant": MoPropertyMeta("subordinate_used_quant", "subordinateUsedQuant", "uint", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "used_quant": MoPropertyMeta("used_quant", "usedQuant", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
     }

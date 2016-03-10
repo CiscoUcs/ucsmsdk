@@ -12,7 +12,7 @@
 # limitations under the License.
 
 from nose.tools import *
-import ucsmsdk
+import ucsmsdk.ucscoreutils
 
 
 def test_001_rn_pattern():

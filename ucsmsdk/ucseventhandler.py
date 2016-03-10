@@ -16,19 +16,24 @@ This module is responsible for event handling of the events exposed by
 UCSM server.
 """
 
-from threading import Condition, Lock, Thread
-from Queue import Queue
-import datetime
-import urllib2
-import logging
-import signal
+from __future__ import print_function
+from __future__ import unicode_literals
 
-import ucsgenutils
-import ucsmo
-import ucscoreutils
-import ucsxmlcodec as xc
-from ucsexception import UcsWarning
-from ucsexception import UcsValidationException
+try:
+    from Queue import Queue
+except:
+    from queue import Queue
+
+from threading import Condition, Lock, Thread
+import datetime
+import logging
+
+from . import ucsgenutils
+from . import ucsmo
+from . import ucscoreutils
+from . import ucsxmlcodec as xc
+from .ucsexception import UcsWarning
+from .ucsexception import UcsValidationException
 
 log = logging.getLogger('ucs')
 
@@ -84,10 +89,10 @@ class WatchBlock(object):
     def dequeue_default_callback(self, mce):
         """Default callback method."""
         tab_size = 8
-        print "\n"
-        print 'EventId'.ljust(tab_size * 2) + ':' + str(mce.event_id)
-        print 'ChangeList'.ljust(tab_size * 2) + ':' + str(mce.change_list)
-        print 'ClassId'.ljust(tab_size * 2) + ':' + str(mce.mo._class_id)
+        print("\n")
+        print('EventId'.ljust(tab_size * 2) + ':' + str(mce.event_id))
+        print('ChangeList'.ljust(tab_size * 2) + ':' + str(mce.change_list))
+        print('ClassId'.ljust(tab_size * 2) + ':' + str(mce.mo._class_id))
 
 
 class UcsEventHandle(object):
@@ -132,9 +137,10 @@ class UcsEventHandle(object):
 
         try:
             xml_query = '<eventSubscribe cookie="%s"/>' % self.__handle.cookie
-            self.__event_chan_resp = self.__handle.post_xml(xml_str=xml_query,
+            self.__event_chan_resp = self.__handle.post_xml(xml_str=xml_query.encode(),
                                                             read=False)
         except Exception:
+            raise
             return
 
         try:

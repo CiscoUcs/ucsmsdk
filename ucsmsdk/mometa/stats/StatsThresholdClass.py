@@ -1,11 +1,9 @@
 """This module contains the general information for StatsThresholdClass ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class StatsThresholdClassConsts():
@@ -46,7 +44,6 @@ class StatsThresholdClassConsts():
     STATS_CLASS_ID_COMPUTE_PCIE_FATAL_RECEIVE_STATS = "computePCIeFatalReceiveStats"
     STATS_CLASS_ID_COMPUTE_PCIE_FATAL_STATS = "computePCIeFatalStats"
     STATS_CLASS_ID_COMPUTE_RACK_UNIT_MB_TEMP_STATS = "computeRackUnitMbTempStats"
-    STATS_CLASS_ID_COMPUTE_STORAGE_BLADE_MB_TEMP_STATS = "computeStorageBladeMbTempStats"
     STATS_CLASS_ID_EQUIPMENT_CHASSIS_STATS = "equipmentChassisStats"
     STATS_CLASS_ID_EQUIPMENT_FAN_MODULE_STATS = "equipmentFanModuleStats"
     STATS_CLASS_ID_EQUIPMENT_FAN_STATS = "equipmentFanStats"
@@ -73,16 +70,13 @@ class StatsThresholdClassConsts():
     STATS_CLASS_ID_MEMORY_ARRAY_ENV_STATS = "memoryArrayEnvStats"
     STATS_CLASS_ID_MEMORY_BUFFER_UNIT_ENV_STATS = "memoryBufferUnitEnvStats"
     STATS_CLASS_ID_MEMORY_ERROR_STATS = "memoryErrorStats"
-    STATS_CLASS_ID_MEMORY_NV_DIMM_ENV_STATS = "memoryNvDimmEnvStats"
     STATS_CLASS_ID_MEMORY_RUNTIME = "memoryRuntime"
     STATS_CLASS_ID_MEMORY_UNIT_ENV_STATS = "memoryUnitEnvStats"
     STATS_CLASS_ID_POWER_GROUP_STATS = "powerGroupStats"
     STATS_CLASS_ID_PROCESSOR_ENV_STATS = "processorEnvStats"
     STATS_CLASS_ID_PROCESSOR_ERROR_STATS = "processorErrorStats"
     STATS_CLASS_ID_PROCESSOR_RUNTIME = "processorRuntime"
-    STATS_CLASS_ID_STORAGE_CTRL_STORAGE_STATS = "storageCtrlStorageStats"
     STATS_CLASS_ID_STORAGE_DISK_ENV_STATS = "storageDiskEnvStats"
-    STATS_CLASS_ID_STORAGE_STORAGE_STATS = "storageStorageStats"
     STATS_CLASS_ID_SW_CARD_ENV_STATS = "swCardEnvStats"
     STATS_CLASS_ID_SW_ENV_STATS = "swEnvStats"
     STATS_CLASS_ID_SW_SYSTEM_STATS = "swSystemStats"
@@ -95,20 +89,20 @@ class StatsThresholdClass(ManagedObject):
     consts = StatsThresholdClassConsts()
     naming_props = set([u'statsClassId'])
 
-    mo_meta = MoMeta("StatsThresholdClass", "statsThresholdClass", "[stats_class_id]", VersionMeta.Version101e, "InputOutput", 0x1ffL, [], ["admin", "operations"], [u'statsThresholdPolicy'], [u'statsThr32Definition', u'statsThr64Definition', u'statsThrFloatDefinition'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("StatsThresholdClass", "statsThresholdClass", "[stats_class_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "operations"], [u'statsThresholdPolicy'], [u'statsThr32Definition', u'statsThr64Definition', u'statsThrFloatDefinition'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2L, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4L, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8L, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10L, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20L, None, None, None, ["local", "pending-policy", "policy"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "stats_class_id": MoPropertyMeta("stats_class_id", "statsClassId", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80L, None, None, None, ["adaptorEthPortBySizeLargeStats", "adaptorEthPortBySizeSmallStats", "adaptorEthPortErrStats", "adaptorEthPortMcastStats", "adaptorEthPortOutsizedStats", "adaptorEthPortStats", "adaptorEtherIfStats", "adaptorFcIfEventStats", "adaptorFcIfFC4Stats", "adaptorFcIfFrameStats", "adaptorFcPortStats", "adaptorMenloBaseErrorStats", "adaptorMenloDcePortStats", "adaptorMenloEthErrorStats", "adaptorMenloEthStats", "adaptorMenloFcErrorStats", "adaptorMenloFcStats", "adaptorMenloHostPortStats", "adaptorMenloMcpuErrorStats", "adaptorMenloMcpuStats", "adaptorMenloNetEgStats", "adaptorMenloNetInStats", "adaptorMenloQErrorStats", "adaptorMenloQStats", "adaptorVnicStats", "computeIOHubEnvStats", "computeMbPowerStats", "computeMbTempStats", "computePCIeFatalCompletionStats", "computePCIeFatalProtocolStats", "computePCIeFatalReceiveStats", "computePCIeFatalStats", "computeRackUnitMbTempStats", "computeStorageBladeMbTempStats", "equipmentChassisStats", "equipmentFanModuleStats", "equipmentFanStats", "equipmentFexEnvStats", "equipmentFexPowerSummary", "equipmentFexPsuInputStats", "equipmentFexSystemStats", "equipmentIOCardStats", "equipmentNetworkElementFanStats", "equipmentPsuInputStats", "equipmentPsuOutputStats", "equipmentPsuStats", "equipmentRackUnitFanStats", "equipmentRackUnitPsuStats", "etherErrStats", "etherFcoeInterfaceStats", "etherLossStats", "etherNiErrStats", "etherPauseStats", "etherRxStats", "etherTxStats", "fcErrStats", "fcStats", "memoryArrayEnvStats", "memoryBufferUnitEnvStats", "memoryErrorStats", "memoryNvDimmEnvStats", "memoryRuntime", "memoryUnitEnvStats", "powerGroupStats", "processorEnvStats", "processorErrorStats", "processorRuntime", "storageCtrlStorageStats", "storageDiskEnvStats", "storageStorageStats", "swCardEnvStats", "swEnvStats", "swSystemStats", "unspecified"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "stats_class_id": MoPropertyMeta("stats_class_id", "statsClassId", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80, None, None, None, ["adaptorEthPortBySizeLargeStats", "adaptorEthPortBySizeSmallStats", "adaptorEthPortErrStats", "adaptorEthPortMcastStats", "adaptorEthPortOutsizedStats", "adaptorEthPortStats", "adaptorEtherIfStats", "adaptorFcIfEventStats", "adaptorFcIfFC4Stats", "adaptorFcIfFrameStats", "adaptorFcPortStats", "adaptorMenloBaseErrorStats", "adaptorMenloDcePortStats", "adaptorMenloEthErrorStats", "adaptorMenloEthStats", "adaptorMenloFcErrorStats", "adaptorMenloFcStats", "adaptorMenloHostPortStats", "adaptorMenloMcpuErrorStats", "adaptorMenloMcpuStats", "adaptorMenloNetEgStats", "adaptorMenloNetInStats", "adaptorMenloQErrorStats", "adaptorMenloQStats", "adaptorVnicStats", "computeIOHubEnvStats", "computeMbPowerStats", "computeMbTempStats", "computePCIeFatalCompletionStats", "computePCIeFatalProtocolStats", "computePCIeFatalReceiveStats", "computePCIeFatalStats", "computeRackUnitMbTempStats", "equipmentChassisStats", "equipmentFanModuleStats", "equipmentFanStats", "equipmentFexEnvStats", "equipmentFexPowerSummary", "equipmentFexPsuInputStats", "equipmentFexSystemStats", "equipmentIOCardStats", "equipmentNetworkElementFanStats", "equipmentPsuInputStats", "equipmentPsuOutputStats", "equipmentPsuStats", "equipmentRackUnitFanStats", "equipmentRackUnitPsuStats", "etherErrStats", "etherFcoeInterfaceStats", "etherLossStats", "etherNiErrStats", "etherPauseStats", "etherRxStats", "etherTxStats", "fcErrStats", "fcStats", "memoryArrayEnvStats", "memoryBufferUnitEnvStats", "memoryErrorStats", "memoryRuntime", "memoryUnitEnvStats", "powerGroupStats", "processorEnvStats", "processorErrorStats", "processorRuntime", "storageDiskEnvStats", "swCardEnvStats", "swEnvStats", "swSystemStats", "unspecified"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

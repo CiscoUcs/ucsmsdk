@@ -1,11 +1,9 @@
 """This module contains the general information for SwExtUtilityFsmStage ManagedObject."""
 import sys, os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ucsmo import ManagedObject
-from ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
-from ucsmeta import VersionMeta
-sys.path.remove(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ...ucsmo import ManagedObject
+from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucsmeta import VersionMeta
 
 
 class SwExtUtilityFsmStageConsts():
@@ -34,20 +32,20 @@ class SwExtUtilityFsmStage(ManagedObject):
     consts = SwExtUtilityFsmStageConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("SwExtUtilityFsmStage", "swExtUtilityFsmStage", "stage-[name]", None, "OutputOnly", 0xfL, [], [""], [u'swExtUtilityFsm'], [], [None])
+    mo_meta = MoMeta("SwExtUtilityFsmStage", "swExtUtilityFsmStage", "stage-[name]", VersionMeta.Version311e, "OutputOnly", 0xf, [], [""], [u'swExtUtilityFsm'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", None, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", None, MoPropertyMeta.READ_ONLY, 0x2L, 0, 256, None, [], []), 
-        "last_update_time": MoPropertyMeta("last_update_time", "lastUpdateTime", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []), 
-        "name": MoPropertyMeta("name", "name", "string", None, MoPropertyMeta.NAMING, None, None, None, None, ["ConfPortBreakoutBegin", "ConfPortBreakoutConfigSwA", "ConfPortBreakoutConfigSwB", "ConfPortBreakoutFail", "ConfPortBreakoutPortInventorySwA", "ConfPortBreakoutPortInventorySwB", "ConfPortBreakoutSuccess", "ConfPortBreakoutVerifyBreakoutConfig", "nop"], []), 
-        "order": MoPropertyMeta("order", "order", "ushort", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "retry": MoPropertyMeta("retry", "retry", "byte", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", None, MoPropertyMeta.READ_ONLY, 0x4L, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "stage_status": MoPropertyMeta("stage_status", "stageStatus", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["fail", "inProgress", "nop", "pending", "skip", "success", "throttled"], []), 
-        "status": MoPropertyMeta("status", "status", "string", None, MoPropertyMeta.READ_WRITE, 0x8L, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version311e, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
+        "last_update_time": MoPropertyMeta("last_update_time", "lastUpdateTime", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version311e, MoPropertyMeta.NAMING, None, None, None, None, ["ConfPortBreakoutBegin", "ConfPortBreakoutConfigSwA", "ConfPortBreakoutConfigSwB", "ConfPortBreakoutFail", "ConfPortBreakoutPortInventorySwA", "ConfPortBreakoutPortInventorySwB", "ConfPortBreakoutSuccess", "ConfPortBreakoutVerifyBreakoutConfig", "nop"], []), 
+        "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "retry": MoPropertyMeta("retry", "retry", "byte", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "stage_status": MoPropertyMeta("stage_status", "stageStatus", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["fail", "inProgress", "nop", "pending", "skip", "success", "throttled"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {
