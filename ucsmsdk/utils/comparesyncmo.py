@@ -17,7 +17,6 @@ within ucsm or across ucsm.
 """
 
 from __future__ import print_function
-from __future__ import absolute_import
 
 import re
 import logging
@@ -96,51 +95,6 @@ class _MoDiff(object):
         return None
 
 
-def _compare(from_mo, to_mo, diff, include_operational=False):
-    """
-    Internal method to support compare reference and difference object.
-    """
-
-    if from_mo.get_class_id() != to_mo.get_class_id():
-        return _CompareStatus.TYPES_DIFFERENT
-
-    # compare for unknown class_id
-    if isinstance(from_mo, GenericMo) or isinstance(to_mo, GenericMo):
-        for prop in from_mo.properties:
-            if prop in to_mo.properties:
-                if from_mo.properties[prop] != to_mo.properties[prop]:
-                    diff.append(prop)
-
-    # compare for known class_id
-    else:
-        for prop in sorted(from_mo.prop_meta):
-            mo_property_meta = from_mo.prop_meta[prop]
-            if mo_property_meta is not None:
-                if not include_operational and (
-                        mo_property_meta.access == MoPropertyMeta.INTERNAL or
-                        mo_property_meta.access == MoPropertyMeta.READ_ONLY):
-                    continue
-                if prop in to_mo.__dict__ \
-                        and getattr(from_mo, prop) != getattr(to_mo, prop):
-                    diff.append(prop)
-
-        # comparing xtra property
-        from_xtra_props = from_mo._ManagedObject__xtra_props
-        to_xtra_props = to_mo._ManagedObject__xtra_props
-        if from_xtra_props:
-            for prop in from_xtra_props:
-                if prop in to_xtra_props and from_xtra_props[prop].value != \
-                        to_xtra_props[prop].value:
-                    # diff.append(prop)
-                    UcsWarning("Ignoring xtra property '%s' of '%s'" % (
-                        prop, from_mo.dn))
-
-    if len(diff) > 0:
-        return _CompareStatus.PROPS_DIFFERENT
-
-    return _CompareStatus.EQUAL
-
-
 def _update_mo_dn_along_with_naming_properties(mo, ref_dn):
     """
     Internal method to modify the naming properties of mo using dn.
@@ -202,29 +156,181 @@ def _translate_managed_object(mo, xlate_org, xlate_map):
     return mo
 
 
-def write_mo_diff(diff_obj):
+def _list_has_values(obj):
     """
-    Writes the difference managedObject(output of CompareManagedObject)
-    on the terminal.
+    Internal function to check if obj is non empty list.
     """
 
-    tab_size = 8
-    if isinstance(diff_obj, list) and len(diff_obj) > 0:
-        if isinstance(diff_obj[0], _MoDiff):
-            print("dn".ljust(tab_size*10), "input_object".ljust(tab_size*4),
-                  "side_indicator".ljust(tab_size*3), "diff_property")
-            print("--".ljust(tab_size*10), "-----------".ljust(tab_size*4),
-                  "-------------".ljust(tab_size*3), "------------")
-        for mo in diff_obj:
-            if isinstance(mo, _MoDiff):
-                print(str(mo.dn).ljust(tab_size*10),
-                      str(mo.input_object.get_class_id()).ljust(tab_size*4),
-                      str(mo.side_indicator).ljust(tab_size*3),
-                      str(mo.diff_property))
+    return isinstance(obj, list) and len(obj) > 0
 
 
-def compare_ucs_mo(ref_handle, ref_obj,
-                   diff_handle, diff_obj,
+def _should_skip_mo(mo):
+    """
+    Internal function to check if mo to be skipped from comparison.
+    """
+
+    if mo is None:
+        return True
+    if isinstance(mo, GenericMo):
+        if ucsgenutils.word_u(mo.get_class_id()) in skip_mos:
+            return True
+    elif mo.get_class_id() in skip_mos or \
+            mo.mo_meta.inp_out == MoMeta.ACCESS_TYPE_OUTPUTONLY or \
+            (mo.mo_meta.inp_out == MoMeta.ACCESS_TYPE_IO
+             and len(mo.mo_meta.access) == 1
+             and mo.mo_meta.access[0] == "read-only"):
+        return True
+    return False
+
+
+def _get_skip_props(mo, include_operational=False, no_version_filter=False):
+    """
+    Internal function to skip mo property if not to be considered for sync.
+    """
+
+    skip_props = []
+    for prop in mo.prop_meta:
+        mo_property_meta = mo.prop_meta[prop]
+        if mo_property_meta is None:
+            continue
+
+        # not include operational property
+        if not include_operational:
+            if mo_property_meta.access in (MoPropertyMeta.INTERNAL,
+                                           MoPropertyMeta.READ_ONLY):
+                skip_props.append(prop)
+        # checks if property is part of current or earlier ucsm schema
+        if not no_version_filter:
+            version = mo.get_handle().version
+            if version is None or version < mo_property_meta.version or \
+               mo_property_meta.access == MoPropertyMeta.INTERNAL:
+                skip_props.append(prop)
+    return skip_props
+
+
+def _compare_known_mo(from_mo, to_mo, diff, include_operational=False,
+                      no_version_filter=False):
+    """
+    Internal function to compare if both the ref and diff obj is known mo.
+    """
+
+    from_mo_skip_props = None
+    if not include_operational or not no_version_filter:
+        from_mo_skip_props = _get_skip_props(from_mo, include_operational,
+                                             no_version_filter)
+
+    # comparing known properties of ref mo
+    for prop in from_mo.prop_meta:
+        if from_mo_skip_props and prop in from_mo_skip_props:
+            continue
+        # if not exist in diff mo
+        if not hasattr(to_mo, prop):
+            log.debug("Property '%s' of '%s' does not exist in diff obj." % (
+                prop, from_mo.dn))
+            continue
+
+        if getattr(from_mo, prop) != getattr(to_mo, prop):
+            diff.append(prop)
+
+    # comparing unknown properties of ref mo
+    from_xtra_props = from_mo._ManagedObject__xtra_props
+    to_xtra_props = to_mo._ManagedObject__xtra_props
+    if not to_xtra_props:
+        return
+    for prop in from_xtra_props:
+        if prop not in to_xtra_props:
+            continue
+
+        if from_xtra_props[prop].value != to_xtra_props[prop].value:
+            if not no_version_filter:
+                UcsWarning("Ignoring xtra property '%s' of '%s'" % (
+                    prop, from_mo.dn))
+            else:
+                diff.append(prop)
+
+
+def _compare_unknown_mo(from_mo, to_mo, diff):
+    """
+    Internal function to compare if any or both of the  ref and diff obj is
+    unknown mo.
+    """
+
+    # both unknown mo
+    for prop in from_mo.properties:
+        if prop not in to_mo.properties:
+            continue
+        if from_mo.properties[prop] != to_mo.properties[prop]:
+            diff.append(prop)
+
+
+def _compare(from_mo, to_mo, diff, include_operational=False,
+             no_version_filter=False):
+    """
+    Internal method to support compare reference and difference object.
+    """
+
+    # compare mo of different types
+    if from_mo.get_class_id() != to_mo.get_class_id():
+        return _CompareStatus.TYPES_DIFFERENT
+
+    # compare for unknown class_id
+    if isinstance(from_mo, GenericMo) or isinstance(to_mo, GenericMo):
+        if no_version_filter:
+            _compare_unknown_mo(from_mo, to_mo, diff)
+
+    # compare for known class_id
+    else:
+        _compare_known_mo(from_mo, to_mo, diff, include_operational,
+                          no_version_filter)
+
+    if len(diff) > 0:
+        return _CompareStatus.PROPS_DIFFERENT
+
+    return _CompareStatus.EQUAL
+
+
+def _compare_common_mo(ref_dict, diff_dict, include_operational=False,
+                       no_version_filter=False, include_equal=False,
+                       exclude_different=False):
+
+    diff_output = []
+    common_dns = set(ref_dict) & set(diff_dict)
+    for dn in common_dns:
+        ref_mo = ref_dict[dn]
+        diff_mo = diff_dict[dn]
+        diff_props = []
+
+        # compare both mo for property and type
+        diff_status = _compare(ref_mo, diff_mo, diff_props,
+                               include_operational, no_version_filter)
+
+        if diff_status == _CompareStatus.EQUAL and include_equal:
+            mo_diff = _MoDiff(ref_mo, _MoDiff.EQUAL)
+            diff_output.append(mo_diff)
+            continue
+
+        if exclude_different:
+            continue
+
+        if diff_status == _CompareStatus.TYPES_DIFFERENT:
+            mo_diff = _MoDiff(ref_mo, _MoDiff.REMOVE)
+            diff_output.append(mo_diff)
+            mo_diff = _MoDiff(diff_mo, _MoDiff.ADD_MODIFY)
+            diff_output.append(mo_diff)
+        elif diff_status == _CompareStatus.PROPS_DIFFERENT:
+            ref_values = {}
+            diff_values = {}
+            for prop in diff_props:
+                ref_values[prop] = getattr(ref_mo, prop)
+                diff_values[prop] = getattr(diff_mo, prop)
+            mo_diff = _MoDiff(diff_mo, _MoDiff.ADD_MODIFY,
+                              diff_props, ref_values, diff_values)
+            diff_output.append(mo_diff)
+
+    return diff_output
+
+
+def compare_ucs_mo(ref_obj, diff_obj,
                    exclude_different=False,
                    include_equal=False,
                    no_version_filter=False,
@@ -234,9 +340,7 @@ def compare_ucs_mo(ref_handle, ref_obj,
     Compares the state of two managed objects with same dn.
 
     Args:
-        ref_handle (UcsHandle): connect handle of reference ucsm
         ref_obj (list): list of Managed Objects of reference ucsm
-        diff_handle (UcsHandle): connect handle of difference ucsm
         diff_obj (list): list of Managed Objects of difference ucsm
         exclude_different (bool): by default False. If set to True, will
                                   compare mos only which exist on both
@@ -271,122 +375,56 @@ def compare_ucs_mo(ref_handle, ref_obj,
         #1
         ref_mos = [ref_handle.query_dn(dn="org-root/ls-sp")]
         diff_mos = [diff_handle.query_dn(dn="org-root/ls-sp")]
-        compare_ucs_mo(ref_handle, ref_mos,
-                                   diff_handle, diff_mos)
+        compare_ucs_mo(ref_mos, diff_mos)
 
         #2
         ref_mos = [ref_handle.query_dn(dn="org-root/org-ref/ls-sp")]
         diff_mos = [diff_handle.query_dn(dn="org-root/org-diff/ls-sp")]
-        compare_ucs_mo(ref_handle, ref_mos,
-                                   diff_handle, diff_mos,
-                                   xlate_org = "org-root/org-ref")
+        compare_ucs_mo(ref_mos, diff_mos, xlate_org = "org-root/org-ref")
 
         #3
         ref_mos = [ref_handle.query_dn(dn="org-root/ls-ref")]
         diff_mos = [diff_handle.query_dn(dn="org-root/ls-diff")]
-        compare_ucs_mo(ref_handle, ref_mos, diff_handle, diff_mos,
-                        xlate_map = {"org-root/ls-diff": "org-root/ls-ref"})
+        compare_ucs_mo(ref_mos, diff_mos,
+                       xlate_map = {"org-root/ls-diff": "org-root/ls-ref"})
     """
 
     reference_dict = {}
     difference_dict = {}
+    diff_output = []
 
-    if ref_obj is not None and \
-            isinstance(ref_obj, list) and len(ref_obj) > 0:
+    if ref_obj is not None and _list_has_values(ref_obj):
         for mo in ref_obj:
-            if mo is None:
-                continue
-            if isinstance(mo, GenericMo):
-                if ucsgenutils.word_u(mo.get_class_id()) in skip_mos:
-                    continue
-            elif mo.get_class_id() in skip_mos or \
-                    mo.mo_meta.inp_out == MoMeta.ACCESS_TYPE_OUTPUTONLY or \
-                    (mo.mo_meta.inp_out == MoMeta.ACCESS_TYPE_IO
-                     and len(mo.mo_meta.access) == 1
-                     and mo.mo_meta.access[0] == "read-only"):
+            if _should_skip_mo(mo):
                 continue
             reference_dict[mo.dn] = mo
-    # log.debug("reference_dict: %s" % reference_dict)
 
-    if diff_obj is not None and \
-            isinstance(diff_obj, list) and len(diff_obj) > 0:
+    if diff_obj is not None and _list_has_values(diff_obj):
         for mo in diff_obj:
-            if mo is None:
-                continue
-            if isinstance(mo, GenericMo):
-                if ucsgenutils.word_u(mo.get_class_id()) in skip_mos:
-                    continue
-            elif mo.get_class_id() in skip_mos or \
-                    mo.mo_meta.inp_out == MoMeta.ACCESS_TYPE_OUTPUTONLY or \
-                    (mo.mo_meta.inp_out == MoMeta.ACCESS_TYPE_IO
-                     and len(mo.mo_meta.access) == 1
-                     and mo.mo_meta.access[0] == "read-only"):
+            if _should_skip_mo(mo):
                 continue
             translated_mo = _translate_managed_object(mo, xlate_org, xlate_map)
             difference_dict[translated_mo.dn] = translated_mo
-    # log.debug("difference_dict: %s" % difference_dict)
 
-    # union of reference and difference
-    dn_list = list(set.union(set(reference_dict), set(difference_dict)))
-    dn_list = sorted(dn_list)
-    diff_output = []
+    if not exclude_different:
+        only_ref_dns = set(reference_dict) - set(difference_dict)
+        only_diff_dns = set(difference_dict) - set(reference_dict)
 
-    for dn in dn_list:
-        if dn not in difference_dict:
-            ref_mo = reference_dict[dn].clone()
-            if not exclude_different:
-                mo_diff = _MoDiff(ref_mo, _MoDiff.REMOVE)
-                diff_output.append(mo_diff)
-        elif dn not in reference_dict:
-            diff_mo = difference_dict[dn].clone()
-            if not exclude_different:
-                mo_diff = _MoDiff(diff_mo, _MoDiff.ADD_MODIFY)
-                diff_output.append(mo_diff)
-        else:
-            ref_mo = reference_dict[dn].clone()
-            diff_mo = difference_dict[dn].clone()
-            diff_props = []
+        for dn in only_ref_dns:
+            diff_output.append(_MoDiff(reference_dict[dn],
+                                       _MoDiff.REMOVE))
 
-            if not no_version_filter:
-                if not isinstance(ref_mo, GenericMo) and \
-                        ref_handle.version is not None:
-                    for prop in ref_mo.prop_meta:
-                        prop_meta = ref_mo.prop_meta[prop]
-                        if ref_handle.version < prop_meta.version or \
-                                prop_meta.access == MoPropertyMeta.INTERNAL:
-                            del ref_mo.__dict__[prop]  # check this
+        for dn in only_diff_dns:
+            diff_output.append(_MoDiff(difference_dict[dn],
+                                       _MoDiff.ADD_MODIFY))
 
-                if not isinstance(diff_mo, GenericMo) and \
-                        diff_handle.version is not None:
-                    for prop in diff_mo.prop_meta:
-                        prop_meta = diff_mo.prop_meta[prop]
-                        if diff_handle.version < prop_meta.version or \
-                                prop_meta.access == MoPropertyMeta.INTERNAL:
-                            del diff_mo.__dict__[prop]  # check this
+    diff_with_props = _compare_common_mo(reference_dict, difference_dict,
+                                         include_operational,
+                                         no_version_filter, include_equal,
+                                         exclude_different)
 
-            # compare both mo for property and type
-            diff_status = _compare(ref_mo, diff_mo, diff_props,
-                                   include_operational)
-
-            if diff_status == _CompareStatus.EQUAL and include_equal:
-                mo_diff = _MoDiff(ref_mo, _MoDiff.EQUAL)
-                diff_output.append(mo_diff)
-            elif diff_status == _CompareStatus.TYPES_DIFFERENT and \
-                    not exclude_different:
-                mo_diff = _MoDiff(ref_mo, _MoDiff.REMOVE)
-                diff_output.append(mo_diff)
-                mo_diff = _MoDiff(diff_mo, _MoDiff.ADD_MODIFY)
-                diff_output.append(mo_diff)
-            elif diff_status == _CompareStatus.PROPS_DIFFERENT and \
-                    not exclude_different:
-                ref_values = {}
-                diff_values = {}
-                for prop in diff_props:
-                    ref_values[prop] = getattr(ref_mo, prop)
-                    diff_values[prop] = getattr(diff_mo, prop)
-                mo_diff = _MoDiff(diff_mo, _MoDiff.ADD_MODIFY,
-                                  diff_props, ref_values, diff_values)
-                diff_output.append(mo_diff)
+    if diff_with_props:
+        diff_output.extend(diff_with_props)
 
     return diff_output
 
@@ -420,8 +458,7 @@ def sync_ucs_mo(ref_handle, difference,
         sync_ucs_mo(ref_handle, difference=difference, delete_not_present=True)
     """
 
-    if difference is None or \
-            (isinstance(difference, list) and len(difference) == 0):
+    if difference is None or not _list_has_values(difference):
         raise UcsValidationException(
             "difference object parameter is not provided.")
 
@@ -487,3 +524,32 @@ def sync_ucs_mo(ref_handle, difference,
 
     if to_commit:
         ref_handle.commit()
+
+
+def write_mo_diff(diff_obj):
+    """
+    Writes the difference managedObject(output of CompareManagedObject)
+    on the terminal.
+    """
+
+    tab_size = 8
+    if not _list_has_values(diff_obj):
+        return
+
+    if isinstance(diff_obj[0], _MoDiff):
+        print("dn".ljust(tab_size*10), "input_object".ljust(tab_size*4),
+              "side_indicator".ljust(tab_size*3), "diff_property")
+        print("--".ljust(tab_size*10), "-----------".ljust(tab_size*4),
+              "-------------".ljust(tab_size*3), "------------")
+    diff_obj_mod = []
+    for mo_diff in diff_obj:
+        if not isinstance(mo_diff, _MoDiff):
+            continue
+        diff_obj_mod.append(mo_diff)
+
+    for mo_diff in sorted(diff_obj_mod, key=lambda mo: mo.dn):
+        print(str(mo_diff.dn).ljust(tab_size*10),
+              str(mo_diff.input_object.get_class_id()).ljust(tab_size*4),
+              str(mo_diff.side_indicator).ljust(tab_size*3),
+              str(sorted(mo_diff.diff_property))
+              if mo_diff.diff_property else str(mo_diff.diff_property))
