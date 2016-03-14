@@ -320,12 +320,13 @@ class ManagedObject(UcsBase):
         self.child_to_xml(xml_obj, option)
         return xml_obj
 
-    def from_xml(self, elem):
+    def from_xml(self, elem, handle=None):
         """
         Method updates the object from the xml representation of the managed
         object.
         """
 
+        self._handle = handle
         if elem.attrib:
             if self.__class__.__name__ != "ManagedObject":
                 for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
@@ -357,7 +358,7 @@ class ManagedObject(UcsBase):
                 child_obj = ucscoreutils.get_ucs_obj(class_id, child_elem,
                                                      self)
                 self.child_add(child_obj)
-                child_obj.from_xml(child_elem)
+                child_obj.from_xml(child_elem, handle)
 
     def sync_mo(self, mo):
         """
@@ -517,7 +518,7 @@ class GenericMo(UcsBase):
         """Getter Method of GenericMO Class"""
         return self.__properties
 
-    def from_xml(self, elem):
+    def from_xml(self, elem, handle=None):
         """
         This method is form objects out of xml element.
         This is called internally from ucsxmlcode.from_xml_str
@@ -537,6 +538,7 @@ class GenericMo(UcsBase):
         if elem is None:
             return None
 
+        self._class_id = handle
         self._class_id = elem.tag
         if elem.attrib:
             for name, value in ucsgenutils.iteritems(elem.attrib):
@@ -570,7 +572,7 @@ class GenericMo(UcsBase):
                     pdn = self.dn
                 child_obj = GenericMo(class_id, parent_mo_or_dn=pdn)
                 self.child_add(child_obj)
-                child_obj.from_xml(child)
+                child_obj.from_xml(child, handle)
 
     def __get_mo_obj(self, class_id):
         """

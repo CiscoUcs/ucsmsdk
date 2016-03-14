@@ -120,9 +120,11 @@ class ExternalMethod(UcsBase):
         self.child_to_xml(xml_obj, option)
         return xml_obj
 
-    def from_xml(self, elem):  # , handle, modify_self=False, mo=None):
+    def from_xml(self, elem, handle=None):  # , handle, modify_self=False, mo=None):
         """Method updates/fills the object from the xml representation
         of the external method object. """
+		
+        self._handle = handle
         if elem.attrib:
             for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
                 if attr_name in self.__property_map:
@@ -156,8 +158,7 @@ class ExternalMethod(UcsBase):
                             self.set_attr(child_name,
                                           child_obj)
                             # print child_method_obj.__dict__
-                            child_obj.from_xml(
-                                child_elem)
+                            child_obj.from_xml(child_elem, handle)
 
     def __str__(self):
         tab_size = 8
