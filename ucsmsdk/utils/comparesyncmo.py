@@ -95,7 +95,7 @@ class _MoDiff(object):
         return None
 
 
-def _update_mo_dn_along_with_naming_properties(mo, ref_dn):
+def _update_mo_dn_and_naming_props(mo, ref_dn):
     """
     Internal method to modify the naming properties of mo using dn.
     """
@@ -134,7 +134,7 @@ def _translate_managed_object(mo, xlate_org, xlate_map):
                 ref_dn = re.sub("^%s/" % (match_obj.group(0)),
                                 "%s/" % xlate_org,
                                 mo.dn)
-            _update_mo_dn_along_with_naming_properties(mo, ref_dn)
+            _update_mo_dn_and_naming_props(mo, ref_dn)
 
     if xlate_map is not None:
         diff_dn = mo.dn
@@ -151,7 +151,7 @@ def _translate_managed_object(mo, xlate_org, xlate_map):
                                 "%s/" % xlate_map[diff_dn],
                                 mo.dn)
                 break
-        _update_mo_dn_along_with_naming_properties(mo, ref_dn)
+        _update_mo_dn_and_naming_props(mo, ref_dn)
 
     return mo
 
@@ -249,7 +249,7 @@ def _compare_known_mo(from_mo, to_mo, diff, include_operational=False,
                 diff.append(prop)
 
 
-def _compare_unknown_mo(from_mo, to_mo, diff, version_filter):
+def _compare_unknown_mo(from_mo, to_mo, diff, version_filter=True):
     """
     Internal function to compare if any or both of the  ref and diff obj is
     unknown mo.
