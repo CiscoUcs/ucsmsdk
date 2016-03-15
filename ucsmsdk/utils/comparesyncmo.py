@@ -120,6 +120,10 @@ def _translate_managed_object(mo, xlate_org, xlate_map):
     two mo with different dn.
     """
 
+    if not xlate_org and not xlate_map:
+        return mo
+
+    mo = mo.clone()
     ref_dn = None
     if xlate_org is not None:
         match_obj = re.match(
