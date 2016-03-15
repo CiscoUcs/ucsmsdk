@@ -55,7 +55,7 @@ class ManagedObject(UcsBase):
 
     DUMMY_DIRTY = "0x1L"
     __internal_prop = frozenset(
-        ["_dirty_mask", "_class_id", "_child", ''])
+        ["_dirty_mask", "_class_id", "_child", "_handle", ''])
 
     def __init__(self, class_id, parent_mo_or_dn=None, **kwargs):
         self.__parent_mo = None
@@ -538,7 +538,7 @@ class GenericMo(UcsBase):
         if elem is None:
             return None
 
-        self._class_id = handle
+        self._handle = handle
         self._class_id = elem.tag
         if elem.attrib:
             for name, value in ucsgenutils.iteritems(elem.attrib):
