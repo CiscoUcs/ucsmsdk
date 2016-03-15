@@ -169,7 +169,7 @@ def test_unknown_property_noversionfilter():
     diff_mo.unknown = "yyy"
     diff_mos = [diff_mo]
 
-    difference = compare_ucs_mo(ref_mos, diff_mos, no_version_filter=True)
+    difference = compare_ucs_mo(ref_mos, diff_mos, version_filter=False)
     write_mo_diff(difference)
     assert_equal(len(difference), 1)
     assert_equal(len(difference[0].diff_property), 2)
@@ -208,7 +208,7 @@ def test_unknown_mo_noversionfilter():
     diff_mo._handle = diff_handle
     diff_mos = [diff_mo]
 
-    difference = compare_ucs_mo(ref_mos, diff_mos, no_version_filter=True)
+    difference = compare_ucs_mo(ref_mos, diff_mos, version_filter=False)
     write_mo_diff(difference)
     assert_equal(len(difference), 1)
     assert_equal(len(difference[0].diff_property), 1)

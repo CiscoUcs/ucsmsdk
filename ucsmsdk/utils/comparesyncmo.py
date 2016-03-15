@@ -183,7 +183,7 @@ def _should_skip_mo(mo):
     return False
 
 
-def _get_skip_props(mo, include_operational=False, no_version_filter=False):
+def _get_skip_props(mo, include_operational=False, version_filter=True):
     """
     Internal function to skip mo property if not to be considered for sync.
     """
@@ -200,7 +200,7 @@ def _get_skip_props(mo, include_operational=False, no_version_filter=False):
                                            MoPropertyMeta.READ_ONLY):
                 skip_props.append(prop)
         # checks if property is part of current or earlier ucsm schema
-        if not no_version_filter:
+        if version_filter:
             version = mo.get_handle().version
             if version is None or version < mo_property_meta.version or \
                mo_property_meta.access == MoPropertyMeta.INTERNAL:
@@ -209,15 +209,15 @@ def _get_skip_props(mo, include_operational=False, no_version_filter=False):
 
 
 def _compare_known_mo(from_mo, to_mo, diff, include_operational=False,
-                      no_version_filter=False):
+                      version_filter=True):
     """
     Internal function to compare if both the ref and diff obj is known mo.
     """
 
     from_mo_skip_props = None
-    if not include_operational or not no_version_filter:
+    if not include_operational or version_filter:
         from_mo_skip_props = _get_skip_props(from_mo, include_operational,
-                                             no_version_filter)
+                                             version_filter)
 
     # comparing known properties of ref mo
     for prop in from_mo.prop_meta:
@@ -242,20 +242,22 @@ def _compare_known_mo(from_mo, to_mo, diff, include_operational=False,
             continue
 
         if from_xtra_props[prop].value != to_xtra_props[prop].value:
-            if not no_version_filter:
+            if version_filter:
                 UcsWarning("Ignoring xtra property '%s' of '%s'" % (
                     prop, from_mo.dn))
             else:
                 diff.append(prop)
 
 
-def _compare_unknown_mo(from_mo, to_mo, diff):
+def _compare_unknown_mo(from_mo, to_mo, diff, version_filter):
     """
     Internal function to compare if any or both of the  ref and diff obj is
     unknown mo.
     """
 
     # both unknown mo
+    if version_filter:
+        return
     for prop in from_mo.properties:
         if prop not in to_mo.properties:
             continue
@@ -264,7 +266,7 @@ def _compare_unknown_mo(from_mo, to_mo, diff):
 
 
 def _compare(from_mo, to_mo, diff, include_operational=False,
-             no_version_filter=False):
+             version_filter=True):
     """
     Internal method to support compare reference and difference object.
     """
@@ -275,13 +277,12 @@ def _compare(from_mo, to_mo, diff, include_operational=False,
 
     # compare for unknown class_id
     if isinstance(from_mo, GenericMo) or isinstance(to_mo, GenericMo):
-        if no_version_filter:
-            _compare_unknown_mo(from_mo, to_mo, diff)
+        _compare_unknown_mo(from_mo, to_mo, diff, version_filter)
 
     # compare for known class_id
     else:
         _compare_known_mo(from_mo, to_mo, diff, include_operational,
-                          no_version_filter)
+                          version_filter)
 
     if len(diff) > 0:
         return _CompareStatus.PROPS_DIFFERENT
@@ -290,7 +291,7 @@ def _compare(from_mo, to_mo, diff, include_operational=False,
 
 
 def _compare_common_mo(ref_dict, diff_dict, include_operational=False,
-                       no_version_filter=False, include_equal=False,
+                       version_filter=True, include_equal=False,
                        exclude_different=False):
 
     diff_output = []
@@ -302,7 +303,7 @@ def _compare_common_mo(ref_dict, diff_dict, include_operational=False,
 
         # compare both mo for property and type
         diff_status = _compare(ref_mo, diff_mo, diff_props,
-                               include_operational, no_version_filter)
+                               include_operational, version_filter)
 
         if diff_status == _CompareStatus.EQUAL and include_equal:
             mo_diff = _MoDiff(ref_mo, _MoDiff.EQUAL)
@@ -333,7 +334,7 @@ def _compare_common_mo(ref_dict, diff_dict, include_operational=False,
 def compare_ucs_mo(ref_obj, diff_obj,
                    exclude_different=False,
                    include_equal=False,
-                   no_version_filter=False,
+                   version_filter=True,
                    include_operational=False,
                    xlate_org=None, xlate_map=None):
     """
@@ -347,7 +348,7 @@ def compare_ucs_mo(ref_obj, diff_obj,
                                   reference and difference ucsm respectively
         include_equal (bool): by default False. If set to True, will also
                               display properties which are equal
-        no_version_filter (bool): by default False: If set to True, ignore
+        version_filter (bool): by default True: If set to False, ignore
                                   properties which is introduced in later ucsm
                                   version than reference ucsm
         include_operational (bool): by default False: If set to True, compares
@@ -420,7 +421,7 @@ def compare_ucs_mo(ref_obj, diff_obj,
 
     diff_with_props = _compare_common_mo(reference_dict, difference_dict,
                                          include_operational,
-                                         no_version_filter, include_equal,
+                                         version_filter, include_equal,
                                          exclude_different)
 
     if diff_with_props:
@@ -431,7 +432,7 @@ def compare_ucs_mo(ref_obj, diff_obj,
 
 def sync_ucs_mo(ref_handle, difference,
                 delete_not_present=False,
-                no_version_filter=False):
+                version_filter=True):
     """
     syncs the difference object on reference ucsm.
     In other words, make the state of reference ucsm for the respective
@@ -443,7 +444,7 @@ def sync_ucs_mo(ref_handle, difference,
         delete_not_present (bool): by dafault False. If set to true, will
                                    delete ref mo which does not exist on
                                    difference ucsm
-        no_version_filter (bool): by default False: If set to True, ignore
+        version_filter (bool): by default True: If set to False, ignore
                                   properties which is introduced in later ucsm
                                   version than reference ucsm
 
@@ -478,7 +479,7 @@ def sync_ucs_mo(ref_handle, difference,
             ref_handle.remove_mo(mo)
             to_commit = True
 
-        if not no_version_filter:
+        if version_filter:
             mo_meta = mo.mo_meta
             if ref_handle.version < mo_meta.version:
                 UcsWarning("Ignoring unsupported class_id '%s' for dn '%s'" %
@@ -488,12 +489,7 @@ def sync_ucs_mo(ref_handle, difference,
         # Add or Modify
         if mo_diff.side_indicator == _MoDiff.ADD_MODIFY:
             add_exists = False
-            if isinstance(mo, GenericMo):
-                mo_meta = None
-            else:
-                mo_meta = mo.mo_meta
-
-            if mo_meta is not None and 'Add' in mo_meta.verbs:
+            if not isinstance(mo, GenericMo) and 'Add' in mo.mo_meta.verbs:
                 add_exists = True
 
             # Add
