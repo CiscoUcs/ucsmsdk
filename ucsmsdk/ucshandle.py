@@ -417,7 +417,7 @@ class UcsHandle(UcsSession):
         return out_mo_list
 
     def query_children(self, in_mo=None, in_dn=None, class_id=None,
-                       hierarchy=False):
+                       filter_str=None, hierarchy=False):
         """
         Finds children of a given managed object or distinguished name.
         Arguments can be specified to query only a specific type(class_id)
@@ -432,6 +432,29 @@ class UcsHandle(UcsSession):
                                 given managed object of the respective dn.
             class_id(str): by default None, if given find only specific
                             children object for a given class_id.
+            filter_str(str): query objects with specific property with specific
+                            value or pattern specifying value.
+
+                      (property_name, "property_value, type="filter_type")\n
+                      property_name: Name of the Property\n
+                      property_value: Value of the property (str or regular
+                                      expression)\n
+                      filter_type: eq - equal to\n
+                                   ne - not equal to\n
+                                   ge - greater than or equal to\n
+                                   gt - greater than\n
+                                   le - less than or equal to\n
+                                   lt - less than\n
+                                   re - regular expression\n
+
+                      logical filter type: not, and, or\n
+
+                      e.g. '(dn,"org-root/ls-C1_B1", type="eq") or (name,
+                                            "event", type="re", flag="I")'\n
+            hierarchy(bool): if set to True will return all the child
+                             hierarchical objects.
+            need_response(bool): if set to True will return only response
+                                object.
             hierarchy(bool): if set to True will return all the child
                               hierarchical objects.
 
@@ -444,9 +467,13 @@ class UcsHandle(UcsSession):
             mo_list = handle.query_children(in_mo=mo, class_id="classid")\n
             mo_list = handle.query_children(in_dn=dn)\n
             mo_list = handle.query_children(in_dn=dn, class_id="classid")\n
+            mo_list = handle.query_children(in_dn="org-root",
+                        class_id="LsServer", filter_str="(usr_lbl, 'test')")
+            mo_list = handle.query_children(in_dn="org-root",
+                class_id="LsServer", filter_str="(usr_lbl, 'test', type='eq')")
         """
 
-        from .ucsmeta import MO_CLASS_ID
+        from .ucsfilter import generate_infilter
         from .ucsmethodfactory import config_resolve_children
 
         if not in_mo and not in_dn:
@@ -457,18 +484,27 @@ class UcsHandle(UcsSession):
         elif in_dn:
             parent_dn = in_dn
 
+        in_filter = None
+
         if class_id:
-            if ucsgenutils.word_u(class_id) in MO_CLASS_ID:
-                meta_class_id = ucsgenutils.word_l(class_id)
+            meta_class_id = ucscoreutils.find_class_id_in_mo_meta_ignore_case(
+                                                                class_id)
+            if meta_class_id:
+                is_meta_class_id = True
             else:
                 meta_class_id = class_id
+                is_meta_class_id = False
+
+            if filter_str:
+                in_filter = generate_infilter(meta_class_id, filter_str,
+                                              is_meta_class_id)
         else:
             meta_class_id = class_id
 
         elem = config_resolve_children(cookie=self.cookie,
                                        class_id=meta_class_id,
                                        in_dn=parent_dn,
-                                       in_filter=None,
+                                       in_filter=in_filter,
                                        in_hierarchical=hierarchy)
         response = self.post_elem(elem)
         if response.error_code != 0:
