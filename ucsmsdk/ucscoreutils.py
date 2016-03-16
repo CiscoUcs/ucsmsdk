@@ -483,3 +483,174 @@ def get_naming_props(rn_str, rn_pattern):
         return {}
     naming_prop_dict = match_obj.groupdict()
     return naming_prop_dict
+
+
+class ClassIdMeta(object):
+
+    def __init__(self, class_id):
+        self.__mo_meta = MO_CLASS_META[class_id]
+        self.class_id = class_id
+        self.xml_attribute = self.__mo_meta.xml_attribute
+        self.rn = self.__mo_meta.rn
+        self.min_version = self.__mo_meta.version
+        self.access = self.__mo_meta.inp_out
+        self.access_privilege = self.__mo_meta.access
+        self.parents = self.__mo_meta.parents
+        self.children = self.__mo_meta.children
+        self.props = {}
+
+    def get_prop_dict(self):
+        class_obj = load_class(self.class_id)
+        self.props = class_obj.prop_meta
+
+    def __str__(self):
+        """
+        Method to return string representation.
+        """
+
+        ts = 8
+        out_str = "\n"
+        out_str += str("ClassId").ljust(ts * 4) + str(self.class_id) + "\n"
+        out_str += ("-" * len("ClassId")).ljust(ts * 4) + "-" * len(
+            self.class_id)+"\n"
+        out_str += str("xml_attribute").ljust(ts * 4) + ':' + str(
+            self.xml_attribute) + "\n"
+        out_str += str("rn").ljust(ts * 4) + ':' + str(
+            self.rn) + "\n"
+        out_str += str("min_version").ljust(ts * 4) + ':' + str(
+            self.min_version) + "\n"
+        out_str += str("access").ljust(ts * 4) + ':' + str(self.access) + "\n"
+        out_str += str("access_privilege").ljust(ts * 4) + ':' + str(
+            self.access_privilege) + "\n"
+        out_str += str("parents").ljust(ts * 4) + ':' + str(self.parents) + \
+            "\n"
+        out_str += str("children").ljust(ts * 4) + ':' + str(self.children)
+
+        return out_str
+
+
+def _show_tree(class_id, break_level=None, level=0, ancestor_str="",
+               ancestor=[], last_child=True):
+
+    meta_class_id = ucsgenutils.word_u(class_id)
+
+    if not ancestor:
+        for parent in sorted(MO_CLASS_META[meta_class_id].parents):
+            print("[" + ucsgenutils.word_u(parent) + "]")
+
+    index = len(ancestor) + 1
+
+    level += 1
+
+    if meta_class_id in ancestor:
+        print("%s  |-%s" % (ancestor_str, meta_class_id))
+    else:
+        ancestor.append(meta_class_id)
+        print("%s  |-%s" % (ancestor_str, meta_class_id))
+        children = sorted(MO_CLASS_META[meta_class_id].children)
+        total = len(children)
+        count = 0
+        if break_level is None or level < break_level + 1:
+            for child in children:
+                count += 1
+
+                if last_child:
+                    ancestor_str_ = ancestor_str + "   "
+                else:
+                    ancestor_str_ = ancestor_str + "  |"
+
+                _show_tree(child, break_level, level, ancestor_str_, ancestor,
+                           total == count)
+
+        ancestor.pop(index-1)
+
+
+def search_class_id(class_id):
+    """
+    case insensitive search for class_id in meta.
+    if unable to find exact class_id, this will also suggest matching class_id.
+
+    Args:
+        class_id (str): string matching class_id.(case insensitive)
+
+    Returns:
+        (str) or None
+
+    Example:
+        class_ids = search_class_id(class_id="ls")
+    """
+
+    from . import ucsmeta
+
+    meta_class_id = find_class_id_in_mo_meta_ignore_case(class_id=class_id)
+
+    if meta_class_id is not None:
+        return meta_class_id
+
+    # if class_id not exists in meta
+    l_class_id = class_id.lower()
+    class_ids = sorted([cid for cid in ucsmeta.MO_CLASS_ID
+                        if re.search(l_class_id, cid, re.IGNORECASE)])
+    if class_ids:
+        log.info("<%s> is not present.\n"
+                 "Related available class_ids are:\n%s" %
+                 (class_id, "\n".join(class_ids)))
+    else:
+        log.info("<%s> is not present." % class_id)
+
+
+def get_meta_info(class_id, include_prop=True,
+                  show_tree=True, break_level=None):
+    """
+    Gets class id meta information
+
+    Args:
+        class_id (str): string matching class_id.(case insensitive)
+        include_prop (bool): by default True. If False, excludes property.
+        show_tree (bool): by default True. If False will not display mo tree.
+        break_level (int): display the hierarchy till respective level.
+
+    Returns:
+        ClassIdMeta Object: class_id
+                            xml_attribute
+                            rn
+                            min_version
+                            access
+                            access_privilege
+                            parents : parent list
+                            children : children list
+                            properties : property list
+                            props : {property_name : MoPropertyMeta Object}
+
+    Example:
+        meta = get_meta_info(class_id="lsserver")
+        meta = get_meta_info(class_id="lsserver", break_level=2)
+        meta = get_meta_info(class_id="lsserver", include_prop=False)
+        meta = get_meta_info(class_id="lsserver", show_tree=False)
+
+        print(meta.xml_attribute)
+        print(meta.children)
+        print(meta.props["name"])
+    """
+
+    meta_class_id = search_class_id(class_id)
+    if not meta_class_id:
+        raise ValueError("<%s> is not present. Provide Correct Class Id." %
+                         class_id)
+
+    if show_tree:
+        _show_tree(class_id=meta_class_id, break_level=break_level)
+
+    class_id_meta = ClassIdMeta(meta_class_id)
+    print(class_id_meta)
+
+    if include_prop:
+        class_id_meta.get_prop_dict()
+        props = class_id_meta.props
+        if not props:
+            log.debug("\nNo property info available for %s" % class_id)
+            return class_id_meta
+        for prop in sorted(props):
+            print(props[prop])
+
+    return class_id_meta
