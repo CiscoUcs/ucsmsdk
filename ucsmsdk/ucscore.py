@@ -39,6 +39,7 @@ class UcsBase(object):
     def __init__(self, class_id):
         self._class_id = class_id
         self._child = []
+        self._handle = None
 
     @property
     def child(self):
@@ -52,6 +53,9 @@ class UcsBase(object):
 
     def get_class_id(self):
         return self._class_id
+
+    def get_handle(self):
+        return self._handle
 
     def child_add(self, obj):
         """Method adds the child managed object."""
@@ -177,9 +181,11 @@ class BaseObject(UcsBase):
         self.child_to_xml(xml_obj, option)
         return xml_obj
 
-    def from_xml(self, elem):
+    def from_xml(self, elem, handle=None):
         """This method creates the object from the xml representation
         of the Method object."""
+
+        self._handle = handle
         if elem.attrib:
             for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
                 self.attr_set(ucsgenutils.convert_to_python_var_name(attr_name)
@@ -194,4 +200,4 @@ class BaseObject(UcsBase):
                 cln = ucsgenutils.word_u(child_elem.tag)
                 child = ucscoreutils.get_ucs_obj(cln, child_elem)
                 self._child.append(child)
-                child.from_xml(child_elem)
+                child.from_xml(child_elem, handle)

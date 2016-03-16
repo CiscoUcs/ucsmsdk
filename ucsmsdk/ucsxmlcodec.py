@@ -63,7 +63,7 @@ def extract_root_elem(xml_str):
     return root_elem
 
 
-def from_xml_str(xml_str):
+def from_xml_str(xml_str, handle=None):
     """
     Generates response object from the given xml string.
 
@@ -89,5 +89,5 @@ def from_xml_str(xml_str):
 
     class_id = ucsgenutils.word_u(root_elem.tag)
     response = ucscoreutils.get_ucs_obj(class_id, root_elem)
-    response.from_xml(root_elem)
+    response.from_xml(root_elem, handle)
     return response

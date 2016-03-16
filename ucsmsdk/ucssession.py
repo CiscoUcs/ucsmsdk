@@ -269,7 +269,7 @@ class UcsSession(object):
             log.debug('%s <==== %s' % (self.__uri, response_str))
 
         if response_str:
-            response = xc.from_xml_str(response_str)
+            response = xc.from_xml_str(response_str, self)
             return response
 
         return None
