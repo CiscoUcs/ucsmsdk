@@ -127,7 +127,7 @@ def backup_ucs(handle, backup_type, file_dir, file_name, timeout_in_sec=600,
         handle.file_download(url_suffix=file_source,
                              file_dir=file_dir,
                              file_name=file_name)
-    except Exception, err:
+    except Exception as err:
         UcsWarning("Download Error.....")
         UcsWarning(str(err))
 
