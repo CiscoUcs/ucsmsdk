@@ -195,7 +195,7 @@ def handle_filter_max_component_limit(handle, l_filter):
         parent_filter = AndFilter()
         child_filter = AndFilter()
         parent_filter.child_add(child_filter)
-        for childf in l_filter.GetChild():
+        for childf in l_filter.child:
             if isinstance(childf, AbstractFilter):
                 if child_filter.child_count() == max_components:
                     child_filter = AndFilter()
@@ -206,7 +206,7 @@ def handle_filter_max_component_limit(handle, l_filter):
         parent_filter = OrFilter()
         child_filter = OrFilter()
         parent_filter.child_add(child_filter)
-        for childf in l_filter.GetChild():
+        for childf in l_filter.child:
             if isinstance(childf, AbstractFilter):
                 if child_filter.child_count() == max_components:
                     child_filter = OrFilter()

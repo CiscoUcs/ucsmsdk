@@ -257,7 +257,7 @@ def get_ucs_tech_support(handle,
             handle.file_download(url_suffix=url_suffix,
                                  file_dir=file_dir,
                                  file_name=file_name)
-        except Exception, err:
+        except Exception as err:
             UcsWarning(str(err))
 
     # remove tech support file from ucs
