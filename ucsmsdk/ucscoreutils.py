@@ -592,11 +592,13 @@ def search_class_id(class_id):
     class_ids = sorted([cid for cid in ucsmeta.MO_CLASS_ID
                         if re.search(l_class_id, cid, re.IGNORECASE)])
     if class_ids:
-        log.info("<%s> is not present.\n"
-                 "Related available class_ids are:\n%s" %
-                 (class_id, "\n".join(class_ids)))
+        log.info('"%s" did not match any available Class Ids.\n'
+                 'Related Class Ids are:\n%s\n%s' %
+                 (class_id,
+                  "-"*len("Related Class Ids are:"),
+                  "\n".join(class_ids)))
     else:
-        log.info("<%s> is not present." % class_id)
+        log.info('"%s" did not match any available Class Ids.' % class_id)
 
 
 def get_meta_info(class_id, include_prop=True,
@@ -611,6 +613,8 @@ def get_meta_info(class_id, include_prop=True,
         break_level (int): display the hierarchy till respective level.
 
     Returns:
+        None: If class_id is not present in meta.
+        Or
         ClassIdMeta Object: class_id
                             xml_attribute
                             rn
@@ -635,8 +639,7 @@ def get_meta_info(class_id, include_prop=True,
 
     meta_class_id = search_class_id(class_id)
     if not meta_class_id:
-        raise ValueError("<%s> is not present. Provide Correct Class Id." %
-                         class_id)
+        return
 
     if show_tree:
         _show_tree(class_id=meta_class_id, break_level=break_level)

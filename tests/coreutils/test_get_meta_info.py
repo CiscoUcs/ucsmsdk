@@ -21,9 +21,9 @@ def test_known_class():
     assert_equal(xml_attribute, "orgOrg")
 
 
-@raises(ValueError)
 def test_unknown_class():
-    get_meta_info(class_id="unknown")
+    meta = get_meta_info(class_id="unknown")
+    assert_equal(meta, None)
 
 
 def test_known_class_props():
