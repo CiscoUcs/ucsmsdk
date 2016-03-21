@@ -116,7 +116,7 @@ class ParseFilter(object):
         return not_filter
 
 
-prop = pp.WordStart(pp.alphas) + pp.Word(pp.alphanums).setResultsName("prop")
+prop = pp.WordStart(pp.alphas) + pp.Word(pp.alphanums+"_").setResultsName("prop")
 value = (pp.QuotedString("'") | pp.QuotedString('"') | pp.Word(
     pp.printables, excludeChars=",")).setResultsName("value")
 types_ = pp.oneOf("re eq ne gt ge lt le").setResultsName("types")
