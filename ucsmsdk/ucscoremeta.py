@@ -41,6 +41,8 @@ class UcsVersion(object):
         if version is None:
             return None
 
+        self.__version = version
+
         match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
                                    "(?P<minor>(([0-9])|([1-9][0-9]{0,1})))\("
                                    "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))\."
@@ -95,6 +97,11 @@ class UcsVersion(object):
         """Getter Method of UcsVersion Class"""
         return self.__patch
 
+    @property
+    def version(self):
+        """Getter Method of UcsVersion Class"""
+        return self.__version
+
     def compare_to(self, version):
         """Method to compare UcsVersion."""
         if version is None or not isinstance(version, UcsVersion):
@@ -119,6 +126,9 @@ class UcsVersion(object):
 
     def __le__(self, version):
         return self.compare_to(version) <= 0
+
+    def __str__(self):
+        return self.__version
 
 
 class MoPropertyRestriction(object):
@@ -309,6 +319,42 @@ class MoPropertyMeta(object):
             log.debug(error_msg)
             return False
         return True
+
+    def __str__(self):
+        """
+        Method to return string representation.
+        """
+
+        access_dict = {0: "NAMING",
+                       1: "CREATE_ONLY",
+                       2: "READ_ONLY",
+                       3: "READ_WRITE",
+                       4: "INTERNAL"}
+
+        ts = 8
+        out_str = "\n"
+        out_str += "Property".ljust(ts * 4) + str(self.name) + "\n"
+        out_str += ("-" * len("Property")).ljust(ts * 4) + "-" * len(
+            self.name) + "\n"
+        out_str += str("xml_attribute").ljust(ts * 4) + ':' + str(
+            self.xml_attribute) + "\n"
+        out_str += str("field_type").ljust(ts * 4) + ':' + str(
+            self.field_type) + "\n"
+        out_str += str("min_version").ljust(ts * 4) + ':' + str(
+            self.version) + "\n"
+        out_str += str("access").ljust(ts * 4) + ':' + str(
+            access_dict[self.access]) + "\n"
+        out_str += str("min_length").ljust(ts * 4) + ':' + str(
+            self.restriction.min_length) + "\n"
+        out_str += str("max_length").ljust(ts * 4) + ':' + str(
+            self.restriction.max_length) + "\n"
+        out_str += str("pattern").ljust(ts * 4) + ':' + str(
+            self.restriction.pattern) + "\n"
+        out_str += str("value_set").ljust(ts * 4) + ':' + str(
+            self.restriction.value_set) + "\n"
+        out_str += str("range_val").ljust(ts * 4) + ':' + str(
+            self.restriction.range_val)
+        return out_str
 
 
 class MoMeta(object):
