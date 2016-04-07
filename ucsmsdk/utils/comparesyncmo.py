@@ -144,9 +144,10 @@ def _translate_managed_object(mo, xlate_org, xlate_map):
         diff_dn = mo.dn
         if diff_dn in xlate_map:
             ref_dn = xlate_map[diff_dn]
+            _update_mo_dn_and_naming_props(mo, ref_dn)
         else:
             diff_dn = re.sub(r'[/]*[^/]+$', '', diff_dn)
-            while diff_dn is not None or diff_dn == "":
+            while diff_dn:
                 if diff_dn not in xlate_map:
                     diff_dn = re.sub(r'[/]*[^/]+$', '', diff_dn)
                     continue
@@ -154,9 +155,8 @@ def _translate_managed_object(mo, xlate_org, xlate_map):
                 ref_dn = re.sub("^%s/" % diff_dn,
                                 "%s/" % xlate_map[diff_dn],
                                 mo.dn)
+                _update_mo_dn_and_naming_props(mo, ref_dn)
                 break
-        _update_mo_dn_and_naming_props(mo, ref_dn)
-
     return mo
 
 
