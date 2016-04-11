@@ -17,14 +17,15 @@ from __future__ import unicode_literals
 import sys
 import socket
 import ssl
-import urllib
 
 try:
     import urllib2
     import httplib
+    from urllib2 import HTTPError
 except:
     import urllib.request as urllib2
     import http.client as httplib
+    from urllib.error import HTTPError
 
 
 import logging
@@ -223,6 +224,6 @@ class UcsDriver(object):
                 if dump_xml:
                     log.debug('%s <==== %s' % (uri, response))
             return response
-        except urllib.error.HTTPError as e:
+        except HTTPError as e:
             log.debug(e.headers)
             raise

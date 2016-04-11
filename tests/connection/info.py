@@ -13,8 +13,13 @@
 
 host = "ucs"
 
+
 def custom_setup():
-    import ConfigParser
+    try:
+        import ConfigParser
+    except:
+        import configparser as ConfigParser
+
     import os
     from ucsmsdk.ucshandle import UcsHandle
 
