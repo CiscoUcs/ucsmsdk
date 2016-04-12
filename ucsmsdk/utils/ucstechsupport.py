@@ -170,10 +170,7 @@ def get_ucs_tech_support(handle,
     # Converting timedelta in to total seconds for Python version compatibility
     dt1 = datetime.datetime(1970, 1, 1, 12, 0, 0, 0)
     dt2 = datetime.datetime.utcnow()
-    time_delta = (dt2 - dt1)
-    creation_ts = time_delta.microseconds / 1000000 + \
-                  (time_delta.days * 24 * 60 * 60) + \
-                  time_delta.seconds
+    creation_ts = int((dt2 - dt1).total_seconds())
 
     # create SysdebugTechSupport
     top_system = TopSystem()
@@ -262,7 +259,8 @@ def get_ucs_tech_support(handle,
 
     # remove tech support file from ucs
     if remove_from_ucs:
-        handle.remove_mo(tech_support)
+        tech_support.admin_state = "delete"
+        handle.set_mo(tech_support)
         handle.commit()
 
     return tech_support
