@@ -17,6 +17,10 @@
     cd ucsmsdk
     make install
 ```
+## Documentation
+
+* We have an extensive list of samples at https://github.com/ciscoucs/ucsmsdk_samples
+* We encourage contriutions to the samples repository
 
 ## Features
 
