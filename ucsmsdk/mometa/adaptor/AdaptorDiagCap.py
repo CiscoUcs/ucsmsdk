@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorDiagCap ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorDiagCapConsts():
+class AdaptorDiagCapConsts:
     ENABLE_LLDP_TRANSMIT_FALSE = "false"
     ENABLE_LLDP_TRANSMIT_NO = "no"
     ENABLE_LLDP_TRANSMIT_TRUE = "true"
@@ -47,4 +46,3 @@ class AdaptorDiagCap(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorDiagCap", parent_mo_or_dn, **kwargs)
-

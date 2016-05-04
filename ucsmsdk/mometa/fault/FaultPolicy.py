@@ -1,12 +1,11 @@
 """This module contains the general information for FaultPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FaultPolicyConsts():
+class FaultPolicyConsts:
     ACK_ACTION_DELETE_ON_CLEAR = "delete-on-clear"
     ACK_ACTION_INITIAL_SEVERITY = "initial-severity"
     CLEAR_ACTION_DELETE = "delete"
@@ -98,4 +97,3 @@ class FaultPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FaultPolicy", parent_mo_or_dn, **kwargs)
-

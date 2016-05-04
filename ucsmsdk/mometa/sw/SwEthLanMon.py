@@ -1,12 +1,11 @@
 """This module contains the general information for SwEthLanMon ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwEthLanMonConsts():
+class SwEthLanMonConsts:
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -58,4 +57,3 @@ class SwEthLanMon(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "SwEthLanMon", parent_mo_or_dn, **kwargs)
-

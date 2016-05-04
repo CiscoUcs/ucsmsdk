@@ -1,12 +1,11 @@
 """This module contains the general information for LstorageControllerDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LstorageControllerDefConsts():
+class LstorageControllerDefConsts:
     ADMIN_STATE_OFFLINE = "offline"
     ADMIN_STATE_ONLINE = "online"
     ADMIN_STATE_UNDEPLOYED = "undeployed"
@@ -67,4 +66,3 @@ class LstorageControllerDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LstorageControllerDef", parent_mo_or_dn, **kwargs)
-

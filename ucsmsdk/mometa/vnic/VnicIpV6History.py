@@ -1,12 +1,11 @@
 """This module contains the general information for VnicIpV6History ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicIpV6HistoryConsts():
+class VnicIpV6HistoryConsts:
     pass
 
 
@@ -44,4 +43,3 @@ class VnicIpV6History(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "VnicIpV6History", parent_mo_or_dn, **kwargs)
-

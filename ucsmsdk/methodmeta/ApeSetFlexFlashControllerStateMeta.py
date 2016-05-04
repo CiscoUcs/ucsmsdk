@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeSetFlexFlashControllerState ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -16,4 +15,3 @@ prop_map = {
     "inControllerState": "in_controller_state",
     "inIpAddr": "in_ip_addr",
 }
-

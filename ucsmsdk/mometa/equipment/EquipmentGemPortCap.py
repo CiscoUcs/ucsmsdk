@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentGemPortCap ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentGemPortCapConsts():
+class EquipmentGemPortCapConsts:
     INT_ID_NONE = "none"
     MAX_FC_SPEED_16GBPS = "16gbps"
     MAX_FC_SPEED_1GBPS = "1gbps"
@@ -72,4 +71,3 @@ class EquipmentGemPortCap(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentGemPortCap", parent_mo_or_dn, **kwargs)
-

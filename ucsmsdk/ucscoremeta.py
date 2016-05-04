@@ -39,12 +39,12 @@ class UcsVersion(object):
 
     def __init__(self, version):
         if version is None:
-            return None
+            return
 
         self.__version = version
 
         match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
-                                   "(?P<minor>(([0-9])|([1-9][0-9]{0,1})))\("
+                                   "(?P<minor>(([0-9])|([1-9][0-9]?)))\("
                                    "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))\."
                                    "(?P<patch>(([0-9])|([1-9][0-9]{0,4})))\)$")
         match_obj = re.match(match_pattern, version)
@@ -56,7 +56,7 @@ class UcsVersion(object):
             return
 
         match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
-                                   "(?P<minor>(([0-9])|([1-9][0-9]{0,1})))\("
+                                   "(?P<minor>(([0-9])|([1-9][0-9]?)))\("
                                    "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))"
                                    "(?P<patch>[a-z])\)$")
         match_obj = re.match(match_pattern, version)
@@ -68,7 +68,7 @@ class UcsVersion(object):
             return
 
         match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
-                                   "(?P<minor>(([0-9])|([1-9][0-9]{0,1})))\("
+                                   "(?P<minor>(([0-9])|([1-9][0-9]?)))\("
                                    "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))\)$")
         match_obj = re.match(match_pattern, version)
         if match_obj:
@@ -272,7 +272,7 @@ class MoPropertyMeta(object):
             value = int(input_value)
             for rest_range in self.__restriction.range_val:
                 match = re.match(
-                    r"""^(?P<min>[0-9]{1,})\-(?P<max>[0-9]{1,})$""",
+                    r"""^(?P<min>[0-9]+)\-(?P<max>[0-9]+)$""",
                     rest_range, 0)
                 if match:
                     min_ = int(match.group("min"))
@@ -280,7 +280,7 @@ class MoPropertyMeta(object):
                 else:
                     continue
 
-                if min_ <= value and max_ >= value:
+                if min_ <= value <= max_:
                     fits_in_range = True
                     break
             if fits_in_range:

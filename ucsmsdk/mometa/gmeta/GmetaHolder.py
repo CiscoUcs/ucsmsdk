@@ -1,12 +1,11 @@
 """This module contains the general information for GmetaHolder ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class GmetaHolderConsts():
+class GmetaHolderConsts:
     CATEGORY_INVENTORY = "inventory"
     CATEGORY_UNKNOWN = "unknown"
     FSM_PREV_INVENTORY_BEGIN = "InventoryBegin"
@@ -275,4 +274,3 @@ class GmetaHolder(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "GmetaHolder", parent_mo_or_dn, **kwargs)
-

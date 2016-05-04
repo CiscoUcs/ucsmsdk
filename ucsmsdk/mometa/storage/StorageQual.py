@@ -1,12 +1,11 @@
 """This module contains the general information for StorageQual ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageQualConsts():
+class StorageQualConsts:
     BLOCK_SIZE_UNKNOWN = "unknown"
     DISK_TYPE_HDD = "HDD"
     DISK_TYPE_SSD = "SSD"
@@ -80,4 +79,3 @@ class StorageQual(ManagedObject):
         self.units = None
 
         ManagedObject.__init__(self, "StorageQual", parent_mo_or_dn, **kwargs)
-

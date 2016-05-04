@@ -1,12 +1,11 @@
 """This module contains the general information for LsIdentityInfo ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsIdentityInfoConsts():
+class LsIdentityInfoConsts:
     UUID_IDENTITY_STATE_CONSISTENT = "consistent"
     UUID_IDENTITY_STATE_MISMATCH = "mismatch"
 
@@ -45,4 +44,3 @@ class LsIdentityInfo(ManagedObject):
         self.uuid_identity_state = None
 
         ManagedObject.__init__(self, "LsIdentityInfo", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for ProcessorUnit ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ProcessorUnitConsts():
+class ProcessorUnitConsts:
     ARCH_DUAL_CORE_OPTERON = "Dual-Core_Opteron"
     ARCH_INTEL_P4_C = "Intel_P4_C"
     ARCH_OPTERON = "Opteron"
@@ -239,4 +238,3 @@ class ProcessorUnit(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "ProcessorUnit", parent_mo_or_dn, **kwargs)
-

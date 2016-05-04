@@ -1,5 +1,4 @@
 """This module contains the meta information of ConfigCheckCompatibility ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -24,4 +23,3 @@ prop_map = {
     "inRackPackVersion": "in_rack_pack_version",
     "outConfigSet": "out_config_set",
 }
-

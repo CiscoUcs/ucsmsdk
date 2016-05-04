@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfACPI10Support ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfACPI10SupportConsts():
+class BiosVfACPI10SupportConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_ACPI10_SUPPORT_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfACPI10Support(ManagedObject):
         self.vp_acp_i10_support = None
 
         ManagedObject.__init__(self, "BiosVfACPI10Support", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareBundleType ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareBundleTypeConsts():
+class FirmwareBundleTypeConsts:
     TYPE_B_SERIES_BUNDLE = "b-series-bundle"
     TYPE_C_SERIES_BUNDLE = "c-series-bundle"
     TYPE_CATALOG = "catalog"
@@ -55,4 +54,3 @@ class FirmwareBundleType(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareBundleType", parent_mo_or_dn, **kwargs)
-

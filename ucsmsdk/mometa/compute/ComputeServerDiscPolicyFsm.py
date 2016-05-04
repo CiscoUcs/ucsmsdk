@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeServerDiscPolicyFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeServerDiscPolicyFsmConsts():
+class ComputeServerDiscPolicyFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_RESOLVE_SCRUB_POLICY = "ResolveScrubPolicy"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class ComputeServerDiscPolicyFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeServerDiscPolicyFsm", parent_mo_or_dn, **kwargs)
-

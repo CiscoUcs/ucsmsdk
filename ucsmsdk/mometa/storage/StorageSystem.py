@@ -1,12 +1,11 @@
 """This module contains the general information for StorageSystem ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageSystemConsts():
+class StorageSystemConsts:
     FSM_PREV_SYNC_BEGIN = "SyncBegin"
     FSM_PREV_SYNC_EXECUTE = "SyncExecute"
     FSM_PREV_SYNC_FAIL = "SyncFail"
@@ -216,4 +215,3 @@ class StorageSystem(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StorageSystem", parent_mo_or_dn, **kwargs)
-

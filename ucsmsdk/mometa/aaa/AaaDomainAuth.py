@@ -1,12 +1,11 @@
 """This module contains the general information for AaaDomainAuth ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaDomainAuthConsts():
+class AaaDomainAuthConsts:
     OPER_REALM_LDAP = "ldap"
     OPER_REALM_LOCAL = "local"
     OPER_REALM_NONE = "none"
@@ -75,4 +74,3 @@ class AaaDomainAuth(ManagedObject):
         self.use2_factor = None
 
         ManagedObject.__init__(self, "AaaDomainAuth", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for StorageOperation ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageOperationConsts():
+class StorageOperationConsts:
     END_TIME_N_A = "N/A"
     NAME_CONSISTENCY_CHECK = "consistency-check"
     NAME_COPYBACK = "copyback"
@@ -73,4 +72,3 @@ class StorageOperation(ManagedObject):
         self.status_descr = None
 
         ManagedObject.__init__(self, "StorageOperation", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for VnicFcLif ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicFcLifConsts():
+class VnicFcLifConsts:
     OWNER_CONN_POLICY = "conn_policy"
     OWNER_INITIATOR_POLICY = "initiator_policy"
     OWNER_LOGICAL = "logical"
@@ -75,4 +74,3 @@ class VnicFcLif(ManagedObject):
         self.vnic_dn = None
 
         ManagedObject.__init__(self, "VnicFcLif", parent_mo_or_dn, **kwargs)
-

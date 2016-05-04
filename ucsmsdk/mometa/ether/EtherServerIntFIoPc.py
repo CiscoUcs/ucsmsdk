@@ -1,12 +1,11 @@
 """This module contains the general information for EtherServerIntFIoPc ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherServerIntFIoPcConsts():
+class EtherServerIntFIoPcConsts:
     CHASSIS_ID_N_A = "N/A"
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
@@ -124,4 +123,3 @@ class EtherServerIntFIoPc(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "EtherServerIntFIoPc", parent_mo_or_dn, **kwargs)
-

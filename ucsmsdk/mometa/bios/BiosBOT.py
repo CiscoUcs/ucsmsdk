@@ -1,12 +1,11 @@
 """This module contains the general information for BiosBOT ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosBOTConsts():
+class BiosBOTConsts:
     LAST_UPDATE_NEVER = "never"
 
 
@@ -44,4 +43,3 @@ class BiosBOT(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "BiosBOT", parent_mo_or_dn, **kwargs)
-

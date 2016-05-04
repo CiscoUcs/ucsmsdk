@@ -1,12 +1,11 @@
 """This module contains the general information for ComputePool ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputePoolConsts():
+class ComputePoolConsts:
     ASSIGNMENT_ORDER_DEFAULT = "default"
     ASSIGNMENT_ORDER_SEQUENTIAL = "sequential"
     INT_ID_NONE = "none"
@@ -70,4 +69,3 @@ class ComputePool(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputePool", parent_mo_or_dn, **kwargs)
-

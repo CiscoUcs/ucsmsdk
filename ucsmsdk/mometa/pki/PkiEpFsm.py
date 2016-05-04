@@ -1,12 +1,11 @@
 """This module contains the general information for PkiEpFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PkiEpFsmConsts():
+class PkiEpFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_NOP = "nop"
     CURRENT_FSM_UPDATE_EP = "updateEp"
@@ -206,4 +205,3 @@ class PkiEpFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PkiEpFsm", parent_mo_or_dn, **kwargs)
-

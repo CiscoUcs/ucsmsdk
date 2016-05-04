@@ -1,12 +1,11 @@
 """This module contains the general information for FabricCdpLinkPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricCdpLinkPolicyConsts():
+class FabricCdpLinkPolicyConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     INT_ID_NONE = "none"
@@ -73,4 +72,3 @@ class FabricCdpLinkPolicy(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricCdpLinkPolicy", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for EpqosEgress ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EpqosEgressConsts():
+class EpqosEgressConsts:
     HOST_CONTROL_FULL = "full"
     HOST_CONTROL_FULL_WITH_EXCEPTION = "full-with-exception"
     HOST_CONTROL_NONE = "none"
@@ -74,4 +73,3 @@ class EpqosEgress(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EpqosEgress", parent_mo_or_dn, **kwargs)
-

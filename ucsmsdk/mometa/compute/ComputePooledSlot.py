@@ -1,12 +1,11 @@
 """This module contains the general information for ComputePooledSlot ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputePooledSlotConsts():
+class ComputePooledSlotConsts:
     ASSIGNED_FALSE = "false"
     ASSIGNED_NO = "no"
     ASSIGNED_TRUE = "true"
@@ -68,4 +67,3 @@ class ComputePooledSlot(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputePooledSlot", parent_mo_or_dn, **kwargs)
-

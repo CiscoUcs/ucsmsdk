@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareStatus ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareStatusConsts():
+class FirmwareStatusConsts:
     OPER_STATE_ACTIVATING = "activating"
     OPER_STATE_AUTO_ACTIVATING = "auto-activating"
     OPER_STATE_AUTO_UPDATING = "auto-updating"
@@ -71,4 +70,3 @@ class FirmwareStatus(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareStatus", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareUpgradeDetail ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareUpgradeDetailConsts():
+class FirmwareUpgradeDetailConsts:
     CATEGORY_CATALOG = "catalog"
     CATEGORY_CONFIG = "config"
     CATEGORY_DATA_LOAD = "data-load"
@@ -63,4 +62,3 @@ class FirmwareUpgradeDetail(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareUpgradeDetail", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for LsbootLocalLunImagePath ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsbootLocalLunImagePathConsts():
+class LsbootLocalLunImagePathConsts:
     TYPE_PRIMARY = "primary"
     TYPE_SECONDARY = "secondary"
 
@@ -48,4 +47,3 @@ class LsbootLocalLunImagePath(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LsbootLocalLunImagePath", parent_mo_or_dn, **kwargs)
-

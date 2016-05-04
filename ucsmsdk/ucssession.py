@@ -288,7 +288,9 @@ class UcsSession(object):
             None
 
         Example:
-            file_download(url_suffix='backupfile/config_backup.xml', dest_dir='/home/user/backup', file_name='my_config_backup.xml')
+            file_download(url_suffix='backupfile/config_backup.xml',
+                          dest_dir='/home/user/backup',
+                          file_name='my_config_backup.xml')
         """
 
         from .ucsgenutils import download_file
@@ -322,7 +324,8 @@ class UcsSession(object):
             source_dir = "/home/user/backup"\n
             file_name = "config_backup.xml"\n
             uri_suffix = "operations/file-%s/importconfig.txt" % file_name\n
-            file_upload(url_suffix=uri_suffix, source_dir=source_dir, file_name=file_name)
+            file_upload(url_suffix=uri_suffix, source_dir=source_dir,
+                        file_name=file_name)
         """
 
         from .ucsgenutils import upload_file
@@ -372,9 +375,7 @@ class UcsSession(object):
 
         self.__stop_refresh_timer()
 
-        elem = aaa_refresh(self.__cookie,
-                              self.__username,
-                              self.__password)
+        elem = aaa_refresh(self.__cookie, self.__username, self.__password)
         response = self.post_elem(elem)
         if response.error_code != 0:
             self.__cookie = None
@@ -405,7 +406,7 @@ class UcsSession(object):
             if not self.__force:
                 top_system = TopSystem()
                 elem = config_resolve_dn(cookie=self.__cookie,
-                                            dn=top_system.dn)
+                                         dn=top_system.dn)
                 response = self.post_elem(elem)
                 if response.error_code != 0:
                     return False
@@ -441,8 +442,7 @@ class UcsSession(object):
         if self.__validate_connection():
             return True
 
-        elem = aaa_login(in_name=self.__username,
-                            in_password=self.__password)
+        elem = aaa_login(in_name=self.__username, in_password=self.__password)
         response = self.post_elem(elem)
         if response.error_code != 0:
             self.__clear()
@@ -451,8 +451,8 @@ class UcsSession(object):
 
         # Verify not to connect to IMC
         nw_elem = config_resolve_class(cookie=self.__cookie,
-                                          in_filter=None,
-                                          class_id="networkElement")
+                                       in_filter=None,
+                                       class_id="networkElement")
         nw_elem_response = self.post_elem(nw_elem)
         # To Do - returns error tag
         if nw_elem_response.error_code != 0:
@@ -463,8 +463,7 @@ class UcsSession(object):
         if response.out_version is None or response.out_version == "":
             firmware = FirmwareRunning(top_system,
                                        FirmwareRunningConsts.DEPLOYMENT_SYSTEM)
-            elem = config_resolve_dn(cookie=self.__cookie,
-                                        dn=firmware.dn)
+            elem = config_resolve_dn(cookie=self.__cookie, dn=firmware.dn)
             response = self.post_elem(elem)
             if response.error_code != 0:
                 raise UcsException(response.error_code,

@@ -1,12 +1,11 @@
 """This module contains the general information for SwIpRoute ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwIpRouteConsts():
+class SwIpRouteConsts:
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -64,4 +63,3 @@ class SwIpRoute(ManagedObject):
         self.switch_id = None
 
         ManagedObject.__init__(self, "SwIpRoute", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for StatsThr32Value ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StatsThr32ValueConsts():
+class StatsThr32ValueConsts:
     DIRECTION_ABOVE_NORMAL = "aboveNormal"
     DIRECTION_BELOW_NORMAL = "belowNormal"
     INT_ID_NONE = "none"
@@ -86,4 +85,3 @@ class StatsThr32Value(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StatsThr32Value", parent_mo_or_dn, **kwargs)
-

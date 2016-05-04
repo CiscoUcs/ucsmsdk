@@ -1,12 +1,11 @@
 """This module contains the general information for AaaSessionInfoTable ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaSessionInfoTableConsts():
+class AaaSessionInfoTableConsts:
     pass
 
 
@@ -41,4 +40,3 @@ class AaaSessionInfoTable(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AaaSessionInfoTable", parent_mo_or_dn, **kwargs)
-

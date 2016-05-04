@@ -1,12 +1,11 @@
 """This module contains the general information for ExtpolSystemContext ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtpolSystemContextConsts():
+class ExtpolSystemContextConsts:
     TYPE_APE = "ape"
     TYPE_BOOT_MGR = "boot-mgr"
     TYPE_CENTRAL_MGR = "central-mgr"
@@ -94,4 +93,3 @@ class ExtpolSystemContext(ManagedObject):
         self.version = None
 
         ManagedObject.__init__(self, "ExtpolSystemContext", parent_mo_or_dn, **kwargs)
-

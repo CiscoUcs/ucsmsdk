@@ -1,12 +1,11 @@
 """This module contains the general information for LsVConAssign ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsVConAssignConsts():
+class LsVConAssignConsts:
     ADMIN_HOST_PORT_1 = "1"
     ADMIN_HOST_PORT_2 = "2"
     ADMIN_HOST_PORT_ANY = "ANY"
@@ -68,4 +67,3 @@ class LsVConAssign(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LsVConAssign", parent_mo_or_dn, **kwargs)
-

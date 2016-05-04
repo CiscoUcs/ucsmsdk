@@ -1,12 +1,11 @@
 """This module contains the general information for MemoryUnit ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MemoryUnitConsts():
+class MemoryUnitConsts:
     ADMIN_STATE_POLICY = "policy"
     ADMIN_STATE_RESET_ERRORS = "reset-errors"
     CAPACITY_UNSPECIFIED = "unspecified"
@@ -285,4 +284,3 @@ class MemoryUnit(ManagedObject):
         self.width = None
 
         ManagedObject.__init__(self, "MemoryUnit", parent_mo_or_dn, **kwargs)
-

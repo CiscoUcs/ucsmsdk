@@ -1,12 +1,11 @@
 """This module contains the general information for PowerPrioWght ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PowerPrioWghtConsts():
+class PowerPrioWghtConsts:
     PRIO_NO_CAP = "no-cap"
     PRIO_UTILITY = "utility"
 
@@ -48,4 +47,3 @@ class PowerPrioWght(ManagedObject):
         self.weight = None
 
         ManagedObject.__init__(self, "PowerPrioWght", parent_mo_or_dn, **kwargs)
-

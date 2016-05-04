@@ -1,12 +1,11 @@
 """This module contains the general information for PolicySystemEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PolicySystemEpConsts():
+class PolicySystemEpConsts:
     pass
 
 
@@ -44,4 +43,3 @@ class PolicySystemEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PolicySystemEp", parent_mo_or_dn, **kwargs)
-

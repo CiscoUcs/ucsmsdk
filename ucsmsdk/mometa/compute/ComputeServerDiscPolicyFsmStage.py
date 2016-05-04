@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeServerDiscPolicyFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeServerDiscPolicyFsmStageConsts():
+class ComputeServerDiscPolicyFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_RESOLVE_SCRUB_POLICY_BEGIN = "ResolveScrubPolicyBegin"
     NAME_RESOLVE_SCRUB_POLICY_FAIL = "ResolveScrubPolicyFail"
@@ -71,4 +70,3 @@ class ComputeServerDiscPolicyFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeServerDiscPolicyFsmStage", parent_mo_or_dn, **kwargs)
-

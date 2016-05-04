@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeMemoryConfiguration ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeMemoryConfigurationConsts():
+class ComputeMemoryConfigurationConsts:
     ADMIN_MEMORY_STATE_POLICY = "policy"
     ADMIN_MEMORY_STATE_RESET_IN_PROGRESS = "reset-in-progress"
     ADMIN_MEMORY_STATE_RESET_MEMORY_ERRORS = "reset-memory-errors"
@@ -51,4 +50,3 @@ class ComputeMemoryConfiguration(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeMemoryConfiguration", parent_mo_or_dn, **kwargs)
-

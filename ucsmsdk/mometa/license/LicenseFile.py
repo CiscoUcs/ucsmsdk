@@ -1,12 +1,11 @@
 """This module contains the general information for LicenseFile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LicenseFileConsts():
+class LicenseFileConsts:
     ADMIN_STATE_DELETE_FAILED = "delete-failed"
     ADMIN_STATE_DELETE_PENDING = "delete-pending"
     ADMIN_STATE_DELETED = "deleted"
@@ -269,4 +268,3 @@ class LicenseFile(ManagedObject):
         self.version = None
 
         ManagedObject.__init__(self, "LicenseFile", parent_mo_or_dn, **kwargs)
-

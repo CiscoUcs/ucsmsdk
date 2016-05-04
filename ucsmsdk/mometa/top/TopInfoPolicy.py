@@ -1,12 +1,11 @@
 """This module contains the general information for TopInfoPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class TopInfoPolicyConsts():
+class TopInfoPolicyConsts:
     STATE_DISABLED = "disabled"
     STATE_ENABLED = "enabled"
 
@@ -45,4 +44,3 @@ class TopInfoPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "TopInfoPolicy", parent_mo_or_dn, **kwargs)
-

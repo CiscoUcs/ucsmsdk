@@ -1,12 +1,11 @@
 """This module contains the general information for SwatAction ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwatActionConsts():
+class SwatActionConsts:
     EVALUATION_METHOD_DETERMINISTIC = "Deterministic"
     EVALUATION_METHOD_RANDOM = "Random"
     INSTANCE_MOD_CREATE = "CREATE"
@@ -69,4 +68,3 @@ class SwatAction(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "SwatAction", parent_mo_or_dn, **kwargs)
-

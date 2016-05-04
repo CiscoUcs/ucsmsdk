@@ -1,12 +1,11 @@
 """This module contains the general information for ExtvmmFabricNetworkDefinition ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtvmmFabricNetworkDefinitionConsts():
+class ExtvmmFabricNetworkDefinitionConsts:
     ALLOWED_VNIC_TYPE_ETHER = "ether"
     ALLOWED_VNIC_TYPE_FC = "fc"
     ALLOWED_VNIC_TYPE_IPC = "ipc"
@@ -78,4 +77,3 @@ class ExtvmmFabricNetworkDefinition(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtvmmFabricNetworkDefinition", parent_mo_or_dn, **kwargs)
-

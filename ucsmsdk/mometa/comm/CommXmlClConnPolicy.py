@@ -1,12 +1,11 @@
 """This module contains the general information for CommXmlClConnPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CommXmlClConnPolicyConsts():
+class CommXmlClConnPolicyConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     CLIENT_TYPE_EXTRENAL_API_CLIENT = "extrenal-api-client"
@@ -83,4 +82,3 @@ class CommXmlClConnPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CommXmlClConnPolicy", parent_mo_or_dn, **kwargs)
-

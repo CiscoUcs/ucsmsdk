@@ -1,12 +1,11 @@
 """This module contains the general information for ExtpolEpFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtpolEpFsmStageConsts():
+class ExtpolEpFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_REGISTER_FSM_BEGIN = "RegisterFsmBegin"
     NAME_REGISTER_FSM_EXECUTE = "RegisterFsmExecute"
@@ -79,4 +78,3 @@ class ExtpolEpFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtpolEpFsmStage", parent_mo_or_dn, **kwargs)
-

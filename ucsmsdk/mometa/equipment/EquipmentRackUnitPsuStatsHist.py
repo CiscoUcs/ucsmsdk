@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentRackUnitPsuStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentRackUnitPsuStatsHistConsts():
+class EquipmentRackUnitPsuStatsHistConsts:
     AMBIENT_TEMP_NOT_APPLICABLE = "not-applicable"
     AMBIENT_TEMP_AVG_NOT_APPLICABLE = "not-applicable"
     AMBIENT_TEMP_MAX_NOT_APPLICABLE = "not-applicable"
@@ -139,4 +138,3 @@ class EquipmentRackUnitPsuStatsHist(ManagedObject):
         self.time_collected = None
 
         ManagedObject.__init__(self, "EquipmentRackUnitPsuStatsHist", parent_mo_or_dn, **kwargs)
-

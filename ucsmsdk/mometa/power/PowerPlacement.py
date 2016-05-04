@@ -1,12 +1,11 @@
 """This module contains the general information for PowerPlacement ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PowerPlacementConsts():
+class PowerPlacementConsts:
     INT_ID_NONE = "none"
     PEER_REQ_CONFLICT_FAIL_PLACEMENT = "fail-placement"
     PEER_REQ_CONFLICT_IGNORE = "ignore"
@@ -78,4 +77,3 @@ class PowerPlacement(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PowerPlacement", parent_mo_or_dn, **kwargs)
-

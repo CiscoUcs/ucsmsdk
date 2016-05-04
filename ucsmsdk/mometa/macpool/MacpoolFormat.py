@@ -1,12 +1,11 @@
 """This module contains the general information for MacpoolFormat ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MacpoolFormatConsts():
+class MacpoolFormatConsts:
     MASK_FF_FF_FF_FF_FF_FX = "FF-FF-FF-FF-FF-Fx"
     MASK_FF_FF_FF_FF_FF_XX = "FF-FF-FF-FF-FF-xx"
     MASK_FF_FF_FF_FF_FX_XX = "FF-FF-FF-FF-Fx-xx"
@@ -57,4 +56,3 @@ class MacpoolFormat(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MacpoolFormat", parent_mo_or_dn, **kwargs)
-

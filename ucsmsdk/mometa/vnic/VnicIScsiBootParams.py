@@ -1,12 +1,11 @@
 """This module contains the general information for VnicIScsiBootParams ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicIScsiBootParamsConsts():
+class VnicIScsiBootParamsConsts:
     INT_ID_NONE = "none"
     OWNER_MANAGEMENT = "management"
     OWNER_PHYSICAL_DEFAULT_CONFIG = "physical-default-config"
@@ -71,4 +70,3 @@ class VnicIScsiBootParams(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "VnicIScsiBootParams", parent_mo_or_dn, **kwargs)
-

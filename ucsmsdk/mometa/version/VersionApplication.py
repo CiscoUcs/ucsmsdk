@@ -1,12 +1,11 @@
 """This module contains the general information for VersionApplication ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VersionApplicationConsts():
+class VersionApplicationConsts:
     pass
 
 
@@ -50,4 +49,3 @@ class VersionApplication(ManagedObject):
         self.version = None
 
         ManagedObject.__init__(self, "VersionApplication", parent_mo_or_dn, **kwargs)
-

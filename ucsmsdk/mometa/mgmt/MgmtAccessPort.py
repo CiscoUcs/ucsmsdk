@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtAccessPort ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtAccessPortConsts():
+class MgmtAccessPortConsts:
     PORT_NONE = "none"
     PROTOCOL_TCP = "TCP"
     PROTOCOL_UDP = "UDP"
@@ -49,4 +48,3 @@ class MgmtAccessPort(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtAccessPort", parent_mo_or_dn, **kwargs)
-

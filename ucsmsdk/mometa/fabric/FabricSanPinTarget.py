@@ -1,12 +1,11 @@
 """This module contains the general information for FabricSanPinTarget ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricSanPinTargetConsts():
+class FabricSanPinTargetConsts:
     FABRIC_ID_A = "A"
     FABRIC_ID_B = "B"
     FABRIC_ID_NONE = "NONE"
@@ -64,4 +63,3 @@ class FabricSanPinTarget(ManagedObject):
         self.target_status = None
 
         ManagedObject.__init__(self, "FabricSanPinTarget", parent_mo_or_dn, **kwargs)
-

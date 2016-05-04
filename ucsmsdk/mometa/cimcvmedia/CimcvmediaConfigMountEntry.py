@@ -1,12 +1,11 @@
 """This module contains the general information for CimcvmediaConfigMountEntry ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CimcvmediaConfigMountEntryConsts():
+class CimcvmediaConfigMountEntryConsts:
     AUTH_OPTION_DEFAULT = "default"
     AUTH_OPTION_NONE = "none"
     AUTH_OPTION_NTLM = "ntlm"
@@ -107,4 +106,3 @@ class CimcvmediaConfigMountEntry(ManagedObject):
         self.user_id = None
 
         ManagedObject.__init__(self, "CimcvmediaConfigMountEntry", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentIOCardBaseFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentIOCardBaseFsmStageConsts():
+class EquipmentIOCardBaseFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_FE_CONN_BEGIN = "FeConnBegin"
     NAME_FE_CONN_CONFIGURE_END_POINT = "FeConnConfigureEndPoint"
@@ -81,4 +80,3 @@ class EquipmentIOCardBaseFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentIOCardBaseFsmStage", parent_mo_or_dn, **kwargs)
-

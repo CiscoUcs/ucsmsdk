@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareComputeMgmtPack ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareComputeMgmtPackConsts():
+class FirmwareComputeMgmtPackConsts:
     IGNORE_COMP_CHECK_FALSE = "false"
     IGNORE_COMP_CHECK_NO = "no"
     IGNORE_COMP_CHECK_TRUE = "true"
@@ -78,4 +77,3 @@ class FirmwareComputeMgmtPack(ManagedObject):
         self.update_trigger = None
 
         ManagedObject.__init__(self, "FirmwareComputeMgmtPack", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for EtherSwitchIntFIoPcEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherSwitchIntFIoPcEpConsts():
+class EtherSwitchIntFIoPcEpConsts:
     ACK_STATE_ACK_IN_PROGRESS = "ack-in-progress"
     ACK_STATE_ACKNOWLEDGED = "acknowledged"
     ACK_STATE_AUTO_ACK = "auto-ack"
@@ -144,4 +143,3 @@ class EtherSwitchIntFIoPcEp(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "EtherSwitchIntFIoPcEp", parent_mo_or_dn, **kwargs)
-

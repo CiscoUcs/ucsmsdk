@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfProcessorC6Report ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfProcessorC6ReportConsts():
+class BiosVfProcessorC6ReportConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_PROCESSOR_C6_REPORT_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfProcessorC6Report(ManagedObject):
         self.vp_processor_c6_report = None
 
         ManagedObject.__init__(self, "BiosVfProcessorC6Report", parent_mo_or_dn, **kwargs)
-

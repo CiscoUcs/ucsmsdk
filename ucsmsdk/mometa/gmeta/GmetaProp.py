@@ -1,12 +1,11 @@
 """This module contains the general information for GmetaProp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class GmetaPropConsts():
+class GmetaPropConsts:
     PROP_ID_AAA_AUTH_METHOD_DESCR = "aaa_AuthMethod_descr"
     PROP_ID_AAA_AUTH_METHOD_NAME = "aaa_AuthMethod_name"
     PROP_ID_AAA_AUTH_METHOD_OPER_PROVIDER_GROUP = "aaa_AuthMethod_operProviderGroup"
@@ -20080,4 +20079,3 @@ class GmetaProp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "GmetaProp", parent_mo_or_dn, **kwargs)
-

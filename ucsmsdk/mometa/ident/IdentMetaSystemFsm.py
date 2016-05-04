@@ -1,12 +1,11 @@
 """This module contains the general information for IdentMetaSystemFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IdentMetaSystemFsmConsts():
+class IdentMetaSystemFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_NOP = "nop"
     CURRENT_FSM_SYNC = "sync"
@@ -207,4 +206,3 @@ class IdentMetaSystemFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "IdentMetaSystemFsm", parent_mo_or_dn, **kwargs)
-

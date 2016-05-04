@@ -69,7 +69,6 @@ class ManagedObject(UcsBase):
         xml_attribute = self.mo_meta.xml_attribute
 
         UcsBase.__init__(self, ucsgenutils.word_u(xml_attribute))
-        # self.mark_dirty()
 
         if self.__parent_mo:
             self.__parent_mo.child_add(self)
@@ -168,8 +167,8 @@ class ManagedObject(UcsBase):
             prop_meta = self.prop_meta[name]
             if prop_meta.access != ucscoremeta.MoPropertyMeta.READ_WRITE:
                 if getattr(self, name) is not None or \
-                                prop_meta.access != \
-                                ucscoremeta.MoPropertyMeta.CREATE_ONLY:
+                        prop_meta.access != \
+                        ucscoremeta.MoPropertyMeta.CREATE_ONLY:
                     raise ValueError("%s is not a read-write property." % name)
             if not prop_meta.validate_property_value(value):
                 raise ValueError("Invalid Value Exception - "
@@ -199,11 +198,6 @@ class ManagedObject(UcsBase):
                 prop = "[X]" + str(prop)
             out_str += str(prop).ljust(ts * 4) + ':' + str(
                 prop_value) + "\n"
-        # print unknown properties
-        # for prop, prop_value in self.__xtra_props.iteritems():
-        #     prop = "[X]" + str(prop)
-        #     out_str += str(prop).ljust(ts * 4) + ':' + str(
-        #         prop_value) + "\n"
 
         out_str += "\n"
         return out_str
@@ -293,8 +287,8 @@ class ManagedObject(UcsBase):
             if key != 'rn' and key in self.prop_meta:
                 mo_prop_meta = self.prop_meta[key]
                 if (option != WriteXmlOption.DIRTY or (
-                            mo_prop_meta.mask is not None and
-                            self._dirty_mask & mo_prop_meta.mask != 0)):
+                        mo_prop_meta.mask is not None and
+                        self._dirty_mask & mo_prop_meta.mask != 0)):
                     value = getattr(self, key)
                     if value is not None:
                         xml_obj.set(mo_prop_meta.xml_attribute, value)
@@ -329,7 +323,8 @@ class ManagedObject(UcsBase):
         self._handle = handle
         if elem.attrib:
             if self.__class__.__name__ != "ManagedObject":
-                for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
+                for attr_name, attr_value in ucsgenutils.iteritems(
+                        elem.attrib):
                     if attr_name in self.prop_map:
                         attr_name = self.prop_map[attr_name]
                     else:
@@ -339,7 +334,8 @@ class ManagedObject(UcsBase):
                             False)
                     object.__setattr__(self, attr_name, attr_value)
             else:
-                for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
+                for attr_name, attr_value in ucsgenutils.iteritems(
+                        elem.attrib):
                     object.__setattr__(self, attr_name, attr_value)
 
         self.mark_clean()
@@ -351,7 +347,7 @@ class ManagedObject(UcsBase):
                     continue
 
                 if self.__class__.__name__ != "ManagedObject" and (
-                            child_elem.tag in self.mo_meta.field_names):
+                        child_elem.tag in self.mo_meta.field_names):
                     pass
 
                 class_id = ucsgenutils.word_u(child_elem.tag)
@@ -381,18 +377,21 @@ class ManagedObject(UcsBase):
         level_indent = "%s%s)" % (indent * level, level)
         # level_key_dn = "level_%s_dn" % (str(level))
         print("%s %s[%s]" % (level_indent, self._class_id, self.dn))
-        for ch_ in self.children:
+        for ch_ in self.child:
             level += 1
             ch_.show_tree(level)
             level -= 1
         return None
 
-    def show_hierarchy(self, level=0, break_level=None, show_level=[]):
+    def show_hierarchy(self, level=0, break_level=None, show_level=None):
         """
         Method to return string representation of a managed object.
         """
 
         from .ucscoreutils import print_mo_hierarchy
+
+        if show_level is None:
+            show_level = []
 
         print_mo_hierarchy(self._class_id, level, break_level,
                            show_level)
@@ -587,6 +586,7 @@ class GenericMo(UcsBase):
         for param in mo_class_params:
             mo_param = mo_class.prop_meta[param].xml_attribute
             if mo_param not in self.__properties:
+                rn_str = None
                 if 'rn' in self.__properties:
                     rn_str = self.__properties['rn']
                 elif 'dn' in self.__properties:

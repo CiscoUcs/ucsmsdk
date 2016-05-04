@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareBootUnit ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareBootUnitConsts():
+class FirmwareBootUnitConsts:
     ADMIN_STATE_FORCE_TRIGGER = "force-trigger"
     ADMIN_STATE_TRIGGER = "trigger"
     ADMIN_STATE_TRIGGERED = "triggered"
@@ -108,4 +107,3 @@ class FirmwareBootUnit(ManagedObject):
         self.version = None
 
         ManagedObject.__init__(self, "FirmwareBootUnit", parent_mo_or_dn, **kwargs)
-

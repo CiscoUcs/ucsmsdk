@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfVGAPriority ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfVGAPriorityConsts():
+class BiosVfVGAPriorityConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_VGAPRIORITY_OFFBOARD = "offboard"
@@ -56,4 +55,3 @@ class BiosVfVGAPriority(ManagedObject):
         self.vp_vga_priority = None
 
         ManagedObject.__init__(self, "BiosVfVGAPriority", parent_mo_or_dn, **kwargs)
-

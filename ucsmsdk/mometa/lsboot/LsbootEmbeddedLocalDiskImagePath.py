@@ -1,12 +1,11 @@
 """This module contains the general information for LsbootEmbeddedLocalDiskImagePath ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsbootEmbeddedLocalDiskImagePathConsts():
+class LsbootEmbeddedLocalDiskImagePathConsts:
     TYPE_PRIMARY = "primary"
     TYPE_SECONDARY = "secondary"
 
@@ -48,4 +47,3 @@ class LsbootEmbeddedLocalDiskImagePath(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LsbootEmbeddedLocalDiskImagePath", parent_mo_or_dn, **kwargs)
-

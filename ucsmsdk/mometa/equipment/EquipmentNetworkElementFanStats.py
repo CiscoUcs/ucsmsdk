@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentNetworkElementFanStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentNetworkElementFanStatsConsts():
+class EquipmentNetworkElementFanStatsConsts:
     AIRFLOW_DIRECTION_BACK_TO_FRONT = "BackToFront"
     AIRFLOW_DIRECTION_FRONT_TO_BACK = "FrontToBack"
     AIRFLOW_DIRECTION_UNKNOWN = "unknown"
@@ -89,4 +88,3 @@ class EquipmentNetworkElementFanStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "EquipmentNetworkElementFanStats", parent_mo_or_dn, **kwargs)
-

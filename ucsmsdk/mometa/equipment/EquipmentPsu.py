@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentPsu ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentPsuConsts():
+class EquipmentPsuConsts:
     TYPE_AC = "ac"
     TYPE_DC = "dc"
     FSM_PREV_UPDATE_PSUACTIVATE_PSU = "UpdatePSUActivatePsu"
@@ -425,4 +424,3 @@ class EquipmentPsu(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "EquipmentPsu", parent_mo_or_dn, **kwargs)
-

@@ -178,11 +178,12 @@ def import_ucs_backup(handle, file_dir, file_name, merge=False):
     host_name = "backup." + str(datetime.datetime.now().strftime('%Y%m%d%H%M'))
 
     top_system = TopSystem()
-    mgmt_importer = MgmtImporter(parent_mo_or_dn=top_system,
-                                 hostname=host_name,
-                                 remote_file=file_path,
-                                 proto=MgmtImporterConsts.PROTO_HTTP,
-                            admin_state=MgmtImporterConsts.ADMIN_STATE_ENABLED)
+    mgmt_importer = MgmtImporter(
+        parent_mo_or_dn=top_system,
+        hostname=host_name,
+        remote_file=file_path,
+        proto=MgmtImporterConsts.PROTO_HTTP,
+        admin_state=MgmtImporterConsts.ADMIN_STATE_ENABLED)
 
     if merge:
         mgmt_importer.action = MgmtImporterConsts.ACTION_MERGE

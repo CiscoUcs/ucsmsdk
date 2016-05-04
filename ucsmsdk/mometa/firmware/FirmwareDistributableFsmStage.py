@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareDistributableFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareDistributableFsmStageConsts():
+class FirmwareDistributableFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_DELETE_BEGIN = "DeleteBegin"
     NAME_DELETE_FAIL = "DeleteFail"
@@ -72,4 +71,3 @@ class FirmwareDistributableFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareDistributableFsmStage", parent_mo_or_dn, **kwargs)
-

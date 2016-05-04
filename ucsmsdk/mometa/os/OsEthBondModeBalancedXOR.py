@@ -1,12 +1,11 @@
 """This module contains the general information for OsEthBondModeBalancedXOR ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class OsEthBondModeBalancedXORConsts():
+class OsEthBondModeBalancedXORConsts:
     LB_TYPE_RECEIVE_XMIT = "receive-xmit"
     LB_TYPE_XMIT_ONLY = "xmit-only"
     TYPE_ACTIVE_ACTIVE = "active-active"
@@ -61,4 +60,3 @@ class OsEthBondModeBalancedXOR(ManagedObject):
         self.xmit_hash_type = None
 
         ManagedObject.__init__(self, "OsEthBondModeBalancedXOR", parent_mo_or_dn, **kwargs)
-

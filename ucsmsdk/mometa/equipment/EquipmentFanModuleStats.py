@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentFanModuleStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentFanModuleStatsConsts():
+class EquipmentFanModuleStatsConsts:
     AMBIENT_TEMP_NOT_APPLICABLE = "not-applicable"
     AMBIENT_TEMP_AVG_NOT_APPLICABLE = "not-applicable"
     AMBIENT_TEMP_MAX_NOT_APPLICABLE = "not-applicable"
@@ -75,4 +74,3 @@ class EquipmentFanModuleStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "EquipmentFanModuleStats", parent_mo_or_dn, **kwargs)
-

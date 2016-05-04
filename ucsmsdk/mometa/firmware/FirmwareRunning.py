@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareRunning ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareRunningConsts():
+class FirmwareRunningConsts:
     DEPLOYMENT_BOOT_LOADER = "boot-loader"
     DEPLOYMENT_KERNEL = "kernel"
     DEPLOYMENT_SYSTEM = "system"
@@ -86,4 +85,3 @@ class FirmwareRunning(ManagedObject):
         self.version = None
 
         ManagedObject.__init__(self, "FirmwareRunning", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for VmLifeCyclePolicyFsmTask ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VmLifeCyclePolicyFsmTaskConsts():
+class VmLifeCyclePolicyFsmTaskConsts:
     COMPLETION_CANCELLED = "cancelled"
     COMPLETION_COMPLETED = "completed"
     COMPLETION_PROCESSING = "processing"
@@ -58,4 +57,3 @@ class VmLifeCyclePolicyFsmTask(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "VmLifeCyclePolicyFsmTask", parent_mo_or_dn, **kwargs)
-

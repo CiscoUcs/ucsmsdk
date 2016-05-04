@@ -1,12 +1,11 @@
 """This module contains the general information for ApeLocalDiskBoot ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApeLocalDiskBootConsts():
+class ApeLocalDiskBootConsts:
     CHASSIS_ID_N_A = "N/A"
     IS_HOST_AGENT_PRESENT_FALSE = "false"
     IS_HOST_AGENT_PRESENT_NO = "no"
@@ -82,4 +81,3 @@ class ApeLocalDiskBoot(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "ApeLocalDiskBoot", parent_mo_or_dn, **kwargs)
-

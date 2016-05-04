@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentMemoryUnitDiscoveryModifierDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentMemoryUnitDiscoveryModifierDefConsts():
+class EquipmentMemoryUnitDiscoveryModifierDefConsts:
     ACTION_SET_REV = "setRev"
     ACTION_SET_REV_STRICT = "setRevStrict"
     ACTION_SET_REV_TO_ONE = "setRevToOne"
@@ -71,4 +70,3 @@ class EquipmentMemoryUnitDiscoveryModifierDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentMemoryUnitDiscoveryModifierDef", parent_mo_or_dn, **kwargs)
-

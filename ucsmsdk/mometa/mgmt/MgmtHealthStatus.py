@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtHealthStatus ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtHealthStatusConsts():
+class MgmtHealthStatusConsts:
     HEALTH_SEVERITY_CLEARED = "cleared"
     HEALTH_SEVERITY_CONDITION = "condition"
     HEALTH_SEVERITY_CRITICAL = "critical"
@@ -53,4 +52,3 @@ class MgmtHealthStatus(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtHealthStatus", parent_mo_or_dn, **kwargs)
-

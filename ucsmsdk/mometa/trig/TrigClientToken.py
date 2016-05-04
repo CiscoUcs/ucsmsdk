@@ -1,12 +1,11 @@
 """This module contains the general information for TrigClientToken ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class TrigClientTokenConsts():
+class TrigClientTokenConsts:
     OPER_STATE_EXPIRED = "expired"
     OPER_STATE_VALID = "valid"
 
@@ -51,4 +50,3 @@ class TrigClientToken(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "TrigClientToken", parent_mo_or_dn, **kwargs)
-

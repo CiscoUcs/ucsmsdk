@@ -1,12 +1,11 @@
 """This module contains the general information for ComputePciCap ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputePciCapConsts():
+class ComputePciCapConsts:
     ORDER_ASCENDING = "ascending"
     ORDER_ASCENDING_DUAL = "ascending-dual"
     ORDER_ASCENDING_EXTENDED = "ascending-extended"
@@ -57,4 +56,3 @@ class ComputePciCap(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputePciCap", parent_mo_or_dn, **kwargs)
-

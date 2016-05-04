@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfConsoleRedirection ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfConsoleRedirectionConsts():
+class BiosVfConsoleRedirectionConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_BAUD_RATE_115200 = "115200"
@@ -104,4 +103,3 @@ class BiosVfConsoleRedirection(ManagedObject):
         self.vp_terminal_type = None
 
         ManagedObject.__init__(self, "BiosVfConsoleRedirection", parent_mo_or_dn, **kwargs)
-

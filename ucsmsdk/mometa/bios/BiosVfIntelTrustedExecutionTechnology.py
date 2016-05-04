@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfIntelTrustedExecutionTechnology ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfIntelTrustedExecutionTechnologyConsts():
+class BiosVfIntelTrustedExecutionTechnologyConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_INTEL_TRUSTED_EXECUTION_TECHNOLOGY_SUPPORT_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfIntelTrustedExecutionTechnology(ManagedObject):
         self.vp_intel_trusted_execution_technology_support = None
 
         ManagedObject.__init__(self, "BiosVfIntelTrustedExecutionTechnology", parent_mo_or_dn, **kwargs)
-

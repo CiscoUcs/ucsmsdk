@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareUpdatable ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareUpdatableConsts():
+class FirmwareUpdatableConsts:
     ADMIN_STATE_FORCE_TRIGGER = "force-trigger"
     ADMIN_STATE_TRIGGER = "trigger"
     ADMIN_STATE_TRIGGERED = "triggered"
@@ -87,4 +86,3 @@ class FirmwareUpdatable(ManagedObject):
         self.version = None
 
         ManagedObject.__init__(self, "FirmwareUpdatable", parent_mo_or_dn, **kwargs)
-

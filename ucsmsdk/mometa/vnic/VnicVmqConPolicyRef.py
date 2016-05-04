@@ -1,12 +1,11 @@
 """This module contains the general information for VnicVmqConPolicyRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicVmqConPolicyRefConsts():
+class VnicVmqConPolicyRefConsts:
     pass
 
 
@@ -47,4 +46,3 @@ class VnicVmqConPolicyRef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "VnicVmqConPolicyRef", parent_mo_or_dn, **kwargs)
-

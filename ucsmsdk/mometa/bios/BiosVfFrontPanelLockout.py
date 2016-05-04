@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfFrontPanelLockout ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfFrontPanelLockoutConsts():
+class BiosVfFrontPanelLockoutConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_FRONT_PANEL_LOCKOUT_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfFrontPanelLockout(ManagedObject):
         self.vp_front_panel_lockout = None
 
         ManagedObject.__init__(self, "BiosVfFrontPanelLockout", parent_mo_or_dn, **kwargs)
-

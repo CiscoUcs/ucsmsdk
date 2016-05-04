@@ -1,12 +1,11 @@
 """This module contains the general information for SysfileMutationFsmTask ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysfileMutationFsmTaskConsts():
+class SysfileMutationFsmTaskConsts:
     COMPLETION_CANCELLED = "cancelled"
     COMPLETION_COMPLETED = "completed"
     COMPLETION_PROCESSING = "processing"
@@ -59,4 +58,3 @@ class SysfileMutationFsmTask(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysfileMutationFsmTask", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtBackupPolicyConfig ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtBackupPolicyConfigConsts():
+class MgmtBackupPolicyConfigConsts:
     ADMIN_STATE_TRIGGER = "trigger"
     ADMIN_STATE_TRIGGER_IMMEDIATE = "trigger-immediate"
     ADMIN_STATE_TRIGGERED = "triggered"
@@ -111,4 +110,3 @@ class MgmtBackupPolicyConfig(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtBackupPolicyConfig", parent_mo_or_dn, **kwargs)
-

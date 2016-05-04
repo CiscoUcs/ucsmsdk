@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfOptionROMEnable ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfOptionROMEnableConsts():
+class BiosVfOptionROMEnableConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_STATE_DISABLED = "disabled"
@@ -57,4 +56,3 @@ class BiosVfOptionROMEnable(ManagedObject):
         self.vp_state = None
 
         ManagedObject.__init__(self, "BiosVfOptionROMEnable", parent_mo_or_dn, **kwargs)
-

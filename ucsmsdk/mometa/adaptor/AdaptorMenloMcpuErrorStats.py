@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorMenloMcpuErrorStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorMenloMcpuErrorStatsConsts():
+class AdaptorMenloMcpuErrorStatsConsts:
     MENLO_MCPU_INDEX_0 = "0"
     MENLO_MCPU_INDEX_0_A = "0_A"
     MENLO_MCPU_INDEX_0_B = "0_B"
@@ -129,4 +128,3 @@ class AdaptorMenloMcpuErrorStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "AdaptorMenloMcpuErrorStats", parent_mo_or_dn, **kwargs)
-

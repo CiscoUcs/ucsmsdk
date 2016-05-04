@@ -1,12 +1,11 @@
 """This module contains the general information for HostimgPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class HostimgPolicyConsts():
+class HostimgPolicyConsts:
     COMP_COMPLETE = "complete"
     COMP_COMPONENTIZED = "componentized"
     DISTRO_FEDORA = "fedora"
@@ -82,4 +81,3 @@ class HostimgPolicy(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "HostimgPolicy", parent_mo_or_dn, **kwargs)
-

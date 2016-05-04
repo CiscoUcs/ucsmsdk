@@ -1,5 +1,4 @@
 """This module contains the meta information of AaaGetNComputeAuthTokenByDn ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -22,4 +21,3 @@ prop_map = {
     "outTokens": "out_tokens",
     "outUser": "out_user",
 }
-

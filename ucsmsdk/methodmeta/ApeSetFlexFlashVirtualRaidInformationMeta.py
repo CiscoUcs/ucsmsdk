@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeSetFlexFlashVirtualRaidInformation ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "inRaidHealth": "in_raid_health",
     "inRaidState": "in_raid_state",
 }
-

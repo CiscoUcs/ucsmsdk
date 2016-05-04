@@ -40,6 +40,7 @@ class UcsBase(object):
         self._class_id = class_id
         self._child = []
         self._handle = None
+        # self._dirty_mask = 0
 
     @property
     def child(self):
@@ -146,8 +147,8 @@ class AbstractFilter(UcsBase):
     def to_xml(self, xml_doc=None, option=None, elem_name=None):
         """This method writes the xml representation of the Method object."""
         xml_obj = self.elem_create(class_tag=self._tag_name,
-                                       xml_doc=xml_doc,
-                                       override_tag=elem_name)
+                                   xml_doc=xml_doc,
+                                   override_tag=elem_name)
         for key in self.__dict__:
             if key.startswith("_"):
                 continue
@@ -170,8 +171,8 @@ class BaseObject(UcsBase):
     def to_xml(self, xml_doc=None, option=None, elem_name=None):
         """This method writes the xml representation of the Method object."""
         xml_obj = self.elem_create(class_tag=self._tag_name,
-                                       xml_doc=xml_doc,
-                                       override_tag=elem_name)
+                                   xml_doc=xml_doc,
+                                   override_tag=elem_name)
         for key in self.__dict__:
             if key.startswith("_"):
                 continue
@@ -188,8 +189,9 @@ class BaseObject(UcsBase):
         self._handle = handle
         if elem.attrib:
             for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
-                self.attr_set(ucsgenutils.convert_to_python_var_name(attr_name)
-                            , str(attr_value))
+                self.attr_set(
+                    ucsgenutils.convert_to_python_var_name(attr_name),
+                    str(attr_value))
 
         child_elems = elem.getchildren()
         if child_elems:

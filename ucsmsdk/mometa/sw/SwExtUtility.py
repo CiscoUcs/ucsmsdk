@@ -1,12 +1,11 @@
 """This module contains the general information for SwExtUtility ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwExtUtilityConsts():
+class SwExtUtilityConsts:
     CONF_MODE_FAILED = "failed"
     CONF_MODE_IN_PROGRESS = "in-progress"
     CONF_MODE_NONE = "none"
@@ -231,4 +230,3 @@ class SwExtUtility(ManagedObject):
         self.switch_id = None
 
         ManagedObject.__init__(self, "SwExtUtility", parent_mo_or_dn, **kwargs)
-

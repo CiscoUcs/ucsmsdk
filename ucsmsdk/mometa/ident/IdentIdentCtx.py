@@ -1,12 +1,11 @@
 """This module contains the general information for IdentIdentCtx ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IdentIdentCtxConsts():
+class IdentIdentCtxConsts:
     CONS_TYPE_CHASSIS = "chassis"
     CONS_TYPE_SERVER = "server"
     CONS_TYPE_VHBA = "vhba"
@@ -128,4 +127,3 @@ class IdentIdentCtx(ManagedObject):
         self.suppl_id4 = None
 
         ManagedObject.__init__(self, "IdentIdentCtx", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorEthFailoverProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorEthFailoverProfileConsts():
+class AdaptorEthFailoverProfileConsts:
     pass
 
 
@@ -44,4 +43,3 @@ class AdaptorEthFailoverProfile(ManagedObject):
         self.timeout = None
 
         ManagedObject.__init__(self, "AdaptorEthFailoverProfile", parent_mo_or_dn, **kwargs)
-

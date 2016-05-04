@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentPhysDevicesPerBoard ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentPhysDevicesPerBoardConsts():
+class EquipmentPhysDevicesPerBoardConsts:
     pass
 
 
@@ -56,4 +55,3 @@ class EquipmentPhysDevicesPerBoard(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentPhysDevicesPerBoard", parent_mo_or_dn, **kwargs)
-

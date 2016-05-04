@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorHostScsiLunRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorHostScsiLunRefConsts():
+class AdaptorHostScsiLunRefConsts:
     BOOT_DEV_DISABLED = "disabled"
     BOOT_DEV_ENABLED = "enabled"
     LUN_ORDER_NOT_APPLICABLE = "not-applicable"
@@ -68,4 +67,3 @@ class AdaptorHostScsiLunRef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorHostScsiLunRef", parent_mo_or_dn, **kwargs)
-

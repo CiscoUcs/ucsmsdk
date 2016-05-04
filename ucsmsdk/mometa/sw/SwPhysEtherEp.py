@@ -1,12 +1,11 @@
 """This module contains the general information for SwPhysEtherEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwPhysEtherEpConsts():
+class SwPhysEtherEpConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     AUTO_NEGOTIATE_AUTO = "auto"
@@ -132,4 +131,3 @@ class SwPhysEtherEp(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "SwPhysEtherEp", parent_mo_or_dn, **kwargs)
-

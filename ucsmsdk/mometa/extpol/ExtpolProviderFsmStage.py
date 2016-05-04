@@ -1,12 +1,11 @@
 """This module contains the general information for ExtpolProviderFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtpolProviderFsmStageConsts():
+class ExtpolProviderFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_REPORT_CONFIG_IMPORT_BEGIN = "ReportConfigImportBegin"
     NAME_REPORT_CONFIG_IMPORT_FAIL = "ReportConfigImportFail"
@@ -71,4 +70,3 @@ class ExtpolProviderFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtpolProviderFsmStage", parent_mo_or_dn, **kwargs)
-

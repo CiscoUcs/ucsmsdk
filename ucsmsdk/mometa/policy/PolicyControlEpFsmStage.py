@@ -1,12 +1,11 @@
 """This module contains the general information for PolicyControlEpFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PolicyControlEpFsmStageConsts():
+class PolicyControlEpFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_OPERATE_BEGIN = "OperateBegin"
     NAME_OPERATE_FAIL = "OperateFail"
@@ -71,4 +70,3 @@ class PolicyControlEpFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PolicyControlEpFsmStage", parent_mo_or_dn, **kwargs)
-

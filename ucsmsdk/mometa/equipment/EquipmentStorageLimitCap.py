@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentStorageLimitCap ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentStorageLimitCapConsts():
+class EquipmentStorageLimitCapConsts:
     ME4308_SUPPORTED_FALSE = "false"
     ME4308_SUPPORTED_NO = "no"
     ME4308_SUPPORTED_TRUE = "true"
@@ -50,4 +49,3 @@ class EquipmentStorageLimitCap(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentStorageLimitCap", parent_mo_or_dn, **kwargs)
-

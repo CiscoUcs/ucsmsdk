@@ -1,12 +1,11 @@
 """This module contains the general information for FabricLanAccessMgr ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricLanAccessMgrConsts():
+class FabricLanAccessMgrConsts:
     pass
 
 
@@ -41,4 +40,3 @@ class FabricLanAccessMgr(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricLanAccessMgr", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for ClitestTypeTest ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ClitestTypeTestConsts():
+class ClitestTypeTestConsts:
     ANENUM_DOWN = "down"
     ANENUM_KIND_OF_UP = "kindOfUp"
     ANENUM_SORT_OF_DOWN = "sortOfDown"
@@ -113,4 +112,3 @@ class ClitestTypeTest(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ClitestTypeTest", **kwargs)
-

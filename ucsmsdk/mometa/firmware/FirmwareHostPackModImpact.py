@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareHostPackModImpact ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareHostPackModImpactConsts():
+class FirmwareHostPackModImpactConsts:
     pass
 
 
@@ -56,4 +55,3 @@ class FirmwareHostPackModImpact(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareHostPackModImpact", parent_mo_or_dn, **kwargs)
-

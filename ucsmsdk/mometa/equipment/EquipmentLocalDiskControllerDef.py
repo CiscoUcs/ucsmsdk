@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentLocalDiskControllerDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentLocalDiskControllerDefConsts():
+class EquipmentLocalDiskControllerDefConsts:
     CONFIG_PARM_MOD_SUPPORTED_FALSE = "false"
     CONFIG_PARM_MOD_SUPPORTED_NO = "no"
     CONFIG_PARM_MOD_SUPPORTED_TRUE = "true"
@@ -94,4 +93,3 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         self.tfm_supported = None
 
         ManagedObject.__init__(self, "EquipmentLocalDiskControllerDef", parent_mo_or_dn, **kwargs)
-

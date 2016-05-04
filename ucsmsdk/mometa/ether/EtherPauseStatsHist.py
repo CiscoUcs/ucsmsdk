@@ -1,12 +1,11 @@
 """This module contains the general information for EtherPauseStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherPauseStatsHistConsts():
+class EtherPauseStatsHistConsts:
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -108,4 +107,3 @@ class EtherPauseStatsHist(ManagedObject):
         self.xmit_pause_delta_min = None
 
         ManagedObject.__init__(self, "EtherPauseStatsHist", parent_mo_or_dn, **kwargs)
-

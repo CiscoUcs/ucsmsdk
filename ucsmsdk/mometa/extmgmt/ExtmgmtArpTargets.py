@@ -1,12 +1,11 @@
 """This module contains the general information for ExtmgmtArpTargets ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtmgmtArpTargetsConsts():
+class ExtmgmtArpTargetsConsts:
     CONFIG_STATE_NOT_APPLIED = "not-applied"
     CONFIG_STATE_OK = "ok"
 
@@ -63,4 +62,3 @@ class ExtmgmtArpTargets(ManagedObject):
         self.target_ip3 = None
 
         ManagedObject.__init__(self, "ExtmgmtArpTargets", parent_mo_or_dn, **kwargs)
-

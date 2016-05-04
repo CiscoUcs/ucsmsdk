@@ -1,12 +1,11 @@
 """This module contains the general information for SwFabricZoneNs ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwFabricZoneNsConsts():
+class SwFabricZoneNsConsts:
     ALLOC_STATUS_AVAILABLE = "available"
     ALLOC_STATUS_FULL = "full"
     SWITCH_ID_A = "A"
@@ -57,4 +56,3 @@ class SwFabricZoneNs(ManagedObject):
         self.zone_count = None
 
         ManagedObject.__init__(self, "SwFabricZoneNs", parent_mo_or_dn, **kwargs)
-

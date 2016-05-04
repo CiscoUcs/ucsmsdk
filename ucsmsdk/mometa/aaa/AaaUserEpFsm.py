@@ -1,12 +1,11 @@
 """This module contains the general information for AaaUserEpFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaUserEpFsmConsts():
+class AaaUserEpFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_NOP = "nop"
     CURRENT_FSM_UPDATE_USER_EP = "updateUserEp"
@@ -206,4 +205,3 @@ class AaaUserEpFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AaaUserEpFsm", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorFcIfFC4StatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorFcIfFC4StatsHistConsts():
+class AdaptorFcIfFC4StatsHistConsts:
     CONTROL_REQUESTS_NA = "NA"
     CONTROL_REQUESTS_DELTA_NA = "NA"
     CONTROL_REQUESTS_DELTA_AVG_NA = "NA"
@@ -163,4 +162,3 @@ class AdaptorFcIfFC4StatsHist(ManagedObject):
         self.time_collected = None
 
         ManagedObject.__init__(self, "AdaptorFcIfFC4StatsHist", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfPCILOMPortsConfiguration ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfPCILOMPortsConfigurationConsts():
+class BiosVfPCILOMPortsConfigurationConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_PCIE10_GLOM2_LINK_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfPCILOMPortsConfiguration(ManagedObject):
         self.vp_pc_ie10_glo_m2_link = None
 
         ManagedObject.__init__(self, "BiosVfPCILOMPortsConfiguration", parent_mo_or_dn, **kwargs)
-

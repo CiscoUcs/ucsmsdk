@@ -1,12 +1,11 @@
 """This module contains the general information for FabricFcMonSrcEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricFcMonSrcEpConsts():
+class FabricFcMonSrcEpConsts:
     DIRECTION_BOTH = "both"
     DIRECTION_RX = "rx"
     DIRECTION_TX = "tx"
@@ -58,4 +57,3 @@ class FabricFcMonSrcEp(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricFcMonSrcEp", parent_mo_or_dn, **kwargs)
-

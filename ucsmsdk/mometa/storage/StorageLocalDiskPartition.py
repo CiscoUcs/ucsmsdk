@@ -1,12 +1,11 @@
 """This module contains the general information for StorageLocalDiskPartition ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageLocalDiskPartitionConsts():
+class StorageLocalDiskPartitionConsts:
     BOOTABLE_FALSE = "false"
     BOOTABLE_TRUE = "true"
     BOOTABLE_UNKNOWN = "unknown"
@@ -75,4 +74,3 @@ class StorageLocalDiskPartition(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "StorageLocalDiskPartition", parent_mo_or_dn, **kwargs)
-

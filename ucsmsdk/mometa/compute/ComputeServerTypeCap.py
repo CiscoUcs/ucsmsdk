@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeServerTypeCap ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeServerTypeCapConsts():
+class ComputeServerTypeCapConsts:
     TYPE_APPLIANCE = "appliance"
     TYPE_GENERAL_PURPOSE = "general-purpose"
 
@@ -45,4 +44,3 @@ class ComputeServerTypeCap(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "ComputeServerTypeCap", parent_mo_or_dn, **kwargs)
-

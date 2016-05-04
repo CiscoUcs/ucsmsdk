@@ -1,5 +1,4 @@
 """This module contains the meta information of AaaChangeSelfPassword ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -22,4 +21,3 @@ prop_map = {
     "inUserName": "in_user_name",
     "outStatus": "out_status",
 }
-

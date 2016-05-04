@@ -1,12 +1,11 @@
 """This module contains the general information for CapabilityUpdaterFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CapabilityUpdaterFsmStageConsts():
+class CapabilityUpdaterFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_UPDATER_APPLY = "UpdaterApply"
     NAME_UPDATER_BEGIN = "UpdaterBegin"
@@ -77,4 +76,3 @@ class CapabilityUpdaterFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CapabilityUpdaterFsmStage", parent_mo_or_dn, **kwargs)
-

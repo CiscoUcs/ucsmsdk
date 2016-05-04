@@ -1,12 +1,11 @@
 """This module contains the general information for StatsCollectionPolicyFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StatsCollectionPolicyFsmStageConsts():
+class StatsCollectionPolicyFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_NOP = "nop"
     NAME_UPDATE_EP_BEGIN = "updateEpBegin"
@@ -72,4 +71,3 @@ class StatsCollectionPolicyFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StatsCollectionPolicyFsmStage", parent_mo_or_dn, **kwargs)
-

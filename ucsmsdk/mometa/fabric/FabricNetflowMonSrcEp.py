@@ -1,12 +1,11 @@
 """This module contains the general information for FabricNetflowMonSrcEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricNetflowMonSrcEpConsts():
+class FabricNetflowMonSrcEpConsts:
     PROTOCOL_NETFLOW = "netflow"
 
 
@@ -56,4 +55,3 @@ class FabricNetflowMonSrcEp(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricNetflowMonSrcEp", parent_mo_or_dn, **kwargs)
-

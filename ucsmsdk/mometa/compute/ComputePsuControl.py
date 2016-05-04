@@ -1,12 +1,11 @@
 """This module contains the general information for ComputePsuControl ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputePsuControlConsts():
+class ComputePsuControlConsts:
     CLUSTER_STATE_N_A = "N/A"
     CLUSTER_STATE_NOT_CLUSTERED = "not-clustered"
     CLUSTER_STATE_SLOT_1_MASTER = "slot-1-master"
@@ -108,4 +107,3 @@ class ComputePsuControl(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputePsuControl", parent_mo_or_dn, **kwargs)
-

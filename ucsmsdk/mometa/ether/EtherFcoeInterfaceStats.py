@@ -1,12 +1,11 @@
 """This module contains the general information for EtherFcoeInterfaceStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherFcoeInterfaceStatsConsts():
+class EtherFcoeInterfaceStatsConsts:
     SUSPECT_FALSE = "false"
     SUSPECT_NO = "no"
     SUSPECT_TRUE = "true"
@@ -179,4 +178,3 @@ class EtherFcoeInterfaceStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "EtherFcoeInterfaceStats", parent_mo_or_dn, **kwargs)
-

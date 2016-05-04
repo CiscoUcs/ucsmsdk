@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentSwitchCap ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentSwitchCapConsts():
+class EquipmentSwitchCapConsts:
     DYNAMIC_VIFS_SUPPORTED_FALSE = "false"
     DYNAMIC_VIFS_SUPPORTED_NO = "no"
     DYNAMIC_VIFS_SUPPORTED_TRUE = "true"
@@ -130,4 +129,3 @@ class EquipmentSwitchCap(ManagedObject):
         self.vp_compression_supported = None
 
         ManagedObject.__init__(self, "EquipmentSwitchCap", parent_mo_or_dn, **kwargs)
-

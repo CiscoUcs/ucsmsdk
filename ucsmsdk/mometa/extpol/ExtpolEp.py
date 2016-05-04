@@ -1,12 +1,11 @@
 """This module contains the general information for ExtpolEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtpolEpConsts():
+class ExtpolEpConsts:
     FSM_PREV_REGISTER_FSM_BEGIN = "RegisterFsmBegin"
     FSM_PREV_REGISTER_FSM_EXECUTE = "RegisterFsmExecute"
     FSM_PREV_REGISTER_FSM_FAIL = "RegisterFsmFail"
@@ -226,4 +225,3 @@ class ExtpolEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtpolEp", **kwargs)
-

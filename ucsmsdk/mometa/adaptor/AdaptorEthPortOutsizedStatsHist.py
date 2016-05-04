@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorEthPortOutsizedStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorEthPortOutsizedStatsHistConsts():
+class AdaptorEthPortOutsizedStatsHistConsts:
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -138,4 +137,3 @@ class AdaptorEthPortOutsizedStatsHist(ManagedObject):
         self.undersized_good_crc_packets_delta_min = None
 
         ManagedObject.__init__(self, "AdaptorEthPortOutsizedStatsHist", parent_mo_or_dn, **kwargs)
-

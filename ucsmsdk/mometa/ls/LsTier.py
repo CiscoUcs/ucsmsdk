@@ -1,12 +1,11 @@
 """This module contains the general information for LsTier ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsTierConsts():
+class LsTierConsts:
     APPLY_ON_ASSOCIATION = "onAssociation"
     APPLY_RUN_TIME = "runTime"
     INT_ID_NONE = "none"
@@ -67,4 +66,3 @@ class LsTier(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LsTier", parent_mo_or_dn, **kwargs)
-

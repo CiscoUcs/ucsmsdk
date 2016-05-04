@@ -1,12 +1,11 @@
 """This module contains the general information for StorageInitiator ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageInitiatorConsts():
+class StorageInitiatorConsts:
     INT_ID_NONE = "none"
     OPER_STATE_MISCONFIGURED = "misconfigured"
     OPER_STATE_OK = "ok"
@@ -67,4 +66,3 @@ class StorageInitiator(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StorageInitiator", parent_mo_or_dn, **kwargs)
-

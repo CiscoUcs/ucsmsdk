@@ -1,12 +1,11 @@
 """This module contains the general information for StatsThr64Definition ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StatsThr64DefinitionConsts():
+class StatsThr64DefinitionConsts:
     AUTO_RECOVERY_DISABLED = "disabled"
     AUTO_RECOVERY_ENABLED = "enabled"
     ERROR_DISABLE_FI_PORT_FALSE = "false"
@@ -1197,4 +1196,3 @@ class StatsThr64Definition(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StatsThr64Definition", parent_mo_or_dn, **kwargs)
-

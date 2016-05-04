@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorExtEthIf ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorExtEthIfConsts():
+class AdaptorExtEthIfConsts:
     ADMIN_STATE_ENABLED = "enabled"
     ADMIN_STATE_RESET_CONNECTIVITY = "reset-connectivity"
     CHASSIS_ID_N_A = "N/A"
@@ -364,4 +363,3 @@ class AdaptorExtEthIf(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "AdaptorExtEthIf", parent_mo_or_dn, **kwargs)
-

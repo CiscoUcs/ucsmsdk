@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfLvDIMMSupport ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfLvDIMMSupportConsts():
+class BiosVfLvDIMMSupportConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_LV_DDRMODE_AUTO = "auto"
@@ -56,4 +55,3 @@ class BiosVfLvDIMMSupport(ManagedObject):
         self.vp_lv_ddr_mode = None
 
         ManagedObject.__init__(self, "BiosVfLvDIMMSupport", parent_mo_or_dn, **kwargs)
-

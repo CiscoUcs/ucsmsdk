@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorFcOEIf ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorFcOEIfConsts():
+class AdaptorFcOEIfConsts:
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
     IF_ROLE_FCOE_STORAGE = "fcoe-storage"
@@ -121,4 +120,3 @@ class AdaptorFcOEIf(ManagedObject):
         self.zoning_state = None
 
         ManagedObject.__init__(self, "AdaptorFcOEIf", parent_mo_or_dn, **kwargs)
-

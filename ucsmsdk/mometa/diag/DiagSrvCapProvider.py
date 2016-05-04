@@ -1,12 +1,11 @@
 """This module contains the general information for DiagSrvCapProvider ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class DiagSrvCapProviderConsts():
+class DiagSrvCapProviderConsts:
     DELETED_FALSE = "false"
     DELETED_NO = "no"
     DELETED_TRUE = "true"
@@ -84,4 +83,3 @@ class DiagSrvCapProvider(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "DiagSrvCapProvider", parent_mo_or_dn, **kwargs)
-

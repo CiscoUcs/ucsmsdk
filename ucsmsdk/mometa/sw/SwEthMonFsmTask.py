@@ -1,12 +1,11 @@
 """This module contains the general information for SwEthMonFsmTask ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwEthMonFsmTaskConsts():
+class SwEthMonFsmTaskConsts:
     COMPLETION_CANCELLED = "cancelled"
     COMPLETION_COMPLETED = "completed"
     COMPLETION_PROCESSING = "processing"
@@ -58,4 +57,3 @@ class SwEthMonFsmTask(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwEthMonFsmTask", parent_mo_or_dn, **kwargs)
-

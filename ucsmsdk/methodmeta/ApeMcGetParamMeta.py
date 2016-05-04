@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeMcGetParam ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -18,4 +17,3 @@ prop_map = {
     "inParamIds": "in_param_ids",
     "outParamVals": "out_param_vals",
 }
-

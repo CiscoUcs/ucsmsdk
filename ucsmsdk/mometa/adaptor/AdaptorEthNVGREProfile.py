@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorEthNVGREProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorEthNVGREProfileConsts():
+class AdaptorEthNVGREProfileConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
 
@@ -45,4 +44,3 @@ class AdaptorEthNVGREProfile(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorEthNVGREProfile", parent_mo_or_dn, **kwargs)
-

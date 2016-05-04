@@ -1,12 +1,11 @@
 """This module contains the general information for StorageScsiLunRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageScsiLunRefConsts():
+class StorageScsiLunRefConsts:
     ID_UNSPECIFIED = "unspecified"
 
 
@@ -56,4 +55,3 @@ class StorageScsiLunRef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StorageScsiLunRef", parent_mo_or_dn, **kwargs)
-

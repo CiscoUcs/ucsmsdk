@@ -1,12 +1,11 @@
 """This module contains the general information for NfsMountInstFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class NfsMountInstFsmConsts():
+class NfsMountInstFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_MOUNT = "Mount"
     CURRENT_FSM_UNMOUNT = "Unmount"
@@ -207,4 +206,3 @@ class NfsMountInstFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "NfsMountInstFsm", parent_mo_or_dn, **kwargs)
-

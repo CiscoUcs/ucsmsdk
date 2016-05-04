@@ -1,12 +1,11 @@
 """This module contains the general information for EtherPIoFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherPIoFsmConsts():
+class EtherPIoFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_IN_COMPAT_SFP_PRESENCE = "InCompatSfpPresence"
     CURRENT_FSM_IN_COMPAT_SFP_REPLACED = "InCompatSfpReplaced"
@@ -207,4 +206,3 @@ class EtherPIoFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EtherPIoFsm", parent_mo_or_dn, **kwargs)
-

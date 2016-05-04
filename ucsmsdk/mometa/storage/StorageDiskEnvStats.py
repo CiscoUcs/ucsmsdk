@@ -1,12 +1,11 @@
 """This module contains the general information for StorageDiskEnvStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageDiskEnvStatsConsts():
+class StorageDiskEnvStatsConsts:
     SUSPECT_FALSE = "false"
     SUSPECT_NO = "no"
     SUSPECT_TRUE = "true"
@@ -87,4 +86,3 @@ class StorageDiskEnvStats(ManagedObject):
         self.wear_percentage_min = None
 
         ManagedObject.__init__(self, "StorageDiskEnvStats", parent_mo_or_dn, **kwargs)
-

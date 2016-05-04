@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorMenloQErrorStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorMenloQErrorStatsConsts():
+class AdaptorMenloQErrorStatsConsts:
     MENLO_QUEUE_COMPONENT_N = "N"
     MENLO_QUEUE_COMPONENT_CPU = "cpu"
     MENLO_QUEUE_COMPONENT_ETH = "eth"
@@ -137,4 +136,3 @@ class AdaptorMenloQErrorStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "AdaptorMenloQErrorStats", parent_mo_or_dn, **kwargs)
-

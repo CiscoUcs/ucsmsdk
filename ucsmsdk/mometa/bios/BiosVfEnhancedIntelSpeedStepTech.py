@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfEnhancedIntelSpeedStepTech ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfEnhancedIntelSpeedStepTechConsts():
+class BiosVfEnhancedIntelSpeedStepTechConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_ENHANCED_INTEL_SPEED_STEP_TECH_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfEnhancedIntelSpeedStepTech(ManagedObject):
         self.vp_enhanced_intel_speed_step_tech = None
 
         ManagedObject.__init__(self, "BiosVfEnhancedIntelSpeedStepTech", parent_mo_or_dn, **kwargs)
-

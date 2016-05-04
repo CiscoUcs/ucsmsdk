@@ -1,12 +1,11 @@
 """This module contains the general information for ProcStimulusCounts ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ProcStimulusCountsConsts():
+class ProcStimulusCountsConsts:
     ADMIN_STATE_CLEAR_STATS = "clear-stats"
     ADMIN_STATE_LOG_STATS = "log-stats"
     ADMIN_STATE_ON = "on"
@@ -64,4 +63,3 @@ class ProcStimulusCounts(ManagedObject):
         self.total = None
 
         ManagedObject.__init__(self, "ProcStimulusCounts", parent_mo_or_dn, **kwargs)
-

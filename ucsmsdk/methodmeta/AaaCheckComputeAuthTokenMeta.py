@@ -1,5 +1,4 @@
 """This module contains the meta information of AaaCheckComputeAuthToken ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -32,4 +31,3 @@ prop_map = {
     "outRemote": "out_remote",
     "outVMediaPriv": "out_v_media_priv",
 }
-

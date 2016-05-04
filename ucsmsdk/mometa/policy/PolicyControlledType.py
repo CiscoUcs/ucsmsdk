@@ -1,12 +1,11 @@
 """This module contains the general information for PolicyControlledType ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PolicyControlledTypeConsts():
+class PolicyControlledTypeConsts:
     FSM_PREV_OPERATE_BEGIN = "OperateBegin"
     FSM_PREV_OPERATE_FAIL = "OperateFail"
     FSM_PREV_OPERATE_RESOLVE_ALL = "OperateResolveAll"
@@ -216,4 +215,3 @@ class PolicyControlledType(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PolicyControlledType", parent_mo_or_dn, **kwargs)
-

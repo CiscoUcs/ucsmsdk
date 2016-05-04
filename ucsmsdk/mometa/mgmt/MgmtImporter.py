@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtImporter ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtImporterConsts():
+class MgmtImporterConsts:
     ACTION_MERGE = "merge"
     ACTION_REPLACE = "replace"
     ADMIN_STATE_DISABLED = "disabled"
@@ -273,4 +272,3 @@ class MgmtImporter(ManagedObject):
         self.user = None
 
         ManagedObject.__init__(self, "MgmtImporter", parent_mo_or_dn, **kwargs)
-

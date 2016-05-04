@@ -1,12 +1,11 @@
 """This module contains the general information for AaaTacacsPlusEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaTacacsPlusEpConsts():
+class AaaTacacsPlusEpConsts:
     FSM_PREV_NOP = "nop"
     FSM_PREV_UPDATE_EP_BEGIN = "updateEpBegin"
     FSM_PREV_UPDATE_EP_FAIL = "updateEpFail"
@@ -237,4 +236,3 @@ class AaaTacacsPlusEp(ManagedObject):
         self.timeout = None
 
         ManagedObject.__init__(self, "AaaTacacsPlusEp", parent_mo_or_dn, **kwargs)
-

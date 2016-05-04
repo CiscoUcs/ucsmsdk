@@ -1,12 +1,11 @@
 """This module contains the general information for VnicFcGroupDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicFcGroupDefConsts():
+class VnicFcGroupDefConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -86,4 +85,3 @@ class VnicFcGroupDef(ManagedObject):
         self.storage_conn_policy_name = None
 
         ManagedObject.__init__(self, "VnicFcGroupDef", parent_mo_or_dn, **kwargs)
-

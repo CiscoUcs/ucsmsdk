@@ -1,12 +1,11 @@
 """This module contains the general information for PowerRackUnitMember ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PowerRackUnitMemberConsts():
+class PowerRackUnitMemberConsts:
     OPER_STATE_CAP_INSUFFICIENT = "cap-insufficient"
     OPER_STATE_CAP_OK = "cap-ok"
     OPER_STATE_FW_MISMATCH = "fw-mismatch"
@@ -52,4 +51,3 @@ class PowerRackUnitMember(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PowerRackUnitMember", parent_mo_or_dn, **kwargs)
-

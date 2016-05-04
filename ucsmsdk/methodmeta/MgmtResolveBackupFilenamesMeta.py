@@ -1,5 +1,4 @@
 """This module contains the meta information of MgmtResolveBackupFilenames ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -18,4 +17,3 @@ prop_map = {
     "inType": "in_type",
     "outBackups": "out_backups",
 }
-

@@ -1,12 +1,11 @@
 """This module contains the general information for AaaLdapGroupRule ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaLdapGroupRuleConsts():
+class AaaLdapGroupRuleConsts:
     AUTHORIZATION_DISABLE = "disable"
     AUTHORIZATION_ENABLE = "enable"
     TRAVERSAL_NON_RECURSIVE = "non-recursive"
@@ -66,4 +65,3 @@ class AaaLdapGroupRule(ManagedObject):
         self.use_primary_group = None
 
         ManagedObject.__init__(self, "AaaLdapGroupRule", parent_mo_or_dn, **kwargs)
-

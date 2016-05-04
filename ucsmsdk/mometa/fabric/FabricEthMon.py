@@ -1,12 +1,11 @@
 """This module contains the general information for FabricEthMon ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricEthMonConsts():
+class FabricEthMonConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     ID_A = "A"
@@ -102,4 +101,3 @@ class FabricEthMon(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricEthMon", parent_mo_or_dn, **kwargs)
-

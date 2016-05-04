@@ -1,12 +1,11 @@
 """This module contains the general information for EpqosDefinitionDelTaskFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EpqosDefinitionDelTaskFsmConsts():
+class EpqosDefinitionDelTaskFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_REMOVE = "Remove"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class EpqosDefinitionDelTaskFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EpqosDefinitionDelTaskFsm", parent_mo_or_dn, **kwargs)
-

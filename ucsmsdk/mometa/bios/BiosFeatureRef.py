@@ -1,12 +1,11 @@
 """This module contains the general information for BiosFeatureRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosFeatureRefConsts():
+class BiosFeatureRefConsts:
     IS_SUPPORTED_NO = "no"
     IS_SUPPORTED_YES = "yes"
 
@@ -51,4 +50,3 @@ class BiosFeatureRef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "BiosFeatureRef", parent_mo_or_dn, **kwargs)
-

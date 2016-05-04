@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfOSBootWatchdogTimerTimeout ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfOSBootWatchdogTimerTimeoutConsts():
+class BiosVfOSBootWatchdogTimerTimeoutConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_OSBOOT_WATCHDOG_TIMER_TIMEOUT_10_MINUTES = "10-minutes"
@@ -57,4 +56,3 @@ class BiosVfOSBootWatchdogTimerTimeout(ManagedObject):
         self.vp_os_boot_watchdog_timer_timeout = None
 
         ManagedObject.__init__(self, "BiosVfOSBootWatchdogTimerTimeout", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for AaaLocale ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaLocaleConsts():
+class AaaLocaleConsts:
     CONFIG_STATE_NOT_APPLIED = "not-applied"
     CONFIG_STATE_OK = "ok"
     INT_ID_NONE = "none"
@@ -67,4 +66,3 @@ class AaaLocale(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AaaLocale", parent_mo_or_dn, **kwargs)
-

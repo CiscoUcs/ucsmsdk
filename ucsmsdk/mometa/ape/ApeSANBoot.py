@@ -1,12 +1,11 @@
 """This module contains the general information for ApeSANBoot ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApeSANBootConsts():
+class ApeSANBootConsts:
     IS_HOST_AGENT_PRESENT_FALSE = "false"
     IS_HOST_AGENT_PRESENT_NO = "no"
     IS_HOST_AGENT_PRESENT_TRUE = "true"
@@ -78,4 +77,3 @@ class ApeSANBoot(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "ApeSANBoot", parent_mo_or_dn, **kwargs)
-

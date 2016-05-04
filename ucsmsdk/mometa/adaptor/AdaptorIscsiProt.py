@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorIscsiProt ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorIscsiProtConsts():
+class AdaptorIscsiProtConsts:
     TCP_TIME_STAMP_FALSE = "false"
     TCP_TIME_STAMP_NO = "no"
     TCP_TIME_STAMP_TRUE = "true"
@@ -62,4 +61,3 @@ class AdaptorIscsiProt(ManagedObject):
         self.tcp_time_stamp = None
 
         ManagedObject.__init__(self, "AdaptorIscsiProt", parent_mo_or_dn, **kwargs)
-

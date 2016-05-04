@@ -1,12 +1,11 @@
 """This module contains the general information for CommSvcEpFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CommSvcEpFsmStageConsts():
+class CommSvcEpFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_NOP = "nop"
     NAME_RESTART_WEB_SVC_BEGIN = "restartWebSvcBegin"
@@ -84,4 +83,3 @@ class CommSvcEpFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CommSvcEpFsmStage", parent_mo_or_dn, **kwargs)
-

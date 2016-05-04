@@ -1,12 +1,11 @@
 """This module contains the general information for VnicIScsiInitAutoConfigPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicIScsiInitAutoConfigPolicyConsts():
+class VnicIScsiInitAutoConfigPolicyConsts:
     FABRIC_PATH_A = "A"
     FABRIC_PATH_B = "B"
     FABRIC_PATH_NONE = "NONE"
@@ -66,4 +65,3 @@ class VnicIScsiInitAutoConfigPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "VnicIScsiInitAutoConfigPolicy", parent_mo_or_dn, **kwargs)
-

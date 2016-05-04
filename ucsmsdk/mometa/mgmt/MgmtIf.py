@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtIf ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtIfConsts():
+class MgmtIfConsts:
     ACCESS_IN_BAND = "in-band"
     ACCESS_INTERNAL = "internal"
     ACCESS_OUT_OF_BAND = "out-of-band"
@@ -420,4 +419,3 @@ class MgmtIf(ManagedObject):
         self.vnet = None
 
         ManagedObject.__init__(self, "MgmtIf", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for LsbootSanImage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsbootSanImageConsts():
+class LsbootSanImageConsts:
     TYPE_PRIMARY = "primary"
     TYPE_SECONDARY = "secondary"
 
@@ -48,4 +47,3 @@ class LsbootSanImage(ManagedObject):
         self.vnic_name = None
 
         ManagedObject.__init__(self, "LsbootSanImage", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for CommSyslogConsole ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CommSyslogConsoleConsts():
+class CommSyslogConsoleConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     SEVERITY_ALERTS = "alerts"
@@ -57,4 +56,3 @@ class CommSyslogConsole(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CommSyslogConsole", parent_mo_or_dn, **kwargs)
-

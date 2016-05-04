@@ -1,12 +1,11 @@
 """This module contains the general information for ProcTxCounts ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ProcTxCountsConsts():
+class ProcTxCountsConsts:
     ADMIN_STATE_CLEAR_STATS = "clear-stats"
     ADMIN_STATE_LOG_STATS = "log-stats"
     ADMIN_STATE_ON = "on"
@@ -64,4 +63,3 @@ class ProcTxCounts(ManagedObject):
         self.total = None
 
         ManagedObject.__init__(self, "ProcTxCounts", parent_mo_or_dn, **kwargs)
-

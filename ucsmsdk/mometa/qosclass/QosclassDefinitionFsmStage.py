@@ -1,12 +1,11 @@
 """This module contains the general information for QosclassDefinitionFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class QosclassDefinitionFsmStageConsts():
+class QosclassDefinitionFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_CONFIG_GLOBAL_QO_SBEGIN = "configGlobalQoSBegin"
     NAME_CONFIG_GLOBAL_QO_SFAIL = "configGlobalQoSFail"
@@ -72,4 +71,3 @@ class QosclassDefinitionFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "QosclassDefinitionFsmStage", parent_mo_or_dn, **kwargs)
-

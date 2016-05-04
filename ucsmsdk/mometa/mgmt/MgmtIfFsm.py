@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtIfFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtIfFsmConsts():
+class MgmtIfFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_DISABLE_VIP = "DisableVip"
     CURRENT_FSM_ENABLE_HA = "EnableHA"
@@ -213,4 +212,3 @@ class MgmtIfFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtIfFsm", parent_mo_or_dn, **kwargs)
-

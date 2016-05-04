@@ -1,12 +1,11 @@
 """This module contains the general information for AaaDefaultAuth ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaDefaultAuthConsts():
+class AaaDefaultAuthConsts:
     CONFIG_STATE_NOT_APPLIED = "not-applied"
     CONFIG_STATE_OK = "ok"
     OPER_REALM_LDAP = "ldap"
@@ -89,4 +88,3 @@ class AaaDefaultAuth(ManagedObject):
         self.use2_factor = None
 
         ManagedObject.__init__(self, "AaaDefaultAuth", parent_mo_or_dn, **kwargs)
-

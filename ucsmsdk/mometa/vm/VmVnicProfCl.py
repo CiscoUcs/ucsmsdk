@@ -1,12 +1,11 @@
 """This module contains the general information for VmVnicProfCl ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VmVnicProfClConsts():
+class VmVnicProfClConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -68,4 +67,3 @@ class VmVnicProfCl(ManagedObject):
         self.sw_name = None
 
         ManagedObject.__init__(self, "VmVnicProfCl", parent_mo_or_dn, **kwargs)
-

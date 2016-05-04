@@ -1,12 +1,11 @@
 """This module contains the general information for SwFcoeSanPc ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwFcoeSanPcConsts():
+class SwFcoeSanPcConsts:
     ADMIN_SPEED_10GBPS = "10gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
     ADMIN_SPEED_20GBPS = "20gbps"
@@ -134,4 +133,3 @@ class SwFcoeSanPc(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "SwFcoeSanPc", parent_mo_or_dn, **kwargs)
-

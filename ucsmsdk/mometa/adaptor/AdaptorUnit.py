@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorUnit ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorUnitConsts():
+class AdaptorUnitConsts:
     ADMIN_POWER_STATE_NONE = "none"
     ADMIN_POWER_STATE_RESET_POWER = "reset-power"
     CHASSIS_ID_N_A = "N/A"
@@ -258,4 +257,3 @@ class AdaptorUnit(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "AdaptorUnit", parent_mo_or_dn, **kwargs)
-

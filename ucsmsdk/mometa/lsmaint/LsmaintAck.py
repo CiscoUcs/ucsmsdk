@@ -1,12 +1,11 @@
 """This module contains the general information for LsmaintAck ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsmaintAckConsts():
+class LsmaintAckConsts:
     ADMIN_STATE_TRIGGER = "trigger"
     ADMIN_STATE_TRIGGER_IMMEDIATE = "trigger-immediate"
     ADMIN_STATE_TRIGGERED = "triggered"
@@ -171,4 +170,3 @@ class LsmaintAck(ManagedObject):
         self.trigger_config_state = None
 
         ManagedObject.__init__(self, "LsmaintAck", parent_mo_or_dn, **kwargs)
-

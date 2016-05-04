@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfTrustedPlatformModule ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfTrustedPlatformModuleConsts():
+class BiosVfTrustedPlatformModuleConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_TRUSTED_PLATFORM_MODULE_SUPPORT_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfTrustedPlatformModule(ManagedObject):
         self.vp_trusted_platform_module_support = None
 
         ManagedObject.__init__(self, "BiosVfTrustedPlatformModule", parent_mo_or_dn, **kwargs)
-

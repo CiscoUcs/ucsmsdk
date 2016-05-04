@@ -1,12 +1,11 @@
 """This module contains the general information for MemoryBufferUnit ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MemoryBufferUnitConsts():
+class MemoryBufferUnitConsts:
     OPER_STATE_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     OPER_STATE_AUTO_UPGRADE = "auto-upgrade"
     OPER_STATE_BIOS_POST_TIMEOUT = "bios-post-timeout"
@@ -199,4 +198,3 @@ class MemoryBufferUnit(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "MemoryBufferUnit", parent_mo_or_dn, **kwargs)
-

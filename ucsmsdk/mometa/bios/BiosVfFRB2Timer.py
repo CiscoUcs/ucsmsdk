@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfFRB2Timer ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfFRB2TimerConsts():
+class BiosVfFRB2TimerConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_FRB2_TIMER_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfFRB2Timer(ManagedObject):
         self.vp_fr_b2_timer = None
 
         ManagedObject.__init__(self, "BiosVfFRB2Timer", parent_mo_or_dn, **kwargs)
-

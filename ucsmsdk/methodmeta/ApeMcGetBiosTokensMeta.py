@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeMcGetBiosTokens ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "inSlotId": "in_slot_id",
     "outFilePath": "out_file_path",
 }
-

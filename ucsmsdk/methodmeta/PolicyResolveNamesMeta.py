@@ -1,5 +1,4 @@
 """This module contains the meta information of PolicyResolveNames ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -22,4 +21,3 @@ prop_map = {
     "inPolicyType": "in_policy_type",
     "outPolicyNames": "out_policy_names",
 }
-

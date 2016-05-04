@@ -1,12 +1,11 @@
 """This module contains the general information for QosclassDefinition ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class QosclassDefinitionConsts():
+class QosclassDefinitionConsts:
     FSM_PREV_CONFIG_GLOBAL_QO_SBEGIN = "configGlobalQoSBegin"
     FSM_PREV_CONFIG_GLOBAL_QO_SFAIL = "configGlobalQoSFail"
     FSM_PREV_CONFIG_GLOBAL_QO_SSET_LOCAL = "configGlobalQoSSetLocal"
@@ -238,4 +237,3 @@ class QosclassDefinition(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "QosclassDefinition", parent_mo_or_dn, **kwargs)
-

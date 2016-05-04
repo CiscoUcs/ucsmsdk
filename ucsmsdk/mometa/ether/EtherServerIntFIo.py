@@ -1,12 +1,11 @@
 """This module contains the general information for EtherServerIntFIo ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherServerIntFIoConsts():
+class EtherServerIntFIoConsts:
     ADMIN_SPEED_10GBPS = "10gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
     ADMIN_SPEED_20GBPS = "20gbps"
@@ -474,4 +473,3 @@ class EtherServerIntFIo(ManagedObject):
         self.xcvr_type = None
 
         ManagedObject.__init__(self, "EtherServerIntFIo", parent_mo_or_dn, **kwargs)
-
