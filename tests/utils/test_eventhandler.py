@@ -55,14 +55,13 @@ def test_watch_mo():
     if mo is None:
         raise ValueError("Mo does no exist")
     wb_mo = ueh.add(managed_object=mo, call_back=watch_mo)
-    time.sleep(10)
+    time.sleep(2)
 
-    mo = handle.query_dn(dn)
     mo.descr = "watch_mo"
     handle.set_mo(mo)
     handle.commit()
 
-    time.sleep(10)
+    time.sleep(2)
 
     assert event_flag
 
@@ -72,13 +71,13 @@ def test_watch_mo_remove():
     if mo is None:
         raise ValueError("Mo does no exist")
     wb_mo_remove = ueh.add(managed_object=mo)
-    time.sleep(10)
+    time.sleep(2)
     print(wb_mo_remove)
 
     print(ueh.get())
     handle.remove_mo(mo)
     handle.commit()
-    time.sleep(10)
+    time.sleep(2)
     print(ueh.get())
 
     assert wb_mo_remove not in ueh.get()
