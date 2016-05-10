@@ -104,7 +104,7 @@ class ParseFilter(object):
         return or_filter
 
     @staticmethod
-    def not_operator(self, str_, loc, toks):
+    def not_operator(str_, loc, toks):
         """
         method to support logical 'and' operator expression
         """
