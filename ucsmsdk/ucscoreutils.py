@@ -57,11 +57,7 @@ def get_ucs_obj(class_id, elem, mo_obj=None):
         mo_class_params = inspect.getargspec(mo_class.__init__)[0][2:]
         mo_class_param_dict = {}
         for param in mo_class_params:
-            mo_param = mo_class.prop_meta[param].xml_attribute
-            if mo_param not in elem.attrib:
-                mo_class_param_dict[param] = ""
-                continue
-            mo_class_param_dict[param] = elem.attrib[mo_param]
+            mo_class_param_dict[param] = None
 
         p_dn = ""
         if "dn" in elem.attrib:
@@ -70,9 +66,9 @@ def get_ucs_obj(class_id, elem, mo_obj=None):
             p_dn = mo_obj.dn
 
         if 'topRoot' in mo_class.mo_meta.parents:
-            mo_obj = mo_class(**mo_class_param_dict)
+            mo_obj = mo_class(from_xml_response=True, **mo_class_param_dict)
         else:
-            mo_obj = mo_class(parent_mo_or_dn=p_dn, **mo_class_param_dict)
+            mo_obj = mo_class(parent_mo_or_dn=p_dn, from_xml_response=True, **mo_class_param_dict)
         return mo_obj
     elif class_id in OTHER_TYPE_CLASS_ID:
         module_ = load_module(class_id)

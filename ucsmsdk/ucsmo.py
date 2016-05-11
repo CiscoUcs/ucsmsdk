@@ -57,15 +57,26 @@ class ManagedObject(UcsBase):
     __internal_prop = frozenset(
         ["_dirty_mask", "_class_id", "_child", "_handle", ''])
 
-    def __init__(self, class_id, parent_mo_or_dn=None, **kwargs):
+    def __init__(self, class_id, parent_mo_or_dn=None, from_xml_response=False, **kwargs):
         self.__parent_mo = None
         self.__status = None
         self.__parent_dn = None
         self.__xtra_props = {}
         self.__xtra_props_dirty_mask = 0x1
 
-        self._rn_set()
-        self._dn_set(parent_mo_or_dn)
+        if parent_mo_or_dn:
+            if isinstance(parent_mo_or_dn, ManagedObject):
+                self.__parent_mo = parent_mo_or_dn
+                self.__parent_dn = self.__parent_mo.dn
+            elif isinstance(parent_mo_or_dn, str):
+                self.__parent_dn = parent_mo_or_dn
+            else:
+                raise ValueError('parent mo or dn must be specified')
+
+        if not from_xml_response:
+            self._rn_set()
+            self._dn_set()
+
         xml_attribute = self.mo_meta.xml_attribute
 
         UcsBase.__init__(self, ucsgenutils.word_u(xml_attribute))
@@ -96,19 +107,11 @@ class ManagedObject(UcsBase):
         else:
             self.rn = ""
 
-    def _dn_set(self, pmo_or_dn):
+
+    def _dn_set(self):
         """
         Internal method to set dn
         """
-
-        if pmo_or_dn:
-            if isinstance(pmo_or_dn, ManagedObject):
-                self.__parent_mo = pmo_or_dn
-                self.__parent_dn = self.__parent_mo.dn
-            elif isinstance(pmo_or_dn, str):
-                self.__parent_dn = pmo_or_dn
-            else:
-                raise ValueError('parent mo or dn must be specified')
 
         if "prop_meta" in dir(self) and "dn" in self.prop_meta:
             if self.__parent_dn:
@@ -342,6 +345,10 @@ class ManagedObject(UcsBase):
                 for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
                     object.__setattr__(self, attr_name, attr_value)
 
+        if hasattr(self, 'rn') and not hasattr(self, 'dn'):
+            self._dn_set()
+        elif not hasattr(self, 'rn') and hasattr(self, 'dn'):
+            self.__set_prop("rn", os.path.basename(self.dn), forced=True)
         self.mark_clean()
 
         child_elems = elem.getchildren()
