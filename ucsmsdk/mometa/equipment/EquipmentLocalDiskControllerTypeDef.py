@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentLocalDiskControllerTypeDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentLocalDiskControllerTypeDefConsts():
+class EquipmentLocalDiskControllerTypeDefConsts:
     IS_FLASH_LIFE_LEFT_SUPPORTED_FALSE = "false"
     IS_FLASH_LIFE_LEFT_SUPPORTED_NO = "no"
     IS_FLASH_LIFE_LEFT_SUPPORTED_TRUE = "true"
@@ -47,4 +46,3 @@ class EquipmentLocalDiskControllerTypeDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentLocalDiskControllerTypeDef", parent_mo_or_dn, **kwargs)
-

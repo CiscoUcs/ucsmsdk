@@ -1,12 +1,11 @@
 """This module contains the general information for OsEthIntf ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class OsEthIntfConsts():
+class OsEthIntfConsts:
     OPER_STATE_DOWN = "down"
     OPER_STATE_FAILED = "failed"
     OPER_STATE_INDETERMINATE = "indeterminate"
@@ -62,4 +61,3 @@ class OsEthIntf(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "OsEthIntf", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfPSTATECoordination ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfPSTATECoordinationConsts():
+class BiosVfPSTATECoordinationConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_PSTATECOORDINATION_HW_ALL = "hw-all"
@@ -56,4 +55,3 @@ class BiosVfPSTATECoordination(ManagedObject):
         self.vp_pstate_coordination = None
 
         ManagedObject.__init__(self, "BiosVfPSTATECoordination", parent_mo_or_dn, **kwargs)
-

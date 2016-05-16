@@ -1,12 +1,11 @@
 """This module contains the general information for SwatResultstats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwatResultstatsConsts():
+class SwatResultstatsConsts:
     pass
 
 
@@ -56,4 +55,3 @@ class SwatResultstats(ManagedObject):
         self.true_hits = None
 
         ManagedObject.__init__(self, "SwatResultstats", parent_mo_or_dn, **kwargs)
-

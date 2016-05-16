@@ -1,12 +1,11 @@
 """This module contains the general information for LsbootBootSecurity ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsbootBootSecurityConsts():
+class LsbootBootSecurityConsts:
     SECURE_BOOT_FALSE = "false"
     SECURE_BOOT_NO = "no"
     SECURE_BOOT_TRUE = "true"
@@ -47,4 +46,3 @@ class LsbootBootSecurity(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LsbootBootSecurity", parent_mo_or_dn, **kwargs)
-

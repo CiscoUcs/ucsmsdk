@@ -1,12 +1,11 @@
 """This module contains the general information for FabricNetflowMonSession ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricNetflowMonSessionConsts():
+class FabricNetflowMonSessionConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     ID_A = "A"
@@ -86,4 +85,3 @@ class FabricNetflowMonSession(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricNetflowMonSession", parent_mo_or_dn, **kwargs)
-

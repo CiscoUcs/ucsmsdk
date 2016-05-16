@@ -1,12 +1,11 @@
 """This module contains the general information for FabricChangedObjectRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricChangedObjectRefConsts():
+class FabricChangedObjectRefConsts:
     REF_OBJ_STATUS_CREATED = "created"
     REF_OBJ_STATUS_DELETED = "deleted"
     REF_OBJ_STATUS_INTENT_DELETION = "intent-deletion"
@@ -59,4 +58,3 @@ class FabricChangedObjectRef(ManagedObject):
         self.ucsm_vnet_ep_dn = None
 
         ManagedObject.__init__(self, "FabricChangedObjectRef", parent_mo_or_dn, **kwargs)
-

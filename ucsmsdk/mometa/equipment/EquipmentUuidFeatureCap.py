@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentUuidFeatureCap ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentUuidFeatureCapConsts():
+class EquipmentUuidFeatureCapConsts:
     UUID_SUPPORT_MODE_LOOSE = "loose"
     UUID_SUPPORT_MODE_NONE = "none"
     UUID_SUPPORT_MODE_STRICT = "strict"
@@ -46,4 +45,3 @@ class EquipmentUuidFeatureCap(ManagedObject):
         self.uuid_support_mode = None
 
         ManagedObject.__init__(self, "EquipmentUuidFeatureCap", parent_mo_or_dn, **kwargs)
-

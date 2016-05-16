@@ -1,12 +1,11 @@
 """This module contains the general information for SwEthLanBorder ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwEthLanBorderConsts():
+class SwEthLanBorderConsts:
     FSM_PREV_DEPLOY_BEGIN = "DeployBegin"
     FSM_PREV_DEPLOY_FAIL = "DeployFail"
     FSM_PREV_DEPLOY_SUCCESS = "DeploySuccess"
@@ -247,4 +246,3 @@ class SwEthLanBorder(ManagedObject):
         self.udld_recovery_action = None
 
         ManagedObject.__init__(self, "SwEthLanBorder", parent_mo_or_dn, **kwargs)
-

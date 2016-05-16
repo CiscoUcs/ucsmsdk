@@ -1,12 +1,11 @@
 """This module contains the general information for ExtpolControllerCont ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtpolControllerContConsts():
+class ExtpolControllerContConsts:
     pass
 
 
@@ -44,4 +43,3 @@ class ExtpolControllerCont(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtpolControllerCont", parent_mo_or_dn, **kwargs)
-

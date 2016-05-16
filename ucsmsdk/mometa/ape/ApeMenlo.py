@@ -1,12 +1,11 @@
 """This module contains the general information for ApeMenlo ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApeMenloConsts():
+class ApeMenloConsts:
     TYPE_MENLO = "Menlo"
     TYPE_OPLIN = "Oplin"
     TYPE_PALO = "Palo"
@@ -89,4 +88,3 @@ class ApeMenlo(ManagedObject):
         self.uplink_port_type = None
 
         ManagedObject.__init__(self, "ApeMenlo", parent_mo_or_dn, **kwargs)
-

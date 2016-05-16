@@ -1,12 +1,11 @@
 """This module contains the general information for DhcpAcquired ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class DhcpAcquiredConsts():
+class DhcpAcquiredConsts:
     pass
 
 
@@ -59,4 +58,3 @@ class DhcpAcquired(ManagedObject):
         self.sys_id = None
 
         ManagedObject.__init__(self, "DhcpAcquired", parent_mo_or_dn, **kwargs)
-

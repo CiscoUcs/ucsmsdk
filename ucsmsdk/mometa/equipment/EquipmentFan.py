@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentFan ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentFanConsts():
+class EquipmentFanConsts:
     FAN_SPEED_POLICY_ADMIN_STATE_ANY = "any"
     FAN_SPEED_POLICY_ADMIN_STATE_BALANCED = "balanced"
     FAN_SPEED_POLICY_ADMIN_STATE_ERR = "err"
@@ -237,4 +236,3 @@ class EquipmentFan(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "EquipmentFan", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for FabricNetflowMonitor ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricNetflowMonitorConsts():
+class FabricNetflowMonitorConsts:
     FLOW_MON_PROTOCOL_NETFLOW = "netflow"
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
@@ -81,4 +80,3 @@ class FabricNetflowMonitor(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricNetflowMonitor", parent_mo_or_dn, **kwargs)
-

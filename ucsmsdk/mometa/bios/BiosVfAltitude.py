@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfAltitude ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfAltitudeConsts():
+class BiosVfAltitudeConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_ALTITUDE_1500_M = "1500-m"
@@ -58,4 +57,3 @@ class BiosVfAltitude(ManagedObject):
         self.vp_altitude = None
 
         ManagedObject.__init__(self, "BiosVfAltitude", parent_mo_or_dn, **kwargs)
-

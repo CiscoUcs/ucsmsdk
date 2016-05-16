@@ -1,12 +1,11 @@
 """This module contains the general information for SwVlanPortNs ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwVlanPortNsConsts():
+class SwVlanPortNsConsts:
     ALLOC_STATUS_AVAILABLE = "available"
     ALLOC_STATUS_EXCEEDED = "exceeded"
     COMPRESSED_OPTIMIZATION_SETS_NA = "NA"
@@ -90,4 +89,3 @@ class SwVlanPortNs(ManagedObject):
         self.vlan_comp_on_limit = None
 
         ManagedObject.__init__(self, "SwVlanPortNs", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtInbandProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtInbandProfileConsts():
+class MgmtInbandProfileConsts:
     pass
 
 
@@ -50,4 +49,3 @@ class MgmtInbandProfile(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtInbandProfile", parent_mo_or_dn, **kwargs)
-

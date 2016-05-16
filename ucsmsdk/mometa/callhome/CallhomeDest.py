@@ -1,12 +1,11 @@
 """This module contains the general information for CallhomeDest ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CallhomeDestConsts():
+class CallhomeDestConsts:
     pass
 
 
@@ -44,4 +43,3 @@ class CallhomeDest(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CallhomeDest", parent_mo_or_dn, **kwargs)
-

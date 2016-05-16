@@ -1,12 +1,11 @@
 """This module contains the general information for LicenseFeatureLine ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LicenseFeatureLineConsts():
+class LicenseFeatureLineConsts:
     EXP_NEVER = "never"
     TYPE_FEATURE = "feature"
     TYPE_INCREMENT = "increment"
@@ -65,4 +64,3 @@ class LicenseFeatureLine(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LicenseFeatureLine", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeServerMgmtPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeServerMgmtPolicyConsts():
+class ComputeServerMgmtPolicyConsts:
     ACTION_AUTO_ACKNOWLEDGED = "auto-acknowledged"
     ACTION_USER_ACKNOWLEDGED = "user-acknowledged"
     INT_ID_NONE = "none"
@@ -67,4 +66,3 @@ class ComputeServerMgmtPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeServerMgmtPolicy", parent_mo_or_dn, **kwargs)
-

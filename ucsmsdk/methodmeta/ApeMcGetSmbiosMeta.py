@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeMcGetSmbios ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "outFilePath": "out_file_path",
     "outUpdateCnt": "out_update_cnt",
 }
-

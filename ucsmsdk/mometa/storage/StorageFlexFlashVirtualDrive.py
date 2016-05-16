@@ -1,12 +1,11 @@
 """This module contains the general information for StorageFlexFlashVirtualDrive ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageFlexFlashVirtualDriveConsts():
+class StorageFlexFlashVirtualDriveConsts:
     BLOCK_SIZE_UNKNOWN = "unknown"
     CONNECTION_PROTOCOL_NVME = "NVME"
     CONNECTION_PROTOCOL_SAS = "SAS"
@@ -159,4 +158,3 @@ class StorageFlexFlashVirtualDrive(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "StorageFlexFlashVirtualDrive", parent_mo_or_dn, **kwargs)
-

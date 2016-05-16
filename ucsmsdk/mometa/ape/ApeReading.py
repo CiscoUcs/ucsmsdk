@@ -1,12 +1,11 @@
 """This module contains the general information for ApeReading ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApeReadingConsts():
+class ApeReadingConsts:
     pass
 
 
@@ -74,4 +73,3 @@ class ApeReading(ManagedObject):
         self.value = None
 
         ManagedObject.__init__(self, "ApeReading", parent_mo_or_dn, **kwargs)
-

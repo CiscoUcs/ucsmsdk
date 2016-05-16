@@ -1,5 +1,4 @@
 """This module contains the meta information of ConfigConfMo ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "inHierarchical": "in_hierarchical",
     "outConfig": "out_config",
 }
-

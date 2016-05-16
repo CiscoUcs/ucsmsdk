@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfTPMSupport ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfTPMSupportConsts():
+class BiosVfTPMSupportConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_TPMSUPPORT_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfTPMSupport(ManagedObject):
         self.vp_tpm_support = None
 
         ManagedObject.__init__(self, "BiosVfTPMSupport", parent_mo_or_dn, **kwargs)
-

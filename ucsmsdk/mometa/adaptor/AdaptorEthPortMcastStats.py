@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorEthPortMcastStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorEthPortMcastStatsConsts():
+class AdaptorEthPortMcastStatsConsts:
     SUSPECT_FALSE = "false"
     SUSPECT_NO = "no"
     SUSPECT_TRUE = "true"
@@ -110,4 +109,3 @@ class AdaptorEthPortMcastStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "AdaptorEthPortMcastStats", parent_mo_or_dn, **kwargs)
-

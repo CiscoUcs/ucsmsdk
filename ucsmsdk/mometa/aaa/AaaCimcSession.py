@@ -1,12 +1,11 @@
 """This module contains the general information for AaaCimcSession ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaCimcSessionConsts():
+class AaaCimcSessionConsts:
     ADMIN_STATE_ACTIVE = "active"
     ADMIN_STATE_INACTIVE = "inactive"
     INT_DEL_FALSE = "false"
@@ -94,4 +93,3 @@ class AaaCimcSession(ManagedObject):
         self.user = None
 
         ManagedObject.__init__(self, "AaaCimcSession", parent_mo_or_dn, **kwargs)
-

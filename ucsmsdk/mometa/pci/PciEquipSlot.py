@@ -1,12 +1,11 @@
 """This module contains the general information for PciEquipSlot ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PciEquipSlotConsts():
+class PciEquipSlotConsts:
     DISCOVERY_STATE_AUTO_UPGRADING = "auto-upgrading"
     DISCOVERY_STATE_DISCOVERED = "discovered"
     DISCOVERY_STATE_OFFLINE = "offline"
@@ -83,4 +82,3 @@ class PciEquipSlot(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "PciEquipSlot", parent_mo_or_dn, **kwargs)
-

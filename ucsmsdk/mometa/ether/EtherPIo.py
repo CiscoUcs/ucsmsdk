@@ -1,12 +1,11 @@
 """This module contains the general information for EtherPIo ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherPIoConsts():
+class EtherPIoConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     CHASSIS_ID_N_A = "N/A"
@@ -507,4 +506,3 @@ class EtherPIo(ManagedObject):
         self.xcvr_type = None
 
         ManagedObject.__init__(self, "EtherPIo", parent_mo_or_dn, **kwargs)
-

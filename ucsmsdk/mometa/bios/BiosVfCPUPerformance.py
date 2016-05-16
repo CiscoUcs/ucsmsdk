@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfCPUPerformance ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfCPUPerformanceConsts():
+class BiosVfCPUPerformanceConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_CPUPERFORMANCE_CUSTOM = "custom"
@@ -57,4 +56,3 @@ class BiosVfCPUPerformance(ManagedObject):
         self.vp_cpu_performance = None
 
         ManagedObject.__init__(self, "BiosVfCPUPerformance", parent_mo_or_dn, **kwargs)
-

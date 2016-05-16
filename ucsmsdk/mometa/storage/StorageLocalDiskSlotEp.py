@@ -1,12 +1,11 @@
 """This module contains the general information for StorageLocalDiskSlotEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageLocalDiskSlotEpConsts():
+class StorageLocalDiskSlotEpConsts:
     CONFIGURATION_NOT_SUPPORTED = "not-supported"
     CONFIGURATION_SUPPORTED = "supported"
     CONFIGURATION_UNKNOWN = "unknown"
@@ -108,4 +107,3 @@ class StorageLocalDiskSlotEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StorageLocalDiskSlotEp", parent_mo_or_dn, **kwargs)
-

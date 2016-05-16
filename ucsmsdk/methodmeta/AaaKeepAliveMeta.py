@@ -1,5 +1,4 @@
 """This module contains the meta information of AaaKeepAlive ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -12,4 +11,3 @@ prop_meta = {
 prop_map = {
     "cookie": "cookie",
 }
-

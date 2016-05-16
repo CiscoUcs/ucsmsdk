@@ -1,12 +1,11 @@
 """This module contains the general information for EtherPauseStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherPauseStatsConsts():
+class EtherPauseStatsConsts:
     SUSPECT_FALSE = "false"
     SUSPECT_NO = "no"
     SUSPECT_TRUE = "true"
@@ -104,4 +103,3 @@ class EtherPauseStats(ManagedObject):
         self.xmit_pause_delta_min = None
 
         ManagedObject.__init__(self, "EtherPauseStats", parent_mo_or_dn, **kwargs)
-

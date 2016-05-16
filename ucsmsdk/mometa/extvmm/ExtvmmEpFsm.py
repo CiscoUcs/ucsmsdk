@@ -1,12 +1,11 @@
 """This module contains the general information for ExtvmmEpFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtvmmEpFsmConsts():
+class ExtvmmEpFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_CLUSTER_ROLE = "clusterRole"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class ExtvmmEpFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtvmmEpFsm", parent_mo_or_dn, **kwargs)
-

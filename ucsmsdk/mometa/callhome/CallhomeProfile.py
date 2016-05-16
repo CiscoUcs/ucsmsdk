@@ -1,12 +1,11 @@
 """This module contains the general information for CallhomeProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CallhomeProfileConsts():
+class CallhomeProfileConsts:
     FORMAT_FULL_TXT = "fullTxt"
     FORMAT_SHORT_TXT = "shortTxt"
     FORMAT_XML = "xml"
@@ -70,4 +69,3 @@ class CallhomeProfile(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CallhomeProfile", parent_mo_or_dn, **kwargs)
-

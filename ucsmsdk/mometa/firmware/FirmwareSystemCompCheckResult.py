@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareSystemCompCheckResult ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareSystemCompCheckResultConsts():
+class FirmwareSystemCompCheckResultConsts:
     SUBJECT_ADAPTOR = "adaptor"
     SUBJECT_BIOS = "bios"
     SUBJECT_BOARD_CONTROLLER = "board-controller"
@@ -68,4 +67,3 @@ class FirmwareSystemCompCheckResult(ManagedObject):
         self.subject = None
 
         ManagedObject.__init__(self, "FirmwareSystemCompCheckResult", parent_mo_or_dn, **kwargs)
-

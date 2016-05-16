@@ -1,12 +1,11 @@
 """This module contains the general information for LsIssues ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsIssuesConsts():
+class LsIssuesConsts:
     pass
 
 
@@ -62,4 +61,3 @@ class LsIssues(ManagedObject):
         self.vnic_config_issues = None
 
         ManagedObject.__init__(self, "LsIssues", parent_mo_or_dn, **kwargs)
-

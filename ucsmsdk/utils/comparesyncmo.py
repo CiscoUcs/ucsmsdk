@@ -528,7 +528,7 @@ def sync_ucs_mo(ref_handle, difference,
 
 def write_mo_diff(diff_obj):
     """
-    Writes the difference managedObject(output of CompareManagedObject)
+    Writes the difference managedObject(output of compare_ucs_mo)
     on the terminal.
     """
 

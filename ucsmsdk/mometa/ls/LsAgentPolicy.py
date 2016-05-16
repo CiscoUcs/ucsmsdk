@@ -1,12 +1,11 @@
 """This module contains the general information for LsAgentPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsAgentPolicyConsts():
+class LsAgentPolicyConsts:
     CAPABILITY_HOST_NAME_CONFIG = "host-name-config"
     CAPABILITY_L2_IF_CONFIG = "l2-if-config"
     CAPABILITY_L3_IF_CONFIG = "l3-if-config"
@@ -73,4 +72,3 @@ class LsAgentPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LsAgentPolicy", parent_mo_or_dn, **kwargs)
-

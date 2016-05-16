@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeMcGetAttributeData ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -18,4 +17,3 @@ prop_map = {
     "inMcIp": "in_mc_ip",
     "outAttributeVals": "out_attribute_vals",
 }
-

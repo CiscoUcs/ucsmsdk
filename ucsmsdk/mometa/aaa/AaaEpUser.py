@@ -1,12 +1,11 @@
 """This module contains the general information for AaaEpUser ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaEpUserConsts():
+class AaaEpUserConsts:
     CONFIG_STATE_NOT_APPLIED = "not-applied"
     CONFIG_STATE_OK = "ok"
     IS_PWD_ENC_FALSE = "false"
@@ -76,4 +75,3 @@ class AaaEpUser(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AaaEpUser", parent_mo_or_dn, **kwargs)
-

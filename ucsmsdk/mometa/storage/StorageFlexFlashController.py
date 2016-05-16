@@ -1,12 +1,11 @@
 """This module contains the general information for StorageFlexFlashController ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageFlexFlashControllerConsts():
+class StorageFlexFlashControllerConsts:
     ADMIN_SLOT_NUMBER_1 = "1"
     ADMIN_SLOT_NUMBER_2 = "2"
     ADMIN_SLOT_NUMBER_NA = "NA"
@@ -516,4 +515,3 @@ class StorageFlexFlashController(ManagedObject):
         self.write_error_threshold = None
 
         ManagedObject.__init__(self, "StorageFlexFlashController", parent_mo_or_dn, **kwargs)
-

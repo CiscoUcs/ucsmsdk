@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeMbTempStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeMbTempStatsConsts():
+class ComputeMbTempStatsConsts:
     FM_TEMP_SEN_IO_NOT_APPLICABLE = "not-applicable"
     FM_TEMP_SEN_IO_AVG_NOT_APPLICABLE = "not-applicable"
     FM_TEMP_SEN_IO_MAX_NOT_APPLICABLE = "not-applicable"
@@ -123,4 +122,3 @@ class ComputeMbTempStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "ComputeMbTempStats", parent_mo_or_dn, **kwargs)
-

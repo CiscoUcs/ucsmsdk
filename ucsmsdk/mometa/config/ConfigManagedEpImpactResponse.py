@@ -1,12 +1,11 @@
 """This module contains the general information for ConfigManagedEpImpactResponse ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ConfigManagedEpImpactResponseConsts():
+class ConfigManagedEpImpactResponseConsts:
     REBOOT_REQUIRED_FALSE = "false"
     REBOOT_REQUIRED_NO = "no"
     REBOOT_REQUIRED_TRUE = "true"
@@ -68,4 +67,3 @@ class ConfigManagedEpImpactResponse(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ConfigManagedEpImpactResponse", parent_mo_or_dn, **kwargs)
-

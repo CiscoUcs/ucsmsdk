@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtInterface ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtInterfaceConsts():
+class MgmtInterfaceConsts:
     CONFIG_STATE_INCOMPLETE = "incomplete"
     CONFIG_STATE_INVALID_PINNING = "invalidPinning"
     CONFIG_STATE_UNRESOLVED_VLAN = "unresolvedVlan"
@@ -84,4 +83,3 @@ class MgmtInterface(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtInterface", parent_mo_or_dn, **kwargs)
-

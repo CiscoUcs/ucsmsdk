@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtCimcSecureBoot ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtCimcSecureBootConsts():
+class MgmtCimcSecureBootConsts:
     ADMIN_STATE_DISABLE = "disable"
     ADMIN_STATE_ENABLE = "enable"
     OPER_STATE_DISABLED = "disabled"
@@ -52,4 +51,3 @@ class MgmtCimcSecureBoot(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtCimcSecureBoot", parent_mo_or_dn, **kwargs)
-

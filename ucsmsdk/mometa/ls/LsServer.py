@@ -1,12 +1,11 @@
 """This module contains the general information for LsServer ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsServerConsts():
+class LsServerConsts:
     ASSIGN_STATE_ASSIGNED = "assigned"
     ASSIGN_STATE_FAILED = "failed"
     ASSIGN_STATE_UNASSIGNED = "unassigned"
@@ -511,4 +510,3 @@ class LsServer(ManagedObject):
         self.vmedia_policy_name = None
 
         ManagedObject.__init__(self, "LsServer", parent_mo_or_dn, **kwargs)
-

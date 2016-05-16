@@ -1,12 +1,11 @@
 """This module contains the general information for VnicFcNode ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicFcNodeConsts():
+class VnicFcNodeConsts:
     ADDR_POOL_DERIVED = "pool-derived"
     ADDR_VNIC_DERIVED = "vnic-derived"
     OWNER_CONN_POLICY = "conn_policy"
@@ -66,4 +65,3 @@ class VnicFcNode(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "VnicFcNode", parent_mo_or_dn, **kwargs)
-

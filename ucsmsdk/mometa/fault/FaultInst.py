@@ -1,12 +1,11 @@
 """This module contains the general information for FaultInst ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FaultInstConsts():
+class FaultInstConsts:
     ACK_FALSE = "false"
     ACK_NO = "no"
     ACK_TRUE = "true"
@@ -7901,4 +7900,3 @@ class FaultInst(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FaultInst", parent_mo_or_dn, **kwargs)
-

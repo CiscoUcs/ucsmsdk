@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorHostScsiIf ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorHostScsiIfConsts():
+class AdaptorHostScsiIfConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_DISABLED_ACTIVE = "disabled-active"
     ADMIN_STATE_DISABLED_PASSIVE = "disabled-passive"
@@ -343,4 +342,3 @@ class AdaptorHostScsiIf(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "AdaptorHostScsiIf", parent_mo_or_dn, **kwargs)
-

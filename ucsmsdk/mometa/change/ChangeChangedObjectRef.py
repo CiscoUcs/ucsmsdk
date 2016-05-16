@@ -1,12 +1,11 @@
 """This module contains the general information for ChangeChangedObjectRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ChangeChangedObjectRefConsts():
+class ChangeChangedObjectRefConsts:
     CHANGED_MO_CLASS_ID_AAA_AUTH_METHOD = "aaaAuthMethod"
     CHANGED_MO_CLASS_ID_AAA_AUTH_REALM = "aaaAuthRealm"
     CHANGED_MO_CLASS_ID_AAA_AUTH_REALM_FSM = "aaaAuthRealmFsm"
@@ -2136,4 +2135,3 @@ class ChangeChangedObjectRef(ManagedObject):
         self.ucsm_mo_dn = None
 
         ManagedObject.__init__(self, "ChangeChangedObjectRef", parent_mo_or_dn, **kwargs)
-

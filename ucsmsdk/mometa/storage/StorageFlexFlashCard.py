@@ -1,12 +1,11 @@
 """This module contains the general information for StorageFlexFlashCard ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageFlexFlashCardConsts():
+class StorageFlexFlashCardConsts:
     BLOCK_SIZE_UNKNOWN = "unknown"
     CARD_HEALTH_FF_PHY_HEALTH_NA = "FF_PHY_HEALTH_NA"
     CARD_HEALTH_FF_PHY_HEALTH_OK = "FF_PHY_HEALTH_OK"
@@ -204,4 +203,3 @@ class StorageFlexFlashCard(ManagedObject):
         self.write_io_error_count = None
 
         ManagedObject.__init__(self, "StorageFlexFlashCard", parent_mo_or_dn, **kwargs)
-

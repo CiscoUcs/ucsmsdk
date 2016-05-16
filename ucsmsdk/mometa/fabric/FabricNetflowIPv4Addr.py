@@ -1,12 +1,11 @@
 """This module contains the general information for FabricNetflowIPv4Addr ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricNetflowIPv4AddrConsts():
+class FabricNetflowIPv4AddrConsts:
     FABRIC_ID_A = "A"
     FABRIC_ID_B = "B"
     FABRIC_ID_NONE = "NONE"
@@ -55,4 +54,3 @@ class FabricNetflowIPv4Addr(ManagedObject):
         self.subnet = None
 
         ManagedObject.__init__(self, "FabricNetflowIPv4Addr", parent_mo_or_dn, **kwargs)
-

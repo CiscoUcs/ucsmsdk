@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentPOST ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentPOSTConsts():
+class EquipmentPOSTConsts:
     CREATED_NEVER = "never"
     GLOBAL_ID_NO_ERRORS = "No Errors"
     LOCAL_ID_NO_ERRORS = "No Errors"
@@ -89,4 +88,3 @@ class EquipmentPOST(ManagedObject):
         self.value = None
 
         ManagedObject.__init__(self, "EquipmentPOST", parent_mo_or_dn, **kwargs)
-

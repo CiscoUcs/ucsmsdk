@@ -1,12 +1,11 @@
 """This module contains the general information for StorageVsanRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageVsanRefConsts():
+class StorageVsanRefConsts:
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -67,4 +66,3 @@ class StorageVsanRef(ManagedObject):
         self.zoning_state = None
 
         ManagedObject.__init__(self, "StorageVsanRef", parent_mo_or_dn, **kwargs)
-

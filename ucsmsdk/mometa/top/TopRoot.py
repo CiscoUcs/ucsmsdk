@@ -1,12 +1,11 @@
 """This module contains the general information for TopRoot ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class TopRootConsts():
+class TopRootConsts:
     pass
 
 
@@ -41,4 +40,3 @@ class TopRoot(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "TopRoot", parent_mo_or_dn, **kwargs)
-

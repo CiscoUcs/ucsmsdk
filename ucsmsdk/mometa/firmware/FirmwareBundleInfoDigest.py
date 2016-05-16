@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareBundleInfoDigest ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareBundleInfoDigestConsts():
+class FirmwareBundleInfoDigestConsts:
     TYPE_B_SERIES_BUNDLE = "b-series-bundle"
     TYPE_C_SERIES_BUNDLE = "c-series-bundle"
     TYPE_CATALOG = "catalog"
@@ -58,4 +57,3 @@ class FirmwareBundleInfoDigest(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareBundleInfoDigest", parent_mo_or_dn, **kwargs)
-

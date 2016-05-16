@@ -1,12 +1,11 @@
 """This module contains the general information for SwFcZone ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwFcZoneConsts():
+class SwFcZoneConsts:
     LC_ALLOCATED = "allocated"
     LC_AVAILABLE = "available"
     LC_DEALLOCATED = "deallocated"
@@ -72,4 +71,3 @@ class SwFcZone(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwFcZone", parent_mo_or_dn, **kwargs)
-

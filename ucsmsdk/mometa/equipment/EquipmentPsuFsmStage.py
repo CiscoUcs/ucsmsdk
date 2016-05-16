@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentPsuFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentPsuFsmStageConsts():
+class EquipmentPsuFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_UPDATE_PSUACTIVATE_PSU = "UpdatePSUActivatePsu"
     NAME_UPDATE_PSUBEGIN = "UpdatePSUBegin"
@@ -74,4 +73,3 @@ class EquipmentPsuFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentPsuFsmStage", parent_mo_or_dn, **kwargs)
-

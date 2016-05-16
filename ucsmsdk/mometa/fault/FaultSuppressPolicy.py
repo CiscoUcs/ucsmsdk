@@ -1,12 +1,11 @@
 """This module contains the general information for FaultSuppressPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FaultSuppressPolicyConsts():
+class FaultSuppressPolicyConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -59,4 +58,3 @@ class FaultSuppressPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FaultSuppressPolicy", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugBackupBehavior ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugBackupBehaviorConsts():
+class SysdebugBackupBehaviorConsts:
     CLEAR_ON_BACKUP_FALSE = "false"
     CLEAR_ON_BACKUP_NO = "no"
     CLEAR_ON_BACKUP_TRUE = "true"
@@ -88,4 +87,3 @@ class SysdebugBackupBehavior(ManagedObject):
         self.user = None
 
         ManagedObject.__init__(self, "SysdebugBackupBehavior", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for PkiKeyRing ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PkiKeyRingConsts():
+class PkiKeyRingConsts:
     ADMIN_STATE_COMPLETED = "completed"
     ADMIN_STATE_CREATED = "created"
     ADMIN_STATE_REQ_CREATED = "reqCreated"
@@ -113,4 +112,3 @@ class PkiKeyRing(ManagedObject):
         self.tp = None
 
         ManagedObject.__init__(self, "PkiKeyRing", parent_mo_or_dn, **kwargs)
-

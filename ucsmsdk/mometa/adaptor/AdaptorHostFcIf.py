@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorHostFcIf ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorHostFcIfConsts():
+class AdaptorHostFcIfConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_DISABLED_ACTIVE = "disabled-active"
     ADMIN_STATE_DISABLED_PASSIVE = "disabled-passive"
@@ -556,4 +555,3 @@ class AdaptorHostFcIf(ManagedObject):
         self.wwn = None
 
         ManagedObject.__init__(self, "AdaptorHostFcIf", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfSerialPortAEnable ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfSerialPortAEnableConsts():
+class BiosVfSerialPortAEnableConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_SERIAL_PORT_AENABLE_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfSerialPortAEnable(ManagedObject):
         self.vp_serial_port_a_enable = None
 
         ManagedObject.__init__(self, "BiosVfSerialPortAEnable", parent_mo_or_dn, **kwargs)
-

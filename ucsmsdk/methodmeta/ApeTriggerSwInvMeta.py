@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeTriggerSwInv ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "inSwId": "in_sw_id",
     "inVendor": "in_vendor",
 }
-

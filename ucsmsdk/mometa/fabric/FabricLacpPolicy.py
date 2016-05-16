@@ -1,12 +1,11 @@
 """This module contains the general information for FabricLacpPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricLacpPolicyConsts():
+class FabricLacpPolicyConsts:
     FAST_TIMER_FAST = "fast"
     FAST_TIMER_NORMAL = "normal"
     INT_ID_NONE = "none"
@@ -69,4 +68,3 @@ class FabricLacpPolicy(ManagedObject):
         self.suspend_individual = None
 
         ManagedObject.__init__(self, "FabricLacpPolicy", parent_mo_or_dn, **kwargs)
-

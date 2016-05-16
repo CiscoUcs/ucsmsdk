@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorIscsiAuth ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorIscsiAuthConsts():
+class AdaptorIscsiAuthConsts:
     pass
 
 
@@ -47,4 +46,3 @@ class AdaptorIscsiAuth(ManagedObject):
         self.user_id = None
 
         ManagedObject.__init__(self, "AdaptorIscsiAuth", parent_mo_or_dn, **kwargs)
-

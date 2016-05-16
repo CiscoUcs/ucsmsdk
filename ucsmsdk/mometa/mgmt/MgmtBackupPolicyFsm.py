@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtBackupPolicyFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtBackupPolicyFsmConsts():
+class MgmtBackupPolicyFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_REPORT_CONFIG_COPY = "ReportConfigCopy"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class MgmtBackupPolicyFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtBackupPolicyFsm", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeKvmMgmtPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeKvmMgmtPolicyConsts():
+class ComputeKvmMgmtPolicyConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -64,4 +63,3 @@ class ComputeKvmMgmtPolicy(ManagedObject):
         self.vmedia_encryption = None
 
         ManagedObject.__init__(self, "ComputeKvmMgmtPolicy", parent_mo_or_dn, **kwargs)
-

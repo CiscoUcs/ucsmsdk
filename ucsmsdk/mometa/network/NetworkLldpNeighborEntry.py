@@ -1,12 +1,11 @@
 """This module contains the general information for NetworkLldpNeighborEntry ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class NetworkLldpNeighborEntryConsts():
+class NetworkLldpNeighborEntryConsts:
     pass
 
 
@@ -74,4 +73,3 @@ class NetworkLldpNeighborEntry(ManagedObject):
         self.system_name = None
 
         ManagedObject.__init__(self, "NetworkLldpNeighborEntry", parent_mo_or_dn, **kwargs)
-

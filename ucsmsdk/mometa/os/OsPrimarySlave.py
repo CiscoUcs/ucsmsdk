@@ -1,12 +1,11 @@
 """This module contains the general information for OsPrimarySlave ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class OsPrimarySlaveConsts():
+class OsPrimarySlaveConsts:
     RESELECT_POLICY_ALWAYS = "always"
     RESELECT_POLICY_BETTER = "better"
     RESELECT_POLICY_FAILURE = "failure"
@@ -49,4 +48,3 @@ class OsPrimarySlave(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "OsPrimarySlave", parent_mo_or_dn, **kwargs)
-

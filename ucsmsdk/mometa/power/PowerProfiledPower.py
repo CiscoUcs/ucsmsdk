@@ -1,12 +1,11 @@
 """This module contains the general information for PowerProfiledPower ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PowerProfiledPowerConsts():
+class PowerProfiledPowerConsts:
     ABS_MIN_POST_POWER_UNBOUNDED = "unbounded"
     MAX_APP_POWER_UNBOUNDED = "unbounded"
     MAX_POST_POWER_UNBOUNDED = "unbounded"
@@ -90,4 +89,3 @@ class PowerProfiledPower(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PowerProfiledPower", parent_mo_or_dn, **kwargs)
-

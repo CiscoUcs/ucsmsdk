@@ -1,12 +1,11 @@
 """This module contains the general information for LsServerFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsServerFsmStageConsts():
+class LsServerFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_CONFIGURE_ANALYZE_IMPACT = "ConfigureAnalyzeImpact"
     NAME_CONFIGURE_APPLY_CONFIG = "ConfigureApplyConfig"
@@ -99,4 +98,3 @@ class LsServerFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LsServerFsmStage", parent_mo_or_dn, **kwargs)
-

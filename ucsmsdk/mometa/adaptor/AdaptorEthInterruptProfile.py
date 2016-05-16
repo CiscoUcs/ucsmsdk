@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorEthInterruptProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorEthInterruptProfileConsts():
+class AdaptorEthInterruptProfileConsts:
     COALESCING_TYPE_IDLE = "idle"
     COALESCING_TYPE_MIN = "min"
     MODE_INTX = "intx"
@@ -57,4 +56,3 @@ class AdaptorEthInterruptProfile(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorEthInterruptProfile", parent_mo_or_dn, **kwargs)
-

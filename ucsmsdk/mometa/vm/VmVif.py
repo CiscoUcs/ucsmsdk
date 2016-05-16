@@ -1,12 +1,11 @@
 """This module contains the general information for VmVif ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VmVifConsts():
+class VmVifConsts:
     LINK_STATE_ADMIN_DOWN = "admin-down"
     LINK_STATE_DOWN = "down"
     LINK_STATE_ERROR = "error"
@@ -108,4 +107,3 @@ class VmVif(ManagedObject):
         self.vc_dn = None
 
         ManagedObject.__init__(self, "VmVif", parent_mo_or_dn, **kwargs)
-

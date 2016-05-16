@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugLogControlEpFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugLogControlEpFsmStageConsts():
+class SysdebugLogControlEpFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_LOG_CONTROL_PERSIST_BEGIN = "LogControlPersistBegin"
     NAME_LOG_CONTROL_PERSIST_FAIL = "LogControlPersistFail"
@@ -72,4 +71,3 @@ class SysdebugLogControlEpFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugLogControlEpFsmStage", parent_mo_or_dn, **kwargs)
-

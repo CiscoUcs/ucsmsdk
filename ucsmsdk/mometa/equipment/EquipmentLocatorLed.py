@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentLocatorLed ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentLocatorLedConsts():
+class EquipmentLocatorLedConsts:
     ADMIN_STATE_INACTIVE = "inactive"
     ADMIN_STATE_OFF = "off"
     ADMIN_STATE_ON = "on"
@@ -263,4 +262,3 @@ class EquipmentLocatorLed(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentLocatorLed", parent_mo_or_dn, **kwargs)
-

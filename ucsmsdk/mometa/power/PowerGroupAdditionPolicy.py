@@ -1,12 +1,11 @@
 """This module contains the general information for PowerGroupAdditionPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PowerGroupAdditionPolicyConsts():
+class PowerGroupAdditionPolicyConsts:
     ACTION_NOTHING = "nothing"
     ACTION_STOP_BLADE_DISC = "stop-blade-disc"
     ACTION_THROTTLE_BLADE_DISC = "throttle-blade-disc"
@@ -65,4 +64,3 @@ class PowerGroupAdditionPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PowerGroupAdditionPolicy", parent_mo_or_dn, **kwargs)
-

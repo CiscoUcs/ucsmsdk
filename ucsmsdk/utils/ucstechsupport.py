@@ -57,7 +57,8 @@ def get_ucs_tech_support(handle,
                               Can be 'all'.
         remove_from_ucs (bool): True/False,
                                 False - by default
-                                TechSupport will be removed from server, if True
+                                if True, TechSupport will be removed from
+                                server
         download_techsupp (bool): True/False,
                                     True - by default
                                     Download the TechSupport file, if True
@@ -149,7 +150,7 @@ def get_ucs_tech_support(handle,
 
     from ..mometa.top.TopSystem import TopSystem
     from ..mometa.sysdebug.SysdebugTechSupport import SysdebugTechSupport, \
-                                                    SysdebugTechSupportConsts
+        SysdebugTechSupportConsts
     from ..mometa.sysdebug.SysdebugTechSupFileRepository import \
         SysdebugTechSupFileRepository
     from ..mometa.sysdebug.SysdebugTechSupportCmdOpt import \
@@ -223,7 +224,7 @@ def get_ucs_tech_support(handle,
     elif fex_id is not None:
         sys_debug_tech_support_cmd_opt.fab_ext_id = str(iom_id)
         sys_debug_tech_support_cmd_opt.major_opt_type = \
-                SysdebugTechSupportCmdOptConsts.MAJOR_OPT_TYPE_FEX
+            SysdebugTechSupportCmdOptConsts.MAJOR_OPT_TYPE_FEX
 
     handle.add_mo(sys_debug_tech_support)
     handle.commit()
@@ -233,6 +234,7 @@ def get_ucs_tech_support(handle,
     poll_interval = 2
     status = False
 
+    tech_support = None
     while True:
         tech_support = handle.query_dn(sys_debug_tech_support.dn)
         if tech_support.oper_state == \

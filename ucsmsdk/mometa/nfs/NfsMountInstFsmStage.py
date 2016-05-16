@@ -1,12 +1,11 @@
 """This module contains the general information for NfsMountInstFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class NfsMountInstFsmStageConsts():
+class NfsMountInstFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_MOUNT_BEGIN = "MountBegin"
     NAME_MOUNT_FAIL = "MountFail"
@@ -79,4 +78,3 @@ class NfsMountInstFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "NfsMountInstFsmStage", parent_mo_or_dn, **kwargs)
-

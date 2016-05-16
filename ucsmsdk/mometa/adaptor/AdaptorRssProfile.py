@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorRssProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorRssProfileConsts():
+class AdaptorRssProfileConsts:
     RECEIVE_SIDE_SCALING_DISABLED = "disabled"
     RECEIVE_SIDE_SCALING_ENABLED = "enabled"
 
@@ -45,4 +44,3 @@ class AdaptorRssProfile(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorRssProfile", parent_mo_or_dn, **kwargs)
-

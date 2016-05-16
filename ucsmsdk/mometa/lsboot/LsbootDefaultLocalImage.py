@@ -1,12 +1,11 @@
 """This module contains the general information for LsbootDefaultLocalImage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsbootDefaultLocalImageConsts():
+class LsbootDefaultLocalImageConsts:
     TYPE_EMBEDDED_LOCAL_JBOD = "embedded-local-jbod"
     TYPE_EMBEDDED_LOCAL_LUN = "embedded-local-lun"
     TYPE_LOCAL_ANY = "local-any"
@@ -57,4 +56,3 @@ class LsbootDefaultLocalImage(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "LsbootDefaultLocalImage", parent_mo_or_dn, **kwargs)
-

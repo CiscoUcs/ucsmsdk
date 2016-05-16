@@ -1,12 +1,11 @@
 """This module contains the general information for StorageFlexFlashControllerFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageFlexFlashControllerFsmConsts():
+class StorageFlexFlashControllerFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_MOPS_FORMAT = "MOpsFormat"
     CURRENT_FSM_MOPS_PAIR = "MOpsPair"
@@ -208,4 +207,3 @@ class StorageFlexFlashControllerFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StorageFlexFlashControllerFsm", parent_mo_or_dn, **kwargs)
-

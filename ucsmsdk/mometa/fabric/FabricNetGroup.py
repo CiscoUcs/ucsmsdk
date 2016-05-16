@@ -1,12 +1,11 @@
 """This module contains the general information for FabricNetGroup ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricNetGroupConsts():
+class FabricNetGroupConsts:
     ASSIGNMENT_ORDER_DEFAULT = "default"
     ASSIGNMENT_ORDER_SEQUENTIAL = "sequential"
     INT_ID_NONE = "none"
@@ -100,4 +99,3 @@ class FabricNetGroup(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricNetGroup", parent_mo_or_dn, **kwargs)
-

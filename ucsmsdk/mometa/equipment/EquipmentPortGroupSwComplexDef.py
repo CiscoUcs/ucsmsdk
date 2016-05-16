@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentPortGroupSwComplexDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentPortGroupSwComplexDefConsts():
+class EquipmentPortGroupSwComplexDefConsts:
     ASIC_CARMEL = "carmel"
     ASIC_GATOS = "gatos"
     ASIC_TRIDENT2 = "trident2"
@@ -75,4 +74,3 @@ class EquipmentPortGroupSwComplexDef(ManagedObject):
         self.vif_capacity = None
 
         ManagedObject.__init__(self, "EquipmentPortGroupSwComplexDef", parent_mo_or_dn, **kwargs)
-

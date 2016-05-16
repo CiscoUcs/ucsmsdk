@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareImageFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareImageFsmConsts():
+class FirmwareImageFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_DELETE = "Delete"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class FirmwareImageFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareImageFsm", parent_mo_or_dn, **kwargs)
-

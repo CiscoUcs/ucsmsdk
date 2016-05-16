@@ -13,13 +13,12 @@
 
 """
 This is an auto-generated module.
-It contains supporting classes for Filter and External Method.
+It contains supporting classes for Filter.
 
-ClassFactory Method: It returns the object of type ManagedObject, ExternalMethod
-or supporting classes available in this module for a given className.
 """
 
 from .ucscore import BaseObject
+from . import ucsgenutils
 
 
 class Method(BaseObject):
@@ -27,7 +26,7 @@ class Method(BaseObject):
     def __init__(self, **kwargs):
         BaseObject.__init__(self, "Method", "method")
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
 
 
@@ -36,7 +35,7 @@ class MethodSet(BaseObject):
     def __init__(self, **kwargs):
         BaseObject.__init__(self, "MethodSet", "methodSet")
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
 
 
@@ -46,7 +45,7 @@ class ClassId(BaseObject):
         BaseObject.__init__(self, "ClassId", "classId")
         self.value = None
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
 
 
@@ -55,7 +54,7 @@ class ClassIdSet(BaseObject):
     def __init__(self, **kwargs):
         BaseObject.__init__(self, "ClassIdSet", "classIdSet")
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
 
 
@@ -64,7 +63,7 @@ class ConfigConfig(BaseObject):
     def __init__(self, **kwargs):
         BaseObject.__init__(self, "ConfigConfig", "configConfig")
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
 
 
@@ -73,7 +72,7 @@ class ConfigMap(BaseObject):
     def __init__(self, **kwargs):
         BaseObject.__init__(self, "ConfigMap", "configMap")
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
 
 
@@ -82,7 +81,7 @@ class ConfigSet(BaseObject):
     def __init__(self, **kwargs):
         BaseObject.__init__(self, "ConfigSet", "configSet")
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
 
 
@@ -92,7 +91,7 @@ class Dn(BaseObject):
         BaseObject.__init__(self, "Dn", "dn")
         self.value = None
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
 
 
@@ -101,7 +100,7 @@ class DnSet(BaseObject):
     def __init__(self, **kwargs):
         BaseObject.__init__(self, "DnSet", "dnSet")
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
 
 
@@ -110,7 +109,7 @@ class FilterFilter(BaseObject):
     def __init__(self, **kwargs):
         BaseObject.__init__(self, "FilterFilter", "filter")
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
 
 
@@ -120,7 +119,7 @@ class Id(BaseObject):
         BaseObject.__init__(self, "Id", "id")
         self.value = None
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
 
 
@@ -129,7 +128,7 @@ class IdSet(BaseObject):
     def __init__(self, **kwargs):
         BaseObject.__init__(self, "IdSet", "idSet")
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
 
 
@@ -139,6 +138,5 @@ class Pair(BaseObject):
         BaseObject.__init__(self, "Pair", "pair")
         self.key = None
         if kwargs:
-            for n,v in kwargs.iteritems():
+            for n, v in ucsgenutils.iteritems(kwargs):
                 self.attr_set(n, v)
-

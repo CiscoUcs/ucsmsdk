@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorMenloFcStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorMenloFcStatsHistConsts():
+class AdaptorMenloFcStatsHistConsts:
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -123,4 +122,3 @@ class AdaptorMenloFcStatsHist(ManagedObject):
         self.truncate_overrun_delta_min = None
 
         ManagedObject.__init__(self, "AdaptorMenloFcStatsHist", parent_mo_or_dn, **kwargs)
-

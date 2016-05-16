@@ -1,12 +1,11 @@
 """This module contains the general information for LstorageDiskGroupConfigDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LstorageDiskGroupConfigDefConsts():
+class LstorageDiskGroupConfigDefConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -72,4 +71,3 @@ class LstorageDiskGroupConfigDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LstorageDiskGroupConfigDef", parent_mo_or_dn, **kwargs)
-

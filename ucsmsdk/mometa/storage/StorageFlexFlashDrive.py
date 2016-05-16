@@ -1,12 +1,11 @@
 """This module contains the general information for StorageFlexFlashDrive ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageFlexFlashDriveConsts():
+class StorageFlexFlashDriveConsts:
     RWTYPE_READ_ONLY = "read_only"
     RWTYPE_READ_WRITE = "read_write"
     BLOCK_SIZE_UNKNOWN = "unknown"
@@ -209,4 +208,3 @@ class StorageFlexFlashDrive(ManagedObject):
         self.visible = None
 
         ManagedObject.__init__(self, "StorageFlexFlashDrive", parent_mo_or_dn, **kwargs)
-

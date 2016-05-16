@@ -1,12 +1,11 @@
 """This module contains the general information for LsServerExtension ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsServerExtensionConsts():
+class LsServerExtensionConsts:
     pass
 
 
@@ -53,4 +52,3 @@ class LsServerExtension(ManagedObject):
         self.vlan_grp_request_compute_time = None
 
         ManagedObject.__init__(self, "LsServerExtension", parent_mo_or_dn, **kwargs)
-

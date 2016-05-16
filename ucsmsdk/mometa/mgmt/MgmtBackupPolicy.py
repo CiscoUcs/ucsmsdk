@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtBackupPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtBackupPolicyConsts():
+class MgmtBackupPolicyConsts:
     ADMIN_STATE_DISABLE = "disable"
     ADMIN_STATE_ENABLE = "enable"
     FSM_PREV_REPORT_CONFIG_COPY_BEGIN = "ReportConfigCopyBegin"
@@ -268,4 +267,3 @@ class MgmtBackupPolicy(ManagedObject):
         self.user = None
 
         ManagedObject.__init__(self, "MgmtBackupPolicy", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugManualCoreFileExportTargetFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugManualCoreFileExportTargetFsmStageConsts():
+class SysdebugManualCoreFileExportTargetFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_EXPORT_BEGIN = "ExportBegin"
     NAME_EXPORT_EXECUTE = "ExportExecute"
@@ -71,4 +70,3 @@ class SysdebugManualCoreFileExportTargetFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugManualCoreFileExportTargetFsmStage", parent_mo_or_dn, **kwargs)
-

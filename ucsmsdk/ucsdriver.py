@@ -102,6 +102,7 @@ class UcsDriver(object):
         self.__proxy = proxy
         self.__headers = {}
         self.__handlers = self.__get_handlers()
+        self.__redirect = False
 
     def __get_handlers(self):
         """

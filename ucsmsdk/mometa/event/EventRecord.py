@@ -1,12 +1,11 @@
 """This module contains the general information for EventRecord ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EventRecordConsts():
+class EventRecordConsts:
     CAUSE_A_FAILED = "a-failed"
     CAUSE_ACTIVATE_ADAPTOR_NW_FW_LOCAL_FAILED = "activate-adaptor-nw-fw-local-failed"
     CAUSE_ACTIVATE_ADAPTOR_NW_FW_PEER_FAILED = "activate-adaptor-nw-fw-peer-failed"
@@ -5626,4 +5625,3 @@ class EventRecord(ManagedObject):
         self.user = None
 
         ManagedObject.__init__(self, "EventRecord", parent_mo_or_dn, **kwargs)
-

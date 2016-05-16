@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorExtEthIfPc ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorExtEthIfPcConsts():
+class AdaptorExtEthIfPcConsts:
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
     IF_ROLE_FCOE_STORAGE = "fcoe-storage"
@@ -123,4 +122,3 @@ class AdaptorExtEthIfPc(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "AdaptorExtEthIfPc", parent_mo_or_dn, **kwargs)
-

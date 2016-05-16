@@ -1,12 +1,11 @@
 """This module contains the general information for EtherPIoEndPoint ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherPIoEndPointConsts():
+class EtherPIoEndPointConsts:
     EP_CLOUD_TYPE_LAN = "lan"
     EP_CLOUD_TYPE_SAN = "san"
     EP_CLOUD_TYPE_UNCLASSIFIED = "unclassified"
@@ -52,4 +51,3 @@ class EtherPIoEndPoint(ManagedObject):
         self.usr_lbl = None
 
         ManagedObject.__init__(self, "EtherPIoEndPoint", parent_mo_or_dn, **kwargs)
-

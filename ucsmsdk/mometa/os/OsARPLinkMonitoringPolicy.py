@@ -1,12 +1,11 @@
 """This module contains the general information for OsARPLinkMonitoringPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class OsARPLinkMonitoringPolicyConsts():
+class OsARPLinkMonitoringPolicyConsts:
     USE_ALL_ARPTARGETS_FALSE = "false"
     USE_ALL_ARPTARGETS_NO = "no"
     USE_ALL_ARPTARGETS_TRUE = "true"
@@ -53,4 +52,3 @@ class OsARPLinkMonitoringPolicy(ManagedObject):
         self.use_all_arp_targets = None
 
         ManagedObject.__init__(self, "OsARPLinkMonitoringPolicy", parent_mo_or_dn, **kwargs)
-

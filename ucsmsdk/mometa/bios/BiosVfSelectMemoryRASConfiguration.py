@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfSelectMemoryRASConfiguration ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfSelectMemoryRASConfigurationConsts():
+class BiosVfSelectMemoryRASConfigurationConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_SELECT_MEMORY_RASCONFIGURATION_LOCKSTEP = "lockstep"
@@ -57,4 +56,3 @@ class BiosVfSelectMemoryRASConfiguration(ManagedObject):
         self.vp_select_memory_ras_configuration = None
 
         ManagedObject.__init__(self, "BiosVfSelectMemoryRASConfiguration", parent_mo_or_dn, **kwargs)
-

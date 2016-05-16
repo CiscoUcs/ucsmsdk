@@ -1,12 +1,11 @@
 """This module contains the general information for LicenseServerHostId ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LicenseServerHostIdConsts():
+class LicenseServerHostIdConsts:
     SCOPE_A = "A"
     SCOPE_B = "B"
     SCOPE_SERVER = "server"
@@ -50,4 +49,3 @@ class LicenseServerHostId(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LicenseServerHostId", parent_mo_or_dn, **kwargs)
-

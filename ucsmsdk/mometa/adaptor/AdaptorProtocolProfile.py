@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorProtocolProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorProtocolProfileConsts():
+class AdaptorProtocolProfileConsts:
     BOOT_TO_TARGET_FALSE = "false"
     BOOT_TO_TARGET_NO = "no"
     BOOT_TO_TARGET_TRUE = "true"
@@ -70,4 +69,3 @@ class AdaptorProtocolProfile(ManagedObject):
         self.tcp_time_stamp = None
 
         ManagedObject.__init__(self, "AdaptorProtocolProfile", parent_mo_or_dn, **kwargs)
-

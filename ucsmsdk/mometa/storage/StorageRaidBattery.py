@@ -1,12 +1,11 @@
 """This module contains the general information for StorageRaidBattery ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageRaidBatteryConsts():
+class StorageRaidBatteryConsts:
     BATTERY_TYPE_BATTERY = "battery"
     BATTERY_TYPE_SUPERCAP = "supercap"
     BATTERY_TYPE_UNKNOWN = "unknown"
@@ -190,4 +189,3 @@ class StorageRaidBattery(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "StorageRaidBattery", parent_mo_or_dn, **kwargs)
-

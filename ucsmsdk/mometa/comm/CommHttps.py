@@ -1,12 +1,11 @@
 """This module contains the general information for CommHttps ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CommHttpsConsts():
+class CommHttpsConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     CIPHER_SUITE_MODE_CUSTOM = "custom"
@@ -90,4 +89,3 @@ class CommHttps(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CommHttps", parent_mo_or_dn, **kwargs)
-

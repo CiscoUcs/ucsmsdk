@@ -1,12 +1,11 @@
 """This module contains the general information for StorageVDMemberEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageVDMemberEpConsts():
+class StorageVDMemberEpConsts:
     CONFIG_QUAL_ADD = "add"
     CONFIG_QUAL_NO_ACTION = "no-action"
     CONFIG_QUAL_REMOVE = "remove"
@@ -155,4 +154,3 @@ class StorageVDMemberEp(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "StorageVDMemberEp", parent_mo_or_dn, **kwargs)
-

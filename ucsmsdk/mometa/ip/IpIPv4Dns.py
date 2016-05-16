@@ -1,12 +1,11 @@
 """This module contains the general information for IpIPv4Dns ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IpIPv4DnsConsts():
+class IpIPv4DnsConsts:
     PREF_ALTERNATE = "alternate"
     PREF_PREFERRED = "preferred"
 
@@ -54,4 +53,3 @@ class IpIPv4Dns(ManagedObject):
         self.subnet = None
 
         ManagedObject.__init__(self, "IpIPv4Dns", parent_mo_or_dn, **kwargs)
-

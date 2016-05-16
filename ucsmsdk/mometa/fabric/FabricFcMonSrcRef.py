@@ -1,12 +1,11 @@
 """This module contains the general information for FabricFcMonSrcRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricFcMonSrcRefConsts():
+class FabricFcMonSrcRefConsts:
     SOURCE_TYPE_PORT_CHANNEL = "port-channel"
     SOURCE_TYPE_STORAGE = "storage"
     SOURCE_TYPE_UPLINK_PORT = "uplink-port"
@@ -57,4 +56,3 @@ class FabricFcMonSrcRef(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricFcMonSrcRef", parent_mo_or_dn, **kwargs)
-

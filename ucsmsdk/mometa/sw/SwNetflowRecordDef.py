@@ -1,12 +1,11 @@
 """This module contains the general information for SwNetflowRecordDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwNetflowRecordDefConsts():
+class SwNetflowRecordDefConsts:
     KEY_TYPE_IPV4KEYS = "ipv4keys"
     KEY_TYPE_IPV6KEYS = "ipv6keys"
     KEY_TYPE_L2KEYS = "l2keys"
@@ -86,4 +85,3 @@ class SwNetflowRecordDef(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "SwNetflowRecordDef", parent_mo_or_dn, **kwargs)
-

@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeUpdateApeFirmwareParamTable ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -18,4 +17,3 @@ prop_map = {
     "inIpAddr": "in_ip_addr",
     "inVersion": "in_version",
 }
-

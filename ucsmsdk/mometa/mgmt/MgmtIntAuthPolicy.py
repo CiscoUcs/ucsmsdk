@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtIntAuthPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtIntAuthPolicyConsts():
+class MgmtIntAuthPolicyConsts:
     METHOD_NONE = "none"
     METHOD_PASSWORD = "password"
 
@@ -51,4 +50,3 @@ class MgmtIntAuthPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtIntAuthPolicy", parent_mo_or_dn, **kwargs)
-

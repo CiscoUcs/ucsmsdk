@@ -1,12 +1,11 @@
 """This module contains the general information for StorageLocalDiskConfigDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageLocalDiskConfigDefConsts():
+class StorageLocalDiskConfigDefConsts:
     FLEX_FLASH_RAIDREPORTING_STATE_DISABLE = "disable"
     FLEX_FLASH_RAIDREPORTING_STATE_ENABLE = "enable"
     FLEX_FLASH_STATE_DISABLE = "disable"
@@ -96,4 +95,3 @@ class StorageLocalDiskConfigDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StorageLocalDiskConfigDef", parent_mo_or_dn, **kwargs)
-

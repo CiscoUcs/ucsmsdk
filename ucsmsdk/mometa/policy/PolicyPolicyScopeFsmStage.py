@@ -1,12 +1,11 @@
 """This module contains the general information for PolicyPolicyScopeFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PolicyPolicyScopeFsmStageConsts():
+class PolicyPolicyScopeFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_RELEASE_ALL_OPERATION_FSM_BEGIN = "ReleaseAllOperationFsmBegin"
     NAME_RELEASE_ALL_OPERATION_FSM_FAIL = "ReleaseAllOperationFsmFail"
@@ -127,4 +126,3 @@ class PolicyPolicyScopeFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PolicyPolicyScopeFsmStage", parent_mo_or_dn, **kwargs)
-

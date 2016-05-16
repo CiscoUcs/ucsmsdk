@@ -1,12 +1,11 @@
 """This module contains the general information for StorageEnclosure ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageEnclosureConsts():
+class StorageEnclosureConsts:
     LC_ALLOCATED = "allocated"
     LC_AVAILABLE = "available"
     LC_DEALLOCATED = "deallocated"
@@ -68,4 +67,3 @@ class StorageEnclosure(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "StorageEnclosure", parent_mo_or_dn, **kwargs)
-

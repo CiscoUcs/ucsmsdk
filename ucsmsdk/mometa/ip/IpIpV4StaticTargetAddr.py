@@ -1,12 +1,11 @@
 """This module contains the general information for IpIpV4StaticTargetAddr ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IpIpV4StaticTargetAddrConsts():
+class IpIpV4StaticTargetAddrConsts:
     pass
 
 
@@ -50,4 +49,3 @@ class IpIpV4StaticTargetAddr(ManagedObject):
         self.subnet = None
 
         ManagedObject.__init__(self, "IpIpV4StaticTargetAddr", parent_mo_or_dn, **kwargs)
-

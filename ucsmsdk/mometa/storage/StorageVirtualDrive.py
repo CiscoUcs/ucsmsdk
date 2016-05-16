@@ -1,12 +1,11 @@
 """This module contains the general information for StorageVirtualDrive ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageVirtualDriveConsts():
+class StorageVirtualDriveConsts:
     ACCESS_POLICY_BLOCKED = "blocked"
     ACCESS_POLICY_READ_ONLY = "read-only"
     ACCESS_POLICY_READ_WRITE = "read-write"
@@ -291,4 +290,3 @@ class StorageVirtualDrive(ManagedObject):
         self.vendor_uuid = None
 
         ManagedObject.__init__(self, "StorageVirtualDrive", parent_mo_or_dn, **kwargs)
-

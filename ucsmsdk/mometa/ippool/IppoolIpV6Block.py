@@ -1,12 +1,11 @@
 """This module contains the general information for IppoolIpV6Block ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IppoolIpV6BlockConsts():
+class IppoolIpV6BlockConsts:
     pass
 
 
@@ -59,4 +58,3 @@ class IppoolIpV6Block(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "IppoolIpV6Block", parent_mo_or_dn, **kwargs)
-

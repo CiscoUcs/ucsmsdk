@@ -1,12 +1,11 @@
 """This module contains the general information for SwCardEnvStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwCardEnvStatsConsts():
+class SwCardEnvStatsConsts:
     SLOT_OUTLET1_NOT_APPLICABLE = "not-applicable"
     SLOT_OUTLET1_AVG_NOT_APPLICABLE = "not-applicable"
     SLOT_OUTLET1_MAX_NOT_APPLICABLE = "not-applicable"
@@ -107,4 +106,3 @@ class SwCardEnvStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "SwCardEnvStats", parent_mo_or_dn, **kwargs)
-

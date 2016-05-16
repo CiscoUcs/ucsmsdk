@@ -1,12 +1,11 @@
 """This module contains the general information for ApeSdr ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApeSdrConsts():
+class ApeSdrConsts:
     EVENT_READING_TYPE_DISCRETE_ACPI_POWER = "DISCRETE_ACPI_POWER"
     EVENT_READING_TYPE_DISCRETE_AVAILABILITY = "DISCRETE_AVAILABILITY"
     EVENT_READING_TYPE_DISCRETE_DEVICE_ENABLE = "DISCRETE_DEVICE_ENABLE"
@@ -229,4 +228,3 @@ class ApeSdr(ManagedObject):
         self.units = None
 
         ManagedObject.__init__(self, "ApeSdr", parent_mo_or_dn, **kwargs)
-

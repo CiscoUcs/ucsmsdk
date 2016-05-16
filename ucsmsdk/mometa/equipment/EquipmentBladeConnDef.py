@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentBladeConnDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentBladeConnDefConsts():
+class EquipmentBladeConnDefConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -77,4 +76,3 @@ class EquipmentBladeConnDef(ManagedObject):
         self.switch_port_mux_offset = None
 
         ManagedObject.__init__(self, "EquipmentBladeConnDef", parent_mo_or_dn, **kwargs)
-

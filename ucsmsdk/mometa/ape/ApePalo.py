@@ -1,12 +1,11 @@
 """This module contains the general information for ApePalo ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApePaloConsts():
+class ApePaloConsts:
     TYPE_MENLO = "Menlo"
     TYPE_OPLIN = "Oplin"
     TYPE_PALO = "Palo"
@@ -80,4 +79,3 @@ class ApePalo(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "ApePalo", parent_mo_or_dn, **kwargs)
-

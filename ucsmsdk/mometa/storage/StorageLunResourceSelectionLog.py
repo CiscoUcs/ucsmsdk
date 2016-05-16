@@ -1,12 +1,11 @@
 """This module contains the general information for StorageLunResourceSelectionLog ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageLunResourceSelectionLogConsts():
+class StorageLunResourceSelectionLogConsts:
     DECISION_TYPE_AFFINITY = "affinity"
     DECISION_TYPE_DEDICATED_HOT_SPARE = "dedicated-hot-spare"
     DECISION_TYPE_GLOBAL_HOT_SPARE = "global-hot-spare"
@@ -74,4 +73,3 @@ class StorageLunResourceSelectionLog(ManagedObject):
         self.time_stamp = None
 
         ManagedObject.__init__(self, "StorageLunResourceSelectionLog", parent_mo_or_dn, **kwargs)
-

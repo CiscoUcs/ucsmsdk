@@ -1,12 +1,11 @@
 """This module contains the general information for EtherTxStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherTxStatsHistConsts():
+class EtherTxStatsHistConsts:
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -153,4 +152,3 @@ class EtherTxStatsHist(ManagedObject):
         self.unicast_packets_delta_min = None
 
         ManagedObject.__init__(self, "EtherTxStatsHist", parent_mo_or_dn, **kwargs)
-

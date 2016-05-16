@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeSetServerLifeCycle ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "inFruVendor": "in_fru_vendor",
     "inServerLc": "in_server_lc",
 }
-

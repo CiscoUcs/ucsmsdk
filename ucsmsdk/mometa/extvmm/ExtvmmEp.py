@@ -1,12 +1,11 @@
 """This module contains the general information for ExtvmmEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtvmmEpConsts():
+class ExtvmmEpConsts:
     FSM_PREV_CLUSTER_ROLE_BEGIN = "clusterRoleBegin"
     FSM_PREV_CLUSTER_ROLE_FAIL = "clusterRoleFail"
     FSM_PREV_CLUSTER_ROLE_SET_LOCAL = "clusterRoleSetLocal"
@@ -215,4 +214,3 @@ class ExtvmmEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtvmmEp", parent_mo_or_dn, **kwargs)
-

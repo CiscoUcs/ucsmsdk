@@ -1,12 +1,11 @@
 """This module contains the general information for SwFcSanBorder ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwFcSanBorderConsts():
+class SwFcSanBorderConsts:
     FSM_PREV_ACTIVATE_ZONE_SET_BEGIN = "ActivateZoneSetBegin"
     FSM_PREV_ACTIVATE_ZONE_SET_FAIL = "ActivateZoneSetFail"
     FSM_PREV_ACTIVATE_ZONE_SET_SUCCESS = "ActivateZoneSetSuccess"
@@ -241,4 +240,3 @@ class SwFcSanBorder(ManagedObject):
         self.uplink_trunking = None
 
         ManagedObject.__init__(self, "SwFcSanBorder", parent_mo_or_dn, **kwargs)
-

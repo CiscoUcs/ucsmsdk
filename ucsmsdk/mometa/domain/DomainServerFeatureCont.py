@@ -1,12 +1,11 @@
 """This module contains the general information for DomainServerFeatureCont ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class DomainServerFeatureContConsts():
+class DomainServerFeatureContConsts:
     pass
 
 
@@ -44,4 +43,3 @@ class DomainServerFeatureCont(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "DomainServerFeatureCont", parent_mo_or_dn, **kwargs)
-

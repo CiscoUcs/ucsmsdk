@@ -1,12 +1,11 @@
 """This module contains the general information for SwZoneTargetMember ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwZoneTargetMemberConsts():
+class SwZoneTargetMemberConsts:
     LC_ALLOCATED = "allocated"
     LC_AVAILABLE = "available"
     LC_DEALLOCATED = "deallocated"
@@ -59,4 +58,3 @@ class SwZoneTargetMember(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwZoneTargetMember", parent_mo_or_dn, **kwargs)
-

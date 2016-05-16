@@ -89,7 +89,9 @@ def get_ucs_obj(class_id, elem, mo_obj=None):
     elif mo_obj:
         p_dn = mo_obj.dn
 
-    mo_obj = ucsmo.GenericMo(class_id=elem.tag, parent_mo_or_dn=p_dn, **elem.attrib)
+    mo_obj = ucsmo.GenericMo(class_id=elem.tag,
+                             parent_mo_or_dn=p_dn,
+                             **elem.attrib)
     return mo_obj
 
 
@@ -142,7 +144,7 @@ def load_class(class_id):
         mo_class = getattr(mo_module, class_id)
         return mo_class
     elif class_id and class_id in METHOD_CLASS_ID:
-        mo_import = methodmeta.__name__ + ".%sMeta" % (class_id)
+        mo_import = methodmeta.__name__ + ".%sMeta" % class_id
         method_meta = __import__(mo_import, globals(), locals(),
                                  [class_id])
         return getattr(method_meta, class_id)
@@ -282,7 +284,8 @@ def extract_molist_from_method_response(method_response,
 
     Example:
         response = handle.query_dn("org-root", need_response=True)\n
-        molist = extract_molist_from_method_response(method_response=response, in_hierarchical=True)
+        molist = extract_molist_from_method_response(method_response=response,
+                 in_hierarchical=True)
     """
 
     mo_list = []
@@ -307,8 +310,8 @@ def extract_molist_from_method_response(method_response,
     return mo_list
 
 
-def write_mo_tree(mo, level=0, break_level=None, show_level=[],
-                  print_tree=True, tree_dict={}, dn=None):
+def write_mo_tree(mo, level=0, break_level=None, show_level=None,
+                  print_tree=True, tree_dict=None, dn=None):
     """
     Prints tree structure of any managed object
 
@@ -328,6 +331,12 @@ def write_mo_tree(mo, level=0, break_level=None, show_level=[],
         mo=handle.query_dn("org-root")\n
         tree_dict = write_mo_tree(mo, break_level=3, show_level=[1, 3])\n
     """
+
+    if show_level is None:
+        show_level = []
+
+    if tree_dict is None:
+        tree_dict = {}
 
     if not mo.dn:
         mo.dn = dn
@@ -383,12 +392,11 @@ def write_mo_tree(mo, level=0, break_level=None, show_level=[],
     return tree_dict
 
 
-
 def extract_mo_tree_from_config_method_response(method_response,
                                                 break_level=None,
-                                                show_level=[],
+                                                show_level=None,
                                                 print_tree=False,
-                                                tree_dict={}):
+                                                tree_dict=None):
     """
     extracts tree structure of any managed object from config method response
 
@@ -407,6 +415,12 @@ def extract_mo_tree_from_config_method_response(method_response,
         tree_dict = write_mo_tree(response, break_level=3, show_level=[1, 3])\n
     """
 
+    if show_level is None:
+        show_level = []
+
+    if tree_dict is None:
+        tree_dict = {}
+
     current_mo_list = method_response.out_configs.child
     for current_mo in current_mo_list:
         level = 0
@@ -416,7 +430,7 @@ def extract_mo_tree_from_config_method_response(method_response,
     return tree_dict
 
 
-def print_mo_hierarchy(class_id, level=0, break_level=None, show_level=[]):
+def print_mo_hierarchy(class_id, level=0, break_level=None, show_level=None):
     """
     print hierarchy of class_id
 
@@ -433,6 +447,9 @@ def print_mo_hierarchy(class_id, level=0, break_level=None, show_level=[]):
         response=handle.query_dn("org-root", need_response=True)\n
         tree_dict = write_mo_tree(response, break_level=3, show_level=[1, 3])\n
     """
+
+    if show_level is None:
+        show_level = []
 
     indent = " "
     level_indent = "%s%s)" % (indent * level, level)
@@ -471,7 +488,8 @@ def get_naming_props(rn_str, rn_pattern):
         dictionary
 
     Example:
-        naming_props = get_naming_props(rn_str="ls-test_sp", rn_pattern="ls-[name]")
+        naming_props = get_naming_props(rn_str="ls-test_sp",
+                                        rn_pattern="ls-[name]")
     """
 
     rn_regex = re.sub(r"\[(.+?)\]", r"(?P<\1>.+)", rn_pattern)
@@ -530,7 +548,10 @@ class ClassIdMeta(object):
 
 
 def _show_tree(class_id, break_level=None, level=0, ancestor_str="",
-               ancestor=[], last_child=True):
+               ancestor=None, last_child=True):
+
+    if ancestor is None:
+        ancestor = []
 
     meta_class_id = ucsgenutils.word_u(class_id)
 

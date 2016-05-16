@@ -1,12 +1,11 @@
 """This module contains the general information for VnicRackServerDiscoveryProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicRackServerDiscoveryProfileConsts():
+class VnicRackServerDiscoveryProfileConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -62,4 +61,3 @@ class VnicRackServerDiscoveryProfile(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "VnicRackServerDiscoveryProfile", parent_mo_or_dn, **kwargs)
-

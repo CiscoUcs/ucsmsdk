@@ -1,12 +1,11 @@
 """This module contains the general information for ClitestTypeTest2 ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ClitestTypeTest2Consts():
+class ClitestTypeTest2Consts:
     A_PARTIAL_ENUM_DEFAULT = "default"
     A_PARTIAL_ENUM_UNTAGGED = "untagged"
     FILE_PROTO_FTP = "ftp"
@@ -82,4 +81,3 @@ class ClitestTypeTest2(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ClitestTypeTest2", **kwargs)
-

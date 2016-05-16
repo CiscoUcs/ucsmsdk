@@ -1,12 +1,11 @@
 """This module contains the general information for SwPhys ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwPhysConsts():
+class SwPhysConsts:
     CONF_MODE_FAILED = "failed"
     CONF_MODE_IN_PROGRESS = "in-progress"
     CONF_MODE_NONE = "none"
@@ -225,4 +224,3 @@ class SwPhys(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwPhys", parent_mo_or_dn, **kwargs)
-

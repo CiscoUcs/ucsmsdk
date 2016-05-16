@@ -1,12 +1,11 @@
 """This module contains the general information for FsmStatus ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FsmStatusConsts():
+class FsmStatusConsts:
     STATE_FAIL = "fail"
     STATE_IN_PROGRESS = "inProgress"
     STATE_NOP = "nop"
@@ -65,4 +64,3 @@ class FsmStatus(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FsmStatus", parent_mo_or_dn, **kwargs)
-

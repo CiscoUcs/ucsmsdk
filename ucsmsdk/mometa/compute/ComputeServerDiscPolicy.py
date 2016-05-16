@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeServerDiscPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeServerDiscPolicyConsts():
+class ComputeServerDiscPolicyConsts:
     ACTION_DIAG = "diag"
     ACTION_IMMEDIATE = "immediate"
     ACTION_USER_ACKNOWLEDGED = "user-acknowledged"
@@ -241,4 +240,3 @@ class ComputeServerDiscPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeServerDiscPolicy", parent_mo_or_dn, **kwargs)
-

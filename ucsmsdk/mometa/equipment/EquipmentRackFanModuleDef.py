@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentRackFanModuleDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentRackFanModuleDefConsts():
+class EquipmentRackFanModuleDefConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -62,4 +61,3 @@ class EquipmentRackFanModuleDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentRackFanModuleDef", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugAutoCoreFileExportTarget ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugAutoCoreFileExportTargetConsts():
+class SysdebugAutoCoreFileExportTargetConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     EXPORT_STATUS_FAILURE = "failure"
@@ -268,4 +267,3 @@ class SysdebugAutoCoreFileExportTarget(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugAutoCoreFileExportTarget", parent_mo_or_dn, **kwargs)
-

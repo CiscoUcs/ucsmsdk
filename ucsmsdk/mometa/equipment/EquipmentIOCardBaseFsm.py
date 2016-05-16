@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentIOCardBaseFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentIOCardBaseFsmConsts():
+class EquipmentIOCardBaseFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_FE_CONN = "FeConn"
     CURRENT_FSM_FE_PRESENCE = "FePresence"
@@ -207,4 +206,3 @@ class EquipmentIOCardBaseFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentIOCardBaseFsm", parent_mo_or_dn, **kwargs)
-

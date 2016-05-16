@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeBladeDiscPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeBladeDiscPolicyConsts():
+class ComputeBladeDiscPolicyConsts:
     ACTION_DIAG = "diag"
     ACTION_IMMEDIATE = "immediate"
     ACTION_USER_ACKNOWLEDGED = "user-acknowledged"
@@ -71,4 +70,3 @@ class ComputeBladeDiscPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeBladeDiscPolicy", parent_mo_or_dn, **kwargs)
-

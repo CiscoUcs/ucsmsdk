@@ -1,5 +1,4 @@
 """This module contains the meta information of ConfigGetEstimateImpact ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -26,4 +25,3 @@ prop_map = {
     "outAppImpactResponse": "out_app_impact_response",
     "outRetry": "out_retry",
 }
-

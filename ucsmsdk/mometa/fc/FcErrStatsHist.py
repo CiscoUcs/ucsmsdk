@@ -1,12 +1,11 @@
 """This module contains the general information for FcErrStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FcErrStatsHistConsts():
+class FcErrStatsHistConsts:
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -213,4 +212,3 @@ class FcErrStatsHist(ManagedObject):
         self.tx_delta_min = None
 
         ManagedObject.__init__(self, "FcErrStatsHist", parent_mo_or_dn, **kwargs)
-

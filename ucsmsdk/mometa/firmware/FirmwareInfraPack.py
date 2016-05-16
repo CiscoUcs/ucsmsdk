@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareInfraPack ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareInfraPackConsts():
+class FirmwareInfraPackConsts:
     FORCE_DEPLOY_FALSE = "false"
     FORCE_DEPLOY_NO = "no"
     FORCE_DEPLOY_TRUE = "true"
@@ -91,4 +90,3 @@ class FirmwareInfraPack(ManagedObject):
         self.update_trigger = None
 
         ManagedObject.__init__(self, "FirmwareInfraPack", parent_mo_or_dn, **kwargs)
-

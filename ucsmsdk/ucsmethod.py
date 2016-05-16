@@ -33,6 +33,7 @@ from .ucscore import UcsBase
 from . import ucscoreutils
 from . import ucsgenutils
 
+
 class ExternalMethod(UcsBase):
     """
     This class represents the UCS Central Xml api's query/configuration
@@ -120,10 +121,10 @@ class ExternalMethod(UcsBase):
         self.child_to_xml(xml_obj, option)
         return xml_obj
 
-    def from_xml(self, elem, handle=None):  # , handle, modify_self=False, mo=None):
+    def from_xml(self, elem, handle=None):
         """Method updates/fills the object from the xml representation
         of the external method object. """
-		
+
         self._handle = handle
         if elem.attrib:
             for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
@@ -150,14 +151,13 @@ class ExternalMethod(UcsBase):
                     method_prop_meta = self.__property_meta[
                         child_name]
                     if method_prop_meta.inp_out == "Output" and \
-                            (method_prop_meta.is_complex_type):
+                            method_prop_meta.is_complex_type:
                         child_obj = ucscoreutils.get_ucs_obj(
                             method_prop_meta.field_type,
                             child_elem)
                         if child_obj is not None:
                             self.set_attr(child_name,
                                           child_obj)
-                            # print child_method_obj.__dict__
                             child_obj.from_xml(child_elem, handle)
 
     def __str__(self):

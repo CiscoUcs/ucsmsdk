@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorUnitExtn ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorUnitExtnConsts():
+class AdaptorUnitExtnConsts:
     CHASSIS_ID_N_A = "N/A"
     OPER_STATE_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     OPER_STATE_AUTO_UPGRADE = "auto-upgrade"
@@ -215,4 +214,3 @@ class AdaptorUnitExtn(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "AdaptorUnitExtn", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareBootDefinition ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareBootDefinitionConsts():
+class FirmwareBootDefinitionConsts:
     TYPE_ADAPTOR = "adaptor"
     TYPE_BLADE_BIOS = "blade-bios"
     TYPE_BLADE_CONTROLLER = "blade-controller"
@@ -70,4 +69,3 @@ class FirmwareBootDefinition(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FirmwareBootDefinition", parent_mo_or_dn, **kwargs)
-

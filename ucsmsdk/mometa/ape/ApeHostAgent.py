@@ -1,12 +1,11 @@
 """This module contains the general information for ApeHostAgent ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApeHostAgentConsts():
+class ApeHostAgentConsts:
     CHASSIS_ID_N_A = "N/A"
     STATE_HALTING_HOSTOS = "HALTING_HOSTOS"
     STATE_HALTING_PNUOS = "HALTING_PNUOS"
@@ -60,4 +59,3 @@ class ApeHostAgent(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ApeHostAgent", parent_mo_or_dn, **kwargs)
-

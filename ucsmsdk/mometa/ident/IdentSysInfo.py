@@ -1,12 +1,11 @@
 """This module contains the general information for IdentSysInfo ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IdentSysInfoConsts():
+class IdentSysInfoConsts:
     IS_FIRST_SYNC_FALSE = "false"
     IS_FIRST_SYNC_NO = "no"
     IS_FIRST_SYNC_TRUE = "true"
@@ -67,4 +66,3 @@ class IdentSysInfo(ManagedObject):
         self.ucsc_generation = None
 
         ManagedObject.__init__(self, "IdentSysInfo", parent_mo_or_dn, **kwargs)
-

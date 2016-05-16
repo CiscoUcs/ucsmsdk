@@ -106,7 +106,10 @@ def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None,
     import base64
 
     if username is None:
-        username = raw_input("Username: ")
+        try:
+            username = raw_input("Username: ")
+        except:
+            username = input("Username: ")
     if password is None:
         password = getpass.getpass()
 

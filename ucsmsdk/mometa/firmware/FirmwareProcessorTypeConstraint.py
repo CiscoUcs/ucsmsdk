@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareProcessorTypeConstraint ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareProcessorTypeConstraintConsts():
+class FirmwareProcessorTypeConstraintConsts:
     pass
 
 
@@ -50,4 +49,3 @@ class FirmwareProcessorTypeConstraint(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareProcessorTypeConstraint", parent_mo_or_dn, **kwargs)
-

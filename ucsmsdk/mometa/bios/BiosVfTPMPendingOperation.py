@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfTPMPendingOperation ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfTPMPendingOperationConsts():
+class BiosVfTPMPendingOperationConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_TPMPENDING_OPERATION_NONE = "none"
@@ -57,4 +56,3 @@ class BiosVfTPMPendingOperation(ManagedObject):
         self.vp_tpm_pending_operation = None
 
         ManagedObject.__init__(self, "BiosVfTPMPendingOperation", parent_mo_or_dn, **kwargs)
-

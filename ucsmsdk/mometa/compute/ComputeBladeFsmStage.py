@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeBladeFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeBladeFsmStageConsts():
+class ComputeBladeFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_ACTIVATE_ADAPTOR_ACTIVATE_LOCAL = "ActivateAdaptorActivateLocal"
     NAME_ACTIVATE_ADAPTOR_ACTIVATE_PEER = "ActivateAdaptorActivatePeer"
@@ -672,4 +671,3 @@ class ComputeBladeFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeBladeFsmStage", parent_mo_or_dn, **kwargs)
-

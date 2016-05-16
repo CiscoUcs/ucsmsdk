@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeChassisConnPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeChassisConnPolicyConsts():
+class ComputeChassisConnPolicyConsts:
     ADMIN_STATE_GLOBAL = "global"
     ADMIN_STATE_NONE = "none"
     ADMIN_STATE_PORT_CHANNEL = "port-channel"
@@ -77,4 +76,3 @@ class ComputeChassisConnPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeChassisConnPolicy", parent_mo_or_dn, **kwargs)
-

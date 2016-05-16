@@ -1,12 +1,11 @@
 """This module contains the general information for TrigAbsWindow ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class TrigAbsWindowConsts():
+class TrigAbsWindowConsts:
     CONCUR_CAP_UNLIMITED = "unlimited"
     PROC_BREAK_NONE = "none"
     PROC_CAP_UNLIMITED = "unlimited"
@@ -72,4 +71,3 @@ class TrigAbsWindow(ManagedObject):
         self.time_capped = None
 
         ManagedObject.__init__(self, "TrigAbsWindow", parent_mo_or_dn, **kwargs)
-

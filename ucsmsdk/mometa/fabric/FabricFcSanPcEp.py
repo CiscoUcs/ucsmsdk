@@ -1,12 +1,11 @@
 """This module contains the general information for FabricFcSanPcEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricFcSanPcEpConsts():
+class FabricFcSanPcEpConsts:
     ADMIN_SPEED_16GBPS = "16gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
     ADMIN_SPEED_2GBPS = "2gbps"
@@ -181,4 +180,3 @@ class FabricFcSanPcEp(ManagedObject):
         self.warnings = None
 
         ManagedObject.__init__(self, "FabricFcSanPcEp", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfQPISnoopMode ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfQPISnoopModeConsts():
+class BiosVfQPISnoopModeConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_QPISNOOP_MODE_AUTO = "auto"
@@ -59,4 +58,3 @@ class BiosVfQPISnoopMode(ManagedObject):
         self.vp_qpi_snoop_mode = None
 
         ManagedObject.__init__(self, "BiosVfQPISnoopMode", parent_mo_or_dn, **kwargs)
-

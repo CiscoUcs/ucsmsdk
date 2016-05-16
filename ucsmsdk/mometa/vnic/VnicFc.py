@@ -1,12 +1,11 @@
 """This module contains the general information for VnicFc ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicFcConsts():
+class VnicFcConsts:
     ADDR_DERIVED = "derived"
     ADMIN_HOST_PORT_1 = "1"
     ADMIN_HOST_PORT_2 = "2"
@@ -213,4 +212,3 @@ class VnicFc(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "VnicFc", parent_mo_or_dn, **kwargs)
-

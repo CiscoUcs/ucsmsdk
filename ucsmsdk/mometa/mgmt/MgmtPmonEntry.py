@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtPmonEntry ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtPmonEntryConsts():
+class MgmtPmonEntryConsts:
     STATE_ERROR = "error"
     STATE_EXIT_PENDING = "exit_pending"
     STATE_FAILED = "failed"
@@ -88,4 +87,3 @@ class MgmtPmonEntry(ManagedObject):
         self.working_directory = None
 
         ManagedObject.__init__(self, "MgmtPmonEntry", parent_mo_or_dn, **kwargs)
-

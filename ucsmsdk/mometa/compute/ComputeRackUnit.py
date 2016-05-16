@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeRackUnit ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeRackUnitConsts():
+class ComputeRackUnitConsts:
     ADMIN_POWER_ADMIN_DOWN = "admin-down"
     ADMIN_POWER_ADMIN_UP = "admin-up"
     ADMIN_POWER_BMC_RESET_IMMEDIATE = "bmc-reset-immediate"
@@ -1656,4 +1655,3 @@ class ComputeRackUnit(ManagedObject):
         self.vid = None
 
         ManagedObject.__init__(self, "ComputeRackUnit", parent_mo_or_dn, **kwargs)
-

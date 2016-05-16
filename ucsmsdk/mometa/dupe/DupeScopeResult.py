@@ -1,12 +1,11 @@
 """This module contains the general information for DupeScopeResult ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class DupeScopeResultConsts():
+class DupeScopeResultConsts:
     SCOPE_STATUS_FAILURE = "failure"
     SCOPE_STATUS_SUCCESS = "success"
 
@@ -51,4 +50,3 @@ class DupeScopeResult(ManagedObject):
         self.update_time = None
 
         ManagedObject.__init__(self, "DupeScopeResult", parent_mo_or_dn, **kwargs)
-

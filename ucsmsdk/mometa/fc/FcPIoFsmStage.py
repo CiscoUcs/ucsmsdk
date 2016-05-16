@@ -1,12 +1,11 @@
 """This module contains the general information for FcPIoFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FcPIoFsmStageConsts():
+class FcPIoFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_IN_COMPAT_SFP_PRESENCE_BEGIN = "InCompatSfpPresenceBegin"
     NAME_IN_COMPAT_SFP_PRESENCE_FAIL = "InCompatSfpPresenceFail"
@@ -75,4 +74,3 @@ class FcPIoFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FcPIoFsmStage", parent_mo_or_dn, **kwargs)
-

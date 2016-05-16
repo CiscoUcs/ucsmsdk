@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareExcludeServerComponent ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareExcludeServerComponentConsts():
+class FirmwareExcludeServerComponentConsts:
     SERVER_COMPONENT_ADAPTOR = "adaptor"
     SERVER_COMPONENT_BLADE_BIOS = "blade-bios"
     SERVER_COMPONENT_BLADE_CONTROLLER = "blade-controller"
@@ -61,4 +60,3 @@ class FirmwareExcludeServerComponent(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareExcludeServerComponent", parent_mo_or_dn, **kwargs)
-

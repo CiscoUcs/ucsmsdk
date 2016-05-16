@@ -1,5 +1,4 @@
 """This module contains the meta information of LsClone ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -22,4 +21,3 @@ prop_map = {
     "inTargetOrg": "in_target_org",
     "outConfig": "out_config",
 }
-

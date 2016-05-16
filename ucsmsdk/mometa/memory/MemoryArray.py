@@ -1,12 +1,11 @@
 """This module contains the general information for MemoryArray ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MemoryArrayConsts():
+class MemoryArrayConsts:
     CURR_CAPACITY_UNSPECIFIED = "unspecified"
     ERROR_CORRECTION_CRC = "CRC"
     ERROR_CORRECTION_MULTI_BIT_ECC = "multi-bit-ECC"
@@ -229,4 +228,3 @@ class MemoryArray(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "MemoryArray", parent_mo_or_dn, **kwargs)
-

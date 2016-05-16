@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentGraphicsCardCapProvider ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentGraphicsCardCapProviderConsts():
+class EquipmentGraphicsCardCapProviderConsts:
     DELETED_FALSE = "false"
     DELETED_NO = "no"
     DELETED_TRUE = "true"
@@ -90,4 +89,3 @@ class EquipmentGraphicsCardCapProvider(ManagedObject):
         self.stepping = None
 
         ManagedObject.__init__(self, "EquipmentGraphicsCardCapProvider", parent_mo_or_dn, **kwargs)
-

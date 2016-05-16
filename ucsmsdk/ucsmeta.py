@@ -11,10 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-""" This is an auto-generated module containing ManagedObject Meta information. """
+"""
+This is an auto-generated module containing ManagedObject Meta information.
+"""
 
 from .ucscoremeta import UcsVersion
 from .ucscoremeta import MoMeta
+
 
 class VersionMeta:
     """ This class contains all the UcsVersion supported by this package."""

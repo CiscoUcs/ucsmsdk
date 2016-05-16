@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfUCSMBootOrderRuleControl ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfUCSMBootOrderRuleControlConsts():
+class BiosVfUCSMBootOrderRuleControlConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_UCSMBOOT_ORDER_RULE_LOOSE = "loose"
@@ -55,4 +54,3 @@ class BiosVfUCSMBootOrderRuleControl(ManagedObject):
         self.vp_ucsm_boot_order_rule = None
 
         ManagedObject.__init__(self, "BiosVfUCSMBootOrderRuleControl", parent_mo_or_dn, **kwargs)
-

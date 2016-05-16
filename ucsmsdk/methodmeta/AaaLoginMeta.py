@@ -1,5 +1,4 @@
 """This module contains the meta information of AaaLogin ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -34,4 +33,3 @@ prop_map = {
     "outSessionId": "out_session_id",
     "outVersion": "out_version",
 }
-

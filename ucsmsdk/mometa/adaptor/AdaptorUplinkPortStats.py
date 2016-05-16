@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorUplinkPortStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorUplinkPortStatsConsts():
+class AdaptorUplinkPortStatsConsts:
     PORT_ID_N_A = "N/A"
 
 
@@ -59,4 +58,3 @@ class AdaptorUplinkPortStats(ManagedObject):
         self.too_short = None
 
         ManagedObject.__init__(self, "AdaptorUplinkPortStats", parent_mo_or_dn, **kwargs)
-

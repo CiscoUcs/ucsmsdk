@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugTechSupport ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugTechSupportConsts():
+class SysdebugTechSupportConsts:
     ADMIN_STATE_CREATED = "created"
     ADMIN_STATE_DELETE = "delete"
     ADMIN_STATE_INIT = "init"
@@ -274,4 +273,3 @@ class SysdebugTechSupport(ManagedObject):
         self.uri = None
 
         ManagedObject.__init__(self, "SysdebugTechSupport", parent_mo_or_dn, **kwargs)
-

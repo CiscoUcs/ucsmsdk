@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfProcessorEnergyConfiguration ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfProcessorEnergyConfigurationConsts():
+class BiosVfProcessorEnergyConfigurationConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_ENERGY_PERFORMANCE_BALANCED_ENERGY = "balanced-energy"
@@ -66,4 +65,3 @@ class BiosVfProcessorEnergyConfiguration(ManagedObject):
         self.vp_power_technology = None
 
         ManagedObject.__init__(self, "BiosVfProcessorEnergyConfiguration", parent_mo_or_dn, **kwargs)
-

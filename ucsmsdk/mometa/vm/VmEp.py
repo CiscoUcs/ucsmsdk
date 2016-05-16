@@ -1,12 +1,11 @@
 """This module contains the general information for VmEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VmEpConsts():
+class VmEpConsts:
     pass
 
 
@@ -41,4 +40,3 @@ class VmEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "VmEp", **kwargs)
-

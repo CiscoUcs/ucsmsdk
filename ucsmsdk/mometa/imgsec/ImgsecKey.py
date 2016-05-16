@@ -1,12 +1,11 @@
 """This module contains the general information for ImgsecKey ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ImgsecKeyConsts():
+class ImgsecKeyConsts:
     TYPE_PRIVATE = "private"
     TYPE_PUBLIC = "public"
     TYPE_SHARED = "shared"
@@ -49,4 +48,3 @@ class ImgsecKey(ManagedObject):
         self.value = None
 
         ManagedObject.__init__(self, "ImgsecKey", parent_mo_or_dn, **kwargs)
-

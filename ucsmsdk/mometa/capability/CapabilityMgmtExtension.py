@@ -1,12 +1,11 @@
 """This module contains the general information for CapabilityMgmtExtension ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CapabilityMgmtExtensionConsts():
+class CapabilityMgmtExtensionConsts:
     FSM_PREV_ACTIVATE_MGMT_EXT_APPLY_CATALOG = "ActivateMgmtExtApplyCatalog"
     FSM_PREV_ACTIVATE_MGMT_EXT_BEGIN = "ActivateMgmtExtBegin"
     FSM_PREV_ACTIVATE_MGMT_EXT_COPY_REMOTE = "ActivateMgmtExtCopyRemote"
@@ -218,4 +217,3 @@ class CapabilityMgmtExtension(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CapabilityMgmtExtension", parent_mo_or_dn, **kwargs)
-

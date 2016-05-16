@@ -1,12 +1,11 @@
 """This module contains the general information for SwFcMonFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwFcMonFsmStageConsts():
+class SwFcMonFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_DEPLOY_BEGIN = "DeployBegin"
     NAME_DEPLOY_FAIL = "DeployFail"
@@ -71,4 +70,3 @@ class SwFcMonFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwFcMonFsmStage", parent_mo_or_dn, **kwargs)
-

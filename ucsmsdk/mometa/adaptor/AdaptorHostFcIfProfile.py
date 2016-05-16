@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorHostFcIfProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorHostFcIfProfileConsts():
+class AdaptorHostFcIfProfileConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -59,4 +58,3 @@ class AdaptorHostFcIfProfile(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorHostFcIfProfile", parent_mo_or_dn, **kwargs)
-

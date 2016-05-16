@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugLogControlDestinationSyslog ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugLogControlDestinationSyslogConsts():
+class SysdebugLogControlDestinationSyslogConsts:
     DEFAULT_LEVEL_CRIT = "crit"
     DEFAULT_LEVEL_DEBUG0 = "debug0"
     DEFAULT_LEVEL_DEBUG1 = "debug1"
@@ -66,4 +65,3 @@ class SysdebugLogControlDestinationSyslog(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugLogControlDestinationSyslog", parent_mo_or_dn, **kwargs)
-

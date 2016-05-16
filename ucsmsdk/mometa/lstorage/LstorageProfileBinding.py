@@ -1,12 +1,11 @@
 """This module contains the general information for LstorageProfileBinding ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LstorageProfileBindingConsts():
+class LstorageProfileBindingConsts:
     pass
 
 
@@ -56,4 +55,3 @@ class LstorageProfileBinding(ManagedObject):
         self.storage_profile_name = None
 
         ManagedObject.__init__(self, "LstorageProfileBinding", parent_mo_or_dn, **kwargs)
-

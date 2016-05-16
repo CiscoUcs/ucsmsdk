@@ -1,12 +1,11 @@
 """This module contains the general information for LstorageControllerQualifier ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LstorageControllerQualifierConsts():
+class LstorageControllerQualifierConsts:
     CONTROLLER_ID_ALL = "all"
     CONTROLLER_TYPE_FLASH = "FLASH"
     CONTROLLER_TYPE_NVME = "NVME"
@@ -56,4 +55,3 @@ class LstorageControllerQualifier(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LstorageControllerQualifier", parent_mo_or_dn, **kwargs)
-

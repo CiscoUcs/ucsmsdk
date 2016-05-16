@@ -1,12 +1,11 @@
 """This module contains the general information for VnicBootTarget ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicBootTargetConsts():
+class VnicBootTargetConsts:
     LUN_UNSPECIFIED = "unspecified"
 
 
@@ -47,4 +46,3 @@ class VnicBootTarget(ManagedObject):
         self.wwn = None
 
         ManagedObject.__init__(self, "VnicBootTarget", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for FabricEpMgrFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricEpMgrFsmConsts():
+class FabricEpMgrFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_CONFIGURE = "Configure"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class FabricEpMgrFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricEpMgrFsm", parent_mo_or_dn, **kwargs)
-

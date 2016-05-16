@@ -1,12 +1,11 @@
 """This module contains the general information for TopSysDefaults ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class TopSysDefaultsConsts():
+class TopSysDefaultsConsts:
     pass
 
 
@@ -41,4 +40,3 @@ class TopSysDefaults(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "TopSysDefaults", **kwargs)
-

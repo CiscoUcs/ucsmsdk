@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentFexEnvStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentFexEnvStatsHistConsts():
+class EquipmentFexEnvStatsHistConsts:
     DIE1_N_A = "N/A"
     DIE1_AVG_N_A = "N/A"
     DIE1_MAX_N_A = "N/A"
@@ -143,4 +142,3 @@ class EquipmentFexEnvStatsHist(ManagedObject):
         self.time_collected = None
 
         ManagedObject.__init__(self, "EquipmentFexEnvStatsHist", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for FabricVConProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricVConProfileConsts():
+class FabricVConProfileConsts:
     INT_ID_NONE = "none"
     MEZZ_MAPPING_LINEAR_ORDERED = "linear-ordered"
     MEZZ_MAPPING_LINEAR_ORDERED_TO_ROUND_ROBIN = "linear-ordered-to-round-robin"
@@ -66,4 +65,3 @@ class FabricVConProfile(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricVConProfile", parent_mo_or_dn, **kwargs)
-

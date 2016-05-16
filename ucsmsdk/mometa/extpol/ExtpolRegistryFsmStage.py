@@ -1,12 +1,11 @@
 """This module contains the general information for ExtpolRegistryFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtpolRegistryFsmStageConsts():
+class ExtpolRegistryFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_CROSS_DOMAIN_CONFIG_BEGIN = "crossDomainConfigBegin"
     NAME_CROSS_DOMAIN_CONFIG_FAIL = "crossDomainConfigFail"
@@ -77,4 +76,3 @@ class ExtpolRegistryFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtpolRegistryFsmStage", parent_mo_or_dn, **kwargs)
-

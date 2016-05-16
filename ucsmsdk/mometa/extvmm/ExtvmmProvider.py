@@ -1,12 +1,11 @@
 """This module contains the general information for ExtvmmProvider ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtvmmProviderConsts():
+class ExtvmmProviderConsts:
     FSM_PREV_CONFIG_BEGIN = "configBegin"
     FSM_PREV_CONFIG_FAIL = "configFail"
     FSM_PREV_CONFIG_GET_VERSION = "configGetVersion"
@@ -264,4 +263,3 @@ class ExtvmmProvider(ManagedObject):
         self.ver_raw = None
 
         ManagedObject.__init__(self, "ExtvmmProvider", parent_mo_or_dn, **kwargs)
-

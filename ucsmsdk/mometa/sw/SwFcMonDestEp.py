@@ -1,12 +1,11 @@
 """This module contains the general information for SwFcMonDestEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwFcMonDestEpConsts():
+class SwFcMonDestEpConsts:
     ADMIN_SPEED_16GBPS = "16gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
     ADMIN_SPEED_2GBPS = "2gbps"
@@ -142,4 +141,3 @@ class SwFcMonDestEp(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "SwFcMonDestEp", parent_mo_or_dn, **kwargs)
-

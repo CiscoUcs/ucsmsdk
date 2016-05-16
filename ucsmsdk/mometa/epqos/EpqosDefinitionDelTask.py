@@ -1,12 +1,11 @@
 """This module contains the general information for EpqosDefinitionDelTask ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EpqosDefinitionDelTaskConsts():
+class EpqosDefinitionDelTaskConsts:
     DEF_INT_ID_NONE = "none"
     FSM_PREV_REMOVE_BEGIN = "RemoveBegin"
     FSM_PREV_REMOVE_FAIL = "RemoveFail"
@@ -238,4 +237,3 @@ class EpqosDefinitionDelTask(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EpqosDefinitionDelTask", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for AaaConsoleAuth ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaConsoleAuthConsts():
+class AaaConsoleAuthConsts:
     OPER_REALM_LDAP = "ldap"
     OPER_REALM_LOCAL = "local"
     OPER_REALM_NONE = "none"
@@ -75,4 +74,3 @@ class AaaConsoleAuth(ManagedObject):
         self.use2_factor = None
 
         ManagedObject.__init__(self, "AaaConsoleAuth", parent_mo_or_dn, **kwargs)
-

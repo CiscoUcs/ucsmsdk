@@ -1,12 +1,11 @@
 """This module contains the general information for GmetaClass ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class GmetaClassConsts():
+class GmetaClassConsts:
     EP_CLASS_ID_AAA_AUTH_METHOD = "aaaAuthMethod"
     EP_CLASS_ID_AAA_AUTH_REALM = "aaaAuthRealm"
     EP_CLASS_ID_AAA_AUTH_REALM_FSM = "aaaAuthRealmFsm"
@@ -2126,4 +2125,3 @@ class GmetaClass(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "GmetaClass", parent_mo_or_dn, **kwargs)
-

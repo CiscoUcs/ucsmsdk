@@ -1,12 +1,11 @@
 """This module contains the general information for SwFcEstcEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwFcEstcEpConsts():
+class SwFcEstcEpConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     AUTO_NEGOTIATE_AUTO = "auto"
@@ -140,4 +139,3 @@ class SwFcEstcEp(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "SwFcEstcEp", parent_mo_or_dn, **kwargs)
-

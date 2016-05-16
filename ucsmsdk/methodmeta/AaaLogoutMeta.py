@@ -1,5 +1,4 @@
 """This module contains the meta information of AaaLogout ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -18,4 +17,3 @@ prop_map = {
     "inDelaySecs": "in_delay_secs",
     "outStatus": "out_status",
 }
-

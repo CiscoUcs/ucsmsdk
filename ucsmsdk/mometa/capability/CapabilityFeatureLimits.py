@@ -1,12 +1,11 @@
 """This module contains the general information for CapabilityFeatureLimits ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CapabilityFeatureLimitsConsts():
+class CapabilityFeatureLimitsConsts:
     FEATURE_STATUS_SUPPORTED = "supported"
     FEATURE_STATUS_UNSUPPORTED = "unsupported"
     PLATFORM_UCS6100 = "ucs6100"
@@ -62,4 +61,3 @@ class CapabilityFeatureLimits(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CapabilityFeatureLimits", parent_mo_or_dn, **kwargs)
-

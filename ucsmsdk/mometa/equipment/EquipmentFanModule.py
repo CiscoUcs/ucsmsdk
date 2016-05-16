@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentFanModule ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentFanModuleConsts():
+class EquipmentFanModuleConsts:
     MFG_TIME_NOT_APPLICABLE = "not-applicable"
     OPER_STATE_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     OPER_STATE_AUTO_UPGRADE = "auto-upgrade"
@@ -212,4 +211,3 @@ class EquipmentFanModule(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "EquipmentFanModule", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for ApeMc ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApeMcConsts():
+class ApeMcConsts:
     UPDATE_TYPE_DELTA = "delta"
     UPDATE_TYPE_PERIODIC = "periodic"
     UPDATE_TYPE_SYNC = "sync"
@@ -52,4 +51,3 @@ class ApeMc(ManagedObject):
         self.update_type = None
 
         ManagedObject.__init__(self, "ApeMc", parent_mo_or_dn, **kwargs)
-

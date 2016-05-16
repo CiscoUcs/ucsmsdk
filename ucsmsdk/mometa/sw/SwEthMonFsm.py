@@ -1,12 +1,11 @@
 """This module contains the general information for SwEthMonFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwEthMonFsmConsts():
+class SwEthMonFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_DEPLOY = "Deploy"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class SwEthMonFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwEthMonFsm", parent_mo_or_dn, **kwargs)
-

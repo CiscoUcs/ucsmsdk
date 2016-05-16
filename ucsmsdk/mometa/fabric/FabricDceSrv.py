@@ -1,12 +1,11 @@
 """This module contains the general information for FabricDceSrv ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricDceSrvConsts():
+class FabricDceSrvConsts:
     ID_A = "A"
     ID_B = "B"
     ID_NONE = "NONE"
@@ -58,4 +57,3 @@ class FabricDceSrv(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricDceSrv", parent_mo_or_dn, **kwargs)
-

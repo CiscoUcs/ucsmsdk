@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentPsuInputStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentPsuInputStatsHistConsts():
+class EquipmentPsuInputStatsHistConsts:
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -99,4 +98,3 @@ class EquipmentPsuInputStatsHist(ManagedObject):
         self.voltage_min = None
 
         ManagedObject.__init__(self, "EquipmentPsuInputStatsHist", parent_mo_or_dn, **kwargs)
-

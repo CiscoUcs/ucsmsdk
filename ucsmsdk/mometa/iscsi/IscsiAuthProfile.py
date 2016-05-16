@@ -1,12 +1,11 @@
 """This module contains the general information for IscsiAuthProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IscsiAuthProfileConsts():
+class IscsiAuthProfileConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -68,4 +67,3 @@ class IscsiAuthProfile(ManagedObject):
         self.user_id = None
 
         ManagedObject.__init__(self, "IscsiAuthProfile", parent_mo_or_dn, **kwargs)
-

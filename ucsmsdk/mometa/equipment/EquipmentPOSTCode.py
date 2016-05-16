@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentPOSTCode ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentPOSTCodeConsts():
+class EquipmentPOSTCodeConsts:
     GLOBAL_ID_NO_ERRORS = "No Errors"
     LOCAL_ID_NO_ERRORS = "No Errors"
     RECOVERABLE_NON_RECOVERABLE = "non-recoverable"
@@ -79,4 +78,3 @@ class EquipmentPOSTCode(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentPOSTCode", parent_mo_or_dn, **kwargs)
-

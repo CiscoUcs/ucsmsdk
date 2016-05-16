@@ -1,12 +1,11 @@
 """This module contains the general information for FabricLanCloud ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricLanCloudConsts():
+class FabricLanCloudConsts:
     FSM_PREV_SWITCH_MODE_BEGIN = "SwitchModeBegin"
     FSM_PREV_SWITCH_MODE_FAIL = "SwitchModeFail"
     FSM_PREV_SWITCH_MODE_SUCCESS = "SwitchModeSuccess"
@@ -227,4 +226,3 @@ class FabricLanCloud(ManagedObject):
         self.vlan_compression = None
 
         ManagedObject.__init__(self, "FabricLanCloud", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugTechSupportFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugTechSupportFsmStageConsts():
+class SysdebugTechSupportFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_DELETE_TECH_SUP_FILE_BEGIN = "DeleteTechSupFileBegin"
     NAME_DELETE_TECH_SUP_FILE_FAIL = "DeleteTechSupFileFail"
@@ -83,4 +82,3 @@ class SysdebugTechSupportFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugTechSupportFsmStage", parent_mo_or_dn, **kwargs)
-

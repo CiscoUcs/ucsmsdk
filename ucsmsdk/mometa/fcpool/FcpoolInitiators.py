@@ -1,12 +1,11 @@
 """This module contains the general information for FcpoolInitiators ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FcpoolInitiatorsConsts():
+class FcpoolInitiatorsConsts:
     ASSIGNMENT_ORDER_DEFAULT = "default"
     ASSIGNMENT_ORDER_SEQUENTIAL = "sequential"
     INT_ID_NONE = "none"
@@ -84,4 +83,3 @@ class FcpoolInitiators(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FcpoolInitiators", parent_mo_or_dn, **kwargs)
-

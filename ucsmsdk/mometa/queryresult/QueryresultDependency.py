@@ -1,12 +1,11 @@
 """This module contains the general information for QueryresultDependency ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class QueryresultDependencyConsts():
+class QueryresultDependencyConsts:
     IS_IMPORTABLE_FALSE = "false"
     IS_IMPORTABLE_NO = "no"
     IS_IMPORTABLE_TRUE = "true"
@@ -65,4 +64,3 @@ class QueryresultDependency(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "QueryresultDependency", parent_mo_or_dn, **kwargs)
-
