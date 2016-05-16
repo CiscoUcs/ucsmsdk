@@ -38,12 +38,12 @@ class SmartRedirectHandler(urllib2.HTTPRedirectHandler):
 
     def http_error_301(self, req, fp, code, msg, headers):
         """This is to handle redirection error code 301"""
-        resp_status = [code, headers.dict["location"]]
+        resp_status = [code, headers.get('Location')]
         return resp_status
 
     def http_error_302(self, req, fp, code, msg, headers):
         """This is to handle redirection error code 302"""
-        resp_status = [code, headers.dict["location"]]
+        resp_status = [code, headers.get('Location')]
         return resp_status
 
 
