@@ -16,7 +16,7 @@ import time
 import logging
 from threading import Timer
 
-from .ucsexception import UcsException
+from .ucsexception import UcsException, UcsLoginError
 from .ucsdriver import UcsDriver
 
 log = logging.getLogger('ucs')
@@ -392,6 +392,29 @@ class UcsSession(object):
         self.__start_refresh_timer()
         return True
 
+    def __validate_ucsm(self):
+        """
+        Internal method to validate if connecting server is UCS.
+        """
+
+        is_ucs = False
+
+        from .ucsmethodfactory import config_resolve_class
+
+        nw_elem = config_resolve_class(cookie=self.__cookie,
+                                       in_filter=None,
+                                       class_id="networkElement")
+        try:
+            nw_elem_response = self.post_elem(nw_elem)
+            if nw_elem_response.error_code != 0:
+                self._logout()
+            else:
+                is_ucs = True
+        except:
+            self._logout()
+
+        return is_ucs
+
     def __validate_connection(self):
         """
         Internal method to validate if needs to reconnect or if exist use the
@@ -433,7 +456,6 @@ class UcsSession(object):
             FirmwareRunningConsts
         from .ucscoremeta import UcsVersion
         from .ucsmethodfactory import aaa_login
-        from .ucsmethodfactory import config_resolve_class
         from .ucsmethodfactory import config_resolve_dn
 
         self.__force = force
@@ -450,14 +472,8 @@ class UcsSession(object):
         self.__update(response)
 
         # Verify not to connect to IMC
-        nw_elem = config_resolve_class(cookie=self.__cookie,
-                                          in_filter=None,
-                                          class_id="networkElement")
-        nw_elem_response = self.post_elem(nw_elem)
-        # To Do - returns error tag
-        if nw_elem_response.error_code != 0:
-            self.__clear()
-            return False
+        if not self.__validate_ucsm():
+            raise UcsLoginError("Not a supported server.")
 
         top_system = TopSystem()
         if response.out_version is None or response.out_version == "":
