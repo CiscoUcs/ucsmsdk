@@ -24,6 +24,7 @@ def test_001_knownmo_unknownprop():
     name="ra11"
     type="instance"
     usrLbl="b"
+    rn = "ls-ra11"
     unknownProps="unknown"/>'''
 
     obj = xc.from_xml_str(xml_str)
@@ -40,6 +41,7 @@ def test_002_knownmo_unknownprop():
     name="ra11"
     type="instance"
     usrLbl="b"
+    rn = "ls-ra11"
     unknownProps="unknown"/>'''
 
     obj = xc.from_xml_str(xml_str)
