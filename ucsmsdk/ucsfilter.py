@@ -45,8 +45,6 @@ class ParseFilter(object):
         Supporting class to parse filter expression.
         """
 
-        # print toks[0] #logger
-
         prop_ = toks[0]["prop"]
         value_ = toks[0]["value"]
 
@@ -58,10 +56,11 @@ class ParseFilter(object):
         if "flag_exp" in toks[0]:
             flag_ = toks[0]["flag_exp"]["flags"]
 
-        # print prop_, value_, type_, flag_ #logger
-
         if flag_ == "I":
-            value_ = re.sub(r"[a-zA-Z]", lambda x: "[" + x.group().upper() + x.group().lower() + "]", value_)
+            value_ = re.sub(
+                r"[a-zA-Z]",
+                lambda x: "[" + x.group().upper() + x.group().lower() + "]",
+                value_)
 
         if ParseFilter.is_meta_classid:
             class_obj = ucscoreutils.load_class(ParseFilter.class_id)
@@ -83,8 +82,6 @@ class ParseFilter(object):
         method to support logical 'and' operator expression
         """
 
-        # print  str, loc, toks
-        # print toks[0][0::2]
         and_filter = AndFilter()
         for op_filter in toks[0][0::2]:
             and_filter.child_add(op_filter)
@@ -96,8 +93,6 @@ class ParseFilter(object):
         method to support logical 'or' operator expression
         """
 
-        # print  str, loc, toks
-        # print toks[0][0::2]
         or_filter = OrFilter()
         for op_filter in toks[0][0::2]:
             or_filter.child_add(op_filter)
@@ -116,7 +111,8 @@ class ParseFilter(object):
         return not_filter
 
 
-prop = pp.WordStart(pp.alphas) + pp.Word(pp.alphanums+"_").setResultsName("prop")
+prop = pp.WordStart(pp.alphas) + pp.Word(pp.alphanums+"_").setResultsName(
+    "prop")
 value = (pp.QuotedString("'") | pp.QuotedString('"') | pp.Word(
     pp.printables, excludeChars=",")).setResultsName("value")
 types_ = pp.oneOf("re eq ne gt ge lt le").setResultsName("types")
@@ -159,7 +155,8 @@ def generate_infilter(class_id, filter_str, is_meta_class_id):
         True on successful connect
 
     Example:
-        generate_infilter("LsServer", '("usr_lbl, "mysp", type="eq", flag="I)', True)
+        generate_infilter("LsServer", '("usr_lbl, "mysp", type="eq", flag="I)',
+                          True)
     """
 
     ParseFilter.class_id = class_id
@@ -190,7 +187,6 @@ def handle_filter_max_component_limit(handle, l_filter):
                                                               OrFilter):
         return l_filter
 
-    result_filter = None
     if isinstance(l_filter, AndFilter):
         parent_filter = AndFilter()
         child_filter = AndFilter()

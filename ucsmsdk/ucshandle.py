@@ -26,7 +26,8 @@ log = logging.getLogger('ucs')
 
 class UcsHandle(UcsSession):
     """
-    UcsHandle class is the user interface point for any Ucs related communication.
+    UcsHandle class is the user interface point for any Ucs related
+    communication.
 
     Args:
         ip (str): The IP or Hostname of the UCS Server
@@ -42,8 +43,10 @@ class UcsHandle(UcsSession):
         handle = UcsHandle("192.168.1.1","admin","password", secure=False)\n
         handle = UcsHandle("192.168.1.1","admin","password", port=80)\n
         handle = UcsHandle("192.168.1.1","admin","password", port=443)\n
-        handle = UcsHandle("192.168.1.1","admin","password", port=100, secure=True)\n
-        handle = UcsHandle("192.168.1.1","admin","password", port=100, secure=False)\n
+        handle = UcsHandle("192.168.1.1","admin","password", port=100,
+                            secure=True)\n
+        handle = UcsHandle("192.168.1.1","admin","password", port=100,
+                            secure=False)\n
     """
 
     def __init__(self, ip, username, password, port=None, secure=None,
@@ -122,7 +125,8 @@ class UcsHandle(UcsSession):
             mo list or external method object
 
         Example:
-            elem = ucsmethodfactory.config_find_dns_by_class_id(cookie=handle.cookie, class_id="LsServer", in_filter=None)\n
+            elem = ucsmethodfactory.config_find_dns_by_class_id(
+                   cookie=handle.cookie, class_id="LsServer", in_filter=None)\n
             dn_objs = handle.process_xml_elem(elem)
         """
 
@@ -198,7 +202,8 @@ class UcsHandle(UcsSession):
             Dictionary {dn1: object, dn2: object2}
 
         Example:
-            obj = handle.lookup_by_dns("fabric/lan/net-100", "fabric/lan/net-101")
+            obj = handle.lookup_by_dns("fabric/lan/net-100",
+                                       "fabric/lan/net-101")
         """
 
         from .ucsbasetype import DnSet, Dn
@@ -218,8 +223,7 @@ class UcsHandle(UcsSession):
             dn_obj.value = dn_
             dn_set.child_add(dn_obj)
 
-        elem = config_resolve_dns(cookie=self.cookie,
-                                         in_dns=dn_set)
+        elem = config_resolve_dns(cookie=self.cookie, in_dns=dn_set)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -244,7 +248,6 @@ class UcsHandle(UcsSession):
             obj = handle.lookup_by_dns("OrgOrg", "LsServer")
         """
 
-        # ToDo - How to handle unknown class_id
         from .ucsbasetype import ClassIdSet, ClassId
         from .ucsmeta import MO_CLASS_ID
 
@@ -268,14 +271,13 @@ class UcsHandle(UcsSession):
 
             class_id_set.child_add(class_id_obj)
 
-        elem = config_resolve_classes(cookie=self.cookie,
-                                             in_ids=class_id_set)
+        elem = config_resolve_classes(cookie=self.cookie, in_ids=class_id_set)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
 
         for out_mo in response.out_configs.child:
-            class_id_dict[out_mo._class_id].append(out_mo)
+            class_id_dict[out_mo.get_class_id()].append(out_mo)
 
         return class_id_dict
 
@@ -299,8 +301,10 @@ class UcsHandle(UcsSession):
         Example:
             obj = handle.lookup_by_dn("fabric/lan/net-100")\n
             obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True)\n
-            obj = handle.lookup_by_dn("fabric/lan/net-100", need_response=True)\n
-            obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True, need_response=True)\n
+            obj = handle.lookup_by_dn("fabric/lan/net-100",
+                                      need_response=True)\n
+            obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True,
+                                       need_response=True)\n
         """
 
         from .ucsbasetype import DnSet, Dn
@@ -315,8 +319,8 @@ class UcsHandle(UcsSession):
         dn_set.child_add(dn_obj)
 
         elem = config_resolve_dns(cookie=self.cookie,
-                                         in_dns=dn_set,
-                                         in_hierarchical=hierarchy)
+                                  in_dns=dn_set,
+                                  in_hierarchical=hierarchy)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -342,11 +346,13 @@ class UcsHandle(UcsSession):
 
         Args:
             class_id (str): class id of the object to be queried for.
-            filter_str(str): query objects with specific property with specific value or pattern specifying value.
+            filter_str(str): query objects with specific property with
+                             specific value or pattern specifying value.
 
                       (property_name, "property_value, type="filter_type")\n
                       property_name: Name of the Property\n
-                      property_value: Value of the property (str or regular expression)\n
+                      property_value: Value of the property (str or
+                                      regular expression)\n
                       filter_type: eq - equal to\n
                                    ne - not equal to\n
                                    ge - greater than or equal to\n
@@ -357,7 +363,8 @@ class UcsHandle(UcsSession):
 
                       logical filter type: not, and, or\n
 
-                      e.g. '(dn,"org-root/ls-C1_B1", type="eq") or (name, "event", type="re", flag="I")'\n
+                      e.g. '(dn,"org-root/ls-C1_B1", type="eq")
+                            or (name, "event", type="re", flag="I")'\n
             hierarchy(bool): if set to True will return all the child
                              hierarchical objects.
             need_response(bool): if set to True will return only response
@@ -372,13 +379,14 @@ class UcsHandle(UcsSession):
         Example:
             obj = handle.query_classid(class_id="LsServer")\n
             obj = handle.query_classid(class_id="LsServer", hierarchy=True)\n
-            obj = handle.query_classid(class_id="LsServer", need_response=True)\n
+            obj = handle.query_classid(class_id="LsServer",
+                                       need_response=True)\n
 
-            filter_str = '(dn,"org-root/ls-C1_B1", type="eq") or (name, "event", type="re", flag="I")'\n
-            obj = handle.query_classid(class_id="LsServer", filter_str=filter_str)\n
+            filter_str = '(dn,"org-root/ls-C1_B1", type="eq") or
+                        (name, "event", type="re", flag="I")'\n
+            obj = handle.query_classid(class_id="LsServer",
+                                       filter_str=filter_str)\n
         """
-
-        # ToDo - How to handle unknown class_id
 
         from .ucsfilter import generate_infilter
         from .ucsmethodfactory import config_resolve_class
@@ -387,7 +395,7 @@ class UcsHandle(UcsSession):
             raise ValueError("Provide Parameter class_id")
 
         meta_class_id = ucscoreutils.find_class_id_in_mo_meta_ignore_case(
-                                                                class_id)
+            class_id)
         if meta_class_id:
             is_meta_class_id = True
         else:
@@ -401,9 +409,9 @@ class UcsHandle(UcsSession):
             in_filter = None
 
         elem = config_resolve_class(cookie=self.cookie,
-                                              class_id=meta_class_id,
-                                              in_filter=in_filter,
-                                              in_hierarchical=hierarchy)
+                                    class_id=meta_class_id,
+                                    in_filter=in_filter,
+                                    in_hierarchical=hierarchy)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -412,8 +420,7 @@ class UcsHandle(UcsSession):
             return response
 
         out_mo_list = ucscoreutils.extract_molist_from_method_response(
-                                                                    response,
-                                                                    hierarchy)
+            response, hierarchy)
         return out_mo_list
 
     def query_children(self, in_mo=None, in_dn=None, class_id=None,
@@ -479,6 +486,7 @@ class UcsHandle(UcsSession):
         if not in_mo and not in_dn:
             raise ValueError('[Error]: GetChild: Provide in_mo or in_dn.')
 
+        parent_dn = None
         if in_mo:
             parent_dn = in_mo.dn
         elif in_dn:
@@ -488,7 +496,7 @@ class UcsHandle(UcsSession):
 
         if class_id:
             meta_class_id = ucscoreutils.find_class_id_in_mo_meta_ignore_case(
-                                                                class_id)
+                class_id)
             if meta_class_id:
                 is_meta_class_id = True
             else:
@@ -511,8 +519,7 @@ class UcsHandle(UcsSession):
             raise UcsException(response.error_code, response.error_descr)
 
         out_mo_list = ucscoreutils.extract_molist_from_method_response(
-                                                                    response,
-                                                                    hierarchy)
+            response, hierarchy)
 
         return out_mo_list
 
@@ -635,8 +642,7 @@ class UcsHandle(UcsSession):
             pair.child_add(mo_dict[mo_dn])
             config_map.child_add(pair)
 
-        elem = config_conf_mos(self.cookie, config_map,
-                                         False)
+        elem = config_conf_mos(self.cookie, config_map, False)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -653,11 +659,10 @@ class UcsHandle(UcsSession):
                 dn_set.child_add(dn_obj)
 
             elem = config_resolve_dns(cookie=self.cookie,
-                                                in_dns=dn_set)
+                                      in_dns=dn_set)
             response = self.post_elem(elem)
             if response.error_code != 0:
-                raise UcsException(response.error_code,
-                                      response.error_descr)
+                raise UcsException(response.error_code, response.error_descr)
 
             for out_mo in response.out_configs.child:
                 out_mo.sync_mo(refresh_dict[out_mo.dn])
