@@ -77,9 +77,9 @@ def ucs_kvm_launch(handle, service_profile=None, blade=None, rack_unit=None,
     from ..ucsmethodfactory import config_scope
     from ..ucsmethodfactory import aaa_get_n_compute_auth_token_by_dn
 
-    if (blade is not None and rack_unit is not None) or \
-        (service_profile is not None and rack_unit is not None) or \
-        (blade is not None and service_profile is not None):
+    if (blade is not None and rack_unit is not None) \
+            or (service_profile is not None and rack_unit is not None) \
+            or (blade is not None and service_profile is not None):
         raise UcsValidationException(
             "Provide only one parameter from blade, "
             "rack_unit and service profile.")
@@ -149,7 +149,6 @@ def ucs_kvm_launch(handle, service_profile=None, blade=None, rack_unit=None,
         else:
             sp_mo = handle.query_dn(dn)
 
-
         nvc[_ParamKvm.KVM_DN] = dn
 
         # sp_mo = service_profile
@@ -162,8 +161,6 @@ def ucs_kvm_launch(handle, service_profile=None, blade=None, rack_unit=None,
         nvc[_ParamKvm.DN] = pn_dn
 
         mo_list = handle.query_children(in_dn=dn, class_id='vnicIpV4Addr')
-        # TODO:replace class_id with proper constantafter generating mos.py
-        # or Constant.py
 
         for mo in mo_list:
             # gmo = _GenericMo(mo=mo, option=WriteXmlOption.ALL)
@@ -180,8 +177,8 @@ def ucs_kvm_launch(handle, service_profile=None, blade=None, rack_unit=None,
                 if ip_address is not None:
                     break
 
-    if (ip_address is None or ip_address == '0.0.0.0') and \
-        service_profile is not None:
+    if (ip_address is None or ip_address == '0.0.0.0') \
+            and service_profile is not None:
 
         elem = config_scope(cookie=handle.cookie,
                             dn=pn_dn,
