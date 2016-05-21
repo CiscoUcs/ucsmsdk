@@ -1,5 +1,4 @@
 """This module contains the meta information of LoggingSyncOcns ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -18,4 +17,3 @@ prop_map = {
     "inToOrZero": "in_to_or_zero",
     "outStimuli": "out_stimuli",
 }
-

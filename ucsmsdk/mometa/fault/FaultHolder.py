@@ -1,12 +1,11 @@
 """This module contains the general information for FaultHolder ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FaultHolderConsts():
+class FaultHolderConsts:
     IS_PINNING_CLEARED_FALSE = "false"
     IS_PINNING_CLEARED_NO = "no"
     IS_PINNING_CLEARED_TRUE = "true"
@@ -56,4 +55,3 @@ class FaultHolder(ManagedObject):
         self.total_faults = None
 
         ManagedObject.__init__(self, "FaultHolder", **kwargs)
-

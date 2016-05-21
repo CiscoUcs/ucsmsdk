@@ -1,12 +1,11 @@
 """This module contains the general information for EtherSwitchIntFIo ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherSwitchIntFIoConsts():
+class EtherSwitchIntFIoConsts:
     ACK_ACK_IN_PROGRESS = "ack-in-progress"
     ACK_ACKNOWLEDGED = "acknowledged"
     ACK_AUTO_ACK = "auto-ack"
@@ -304,4 +303,3 @@ class EtherSwitchIntFIo(ManagedObject):
         self.xcvr_type = None
 
         ManagedObject.__init__(self, "EtherSwitchIntFIo", parent_mo_or_dn, **kwargs)
-

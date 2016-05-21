@@ -1,5 +1,4 @@
 """This module contains the meta information of ConfigCheckConformance ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -24,4 +23,3 @@ prop_map = {
     "outNonUpgradableDns": "out_non_upgradable_dns",
     "outToResetDns": "out_to_reset_dns",
 }
-

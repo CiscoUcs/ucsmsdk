@@ -1,12 +1,11 @@
 """This module contains the general information for LicenseSource ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LicenseSourceConsts():
+class LicenseSourceConsts:
     ALWAYS_USE_FALSE = "false"
     ALWAYS_USE_NO = "no"
     ALWAYS_USE_TRUE = "true"
@@ -59,4 +58,3 @@ class LicenseSource(ManagedObject):
         self.vendor_daemon_path = None
 
         ManagedObject.__init__(self, "LicenseSource", parent_mo_or_dn, **kwargs)
-

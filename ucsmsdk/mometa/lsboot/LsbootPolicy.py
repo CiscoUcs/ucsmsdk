@@ -1,12 +1,11 @@
 """This module contains the general information for LsbootPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsbootPolicyConsts():
+class LsbootPolicyConsts:
     BOOT_MODE_LEGACY = "legacy"
     BOOT_MODE_UEFI = "uefi"
     ENFORCE_VNIC_NAME_FALSE = "false"
@@ -86,4 +85,3 @@ class LsbootPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LsbootPolicy", parent_mo_or_dn, **kwargs)
-

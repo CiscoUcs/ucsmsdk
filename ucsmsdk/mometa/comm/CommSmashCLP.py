@@ -1,12 +1,11 @@
 """This module contains the general information for CommSmashCLP ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CommSmashCLPConsts():
+class CommSmashCLPConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     INT_ID_NONE = "none"
@@ -77,4 +76,3 @@ class CommSmashCLP(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CommSmashCLP", parent_mo_or_dn, **kwargs)
-

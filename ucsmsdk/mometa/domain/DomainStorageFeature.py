@@ -1,12 +1,11 @@
 """This module contains the general information for DomainStorageFeature ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class DomainStorageFeatureConsts():
+class DomainStorageFeatureConsts:
     FUNCTIONAL_STATE_DISABLED = "disabled"
     FUNCTIONAL_STATE_ENABLED = "enabled"
     TYPE_MAJOR = "major"
@@ -56,4 +55,3 @@ class DomainStorageFeature(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "DomainStorageFeature", parent_mo_or_dn, **kwargs)
-

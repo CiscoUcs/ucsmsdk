@@ -1,12 +1,11 @@
 """This module contains the general information for SwPhysFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwPhysFsmStageConsts():
+class SwPhysFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_CONF_PHYSICAL_BEGIN = "ConfPhysicalBegin"
     NAME_CONF_PHYSICAL_CONFIG_SW_A = "ConfPhysicalConfigSwA"
@@ -75,4 +74,3 @@ class SwPhysFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwPhysFsmStage", parent_mo_or_dn, **kwargs)
-

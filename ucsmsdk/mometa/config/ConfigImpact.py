@@ -1,12 +1,11 @@
 """This module contains the general information for ConfigImpact ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ConfigImpactConsts():
+class ConfigImpactConsts:
     CONFIG_STATE_APPLIED = "applied"
     CONFIG_STATE_APPLYING = "applying"
     CONFIG_STATE_FAILED_TO_APPLY = "failed-to-apply"
@@ -78,4 +77,3 @@ class ConfigImpact(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ConfigImpact", parent_mo_or_dn, **kwargs)
-

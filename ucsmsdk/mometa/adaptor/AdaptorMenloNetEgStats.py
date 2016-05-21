@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorMenloNetEgStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorMenloNetEgStatsConsts():
+class AdaptorMenloNetEgStatsConsts:
     MENLO_NET_INDEX_0 = "0"
     MENLO_NET_INDEX_0_A = "0_A"
     MENLO_NET_INDEX_0_B = "0_B"
@@ -144,4 +143,3 @@ class AdaptorMenloNetEgStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "AdaptorMenloNetEgStats", parent_mo_or_dn, **kwargs)
-

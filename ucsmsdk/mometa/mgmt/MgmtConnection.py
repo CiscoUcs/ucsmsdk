@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtConnection ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtConnectionConsts():
+class MgmtConnectionConsts:
     ACK_ACKNOWLEDGED = "acknowledged"
     ACK_UN_INITIALIZED = "un-initialized"
     ACK_UNSUPPORTED_CONNECTIVITY = "unsupported-connectivity"
@@ -58,4 +57,3 @@ class MgmtConnection(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtConnection", parent_mo_or_dn, **kwargs)
-

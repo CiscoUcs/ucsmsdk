@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugTechSupportCmdOpt ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugTechSupportCmdOptConsts():
+class SysdebugTechSupportCmdOptConsts:
     CHASSIS_CARTRIDGE_ID_ALL = "all"
     CHASSIS_CIMC_ID_ALL = "all"
     CHASSIS_IOM_ID_ALL = "all"
@@ -87,4 +86,3 @@ class SysdebugTechSupportCmdOpt(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugTechSupportCmdOpt", parent_mo_or_dn, **kwargs)
-

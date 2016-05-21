@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeHealthLedSensorAlarm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeHealthLedSensorAlarmConsts():
+class ComputeHealthLedSensorAlarmConsts:
     ALARM_SEVERITY_MINOR = "minor"
     ALARM_SEVERITY_SEVERE = "severe"
 
@@ -54,4 +53,3 @@ class ComputeHealthLedSensorAlarm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeHealthLedSensorAlarm", parent_mo_or_dn, **kwargs)
-

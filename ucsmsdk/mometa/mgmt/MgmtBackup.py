@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtBackup ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtBackupConsts():
+class MgmtBackupConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     BACKUPSTATUS_FAIL = "fail"
@@ -294,4 +293,3 @@ class MgmtBackup(ManagedObject):
         self.user = None
 
         ManagedObject.__init__(self, "MgmtBackup", parent_mo_or_dn, **kwargs)
-

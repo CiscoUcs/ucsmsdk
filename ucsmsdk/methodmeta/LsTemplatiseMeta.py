@@ -1,5 +1,4 @@
 """This module contains the meta information of LsTemplatise ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -24,4 +23,3 @@ prop_map = {
     "inTemplateType": "in_template_type",
     "outConfig": "out_config",
 }
-

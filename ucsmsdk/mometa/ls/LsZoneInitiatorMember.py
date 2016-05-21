@@ -1,12 +1,11 @@
 """This module contains the general information for LsZoneInitiatorMember ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsZoneInitiatorMemberConsts():
+class LsZoneInitiatorMemberConsts:
     pass
 
 
@@ -53,4 +52,3 @@ class LsZoneInitiatorMember(ManagedObject):
         self.wwpn = None
 
         ManagedObject.__init__(self, "LsZoneInitiatorMember", parent_mo_or_dn, **kwargs)
-

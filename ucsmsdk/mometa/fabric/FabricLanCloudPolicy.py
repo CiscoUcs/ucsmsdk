@@ -1,12 +1,11 @@
 """This module contains the general information for FabricLanCloudPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricLanCloudPolicyConsts():
+class FabricLanCloudPolicyConsts:
     INT_ID_NONE = "none"
     MAC_AGING_MODE_DEFAULT = "mode-default"
     MAC_AGING_NEVER = "never"
@@ -74,4 +73,3 @@ class FabricLanCloudPolicy(ManagedObject):
         self.vlan_compression = None
 
         ManagedObject.__init__(self, "FabricLanCloudPolicy", parent_mo_or_dn, **kwargs)
-

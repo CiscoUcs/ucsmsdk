@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugLogExportStatus ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugLogExportStatusConsts():
+class SysdebugLogExportStatusConsts:
     EXPORT_STATUS_FAILURE = "failure"
     EXPORT_STATUS_SUCCESS = "success"
     SWITCH_ID_A = "A"
@@ -54,4 +53,3 @@ class SysdebugLogExportStatus(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugLogExportStatus", parent_mo_or_dn, **kwargs)
-

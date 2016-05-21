@@ -1,12 +1,11 @@
 """This module contains the general information for StorageConnectionPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageConnectionPolicyConsts():
+class StorageConnectionPolicyConsts:
     INT_ID_NONE = "none"
     OPER_STATE_MISCONFIGURED = "misconfigured"
     OPER_STATE_OK = "ok"
@@ -70,4 +69,3 @@ class StorageConnectionPolicy(ManagedObject):
         self.zoning_type = None
 
         ManagedObject.__init__(self, "StorageConnectionPolicy", parent_mo_or_dn, **kwargs)
-

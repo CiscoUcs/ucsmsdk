@@ -1,12 +1,11 @@
 """This module contains the general information for StorageFcTargetEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageFcTargetEpConsts():
+class StorageFcTargetEpConsts:
     PATH_A = "A"
     PATH_B = "B"
     PATH_NONE = "NONE"
@@ -53,4 +52,3 @@ class StorageFcTargetEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StorageFcTargetEp", parent_mo_or_dn, **kwargs)
-

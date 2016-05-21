@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorFcIfEventStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorFcIfEventStatsHistConsts():
+class AdaptorFcIfEventStatsHistConsts:
     INVALID_CRCCOUNT_NA = "NA"
     INVALID_CRCCOUNT_DELTA_NA = "NA"
     INVALID_CRCCOUNT_DELTA_AVG_NA = "NA"
@@ -223,4 +222,3 @@ class AdaptorFcIfEventStatsHist(ManagedObject):
         self.time_collected = None
 
         ManagedObject.__init__(self, "AdaptorFcIfEventStatsHist", parent_mo_or_dn, **kwargs)
-

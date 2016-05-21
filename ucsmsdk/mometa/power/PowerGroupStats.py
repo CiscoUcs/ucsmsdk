@@ -1,12 +1,11 @@
 """This module contains the general information for PowerGroupStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PowerGroupStatsConsts():
+class PowerGroupStatsConsts:
     SUSPECT_FALSE = "false"
     SUSPECT_NO = "no"
     SUSPECT_TRUE = "true"
@@ -71,4 +70,3 @@ class PowerGroupStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "PowerGroupStats", parent_mo_or_dn, **kwargs)
-

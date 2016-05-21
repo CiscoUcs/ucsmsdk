@@ -1,12 +1,11 @@
 """This module contains the general information for SysfileMutation ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysfileMutationConsts():
+class SysfileMutationConsts:
     ACTION_NONE = "none"
     ACTION_REMOVE = "remove"
     FSM_PREV_GLOBAL_BEGIN = "GlobalBegin"
@@ -228,4 +227,3 @@ class SysfileMutation(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysfileMutation", parent_mo_or_dn, **kwargs)
-

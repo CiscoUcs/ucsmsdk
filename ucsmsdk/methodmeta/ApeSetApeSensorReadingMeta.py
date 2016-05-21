@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeSetApeSensorReading ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -24,4 +23,3 @@ prop_map = {
     "inSensorName": "in_sensor_name",
     "inSlotId": "in_slot_id",
 }
-

@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeConstraintDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeConstraintDefConsts():
+class ComputeConstraintDefConsts:
     CONSTRAINT_TYPE_ADAPTOR = "adaptor"
     CONSTRAINT_TYPE_DIMM = "dimm"
     CONSTRAINT_TYPE_LOCAL_DISK = "local-disk"
@@ -75,4 +74,3 @@ class ComputeConstraintDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeConstraintDef", parent_mo_or_dn, **kwargs)
-

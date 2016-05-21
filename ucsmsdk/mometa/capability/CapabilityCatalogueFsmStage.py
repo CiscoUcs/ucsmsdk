@@ -1,12 +1,11 @@
 """This module contains the general information for CapabilityCatalogueFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CapabilityCatalogueFsmStageConsts():
+class CapabilityCatalogueFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_ACTIVATE_CATALOG_APPLY_CATALOG = "ActivateCatalogApplyCatalog"
     NAME_ACTIVATE_CATALOG_BEGIN = "ActivateCatalogBegin"
@@ -89,4 +88,3 @@ class CapabilityCatalogueFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CapabilityCatalogueFsmStage", parent_mo_or_dn, **kwargs)
-

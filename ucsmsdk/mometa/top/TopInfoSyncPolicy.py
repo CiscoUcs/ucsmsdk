@@ -1,12 +1,11 @@
 """This module contains the general information for TopInfoSyncPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class TopInfoSyncPolicyConsts():
+class TopInfoSyncPolicyConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -64,4 +63,3 @@ class TopInfoSyncPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "TopInfoSyncPolicy", parent_mo_or_dn, **kwargs)
-

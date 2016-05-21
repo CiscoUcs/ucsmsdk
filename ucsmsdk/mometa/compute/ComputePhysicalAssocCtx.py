@@ -1,12 +1,11 @@
 """This module contains the general information for ComputePhysicalAssocCtx ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputePhysicalAssocCtxConsts():
+class ComputePhysicalAssocCtxConsts:
     pass
 
 
@@ -44,4 +43,3 @@ class ComputePhysicalAssocCtx(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputePhysicalAssocCtx", parent_mo_or_dn, **kwargs)
-

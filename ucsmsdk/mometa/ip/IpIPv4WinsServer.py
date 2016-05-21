@@ -1,12 +1,11 @@
 """This module contains the general information for IpIPv4WinsServer ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IpIPv4WinsServerConsts():
+class IpIPv4WinsServerConsts:
     pass
 
 
@@ -53,4 +52,3 @@ class IpIPv4WinsServer(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "IpIPv4WinsServer", parent_mo_or_dn, **kwargs)
-

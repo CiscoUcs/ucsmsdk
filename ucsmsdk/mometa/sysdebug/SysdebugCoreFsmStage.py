@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugCoreFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugCoreFsmStageConsts():
+class SysdebugCoreFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_DOWNLOAD_BEGIN = "DownloadBegin"
     NAME_DOWNLOAD_COPY_PRIMARY = "DownloadCopyPrimary"
@@ -74,4 +73,3 @@ class SysdebugCoreFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugCoreFsmStage", parent_mo_or_dn, **kwargs)
-

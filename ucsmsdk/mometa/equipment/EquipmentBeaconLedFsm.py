@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentBeaconLedFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentBeaconLedFsmConsts():
+class EquipmentBeaconLedFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_ILLUMINATE = "Illuminate"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class EquipmentBeaconLedFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentBeaconLedFsm", parent_mo_or_dn, **kwargs)
-

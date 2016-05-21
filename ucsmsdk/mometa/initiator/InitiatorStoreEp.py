@@ -1,12 +1,11 @@
 """This module contains the general information for InitiatorStoreEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class InitiatorStoreEpConsts():
+class InitiatorStoreEpConsts:
     ID_UNSPECIFIED = "unspecified"
     TYPE_DEDICATED = "dedicated"
     TYPE_POLICY = "policy"
@@ -53,4 +52,3 @@ class InitiatorStoreEp(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "InitiatorStoreEp", parent_mo_or_dn, **kwargs)
-

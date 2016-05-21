@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentPicture ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentPictureConsts():
+class EquipmentPictureConsts:
     TYPE_BACK = "back"
     TYPE_BOTTOM = "bottom"
     TYPE_FRONT = "front"
@@ -56,4 +55,3 @@ class EquipmentPicture(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentPicture", parent_mo_or_dn, **kwargs)
-

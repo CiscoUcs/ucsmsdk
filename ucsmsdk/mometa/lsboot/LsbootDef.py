@@ -1,12 +1,11 @@
 """This module contains the general information for LsbootDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsbootDefConsts():
+class LsbootDefConsts:
     ADV_BOOT_ORDER_APPLICABLE_FALSE = "false"
     ADV_BOOT_ORDER_APPLICABLE_NO = "no"
     ADV_BOOT_ORDER_APPLICABLE_TRUE = "true"
@@ -90,4 +89,3 @@ class LsbootDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LsbootDef", parent_mo_or_dn, **kwargs)
-

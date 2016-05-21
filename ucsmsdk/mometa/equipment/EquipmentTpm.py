@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentTpm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentTpmConsts():
+class EquipmentTpmConsts:
     ACTIVE_STATUS_ACTIVATED = "activated"
     ACTIVE_STATUS_DEACTIVATED = "deactivated"
     ACTIVE_STATUS_UNKNOWN = "unknown"
@@ -120,4 +119,3 @@ class EquipmentTpm(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "EquipmentTpm", parent_mo_or_dn, **kwargs)
-

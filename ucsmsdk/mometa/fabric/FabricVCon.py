@@ -1,12 +1,11 @@
 """This module contains the general information for FabricVCon ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricVConConsts():
+class FabricVConConsts:
     FABRIC_A = "A"
     FABRIC_B = "B"
     FABRIC_NONE = "NONE"
@@ -93,4 +92,3 @@ class FabricVCon(ManagedObject):
         self.transport = None
 
         ManagedObject.__init__(self, "FabricVCon", parent_mo_or_dn, **kwargs)
-

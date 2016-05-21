@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfIntelTurboBoostTech ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfIntelTurboBoostTechConsts():
+class BiosVfIntelTurboBoostTechConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_INTEL_TURBO_BOOST_TECH_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfIntelTurboBoostTech(ManagedObject):
         self.vp_intel_turbo_boost_tech = None
 
         ManagedObject.__init__(self, "BiosVfIntelTurboBoostTech", parent_mo_or_dn, **kwargs)
-

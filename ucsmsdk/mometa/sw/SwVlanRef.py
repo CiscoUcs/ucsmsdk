@@ -1,12 +1,11 @@
 """This module contains the general information for SwVlanRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwVlanRefConsts():
+class SwVlanRefConsts:
     COMPRESSION_TYPE_EXCLUDED = "excluded"
     COMPRESSION_TYPE_INCLUDED = "included"
     CONFIG_STATUS_APPLIED = "applied"
@@ -56,4 +55,3 @@ class SwVlanRef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwVlanRef", parent_mo_or_dn, **kwargs)
-

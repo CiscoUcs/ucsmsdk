@@ -1,12 +1,11 @@
 """This module contains the general information for SwFcSanBorderFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwFcSanBorderFsmStageConsts():
+class SwFcSanBorderFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_ACTIVATE_ZONE_SET_BEGIN = "ActivateZoneSetBegin"
     NAME_ACTIVATE_ZONE_SET_FAIL = "ActivateZoneSetFail"
@@ -75,4 +74,3 @@ class SwFcSanBorderFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwFcSanBorderFsmStage", parent_mo_or_dn, **kwargs)
-

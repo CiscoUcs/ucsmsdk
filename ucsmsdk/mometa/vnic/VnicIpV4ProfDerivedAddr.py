@@ -1,12 +1,11 @@
 """This module contains the general information for VnicIpV4ProfDerivedAddr ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicIpV4ProfDerivedAddrConsts():
+class VnicIpV4ProfDerivedAddrConsts:
     pass
 
 
@@ -50,4 +49,3 @@ class VnicIpV4ProfDerivedAddr(ManagedObject):
         self.subnet = None
 
         ManagedObject.__init__(self, "VnicIpV4ProfDerivedAddr", parent_mo_or_dn, **kwargs)
-

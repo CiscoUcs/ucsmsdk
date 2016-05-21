@@ -1,5 +1,4 @@
 """This module contains the meta information of ConfigFindDependencies ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "outConfigs": "out_configs",
     "outHasDep": "out_has_dep",
 }
-

@@ -1,12 +1,11 @@
 """This module contains the general information for OsInstance ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class OsInstanceConsts():
+class OsInstanceConsts:
     TYPE_LINUX = "Linux"
     TYPE_PNU_OS = "PnuOS"
     TYPE_SOLARIS = "Solaris"
@@ -64,4 +63,3 @@ class OsInstance(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "OsInstance", parent_mo_or_dn, **kwargs)
-

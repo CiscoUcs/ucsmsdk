@@ -1,12 +1,11 @@
 """This module contains the general information for ObserveObservedCont ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ObserveObservedContConsts():
+class ObserveObservedContConsts:
     pass
 
 
@@ -44,4 +43,3 @@ class ObserveObservedCont(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ObserveObservedCont", **kwargs)
-

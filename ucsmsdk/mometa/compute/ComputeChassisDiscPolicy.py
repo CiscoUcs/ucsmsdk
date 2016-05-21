@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeChassisDiscPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeChassisDiscPolicyConsts():
+class ComputeChassisDiscPolicyConsts:
     ACTION_1_LINK = "1-link"
     ACTION_2_LINK = "2-link"
     ACTION_4_LINK = "4-link"
@@ -87,4 +86,3 @@ class ComputeChassisDiscPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeChassisDiscPolicy", parent_mo_or_dn, **kwargs)
-

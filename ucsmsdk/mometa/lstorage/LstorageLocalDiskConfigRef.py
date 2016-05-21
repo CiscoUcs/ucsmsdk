@@ -1,12 +1,11 @@
 """This module contains the general information for LstorageLocalDiskConfigRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LstorageLocalDiskConfigRefConsts():
+class LstorageLocalDiskConfigRefConsts:
     ROLE_DED_HOT_SPARE = "ded-hot-spare"
     ROLE_GLOB_HOT_SPARE = "glob-hot-spare"
     ROLE_NORMAL = "normal"
@@ -54,4 +53,3 @@ class LstorageLocalDiskConfigRef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LstorageLocalDiskConfigRef", parent_mo_or_dn, **kwargs)
-

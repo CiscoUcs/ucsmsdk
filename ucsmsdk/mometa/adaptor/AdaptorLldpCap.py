@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorLldpCap ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorLldpCapConsts():
+class AdaptorLldpCapConsts:
     SUPPORT_FULL = "full"
     SUPPORT_NONE = "none"
 
@@ -45,4 +44,3 @@ class AdaptorLldpCap(ManagedObject):
         self.support = None
 
         ManagedObject.__init__(self, "AdaptorLldpCap", parent_mo_or_dn, **kwargs)
-

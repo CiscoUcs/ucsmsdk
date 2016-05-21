@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfProcessorC3Report ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfProcessorC3ReportConsts():
+class BiosVfProcessorC3ReportConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_PROCESSOR_C3_REPORT_ACPI_C2 = "acpi-c2"
@@ -57,4 +56,3 @@ class BiosVfProcessorC3Report(ManagedObject):
         self.vp_processor_c3_report = None
 
         ManagedObject.__init__(self, "BiosVfProcessorC3Report", parent_mo_or_dn, **kwargs)
-

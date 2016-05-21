@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfIntegratedGraphics ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfIntegratedGraphicsConsts():
+class BiosVfIntegratedGraphicsConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_INTEGRATED_GRAPHICS_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfIntegratedGraphics(ManagedObject):
         self.vp_integrated_graphics = None
 
         ManagedObject.__init__(self, "BiosVfIntegratedGraphics", parent_mo_or_dn, **kwargs)
-

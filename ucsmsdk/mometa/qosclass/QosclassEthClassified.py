@@ -1,12 +1,11 @@
 """This module contains the general information for QosclassEthClassified ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class QosclassEthClassifiedConsts():
+class QosclassEthClassifiedConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     BW_PERCENT_NOT_APPLICABLE = "not-applicable"
@@ -87,4 +86,3 @@ class QosclassEthClassified(ManagedObject):
         self.weight = None
 
         ManagedObject.__init__(self, "QosclassEthClassified", parent_mo_or_dn, **kwargs)
-

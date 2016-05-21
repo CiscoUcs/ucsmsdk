@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfProcessorCState ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfProcessorCStateConsts():
+class BiosVfProcessorCStateConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_PROCESSOR_CSTATE_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfProcessorCState(ManagedObject):
         self.vp_processor_c_state = None
 
         ManagedObject.__init__(self, "BiosVfProcessorCState", parent_mo_or_dn, **kwargs)
-

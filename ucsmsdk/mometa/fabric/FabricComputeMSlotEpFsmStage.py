@@ -1,12 +1,11 @@
 """This module contains the general information for FabricComputeMSlotEpFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricComputeMSlotEpFsmStageConsts():
+class FabricComputeMSlotEpFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_IDENTIFY_BEGIN = "IdentifyBegin"
     NAME_IDENTIFY_EXECUTE_LOCAL = "IdentifyExecuteLocal"
@@ -72,4 +71,3 @@ class FabricComputeMSlotEpFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricComputeMSlotEpFsmStage", parent_mo_or_dn, **kwargs)
-

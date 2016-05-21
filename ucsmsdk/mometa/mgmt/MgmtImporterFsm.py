@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtImporterFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtImporterFsmConsts():
+class MgmtImporterFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_IMPORT = "import"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class MgmtImporterFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtImporterFsm", parent_mo_or_dn, **kwargs)
-

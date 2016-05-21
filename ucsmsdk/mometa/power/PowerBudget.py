@@ -1,12 +1,11 @@
 """This module contains the general information for PowerBudget ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PowerBudgetConsts():
+class PowerBudgetConsts:
     ADMIN_COMMITTED_UNBOUNDED = "unbounded"
     ADMIN_FPLOCK_STATE_LOCKED = "locked"
     ADMIN_FPLOCK_STATE_UNKNOWN = "unknown"
@@ -221,4 +220,3 @@ class PowerBudget(ManagedObject):
         self.weight = None
 
         ManagedObject.__init__(self, "PowerBudget", parent_mo_or_dn, **kwargs)
-

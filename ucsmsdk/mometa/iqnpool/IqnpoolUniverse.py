@@ -1,12 +1,11 @@
 """This module contains the general information for IqnpoolUniverse ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IqnpoolUniverseConsts():
+class IqnpoolUniverseConsts:
     pass
 
 
@@ -41,4 +40,3 @@ class IqnpoolUniverse(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "IqnpoolUniverse", **kwargs)
-

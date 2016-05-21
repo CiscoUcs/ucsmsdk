@@ -13,10 +13,8 @@
 
 """
 This is an auto-generated module.
-It contains supporting classes for Filter and External Method.
+It contains supporting classes for Filter.
 
-ClassFactory Method: It returns the object of type ManagedObject, ExternalMethod
-or supporting classes available in this module for a given className.
 """
 
 from .ucscore import AbstractFilter
@@ -202,4 +200,3 @@ class WcardFilter(AbstractFilter):
         self.class_ = kwargs['class_']
         self.property = kwargs['property']
         self.value = kwargs['value']
-

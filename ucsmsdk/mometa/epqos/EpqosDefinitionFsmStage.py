@@ -1,12 +1,11 @@
 """This module contains the general information for EpqosDefinitionFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EpqosDefinitionFsmStageConsts():
+class EpqosDefinitionFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_DEPLOY_BEGIN = "DeployBegin"
     NAME_DEPLOY_FAIL = "DeployFail"
@@ -72,4 +71,3 @@ class EpqosDefinitionFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EpqosDefinitionFsmStage", parent_mo_or_dn, **kwargs)
-

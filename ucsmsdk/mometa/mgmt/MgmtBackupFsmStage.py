@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtBackupFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtBackupFsmStageConsts():
+class MgmtBackupFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_BACKUP_BACKUP_LOCAL = "backupBackupLocal"
     NAME_BACKUP_BEGIN = "backupBegin"
@@ -72,4 +71,3 @@ class MgmtBackupFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtBackupFsmStage", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for VnicIpV4PooledAddr ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicIpV4PooledAddrConsts():
+class VnicIpV4PooledAddrConsts:
     pass
 
 
@@ -62,4 +61,3 @@ class VnicIpV4PooledAddr(ManagedObject):
         self.subnet = None
 
         ManagedObject.__init__(self, "VnicIpV4PooledAddr", parent_mo_or_dn, **kwargs)
-

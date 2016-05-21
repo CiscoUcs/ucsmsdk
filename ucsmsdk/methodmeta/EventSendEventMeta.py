@@ -1,5 +1,4 @@
 """This module contains the meta information of EventSendEvent ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -18,4 +17,3 @@ prop_map = {
     "inEvent": "in_event",
     "inReqId": "in_req_id",
 }
-

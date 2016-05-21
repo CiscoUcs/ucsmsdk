@@ -1,12 +1,11 @@
 """This module contains the general information for EtherServerIntFIoFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherServerIntFIoFsmConsts():
+class EtherServerIntFIoFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_CONFIG_SPEED = "ConfigSpeed"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class EtherServerIntFIoFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EtherServerIntFIoFsm", parent_mo_or_dn, **kwargs)
-

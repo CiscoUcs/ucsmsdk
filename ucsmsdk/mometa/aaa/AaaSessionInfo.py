@@ -1,12 +1,11 @@
 """This module contains the general information for AaaSessionInfo ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaSessionInfoConsts():
+class AaaSessionInfoConsts:
     TYPE_ALL = "all"
     TYPE_KVM = "kvm"
     TYPE_SOL = "sol"
@@ -71,4 +70,3 @@ class AaaSessionInfo(ManagedObject):
         self.user_type = None
 
         ManagedObject.__init__(self, "AaaSessionInfo", parent_mo_or_dn, **kwargs)
-

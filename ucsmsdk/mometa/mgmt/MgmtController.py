@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtController ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtControllerConsts():
+class MgmtControllerConsts:
     DESIRED_MAINTENANCE_MODE_LPC_RESET = "lpc-reset"
     DESIRED_MAINTENANCE_MODE_NORMAL = "normal"
     DIMM_BLACKLISTING_OPER_STATE_DISABLED = "disabled"
@@ -527,4 +526,3 @@ class MgmtController(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "MgmtController", parent_mo_or_dn, **kwargs)
-

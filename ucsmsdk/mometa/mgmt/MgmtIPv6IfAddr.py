@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtIPv6IfAddr ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtIPv6IfAddrConsts():
+class MgmtIPv6IfAddrConsts:
     FSM_PREV_SW_MGMT_OOB_IPV6_IF_CONFIG_BEGIN = "SwMgmtOobIpv6IfConfigBegin"
     FSM_PREV_SW_MGMT_OOB_IPV6_IF_CONFIG_FAIL = "SwMgmtOobIpv6IfConfigFail"
     FSM_PREV_SW_MGMT_OOB_IPV6_IF_CONFIG_SUCCESS = "SwMgmtOobIpv6IfConfigSuccess"
@@ -219,4 +218,3 @@ class MgmtIPv6IfAddr(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtIPv6IfAddr", parent_mo_or_dn, **kwargs)
-

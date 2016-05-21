@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentLocalDiskDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentLocalDiskDefConsts():
+class EquipmentLocalDiskDefConsts:
     FORCE_UPDATE_VERSION_FALSE = "false"
     FORCE_UPDATE_VERSION_NO = "no"
     FORCE_UPDATE_VERSION_TRUE = "true"
@@ -103,4 +102,3 @@ class EquipmentLocalDiskDef(ManagedObject):
         self.technology = None
 
         ManagedObject.__init__(self, "EquipmentLocalDiskDef", parent_mo_or_dn, **kwargs)
-

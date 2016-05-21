@@ -1,12 +1,11 @@
 """This module contains the general information for ExtvmmVMNDRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtvmmVMNDRefConsts():
+class ExtvmmVMNDRefConsts:
     CONFIG_QUALIFIER_DUPLICATE_VMND_REFERENCE = "duplicate-vmnd-reference"
     CONFIG_QUALIFIER_NORMAL = "normal"
     INT_ID_NONE = "none"
@@ -76,4 +75,3 @@ class ExtvmmVMNDRef(ManagedObject):
         self.vm_network_def_name = None
 
         ManagedObject.__init__(self, "ExtvmmVMNDRef", parent_mo_or_dn, **kwargs)
-

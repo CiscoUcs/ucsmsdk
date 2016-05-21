@@ -1,12 +1,11 @@
 """This module contains the general information for SwSystemStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwSystemStatsHistConsts():
+class SwSystemStatsHistConsts:
     CORRECTABLE_PARITY_ERROR_NOT_APPLICABLE = "not-applicable"
     CORRECTABLE_PARITY_ERROR_AVG_NOT_APPLICABLE = "not-applicable"
     CORRECTABLE_PARITY_ERROR_MAX_NOT_APPLICABLE = "not-applicable"
@@ -147,4 +146,3 @@ class SwSystemStatsHist(ManagedObject):
         self.time_collected = None
 
         ManagedObject.__init__(self, "SwSystemStatsHist", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugCore ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugCoreConsts():
+class SysdebugCoreConsts:
     ADMIN_STATE_DOWNLOADED = "downloaded"
     ADMIN_STATE_INIT = "init"
     ADMIN_STATE_PREPARE_DOWNLOAD = "prepare-download"
@@ -251,4 +250,3 @@ class SysdebugCore(ManagedObject):
         self.uri = None
 
         ManagedObject.__init__(self, "SysdebugCore", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for VnicLifVsan ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicLifVsanConsts():
+class VnicLifVsanConsts:
     OPER_STATE_DOWN = "down"
     OPER_STATE_FAILED = "failed"
     OPER_STATE_INDETERMINATE = "indeterminate"
@@ -107,4 +106,3 @@ class VnicLifVsan(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "VnicLifVsan", parent_mo_or_dn, **kwargs)
-

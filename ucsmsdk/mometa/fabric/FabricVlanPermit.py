@@ -1,12 +1,11 @@
 """This module contains the general information for FabricVlanPermit ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricVlanPermitConsts():
+class FabricVlanPermitConsts:
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -53,4 +52,3 @@ class FabricVlanPermit(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricVlanPermit", parent_mo_or_dn, **kwargs)
-

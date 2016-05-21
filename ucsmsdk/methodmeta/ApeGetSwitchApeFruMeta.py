@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeGetSwitchApeFru ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "outControllerType": "out_controller_type",
     "outControllerVendor": "out_controller_vendor",
 }
-

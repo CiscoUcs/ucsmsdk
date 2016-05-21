@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeMuxOffline ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -16,4 +15,3 @@ prop_map = {
     "inChId": "in_ch_id",
     "inMuxSlotId": "in_mux_slot_id",
 }
-

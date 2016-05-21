@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentDiscoveryCap ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentDiscoveryCapConsts():
+class EquipmentDiscoveryCapConsts:
     OPER_POWER_REQUIREMENT_FULL = "full"
     OPER_POWER_REQUIREMENT_NONE = "none"
     OPER_POWER_REQUIREMENT_STANDBY = "standby"
@@ -46,4 +45,3 @@ class EquipmentDiscoveryCap(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentDiscoveryCap", parent_mo_or_dn, **kwargs)
-

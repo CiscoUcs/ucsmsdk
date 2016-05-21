@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeMcGetSdr ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -18,4 +17,3 @@ prop_map = {
     "inSdrIds": "in_sdr_ids",
     "outSdrVals": "out_sdr_vals",
 }
-

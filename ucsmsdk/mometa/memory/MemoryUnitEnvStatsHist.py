@@ -1,12 +1,11 @@
 """This module contains the general information for MemoryUnitEnvStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MemoryUnitEnvStatsHistConsts():
+class MemoryUnitEnvStatsHistConsts:
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -75,4 +74,3 @@ class MemoryUnitEnvStatsHist(ManagedObject):
         self.time_collected = None
 
         ManagedObject.__init__(self, "MemoryUnitEnvStatsHist", parent_mo_or_dn, **kwargs)
-

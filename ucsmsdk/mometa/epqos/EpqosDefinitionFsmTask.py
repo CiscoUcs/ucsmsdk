@@ -1,12 +1,11 @@
 """This module contains the general information for EpqosDefinitionFsmTask ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EpqosDefinitionFsmTaskConsts():
+class EpqosDefinitionFsmTaskConsts:
     COMPLETION_CANCELLED = "cancelled"
     COMPLETION_COMPLETED = "completed"
     COMPLETION_PROCESSING = "processing"
@@ -58,4 +57,3 @@ class EpqosDefinitionFsmTask(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EpqosDefinitionFsmTask", parent_mo_or_dn, **kwargs)
-

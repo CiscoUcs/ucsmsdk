@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeServerUnitFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeServerUnitFsmStageConsts():
+class ComputeServerUnitFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_ACTIVATE_ADAPTOR_ACTIVATE_LOCAL = "ActivateAdaptorActivateLocal"
     NAME_ACTIVATE_ADAPTOR_ACTIVATE_PEER = "ActivateAdaptorActivatePeer"
@@ -569,4 +568,3 @@ class ComputeServerUnitFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeServerUnitFsmStage", parent_mo_or_dn, **kwargs)
-

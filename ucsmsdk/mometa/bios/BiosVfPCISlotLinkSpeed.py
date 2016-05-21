@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfPCISlotLinkSpeed ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfPCISlotLinkSpeedConsts():
+class BiosVfPCISlotLinkSpeedConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_PCIE_SLOT10_LINK_SPEED_AUTO = "auto"
@@ -148,4 +147,3 @@ class BiosVfPCISlotLinkSpeed(ManagedObject):
         self.vp_pc_ie_slot9_link_speed = None
 
         ManagedObject.__init__(self, "BiosVfPCISlotLinkSpeed", parent_mo_or_dn, **kwargs)
-

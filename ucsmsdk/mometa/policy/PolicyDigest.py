@@ -1,12 +1,11 @@
 """This module contains the general information for PolicyDigest ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PolicyDigestConsts():
+class PolicyDigestConsts:
     REQUESTOR_OWNERSHIP_LOCAL = "local"
     REQUESTOR_OWNERSHIP_PENDING_POLICY = "pending-policy"
     REQUESTOR_OWNERSHIP_POLICY = "policy"
@@ -75,4 +74,3 @@ class PolicyDigest(ManagedObject):
         self.usage = None
 
         ManagedObject.__init__(self, "PolicyDigest", parent_mo_or_dn, **kwargs)
-

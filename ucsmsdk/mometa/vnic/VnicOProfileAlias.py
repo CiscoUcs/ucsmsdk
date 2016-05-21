@@ -1,12 +1,11 @@
 """This module contains the general information for VnicOProfileAlias ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicOProfileAliasConsts():
+class VnicOProfileAliasConsts:
     MGMT_PLANE_RHEV_M = "rhev-m"
     MGMT_PLANE_SCVMM = "scvmm"
     MGMT_PLANE_UNMANAGED = "unmanaged"
@@ -56,4 +55,3 @@ class VnicOProfileAlias(ManagedObject):
         self.v_switch_id = None
 
         ManagedObject.__init__(self, "VnicOProfileAlias", parent_mo_or_dn, **kwargs)
-

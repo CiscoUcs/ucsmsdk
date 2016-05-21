@@ -1,12 +1,11 @@
 """This module contains the general information for AaaSshAuth ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaSshAuthConsts():
+class AaaSshAuthConsts:
     OLD_STR_TYPE_KEY = "key"
     OLD_STR_TYPE_NONE = "none"
     STR_TYPE_KEY = "key"
@@ -53,4 +52,3 @@ class AaaSshAuth(ManagedObject):
         self.str_type = None
 
         ManagedObject.__init__(self, "AaaSshAuth", parent_mo_or_dn, **kwargs)
-

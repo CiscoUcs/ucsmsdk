@@ -1,12 +1,11 @@
 """This module contains the general information for OsEthBondModeActiveBackup ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class OsEthBondModeActiveBackupConsts():
+class OsEthBondModeActiveBackupConsts:
     MAC_ADDRESS_POLICY_ACTIVE = "active"
     MAC_ADDRESS_POLICY_FOLLOW = "follow"
     MAC_ADDRESS_POLICY_NONE = "none"
@@ -57,4 +56,3 @@ class OsEthBondModeActiveBackup(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "OsEthBondModeActiveBackup", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for LsFcZoneGroup ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsFcZoneGroupConsts():
+class LsFcZoneGroupConsts:
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -53,4 +52,3 @@ class LsFcZoneGroup(ManagedObject):
         self.switch_id = None
 
         ManagedObject.__init__(self, "LsFcZoneGroup", parent_mo_or_dn, **kwargs)
-

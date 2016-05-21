@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeSetVmediaMounts ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -22,4 +21,3 @@ prop_map = {
     "inSlotId": "in_slot_id",
     "inVMediaSet": "in_v_media_set",
 }
-

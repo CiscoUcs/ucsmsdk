@@ -1,12 +1,11 @@
 """This module contains the general information for IqnpoolPool ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IqnpoolPoolConsts():
+class IqnpoolPoolConsts:
     ASSIGNMENT_ORDER_DEFAULT = "default"
     ASSIGNMENT_ORDER_SEQUENTIAL = "sequential"
     INT_ID_NONE = "none"
@@ -73,4 +72,3 @@ class IqnpoolPool(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "IqnpoolPool", parent_mo_or_dn, **kwargs)
-

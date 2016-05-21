@@ -1,12 +1,11 @@
 """This module contains the general information for SolPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SolPolicyConsts():
+class SolPolicyConsts:
     ADMIN_STATE_DISABLE = "disable"
     ADMIN_STATE_ENABLE = "enable"
     INT_ID_NONE = "none"
@@ -75,4 +74,3 @@ class SolPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SolPolicy", parent_mo_or_dn, **kwargs)
-

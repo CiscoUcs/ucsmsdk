@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeGetServerFromIp ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "outServerInstanceId": "out_server_instance_id",
     "outSlotId": "out_slot_id",
 }
-

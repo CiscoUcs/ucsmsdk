@@ -1,5 +1,4 @@
 """This module contains the meta information of ConfigGetRemotePolicies ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -22,4 +21,3 @@ prop_map = {
     "outPolicies": "out_policies",
     "outStimulusId": "out_stimulus_id",
 }
-

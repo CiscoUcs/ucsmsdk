@@ -1,12 +1,11 @@
 """This module contains the general information for FabricVlanReq ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricVlanReqConsts():
+class FabricVlanReqConsts:
     TYPE_LAN = "lan"
     TYPE_SAN = "san"
 
@@ -51,4 +50,3 @@ class FabricVlanReq(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricVlanReq", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for ApeFru ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApeFruConsts():
+class ApeFruConsts:
     pass
 
 
@@ -119,4 +118,3 @@ class ApeFru(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "ApeFru", parent_mo_or_dn, **kwargs)
-

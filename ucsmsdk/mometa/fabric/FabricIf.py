@@ -1,12 +1,11 @@
 """This module contains the general information for FabricIf ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricIfConsts():
+class FabricIfConsts:
     ID_A = "A"
     ID_B = "B"
     ID_NONE = "NONE"
@@ -49,4 +48,3 @@ class FabricIf(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricIf", parent_mo_or_dn, **kwargs)
-

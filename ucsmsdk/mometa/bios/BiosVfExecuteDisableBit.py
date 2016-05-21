@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfExecuteDisableBit ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfExecuteDisableBitConsts():
+class BiosVfExecuteDisableBitConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_EXECUTE_DISABLE_BIT_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfExecuteDisableBit(ManagedObject):
         self.vp_execute_disable_bit = None
 
         ManagedObject.__init__(self, "BiosVfExecuteDisableBit", parent_mo_or_dn, **kwargs)
-

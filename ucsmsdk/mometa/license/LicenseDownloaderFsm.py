@@ -1,12 +1,11 @@
 """This module contains the general information for LicenseDownloaderFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LicenseDownloaderFsmConsts():
+class LicenseDownloaderFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_DOWNLOAD = "Download"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class LicenseDownloaderFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LicenseDownloaderFsm", parent_mo_or_dn, **kwargs)
-

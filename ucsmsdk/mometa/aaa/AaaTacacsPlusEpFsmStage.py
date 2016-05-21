@@ -1,12 +1,11 @@
 """This module contains the general information for AaaTacacsPlusEpFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaTacacsPlusEpFsmStageConsts():
+class AaaTacacsPlusEpFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_NOP = "nop"
     NAME_UPDATE_EP_BEGIN = "updateEpBegin"
@@ -72,4 +71,3 @@ class AaaTacacsPlusEpFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AaaTacacsPlusEpFsmStage", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareSystem ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareSystemConsts():
+class FirmwareSystemConsts:
     FSM_PREV_APPLY_CATALOG_PACK_ACTIVATE_CATALOG = "ApplyCatalogPackActivateCatalog"
     FSM_PREV_APPLY_CATALOG_PACK_BEGIN = "ApplyCatalogPackBegin"
     FSM_PREV_APPLY_CATALOG_PACK_FAIL = "ApplyCatalogPackFail"
@@ -282,4 +281,3 @@ class FirmwareSystem(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareSystem", parent_mo_or_dn, **kwargs)
-

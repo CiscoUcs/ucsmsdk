@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareActivity ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareActivityConsts():
+class FirmwareActivityConsts:
     SERVERS_POWER_STATE_NONE = "none"
     SERVERS_POWER_STATE_OFF = "off"
     SERVERS_POWER_STATE_OFF_NOWAIT = "off-nowait"
@@ -56,4 +55,3 @@ class FirmwareActivity(ManagedObject):
         self.upgrade_priority_info = None
 
         ManagedObject.__init__(self, "FirmwareActivity", parent_mo_or_dn, **kwargs)
-

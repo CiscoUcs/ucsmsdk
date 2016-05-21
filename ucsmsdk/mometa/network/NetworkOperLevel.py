@@ -1,12 +1,11 @@
 """This module contains the general information for NetworkOperLevel ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class NetworkOperLevelConsts():
+class NetworkOperLevelConsts:
     ID_A = "A"
     ID_B = "B"
     ID_NONE = "NONE"
@@ -82,4 +81,3 @@ class NetworkOperLevel(ManagedObject):
         self.vif_count_status = None
 
         ManagedObject.__init__(self, "NetworkOperLevel", parent_mo_or_dn, **kwargs)
-

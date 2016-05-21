@@ -1,5 +1,4 @@
 """This module contains the meta information of TrigPerformTokenAction ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -42,4 +41,3 @@ prop_map = {
     "outWindowName": "out_window_name",
     "outWindowType": "out_window_type",
 }
-

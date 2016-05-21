@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentPsuOutputStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentPsuOutputStatsConsts():
+class EquipmentPsuOutputStatsConsts:
     SUSPECT_FALSE = "false"
     SUSPECT_NO = "no"
     SUSPECT_TRUE = "true"
@@ -98,4 +97,3 @@ class EquipmentPsuOutputStats(ManagedObject):
         self.voltage_min = None
 
         ManagedObject.__init__(self, "EquipmentPsuOutputStats", parent_mo_or_dn, **kwargs)
-

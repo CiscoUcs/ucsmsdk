@@ -1,12 +1,11 @@
 """This module contains the general information for CommSvcEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CommSvcEpConsts():
+class CommSvcEpConsts:
     CONFIG_STATE_NOT_APPLIED = "not-applied"
     CONFIG_STATE_OK = "ok"
     FSM_PREV_NOP = "nop"
@@ -266,4 +265,3 @@ class CommSvcEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CommSvcEp", parent_mo_or_dn, **kwargs)
-

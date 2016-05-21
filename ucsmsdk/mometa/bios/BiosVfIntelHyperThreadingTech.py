@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfIntelHyperThreadingTech ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfIntelHyperThreadingTechConsts():
+class BiosVfIntelHyperThreadingTechConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_INTEL_HYPER_THREADING_TECH_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfIntelHyperThreadingTech(ManagedObject):
         self.vp_intel_hyper_threading_tech = None
 
         ManagedObject.__init__(self, "BiosVfIntelHyperThreadingTech", parent_mo_or_dn, **kwargs)
-

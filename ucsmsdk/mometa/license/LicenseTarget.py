@@ -1,12 +1,11 @@
 """This module contains the general information for LicenseTarget ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LicenseTargetConsts():
+class LicenseTargetConsts:
     IS_RACK_PRESENT_FALSE = "false"
     IS_RACK_PRESENT_NO = "no"
     IS_RACK_PRESENT_TRUE = "true"
@@ -56,4 +55,3 @@ class LicenseTarget(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LicenseTarget", parent_mo_or_dn, **kwargs)
-

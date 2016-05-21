@@ -1,12 +1,11 @@
 """This module contains the general information for LstorageVirtualDriveDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LstorageVirtualDriveDefConsts():
+class LstorageVirtualDriveDefConsts:
     ACCESS_POLICY_BLOCKED = "blocked"
     ACCESS_POLICY_PLATFORM_DEFAULT = "platform-default"
     ACCESS_POLICY_READ_ONLY = "read-only"
@@ -91,4 +90,3 @@ class LstorageVirtualDriveDef(ManagedObject):
         self.write_cache_policy = None
 
         ManagedObject.__init__(self, "LstorageVirtualDriveDef", parent_mo_or_dn, **kwargs)
-

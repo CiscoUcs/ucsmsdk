@@ -1,12 +1,11 @@
 """This module contains the general information for PortGroup ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PortGroupConsts():
+class PortGroupConsts:
     TYPE_ADAPTOR_EXT = "adaptor-ext"
     TYPE_ADAPTOR_PC = "adaptor-pc"
     TYPE_FABRIC = "fabric"
@@ -61,4 +60,3 @@ class PortGroup(ManagedObject):
         self.transport = None
 
         ManagedObject.__init__(self, "PortGroup", parent_mo_or_dn, **kwargs)
-

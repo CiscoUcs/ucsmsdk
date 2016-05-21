@@ -1,5 +1,4 @@
 """This module contains the meta information of EventUnRegisterEventChannel ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -16,4 +15,3 @@ prop_map = {
     "inDn": "in_dn",
     "inReqID": "in_req_id",
 }
-

@@ -1,12 +1,11 @@
 """This module contains the general information for InitiatorRequestorGrpEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class InitiatorRequestorGrpEpConsts():
+class InitiatorRequestorGrpEpConsts:
     ALLOC_STATE_ALLOCATED = "allocated"
     ALLOC_STATE_ALLOCATING = "allocating"
     ALLOC_STATE_FAILED = "failed"
@@ -69,4 +68,3 @@ class InitiatorRequestorGrpEp(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "InitiatorRequestorGrpEp", parent_mo_or_dn, **kwargs)
-

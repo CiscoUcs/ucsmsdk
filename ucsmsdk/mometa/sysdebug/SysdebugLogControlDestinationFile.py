@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugLogControlDestinationFile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugLogControlDestinationFileConsts():
+class SysdebugLogControlDestinationFileConsts:
     DEFAULT_LEVEL_CRIT = "crit"
     DEFAULT_LEVEL_DEBUG0 = "debug0"
     DEFAULT_LEVEL_DEBUG1 = "debug1"
@@ -75,4 +74,3 @@ class SysdebugLogControlDestinationFile(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugLogControlDestinationFile", parent_mo_or_dn, **kwargs)
-

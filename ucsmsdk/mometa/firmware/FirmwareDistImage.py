@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareDistImage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareDistImageConsts():
+class FirmwareDistImageConsts:
     TYPE_ADAPTOR = "adaptor"
     TYPE_BLADE_BIOS = "blade-bios"
     TYPE_BLADE_CONTROLLER = "blade-controller"
@@ -76,4 +75,3 @@ class FirmwareDistImage(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FirmwareDistImage", parent_mo_or_dn, **kwargs)
-

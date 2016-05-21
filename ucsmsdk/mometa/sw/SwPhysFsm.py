@@ -1,12 +1,11 @@
 """This module contains the general information for SwPhysFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwPhysFsmConsts():
+class SwPhysFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_CONF_PHYSICAL = "ConfPhysical"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class SwPhysFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwPhysFsm", parent_mo_or_dn, **kwargs)
-

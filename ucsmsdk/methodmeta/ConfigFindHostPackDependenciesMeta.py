@@ -1,5 +1,4 @@
 """This module contains the meta information of ConfigFindHostPackDependencies ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -18,4 +17,3 @@ prop_map = {
     "inHostPackDns": "in_host_pack_dns",
     "outConfigSet": "out_config_set",
 }
-

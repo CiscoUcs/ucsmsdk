@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugCoreFileRepository ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugCoreFileRepositoryConsts():
+class SysdebugCoreFileRepositoryConsts:
     pass
 
 
@@ -41,4 +40,3 @@ class SysdebugCoreFileRepository(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugCoreFileRepository", parent_mo_or_dn, **kwargs)
-

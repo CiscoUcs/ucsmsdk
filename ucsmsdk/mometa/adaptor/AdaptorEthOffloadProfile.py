@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorEthOffloadProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorEthOffloadProfileConsts():
+class AdaptorEthOffloadProfileConsts:
     LARGE_RECEIVE_DISABLED = "disabled"
     LARGE_RECEIVE_ENABLED = "enabled"
     TCP_RX_CHECKSUM_DISABLED = "disabled"
@@ -60,4 +59,3 @@ class AdaptorEthOffloadProfile(ManagedObject):
         self.tcp_tx_checksum = None
 
         ManagedObject.__init__(self, "AdaptorEthOffloadProfile", parent_mo_or_dn, **kwargs)
-

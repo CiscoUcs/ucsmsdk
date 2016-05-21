@@ -1,12 +1,11 @@
 """This module contains the general information for IdentIdentRequest ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IdentIdentRequestConsts():
+class IdentIdentRequestConsts:
     FSM_PREV_NOP = "nop"
     FSM_PREV_UPDATE_IDENT_BEGIN = "updateIdentBegin"
     FSM_PREV_UPDATE_IDENT_EXECUTE = "updateIdentExecute"
@@ -222,4 +221,3 @@ class IdentIdentRequest(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "IdentIdentRequest", parent_mo_or_dn, **kwargs)
-

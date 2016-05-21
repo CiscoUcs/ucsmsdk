@@ -1,12 +1,11 @@
 """This module contains the general information for IdentMetaSystem ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IdentMetaSystemConsts():
+class IdentMetaSystemConsts:
     FSM_PREV_NOP = "nop"
     FSM_PREV_SYNC_BEGIN = "syncBegin"
     FSM_PREV_SYNC_EXECUTE = "syncExecute"
@@ -232,4 +231,3 @@ class IdentMetaSystem(ManagedObject):
         self.ucsc_generation = None
 
         ManagedObject.__init__(self, "IdentMetaSystem", parent_mo_or_dn, **kwargs)
-

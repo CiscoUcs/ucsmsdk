@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfProcessorPrefetchConfig ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfProcessorPrefetchConfigConsts():
+class BiosVfProcessorPrefetchConfigConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_ADJACENT_CACHE_LINE_PREFETCHER_DISABLED = "disabled"
@@ -76,4 +75,3 @@ class BiosVfProcessorPrefetchConfig(ManagedObject):
         self.vp_hardware_prefetcher = None
 
         ManagedObject.__init__(self, "BiosVfProcessorPrefetchConfig", parent_mo_or_dn, **kwargs)
-

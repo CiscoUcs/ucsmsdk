@@ -1,12 +1,11 @@
 """This module contains the general information for FeatureFruCapProviderRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FeatureFruCapProviderRefConsts():
+class FeatureFruCapProviderRefConsts:
     SUPPORTABILITY_DEPRECATED = "deprecated"
     SUPPORTABILITY_NOT_SUPPORTED = "not-supported"
     SUPPORTABILITY_SUPPORTED = "supported"
@@ -58,4 +57,3 @@ class FeatureFruCapProviderRef(ManagedObject):
         self.target_dn = None
 
         ManagedObject.__init__(self, "FeatureFruCapProviderRef", parent_mo_or_dn, **kwargs)
-

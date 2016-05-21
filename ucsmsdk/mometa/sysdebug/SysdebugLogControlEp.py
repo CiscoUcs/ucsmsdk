@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugLogControlEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugLogControlEpConsts():
+class SysdebugLogControlEpConsts:
     FSM_PREV_LOG_CONTROL_PERSIST_BEGIN = "LogControlPersistBegin"
     FSM_PREV_LOG_CONTROL_PERSIST_FAIL = "LogControlPersistFail"
     FSM_PREV_LOG_CONTROL_PERSIST_LOCAL = "LogControlPersistLocal"
@@ -246,4 +245,3 @@ class SysdebugLogControlEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugLogControlEp", parent_mo_or_dn, **kwargs)
-

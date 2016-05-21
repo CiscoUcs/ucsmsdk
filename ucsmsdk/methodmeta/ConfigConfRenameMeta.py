@@ -1,5 +1,4 @@
 """This module contains the meta information of ConfigConfRename ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "inNewName": "in_new_name",
     "outConfig": "out_config",
 }
-

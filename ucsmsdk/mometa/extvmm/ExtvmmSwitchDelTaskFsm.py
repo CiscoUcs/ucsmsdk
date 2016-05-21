@@ -1,12 +1,11 @@
 """This module contains the general information for ExtvmmSwitchDelTaskFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtvmmSwitchDelTaskFsmConsts():
+class ExtvmmSwitchDelTaskFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_NOP = "nop"
     CURRENT_FSM_REMOVE_PROVIDER = "removeProvider"
@@ -206,4 +205,3 @@ class ExtvmmSwitchDelTaskFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtvmmSwitchDelTaskFsm", parent_mo_or_dn, **kwargs)
-

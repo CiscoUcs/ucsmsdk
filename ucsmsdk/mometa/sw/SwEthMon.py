@@ -1,12 +1,11 @@
 """This module contains the general information for SwEthMon ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwEthMonConsts():
+class SwEthMonConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     FSM_PREV_DEPLOY_BEGIN = "DeployBegin"
@@ -249,4 +248,3 @@ class SwEthMon(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "SwEthMon", parent_mo_or_dn, **kwargs)
-

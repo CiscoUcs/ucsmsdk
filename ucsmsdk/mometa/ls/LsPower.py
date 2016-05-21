@@ -1,12 +1,11 @@
 """This module contains the general information for LsPower ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsPowerConsts():
+class LsPowerConsts:
     STATE_ADMIN_DOWN = "admin-down"
     STATE_ADMIN_UP = "admin-up"
     STATE_BMC_RESET_IMMEDIATE = "bmc-reset-immediate"
@@ -62,4 +61,3 @@ class LsPower(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LsPower", parent_mo_or_dn, **kwargs)
-

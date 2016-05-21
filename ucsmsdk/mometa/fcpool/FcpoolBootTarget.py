@@ -1,12 +1,11 @@
 """This module contains the general information for FcpoolBootTarget ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FcpoolBootTargetConsts():
+class FcpoolBootTargetConsts:
     LUN_UNSPECIFIED = "unspecified"
     TYPE_PRIMARY = "primary"
     TYPE_SECONDARY = "secondary"
@@ -52,4 +51,3 @@ class FcpoolBootTarget(ManagedObject):
         self.wwn = None
 
         ManagedObject.__init__(self, "FcpoolBootTarget", parent_mo_or_dn, **kwargs)
-

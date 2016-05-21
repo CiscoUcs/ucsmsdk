@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtControllerFsmTask ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtControllerFsmTaskConsts():
+class MgmtControllerFsmTaskConsts:
     COMPLETION_CANCELLED = "cancelled"
     COMPLETION_COMPLETED = "completed"
     COMPLETION_PROCESSING = "processing"
@@ -76,4 +75,3 @@ class MgmtControllerFsmTask(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "MgmtControllerFsmTask", parent_mo_or_dn, **kwargs)
-

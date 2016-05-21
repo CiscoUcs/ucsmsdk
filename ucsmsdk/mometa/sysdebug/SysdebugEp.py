@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugEpConsts():
+class SysdebugEpConsts:
     pass
 
 
@@ -41,4 +40,3 @@ class SysdebugEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugEp", parent_mo_or_dn, **kwargs)
-

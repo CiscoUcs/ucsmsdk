@@ -1,12 +1,11 @@
 """This module contains the general information for SwAccessDomainFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwAccessDomainFsmConsts():
+class SwAccessDomainFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_DEPLOY = "Deploy"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class SwAccessDomainFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwAccessDomainFsm", parent_mo_or_dn, **kwargs)
-

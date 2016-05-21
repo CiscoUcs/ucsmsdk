@@ -1,12 +1,11 @@
 """This module contains the general information for EventEpCtrl ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EventEpCtrlConsts():
+class EventEpCtrlConsts:
     LEVEL_CLEARED = "cleared"
     LEVEL_CONDITION = "condition"
     LEVEL_CRITICAL = "critical"
@@ -54,4 +53,3 @@ class EventEpCtrl(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EventEpCtrl", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorExtEthIfFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorExtEthIfFsmStageConsts():
+class AdaptorExtEthIfFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_PATH_RESET_BEGIN = "PathResetBegin"
     NAME_PATH_RESET_DISABLE = "PathResetDisable"
@@ -72,4 +71,3 @@ class AdaptorExtEthIfFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorExtEthIfFsmStage", parent_mo_or_dn, **kwargs)
-

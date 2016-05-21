@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeCreateHVVnic ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "inConfig": "in_config",
     "inSwId": "in_sw_id",
 }
-

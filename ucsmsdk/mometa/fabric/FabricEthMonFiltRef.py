@@ -1,12 +1,11 @@
 """This module contains the general information for FabricEthMonFiltRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricEthMonFiltRefConsts():
+class FabricEthMonFiltRefConsts:
     pass
 
 
@@ -47,4 +46,3 @@ class FabricEthMonFiltRef(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricEthMonFiltRef", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for SyntheticFsObj ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SyntheticFsObjConsts():
+class SyntheticFsObjConsts:
     FSM_PREV_CREATE_BEGIN = "createBegin"
     FSM_PREV_CREATE_CREATE_LOCAL = "createCreateLocal"
     FSM_PREV_CREATE_CREATE_REMOTE = "createCreateRemote"
@@ -218,4 +217,3 @@ class SyntheticFsObj(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SyntheticFsObj", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for AaaDomain ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaDomainConsts():
+class AaaDomainConsts:
     CONFIG_STATE_NOT_APPLIED = "not-applied"
     CONFIG_STATE_OK = "ok"
 
@@ -60,4 +59,3 @@ class AaaDomain(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AaaDomain", parent_mo_or_dn, **kwargs)
-

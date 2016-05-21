@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfUSBSystemIdlePowerOptimizingSetting ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfUSBSystemIdlePowerOptimizingSettingConsts():
+class BiosVfUSBSystemIdlePowerOptimizingSettingConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_USBIDLE_POWER_OPTIMIZING_HIGH_PERFORMANCE = "high-performance"
@@ -55,4 +54,3 @@ class BiosVfUSBSystemIdlePowerOptimizingSetting(ManagedObject):
         self.vp_usb_idle_power_optimizing = None
 
         ManagedObject.__init__(self, "BiosVfUSBSystemIdlePowerOptimizingSetting", parent_mo_or_dn, **kwargs)
-

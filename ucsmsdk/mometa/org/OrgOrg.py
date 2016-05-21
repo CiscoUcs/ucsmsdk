@@ -1,12 +1,11 @@
 """This module contains the general information for OrgOrg ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class OrgOrgConsts():
+class OrgOrgConsts:
     LEVEL_1 = "1"
     LEVEL_2 = "2"
     LEVEL_3 = "3"
@@ -65,4 +64,3 @@ class OrgOrg(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "OrgOrg", parent_mo_or_dn, **kwargs)
-

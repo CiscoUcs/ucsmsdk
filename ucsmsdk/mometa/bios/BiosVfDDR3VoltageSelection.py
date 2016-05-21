@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfDDR3VoltageSelection ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfDDR3VoltageSelectionConsts():
+class BiosVfDDR3VoltageSelectionConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_DDR3_VOLTAGE_SELECTION_DDR3_1350MV = "ddr3-1350mv"
@@ -55,4 +54,3 @@ class BiosVfDDR3VoltageSelection(ManagedObject):
         self.vp_dd_r3_voltage_selection = None
 
         ManagedObject.__init__(self, "BiosVfDDR3VoltageSelection", parent_mo_or_dn, **kwargs)
-

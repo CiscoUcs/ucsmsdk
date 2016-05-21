@@ -1,12 +1,11 @@
 """This module contains the general information for ApePaloVnic ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApePaloVnicConsts():
+class ApePaloVnicConsts:
     FAILOVER_FALSE = "false"
     FAILOVER_NO = "no"
     FAILOVER_TRUE = "true"
@@ -118,4 +117,3 @@ class ApePaloVnic(ManagedObject):
         self.wwnn = None
 
         ManagedObject.__init__(self, "ApePaloVnic", parent_mo_or_dn, **kwargs)
-

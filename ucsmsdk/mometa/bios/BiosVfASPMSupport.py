@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfASPMSupport ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfASPMSupportConsts():
+class BiosVfASPMSupportConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_ASPMSUPPORT_AUTO = "auto"
@@ -56,4 +55,3 @@ class BiosVfASPMSupport(ManagedObject):
         self.vp_aspm_support = None
 
         ManagedObject.__init__(self, "BiosVfASPMSupport", parent_mo_or_dn, **kwargs)
-

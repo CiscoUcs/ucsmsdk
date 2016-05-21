@@ -1,12 +1,11 @@
 """This module contains the general information for StorageLocalDisk ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageLocalDiskConsts():
+class StorageLocalDiskConsts:
     ADMIN_ACTION_DEDICATED_HOT_SPARE = "dedicated-hot-spare"
     ADMIN_ACTION_GLOBAL_HOT_SPARE = "global-hot-spare"
     ADMIN_ACTION_JBOD = "jbod"
@@ -228,4 +227,3 @@ class StorageLocalDisk(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "StorageLocalDisk", parent_mo_or_dn, **kwargs)
-

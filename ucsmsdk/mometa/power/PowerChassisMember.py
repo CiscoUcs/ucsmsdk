@@ -1,12 +1,11 @@
 """This module contains the general information for PowerChassisMember ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PowerChassisMemberConsts():
+class PowerChassisMemberConsts:
     OPER_STATE_CAP_INSUFFICIENT = "cap-insufficient"
     OPER_STATE_CAP_OK = "cap-ok"
     OPER_STATE_FW_MISMATCH = "fw-mismatch"
@@ -52,4 +51,3 @@ class PowerChassisMember(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PowerChassisMember", parent_mo_or_dn, **kwargs)
-

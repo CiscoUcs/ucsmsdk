@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentPciDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentPciDefConsts():
+class EquipmentPciDefConsts:
     DEVICE_TYPE_BROADCOM57712_NIC = "Broadcom57712Nic"
     DEVICE_TYPE_BROADCOM_NIC = "BroadcomNic"
     DEVICE_TYPE_EMULEX_NIC = "EmulexNic"
@@ -106,4 +105,3 @@ class EquipmentPciDef(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "EquipmentPciDef", parent_mo_or_dn, **kwargs)
-

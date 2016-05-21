@@ -1,12 +1,11 @@
 """This module contains the general information for PolicyMonitoring ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PolicyMonitoringConsts():
+class PolicyMonitoringConsts:
     SOURCE_LOCAL = "local"
     SOURCE_PENDING_POLICY = "pending-policy"
     SOURCE_POLICY = "policy"
@@ -46,4 +45,3 @@ class PolicyMonitoring(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PolicyMonitoring", parent_mo_or_dn, **kwargs)
-

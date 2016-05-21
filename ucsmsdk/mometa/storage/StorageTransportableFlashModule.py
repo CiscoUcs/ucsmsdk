@@ -1,12 +1,11 @@
 """This module contains the general information for StorageTransportableFlashModule ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageTransportableFlashModuleConsts():
+class StorageTransportableFlashModuleConsts:
     BLOCK_SIZE_UNKNOWN = "unknown"
     CONNECTION_PROTOCOL_NVME = "NVME"
     CONNECTION_PROTOCOL_SAS = "SAS"
@@ -129,4 +128,3 @@ class StorageTransportableFlashModule(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "StorageTransportableFlashModule", parent_mo_or_dn, **kwargs)
-

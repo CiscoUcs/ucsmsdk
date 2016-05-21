@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfUSBBootConfig ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfUSBBootConfigConsts():
+class BiosVfUSBBootConfigConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_LEGACY_USBSUPPORT_AUTO = "auto"
@@ -63,4 +62,3 @@ class BiosVfUSBBootConfig(ManagedObject):
         self.vp_make_device_non_bootable = None
 
         ManagedObject.__init__(self, "BiosVfUSBBootConfig", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for SysfileMutationFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysfileMutationFsmStageConsts():
+class SysfileMutationFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_GLOBAL_BEGIN = "GlobalBegin"
     NAME_GLOBAL_FAIL = "GlobalFail"
@@ -76,4 +75,3 @@ class SysfileMutationFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysfileMutationFsmStage", parent_mo_or_dn, **kwargs)
-

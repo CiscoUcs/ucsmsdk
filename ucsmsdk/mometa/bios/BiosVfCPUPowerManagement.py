@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfCPUPowerManagement ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfCPUPowerManagementConsts():
+class BiosVfCPUPowerManagementConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_CPUPOWER_MANAGEMENT_CUSTOM = "custom"
@@ -56,4 +55,3 @@ class BiosVfCPUPowerManagement(ManagedObject):
         self.vp_cpu_power_management = None
 
         ManagedObject.__init__(self, "BiosVfCPUPowerManagement", parent_mo_or_dn, **kwargs)
-

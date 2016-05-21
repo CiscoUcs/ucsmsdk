@@ -1,12 +1,11 @@
 """This module contains the general information for ExtpolClientCont ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtpolClientContConsts():
+class ExtpolClientContConsts:
     pass
 
 
@@ -44,4 +43,3 @@ class ExtpolClientCont(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtpolClientCont", parent_mo_or_dn, **kwargs)
-

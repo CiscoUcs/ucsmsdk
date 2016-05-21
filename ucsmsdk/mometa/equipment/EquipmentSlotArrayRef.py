@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentSlotArrayRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentSlotArrayRefConsts():
+class EquipmentSlotArrayRefConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -71,4 +70,3 @@ class EquipmentSlotArrayRef(ManagedObject):
         self.target_dn = None
 
         ManagedObject.__init__(self, "EquipmentSlotArrayRef", parent_mo_or_dn, **kwargs)
-

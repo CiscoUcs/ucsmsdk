@@ -1,12 +1,11 @@
 """This module contains the general information for EtherErrStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherErrStatsHistConsts():
+class EtherErrStatsHistConsts:
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -198,4 +197,3 @@ class EtherErrStatsHist(ManagedObject):
         self.xmit_delta_min = None
 
         ManagedObject.__init__(self, "EtherErrStatsHist", parent_mo_or_dn, **kwargs)
-

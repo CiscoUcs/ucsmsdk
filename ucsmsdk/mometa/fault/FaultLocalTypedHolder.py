@@ -1,12 +1,11 @@
 """This module contains the general information for FaultLocalTypedHolder ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FaultLocalTypedHolderConsts():
+class FaultLocalTypedHolderConsts:
     TYPE_ANY = "any"
     TYPE_CONFIGURATION = "configuration"
     TYPE_CONNECTIVITY = "connectivity"
@@ -63,4 +62,3 @@ class FaultLocalTypedHolder(ManagedObject):
         self.total_faults = None
 
         ManagedObject.__init__(self, "FaultLocalTypedHolder", parent_mo_or_dn, **kwargs)
-

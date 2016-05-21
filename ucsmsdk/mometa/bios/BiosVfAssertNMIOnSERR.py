@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfAssertNMIOnSERR ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfAssertNMIOnSERRConsts():
+class BiosVfAssertNMIOnSERRConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_ASSERT_NMION_SERR_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfAssertNMIOnSERR(ManagedObject):
         self.vp_assert_nmi_on_serr = None
 
         ManagedObject.__init__(self, "BiosVfAssertNMIOnSERR", parent_mo_or_dn, **kwargs)
-

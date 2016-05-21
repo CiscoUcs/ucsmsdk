@@ -1,12 +1,11 @@
 """This module contains the general information for SwVirtL3Intf ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwVirtL3IntfConsts():
+class SwVirtL3IntfConsts:
     pass
 
 
@@ -53,4 +52,3 @@ class SwVirtL3Intf(ManagedObject):
         self.vlan_id = None
 
         ManagedObject.__init__(self, "SwVirtL3Intf", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeBladeEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeBladeEpConsts():
+class ComputeBladeEpConsts:
     ADMIN_STATE_IN_MAINTENANCE = "in-maintenance"
     ADMIN_STATE_IN_SERVICE = "in-service"
     ADMIN_STATE_OUT_OF_SERVICE = "out-of-service"
@@ -136,4 +135,3 @@ class ComputeBladeEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeBladeEp", parent_mo_or_dn, **kwargs)
-

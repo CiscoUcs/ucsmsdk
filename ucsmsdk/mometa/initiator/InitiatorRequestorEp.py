@@ -1,12 +1,11 @@
 """This module contains the general information for InitiatorRequestorEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class InitiatorRequestorEpConsts():
+class InitiatorRequestorEpConsts:
     ALLOC_STATE_ALLOCATED = "allocated"
     ALLOC_STATE_ALLOCATING = "allocating"
     ALLOC_STATE_FAILED = "failed"
@@ -59,4 +58,3 @@ class InitiatorRequestorEp(ManagedObject):
         self.sys_name = None
 
         ManagedObject.__init__(self, "InitiatorRequestorEp", parent_mo_or_dn, **kwargs)
-

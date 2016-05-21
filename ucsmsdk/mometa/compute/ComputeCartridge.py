@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeCartridge ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeCartridgeConsts():
+class ComputeCartridgeConsts:
     CHASSIS_ID_N_A = "N/A"
     DISCOVERY_COMPLETE = "complete"
     DISCOVERY_DIAGNOSTICS_COMPLETE = "diagnostics-complete"
@@ -243,4 +242,3 @@ class ComputeCartridge(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "ComputeCartridge", parent_mo_or_dn, **kwargs)
-

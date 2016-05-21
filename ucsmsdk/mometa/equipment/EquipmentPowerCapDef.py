@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentPowerCapDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentPowerCapDefConsts():
+class EquipmentPowerCapDefConsts:
     IS_POWER_DEPLOYMENT_NEEDED_FALSE = "false"
     IS_POWER_DEPLOYMENT_NEEDED_NO = "no"
     IS_POWER_DEPLOYMENT_NEEDED_TRUE = "true"
@@ -64,4 +63,3 @@ class EquipmentPowerCapDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentPowerCapDef", parent_mo_or_dn, **kwargs)
-

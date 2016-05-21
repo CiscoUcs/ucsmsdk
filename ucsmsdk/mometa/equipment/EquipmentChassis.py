@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentChassis ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentChassisConsts():
+class EquipmentChassisConsts:
     ACK_PROGRESS_INDICATOR_ACK_IN_PROGRESS = "ack-in-progress"
     ACK_PROGRESS_INDICATOR_ACK_NOT_IN_PROGRESS = "ack-not-in-progress"
     ADMIN_STATE_ACKNOWLEDGED = "acknowledged"
@@ -507,4 +506,3 @@ class EquipmentChassis(ManagedObject):
         self.vid = None
 
         ManagedObject.__init__(self, "EquipmentChassis", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for CallhomeSource ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CallhomeSourceConsts():
+class CallhomeSourceConsts:
     URGENCY_ALERT = "alert"
     URGENCY_CRITICAL = "critical"
     URGENCY_DEBUG = "debug"
@@ -78,4 +77,3 @@ class CallhomeSource(ManagedObject):
         self.urgency = None
 
         ManagedObject.__init__(self, "CallhomeSource", parent_mo_or_dn, **kwargs)
-

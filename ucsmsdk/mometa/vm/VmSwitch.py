@@ -1,12 +1,11 @@
 """This module contains the general information for VmSwitch ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VmSwitchConsts():
+class VmSwitchConsts:
     ADMIN_STATE_DISABLE = "disable"
     ADMIN_STATE_ENABLE = "enable"
     INT_ID_NONE = "none"
@@ -97,4 +96,3 @@ class VmSwitch(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "VmSwitch", parent_mo_or_dn, **kwargs)
-

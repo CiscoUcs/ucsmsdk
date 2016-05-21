@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentChassisFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentChassisFsmConsts():
+class EquipmentChassisFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_DYNAMIC_REALLOCATION = "DynamicReallocation"
     CURRENT_FSM_OOB_STORAGE_ADMIN_CFG = "OobStorageAdminCfg"
@@ -210,4 +209,3 @@ class EquipmentChassisFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentChassisFsm", parent_mo_or_dn, **kwargs)
-

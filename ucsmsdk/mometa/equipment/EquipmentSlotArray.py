@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentSlotArray ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentSlotArrayConsts():
+class EquipmentSlotArrayConsts:
     DEVICE_SLOT_OFFSET_UNDEFINED = "undefined"
     HEIGHT_NOT_APPLICABLE = "not-applicable"
     HORIZONTAL_START_OFFSET_NOT_APPLICABLE = "not-applicable"
@@ -161,4 +160,3 @@ class EquipmentSlotArray(ManagedObject):
         self.width = None
 
         ManagedObject.__init__(self, "EquipmentSlotArray", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfQPILinkFrequencySelect ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfQPILinkFrequencySelectConsts():
+class BiosVfQPILinkFrequencySelectConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_QPILINK_FREQUENCY_SELECT_6400 = "6400"
@@ -58,4 +57,3 @@ class BiosVfQPILinkFrequencySelect(ManagedObject):
         self.vp_qpi_link_frequency_select = None
 
         ManagedObject.__init__(self, "BiosVfQPILinkFrequencySelect", parent_mo_or_dn, **kwargs)
-

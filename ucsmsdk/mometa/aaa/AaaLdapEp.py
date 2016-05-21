@@ -1,12 +1,11 @@
 """This module contains the general information for AaaLdapEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaLdapEpConsts():
+class AaaLdapEpConsts:
     FSM_PREV_NOP = "nop"
     FSM_PREV_UPDATE_EP_BEGIN = "updateEpBegin"
     FSM_PREV_UPDATE_EP_FAIL = "updateEpFail"
@@ -246,4 +245,3 @@ class AaaLdapEp(ManagedObject):
         self.timeout = None
 
         ManagedObject.__init__(self, "AaaLdapEp", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for CommSyslogClient ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CommSyslogClientConsts():
+class CommSyslogClientConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     FORWARDING_FACILITY_LOCAL0 = "local0"
@@ -76,4 +75,3 @@ class CommSyslogClient(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CommSyslogClient", parent_mo_or_dn, **kwargs)
-

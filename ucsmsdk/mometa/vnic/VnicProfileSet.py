@@ -1,12 +1,11 @@
 """This module contains the general information for VnicProfileSet ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicProfileSetConsts():
+class VnicProfileSetConsts:
     FSM_PREV_DEPLOY_ALIAS_BEGIN = "DeployAliasBegin"
     FSM_PREV_DEPLOY_ALIAS_FAIL = "DeployAliasFail"
     FSM_PREV_DEPLOY_ALIAS_LOCAL = "DeployAliasLocal"
@@ -233,4 +232,3 @@ class VnicProfileSet(ManagedObject):
         self.vlan_group_update = None
 
         ManagedObject.__init__(self, "VnicProfileSet", parent_mo_or_dn, **kwargs)
-

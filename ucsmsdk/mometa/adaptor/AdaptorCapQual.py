@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorCapQual ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorCapQualConsts():
+class AdaptorCapQualConsts:
     FW_VERSION_OPR_GT = "gt"
     FW_VERSION_OPR_LT = "lt"
     FW_VERSION_OPR_NONE = "none"
@@ -90,4 +89,3 @@ class AdaptorCapQual(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorCapQual", parent_mo_or_dn, **kwargs)
-

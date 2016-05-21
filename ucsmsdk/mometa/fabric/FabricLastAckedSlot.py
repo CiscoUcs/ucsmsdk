@@ -1,12 +1,11 @@
 """This module contains the general information for FabricLastAckedSlot ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricLastAckedSlotConsts():
+class FabricLastAckedSlotConsts:
     BOARD_AGGREGATION_ROLE_MULTI_MASTER = "multi-master"
     BOARD_AGGREGATION_ROLE_MULTI_SLAVE = "multi-slave"
     BOARD_AGGREGATION_ROLE_NONE = "none"
@@ -66,4 +65,3 @@ class FabricLastAckedSlot(ManagedObject):
         self.switch_id = None
 
         ManagedObject.__init__(self, "FabricLastAckedSlot", parent_mo_or_dn, **kwargs)
-

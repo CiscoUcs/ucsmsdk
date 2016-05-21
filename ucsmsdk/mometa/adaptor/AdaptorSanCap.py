@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorSanCap ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorSanCapConsts():
+class AdaptorSanCapConsts:
     HOST_NVRAM_FULL = "full"
     HOST_NVRAM_NONE = "none"
 
@@ -45,4 +44,3 @@ class AdaptorSanCap(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorSanCap", parent_mo_or_dn, **kwargs)
-

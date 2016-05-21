@@ -1,12 +1,11 @@
 """This module contains the general information for ExtpolController ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtpolControllerConsts():
+class ExtpolControllerConsts:
     CONN_PROTOCOL_IPV4 = "ipv4"
     CONN_PROTOCOL_IPV6 = "ipv6"
     CONN_PROTOCOL_UNKNOWN = "unknown"
@@ -101,4 +100,3 @@ class ExtpolController(ManagedObject):
         self.version = None
 
         ManagedObject.__init__(self, "ExtpolController", parent_mo_or_dn, **kwargs)
-

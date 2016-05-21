@@ -1,12 +1,11 @@
 """This module contains the general information for VnicEtherIf ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicEtherIfConsts():
+class VnicEtherIfConsts:
     ADDR_DERIVED = "derived"
     DEFAULT_NET_FALSE = "false"
     DEFAULT_NET_NO = "no"
@@ -121,4 +120,3 @@ class VnicEtherIf(ManagedObject):
         self.vnet = None
 
         ManagedObject.__init__(self, "VnicEtherIf", parent_mo_or_dn, **kwargs)
-

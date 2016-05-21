@@ -1,12 +1,11 @@
 """This module contains the general information for VnicProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicProfileConsts():
+class VnicProfileConsts:
     CDP_DISABLED = "disabled"
     CDP_ENABLED = "enabled"
     CONFIG_QUALIFIER_INVALID_NAME = "invalid-name"
@@ -150,4 +149,3 @@ class VnicProfile(ManagedObject):
         self.uplink_fail_action = None
 
         ManagedObject.__init__(self, "VnicProfile", parent_mo_or_dn, **kwargs)
-

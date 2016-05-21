@@ -1,12 +1,11 @@
 """This module contains the general information for CommWebSvcLimits ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CommWebSvcLimitsConsts():
+class CommWebSvcLimitsConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -65,4 +64,3 @@ class CommWebSvcLimits(ManagedObject):
         self.total_sessions = None
 
         ManagedObject.__init__(self, "CommWebSvcLimits", parent_mo_or_dn, **kwargs)
-

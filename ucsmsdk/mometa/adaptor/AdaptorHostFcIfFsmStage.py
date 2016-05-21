@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorHostFcIfFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorHostFcIfFsmStageConsts():
+class AdaptorHostFcIfFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_CIRCUIT_RESET_BEGIN = "CircuitResetBegin"
     NAME_CIRCUIT_RESET_DISABLE_A = "CircuitResetDisableA"
@@ -79,4 +78,3 @@ class AdaptorHostFcIfFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorHostFcIfFsmStage", parent_mo_or_dn, **kwargs)
-

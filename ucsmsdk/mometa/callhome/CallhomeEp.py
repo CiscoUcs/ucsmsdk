@@ -1,12 +1,11 @@
 """This module contains the general information for CallhomeEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CallhomeEpConsts():
+class CallhomeEpConsts:
     ADMIN_STATE_OFF = "off"
     ADMIN_STATE_ON = "on"
     ALERT_THROTTLING_ADMIN_STATE_OFF = "off"
@@ -246,4 +245,3 @@ class CallhomeEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CallhomeEp", **kwargs)
-

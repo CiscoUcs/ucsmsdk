@@ -1,12 +1,11 @@
 """This module contains the general information for TrigTriggered ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class TrigTriggeredConsts():
+class TrigTriggeredConsts:
     OPER_STATE_FAILED = "failed"
     OPER_STATE_IN_PROGRESS = "in-progress"
     OPER_STATE_PENDING = "pending"
@@ -59,4 +58,3 @@ class TrigTriggered(ManagedObject):
         self.tr_dn = None
 
         ManagedObject.__init__(self, "TrigTriggered", parent_mo_or_dn, **kwargs)
-

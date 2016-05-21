@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfDirectCacheAccess ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfDirectCacheAccessConsts():
+class BiosVfDirectCacheAccessConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_DIRECT_CACHE_ACCESS_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfDirectCacheAccess(ManagedObject):
         self.vp_direct_cache_access = None
 
         ManagedObject.__init__(self, "BiosVfDirectCacheAccess", parent_mo_or_dn, **kwargs)
-

@@ -13,6 +13,7 @@
 
 """ This is auto-generated module containing Constants information. """
 
+
 class NamingId:
     METHOD = "method"
     METHOD_SET = "methodSet"
@@ -1836,11 +1837,13 @@ class NamingId:
     VNIC_WWPN_HISTORY = "vnicWwpnHistory"
     WCARD_FILTER = "wcardFilter"
 
+
 class YesOrNo:
     FALSE = "false"
     NO = "no"
     TRUE = "true"
     YES = "yes"
+
 
 class NamingPropertyId:
     _ABORT_ERRORS = "AbortErrors"
@@ -5236,9 +5239,9 @@ class NamingPropertyId:
     ZONING_STATE = "zoningState"
     ZONING_TYPE = "zoningType"
 
+
 class Status:
     CREATED = "created"
     DELETED = "deleted"
     MODIFIED = "modified"
     REMOVED = "removed"
-

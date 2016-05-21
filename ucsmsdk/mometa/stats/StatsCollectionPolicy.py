@@ -1,12 +1,11 @@
 """This module contains the general information for StatsCollectionPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StatsCollectionPolicyConsts():
+class StatsCollectionPolicyConsts:
     COLLECTION_INTERVAL_1MINUTE = "1minute"
     COLLECTION_INTERVAL_2MINUTES = "2minutes"
     COLLECTION_INTERVAL_30SECONDS = "30seconds"
@@ -242,4 +241,3 @@ class StatsCollectionPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StatsCollectionPolicy", parent_mo_or_dn, **kwargs)
-

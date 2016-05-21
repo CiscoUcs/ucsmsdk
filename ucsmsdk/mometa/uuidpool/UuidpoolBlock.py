@@ -1,12 +1,11 @@
 """This module contains the general information for UuidpoolBlock ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class UuidpoolBlockConsts():
+class UuidpoolBlockConsts:
     pass
 
 
@@ -47,4 +46,3 @@ class UuidpoolBlock(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "UuidpoolBlock", parent_mo_or_dn, **kwargs)
-

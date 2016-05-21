@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorNwMgmtCap ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorNwMgmtCapConsts():
+class AdaptorNwMgmtCapConsts:
     API_MENLO = "menlo"
     API_NONE = "none"
     API_PALO = "palo"
@@ -68,4 +67,3 @@ class AdaptorNwMgmtCap(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorNwMgmtCap", parent_mo_or_dn, **kwargs)
-

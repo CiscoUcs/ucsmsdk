@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtHealthAttr ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtHealthAttrConsts():
+class MgmtHealthAttrConsts:
     SEVERITY_CLEARED = "cleared"
     SEVERITY_CONDITION = "condition"
     SEVERITY_CRITICAL = "critical"
@@ -59,4 +58,3 @@ class MgmtHealthAttr(ManagedObject):
         self.value = None
 
         ManagedObject.__init__(self, "MgmtHealthAttr", parent_mo_or_dn, **kwargs)
-

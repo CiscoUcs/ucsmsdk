@@ -1,12 +1,11 @@
 """This module contains the general information for VnicIPv4Dhcp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicIPv4DhcpConsts():
+class VnicIPv4DhcpConsts:
     pass
 
 
@@ -50,4 +49,3 @@ class VnicIPv4Dhcp(ManagedObject):
         self.subnet = None
 
         ManagedObject.__init__(self, "VnicIPv4Dhcp", parent_mo_or_dn, **kwargs)
-

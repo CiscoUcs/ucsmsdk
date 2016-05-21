@@ -1,12 +1,11 @@
 """This module contains the general information for LstorageProfileDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LstorageProfileDefConsts():
+class LstorageProfileDefConsts:
     AVAILABILITY_AVAILABLE = "available"
     AVAILABILITY_UNAVAILABLE = "unavailable"
     INT_ID_NONE = "none"
@@ -67,4 +66,3 @@ class LstorageProfileDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LstorageProfileDef", parent_mo_or_dn, **kwargs)
-

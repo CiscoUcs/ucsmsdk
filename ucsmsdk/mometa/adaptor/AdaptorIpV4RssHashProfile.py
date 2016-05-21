@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorIpV4RssHashProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorIpV4RssHashProfileConsts():
+class AdaptorIpV4RssHashProfileConsts:
     IP_HASH_DISABLED = "disabled"
     IP_HASH_ENABLED = "enabled"
     TCP_HASH_DISABLED = "disabled"
@@ -50,4 +49,3 @@ class AdaptorIpV4RssHashProfile(ManagedObject):
         self.tcp_hash = None
 
         ManagedObject.__init__(self, "AdaptorIpV4RssHashProfile", parent_mo_or_dn, **kwargs)
-

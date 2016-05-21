@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorHostIscsiIfProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorHostIscsiIfProfileConsts():
+class AdaptorHostIscsiIfProfileConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -59,4 +58,3 @@ class AdaptorHostIscsiIfProfile(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorHostIscsiIfProfile", parent_mo_or_dn, **kwargs)
-

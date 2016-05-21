@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfMirroringMode ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfMirroringModeConsts():
+class BiosVfMirroringModeConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_MIRRORING_MODE_INTER_SOCKET = "inter-socket"
@@ -55,4 +54,3 @@ class BiosVfMirroringMode(ManagedObject):
         self.vp_mirroring_mode = None
 
         ManagedObject.__init__(self, "BiosVfMirroringMode", parent_mo_or_dn, **kwargs)
-

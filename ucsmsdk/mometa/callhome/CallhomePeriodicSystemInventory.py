@@ -1,12 +1,11 @@
 """This module contains the general information for CallhomePeriodicSystemInventory ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CallhomePeriodicSystemInventoryConsts():
+class CallhomePeriodicSystemInventoryConsts:
     ADMIN_STATE_OFF = "off"
     ADMIN_STATE_ON = "on"
     NEXT_DEADLINE_NEVER = "never"
@@ -90,4 +89,3 @@ class CallhomePeriodicSystemInventory(ManagedObject):
         self.time_of_last_success = None
 
         ManagedObject.__init__(self, "CallhomePeriodicSystemInventory", parent_mo_or_dn, **kwargs)
-

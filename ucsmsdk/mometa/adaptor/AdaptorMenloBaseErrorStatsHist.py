@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorMenloBaseErrorStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorMenloBaseErrorStatsHistConsts():
+class AdaptorMenloBaseErrorStatsHistConsts:
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -93,4 +92,3 @@ class AdaptorMenloBaseErrorStatsHist(ManagedObject):
         self.uncorrectable_errors_delta_min = None
 
         ManagedObject.__init__(self, "AdaptorMenloBaseErrorStatsHist", parent_mo_or_dn, **kwargs)
-

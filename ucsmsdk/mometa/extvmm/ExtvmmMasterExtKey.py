@@ -1,12 +1,11 @@
 """This module contains the general information for ExtvmmMasterExtKey ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtvmmMasterExtKeyConsts():
+class ExtvmmMasterExtKeyConsts:
     FSM_PREV_CONFIG_BEGIN = "configBegin"
     FSM_PREV_CONFIG_FAIL = "configFail"
     FSM_PREV_CONFIG_SET_LOCAL = "configSetLocal"
@@ -215,4 +214,3 @@ class ExtvmmMasterExtKey(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtvmmMasterExtKey", parent_mo_or_dn, **kwargs)
-

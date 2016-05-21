@@ -1,12 +1,11 @@
 """This module contains the general information for CapabilityUpdate ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CapabilityUpdateConsts():
+class CapabilityUpdateConsts:
     pass
 
 
@@ -50,4 +49,3 @@ class CapabilityUpdate(ManagedObject):
         self.update_ts = None
 
         ManagedObject.__init__(self, "CapabilityUpdate", parent_mo_or_dn, **kwargs)
-
