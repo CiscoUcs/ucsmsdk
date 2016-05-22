@@ -20,6 +20,7 @@ import logging
 
 log = logging.getLogger('ucs')
 
+
 def UcsWarning(warn_str):
     """
     Method to throw warnings.
@@ -46,7 +47,7 @@ class UcsLoginError(UcsWrapperException):
 
     # message = 'Authentication failed'
 
-    def __init__(self, message, error_code=None):
+    def __init__(self, message):
         super(UcsLoginError, self).__init__(message)
 
 
@@ -115,4 +116,4 @@ class UcsValidationException(UcsError):
         return self.__error_msg
 
     def __str__(self):
-        return "[ErrorMessage]: %s" % (self.__error_msg)
+        return "[ErrorMessage]: %s" % self.__error_msg

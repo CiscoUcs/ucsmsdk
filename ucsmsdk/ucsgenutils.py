@@ -68,13 +68,14 @@ def to_python_propname(word):
     Converts any word to lowercase word separated by underscore
     """
 
-    return re.sub('_+', '_',
-                  re.sub('^_', '',
-                    re.sub('[/\-: +]', '_',
-                      re.sub('([A-Z]+)([A-Z])([a-z0-9])', '\g<1>_\g<2>\g<3>',
-                        re.sub('([a-z0-9])([A-Z])', '\g<1>_\g<2>',(word,
-                          to_safe_prop(word))[is_python_reserved(word)])
-                             )))).lower()
+    return re.sub(
+        '_+', '_', re.sub(
+            '^_', '', re.sub(
+                '[/\-: +]', '_', re.sub(
+                    '([A-Z]+)([A-Z])([a-z0-9])', '\g<1>_\g<2>\g<3>', re.sub(
+                        '([a-z0-9])([A-Z])', '\g<1>_\g<2>',
+                        (word, to_safe_prop(word))[is_python_reserved(word)])
+                )))).lower()
 
 
 def convert_to_python_var_name(name):
@@ -116,14 +117,14 @@ class Progress(object):
     def __init__(self):
         self._seen = 0.0
 
-    def update(self, total, size, name):
+    def update(self, total, size):
         """Internal method to show the progress of upload/download file."""
 
         from sys import stdout
 
         self._seen += size
         status = r"%10d  [%3.2f%%]" % (self._seen, self._seen * 100 / total)
-        status = status + chr(8) * (len(status) + 1)
+        status += chr(8) * (len(status) + 1)
         stdout.write("\r%s" % status)
         stdout.flush()
 
@@ -163,7 +164,9 @@ def download_file(driver, file_url, file_dir, file_name):
 
     Example:
         driver = UcsDriver()\n
-        download_file(driver=UcsDriver(), file_url="http://fileurl", file_dir='/home/user/backup', file_name='my_config_backup.xml')
+        download_file(driver=UcsDriver(), file_url="http://fileurl",
+                      file_dir='/home/user/backup',
+                      file_name='my_config_backup.xml')
     """
 
     import os
@@ -179,15 +182,10 @@ def download_file(driver, file_url, file_dir, file_name):
         # Python 2 code in this block
         file_size = int(response.info().getheaders("Content-Length")[0])
 
-
-    # meta = response.info()
-    # log.debug(meta)
-    # file_size = int(meta.getheaders("Content-Length")[0])
     print("Downloading: %s Bytes: %s" % (file_name, file_size))
 
     file_handle = open(destination_file, 'wb')
     file_size_dl = 0
-    #block_sz = 64L
     block_sz = 64
     while True:
         r_buffer = response.read(128 * block_sz)
@@ -220,7 +218,9 @@ def upload_file(driver, uri, file_dir, file_name):
 
     Example:
         driver = UcsDriver()\n
-        upload_file(driver=UcsDriver(), uri="http://fileurl", file_dir='/home/user/backup', file_name='my_config_backup.xml')
+        upload_file(driver=UcsDriver(), uri="http://fileurl",
+                    file_dir='/home/user/backup',
+                    file_name='my_config_backup.xml')
     """
 
     progress = Progress()
@@ -244,7 +244,6 @@ def check_registry_key(java_key):
         from winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKey, \
             QueryValueEx
 
-    path = None
     try:
         a_reg = ConnectRegistry(None, HKEY_LOCAL_MACHINE)
         r_key = OpenKey(a_reg, java_key)
@@ -396,7 +395,8 @@ def get_md5_sum(filename):
 
     md5_obj = hashlib.md5()
     file_handler = open(filename, 'rb')
-    for chunk in iter(lambda: file_handler.read(128 * md5_obj.block_size), b''):
+    for chunk in iter(lambda: file_handler.read(128 * md5_obj.block_size),
+                      b''):
         md5_obj.update(chunk)
 
     file_handler.close()
@@ -500,11 +500,7 @@ def decrypt_password(cipher, key):
 
     uhash = cipher[:16]
     password_stream = cipher[16:-8] + "0000"[cipher_len & 3:]
-    # auth = cipher[-8:]
-
     k_enc = h_hash('enc' + key + uhash)
-    # k_auth = h_hash('auth' + key + uhash)
-    # vauth = hmac.new(cipher[-8:], k_auth, sha).digest()[:8]
 
     password_stream = array('L', password_stream)
     x_key = expand_key(k_enc, cipher_len + 4)
@@ -514,6 +510,7 @@ def decrypt_password(cipher, key):
 
     decrypted_password = password_stream.tostring()[:cipher_len]
     return decrypted_password
+
 
 def iteritems(d):
     """
