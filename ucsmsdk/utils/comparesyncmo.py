@@ -124,7 +124,6 @@ def _translate_managed_object(mo, xlate_org, xlate_map):
         return mo
 
     mo = mo.clone()
-    ref_dn = None
     if xlate_org is not None:
         match_obj = re.match(
             r'^(org-[\-\.:_a-zA-Z0-9]{1,16}/)*org-[\-\.:_a-zA-Z0-9]{1,16}',
@@ -528,7 +527,7 @@ def sync_ucs_mo(ref_handle, difference,
 
 def write_mo_diff(diff_obj):
     """
-    Writes the difference managedObject(output of CompareManagedObject)
+    Writes the difference managedObject(output of compare_ucs_mo)
     on the terminal.
     """
 
