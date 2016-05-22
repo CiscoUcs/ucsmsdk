@@ -5,9 +5,9 @@ Credits
 Development Lead
 ----------------
 
-* Cisco <vvb@cisco.com>
+* Vikrant Balyan<vvb@cisco.com>
 
 Contributors
 ------------
 
-None yet. Why not be the first?
+* Rahul Gupta<ragupta4@cisco.com>
