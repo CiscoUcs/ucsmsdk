@@ -26,15 +26,14 @@ import re
 import xml.dom
 import xml.dom.minidom
 from os.path import dirname
-import logging
-
-log = logging.getLogger('ucs')
-
 from .. import ucsgenutils
 from .. import ucscoreutils
 from ..ucsconstants import Status, NamingPropertyId, YesOrNo
 from ..ucsexception import UcsValidationException
 
+import logging
+
+log = logging.getLogger('ucs')
 
 # variable declaration
 _display_xml = False
@@ -285,8 +284,8 @@ def _create_property_map_from_node(class_node, class_status):
     elif "rn" in attributes_dict:
         prop_rn = attributes_dict["rn"]
 
-    naming_props_py_from_rn = ucscoreutils.get_naming_props(prop_rn,
-                                                        peer_class_mo_meta.rn)
+    naming_props_py_from_rn = ucscoreutils.get_naming_props(
+        prop_rn, peer_class_mo_meta.rn)
 
     for attr, val in class_node.attributes.items():
         name = attr
@@ -371,9 +370,9 @@ def _get_config_conf_cmdlet(node, is_pair_node):
         dn = class_node.getAttribute(NamingPropertyId.DN)
 
     if class_node.hasAttribute(
-            NamingPropertyId.STATUS) and \
-                    class_node.getAttribute(NamingPropertyId.STATUS) is not \
-                    None:
+        NamingPropertyId.STATUS) and \
+            class_node.getAttribute(NamingPropertyId.STATUS) is not \
+            None:
         mo_tag = "mo"
     else:
         if class_node.hasChildNodes() and len(
@@ -393,16 +392,16 @@ def _get_config_conf_cmdlet(node, is_pair_node):
     # print top_cmdlet
 
     if class_node.hasChildNodes() and \
-                    len(_get_elem_child_nodes(class_node)) > 0:
+            len(_get_elem_child_nodes(class_node)) > 0:
         call_count = 1
-        cmdlet=""
+        cmdlet = ""
         for child_node in _get_elem_child_nodes(class_node):
             sub_cmdlet, import_list, obj_flag = _get_config_conf_sub_cmdlet(
-                                                                child_node,
-                                                                dn, mo_tag,
-                                                                call_count,
-                                                                import_list,
-                                                                obj_flag)
+                child_node,
+                dn, mo_tag,
+                call_count,
+                import_list,
+                obj_flag)
 
             call_count += 1
             if sub_cmdlet is not None:
@@ -430,7 +429,7 @@ def _get_config_conf_cmdlet(node, is_pair_node):
     if import_cmdlet:
         main_cmdlet += "\n" + import_cmdlet
     if mo_tag == "obj" and not obj_flag:
-        top_cmdlet=""
+        top_cmdlet = ""
 
     main_cmdlet += "\n" + top_cmdlet
     main_cmdlet += cmdlet
@@ -470,12 +469,12 @@ def _get_config_conf_sub_cmdlet(class_node, parent_dn, parent_mo_tag,
     # Recursively cater to subnodes
     for child_node in _get_elem_child_nodes(class_node):
         sub_cmdlet, import_list, obj_flag = _get_config_conf_sub_cmdlet(
-                                                                  child_node,
-                                                                  dn,
-                                                                  tag,
-                                                                  count,
-                                                                  import_list,
-                                                                  obj_flag)
+            child_node,
+            dn,
+            tag,
+            count,
+            import_list,
+            obj_flag)
         count += 1
         if sub_cmdlet is not None:
             cmdlet += "\n" + sub_cmdlet
@@ -516,9 +515,9 @@ def _form_configconf_cmdlet(class_node, key, tag, import_list, parent_tag=None,
         parent_class_id = ""
 
     if class_node.hasAttribute(
-            NamingPropertyId.STATUS) and \
-                    class_node.getAttribute(NamingPropertyId.STATUS) is not \
-                    None:
+        NamingPropertyId.STATUS) and \
+            class_node.getAttribute(NamingPropertyId.STATUS) is not \
+            None:
         cs_list = []
         cs_list = class_node.getAttribute(NamingPropertyId.STATUS).split(',')
         cs_list = [x.strip() for x in cs_list]
@@ -535,7 +534,7 @@ def _form_configconf_cmdlet(class_node, key, tag, import_list, parent_tag=None,
             class_status = _ClassStatus.CREATED | _ClassStatus.MODIFIED
         else:
             if class_node.hasChildNodes() and \
-                            len(_get_elem_child_nodes(class_node)) > 0:
+                    len(_get_elem_child_nodes(class_node)) > 0:
                 class_status = _ClassStatus.GET
             else:
                 class_status = _ClassStatus.CREATED | _ClassStatus.MODIFIED
@@ -551,8 +550,8 @@ def _form_configconf_cmdlet(class_node, key, tag, import_list, parent_tag=None,
         op_flag = "get"
         cmdlet = "%s = handle.query_dn(\"%s\")" % (tag, key)
     elif class_status & _ClassStatus.DELETED == _ClassStatus.DELETED or \
-                            class_status & \
-                            _ClassStatus.REMOVED == _ClassStatus.REMOVED:
+            class_status & \
+            _ClassStatus.REMOVED == _ClassStatus.REMOVED:
         op_flag = "remove"
         cmdlet = "%s = handle.query_dn(\"%s\")\n" % (tag, key)
     elif class_status & _ClassStatus.CREATED == _ClassStatus.CREATED:
@@ -907,19 +906,19 @@ def _generate_single_clone_cmdlets(xml_string, is_template):
                   'handle.cookie, dn="%s", in_error_on_existing=' \
                   '"%s", in_server_name="%s", in_target_org=' \
                   '"%s", in_hierarchical="%s")' % (dn,
-                                                 in_error_on_existing,
-                                                 sp_new_name,
-                                                 dest_org,
-                                                 in_hierarchical_value)
+                                                   in_error_on_existing,
+                                                   sp_new_name,
+                                                   dest_org,
+                                                   in_hierarchical_value)
         cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
     else:
         cmdlet = '\nfrom ucsmsdk.ucsmethodfactory import ls_clone\n'
         cmdlet += 'elem = ls_clone(cookie=handle.cookie, dn=' \
                   '"%s", in_server_name="%s", in_target_org=' \
                   '"%s", in_hierarchical="%s")' % (dn,
-                                                 sp_new_name,
-                                                 dest_org,
-                                                 in_hierarchical_value)
+                                                   sp_new_name,
+                                                   dest_org,
+                                                   in_hierarchical_value)
         cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
 
     return cmdlet
@@ -991,10 +990,10 @@ def _generate_ls_templatise_cmdlets(xml_string):
         cmdlet += 'elem = ls_templatise(cookie=handle.cookie,' \
                   'dn="%s", in_target_org="%s", in_template_name="%s", ' \
                   'in_template_type="%s", in_hierarchical="%s")' % (dn,
-                                                      dest_org,
-                                                      sp_new_name,
-                                                      template_type,
-                                                      in_hierarchical_value)
+                                                                    dest_org,
+                                                                    sp_new_name,
+                                                                    template_type,
+                                                                    in_hierarchical_value)
         cmdlet += '\nmo_list = handle.process_xml_elem(elem)\n'
     else:
         cmdlet = '\nfrom ucsmsdk.ucsmethodfactory import ls_templatise\n'

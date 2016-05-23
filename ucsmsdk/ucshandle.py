@@ -219,7 +219,7 @@ class UcsHandle(UcsSession):
             dn_set.child_add(dn_obj)
 
         elem = config_resolve_dns(cookie=self.cookie,
-                                         in_dns=dn_set)
+                                  in_dns=dn_set)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -269,7 +269,7 @@ class UcsHandle(UcsSession):
             class_id_set.child_add(class_id_obj)
 
         elem = config_resolve_classes(cookie=self.cookie,
-                                             in_ids=class_id_set)
+                                      in_ids=class_id_set)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -315,8 +315,8 @@ class UcsHandle(UcsSession):
         dn_set.child_add(dn_obj)
 
         elem = config_resolve_dns(cookie=self.cookie,
-                                         in_dns=dn_set,
-                                         in_hierarchical=hierarchy)
+                                  in_dns=dn_set,
+                                  in_hierarchical=hierarchy)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -387,7 +387,7 @@ class UcsHandle(UcsSession):
             raise ValueError("Provide Parameter class_id")
 
         meta_class_id = ucscoreutils.find_class_id_in_mo_meta_ignore_case(
-                                                                class_id)
+            class_id)
         if meta_class_id:
             is_meta_class_id = True
         else:
@@ -401,9 +401,9 @@ class UcsHandle(UcsSession):
             in_filter = None
 
         elem = config_resolve_class(cookie=self.cookie,
-                                              class_id=meta_class_id,
-                                              in_filter=in_filter,
-                                              in_hierarchical=hierarchy)
+                                    class_id=meta_class_id,
+                                    in_filter=in_filter,
+                                    in_hierarchical=hierarchy)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -412,8 +412,8 @@ class UcsHandle(UcsSession):
             return response
 
         out_mo_list = ucscoreutils.extract_molist_from_method_response(
-                                                                    response,
-                                                                    hierarchy)
+            response,
+            hierarchy)
         return out_mo_list
 
     def query_children(self, in_mo=None, in_dn=None, class_id=None,
@@ -488,7 +488,7 @@ class UcsHandle(UcsSession):
 
         if class_id:
             meta_class_id = ucscoreutils.find_class_id_in_mo_meta_ignore_case(
-                                                                class_id)
+                class_id)
             if meta_class_id:
                 is_meta_class_id = True
             else:
@@ -511,8 +511,8 @@ class UcsHandle(UcsSession):
             raise UcsException(response.error_code, response.error_descr)
 
         out_mo_list = ucscoreutils.extract_molist_from_method_response(
-                                                                    response,
-                                                                    hierarchy)
+            response,
+            hierarchy)
 
         return out_mo_list
 
@@ -636,7 +636,7 @@ class UcsHandle(UcsSession):
             config_map.child_add(pair)
 
         elem = config_conf_mos(self.cookie, config_map,
-                                         False)
+                               False)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -653,11 +653,11 @@ class UcsHandle(UcsSession):
                 dn_set.child_add(dn_obj)
 
             elem = config_resolve_dns(cookie=self.cookie,
-                                                in_dns=dn_set)
+                                      in_dns=dn_set)
             response = self.post_elem(elem)
             if response.error_code != 0:
                 raise UcsException(response.error_code,
-                                      response.error_descr)
+                                   response.error_descr)
 
             for out_mo in response.out_configs.child:
                 out_mo.sync_mo(refresh_dict[out_mo.dn])

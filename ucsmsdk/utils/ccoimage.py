@@ -28,6 +28,7 @@ from ..ucsdriver import UcsDriver
 
 log = logging.getLogger('ucs')
 
+
 class _UcsCcoImageList:
     """enum for cco image attributes"""
     IDAC_TAG_VERSION = "version"

@@ -149,7 +149,7 @@ def get_ucs_tech_support(handle,
 
     from ..mometa.top.TopSystem import TopSystem
     from ..mometa.sysdebug.SysdebugTechSupport import SysdebugTechSupport, \
-                                                    SysdebugTechSupportConsts
+        SysdebugTechSupportConsts
     from ..mometa.sysdebug.SysdebugTechSupFileRepository import \
         SysdebugTechSupFileRepository
     from ..mometa.sysdebug.SysdebugTechSupportCmdOpt import \
@@ -223,7 +223,7 @@ def get_ucs_tech_support(handle,
     elif fex_id is not None:
         sys_debug_tech_support_cmd_opt.fab_ext_id = str(iom_id)
         sys_debug_tech_support_cmd_opt.major_opt_type = \
-                SysdebugTechSupportCmdOptConsts.MAJOR_OPT_TYPE_FEX
+            SysdebugTechSupportCmdOptConsts.MAJOR_OPT_TYPE_FEX
 
     handle.add_mo(sys_debug_tech_support)
     handle.commit()
