@@ -42,6 +42,7 @@ class _GenericProp():
     """
     Internal class to handle the unknown property.
     """
+
     def __init__(self, name, value, is_dirty):
         self.name = name
         self.value = value
@@ -57,7 +58,12 @@ class ManagedObject(UcsBase):
     __internal_prop = frozenset(
         ["_dirty_mask", "_class_id", "_child", "_handle", ''])
 
-    def __init__(self, class_id, parent_mo_or_dn=None, from_xml_response=False, **kwargs):
+    def __init__(
+            self,
+            class_id,
+            parent_mo_or_dn=None,
+            from_xml_response=False,
+            **kwargs):
         self.__parent_mo = None
         self.__status = None
         self.__parent_dn = None
@@ -106,7 +112,6 @@ class ManagedObject(UcsBase):
             self.rn = self.make_rn()
         else:
             self.rn = ""
-
 
     def _dn_set(self):
         """
@@ -171,8 +176,8 @@ class ManagedObject(UcsBase):
             prop_meta = self.prop_meta[name]
             if prop_meta.access != ucscoremeta.MoPropertyMeta.READ_WRITE:
                 if getattr(self, name) is not None or \
-                                prop_meta.access != \
-                                ucscoremeta.MoPropertyMeta.CREATE_ONLY:
+                        prop_meta.access != \
+                        ucscoremeta.MoPropertyMeta.CREATE_ONLY:
                     raise ValueError("%s is not a read-write property." % name)
             if not prop_meta.validate_property_value(value):
                 raise ValueError("Invalid Value Exception - "
@@ -296,8 +301,8 @@ class ManagedObject(UcsBase):
             if key != 'rn' and key in self.prop_meta:
                 mo_prop_meta = self.prop_meta[key]
                 if (option != WriteXmlOption.DIRTY or (
-                            mo_prop_meta.mask is not None and
-                            self._dirty_mask & mo_prop_meta.mask != 0)):
+                    mo_prop_meta.mask is not None and
+                        self._dirty_mask & mo_prop_meta.mask != 0)):
                     value = getattr(self, key)
                     if value is not None:
                         xml_obj.set(mo_prop_meta.xml_attribute, value)
@@ -332,7 +337,8 @@ class ManagedObject(UcsBase):
         self._handle = handle
         if elem.attrib:
             if self.__class__.__name__ != "ManagedObject":
-                for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
+                for attr_name, attr_value in ucsgenutils.iteritems(
+                        elem.attrib):
                     if attr_name in self.prop_map:
                         attr_name = self.prop_map[attr_name]
                     else:
@@ -342,7 +348,8 @@ class ManagedObject(UcsBase):
                             False)
                     object.__setattr__(self, attr_name, attr_value)
             else:
-                for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
+                for attr_name, attr_value in ucsgenutils.iteritems(
+                        elem.attrib):
                     object.__setattr__(self, attr_name, attr_value)
 
         if hasattr(self, 'rn') and not hasattr(self, 'dn'):
@@ -358,7 +365,7 @@ class ManagedObject(UcsBase):
                     continue
 
                 if self.__class__.__name__ != "ManagedObject" and (
-                            child_elem.tag in self.mo_meta.field_names):
+                        child_elem.tag in self.mo_meta.field_names):
                     pass
 
                 class_id = ucsgenutils.word_u(child_elem.tag)

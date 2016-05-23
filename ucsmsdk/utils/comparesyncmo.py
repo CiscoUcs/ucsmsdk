@@ -51,6 +51,7 @@ class _PropDiff(object):
     """
     Internal class for property delta
     """
+
     def __init__(self, prop, old_value, new_value):
         self.prop = prop
         self.old_value = old_value
@@ -537,10 +538,10 @@ def write_mo_diff(diff_obj):
         return
 
     if isinstance(diff_obj[0], _MoDiff):
-        print("dn".ljust(tab_size*10), "input_object".ljust(tab_size*4),
-              "side_indicator".ljust(tab_size*3), "diff_property")
-        print("--".ljust(tab_size*10), "-----------".ljust(tab_size*4),
-              "-------------".ljust(tab_size*3), "------------")
+        print("dn".ljust(tab_size * 10), "input_object".ljust(tab_size * 4),
+              "side_indicator".ljust(tab_size * 3), "diff_property")
+        print("--".ljust(tab_size * 10), "-----------".ljust(tab_size * 4),
+              "-------------".ljust(tab_size * 3), "------------")
     diff_obj_mod = []
     for mo_diff in diff_obj:
         if not isinstance(mo_diff, _MoDiff):
@@ -548,8 +549,8 @@ def write_mo_diff(diff_obj):
         diff_obj_mod.append(mo_diff)
 
     for mo_diff in sorted(diff_obj_mod, key=lambda mo: mo.dn):
-        print(str(mo_diff.dn).ljust(tab_size*10),
-              str(mo_diff.input_object.get_class_id()).ljust(tab_size*4),
-              str(mo_diff.side_indicator).ljust(tab_size*3),
+        print(str(mo_diff.dn).ljust(tab_size * 10),
+              str(mo_diff.input_object.get_class_id()).ljust(tab_size * 4),
+              str(mo_diff.side_indicator).ljust(tab_size * 3),
               str(sorted(mo_diff.diff_property))
               if mo_diff.diff_property else str(mo_diff.diff_property))

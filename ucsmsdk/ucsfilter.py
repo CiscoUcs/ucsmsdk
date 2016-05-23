@@ -61,7 +61,13 @@ class ParseFilter(object):
         # print prop_, value_, type_, flag_ #logger
 
         if flag_ == "I":
-            value_ = re.sub(r"[a-zA-Z]", lambda x: "[" + x.group().upper() + x.group().lower() + "]", value_)
+            value_ = re.sub(
+                r"[a-zA-Z]",
+                lambda x: "[" +
+                x.group().upper() +
+                x.group().lower() +
+                "]",
+                value_)
 
         if ParseFilter.is_meta_classid:
             class_obj = ucscoreutils.load_class(ParseFilter.class_id)
@@ -116,7 +122,8 @@ class ParseFilter(object):
         return not_filter
 
 
-prop = pp.WordStart(pp.alphas) + pp.Word(pp.alphanums+"_").setResultsName("prop")
+prop = pp.WordStart(pp.alphas) + pp.Word(pp.alphanums +
+                                         "_").setResultsName("prop")
 value = (pp.QuotedString("'") | pp.QuotedString('"') | pp.Word(
     pp.printables, excludeChars=",")).setResultsName("value")
 types_ = pp.oneOf("re eq ne gt ge lt le").setResultsName("types")

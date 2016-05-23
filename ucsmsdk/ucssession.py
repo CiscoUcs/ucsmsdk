@@ -373,8 +373,8 @@ class UcsSession(object):
         self.__stop_refresh_timer()
 
         elem = aaa_refresh(self.__cookie,
-                              self.__username,
-                              self.__password)
+                           self.__username,
+                           self.__password)
         response = self.post_elem(elem)
         if response.error_code != 0:
             self.__cookie = None
@@ -428,7 +428,7 @@ class UcsSession(object):
             if not self.__force:
                 top_system = TopSystem()
                 elem = config_resolve_dn(cookie=self.__cookie,
-                                            dn=top_system.dn)
+                                         dn=top_system.dn)
                 response = self.post_elem(elem)
                 if response.error_code != 0:
                     return False
@@ -464,7 +464,7 @@ class UcsSession(object):
             return True
 
         elem = aaa_login(in_name=self.__username,
-                            in_password=self.__password)
+                         in_password=self.__password)
         response = self.post_elem(elem)
         if response.error_code != 0:
             self.__clear()
@@ -480,7 +480,7 @@ class UcsSession(object):
             firmware = FirmwareRunning(top_system,
                                        FirmwareRunningConsts.DEPLOYMENT_SYSTEM)
             elem = config_resolve_dn(cookie=self.__cookie,
-                                        dn=firmware.dn)
+                                     dn=firmware.dn)
             response = self.post_elem(elem)
             if response.error_code != 0:
                 raise UcsException(response.error_code,

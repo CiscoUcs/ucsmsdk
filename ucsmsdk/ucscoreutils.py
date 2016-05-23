@@ -68,7 +68,8 @@ def get_ucs_obj(class_id, elem, mo_obj=None):
         if 'topRoot' in mo_class.mo_meta.parents:
             mo_obj = mo_class(from_xml_response=True, **mo_class_param_dict)
         else:
-            mo_obj = mo_class(parent_mo_or_dn=p_dn, from_xml_response=True, **mo_class_param_dict)
+            mo_obj = mo_class(parent_mo_or_dn=p_dn,
+                              from_xml_response=True, **mo_class_param_dict)
         return mo_obj
     elif class_id in OTHER_TYPE_CLASS_ID:
         module_ = load_module(class_id)
@@ -85,7 +86,8 @@ def get_ucs_obj(class_id, elem, mo_obj=None):
     elif mo_obj:
         p_dn = mo_obj.dn
 
-    mo_obj = ucsmo.GenericMo(class_id=elem.tag, parent_mo_or_dn=p_dn, **elem.attrib)
+    mo_obj = ucsmo.GenericMo(
+        class_id=elem.tag, parent_mo_or_dn=p_dn, **elem.attrib)
     return mo_obj
 
 
@@ -379,7 +381,6 @@ def write_mo_tree(mo, level=0, break_level=None, show_level=[],
     return tree_dict
 
 
-
 def extract_mo_tree_from_config_method_response(method_response,
                                                 break_level=None,
                                                 show_level=[],
@@ -508,7 +509,7 @@ class ClassIdMeta(object):
         out_str = "\n"
         out_str += str("ClassId").ljust(ts * 4) + str(self.class_id) + "\n"
         out_str += ("-" * len("ClassId")).ljust(ts * 4) + "-" * len(
-            self.class_id)+"\n"
+            self.class_id) + "\n"
         out_str += str("xml_attribute").ljust(ts * 4) + ':' + str(
             self.xml_attribute) + "\n"
         out_str += str("rn").ljust(ts * 4) + ':' + str(
@@ -558,7 +559,7 @@ def _show_tree(class_id, break_level=None, level=0, ancestor_str="",
                 _show_tree(child, break_level, level, ancestor_str_, ancestor,
                            total == count)
 
-        ancestor.pop(index-1)
+        ancestor.pop(index - 1)
 
 
 def search_class_id(class_id):
@@ -591,7 +592,7 @@ def search_class_id(class_id):
         log.info('"%s" did not match any available Class Ids.\n'
                  'Related Class Ids are:\n%s\n%s' %
                  (class_id,
-                  "-"*len("Related Class Ids are:"),
+                  "-" * len("Related Class Ids are:"),
                   "\n".join(class_ids)))
     else:
         log.info('"%s" did not match any available Class Ids.' % class_id)

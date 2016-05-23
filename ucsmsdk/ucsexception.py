@@ -20,6 +20,7 @@ import logging
 
 log = logging.getLogger('ucs')
 
+
 def UcsWarning(warn_str):
     """
     Method to throw warnings.

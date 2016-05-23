@@ -16,6 +16,10 @@ This module contains the UcsSdk Core classes.
 """
 
 from __future__ import absolute_import
+from .ucscore import UcsBase
+from . import ucscoreutils
+from . import ucsgenutils
+
 
 try:
     import xml.etree.cElementTree as ET
@@ -28,10 +32,6 @@ import logging
 
 log = logging.getLogger('ucs')
 
-
-from .ucscore import UcsBase
-from . import ucscoreutils
-from . import ucsgenutils
 
 class ExternalMethod(UcsBase):
     """
@@ -120,10 +120,11 @@ class ExternalMethod(UcsBase):
         self.child_to_xml(xml_obj, option)
         return xml_obj
 
-    def from_xml(self, elem, handle=None):  # , handle, modify_self=False, mo=None):
+    # , handle, modify_self=False, mo=None):
+    def from_xml(self, elem, handle=None):
         """Method updates/fills the object from the xml representation
         of the external method object. """
-		
+
         self._handle = handle
         if elem.attrib:
             for attr_name, attr_value in ucsgenutils.iteritems(elem.attrib):
