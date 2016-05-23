@@ -1,12 +1,11 @@
 """This module contains the general information for VmOrg ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VmOrgConsts():
+class VmOrgConsts:
     INT_ID_NONE = "none"
     OWN_DISCOVERED = "discovered"
     OWN_MANAGED = "managed"
@@ -67,4 +66,3 @@ class VmOrg(ManagedObject):
         self.uuid = None
 
         ManagedObject.__init__(self, "VmOrg", parent_mo_or_dn, **kwargs)
-

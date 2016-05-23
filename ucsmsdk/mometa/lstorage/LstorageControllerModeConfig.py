@@ -1,12 +1,11 @@
 """This module contains the general information for LstorageControllerModeConfig ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LstorageControllerModeConfigConsts():
+class LstorageControllerModeConfigConsts:
     PROTECT_CONFIG_FALSE = "false"
     PROTECT_CONFIG_NO = "no"
     PROTECT_CONFIG_TRUE = "true"
@@ -67,4 +66,3 @@ class LstorageControllerModeConfig(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LstorageControllerModeConfig", parent_mo_or_dn, **kwargs)
-

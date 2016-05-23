@@ -1,12 +1,11 @@
 """This module contains the general information for VnicIScsiLCP ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicIScsiLCPConsts():
+class VnicIScsiLCPConsts:
     ADDR_DERIVED = "derived"
     ADMIN_HOST_PORT_1 = "1"
     ADMIN_HOST_PORT_2 = "2"
@@ -188,4 +187,3 @@ class VnicIScsiLCP(ManagedObject):
         self.vnic_name = None
 
         ManagedObject.__init__(self, "VnicIScsiLCP", parent_mo_or_dn, **kwargs)
-

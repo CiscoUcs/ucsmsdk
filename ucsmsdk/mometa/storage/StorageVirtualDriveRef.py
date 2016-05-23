@@ -1,12 +1,11 @@
 """This module contains the general information for StorageVirtualDriveRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageVirtualDriveRefConsts():
+class StorageVirtualDriveRefConsts:
     ADMIN_STATE_OFFLINE = "offline"
     ADMIN_STATE_ONLINE = "online"
     ADMIN_STATE_UNDEPLOYED = "undeployed"
@@ -107,4 +106,3 @@ class StorageVirtualDriveRef(ManagedObject):
         self.vendor_uuid = None
 
         ManagedObject.__init__(self, "StorageVirtualDriveRef", parent_mo_or_dn, **kwargs)
-

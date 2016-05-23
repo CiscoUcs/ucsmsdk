@@ -1,12 +1,11 @@
 """This module contains the general information for StorageDrive ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageDriveConsts():
+class StorageDriveConsts:
     pass
 
 
@@ -59,4 +58,3 @@ class StorageDrive(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "StorageDrive", parent_mo_or_dn, **kwargs)
-

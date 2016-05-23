@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeSetAdaptorFirmwareVersion ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -16,4 +15,3 @@ prop_map = {
     "inAdaptorFwVersion": "in_adaptor_fw_version",
     "inAdaptorSerial": "in_adaptor_serial",
 }
-

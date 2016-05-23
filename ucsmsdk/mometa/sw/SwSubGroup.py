@@ -1,12 +1,11 @@
 """This module contains the general information for SwSubGroup ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwSubGroupConsts():
+class SwSubGroupConsts:
     LIC_STATE_LICENSE_EXPIRED = "license-expired"
     LIC_STATE_LICENSE_GRACEPERIOD = "license-graceperiod"
     LIC_STATE_LICENSE_INSUFFICIENT = "license-insufficient"
@@ -76,4 +75,3 @@ class SwSubGroup(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "SwSubGroup", parent_mo_or_dn, **kwargs)
-

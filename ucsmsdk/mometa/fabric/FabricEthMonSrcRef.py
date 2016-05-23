@@ -1,12 +1,11 @@
 """This module contains the general information for FabricEthMonSrcRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricEthMonSrcRefConsts():
+class FabricEthMonSrcRefConsts:
     SOURCE_TYPE_FCOEUPLINK_PORT = "fcoeuplink-port"
     SOURCE_TYPE_FCOEUPLINK_PORTCHANNEL = "fcoeuplink-portchannel"
     SOURCE_TYPE_HOST_PORT = "host-port"
@@ -65,4 +64,3 @@ class FabricEthMonSrcRef(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricEthMonSrcRef", parent_mo_or_dn, **kwargs)
-

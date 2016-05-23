@@ -1,12 +1,11 @@
 """This module contains the general information for StorageItem ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageItemConsts():
+class StorageItemConsts:
     OPER_STATE_CLEAN = "clean"
     OPER_STATE_MOUNTED = "mounted"
     OPER_STATE_NOT_CLEAN = "not-clean"
@@ -61,4 +60,3 @@ class StorageItem(ManagedObject):
         self.used = None
 
         ManagedObject.__init__(self, "StorageItem", parent_mo_or_dn, **kwargs)
-

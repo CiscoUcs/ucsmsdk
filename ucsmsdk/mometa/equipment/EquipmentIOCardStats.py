@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentIOCardStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentIOCardStatsConsts():
+class EquipmentIOCardStatsConsts:
     AMBIENT_TEMP_NOT_APPLICABLE = "not-applicable"
     AMBIENT_TEMP_AVG_NOT_APPLICABLE = "not-applicable"
     AMBIENT_TEMP_MAX_NOT_APPLICABLE = "not-applicable"
@@ -138,4 +137,3 @@ class EquipmentIOCardStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "EquipmentIOCardStats", parent_mo_or_dn, **kwargs)
-

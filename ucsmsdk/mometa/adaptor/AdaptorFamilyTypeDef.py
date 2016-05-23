@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorFamilyTypeDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorFamilyTypeDefConsts():
+class AdaptorFamilyTypeDefConsts:
     IS_MULTI_PORT_FALSE = "false"
     IS_MULTI_PORT_NO = "no"
     IS_MULTI_PORT_TRUE = "true"
@@ -70,4 +69,3 @@ class AdaptorFamilyTypeDef(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "AdaptorFamilyTypeDef", parent_mo_or_dn, **kwargs)
-

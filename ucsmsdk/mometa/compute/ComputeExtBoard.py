@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeExtBoard ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeExtBoardConsts():
+class ComputeExtBoardConsts:
     BOARD_AGGREGATION_ROLE_MULTI_MASTER = "multi-master"
     BOARD_AGGREGATION_ROLE_MULTI_SLAVE = "multi-slave"
     BOARD_AGGREGATION_ROLE_NONE = "none"
@@ -270,4 +269,3 @@ class ComputeExtBoard(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "ComputeExtBoard", parent_mo_or_dn, **kwargs)
-

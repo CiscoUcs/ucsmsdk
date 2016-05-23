@@ -1,12 +1,11 @@
 """This module contains the general information for CallhomeEpFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CallhomeEpFsmStageConsts():
+class CallhomeEpFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_CONFIG_CALLHOME_BEGIN = "configCallhomeBegin"
     NAME_CONFIG_CALLHOME_FAIL = "configCallhomeFail"
@@ -72,4 +71,3 @@ class CallhomeEpFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CallhomeEpFsmStage", parent_mo_or_dn, **kwargs)
-

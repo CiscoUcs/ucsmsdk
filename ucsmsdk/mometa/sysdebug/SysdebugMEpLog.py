@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugMEpLog ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugMEpLogConsts():
+class SysdebugMEpLogConsts:
     ADMIN_STATE_BACKUP = "backup"
     ADMIN_STATE_CLEAR = "clear"
     ADMIN_STATE_POLICY = "policy"
@@ -75,4 +74,3 @@ class SysdebugMEpLog(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SysdebugMEpLog", parent_mo_or_dn, **kwargs)
-

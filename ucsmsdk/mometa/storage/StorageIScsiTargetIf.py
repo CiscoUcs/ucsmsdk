@@ -1,12 +1,11 @@
 """This module contains the general information for StorageIScsiTargetIf ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageIScsiTargetIfConsts():
+class StorageIScsiTargetIfConsts:
     PROT_DERIVED = "derived"
     PROT_FC = "fc"
     PROT_ISCSI = "iscsi"
@@ -49,4 +48,3 @@ class StorageIScsiTargetIf(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StorageIScsiTargetIf", parent_mo_or_dn, **kwargs)
-

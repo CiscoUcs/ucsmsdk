@@ -1,12 +1,11 @@
 """This module contains the general information for MgmtEntity ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MgmtEntityConsts():
+class MgmtEntityConsts:
     CHASSIS_DEVICE_IO_STATE1_OK = "ok"
     CHASSIS_DEVICE_IO_STATE1_OPEN_ERROR = "openError"
     CHASSIS_DEVICE_IO_STATE1_READ_ERROR = "readError"
@@ -162,4 +161,3 @@ class MgmtEntity(ManagedObject):
         self.version_mismatch = None
 
         ManagedObject.__init__(self, "MgmtEntity", parent_mo_or_dn, **kwargs)
-

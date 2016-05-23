@@ -1,5 +1,4 @@
 """This module contains the meta information of OrgResolveElements ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -24,4 +23,3 @@ prop_map = {
     "inSingleLevel": "in_single_level",
     "outConfigs": "out_configs",
 }
-

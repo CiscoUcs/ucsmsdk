@@ -1,12 +1,11 @@
 """This module contains the general information for FabricPath ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricPathConsts():
+class FabricPathConsts:
     C_TYPE_MUX = "mux"
     C_TYPE_MUX_ACCESS = "mux-access"
     C_TYPE_MUX_FABRIC = "mux-fabric"
@@ -103,4 +102,3 @@ class FabricPath(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricPath", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentFexPowerSummaryHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentFexPowerSummaryHistConsts():
+class EquipmentFexPowerSummaryHistConsts:
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -111,4 +110,3 @@ class EquipmentFexPowerSummaryHist(ManagedObject):
         self.total_power_min = None
 
         ManagedObject.__init__(self, "EquipmentFexPowerSummaryHist", parent_mo_or_dn, **kwargs)
-

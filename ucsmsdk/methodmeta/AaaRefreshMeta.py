@@ -1,5 +1,4 @@
 """This module contains the meta information of AaaRefresh ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -32,4 +31,3 @@ prop_map = {
     "outPriv": "out_priv",
     "outRefreshPeriod": "out_refresh_period",
 }
-

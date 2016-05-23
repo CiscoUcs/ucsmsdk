@@ -1,12 +1,11 @@
 """This module contains the general information for LsmaintMaintPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsmaintMaintPolicyConsts():
+class LsmaintMaintPolicyConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -74,4 +73,3 @@ class LsmaintMaintPolicy(ManagedObject):
         self.uptime_disr = None
 
         ManagedObject.__init__(self, "LsmaintMaintPolicy", parent_mo_or_dn, **kwargs)
-

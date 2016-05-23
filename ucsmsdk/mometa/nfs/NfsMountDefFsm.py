@@ -1,12 +1,11 @@
 """This module contains the general information for NfsMountDefFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class NfsMountDefFsmConsts():
+class NfsMountDefFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_REPORT_NFS_MOUNT_SUSPEND = "ReportNfsMountSuspend"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class NfsMountDefFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "NfsMountDefFsm", parent_mo_or_dn, **kwargs)
-

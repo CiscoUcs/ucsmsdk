@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfProcessorC7Report ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfProcessorC7ReportConsts():
+class BiosVfProcessorC7ReportConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_PROCESSOR_C7_REPORT_C7 = "c7"
@@ -57,4 +56,3 @@ class BiosVfProcessorC7Report(ManagedObject):
         self.vp_processor_c7_report = None
 
         ManagedObject.__init__(self, "BiosVfProcessorC7Report", parent_mo_or_dn, **kwargs)
-

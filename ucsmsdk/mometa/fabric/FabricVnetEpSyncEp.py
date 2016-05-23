@@ -1,12 +1,11 @@
 """This module contains the general information for FabricVnetEpSyncEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricVnetEpSyncEpConsts():
+class FabricVnetEpSyncEpConsts:
     FSM_PREV_PUSH_VNET_EP_DELETION_BEGIN = "PushVnetEpDeletionBegin"
     FSM_PREV_PUSH_VNET_EP_DELETION_FAIL = "PushVnetEpDeletionFail"
     FSM_PREV_PUSH_VNET_EP_DELETION_SUCCESS = "PushVnetEpDeletionSuccess"
@@ -223,4 +222,3 @@ class FabricVnetEpSyncEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricVnetEpSyncEp", parent_mo_or_dn, **kwargs)
-

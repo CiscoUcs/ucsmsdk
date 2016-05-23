@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentPortGroupAggregationDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentPortGroupAggregationDefConsts():
+class EquipmentPortGroupAggregationDefConsts:
     HW40_GPORT_GROUP_CAP_FALSE = "false"
     HW40_GPORT_GROUP_CAP_NO = "no"
     HW40_GPORT_GROUP_CAP_TRUE = "true"
@@ -81,4 +80,3 @@ class EquipmentPortGroupAggregationDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentPortGroupAggregationDef", parent_mo_or_dn, **kwargs)
-

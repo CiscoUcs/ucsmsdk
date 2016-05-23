@@ -1,5 +1,4 @@
 """This module contains the meta information of AaaGetKVMLaunchUrl ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -18,4 +17,3 @@ prop_map = {
     "inIpv4": "in_ipv4",
     "outUrl": "out_url",
 }
-

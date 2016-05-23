@@ -1,12 +1,11 @@
 """This module contains the general information for BiosBootDevGrp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosBootDevGrpConsts():
+class BiosBootDevGrpConsts:
     ERR_VAL_FAILURE = "FAILURE"
     ERR_VAL_SUCCESS = "SUCCESS"
     ORDER_1 = "1"
@@ -88,4 +87,3 @@ class BiosBootDevGrp(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "BiosBootDevGrp", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for LicenseFileFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LicenseFileFsmStageConsts():
+class LicenseFileFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_CLEAR_BEGIN = "ClearBegin"
     NAME_CLEAR_FAIL = "ClearFail"
@@ -77,4 +76,3 @@ class LicenseFileFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LicenseFileFsmStage", parent_mo_or_dn, **kwargs)
-

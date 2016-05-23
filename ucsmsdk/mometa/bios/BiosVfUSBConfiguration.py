@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfUSBConfiguration ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfUSBConfigurationConsts():
+class BiosVfUSBConfigurationConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_LEGACY_USBSUPPORT_AUTO = "auto"
@@ -63,4 +62,3 @@ class BiosVfUSBConfiguration(ManagedObject):
         self.vp_xhci_mode = None
 
         ManagedObject.__init__(self, "BiosVfUSBConfiguration", parent_mo_or_dn, **kwargs)
-

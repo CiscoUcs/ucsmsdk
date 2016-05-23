@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareCatalogPack ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareCatalogPackConsts():
+class FirmwareCatalogPackConsts:
     CONFIG_STATE_FAILED = "failed"
     CONFIG_STATE_NOT_APPLIED = "not-applied"
     CONFIG_STATE_OK = "ok"
@@ -86,4 +85,3 @@ class FirmwareCatalogPack(ManagedObject):
         self.update_trigger = None
 
         ManagedObject.__init__(self, "FirmwareCatalogPack", parent_mo_or_dn, **kwargs)
-

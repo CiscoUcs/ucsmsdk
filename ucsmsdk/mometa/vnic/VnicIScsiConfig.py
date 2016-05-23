@@ -1,12 +1,11 @@
 """This module contains the general information for VnicIScsiConfig ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicIScsiConfigConsts():
+class VnicIScsiConfigConsts:
     IP_POOL_TYPE_SPECIFIC = "specific"
     IP_POOL_TYPE_TARGET = "target"
 
@@ -69,4 +68,3 @@ class VnicIScsiConfig(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "VnicIScsiConfig", parent_mo_or_dn, **kwargs)
-

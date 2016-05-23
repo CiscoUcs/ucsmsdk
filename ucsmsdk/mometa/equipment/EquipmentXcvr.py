@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentXcvr ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentXcvrConsts():
+class EquipmentXcvrConsts:
     TYPE_1000BASECX = "1000basecx"
     TYPE_1000BASELH = "1000baselh"
     TYPE_1000BASELX = "1000baselx"
@@ -153,4 +152,3 @@ class EquipmentXcvr(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "EquipmentXcvr", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeFwSyncAck ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeFwSyncAckConsts():
+class ComputeFwSyncAckConsts:
     ADMIN_STATE_TRIGGER = "trigger"
     ADMIN_STATE_TRIGGER_IMMEDIATE = "trigger-immediate"
     ADMIN_STATE_TRIGGERED = "triggered"
@@ -144,4 +143,3 @@ class ComputeFwSyncAck(ManagedObject):
         self.trigger_config_state = None
 
         ManagedObject.__init__(self, "ComputeFwSyncAck", parent_mo_or_dn, **kwargs)
-

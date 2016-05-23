@@ -1,5 +1,4 @@
 """This module contains the meta information of ConfigCheckFirmwareUpdatable ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "outInvalidDns": "out_invalid_dns",
     "outPassDns": "out_pass_dns",
 }
-

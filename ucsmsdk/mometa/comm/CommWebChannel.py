@@ -1,12 +1,11 @@
 """This module contains the general information for CommWebChannel ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CommWebChannelConsts():
+class CommWebChannelConsts:
     CHANNEL_STATE_FULLSSL = "fullssl"
     CHANNEL_STATE_NOENCSSL = "noencssl"
     CHANNEL_STATE_PLAIN = "plain"
@@ -65,4 +64,3 @@ class CommWebChannel(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CommWebChannel", parent_mo_or_dn, **kwargs)
-

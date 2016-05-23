@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeRackUnitFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeRackUnitFsmConsts():
+class ComputeRackUnitFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_ACTIVATE_ADAPTOR = "ActivateAdaptor"
     CURRENT_FSM_ACTIVATE_BIOS = "ActivateBIOS"
@@ -244,4 +243,3 @@ class ComputeRackUnitFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeRackUnitFsm", parent_mo_or_dn, **kwargs)
-

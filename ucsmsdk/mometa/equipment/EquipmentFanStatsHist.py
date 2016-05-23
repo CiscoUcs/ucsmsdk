@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentFanStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentFanStatsHistConsts():
+class EquipmentFanStatsHistConsts:
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -75,4 +74,3 @@ class EquipmentFanStatsHist(ManagedObject):
         self.time_collected = None
 
         ManagedObject.__init__(self, "EquipmentFanStatsHist", parent_mo_or_dn, **kwargs)
-

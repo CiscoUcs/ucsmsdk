@@ -1,12 +1,11 @@
 """This module contains the general information for TopSystem ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class TopSystemConsts():
+class TopSystemConsts:
     MODE_CLUSTER = "cluster"
     MODE_STAND_ALONE = "stand-alone"
     MODE_UNSPECIFIED = "unspecified"
@@ -70,4 +69,3 @@ class TopSystem(ManagedObject):
         self.system_up_time = None
 
         ManagedObject.__init__(self, "TopSystem", **kwargs)
-

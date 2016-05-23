@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfOnboardSATAController ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfOnboardSATAControllerConsts():
+class BiosVfOnboardSATAControllerConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_ONBOARD_SATACONTROLLER_DISABLED = "disabled"
@@ -64,4 +63,3 @@ class BiosVfOnboardSATAController(ManagedObject):
         self.vp_sata_mode = None
 
         ManagedObject.__init__(self, "BiosVfOnboardSATAController", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for CommDns ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CommDnsConsts():
+class CommDnsConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     INT_ID_NONE = "none"
@@ -80,4 +79,3 @@ class CommDns(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CommDns", parent_mo_or_dn, **kwargs)
-

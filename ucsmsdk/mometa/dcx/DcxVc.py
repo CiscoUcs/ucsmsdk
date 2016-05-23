@@ -1,12 +1,11 @@
 """This module contains the general information for DcxVc ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class DcxVcConsts():
+class DcxVcConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     CDP_DISABLED = "disabled"
@@ -224,4 +223,3 @@ class DcxVc(ManagedObject):
         self.vnic = None
 
         ManagedObject.__init__(self, "DcxVc", parent_mo_or_dn, **kwargs)
-

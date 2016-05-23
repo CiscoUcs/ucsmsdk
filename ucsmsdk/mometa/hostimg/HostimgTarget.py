@@ -1,12 +1,11 @@
 """This module contains the general information for HostimgTarget ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class HostimgTargetConsts():
+class HostimgTargetConsts:
     ORDER_UNSPECIFIED = "unspecified"
     TYPE_COMPLETE = "complete"
     TYPE_FILE_SYSTEM = "file-system"
@@ -58,4 +57,3 @@ class HostimgTarget(ManagedObject):
         self.uri = None
 
         ManagedObject.__init__(self, "HostimgTarget", parent_mo_or_dn, **kwargs)
-

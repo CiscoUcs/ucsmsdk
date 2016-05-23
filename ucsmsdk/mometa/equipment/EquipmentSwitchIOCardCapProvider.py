@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentSwitchIOCardCapProvider ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentSwitchIOCardCapProviderConsts():
+class EquipmentSwitchIOCardCapProviderConsts:
     DELETED_FALSE = "false"
     DELETED_NO = "no"
     DELETED_TRUE = "true"
@@ -87,4 +86,3 @@ class EquipmentSwitchIOCardCapProvider(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentSwitchIOCardCapProvider", parent_mo_or_dn, **kwargs)
-

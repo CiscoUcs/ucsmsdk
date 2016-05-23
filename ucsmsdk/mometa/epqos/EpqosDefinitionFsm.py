@@ -1,12 +1,11 @@
 """This module contains the general information for EpqosDefinitionFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EpqosDefinitionFsmConsts():
+class EpqosDefinitionFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_DEPLOY = "Deploy"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class EpqosDefinitionFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EpqosDefinitionFsm", parent_mo_or_dn, **kwargs)
-

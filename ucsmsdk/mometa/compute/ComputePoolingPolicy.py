@@ -1,12 +1,11 @@
 """This module contains the general information for ComputePoolingPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputePoolingPolicyConsts():
+class ComputePoolingPolicyConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -65,4 +64,3 @@ class ComputePoolingPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputePoolingPolicy", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentStorageSasExpanderCapRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentStorageSasExpanderCapRefConsts():
+class EquipmentStorageSasExpanderCapRefConsts:
     pass
 
 
@@ -50,4 +49,3 @@ class EquipmentStorageSasExpanderCapRef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentStorageSasExpanderCapRef", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for VnicDynamicProviderEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicDynamicProviderEpConsts():
+class VnicDynamicProviderEpConsts:
     CHASSIS_ID_N_A = "N/A"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
@@ -56,4 +55,3 @@ class VnicDynamicProviderEp(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "VnicDynamicProviderEp", parent_mo_or_dn, **kwargs)
-

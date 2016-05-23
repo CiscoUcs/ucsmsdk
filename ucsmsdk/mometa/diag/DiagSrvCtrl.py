@@ -1,12 +1,11 @@
 """This module contains the general information for DiagSrvCtrl ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class DiagSrvCtrlConsts():
+class DiagSrvCtrlConsts:
     ADMIN_STATE_CANCEL = "cancel"
     ADMIN_STATE_READY = "ready"
     ADMIN_STATE_TRIGGER = "trigger"
@@ -91,4 +90,3 @@ class DiagSrvCtrl(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "DiagSrvCtrl", parent_mo_or_dn, **kwargs)
-

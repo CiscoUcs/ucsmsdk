@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareCatalogue ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareCatalogueConsts():
+class FirmwareCatalogueConsts:
     SYNC_TRIGGER_FALSE = "false"
     SYNC_TRIGGER_NO = "no"
     SYNC_TRIGGER_TRUE = "true"
@@ -47,4 +46,3 @@ class FirmwareCatalogue(ManagedObject):
         self.sync_trigger = None
 
         ManagedObject.__init__(self, "FirmwareCatalogue", parent_mo_or_dn, **kwargs)
-

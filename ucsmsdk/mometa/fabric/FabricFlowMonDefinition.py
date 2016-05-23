@@ -1,12 +1,11 @@
 """This module contains the general information for FabricFlowMonDefinition ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricFlowMonDefinitionConsts():
+class FabricFlowMonDefinitionConsts:
     INT_ID_NONE = "none"
     KEY_TYPE_IPV4KEYS = "ipv4keys"
     KEY_TYPE_IPV6KEYS = "ipv6keys"
@@ -82,4 +81,3 @@ class FabricFlowMonDefinition(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricFlowMonDefinition", parent_mo_or_dn, **kwargs)
-

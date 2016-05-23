@@ -1,12 +1,11 @@
 """This module contains the general information for StatsThrFloatDefinition ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StatsThrFloatDefinitionConsts():
+class StatsThrFloatDefinitionConsts:
     AUTO_RECOVERY_DISABLED = "disabled"
     AUTO_RECOVERY_ENABLED = "enabled"
     ERROR_DISABLE_FI_PORT_FALSE = "false"
@@ -1197,4 +1196,3 @@ class StatsThrFloatDefinition(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StatsThrFloatDefinition", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfPCISlotOptionROMEnable ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfPCISlotOptionROMEnableConsts():
+class BiosVfPCISlotOptionROMEnableConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_PCIE_SLOT_HBAOPTION_ROM_DISABLED = "disabled"
@@ -190,4 +189,3 @@ class BiosVfPCISlotOptionROMEnable(ManagedObject):
         self.vp_slot_mezz_state = None
 
         ManagedObject.__init__(self, "BiosVfPCISlotOptionROMEnable", parent_mo_or_dn, **kwargs)
-

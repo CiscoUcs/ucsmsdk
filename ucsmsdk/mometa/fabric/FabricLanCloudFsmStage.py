@@ -1,12 +1,11 @@
 """This module contains the general information for FabricLanCloudFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricLanCloudFsmStageConsts():
+class FabricLanCloudFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_SWITCH_MODE_BEGIN = "SwitchModeBegin"
     NAME_SWITCH_MODE_FAIL = "SwitchModeFail"
@@ -72,4 +71,3 @@ class FabricLanCloudFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricLanCloudFsmStage", parent_mo_or_dn, **kwargs)
-

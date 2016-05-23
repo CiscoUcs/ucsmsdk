@@ -1,12 +1,11 @@
 """This module contains the general information for OsEthBondModeBroadcast ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class OsEthBondModeBroadcastConsts():
+class OsEthBondModeBroadcastConsts:
     TYPE_ACTIVE_ACTIVE = "active-active"
     TYPE_ACTIVE_PASSIVE = "active-passive"
 
@@ -48,4 +47,3 @@ class OsEthBondModeBroadcast(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "OsEthBondModeBroadcast", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for CommSnmpUser ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CommSnmpUserConsts():
+class CommSnmpUserConsts:
     AUTH_MD5 = "md5"
     AUTH_SHA = "sha"
     CONFIG_STATE_NOT_APPLIED = "not-applied"
@@ -86,4 +85,3 @@ class CommSnmpUser(ManagedObject):
         self.use_aes = None
 
         ManagedObject.__init__(self, "CommSnmpUser", parent_mo_or_dn, **kwargs)
-

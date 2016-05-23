@@ -1,12 +1,11 @@
 """This module contains the general information for StatsThresholdPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StatsThresholdPolicyConsts():
+class StatsThresholdPolicyConsts:
     DEFAULT_THRESHOLDS_ADDED_FALSE = "false"
     DEFAULT_THRESHOLDS_ADDED_NO = "no"
     DEFAULT_THRESHOLDS_ADDED_TRUE = "true"
@@ -66,4 +65,3 @@ class StatsThresholdPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StatsThresholdPolicy", parent_mo_or_dn, **kwargs)
-

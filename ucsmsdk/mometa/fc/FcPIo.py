@@ -1,12 +1,11 @@
 """This module contains the general information for FcPIo ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FcPIoConsts():
+class FcPIoConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     CHASSIS_ID_N_A = "N/A"
@@ -512,4 +511,3 @@ class FcPIo(ManagedObject):
         self.xcvr_type = None
 
         ManagedObject.__init__(self, "FcPIo", parent_mo_or_dn, **kwargs)
-

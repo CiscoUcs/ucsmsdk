@@ -1,12 +1,11 @@
 """This module contains the general information for LstorageDiskGroupQualifier ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LstorageDiskGroupQualifierConsts():
+class LstorageDiskGroupQualifierConsts:
     DRIVE_TYPE_HDD = "HDD"
     DRIVE_TYPE_SSD = "SSD"
     DRIVE_TYPE_UNSPECIFIED = "unspecified"
@@ -69,4 +68,3 @@ class LstorageDiskGroupQualifier(ManagedObject):
         self.use_remaining_disks = None
 
         ManagedObject.__init__(self, "LstorageDiskGroupQualifier", parent_mo_or_dn, **kwargs)
-

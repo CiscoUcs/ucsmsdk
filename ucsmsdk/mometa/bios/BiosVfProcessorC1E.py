@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfProcessorC1E ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfProcessorC1EConsts():
+class BiosVfProcessorC1EConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_PROCESSOR_C1_E_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfProcessorC1E(ManagedObject):
         self.vp_processor_c1_e = None
 
         ManagedObject.__init__(self, "BiosVfProcessorC1E", parent_mo_or_dn, **kwargs)
-

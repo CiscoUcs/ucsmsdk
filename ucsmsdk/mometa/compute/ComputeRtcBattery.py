@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeRtcBattery ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeRtcBatteryConsts():
+class ComputeRtcBatteryConsts:
     OPER_STATE_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     OPER_STATE_AUTO_UPGRADE = "auto-upgrade"
     OPER_STATE_BIOS_POST_TIMEOUT = "bios-post-timeout"
@@ -199,4 +198,3 @@ class ComputeRtcBattery(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "ComputeRtcBattery", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for LstorageDasScsiLun ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LstorageDasScsiLunConsts():
+class LstorageDasScsiLunConsts:
     ADMIN_STATE_OFFLINE = "offline"
     ADMIN_STATE_ONLINE = "online"
     ADMIN_STATE_UNDEPLOYED = "undeployed"
@@ -119,4 +118,3 @@ class LstorageDasScsiLun(ManagedObject):
         self.storage_class = None
 
         ManagedObject.__init__(self, "LstorageDasScsiLun", parent_mo_or_dn, **kwargs)
-

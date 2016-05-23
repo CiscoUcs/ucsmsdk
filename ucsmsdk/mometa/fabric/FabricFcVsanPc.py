@@ -1,12 +1,11 @@
 """This module contains the general information for FabricFcVsanPc ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricFcVsanPcConsts():
+class FabricFcVsanPcConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     IF_ROLE_DIAG = "diag"
@@ -123,4 +122,3 @@ class FabricFcVsanPc(ManagedObject):
         self.warnings = None
 
         ManagedObject.__init__(self, "FabricFcVsanPc", parent_mo_or_dn, **kwargs)
-

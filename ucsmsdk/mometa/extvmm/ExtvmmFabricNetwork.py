@@ -1,12 +1,11 @@
 """This module contains the general information for ExtvmmFabricNetwork ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtvmmFabricNetworkConsts():
+class ExtvmmFabricNetworkConsts:
     INT_ID_NONE = "none"
     NETWORK_TYPE_CONNECTED = "connected"
     NETWORK_TYPE_NOT_CONNECTED = "not-connected"
@@ -73,4 +72,3 @@ class ExtvmmFabricNetwork(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtvmmFabricNetwork", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorEthPortErrStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorEthPortErrStatsConsts():
+class AdaptorEthPortErrStatsConsts:
     SUSPECT_FALSE = "false"
     SUSPECT_NO = "no"
     SUSPECT_TRUE = "true"
@@ -110,4 +109,3 @@ class AdaptorEthPortErrStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "AdaptorEthPortErrStats", parent_mo_or_dn, **kwargs)
-

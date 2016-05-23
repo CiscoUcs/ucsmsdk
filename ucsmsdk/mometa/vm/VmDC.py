@@ -1,12 +1,11 @@
 """This module contains the general information for VmDC ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VmDCConsts():
+class VmDCConsts:
     INT_ID_NONE = "none"
     OWN_DISCOVERED = "discovered"
     OWN_MANAGED = "managed"
@@ -67,4 +66,3 @@ class VmDC(ManagedObject):
         self.uuid = None
 
         ManagedObject.__init__(self, "VmDC", parent_mo_or_dn, **kwargs)
-

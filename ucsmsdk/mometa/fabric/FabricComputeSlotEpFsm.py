@@ -1,12 +1,11 @@
 """This module contains the general information for FabricComputeSlotEpFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricComputeSlotEpFsmConsts():
+class FabricComputeSlotEpFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_IDENTIFY = "Identify"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class FabricComputeSlotEpFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricComputeSlotEpFsm", parent_mo_or_dn, **kwargs)
-

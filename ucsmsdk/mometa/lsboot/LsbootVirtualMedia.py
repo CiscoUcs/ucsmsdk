@@ -1,12 +1,11 @@
 """This module contains the general information for LsbootVirtualMedia ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsbootVirtualMediaConsts():
+class LsbootVirtualMediaConsts:
     ACCESS_READ_ONLY = "read-only"
     ACCESS_READ_ONLY_LOCAL = "read-only-local"
     ACCESS_READ_ONLY_REMOTE = "read-only-remote"
@@ -73,4 +72,3 @@ class LsbootVirtualMedia(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "LsbootVirtualMedia", parent_mo_or_dn, **kwargs)
-

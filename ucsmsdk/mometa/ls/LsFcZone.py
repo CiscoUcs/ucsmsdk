@@ -1,12 +1,11 @@
 """This module contains the general information for LsFcZone ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsFcZoneConsts():
+class LsFcZoneConsts:
     ADMIN_STATE_ACTIVE = "active"
     ADMIN_STATE_APPLIED = "applied"
     ADMIN_STATE_APPLY_PENDING = "apply-pending"
@@ -99,4 +98,3 @@ class LsFcZone(ManagedObject):
         self.zoning_type = None
 
         ManagedObject.__init__(self, "LsFcZone", parent_mo_or_dn, **kwargs)
-

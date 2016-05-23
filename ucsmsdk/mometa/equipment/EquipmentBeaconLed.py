@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentBeaconLed ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentBeaconLedConsts():
+class EquipmentBeaconLedConsts:
     ADMIN_STATE_BLINKING = "blinking"
     ADMIN_STATE_ETH = "eth"
     ADMIN_STATE_FC = "fc"
@@ -244,4 +243,3 @@ class EquipmentBeaconLed(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentBeaconLed", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for ExtvmmSwitchDelTask ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtvmmSwitchDelTaskConsts():
+class ExtvmmSwitchDelTaskConsts:
     FSM_PREV_NOP = "nop"
     FSM_PREV_REMOVE_PROVIDER_BEGIN = "removeProviderBegin"
     FSM_PREV_REMOVE_PROVIDER_FAIL = "removeProviderFail"
@@ -268,4 +267,3 @@ class ExtvmmSwitchDelTask(ManagedObject):
         self.sw_name = None
 
         ManagedObject.__init__(self, "ExtvmmSwitchDelTask", parent_mo_or_dn, **kwargs)
-

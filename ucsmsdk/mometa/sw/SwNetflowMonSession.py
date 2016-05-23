@@ -1,12 +1,11 @@
 """This module contains the general information for SwNetflowMonSession ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwNetflowMonSessionConsts():
+class SwNetflowMonSessionConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     HAS_LAST_DEST_FALSE = "false"
@@ -83,4 +82,3 @@ class SwNetflowMonSession(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "SwNetflowMonSession", parent_mo_or_dn, **kwargs)
-

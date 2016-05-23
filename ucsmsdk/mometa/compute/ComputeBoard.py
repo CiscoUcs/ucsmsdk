@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeBoard ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeBoardConsts():
+class ComputeBoardConsts:
     CMOS_VOLTAGE_LOWER_CRITICAL = "lower-critical"
     CMOS_VOLTAGE_LOWER_NON_CRITICAL = "lower-non-critical"
     CMOS_VOLTAGE_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -245,4 +244,3 @@ class ComputeBoard(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "ComputeBoard", parent_mo_or_dn, **kwargs)
-

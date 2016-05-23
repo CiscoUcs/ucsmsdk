@@ -1,5 +1,4 @@
 """This module contains the meta information of ComputeGetInventory ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -52,4 +51,3 @@ prop_map = {
     "outVnicIpv4PooledAddrConfig": "out_vnic_ipv4_pooled_addr_config",
     "outVnicIpv4ProfDerivedAddrConfig": "out_vnic_ipv4_prof_derived_addr_config",
 }
-

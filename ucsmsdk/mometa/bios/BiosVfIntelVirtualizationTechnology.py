@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfIntelVirtualizationTechnology ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfIntelVirtualizationTechnologyConsts():
+class BiosVfIntelVirtualizationTechnologyConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_INTEL_VIRTUALIZATION_TECHNOLOGY_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfIntelVirtualizationTechnology(ManagedObject):
         self.vp_intel_virtualization_technology = None
 
         ManagedObject.__init__(self, "BiosVfIntelVirtualizationTechnology", parent_mo_or_dn, **kwargs)
-

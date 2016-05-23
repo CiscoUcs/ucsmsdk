@@ -1,12 +1,11 @@
 """This module contains the general information for VnicConnDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicConnDefConsts():
+class VnicConnDefConsts:
     pass
 
 
@@ -59,4 +58,3 @@ class VnicConnDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "VnicConnDef", parent_mo_or_dn, **kwargs)
-

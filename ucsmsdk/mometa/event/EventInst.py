@@ -1,12 +1,11 @@
 """This module contains the general information for EventInst ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EventInstConsts():
+class EventInstConsts:
     CAUSE_A_FAILED = "a-failed"
     CAUSE_ACTIVATE_ADAPTOR_NW_FW_LOCAL_FAILED = "activate-adaptor-nw-fw-local-failed"
     CAUSE_ACTIVATE_ADAPTOR_NW_FW_PEER_FAILED = "activate-adaptor-nw-fw-peer-failed"
@@ -7855,4 +7854,3 @@ class EventInst(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "EventInst", parent_mo_or_dn, **kwargs)
-

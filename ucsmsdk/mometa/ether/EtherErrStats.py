@@ -1,12 +1,11 @@
 """This module contains the general information for EtherErrStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherErrStatsConsts():
+class EtherErrStatsConsts:
     SUSPECT_FALSE = "false"
     SUSPECT_NO = "no"
     SUSPECT_TRUE = "true"
@@ -194,4 +193,3 @@ class EtherErrStats(ManagedObject):
         self.xmit_delta_min = None
 
         ManagedObject.__init__(self, "EtherErrStats", parent_mo_or_dn, **kwargs)
-

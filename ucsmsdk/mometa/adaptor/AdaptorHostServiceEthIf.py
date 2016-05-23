@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorHostServiceEthIf ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorHostServiceEthIfConsts():
+class AdaptorHostServiceEthIfConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_DISABLED_ACTIVE = "disabled-active"
     ADMIN_STATE_DISABLED_PASSIVE = "disabled-passive"
@@ -352,4 +351,3 @@ class AdaptorHostServiceEthIf(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "AdaptorHostServiceEthIf", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for SwExtUtilityFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwExtUtilityFsmStageConsts():
+class SwExtUtilityFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_CONF_PORT_BREAKOUT_BEGIN = "ConfPortBreakoutBegin"
     NAME_CONF_PORT_BREAKOUT_CONFIG_SW_A = "ConfPortBreakoutConfigSwA"
@@ -75,4 +74,3 @@ class SwExtUtilityFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwExtUtilityFsmStage", parent_mo_or_dn, **kwargs)
-

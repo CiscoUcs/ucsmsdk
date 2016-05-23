@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorFcErrorRecoveryProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorFcErrorRecoveryProfileConsts():
+class AdaptorFcErrorRecoveryProfileConsts:
     FCP_ERROR_RECOVERY_DISABLED = "disabled"
     FCP_ERROR_RECOVERY_ENABLED = "enabled"
 
@@ -60,4 +59,3 @@ class AdaptorFcErrorRecoveryProfile(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorFcErrorRecoveryProfile", parent_mo_or_dn, **kwargs)
-

@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeDeleteSfish ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -14,4 +13,3 @@ prop_map = {
     "cookie": "cookie",
     "inVmSwitchDn": "in_vm_switch_dn",
 }
-

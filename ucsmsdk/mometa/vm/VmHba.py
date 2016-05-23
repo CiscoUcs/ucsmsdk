@@ -1,12 +1,11 @@
 """This module contains the general information for VmHba ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VmHbaConsts():
+class VmHbaConsts:
     OWNER_CONN_POLICY = "conn_policy"
     OWNER_INITIATOR_POLICY = "initiator_policy"
     OWNER_LOGICAL = "logical"
@@ -123,4 +122,3 @@ class VmHba(ManagedObject):
         self.wwpn = None
 
         ManagedObject.__init__(self, "VmHba", parent_mo_or_dn, **kwargs)
-

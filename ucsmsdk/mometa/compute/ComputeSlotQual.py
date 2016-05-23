@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeSlotQual ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeSlotQualConsts():
+class ComputeSlotQualConsts:
     pass
 
 
@@ -47,4 +46,3 @@ class ComputeSlotQual(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ComputeSlotQual", parent_mo_or_dn, **kwargs)
-

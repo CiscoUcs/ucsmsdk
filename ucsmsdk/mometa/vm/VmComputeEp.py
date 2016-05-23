@@ -1,12 +1,11 @@
 """This module contains the general information for VmComputeEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VmComputeEpConsts():
+class VmComputeEpConsts:
     CL_INST_TYPE_COMPUTE_EP = "compute-ep"
     CL_INST_TYPE_HV = "hv"
     CL_INST_TYPE_VM = "vm"
@@ -114,4 +113,3 @@ class VmComputeEp(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "VmComputeEp", parent_mo_or_dn, **kwargs)
-

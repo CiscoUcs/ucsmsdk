@@ -1,12 +1,11 @@
 """This module contains the general information for FabricComputeSlotEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricComputeSlotEpConsts():
+class FabricComputeSlotEpConsts:
     ADMIN_STATE_ACKNOWLEDGED = "acknowledged"
     ADMIN_STATE_REACKNOWLEDGE = "reacknowledge"
     AUTO_NEGOTIATE_FALSE = "false"
@@ -413,4 +412,3 @@ class FabricComputeSlotEp(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "FabricComputeSlotEp", parent_mo_or_dn, **kwargs)
-

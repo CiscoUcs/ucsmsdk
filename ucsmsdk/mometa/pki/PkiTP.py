@@ -1,12 +1,11 @@
 """This module contains the general information for PkiTP ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PkiTPConsts():
+class PkiTPConsts:
     CERT_STATUS_CERT_CHAIN_TOO_LONG = "certChainTooLong"
     CERT_STATUS_EMPTY_CERT = "emptyCert"
     CERT_STATUS_EXPIRED = "expired"
@@ -81,4 +80,3 @@ class PkiTP(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PkiTP", parent_mo_or_dn, **kwargs)
-

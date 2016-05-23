@@ -1,12 +1,11 @@
 """This module contains the general information for PolicyControlEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PolicyControlEpConsts():
+class PolicyControlEpConsts:
     ACK_STATE_ACKED = "acked"
     ACK_STATE_NO_ACK = "no-ack"
     CLEANUP_MODE_DEEP_REMOVE_GLOBAL = "deep-remove-global"
@@ -262,4 +261,3 @@ class PolicyControlEp(ManagedObject):
         self.svc_reg_name = None
 
         ManagedObject.__init__(self, "PolicyControlEp", parent_mo_or_dn, **kwargs)
-

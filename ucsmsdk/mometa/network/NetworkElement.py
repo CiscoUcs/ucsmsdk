@@ -1,12 +1,11 @@
 """This module contains the general information for NetworkElement ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class NetworkElementConsts():
+class NetworkElementConsts:
     ADMIN_EVAC_STATE_DRAIN = "drain"
     ADMIN_EVAC_STATE_FILL = "fill"
     ADMIN_EVAC_STATE_UNKNOWN = "unknown"
@@ -151,4 +150,3 @@ class NetworkElement(ManagedObject):
         self.vendor = None
 
         ManagedObject.__init__(self, "NetworkElement", parent_mo_or_dn, **kwargs)
-

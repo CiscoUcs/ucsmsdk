@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfIntelEntrySASRAIDModule ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfIntelEntrySASRAIDModuleConsts():
+class BiosVfIntelEntrySASRAIDModuleConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_SASRAID_DISABLED = "disabled"
@@ -62,4 +61,3 @@ class BiosVfIntelEntrySASRAIDModule(ManagedObject):
         self.vp_sasraid_module = None
 
         ManagedObject.__init__(self, "BiosVfIntelEntrySASRAIDModule", parent_mo_or_dn, **kwargs)
-

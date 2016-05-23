@@ -1,12 +1,11 @@
 """This module contains the general information for ObserveObservedFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ObserveObservedFsmConsts():
+class ObserveObservedFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_RESOLVE_CONTROLLER_FSM = "ResolveControllerFsm"
     CURRENT_FSM_RESOLVE_POLICY_FSM = "ResolvePolicyFsm"
@@ -209,4 +208,3 @@ class ObserveObservedFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ObserveObservedFsm", parent_mo_or_dn, **kwargs)
-

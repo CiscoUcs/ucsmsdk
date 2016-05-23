@@ -1,12 +1,11 @@
 """This module contains the general information for ExtvmmNetworkSets ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtvmmNetworkSetsConsts():
+class ExtvmmNetworkSetsConsts:
     FSM_PREV_DEPLOY_BEGIN = "DeployBegin"
     FSM_PREV_DEPLOY_FAIL = "DeployFail"
     FSM_PREV_DEPLOY_LOCAL = "DeployLocal"
@@ -218,4 +217,3 @@ class ExtvmmNetworkSets(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtvmmNetworkSets", parent_mo_or_dn, **kwargs)
-

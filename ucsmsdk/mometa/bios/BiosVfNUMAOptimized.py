@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfNUMAOptimized ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfNUMAOptimizedConsts():
+class BiosVfNUMAOptimizedConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_NUMAOPTIMIZED_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfNUMAOptimized(ManagedObject):
         self.vp_numa_optimized = None
 
         ManagedObject.__init__(self, "BiosVfNUMAOptimized", parent_mo_or_dn, **kwargs)
-

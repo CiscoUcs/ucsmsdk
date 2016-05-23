@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareDownloaderFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareDownloaderFsmStageConsts():
+class FirmwareDownloaderFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_DOWNLOAD_BEGIN = "DownloadBegin"
     NAME_DOWNLOAD_COPY_REMOTE = "DownloadCopyRemote"
@@ -74,4 +73,3 @@ class FirmwareDownloaderFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareDownloaderFsmStage", parent_mo_or_dn, **kwargs)
-

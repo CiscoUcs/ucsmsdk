@@ -1,12 +1,11 @@
 """This module contains the general information for LsVersionBeh ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsVersionBehConsts():
+class LsVersionBehConsts:
     PCI_ENUM_MULTI_FUNC_ALL = "multi-func-all"
     PCI_ENUM_STATIC_ZERO_FUNC = "static-zero-func"
     PCI_ENUM_ZERO_FUNC_ALL = "zero-func-all"
@@ -67,4 +66,3 @@ class LsVersionBeh(ManagedObject):
         self.vnic_order = None
 
         ManagedObject.__init__(self, "LsVersionBeh", parent_mo_or_dn, **kwargs)
-

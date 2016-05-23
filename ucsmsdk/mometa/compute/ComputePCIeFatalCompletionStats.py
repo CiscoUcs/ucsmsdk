@@ -1,12 +1,11 @@
 """This module contains the general information for ComputePCIeFatalCompletionStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputePCIeFatalCompletionStatsConsts():
+class ComputePCIeFatalCompletionStatsConsts:
     SUSPECT_FALSE = "false"
     SUSPECT_NO = "no"
     SUSPECT_TRUE = "true"
@@ -158,4 +157,3 @@ class ComputePCIeFatalCompletionStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "ComputePCIeFatalCompletionStats", parent_mo_or_dn, **kwargs)
-

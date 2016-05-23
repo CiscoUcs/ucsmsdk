@@ -1,12 +1,11 @@
 """This module contains the general information for FabricEpMgrFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricEpMgrFsmStageConsts():
+class FabricEpMgrFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_CONFIGURE_APPLY_CONFIG = "ConfigureApplyConfig"
     NAME_CONFIGURE_APPLY_PHYSICAL = "ConfigureApplyPhysical"
@@ -74,4 +73,3 @@ class FabricEpMgrFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricEpMgrFsmStage", parent_mo_or_dn, **kwargs)
-

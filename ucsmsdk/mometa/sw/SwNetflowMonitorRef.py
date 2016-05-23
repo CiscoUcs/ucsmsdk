@@ -1,12 +1,11 @@
 """This module contains the general information for SwNetflowMonitorRef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwNetflowMonitorRefConsts():
+class SwNetflowMonitorRefConsts:
     DIRECTION_RECEIVE = "receive"
     DIRECTION_TRANSMIT = "transmit"
     KEY_TYPE_IPV4KEYS = "ipv4keys"
@@ -57,4 +56,3 @@ class SwNetflowMonitorRef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwNetflowMonitorRef", parent_mo_or_dn, **kwargs)
-

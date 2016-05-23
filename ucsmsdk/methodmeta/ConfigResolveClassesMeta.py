@@ -1,5 +1,4 @@
 """This module contains the meta information of ConfigResolveClasses ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -18,4 +17,3 @@ prop_map = {
     "inIds": "in_ids",
     "outConfigs": "out_configs",
 }
-

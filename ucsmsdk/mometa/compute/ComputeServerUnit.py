@@ -1,12 +1,11 @@
 """This module contains the general information for ComputeServerUnit ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ComputeServerUnitConsts():
+class ComputeServerUnitConsts:
     ADMIN_POWER_ADMIN_DOWN = "admin-down"
     ADMIN_POWER_ADMIN_UP = "admin-up"
     ADMIN_POWER_BMC_RESET_IMMEDIATE = "bmc-reset-immediate"
@@ -1535,4 +1534,3 @@ class ComputeServerUnit(ManagedObject):
         self.vid = None
 
         ManagedObject.__init__(self, "ComputeServerUnit", parent_mo_or_dn, **kwargs)
-

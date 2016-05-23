@@ -1,12 +1,11 @@
 """This module contains the general information for PowerPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PowerPolicyConsts():
+class PowerPolicyConsts:
     FAN_SPEED_ANY = "any"
     FAN_SPEED_BALANCED = "balanced"
     FAN_SPEED_ERR = "err"
@@ -85,4 +84,3 @@ class PowerPolicy(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PowerPolicy", parent_mo_or_dn, **kwargs)
-

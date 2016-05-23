@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeMcGetReading ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -18,4 +17,3 @@ prop_map = {
     "inReadingIds": "in_reading_ids",
     "outReadingVals": "out_reading_vals",
 }
-

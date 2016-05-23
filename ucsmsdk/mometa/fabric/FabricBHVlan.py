@@ -1,12 +1,11 @@
 """This module contains the general information for FabricBHVlan ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricBHVlanConsts():
+class FabricBHVlanConsts:
     ASSOC_PRIMARY_VLAN_STATE_DOES_NOT_EXISTS = "does-not-exists"
     ASSOC_PRIMARY_VLAN_STATE_IS_EMPTY = "is-empty"
     ASSOC_PRIMARY_VLAN_STATE_IS_IN_ERROR_STATE = "is-in-error-state"
@@ -148,4 +147,3 @@ class FabricBHVlan(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricBHVlan", parent_mo_or_dn, **kwargs)
-

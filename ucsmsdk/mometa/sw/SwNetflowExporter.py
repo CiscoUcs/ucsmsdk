@@ -1,12 +1,11 @@
 """This module contains the general information for SwNetflowExporter ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwNetflowExporterConsts():
+class SwNetflowExporterConsts:
     IS_VALID_CONFIG_INCOMPLETE = "incomplete"
     IS_VALID_CONFIG_OK = "ok"
     LIFE_CYCLE_DELETED = "deleted"
@@ -107,4 +106,3 @@ class SwNetflowExporter(ManagedObject):
         self.version = None
 
         ManagedObject.__init__(self, "SwNetflowExporter", parent_mo_or_dn, **kwargs)
-

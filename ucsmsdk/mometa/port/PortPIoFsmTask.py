@@ -1,12 +1,11 @@
 """This module contains the general information for PortPIoFsmTask ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PortPIoFsmTaskConsts():
+class PortPIoFsmTaskConsts:
     COMPLETION_CANCELLED = "cancelled"
     COMPLETION_COMPLETED = "completed"
     COMPLETION_PROCESSING = "processing"
@@ -59,4 +58,3 @@ class PortPIoFsmTask(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PortPIoFsmTask", parent_mo_or_dn, **kwargs)
-

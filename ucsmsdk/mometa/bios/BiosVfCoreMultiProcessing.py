@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfCoreMultiProcessing ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfCoreMultiProcessingConsts():
+class BiosVfCoreMultiProcessingConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_CORE_MULTI_PROCESSING_1 = "1"
@@ -72,4 +71,3 @@ class BiosVfCoreMultiProcessing(ManagedObject):
         self.vp_core_multi_processing = None
 
         ManagedObject.__init__(self, "BiosVfCoreMultiProcessing", parent_mo_or_dn, **kwargs)
-

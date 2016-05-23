@@ -1,12 +1,11 @@
 """This module contains the general information for PortPIoFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PortPIoFsmStageConsts():
+class PortPIoFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_IN_COMPAT_SFP_PRESENCE_BEGIN = "InCompatSfpPresenceBegin"
     NAME_IN_COMPAT_SFP_PRESENCE_FAIL = "InCompatSfpPresenceFail"
@@ -75,4 +74,3 @@ class PortPIoFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PortPIoFsmStage", parent_mo_or_dn, **kwargs)
-

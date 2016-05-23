@@ -1,12 +1,11 @@
 """This module contains the general information for PolicyElement ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PolicyElementConsts():
+class PolicyElementConsts:
     OWNERSHIP_LOCAL = "local"
     OWNERSHIP_PENDING_POLICY = "pending-policy"
     OWNERSHIP_POLICY = "policy"
@@ -55,4 +54,3 @@ class PolicyElement(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PolicyElement", parent_mo_or_dn, **kwargs)
-

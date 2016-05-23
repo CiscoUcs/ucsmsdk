@@ -1,12 +1,11 @@
 """This module contains the general information for AaaTacacsPlusProvider ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaTacacsPlusProviderConsts():
+class AaaTacacsPlusProviderConsts:
     KEY_SET_FALSE = "false"
     KEY_SET_NO = "no"
     KEY_SET_TRUE = "true"
@@ -72,4 +71,3 @@ class AaaTacacsPlusProvider(ManagedObject):
         self.timeout = None
 
         ManagedObject.__init__(self, "AaaTacacsPlusProvider", parent_mo_or_dn, **kwargs)
-

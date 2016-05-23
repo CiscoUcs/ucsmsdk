@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorFcIfFrameStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorFcIfFrameStatsHistConsts():
+class AdaptorFcIfFrameStatsHistConsts:
     DUMPED_FRAMES_NA = "NA"
     DUMPED_FRAMES_DELTA_NA = "NA"
     DUMPED_FRAMES_DELTA_AVG_NA = "NA"
@@ -143,4 +142,3 @@ class AdaptorFcIfFrameStatsHist(ManagedObject):
         self.tx_frames_delta_min = None
 
         ManagedObject.__init__(self, "AdaptorFcIfFrameStatsHist", parent_mo_or_dn, **kwargs)
-

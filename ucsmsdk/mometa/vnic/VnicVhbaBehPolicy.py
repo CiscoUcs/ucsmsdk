@@ -1,12 +1,11 @@
 """This module contains the general information for VnicVhbaBehPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicVhbaBehPolicyConsts():
+class VnicVhbaBehPolicyConsts:
     ACTION_HW_INHERIT = "hw-inherit"
     ACTION_NONE = "none"
     INT_ID_NONE = "none"
@@ -72,4 +71,3 @@ class VnicVhbaBehPolicy(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "VnicVhbaBehPolicy", parent_mo_or_dn, **kwargs)
-

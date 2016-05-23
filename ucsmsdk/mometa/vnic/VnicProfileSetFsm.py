@@ -1,12 +1,11 @@
 """This module contains the general information for VnicProfileSetFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicProfileSetFsmConsts():
+class VnicProfileSetFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_DEPLOY = "Deploy"
     CURRENT_FSM_DEPLOY_ALIAS = "DeployAlias"
@@ -207,4 +206,3 @@ class VnicProfileSetFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "VnicProfileSetFsm", parent_mo_or_dn, **kwargs)
-

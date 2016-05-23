@@ -1,12 +1,11 @@
 """This module contains the general information for FabricSubGroup ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricSubGroupConsts():
+class FabricSubGroupConsts:
     CONFIG_STATE_DISABLED = "disabled"
     CONFIG_STATE_ENABLED = "enabled"
     LIC_STATE_LICENSE_EXPIRED = "license-expired"
@@ -81,4 +80,3 @@ class FabricSubGroup(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricSubGroup", parent_mo_or_dn, **kwargs)
-

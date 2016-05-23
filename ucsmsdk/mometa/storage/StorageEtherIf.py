@@ -1,12 +1,11 @@
 """This module contains the general information for StorageEtherIf ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageEtherIfConsts():
+class StorageEtherIfConsts:
     VLAN_TYPE_DEFAULT = "default"
     VLAN_TYPE_NATIVE = "native"
     VLAN_TYPE_REGULAR = "regular"
@@ -49,4 +48,3 @@ class StorageEtherIf(ManagedObject):
         self.vlan_type = None
 
         ManagedObject.__init__(self, "StorageEtherIf", parent_mo_or_dn, **kwargs)
-

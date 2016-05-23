@@ -1,12 +1,11 @@
 """This module contains the general information for FeatureDefinitionInstance ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FeatureDefinitionInstanceConsts():
+class FeatureDefinitionInstanceConsts:
     SUPPORTABILITY_DEPRECATED = "deprecated"
     SUPPORTABILITY_NOT_SUPPORTED = "not-supported"
     SUPPORTABILITY_SUPPORTED = "supported"
@@ -55,4 +54,3 @@ class FeatureDefinitionInstance(ManagedObject):
         self.target_dn = None
 
         ManagedObject.__init__(self, "FeatureDefinitionInstance", parent_mo_or_dn, **kwargs)
-

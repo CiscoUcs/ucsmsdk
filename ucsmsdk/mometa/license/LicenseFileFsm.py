@@ -1,12 +1,11 @@
 """This module contains the general information for LicenseFileFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LicenseFileFsmConsts():
+class LicenseFileFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_CLEAR = "Clear"
     CURRENT_FSM_INSTALL = "Install"
@@ -207,4 +206,3 @@ class LicenseFileFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "LicenseFileFsm", parent_mo_or_dn, **kwargs)
-

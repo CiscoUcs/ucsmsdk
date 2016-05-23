@@ -1,12 +1,11 @@
 """This module contains the general information for StorageEpUser ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageEpUserConsts():
+class StorageEpUserConsts:
     CONFIG_STATE_NOT_APPLIED = "not-applied"
     CONFIG_STATE_OK = "ok"
     PRIV_ADMIN = "admin"
@@ -72,4 +71,3 @@ class StorageEpUser(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "StorageEpUser", parent_mo_or_dn, **kwargs)
-

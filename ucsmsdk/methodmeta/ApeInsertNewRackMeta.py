@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeInsertNewRack ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -22,4 +21,3 @@ prop_map = {
     "inFxSlotId": "in_fx_slot_id",
     "inIsRefresh": "in_is_refresh",
 }
-

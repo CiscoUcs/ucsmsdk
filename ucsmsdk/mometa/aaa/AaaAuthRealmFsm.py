@@ -1,12 +1,11 @@
 """This module contains the general information for AaaAuthRealmFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaAuthRealmFsmConsts():
+class AaaAuthRealmFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_NOP = "nop"
     CURRENT_FSM_UPDATE_REALM = "updateRealm"
@@ -206,4 +205,3 @@ class AaaAuthRealmFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AaaAuthRealmFsm", parent_mo_or_dn, **kwargs)
-

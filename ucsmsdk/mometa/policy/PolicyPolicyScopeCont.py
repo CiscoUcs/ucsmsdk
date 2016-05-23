@@ -1,12 +1,11 @@
 """This module contains the general information for PolicyPolicyScopeCont ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PolicyPolicyScopeContConsts():
+class PolicyPolicyScopeContConsts:
     NEED_RECOVERY_FALSE = "false"
     NEED_RECOVERY_NO = "no"
     NEED_RECOVERY_TRUE = "true"
@@ -53,4 +52,3 @@ class PolicyPolicyScopeCont(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PolicyPolicyScopeCont", parent_mo_or_dn, **kwargs)
-

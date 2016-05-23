@@ -1,12 +1,11 @@
 """This module contains the general information for StorageController ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class StorageControllerConsts():
+class StorageControllerConsts:
     ADMIN_ACTION_CLEAR_FOREIGN_CONFIGURATION = "clear-foreign-configuration"
     ADMIN_ACTION_IMPORT_FOREIGN_CONFIGURATION = "import-foreign-configuration"
     ADMIN_ACTION_SKIP_INITIAL_CONFIG = "skip-initial-config"
@@ -310,4 +309,3 @@ class StorageController(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "StorageController", parent_mo_or_dn, **kwargs)
-

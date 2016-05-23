@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentRaidDef ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentRaidDefConsts():
+class EquipmentRaidDefConsts:
     INT_ID_NONE = "none"
     LEVEL_ANY_CONFIGURATION = "any-configuration"
     LEVEL_BEST_EFFORT_MIRRORED = "best-effort-mirrored"
@@ -79,4 +78,3 @@ class EquipmentRaidDef(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentRaidDef", parent_mo_or_dn, **kwargs)
-

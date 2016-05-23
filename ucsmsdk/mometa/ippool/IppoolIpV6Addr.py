@@ -1,12 +1,11 @@
 """This module contains the general information for IppoolIpV6Addr ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IppoolIpV6AddrConsts():
+class IppoolIpV6AddrConsts:
     ASSIGNED_FALSE = "false"
     ASSIGNED_NO = "no"
     ASSIGNED_TRUE = "true"
@@ -64,4 +63,3 @@ class IppoolIpV6Addr(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "IppoolIpV6Addr", parent_mo_or_dn, **kwargs)
-

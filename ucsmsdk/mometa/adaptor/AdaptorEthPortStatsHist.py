@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorEthPortStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorEthPortStatsHistConsts():
+class AdaptorEthPortStatsHistConsts:
     MOST_RECENT_FALSE = "false"
     MOST_RECENT_NO = "no"
     MOST_RECENT_TRUE = "true"
@@ -153,4 +152,3 @@ class AdaptorEthPortStatsHist(ManagedObject):
         self.vlan_packets_delta_min = None
 
         ManagedObject.__init__(self, "AdaptorEthPortStatsHist", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfQuietBoot ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfQuietBootConsts():
+class BiosVfQuietBootConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_QUIET_BOOT_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfQuietBoot(ManagedObject):
         self.vp_quiet_boot = None
 
         ManagedObject.__init__(self, "BiosVfQuietBoot", parent_mo_or_dn, **kwargs)
-

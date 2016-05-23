@@ -1,12 +1,11 @@
 """This module contains the general information for SwEthLanBorderFsm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwEthLanBorderFsmConsts():
+class SwEthLanBorderFsmConsts:
     COMPLETION_TIME_ = ""
     CURRENT_FSM_DEPLOY = "Deploy"
     CURRENT_FSM_NOP = "nop"
@@ -206,4 +205,3 @@ class SwEthLanBorderFsm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "SwEthLanBorderFsm", parent_mo_or_dn, **kwargs)
-

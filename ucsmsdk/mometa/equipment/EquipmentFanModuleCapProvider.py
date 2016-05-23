@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentFanModuleCapProvider ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentFanModuleCapProviderConsts():
+class EquipmentFanModuleCapProviderConsts:
     DELETED_FALSE = "false"
     DELETED_NO = "no"
     DELETED_TRUE = "true"
@@ -84,4 +83,3 @@ class EquipmentFanModuleCapProvider(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentFanModuleCapProvider", parent_mo_or_dn, **kwargs)
-

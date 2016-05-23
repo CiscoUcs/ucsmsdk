@@ -1,12 +1,11 @@
 """This module contains the general information for IppoolPool ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IppoolPoolConsts():
+class IppoolPoolConsts:
     ASSIGNMENT_ORDER_DEFAULT = "default"
     ASSIGNMENT_ORDER_SEQUENTIAL = "sequential"
     EXT_MANAGED_EXTERNAL = "external"
@@ -103,4 +102,3 @@ class IppoolPool(ManagedObject):
         self.v6_size = None
 
         ManagedObject.__init__(self, "IppoolPool", parent_mo_or_dn, **kwargs)
-

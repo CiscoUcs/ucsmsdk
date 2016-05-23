@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareAutoSyncPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareAutoSyncPolicyConsts():
+class FirmwareAutoSyncPolicyConsts:
     CONFIG_ISSUE_DEFAULT_PACKAGE_MISSING = "Default Package Missing"
     CONFIG_ISSUE_NO_ISSUES = "No Issues"
     CONFIG_ISSUE_VERSIONS_EMPTY_IN_DEFAULT_PACKAGE = "Versions Empty in Default Package"
@@ -70,4 +69,3 @@ class FirmwareAutoSyncPolicy(ManagedObject):
         self.sync_state = None
 
         ManagedObject.__init__(self, "FirmwareAutoSyncPolicy", parent_mo_or_dn, **kwargs)
-

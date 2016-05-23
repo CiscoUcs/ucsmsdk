@@ -1,12 +1,11 @@
 """This module contains the general information for FabricBreakout ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricBreakoutConsts():
+class FabricBreakoutConsts:
     BREAKOUT_TYPE_10G_4X = "10g-4x"
     BREAKOUT_TYPE_UNKNOWN = "unknown"
 
@@ -51,4 +50,3 @@ class FabricBreakout(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricBreakout", parent_mo_or_dn, **kwargs)
-

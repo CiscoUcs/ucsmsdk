@@ -1,12 +1,11 @@
 """This module contains the general information for FabricVsanEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricVsanEpConsts():
+class FabricVsanEpConsts:
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
     IF_ROLE_FCOE_STORAGE = "fcoe-storage"
@@ -110,4 +109,3 @@ class FabricVsanEp(ManagedObject):
         self.zoning_state = None
 
         ManagedObject.__init__(self, "FabricVsanEp", parent_mo_or_dn, **kwargs)
-

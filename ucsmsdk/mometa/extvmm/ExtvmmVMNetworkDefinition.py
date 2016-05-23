@@ -1,12 +1,11 @@
 """This module contains the general information for ExtvmmVMNetworkDefinition ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtvmmVMNetworkDefinitionConsts():
+class ExtvmmVMNetworkDefinitionConsts:
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -85,4 +84,3 @@ class ExtvmmVMNetworkDefinition(ManagedObject):
         self.vlan_name = None
 
         ManagedObject.__init__(self, "ExtvmmVMNetworkDefinition", parent_mo_or_dn, **kwargs)
-

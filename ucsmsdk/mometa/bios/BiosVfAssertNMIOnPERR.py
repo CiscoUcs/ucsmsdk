@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfAssertNMIOnPERR ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfAssertNMIOnPERRConsts():
+class BiosVfAssertNMIOnPERRConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_ASSERT_NMION_PERR_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfAssertNMIOnPERR(ManagedObject):
         self.vp_assert_nmi_on_perr = None
 
         ManagedObject.__init__(self, "BiosVfAssertNMIOnPERR", parent_mo_or_dn, **kwargs)
-

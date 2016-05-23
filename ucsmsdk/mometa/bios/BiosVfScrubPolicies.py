@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfScrubPolicies ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfScrubPoliciesConsts():
+class BiosVfScrubPoliciesConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_DEMAND_SCRUB_DISABLED = "disabled"
@@ -62,4 +61,3 @@ class BiosVfScrubPolicies(ManagedObject):
         self.vp_patrol_scrub = None
 
         ManagedObject.__init__(self, "BiosVfScrubPolicies", parent_mo_or_dn, **kwargs)
-

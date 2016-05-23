@@ -1,12 +1,11 @@
 """This module contains the general information for EtherServerIntFIoPcEp ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EtherServerIntFIoPcEpConsts():
+class EtherServerIntFIoPcEpConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     CHASSIS_ID_N_A = "N/A"
@@ -129,4 +128,3 @@ class EtherServerIntFIoPcEp(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "EtherServerIntFIoPcEp", parent_mo_or_dn, **kwargs)
-

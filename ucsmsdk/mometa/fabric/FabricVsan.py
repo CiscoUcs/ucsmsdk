@@ -1,12 +1,11 @@
 """This module contains the general information for FabricVsan ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricVsanConsts():
+class FabricVsanConsts:
     DEFAULT_ZONING_DISABLED = "disabled"
     DEFAULT_ZONING_ENABLED = "enabled"
     FC_ZONE_SHARING_MODE_CLEAR_UNMANAGED_ZONE_ALL = "clear-unmanaged-zone-all"
@@ -130,4 +129,3 @@ class FabricVsan(ManagedObject):
         self.zoning_state = None
 
         ManagedObject.__init__(self, "FabricVsan", parent_mo_or_dn, **kwargs)
-

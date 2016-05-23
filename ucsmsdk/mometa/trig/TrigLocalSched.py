@@ -1,12 +1,11 @@
 """This module contains the general information for TrigLocalSched ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class TrigLocalSchedConsts():
+class TrigLocalSchedConsts:
     ADMIN_STATE_TRIGGER = "trigger"
     ADMIN_STATE_TRIGGER_IMMEDIATE = "trigger-immediate"
     ADMIN_STATE_TRIGGERED = "triggered"
@@ -83,4 +82,3 @@ class TrigLocalSched(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "TrigLocalSched", parent_mo_or_dn, **kwargs)
-

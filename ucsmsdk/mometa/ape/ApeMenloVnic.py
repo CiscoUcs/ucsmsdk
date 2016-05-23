@@ -1,12 +1,11 @@
 """This module contains the general information for ApeMenloVnic ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApeMenloVnicConsts():
+class ApeMenloVnicConsts:
     STATE_CREATE_PEND = "CreatePend"
     STATE_CREATING = "Creating"
     STATE_DESTROY_PEND = "DestroyPend"
@@ -97,4 +96,3 @@ class ApeMenloVnic(ManagedObject):
         self.wwpn = None
 
         ManagedObject.__init__(self, "ApeMenloVnic", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for LsbootSanImagePath ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsbootSanImagePathConsts():
+class LsbootSanImagePathConsts:
     LUN_UNSPECIFIED = "unspecified"
     TYPE_PRIMARY = "primary"
     TYPE_SECONDARY = "secondary"
@@ -55,4 +54,3 @@ class LsbootSanImagePath(ManagedObject):
         self.wwn = None
 
         ManagedObject.__init__(self, "LsbootSanImagePath", parent_mo_or_dn, **kwargs)
-

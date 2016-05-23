@@ -1,12 +1,11 @@
 """This module contains the general information for PolicyRefReq ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class PolicyRefReqConsts():
+class PolicyRefReqConsts:
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
@@ -52,4 +51,3 @@ class PolicyRefReq(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "PolicyRefReq", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for CapabilityUpdater ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CapabilityUpdaterConsts():
+class CapabilityUpdaterConsts:
     ADMIN_STATE_IDLE = "idle"
     ADMIN_STATE_RESTART = "restart"
     FSM_PREV_UPDATER_APPLY = "UpdaterApply"
@@ -266,4 +265,3 @@ class CapabilityUpdater(ManagedObject):
         self.version = None
 
         ManagedObject.__init__(self, "CapabilityUpdater", parent_mo_or_dn, **kwargs)
-

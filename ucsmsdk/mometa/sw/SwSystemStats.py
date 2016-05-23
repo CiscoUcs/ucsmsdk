@@ -1,12 +1,11 @@
 """This module contains the general information for SwSystemStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwSystemStatsConsts():
+class SwSystemStatsConsts:
     CORRECTABLE_PARITY_ERROR_NOT_APPLICABLE = "not-applicable"
     CORRECTABLE_PARITY_ERROR_AVG_NOT_APPLICABLE = "not-applicable"
     CORRECTABLE_PARITY_ERROR_MAX_NOT_APPLICABLE = "not-applicable"
@@ -143,4 +142,3 @@ class SwSystemStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "SwSystemStats", parent_mo_or_dn, **kwargs)
-

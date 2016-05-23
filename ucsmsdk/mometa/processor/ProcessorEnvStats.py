@@ -1,12 +1,11 @@
 """This module contains the general information for ProcessorEnvStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ProcessorEnvStatsConsts():
+class ProcessorEnvStatsConsts:
     INPUT_CURRENT_NOT_APPLICABLE = "not-applicable"
     INPUT_CURRENT_AVG_NOT_APPLICABLE = "not-applicable"
     INPUT_CURRENT_MAX_NOT_APPLICABLE = "not-applicable"
@@ -87,4 +86,3 @@ class ProcessorEnvStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "ProcessorEnvStats", parent_mo_or_dn, **kwargs)
-

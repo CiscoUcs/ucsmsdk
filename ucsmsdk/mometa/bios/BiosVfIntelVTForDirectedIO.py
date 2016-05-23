@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfIntelVTForDirectedIO ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfIntelVTForDirectedIOConsts():
+class BiosVfIntelVTForDirectedIOConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_INTEL_VTDATSSUPPORT_DISABLED = "disabled"
@@ -83,4 +82,3 @@ class BiosVfIntelVTForDirectedIO(ManagedObject):
         self.vp_intel_vt_for_directed_io = None
 
         ManagedObject.__init__(self, "BiosVfIntelVTForDirectedIO", parent_mo_or_dn, **kwargs)
-

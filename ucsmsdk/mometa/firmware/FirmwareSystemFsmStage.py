@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareSystemFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareSystemFsmStageConsts():
+class FirmwareSystemFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_APPLY_CATALOG_PACK_ACTIVATE_CATALOG = "ApplyCatalogPackActivateCatalog"
     NAME_APPLY_CATALOG_PACK_BEGIN = "ApplyCatalogPackBegin"
@@ -97,4 +96,3 @@ class FirmwareSystemFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareSystemFsmStage", parent_mo_or_dn, **kwargs)
-

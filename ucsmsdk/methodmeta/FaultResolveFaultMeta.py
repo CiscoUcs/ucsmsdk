@@ -1,5 +1,4 @@
 """This module contains the meta information of FaultResolveFault ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -16,4 +15,3 @@ prop_map = {
     "inId": "in_id",
     "outFault": "out_fault",
 }
-

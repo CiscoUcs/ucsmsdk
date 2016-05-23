@@ -1,12 +1,11 @@
 """This module contains the general information for ApeDcosAgManager ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApeDcosAgManagerConsts():
+class ApeDcosAgManagerConsts:
     pass
 
 
@@ -41,4 +40,3 @@ class ApeDcosAgManager(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ApeDcosAgManager", parent_mo_or_dn, **kwargs)
-

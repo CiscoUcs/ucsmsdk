@@ -1,12 +1,11 @@
 """This module contains the general information for SysdebugLogExportPolicy ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SysdebugLogExportPolicyConsts():
+class SysdebugLogExportPolicyConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     FSM_PREV_CONFIGURE_BEGIN = "ConfigureBegin"
@@ -270,4 +269,3 @@ class SysdebugLogExportPolicy(ManagedObject):
         self.user = None
 
         ManagedObject.__init__(self, "SysdebugLogExportPolicy", parent_mo_or_dn, **kwargs)
-

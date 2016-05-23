@@ -1,12 +1,11 @@
 """This module contains the general information for AaaSession ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaSessionConsts():
+class AaaSessionConsts:
     INT_DEL_FALSE = "false"
     INT_DEL_NO = "no"
     INT_DEL_TRUE = "true"
@@ -87,4 +86,3 @@ class AaaSession(ManagedObject):
         self.user = None
 
         ManagedObject.__init__(self, "AaaSession", parent_mo_or_dn, **kwargs)
-

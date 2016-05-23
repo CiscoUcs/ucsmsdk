@@ -1,12 +1,11 @@
 """This module contains the general information for AaaRealmFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaRealmFsmStageConsts():
+class AaaRealmFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_NOP = "nop"
     NAME_UPDATE_REALM_BEGIN = "updateRealmBegin"
@@ -72,4 +71,3 @@ class AaaRealmFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AaaRealmFsmStage", parent_mo_or_dn, **kwargs)
-

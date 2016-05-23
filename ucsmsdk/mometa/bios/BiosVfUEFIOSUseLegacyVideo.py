@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfUEFIOSUseLegacyVideo ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfUEFIOSUseLegacyVideoConsts():
+class BiosVfUEFIOSUseLegacyVideoConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_UEFIOSUSE_LEGACY_VIDEO_DISABLED = "disabled"
@@ -55,4 +54,3 @@ class BiosVfUEFIOSUseLegacyVideo(ManagedObject):
         self.vp_uefios_use_legacy_video = None
 
         ManagedObject.__init__(self, "BiosVfUEFIOSUseLegacyVideo", parent_mo_or_dn, **kwargs)
-

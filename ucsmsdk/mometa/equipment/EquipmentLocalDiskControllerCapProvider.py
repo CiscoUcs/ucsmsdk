@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentLocalDiskControllerCapProvider ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentLocalDiskControllerCapProviderConsts():
+class EquipmentLocalDiskControllerCapProviderConsts:
     CARD_TYPE_FLASH = "FLASH"
     CARD_TYPE_NVME = "NVME"
     CARD_TYPE_SAS = "SAS"
@@ -112,4 +111,3 @@ class EquipmentLocalDiskControllerCapProvider(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "EquipmentLocalDiskControllerCapProvider", parent_mo_or_dn, **kwargs)
-

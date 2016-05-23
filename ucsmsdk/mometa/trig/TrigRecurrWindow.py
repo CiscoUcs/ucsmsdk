@@ -1,12 +1,11 @@
 """This module contains the general information for TrigRecurrWindow ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class TrigRecurrWindowConsts():
+class TrigRecurrWindowConsts:
     CONCUR_CAP_UNLIMITED = "unlimited"
     DAY_FRIDAY = "Friday"
     DAY_MONDAY = "Monday"
@@ -88,4 +87,3 @@ class TrigRecurrWindow(ManagedObject):
         self.time_capped = None
 
         ManagedObject.__init__(self, "TrigRecurrWindow", parent_mo_or_dn, **kwargs)
-

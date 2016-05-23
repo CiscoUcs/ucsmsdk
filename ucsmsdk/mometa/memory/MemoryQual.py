@@ -1,12 +1,11 @@
 """This module contains the general information for MemoryQual ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class MemoryQualConsts():
+class MemoryQualConsts:
     CLOCK_UNSPECIFIED = "unspecified"
     LATENCY_UNSPECIFIED = "unspecified"
     MAX_CAP_UNSPECIFIED = "unspecified"
@@ -68,4 +67,3 @@ class MemoryQual(ManagedObject):
         self.width = None
 
         ManagedObject.__init__(self, "MemoryQual", parent_mo_or_dn, **kwargs)
-

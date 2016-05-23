@@ -1,12 +1,11 @@
 """This module contains the general information for BiosVfResumeOnACPowerLoss ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BiosVfResumeOnACPowerLossConsts():
+class BiosVfResumeOnACPowerLossConsts:
     SUPPORTED_BY_DEFAULT_NO = "no"
     SUPPORTED_BY_DEFAULT_YES = "yes"
     VP_RESUME_ON_ACPOWER_LOSS_LAST_STATE = "last-state"
@@ -56,4 +55,3 @@ class BiosVfResumeOnACPowerLoss(ManagedObject):
         self.vp_resume_on_ac_power_loss = None
 
         ManagedObject.__init__(self, "BiosVfResumeOnACPowerLoss", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for LsbootLanImagePath ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class LsbootLanImagePathConsts():
+class LsbootLanImagePathConsts:
     TYPE_PRIMARY = "primary"
     TYPE_SECONDARY = "secondary"
 
@@ -63,4 +62,3 @@ class LsbootLanImagePath(ManagedObject):
         self.vnic_name = None
 
         ManagedObject.__init__(self, "LsbootLanImagePath", parent_mo_or_dn, **kwargs)
-

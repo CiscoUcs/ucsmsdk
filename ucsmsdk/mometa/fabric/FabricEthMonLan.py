@@ -1,12 +1,11 @@
 """This module contains the general information for FabricEthMonLan ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricEthMonLanConsts():
+class FabricEthMonLanConsts:
     ID_A = "A"
     ID_B = "B"
     ID_NONE = "NONE"
@@ -58,4 +57,3 @@ class FabricEthMonLan(ManagedObject):
         self.type = None
 
         ManagedObject.__init__(self, "FabricEthMonLan", parent_mo_or_dn, **kwargs)
-

@@ -1,5 +1,4 @@
 """This module contains the meta information of MethodVessel ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -14,4 +13,3 @@ prop_map = {
     "cookie": "cookie",
     "inStimuli": "in_stimuli",
 }
-

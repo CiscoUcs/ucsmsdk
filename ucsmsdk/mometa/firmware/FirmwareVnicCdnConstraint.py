@@ -1,12 +1,11 @@
 """This module contains the general information for FirmwareVnicCdnConstraint ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FirmwareVnicCdnConstraintConsts():
+class FirmwareVnicCdnConstraintConsts:
     pass
 
 
@@ -50,4 +49,3 @@ class FirmwareVnicCdnConstraint(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareVnicCdnConstraint", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for ApeSwitchFirmwareInv ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ApeSwitchFirmwareInvConsts():
+class ApeSwitchFirmwareInvConsts:
     FABRIC_A = "A"
     FABRIC_B = "B"
     FABRIC_NONE = "NONE"
@@ -64,4 +63,3 @@ class ApeSwitchFirmwareInv(ManagedObject):
         self.sys_version = None
 
         ManagedObject.__init__(self, "ApeSwitchFirmwareInv", parent_mo_or_dn, **kwargs)
-

@@ -1,12 +1,11 @@
 """This module contains the general information for SwEnvStats ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class SwEnvStatsConsts():
+class SwEnvStatsConsts:
     DONNER_NOT_APPLICABLE = "not-applicable"
     DONNER_AVG_NOT_APPLICABLE = "not-applicable"
     DONNER_MAX_NOT_APPLICABLE = "not-applicable"
@@ -235,4 +234,3 @@ class SwEnvStats(ManagedObject):
         self.update = None
 
         ManagedObject.__init__(self, "SwEnvStats", parent_mo_or_dn, **kwargs)
-

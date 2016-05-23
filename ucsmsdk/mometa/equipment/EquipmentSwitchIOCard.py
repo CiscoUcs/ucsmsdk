@@ -1,12 +1,11 @@
 """This module contains the general information for EquipmentSwitchIOCard ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class EquipmentSwitchIOCardConsts():
+class EquipmentSwitchIOCardConsts:
     ADMIN_PEER_POWER_STATE_CYCLE_IMMEDIATE = "cycle-immediate"
     ADMIN_PEER_POWER_STATE_CYCLE_WAIT = "cycle-wait"
     ADMIN_PEER_POWER_STATE_POLICY = "policy"
@@ -530,4 +529,3 @@ class EquipmentSwitchIOCard(ManagedObject):
         self.voltage = None
 
         ManagedObject.__init__(self, "EquipmentSwitchIOCard", parent_mo_or_dn, **kwargs)
-

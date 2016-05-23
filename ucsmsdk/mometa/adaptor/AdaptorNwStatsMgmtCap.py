@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorNwStatsMgmtCap ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorNwStatsMgmtCapConsts():
+class AdaptorNwStatsMgmtCapConsts:
     ENABLE_NW_STATS_COLLECTION_FALSE = "false"
     ENABLE_NW_STATS_COLLECTION_NO = "no"
     ENABLE_NW_STATS_COLLECTION_TRUE = "true"
@@ -64,4 +63,3 @@ class AdaptorNwStatsMgmtCap(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorNwStatsMgmtCap", parent_mo_or_dn, **kwargs)
-

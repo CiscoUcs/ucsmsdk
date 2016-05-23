@@ -1,12 +1,11 @@
 """This module contains the general information for IdentIdentRequestFsmStage ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class IdentIdentRequestFsmStageConsts():
+class IdentIdentRequestFsmStageConsts:
     LAST_UPDATE_TIME_ = ""
     NAME_NOP = "nop"
     NAME_UPDATE_IDENT_BEGIN = "updateIdentBegin"
@@ -71,4 +70,3 @@ class IdentIdentRequestFsmStage(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "IdentIdentRequestFsmStage", parent_mo_or_dn, **kwargs)
-

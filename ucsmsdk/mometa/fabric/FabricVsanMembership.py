@@ -1,12 +1,11 @@
 """This module contains the general information for FabricVsanMembership ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class FabricVsanMembershipConsts():
+class FabricVsanMembershipConsts:
     MEMBER_STATUS_DOWN = "down"
     MEMBER_STATUS_UP = "up"
     PARENT_ADMIN_STATE_DISABLED = "disabled"
@@ -56,4 +55,3 @@ class FabricVsanMembership(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "FabricVsanMembership", parent_mo_or_dn, **kwargs)
-

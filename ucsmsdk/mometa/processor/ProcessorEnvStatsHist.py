@@ -1,12 +1,11 @@
 """This module contains the general information for ProcessorEnvStatsHist ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ProcessorEnvStatsHistConsts():
+class ProcessorEnvStatsHistConsts:
     INPUT_CURRENT_NOT_APPLICABLE = "not-applicable"
     INPUT_CURRENT_AVG_NOT_APPLICABLE = "not-applicable"
     INPUT_CURRENT_MAX_NOT_APPLICABLE = "not-applicable"
@@ -91,4 +90,3 @@ class ProcessorEnvStatsHist(ManagedObject):
         self.time_collected = None
 
         ManagedObject.__init__(self, "ProcessorEnvStatsHist", parent_mo_or_dn, **kwargs)
-

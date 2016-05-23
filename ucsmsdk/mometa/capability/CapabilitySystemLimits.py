@@ -1,12 +1,11 @@
 """This module contains the general information for CapabilitySystemLimits ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class CapabilitySystemLimitsConsts():
+class CapabilitySystemLimitsConsts:
     pass
 
 
@@ -41,4 +40,3 @@ class CapabilitySystemLimits(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "CapabilitySystemLimits", parent_mo_or_dn, **kwargs)
-

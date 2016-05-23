@@ -1,12 +1,11 @@
 """This module contains the general information for AdaptorFcInterruptProfile ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AdaptorFcInterruptProfileConsts():
+class AdaptorFcInterruptProfileConsts:
     MODE_INTX = "intx"
     MODE_MSI = "msi"
     MODE_MSI_X = "msi-x"
@@ -46,4 +45,3 @@ class AdaptorFcInterruptProfile(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AdaptorFcInterruptProfile", parent_mo_or_dn, **kwargs)
-

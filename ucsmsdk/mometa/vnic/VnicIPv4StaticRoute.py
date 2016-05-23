@@ -1,12 +1,11 @@
 """This module contains the general information for VnicIPv4StaticRoute ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class VnicIPv4StaticRouteConsts():
+class VnicIPv4StaticRouteConsts:
     pass
 
 
@@ -56,4 +55,3 @@ class VnicIPv4StaticRoute(ManagedObject):
         self.subnet = None
 
         ManagedObject.__init__(self, "VnicIPv4StaticRoute", parent_mo_or_dn, **kwargs)
-

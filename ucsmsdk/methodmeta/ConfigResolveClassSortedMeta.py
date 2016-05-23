@@ -1,5 +1,4 @@
 """This module contains the meta information of ConfigResolveClassSorted ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -24,4 +23,3 @@ prop_map = {
     "outContext": "out_context",
     "outTotalSize": "out_total_size",
 }
-

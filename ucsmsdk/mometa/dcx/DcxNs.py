@@ -1,12 +1,11 @@
 """This module contains the general information for DcxNs ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class DcxNsConsts():
+class DcxNsConsts:
     ALLOC_STATUS_AVAILABLE = "available"
     ALLOC_STATUS_EXCEEDED = "exceeded"
     ALLOC_STATUS_FULL = "full"
@@ -63,4 +62,3 @@ class DcxNs(ManagedObject):
         self.used = None
 
         ManagedObject.__init__(self, "DcxNs", parent_mo_or_dn, **kwargs)
-

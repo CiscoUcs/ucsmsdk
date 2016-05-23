@@ -1,12 +1,11 @@
 """This module contains the general information for AaaAuthRealm ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaAuthRealmConsts():
+class AaaAuthRealmConsts:
     CON_LOGIN_LDAP = "ldap"
     CON_LOGIN_LOCAL = "local"
     CON_LOGIN_NONE = "none"
@@ -252,4 +251,3 @@ class AaaAuthRealm(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AaaAuthRealm", parent_mo_or_dn, **kwargs)
-

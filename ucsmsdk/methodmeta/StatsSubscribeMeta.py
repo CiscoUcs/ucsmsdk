@@ -1,5 +1,4 @@
 """This module contains the meta information of StatsSubscribe ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "inSchemaInfo": "in_schema_info",
     "inTimeInterval": "in_time_interval",
 }
-

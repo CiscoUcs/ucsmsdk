@@ -1,12 +1,11 @@
 """This module contains the general information for ExtvmmKeyStore ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class ExtvmmKeyStoreConsts():
+class ExtvmmKeyStoreConsts:
     FSM_PREV_CERT_INSTALL_BEGIN = "certInstallBegin"
     FSM_PREV_CERT_INSTALL_FAIL = "certInstallFail"
     FSM_PREV_CERT_INSTALL_SET_LOCAL = "certInstallSetLocal"
@@ -212,4 +211,3 @@ class ExtvmmKeyStore(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "ExtvmmKeyStore", parent_mo_or_dn, **kwargs)
-

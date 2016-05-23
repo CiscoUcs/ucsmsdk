@@ -1,12 +1,11 @@
 """This module contains the general information for BmcSELCounter ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class BmcSELCounterConsts():
+class BmcSELCounterConsts:
     CONT_CLASS_ID_COMPUTE_BOARD = "compute:Board"
     CONT_CLASS_ID_MEMORY_UNIT = "memory:Unit"
     CONT_CLASS_ID_PROCESSOR_UNIT = "processor:Unit"
@@ -136,4 +135,3 @@ class BmcSELCounter(ManagedObject):
         self.value = None
 
         ManagedObject.__init__(self, "BmcSELCounter", parent_mo_or_dn, **kwargs)
-

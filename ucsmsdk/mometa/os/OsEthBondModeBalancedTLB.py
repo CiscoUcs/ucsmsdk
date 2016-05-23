@@ -1,12 +1,11 @@
 """This module contains the general information for OsEthBondModeBalancedTLB ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class OsEthBondModeBalancedTLBConsts():
+class OsEthBondModeBalancedTLBConsts:
     LB_TYPE_RECEIVE_XMIT = "receive-xmit"
     LB_TYPE_XMIT_ONLY = "xmit-only"
     TYPE_ACTIVE_ACTIVE = "active-active"
@@ -67,4 +66,3 @@ class OsEthBondModeBalancedTLB(ManagedObject):
         self.xmit_hash_type = None
 
         ManagedObject.__init__(self, "OsEthBondModeBalancedTLB", parent_mo_or_dn, **kwargs)
-

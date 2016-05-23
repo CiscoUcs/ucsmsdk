@@ -1,12 +1,11 @@
 """This module contains the general information for AaaUser ManagedObject."""
-import sys, os
 
 from ...ucsmo import ManagedObject
-from ...ucscoremeta import UcsVersion, MoPropertyMeta, MoMeta
+from ...ucscoremeta import MoPropertyMeta, MoMeta
 from ...ucsmeta import VersionMeta
 
 
-class AaaUserConsts():
+class AaaUserConsts:
     ACCOUNT_STATUS_ACTIVE = "active"
     ACCOUNT_STATUS_INACTIVE = "inactive"
     CLEAR_PWD_HISTORY_NO = "no"
@@ -114,4 +113,3 @@ class AaaUser(ManagedObject):
         self.status = None
 
         ManagedObject.__init__(self, "AaaUser", parent_mo_or_dn, **kwargs)
-

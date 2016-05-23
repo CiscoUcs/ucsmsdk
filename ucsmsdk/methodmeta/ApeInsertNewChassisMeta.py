@@ -1,5 +1,4 @@
 """This module contains the meta information of ApeInsertNewChassis ExternalMethod."""
-import sys, os
 
 from ..ucscoremeta import MethodMeta, MethodPropertyMeta
 
@@ -20,4 +19,3 @@ prop_map = {
     "inSerial": "in_serial",
     "inVendor": "in_vendor",
 }
-
