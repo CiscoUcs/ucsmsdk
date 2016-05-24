@@ -36,6 +36,7 @@ def backup_ucs(handle, backup_type, file_dir, file_name, timeout_in_sec=600,
                         i.e. fullstate/config-logical/config-system/config-all
         file_dir (str): directory to download ucs backup file to
         file_name (str): name for the backup file
+                         (supported file extension are '.tar.gz' and '.xml')
         timeout_in_sec (number) : time in seconds for which method waits
                               for the backUp file to generate before it exits.
         preserve_pooled_values (boolean): True/False,
@@ -65,11 +66,6 @@ def backup_ucs(handle, backup_type, file_dir, file_name, timeout_in_sec=600,
     if backup_type not in backup_types:
         raise UcsValidationException('Valid type values are %s'
                                      % ', '.join(backup_types))
-
-    if backup_type == "full-state" and not file_name.endswith('.tar.gz'):
-        raise UcsValidationException('path_pattern should end with .tar.gz')
-    elif backup_type != "full-state" and not file_name.endswith('.xml'):
-        raise UcsValidationException('path_pattern should end with .xml')
 
     if not os.path.exists(file_dir):
         os.makedirs(file_dir)
