@@ -96,13 +96,13 @@ def _get_class_id_for_rn(rn, prev_class_id=None):
         prev_class_id)
     if meta_class_id is None:
         raise UcsValidationException(
-            '[Error]: GetManagedObject: class_id [%s] is not valid' % (
+            '[Error]: class_id [%s] is not valid' % (
                 prev_class_id))
 
     mo_meta = ucscoreutils.get_mo_property_meta(meta_class_id, "mo_meta")
     if mo_meta is None:
         raise UcsValidationException(
-            '[Error]: GetManagedObject: mo_meta for class_id [%s] is not valid'
+            '[Error]: mo_meta for class_id [%s] is not valid'
             % prev_class_id)
 
     for child_class_id in mo_meta.children:
@@ -237,9 +237,9 @@ def _dump_xml_on_screen(doc):
     xml_new = re.sub(multiline_pattern, r"#\1", xml_new)
     if _outfile_flag:
         _outfile = open(_outfile_path, 'a')
-        print >> _outfile, "\n##### Start-Of-XML #####\n"
-        print >> _outfile, "%s" % xml_new
-        print >> _outfile, "\n##### End-Of-XML #####"
+        _outfile.write("\n##### Start-Of-XML #####\n")
+        _outfile.write("%s" % xml_new)
+        _outfile.write("\n##### End-Of-XML #####\n")
         _outfile.close()
     else:
         print("\n##### Start-Of-XML #####\n")
@@ -1256,9 +1256,9 @@ def _generate_cmdlets(xml_string):
     # support for redirecting script output to respective file
     if _outfile_flag:
         _outfile = open(_outfile_path, 'a')
-        print >> _outfile, '##### Start-Of-PythonScript #####'
-        print >> _outfile, cmdlet
-        print >> _outfile, '##### End-Of-PythonScript #####'
+        _outfile.write('##### Start-Of-PythonScript #####')
+        _outfile.write(cmdlet)
+        _outfile.write('\n##### End-Of-PythonScript #####\n\n')
         _outfile.close()
     else:
         print("##### Start-Of-PythonScript #####")
