@@ -1306,7 +1306,7 @@ def _find_xml_requests_in_file(file_stream, gui_log):
 
     # print "Inside _find_xml_requests_in_file_test"
     line = file_stream.readline()
-    while line is not None:
+    while line != "":
         if not gui_log:
             _extract_xml(file_stream, line)
         elif "[------------- Sending Request to Server ------------" in line:
