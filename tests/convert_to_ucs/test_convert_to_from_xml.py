@@ -372,3 +372,24 @@ def test_007_convert_from_xml():
     </configConfRename>
     '''
     convert_to_ucs_python(xml=True, request=xml_str, dump_xml=True)
+
+
+def test_008_convert_from_xml_dumptofile():
+    import os
+
+    xml_str = '''
+    <configConfRename
+    dn="org-root/ls-test_clone"
+    inNewName="test_clone1111"
+    inHierarchical="false">
+    </configConfRename>
+    '''
+
+    logfile = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           "logfile.txt")
+    convert_to_ucs_python(xml=True, request=xml_str, dump_xml=True,
+                          dump_to_file=True, dump_file_path=logfile)
+
+    assert os.stat(logfile).st_size != 0
+
+    os.remove(logfile)
