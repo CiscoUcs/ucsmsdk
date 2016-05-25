@@ -1,6 +1,7 @@
 [![](https://img.shields.io/travis/CiscoUcs/ucsmsdk.svg)](https://travis-ci.org/CiscoUcs/ucsmsdk)
 [![](https://ucspython.herokuapp.com/badge.svg)](https://ucspython.herokuapp.com)
 [![](https://img.shields.io/pypi/v/ucsmsdk.svg)](https://pypi.python.org/pypi/ucsmsdk)
+[![Code Health](https://landscape.io/github/CiscoUcs/ucsmsdk/master/landscape.svg?style=flat)](https://landscape.io/github/CiscoUcs/ucsmsdk/master)
 
 # Python SDK for Cisco UCS
 
