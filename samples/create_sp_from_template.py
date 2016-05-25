@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import print_function
 from connection.info import ucs_login, ucs_logout
 
 handle = None
@@ -55,7 +56,7 @@ def main():
         mo_list = create_sp_from_template()
         if mo_list:
             for mo in mo_list:
-                print mo.dn
+                print(mo.dn)
 
         # ###########################################
         # Delete_sp_created_from_template
