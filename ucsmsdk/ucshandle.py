@@ -615,7 +615,7 @@ class UcsHandle(UcsSession):
         refresh_dict = {}
         mo_dict = self.__to_commit
         if not mo_dict:
-            log.debug("No Mo to be Committed")
+            log.debug("Commit Buffer is Empty")
             return None
 
         config_map = ConfigMap()
@@ -639,6 +639,7 @@ class UcsHandle(UcsSession):
                                False)
         response = self.post_elem(elem)
         if response.error_code != 0:
+            self.commit_buffer_discard()
             raise UcsException(response.error_code, response.error_descr)
 
         for pair_ in response.out_configs.child:
@@ -662,7 +663,7 @@ class UcsHandle(UcsSession):
             for out_mo in response.out_configs.child:
                 out_mo.sync_mo(refresh_dict[out_mo.dn])
 
-        self.__to_commit = {}
+        self.commit_buffer_discard()
 
     def commit_buffer_discard(self):
         """
