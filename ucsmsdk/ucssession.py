@@ -255,7 +255,6 @@ class UcsSession(object):
         tx_lock.acquire()
         # check if the cookie is latest
         if 'cookie' in elem.attrib and elem.attrib['cookie'] != "" and elem.attrib['cookie'] != self.cookie:
-            log.info("updating cookie.. old " + elem.attrib['cookie'] + " new " + self.cookie)
             elem.attrib['cookie'] = self.cookie
 
         dump_xml = self.__dump_xml

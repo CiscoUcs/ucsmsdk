@@ -532,7 +532,6 @@ class UcsHandle(UcsSession):
 
         self.__commit_buf_tagged[tag][mo.dn] = mo
 
-
     def add_mo(self, mo, modify_present=False, tag=None):
         """
         Adds a managed object to the UcsHandle commit buffer.
