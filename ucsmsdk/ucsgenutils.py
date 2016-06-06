@@ -110,42 +110,58 @@ def make_dn(rn_array):
     return '/'.join(rn_array)
 
 
-class Progress(object):
-    """Internal class to show the progress of upload/download file."""
-
-    def __init__(self):
-        self._seen = 0.0
-
-    def update(self, total, size, name):
-        """Internal method to show the progress of upload/download file."""
-
-        from sys import stdout
-
-        self._seen += size
-        status = r"%10d  [%3.2f%%]" % (self._seen, self._seen * 100 / total)
-        status = status + chr(8) * (len(status) + 1)
-        stdout.write("\r%s" % status)
-        stdout.flush()
-
-
-class FileWithCallback(object):
+class FileReadStream(object):
     """Internal class to show the progress while reading file."""
 
-    def __init__(self, path, mode, callback, *args):
-        self.file_handle = open(path, mode)
-        self.file_handle.seek(0, 2)
-        self._total = self.file_handle.tell()
-        self.file_handle.seek(0)
-        self._callback = callback
-        self._args = args
+    def __init__(self, path, progress_cb):
+        self._fhandle = open(path, 'rb')
+        # Set the seek positin to the end of the file
+        # and calcualte the total file size
+        self._fhandle.seek(0, os.SEEK_END)
+        self._tsize = self._fhandle.tell()
+
+        # Reset the position to the beginning of the file
+        self._fhandle.seek(0)
+
+        # track the read size
+        self._rsize = 0
+
+        self._progress_cb = progress_cb
 
     def __len__(self):
-        return self._total
+        return self._tsize
 
     def read(self, size):
-        data = self.file_handle.read(size)
-        self._callback(self._total, len(data), *self._args)
+        data = self._fhandle.read(size)
+        self._rsize += len(data)
+        self._progress_cb(self._rsize, self._tsize)
         return data
+
+
+def print_progress(curr_size, total_size):
+    """
+    Outputs the progress in percentages
+
+    Args:
+        curr_size : size uploaded/downloaded
+        total_size : total file size
+
+    Returns:
+        None
+
+    Raises:
+        None
+
+    Example:
+        print_progress(50, 100)
+    """
+    from sys import stdout
+
+    status = r"%10d  [%3.2f%%]" % (
+        curr_size, curr_size * 100. / total_size)
+    status += chr(8) * (len(status) + 1)
+    stdout.write("\r%s" % status)
+    stdout.flush()
 
 
 def download_file(driver, file_url, file_dir, file_name):
@@ -167,7 +183,6 @@ def download_file(driver, file_url, file_dir, file_name):
     """
 
     import os
-    from sys import stdout
 
     destination_file = os.path.join(file_dir, file_name)
     response = driver.post(uri=file_url, read=False)
@@ -179,7 +194,6 @@ def download_file(driver, file_url, file_dir, file_name):
         # Python 2 code in this block
         file_size = int(response.info().getheaders("Content-Length")[0])
 
-
     # meta = response.info()
     # log.debug(meta)
     # file_size = int(meta.getheaders("Content-Length")[0])
@@ -187,7 +201,6 @@ def download_file(driver, file_url, file_dir, file_name):
 
     file_handle = open(destination_file, 'wb')
     file_size_dl = 0
-    #block_sz = 64L
     block_sz = 64
     while True:
         r_buffer = response.read(128 * block_sz)
@@ -196,11 +209,7 @@ def download_file(driver, file_url, file_dir, file_name):
 
         file_size_dl += len(r_buffer)
         file_handle.write(r_buffer)
-        status = r"%10d  [%3.2f%%]" % (
-            file_size_dl, file_size_dl * 100. / file_size)
-        status += chr(8) * (len(status) + 1)
-        stdout.write("\r%s" % status)
-        stdout.flush()
+        print_progress(file_size_dl, file_size)
     print('Downloading Finished.')
     file_handle.close()
 
@@ -222,17 +231,10 @@ def upload_file(driver, uri, file_dir, file_name):
         driver = UcsDriver()\n
         upload_file(driver=UcsDriver(), uri="http://fileurl", file_dir='/home/user/backup', file_name='my_config_backup.xml')
     """
-
-    progress = Progress()
-    full_path = os.path.join(file_dir, file_name)
-    stream = FileWithCallback(full_path,
-                              'rb',
-                              progress.update,
-                              full_path)
-
+    stream = FileReadStream(os.path.join(file_dir, file_name), print_progress)
     response = driver.post(uri, data=stream)
     if not response:
-        raise ValueError("failed to upload.")
+        raise ValueError("File upload failed.")
 
 
 def check_registry_key(java_key):
@@ -514,6 +516,7 @@ def decrypt_password(cipher, key):
 
     decrypted_password = password_stream.tostring()[:cipher_len]
     return decrypted_password
+
 
 def iteritems(d):
     """
