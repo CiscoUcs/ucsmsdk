@@ -14,12 +14,14 @@
 
 import time
 import logging
+import threading
 from threading import Timer
 
 from .ucsexception import UcsException, UcsLoginError
 from .ucsdriver import UcsDriver
 
 log = logging.getLogger('ucs')
+tx_lock = threading.Lock()
 
 
 class UcsSession(object):
@@ -250,6 +252,12 @@ class UcsSession(object):
 
         from . import ucsxmlcodec as xc
 
+        tx_lock.acquire()
+        # check if the cookie is latest
+        if 'cookie' in elem.attrib and elem.attrib['cookie'] != "" and elem.attrib['cookie'] != self.cookie:
+            log.info("updating cookie.. old " + elem.attrib['cookie'] + " new " + self.cookie)
+            elem.attrib['cookie'] = self.cookie
+
         dump_xml = self.__dump_xml
         if dump_xml:
             if elem.tag == "aaaLogin":
@@ -270,8 +278,10 @@ class UcsSession(object):
 
         if response_str:
             response = xc.from_xml_str(response_str, self)
+            tx_lock.release()
             return response
 
+        tx_lock.release()
         return None
 
     def file_download(self, url_suffix, file_dir, file_name):
