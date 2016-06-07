@@ -123,9 +123,6 @@ class FileReadStream(object):
         # Reset the position to the beginning of the file
         self._fhandle.seek(0)
 
-        # track the read size
-        self._rsize = 0
-
         self._progress_cb = progress_cb
 
     def __len__(self):
@@ -133,38 +130,33 @@ class FileReadStream(object):
 
     def read(self, size):
         data = self._fhandle.read(size)
-        self._rsize += len(data)
-        self._progress_cb(self._rsize, self._tsize)
+        self._progress_cb(self._tsize, size)
         return data
 
 
-def print_progress(curr_size, total_size):
-    """
-    Outputs the progress in percentages
+class Progress(object):
+    """ Internal class to show the progress in chunks of custom percentage """
 
-    Args:
-        curr_size : size uploaded/downloaded
-        total_size : total file size
+    def __init__(self, interval):
+        self._seen = 0.0
+        self._interval = interval
+        self._percent = interval
 
-    Returns:
-        None
+    def update(self, total, size):
+        from sys import stdout
 
-    Raises:
-        None
-
-    Example:
-        print_progress(50, 100)
-    """
-    from sys import stdout
-
-    status = r"%10d  [%3.2f%%]" % (
-        curr_size, curr_size * 100. / total_size)
-    status += chr(8) * (len(status) + 1)
-    stdout.write("\r%s" % status)
-    stdout.flush()
+        self._seen += size
+        percent = self._seen * 100 / total
+        if percent < self._percent:
+            return
+        status = r"%10d  [%3.2f%%]" % (self._seen, percent)
+        status = status + chr(8) * (len(status) + 1)
+        stdout.write("\n%s" % status)
+        stdout.flush()
+        self._percent += self._interval
 
 
-def download_file(driver, file_url, file_dir, file_name):
+def download_file(driver, file_url, file_dir, file_name, progress_interval=10):
     """
     Downloads the file from web server
 
@@ -194,27 +186,23 @@ def download_file(driver, file_url, file_dir, file_name):
         # Python 2 code in this block
         file_size = int(response.info().getheaders("Content-Length")[0])
 
-    # meta = response.info()
-    # log.debug(meta)
-    # file_size = int(meta.getheaders("Content-Length")[0])
     print("Downloading: %s Bytes: %s" % (file_name, file_size))
+    progress = Progress(progress_interval)
 
     file_handle = open(destination_file, 'wb')
-    file_size_dl = 0
     block_sz = 64
     while True:
         r_buffer = response.read(128 * block_sz)
         if not r_buffer:
             break
 
-        file_size_dl += len(r_buffer)
         file_handle.write(r_buffer)
-        print_progress(file_size_dl, file_size)
+        progress.update(file_size, len(r_buffer))
     print('Downloading Finished.')
     file_handle.close()
 
 
-def upload_file(driver, uri, file_dir, file_name):
+def upload_file(driver, uri, file_dir, file_name, progress_interval=10):
     """
     Uploads the file on web server
 
@@ -231,7 +219,8 @@ def upload_file(driver, uri, file_dir, file_name):
         driver = UcsDriver()\n
         upload_file(driver=UcsDriver(), uri="http://fileurl", file_dir='/home/user/backup', file_name='my_config_backup.xml')
     """
-    stream = FileReadStream(os.path.join(file_dir, file_name), print_progress)
+    progress = Progress(progress_interval)
+    stream = FileReadStream(os.path.join(file_dir, file_name), progress.update)
     response = driver.post(uri, data=stream)
     if not response:
         raise ValueError("File upload failed.")
