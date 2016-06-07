@@ -277,6 +277,13 @@ class UcsSession(object):
 
         if response_str:
             response = xc.from_xml_str(response_str, self)
+
+            # Cookie update should happen with-in the lock
+            # this ensures that the next packet goes out
+            # with the new cookie
+            if elem.tag == "aaaRefresh":
+                self._update_cookie(response)
+
             tx_lock.release()
             return response
 
@@ -370,6 +377,11 @@ class UcsSession(object):
         if self.__refresh_timer is not None:
             self.__refresh_timer.cancel()
             self.__refresh_timer = None
+
+    def _update_cookie(self, response):
+        if response.error_code != 0:
+            return
+        self.__cookie = response.out_cookie
 
     def _refresh(self, auto_relogin=False):
         """
