@@ -699,3 +699,30 @@ class UcsHandle(UcsSession):
 
         if tag in self.__commit_buf_tagged:
             del self.__commit_buf_tagged[tag]
+
+    def wait_for_event(self, mo, prop, value, cb, timeout=None):
+        """
+        Waits for `mo.prop == value` and invokes the passed callback
+        when the condition is met. The callback is called with one
+        argument which is a mo change event. It also contains the Mo
+
+        Args:
+            mo (Managed Object): managed object to watch
+            prop (str): property to watch
+            value (str): property value to wait for
+            cb(function): callback on success
+            timeout (int): timeout
+
+        Returns:
+            None
+
+        Example:
+            def cb(mce):
+                print mce.mo
+
+            sp_mo = handle.query_dn("org-root/ls-demoSP")
+            wait_for_event(sp_mo, 'descr', 'demo_description', cb)
+    """
+        from ucseventhandler import wait
+
+        wait(self, mo, prop, value, cb, timeout_sec=timeout)

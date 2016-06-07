@@ -26,6 +26,7 @@ except:
 from threading import Condition, Lock, Thread
 import datetime
 import logging
+import time
 
 from . import ucsmo
 from . import ucscoreutils
@@ -271,6 +272,8 @@ class UcsEventHandle(object):
         if self.__prop_val_exist(mce.mo, prop, success_value, failure_value,
                                  transient_value, attributes):
             if watch_block.callback:
+                ctxt = watch_block.params['context']
+                ctxt["done"] = True
                 watch_block.callback(mce)
             self.__wb_to_remove.append(watch_block)
 
@@ -345,6 +348,9 @@ class UcsEventHandle(object):
                 self.__wbs_lock.acquire()
 
                 for wb in self.__wb_to_remove:
+                    if "context" in wb.params:
+                        ctxt = wb.params['context']
+                        ctxt["done"] = True
                     self.watch_block_remove(wb)
                 self.__wb_to_remove = []
 
@@ -400,8 +406,8 @@ class UcsEventHandle(object):
 
     def _add_class_id_watch(self, class_id):
         if ucscoreutils.find_class_id_in_mo_meta_ignore_case(class_id) is None:
-                raise UcsValidationException(
-                    "Invalid ClassId %s specified." % class_id)
+            raise UcsValidationException(
+                "Invalid ClassId %s specified." % class_id)
 
         def watch__type_filter(mce):
             """
@@ -459,7 +465,8 @@ class UcsEventHandle(object):
             transient_value=[],
             poll_sec=None,
             timeout_sec=None,
-            call_back=None):
+            call_back=None,
+            context=None):
         """
         Adds an event handler.
 
@@ -505,7 +512,8 @@ class UcsEventHandle(object):
                       'poll_sec': poll_sec,
                       'timeout_sec': timeout_sec,
                       'call_back': call_back,
-                      'start_time': datetime.datetime.now()}
+                      'start_time': datetime.datetime.now(),
+                      'context': context}
 
         if filter_callback is None:
             raise UcsValidationException("Error adding WatchBlock...")
@@ -548,3 +556,43 @@ class UcsEventHandle(object):
         Returns the list of event handlers.
         """
         return self.__wbs
+
+
+def wait(handle, mo, prop, value, cb, timeout_sec=None):
+    """
+    Waits for `mo.prop == value`
+
+    Args:
+        handle(UcsHandle): connection handle to the server
+        mo (Managed Object): managed object to watch
+        prop (str): property to watch
+        value (str): property value to wait for
+        cb(function): callback on success
+        timeout_sec (int): timeout
+
+    Returns:
+        None
+
+    Example:
+        This method is called from UcsHandle class,
+        wait_for_event method
+    """
+
+    # create a new event handler
+    ueh = UcsEventHandle(handle)
+
+    context = {}
+    context["done"] = False
+
+    if isinstance(value, list):
+        success_value = value
+    else:
+        success_value = [value]
+
+    # create a watch block
+    ueh.add(managed_object=mo, prop=prop, success_value=success_value,
+            call_back=cb, timeout_sec=timeout_sec, context=context)
+
+    # wait for the event to occur
+    while not context["done"]:
+        time.sleep(1)
