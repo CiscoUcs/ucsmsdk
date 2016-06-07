@@ -1,0 +1,5 @@
+exclude_paths:
+- "tests/"
+- "docs/"
+- "ucsmsdk/mometa/"
+- "ucsmsdk/methodmeta/"
