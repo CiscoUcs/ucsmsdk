@@ -49,7 +49,8 @@ class UcsHandle(UcsSession):
     def __init__(self, ip, username, password, port=None, secure=None,
                  proxy=None):
         UcsSession.__init__(self, ip, username, password, port, secure, proxy)
-        self.__to_commit = {}
+        self.__commit_buf = {}
+        self.__commit_buf_tagged = {}
 
     def set_dump_xml(self):
         """
@@ -516,7 +517,22 @@ class UcsHandle(UcsSession):
 
         return out_mo_list
 
-    def add_mo(self, mo, modify_present=False):
+    def _get_commit_buf(self, tag=None):
+        if tag is None:
+            return self.__commit_buf
+        return self.__commit_buf_tagged[tag]
+
+    def _update_commit_buf(self, mo, tag=None):
+        if tag is None:
+            self.__commit_buf[mo.dn] = mo
+            return
+
+        if tag not in self.__commit_buf_tagged:
+            self.__commit_buf_tagged[tag] = {}
+
+        self.__commit_buf_tagged[tag][mo.dn] = mo
+
+    def add_mo(self, mo, modify_present=False, tag=None):
         """
         Adds a managed object to the UcsHandle commit buffer.
         This method does not trigger a commit by itself.
@@ -541,9 +557,9 @@ class UcsHandle(UcsSession):
         else:
             mo.status = "created"
 
-        self.__to_commit[mo.dn] = mo
+        self._update_commit_buf(mo, tag)
 
-    def set_mo(self, mo):
+    def set_mo(self, mo, tag=None):
         """
         Modifies a managed object and adds it to UcsHandle commit buffer (if
          not already in it).
@@ -564,9 +580,9 @@ class UcsHandle(UcsSession):
         """
 
         mo.status = "modified"
-        self.__to_commit[mo.dn] = mo
+        self._update_commit_buf(mo, tag)
 
-    def remove_mo(self, mo):
+    def remove_mo(self, mo, tag=None):
         """
         Removes a managed object.
         This method does not trigger a commit by itself.
@@ -589,9 +605,9 @@ class UcsHandle(UcsSession):
         if mo.parent_mo:
             mo.parent_mo.child_remove(mo)
 
-        self.__to_commit[mo.dn] = mo
+        self._update_commit_buf(mo, tag)
 
-    def commit(self):
+    def commit(self, tag=None):
         """
         Commit the buffer to the server. Pushes all the configuration changes
         so far to the server.
@@ -613,7 +629,7 @@ class UcsHandle(UcsSession):
         from .ucsmethodfactory import config_conf_mos
 
         refresh_dict = {}
-        mo_dict = self.__to_commit
+        mo_dict = self._get_commit_buf(tag)
         if not mo_dict:
             log.debug("Commit Buffer is Empty")
             return None
@@ -639,7 +655,7 @@ class UcsHandle(UcsSession):
                                False)
         response = self.post_elem(elem)
         if response.error_code != 0:
-            self.commit_buffer_discard()
+            self.commit_buffer_discard(tag)
             raise UcsException(response.error_code, response.error_descr)
 
         for pair_ in response.out_configs.child:
@@ -663,9 +679,9 @@ class UcsHandle(UcsSession):
             for out_mo in response.out_configs.child:
                 out_mo.sync_mo(refresh_dict[out_mo.dn])
 
-        self.commit_buffer_discard()
+        self.commit_buffer_discard(tag)
 
-    def commit_buffer_discard(self):
+    def commit_buffer_discard(self, tag=None):
         """
         Discard the configuration changes in the commit buffer.
 
@@ -678,5 +694,8 @@ class UcsHandle(UcsSession):
         Example:
             handle.commit_buffer_discard()
         """
+        if tag is None:
+            self.__commit_buf = {}
 
-        self.__to_commit = {}
+        if tag in self.__commit_buf_tagged:
+            del self.__commit_buf_tagged[tag]
