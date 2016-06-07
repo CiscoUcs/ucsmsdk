@@ -36,11 +36,11 @@ class ParseFilter(object):
     Supporting class to parse filter expression.
     """
 
-    class_id = None
-    is_meta_classid = None
+    def __init__(self, class_id, is_meta_classid):
+        self.class_id = class_id
+        self.is_meta_classid = is_meta_classid
 
-    @staticmethod
-    def parse_filter_obj(sstr, loc, toks):
+    def parse_filter_obj(self, toks):
         """
         Supporting class to parse filter expression.
         """
@@ -69,22 +69,22 @@ class ParseFilter(object):
                 "]",
                 value_)
 
-        if ParseFilter.is_meta_classid:
-            class_obj = ucscoreutils.load_class(ParseFilter.class_id)
+        if self.is_meta_classid:
+            class_obj = ucscoreutils.load_class(self.class_id)
             prop_mo_meta = class_obj.prop_meta[prop_]
             if prop_mo_meta:
                 prop_ = prop_mo_meta.xml_attribute
 
         sub_filter = create_basic_filter(types[type_],
                                          class_=ucsgenutils.word_l(
-                                             ParseFilter.class_id),
+                                             self.class_id),
                                          property=prop_,
                                          value=value_)
 
         return sub_filter
 
     @staticmethod
-    def and_operator(str, loc, toks):
+    def and_operator(toks):
         """
         method to support logical 'and' operator expression
         """
@@ -97,7 +97,7 @@ class ParseFilter(object):
         return and_filter
 
     @staticmethod
-    def or_operator(str, loc, toks):
+    def or_operator(toks):
         """
         method to support logical 'or' operator expression
         """
@@ -110,7 +110,7 @@ class ParseFilter(object):
         return or_filter
 
     @staticmethod
-    def not_operator(str_, loc, toks):
+    def not_operator(toks):
         """
         method to support logical 'and' operator expression
         """
@@ -121,36 +121,43 @@ class ParseFilter(object):
             not_filter.child_add(op_filter)
         return not_filter
 
+    def parse_filter_str(self, filter_str):
+        """
+        method to parse filter string
+        """
 
-prop = pp.WordStart(pp.alphas) + pp.Word(pp.alphanums +
-                                         "_").setResultsName("prop")
-value = (pp.QuotedString("'") | pp.QuotedString('"') | pp.Word(
-    pp.printables, excludeChars=",")).setResultsName("value")
-types_ = pp.oneOf("re eq ne gt ge lt le").setResultsName("types")
-flags = pp.oneOf("C I").setResultsName("flags")
-comma = pp.Literal(',')
-quote = (pp.Literal("'") | pp.Literal('"')).setResultsName("quote")
+        prop = pp.WordStart(pp.alphas) + pp.Word(pp.alphanums +
+                                                 "_").setResultsName("prop")
+        value = (pp.QuotedString("'") | pp.QuotedString('"') | pp.Word(
+            pp.printables, excludeChars=",")).setResultsName("value")
+        types_ = pp.oneOf("re eq ne gt ge lt le").setResultsName("types")
+        flags = pp.oneOf("C I").setResultsName("flags")
+        comma = pp.Literal(',')
+        quote = (pp.Literal("'") | pp.Literal('"')).setResultsName("quote")
 
-type_exp = pp.Group(pp.Literal("type") + pp.Literal(
-    "=") + quote + types_ + quote).setResultsName("type_exp")
-flag_exp = pp.Group(pp.Literal("flag") + pp.Literal(
-    "=") + quote + flags + quote).setResultsName("flag_exp")
+        type_exp = pp.Group(pp.Literal("type") + pp.Literal(
+            "=") + quote + types_ + quote).setResultsName("type_exp")
+        flag_exp = pp.Group(pp.Literal("flag") + pp.Literal(
+            "=") + quote + flags + quote).setResultsName("flag_exp")
 
-semi_expression = pp.Forward()
-semi_expression << pp.Group(pp.Literal("(") +
-                            prop + comma + value +
-                            pp.Optional(comma + type_exp) +
-                            pp.Optional(comma + flag_exp) +
-                            pp.Literal(")")
-                            ).setParseAction(
-    ParseFilter.parse_filter_obj).setResultsName("semi_expression")
+        semi_expression = pp.Forward()
+        semi_expression << pp.Group(pp.Literal("(") +
+                                    prop + comma + value +
+                                    pp.Optional(comma + type_exp) +
+                                    pp.Optional(comma + flag_exp) +
+                                    pp.Literal(")")
+                                    ).setParseAction(
+            self.parse_filter_obj).setResultsName("semi_expression")
 
-expr = pp.Forward()
-expr << pp.operatorPrecedence(semi_expression, [
-    ("not", 1, pp.opAssoc.RIGHT, ParseFilter.not_operator),
-    ("and", 2, pp.opAssoc.LEFT, ParseFilter.and_operator),
-    ("or", 2, pp.opAssoc.LEFT, ParseFilter.or_operator)
-])
+        expr = pp.Forward()
+        expr << pp.operatorPrecedence(semi_expression, [
+            ("not", 1, pp.opAssoc.RIGHT, self.not_operator),
+            ("and", 2, pp.opAssoc.LEFT, self.and_operator),
+            ("or", 2, pp.opAssoc.LEFT, self.or_operator)
+        ])
+
+        result = expr.parseString(filter_str)
+        return result
 
 
 def generate_infilter(class_id, filter_str, is_meta_class_id):
@@ -166,12 +173,14 @@ def generate_infilter(class_id, filter_str, is_meta_class_id):
         True on successful connect
 
     Example:
-        generate_infilter("LsServer", '("usr_lbl, "mysp", type="eq", flag="I)', True)
+        generate_infilter("LsServer",
+                          '("usr_lbl, "mysp", type="eq", flag="I)',
+                           True)
     """
 
-    ParseFilter.class_id = class_id
-    ParseFilter.is_meta_classid = is_meta_class_id
-    result = expr.parseString(filter_str)
+    parse_filter = ParseFilter(class_id=class_id,
+                               is_meta_classid=is_meta_class_id)
+    result = parse_filter.parse_filter_str(filter_str)
     in_filter = FilterFilter()
     in_filter.child_add(result[0])
     return in_filter
@@ -197,7 +206,6 @@ def handle_filter_max_component_limit(handle, l_filter):
                                                               OrFilter):
         return l_filter
 
-    result_filter = None
     if isinstance(l_filter, AndFilter):
         parent_filter = AndFilter()
         child_filter = AndFilter()
