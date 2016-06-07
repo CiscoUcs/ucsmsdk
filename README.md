@@ -2,6 +2,7 @@
 [![](https://ucspython.herokuapp.com/badge.svg)](https://ucspython.herokuapp.com)
 [![](https://img.shields.io/pypi/v/ucsmsdk.svg)](https://pypi.python.org/pypi/ucsmsdk)
 [![Code Health](https://landscape.io/github/CiscoUcs/ucsmsdk/master/landscape.svg?style=flat)](https://landscape.io/github/CiscoUcs/ucsmsdk/master)
+[![Code Climate](https://codeclimate.com/github/CiscoUcs/ucsmsdk/badges/gpa.svg)](https://codeclimate.com/github/CiscoUcs/ucsmsdk)
 
 # Python SDK for Cisco UCS
 
