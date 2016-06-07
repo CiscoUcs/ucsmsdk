@@ -1,7 +1,17 @@
-languages:
-  Python: true
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - python
+  fixme:
+    enabled: true
+  radon:
+    enabled: true
+ratings:
 exclude_paths:
-- "tests/"
-- "docs/"
-- "ucsmsdk/mometa/"
-- "ucsmsdk/methodmeta/"
+- tests/
+- docs/
+- ucsmsdk/mometa/
+- ucsmsdk/methodmeta/
