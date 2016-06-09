@@ -10,6 +10,9 @@ engines:
   radon:
     enabled: true
 ratings:
+  paths:
+  - ucsmsdk/*.py
+  - ucsmsdk/utils/*.py
 exclude_paths:
 - tests/
 - docs/
