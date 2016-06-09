@@ -19,6 +19,7 @@ from threading import Timer
 
 from .ucsexception import UcsException, UcsLoginError
 from .ucsdriver import UcsDriver
+from .ucsgenutils import Progress
 
 log = logging.getLogger('ucs')
 tx_lock = threading.Lock()
@@ -290,7 +291,7 @@ class UcsSession(object):
         tx_lock.release()
         return None
 
-    def file_download(self, url_suffix, file_dir, file_name):
+    def file_download(self, url_suffix, file_dir, file_name, progress=Progress()):
         """
         Downloads the file from ucsm server
 
@@ -299,6 +300,7 @@ class UcsSession(object):
                     http\https://host:port/ to locate the file on the server
             file_dir (str): The directory to download to
             file_name (str): The destination file name for the download
+            progress (ucsgenutils.Progress): Class that has method to display progress
 
         Returns:
             None
@@ -317,11 +319,12 @@ class UcsSession(object):
         download_file(driver=self.__driver,
                       file_url=file_url,
                       file_dir=file_dir,
-                      file_name=file_name)
+                      file_name=file_name,
+                      progrss=progress)
 
         self.__driver.remove_header('Cookie')
 
-    def file_upload(self, url_suffix, file_dir, file_name):
+    def file_upload(self, url_suffix, file_dir, file_name, progress=Progress()):
         """
         Uploads the file on UCSM server.
 
@@ -330,6 +333,7 @@ class UcsSession(object):
                 http\https://host:port/ to locate the file on the server
             source_dir (str): The directory to upload from
             file_name (str): The destination file name for the download
+            progress (ucsgenutils.Progress): Class that has method to display progress
 
         Returns:
             None
@@ -351,7 +355,8 @@ class UcsSession(object):
         upload_file(self.__driver,
                     uri=file_url,
                     file_dir=file_dir,
-                    file_name=file_name)
+                    file_name=file_name,
+                    progress=progress)
 
         self.__driver.remove_header('Cookie')
 
