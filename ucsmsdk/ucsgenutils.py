@@ -137,12 +137,12 @@ class FileReadStream(object):
 class Progress(object):
     """ Internal class to show the progress in chunks of custom percentage """
 
-    def __init__(self, interval):
+    def __init__(self, interval=10):
         self._seen = 0.0
         self._interval = interval
         self._percent = interval
 
-    def update(self, total, size):
+    def update(self, total, size, name=None):
         from sys import stdout
 
         self._seen += size
@@ -151,12 +151,12 @@ class Progress(object):
             return
         status = r"%10d  [%3.2f%%]" % (self._seen, percent)
         status = status + chr(8) * (len(status) + 1)
-        stdout.write("\n%s" % status)
+        stdout.write("\r%s" % status)
         stdout.flush()
         self._percent += self._interval
 
 
-def download_file(driver, file_url, file_dir, file_name, progress_interval=10):
+def download_file(driver, file_url, file_dir, file_name, progress=Progress()):
     """
     Downloads the file from web server
 
@@ -187,7 +187,6 @@ def download_file(driver, file_url, file_dir, file_name, progress_interval=10):
         file_size = int(response.info().getheaders("Content-Length")[0])
 
     print("Downloading: %s Bytes: %s" % (file_name, file_size))
-    progress = Progress(progress_interval)
 
     file_handle = open(destination_file, 'wb')
     block_sz = 64
@@ -202,7 +201,7 @@ def download_file(driver, file_url, file_dir, file_name, progress_interval=10):
     file_handle.close()
 
 
-def upload_file(driver, uri, file_dir, file_name, progress_interval=10):
+def upload_file(driver, uri, file_dir, file_name, progress=Progress()):
     """
     Uploads the file on web server
 
@@ -219,7 +218,6 @@ def upload_file(driver, uri, file_dir, file_name, progress_interval=10):
         driver = UcsDriver()\n
         upload_file(driver=UcsDriver(), uri="http://fileurl", file_dir='/home/user/backup', file_name='my_config_backup.xml')
     """
-    progress = Progress(progress_interval)
     stream = FileReadStream(os.path.join(file_dir, file_name), progress.update)
     response = driver.post(uri, data=stream)
     if not response:
