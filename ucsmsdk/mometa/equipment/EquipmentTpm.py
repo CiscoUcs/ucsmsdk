@@ -27,6 +27,10 @@ class EquipmentTpmConsts:
     PRESENCE_EMPTY = "empty"
     PRESENCE_EQUIPPED = "equipped"
     PRESENCE_EQUIPPED_DEPRECATED = "equipped-deprecated"
+    PRESENCE_EQUIPPED_DISC_ERROR = "equipped-disc-error"
+    PRESENCE_EQUIPPED_DISC_IN_PROGRESS = "equipped-disc-in-progress"
+    PRESENCE_EQUIPPED_DISC_NOT_STARTED = "equipped-disc-not-started"
+    PRESENCE_EQUIPPED_DISC_UNKNOWN = "equipped-disc-unknown"
     PRESENCE_EQUIPPED_IDENTITY_UNESTABLISHABLE = "equipped-identity-unestablishable"
     PRESENCE_EQUIPPED_NOT_PRIMARY = "equipped-not-primary"
     PRESENCE_EQUIPPED_SLAVE = "equipped-slave"
@@ -65,7 +69,7 @@ class EquipmentTpm(ManagedObject):
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "ownership": MoPropertyMeta("ownership", "ownership", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["owned", "unknown", "unowned"], []), 
         "password_state": MoPropertyMeta("password_state", "passwordState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-set", "set", "unknown"], []), 
-        "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
+        "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 

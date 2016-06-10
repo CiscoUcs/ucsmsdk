@@ -7,6 +7,10 @@ from ...ucsmeta import VersionMeta
 
 class EquipmentManufacturingDefConsts:
     INT_ID_NONE = "none"
+    IS_SEC_FW_UPDATE_FALSE = "false"
+    IS_SEC_FW_UPDATE_NO = "no"
+    IS_SEC_FW_UPDATE_TRUE = "true"
+    IS_SEC_FW_UPDATE_YES = "yes"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
@@ -18,7 +22,7 @@ class EquipmentManufacturingDef(ManagedObject):
     consts = EquipmentManufacturingDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentManufacturingDef", "equipmentManufacturingDef", "manufacturing", VersionMeta.Version101e, "InputOutput", 0x7f, [], [""], [u'adaptorFruCapProvider', u'diagSrvCapProvider', u'equipmentBaseBoardCapProvider', u'equipmentBladeBiosCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentFanModuleCapProvider', u'equipmentFexCapProvider', u'equipmentGemCapProvider', u'equipmentGraphicsCardCapProvider', u'equipmentHostIfCapProvider', u'equipmentIOCardCapProvider', u'equipmentLocalDiskCapProvider', u'equipmentLocalDiskControllerCapProvider', u'equipmentMemoryUnitCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentProcessorUnitCapProvider', u'equipmentPsuCapProvider', u'equipmentRackUnitCapProvider', u'equipmentSecurityUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentStorageSasExpanderCapProvider', u'equipmentSwitchCapProvider', u'equipmentSwitchIOCardCapProvider', u'equipmentTpmCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentManufacturingDef", "equipmentManufacturingDef", "manufacturing", VersionMeta.Version101e, "InputOutput", 0x7f, [], [""], [u'adaptorFruCapProvider', u'diagSrvCapProvider', u'equipmentBaseBoardCapProvider', u'equipmentBladeBiosCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentFanModuleCapProvider', u'equipmentFexCapProvider', u'equipmentGemCapProvider', u'equipmentGraphicsCardCapProvider', u'equipmentHostIfCapProvider', u'equipmentIOCardCapProvider', u'equipmentIOExpanderCapProvider', u'equipmentLocalDiskCapProvider', u'equipmentLocalDiskControllerCapProvider', u'equipmentMemoryUnitCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentProcessorUnitCapProvider', u'equipmentPsuCapProvider', u'equipmentRackUnitCapProvider', u'equipmentSecurityUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentStorageEncCapProvider', u'equipmentStorageSasExpanderCapProvider', u'equipmentSwitchCapProvider', u'equipmentSwitchIOCardCapProvider', u'equipmentTpmCapProvider'], [], ["Get"])
 
     prop_meta = {
         "caption": MoPropertyMeta("caption", "caption", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
@@ -30,6 +34,7 @@ class EquipmentManufacturingDef(ManagedObject):
         "fru_major_type": MoPropertyMeta("fru_major_type", "fruMajorType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "fru_minor_type": MoPropertyMeta("fru_minor_type", "fruMinorType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
+        "is_sec_fw_update": MoPropertyMeta("is_sec_fw_update", "isSecFwUpdate", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "oem_name": MoPropertyMeta("oem_name", "oemName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "oem_part_number": MoPropertyMeta("oem_part_number", "oemPartNumber", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
@@ -56,6 +61,7 @@ class EquipmentManufacturingDef(ManagedObject):
         "fruMajorType": "fru_major_type", 
         "fruMinorType": "fru_minor_type", 
         "intId": "int_id", 
+        "isSecFwUpdate": "is_sec_fw_update", 
         "name": "name", 
         "oemName": "oem_name", 
         "oemPartNumber": "oem_part_number", 
@@ -82,6 +88,7 @@ class EquipmentManufacturingDef(ManagedObject):
         self.fru_major_type = None
         self.fru_minor_type = None
         self.int_id = None
+        self.is_sec_fw_update = None
         self.name = None
         self.oem_name = None
         self.oem_part_number = None

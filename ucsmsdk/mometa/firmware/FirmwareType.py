@@ -11,6 +11,7 @@ class FirmwareTypeConsts:
     EP_BLADE_CONTROLLER = "blade-controller"
     EP_BOARD_CONTROLLER = "board-controller"
     EP_CATALOG = "catalog"
+    EP_CHASSIS_BOARD_CONTROLLER = "chassis-board-controller"
     EP_CMC = "cmc"
     EP_DEBUG_PLUG_IN = "debug-plug-in"
     EP_DIAG = "diag"
@@ -25,8 +26,12 @@ class FirmwareTypeConsts:
     EP_LOCAL_DISK = "local-disk"
     EP_MGMT_EXT = "mgmt-ext"
     EP_PSU = "psu"
+    EP_SAS_EXP_REG_FW = "sas-exp-reg-fw"
     EP_SAS_EXPANDER = "sas-expander"
     EP_STORAGE_CONTROLLER = "storage-controller"
+    EP_STORAGE_CONTROLLER_ONBOARD_DEVICE = "storage-controller-onboard-device"
+    EP_STORAGE_CONTROLLER_ONBOARD_DEVICE_CPLD = "storage-controller-onboard-device-cpld"
+    EP_STORAGE_DEV_BRIDGE = "storage-dev-bridge"
     EP_STORAGE_NODE_CONTROLLER = "storage-node-controller"
     EP_SWITCH = "switch"
     EP_SWITCH_KERNEL = "switch-kernel"
@@ -45,13 +50,13 @@ class FirmwareType(ManagedObject):
     consts = FirmwareTypeConsts()
     naming_props = set([u'invTag'])
 
-    mo_meta = MoMeta("FirmwareType", "firmwareType", "fw-type-[inv_tag]", VersionMeta.Version101e, "InputOutput", 0x7f, [], [""], [u'adaptorFruCapProvider', u'diagSrvCapProvider', u'equipmentBaseBoardCapProvider', u'equipmentBladeBiosCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentFanModuleCapProvider', u'equipmentFexCapProvider', u'equipmentGemCapProvider', u'equipmentGraphicsCardCapProvider', u'equipmentHostIfCapProvider', u'equipmentIOCardCapProvider', u'equipmentLocalDiskCapProvider', u'equipmentLocalDiskControllerCapProvider', u'equipmentMemoryUnitCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentProcessorUnitCapProvider', u'equipmentPsuCapProvider', u'equipmentRackUnitCapProvider', u'equipmentSecurityUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentStorageSasExpanderCapProvider', u'equipmentSwitchCapProvider', u'equipmentSwitchIOCardCapProvider', u'equipmentTpmCapProvider'], [u'firmwareDependency'], ["Get"])
+    mo_meta = MoMeta("FirmwareType", "firmwareType", "fw-type-[inv_tag]", VersionMeta.Version101e, "InputOutput", 0x7f, [], [""], [u'adaptorFruCapProvider', u'diagSrvCapProvider', u'equipmentBaseBoardCapProvider', u'equipmentBladeBiosCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentFanModuleCapProvider', u'equipmentFexCapProvider', u'equipmentGemCapProvider', u'equipmentGraphicsCardCapProvider', u'equipmentHostIfCapProvider', u'equipmentIOCardCapProvider', u'equipmentIOExpanderCapProvider', u'equipmentLocalDiskCapProvider', u'equipmentLocalDiskControllerCapProvider', u'equipmentMemoryUnitCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentOnboardDeviceDef', u'equipmentProcessorUnitCapProvider', u'equipmentPsuCapProvider', u'equipmentRackUnitCapProvider', u'equipmentSecurityUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentStorageEncCapProvider', u'equipmentStorageSasExpanderCapProvider', u'equipmentSwitchCapProvider', u'equipmentSwitchIOCardCapProvider', u'equipmentTpmCapProvider'], [u'firmwareDependency'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "ep": MoPropertyMeta("ep", "ep", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "catalog", "cmc", "debug-plug-in", "diag", "fex", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "iocard", "local-disk", "mgmt-ext", "psu", "sas-expander", "storage-controller", "storage-node-controller", "switch", "switch-kernel", "switch-software", "system", "unspecified"], []), 
-        "fw_fpga_revision_supported": MoPropertyMeta("fw_fpga_revision_supported", "fwFpgaRevisionSupported", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "ep": MoPropertyMeta("ep", "ep", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "catalog", "chassis-board-controller", "cmc", "debug-plug-in", "diag", "fex", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "iocard", "local-disk", "mgmt-ext", "psu", "sas-exp-reg-fw", "sas-expander", "storage-controller", "storage-controller-onboard-device", "storage-controller-onboard-device-cpld", "storage-dev-bridge", "storage-node-controller", "switch", "switch-kernel", "switch-software", "system", "unspecified"], []), 
+        "fw_fpga_revision_supported": MoPropertyMeta("fw_fpga_revision_supported", "fwFpgaRevisionSupported", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "inv_tag": MoPropertyMeta("inv_tag", "invTag", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, 1, 510, None, [], []), 
         "max_ver": MoPropertyMeta("max_ver", "maxVer", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "min_ver": MoPropertyMeta("min_ver", "minVer", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 

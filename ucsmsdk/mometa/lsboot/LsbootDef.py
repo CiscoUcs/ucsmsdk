@@ -34,7 +34,7 @@ class LsbootDef(ManagedObject):
     consts = LsbootDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsbootDef", "lsbootDef", "boot-policy", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'lsServer'], [u'lsbootBootSecurity', u'lsbootIScsi', u'lsbootLan', u'lsbootSan', u'lsbootStorage', u'lsbootVirtualMedia'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LsbootDef", "lsbootDef", "boot-policy", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'lsServer'], [u'lsbootBootSecurity', u'lsbootEFIShell', u'lsbootIScsi', u'lsbootLan', u'lsbootSan', u'lsbootStorage', u'lsbootVirtualMedia'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "adv_boot_order_applicable": MoPropertyMeta("adv_boot_order_applicable", "advBootOrderApplicable", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["false", "no", "true", "yes"], []), 

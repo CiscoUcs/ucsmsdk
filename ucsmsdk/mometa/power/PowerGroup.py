@@ -27,7 +27,7 @@ class PowerGroup(ManagedObject):
     consts = PowerGroupConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("PowerGroup", "powerGroup", "group-[name]", VersionMeta.Version111j, "InputOutput", 0xfff, [], ["admin", "power-mgmt"], [u'powerEp'], [u'faultInst', u'powerChassisMember', u'powerRackUnitMember'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("PowerGroup", "powerGroup", "group-[name]", VersionMeta.Version111j, "InputOutput", 0xfff, [], ["admin", "power-mgmt"], [u'powerEp'], [u'faultInst', u'powerChassisMember', u'powerFIMember', u'powerFexMember', u'powerRackUnitMember'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_committed": MoPropertyMeta("admin_committed", "adminCommitted", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]), 

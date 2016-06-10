@@ -21,7 +21,7 @@ class EquipmentGraphicsCardCapRef(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version213a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "is_supported": MoPropertyMeta("is_supported", "isSupported", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []), 
+        "is_supported": MoPropertyMeta("is_supported", "isSupported", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []), 
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version213a, MoPropertyMeta.NAMING, 0x8, 1, 510, None, [], []), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version213a, MoPropertyMeta.NAMING, 0x10, 1, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 

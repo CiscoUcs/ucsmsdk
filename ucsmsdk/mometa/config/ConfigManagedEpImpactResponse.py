@@ -24,6 +24,7 @@ class ConfigManagedEpImpactResponse(ManagedObject):
     mo_meta = MoMeta("ConfigManagedEpImpactResponse", "configManagedEpImpactResponse", "ManagedEpapp-id-[app_connector_id]src-id-[source_connector_id]", VersionMeta.Version212a, "InputOutput", 0x1ff, [], ["read-only"], [], [u'configImpact'], [None])
 
     prop_meta = {
+        "affected_chassis_cnt": MoPropertyMeta("affected_chassis_cnt", "affectedChassisCnt", "ushort", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "affected_servers": MoPropertyMeta("affected_servers", "affectedServers", "ushort", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "app_connector_id": MoPropertyMeta("app_connector_id", "appConnectorId", "uint", VersionMeta.Version212a, MoPropertyMeta.NAMING, 0x2, None, None, None, [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
@@ -39,6 +40,7 @@ class ConfigManagedEpImpactResponse(ManagedObject):
     }
 
     prop_map = {
+        "affectedChassisCnt": "affected_chassis_cnt", 
         "affectedServers": "affected_servers", 
         "appConnectorId": "app_connector_id", 
         "childAction": "child_action", 
@@ -57,6 +59,7 @@ class ConfigManagedEpImpactResponse(ManagedObject):
         self._dirty_mask = 0
         self.app_connector_id = app_connector_id
         self.source_connector_id = source_connector_id
+        self.affected_chassis_cnt = None
         self.affected_servers = None
         self.child_action = None
         self.ep_name = None

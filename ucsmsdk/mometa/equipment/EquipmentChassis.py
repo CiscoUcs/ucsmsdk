@@ -15,6 +15,14 @@ class EquipmentChassisConsts:
     ADMIN_STATE_ENABLE_PORT_CHANNEL = "enable-port-channel"
     ADMIN_STATE_RE_ACKNOWLEDGE = "re-acknowledge"
     ADMIN_STATE_REMOVE = "remove"
+    ASSOCIATION_ASSOCIATED = "associated"
+    ASSOCIATION_ESTABLISHING = "establishing"
+    ASSOCIATION_FAILED = "failed"
+    ASSOCIATION_NONE = "none"
+    ASSOCIATION_REMOVING = "removing"
+    ASSOCIATION_THROTTLED = "throttled"
+    AVAILABILITY_AVAILABLE = "available"
+    AVAILABILITY_UNAVAILABLE = "unavailable"
     CONFIG_STATE_ACK_IN_PROGRESS = "ack-in-progress"
     CONFIG_STATE_ACKNOWLEDGED = "acknowledged"
     CONFIG_STATE_AUTO_ACK = "auto-ack"
@@ -24,6 +32,77 @@ class EquipmentChassisConsts:
     CONFIG_STATE_UN_ACKNOWLEDGED = "un-acknowledged"
     CONFIG_STATE_UN_INITIALIZED = "un-initialized"
     CONFIG_STATE_UNSUPPORTED_CONNECTIVITY = "unsupported-connectivity"
+    DISCOVERY_COMPLETE = "complete"
+    DISCOVERY_FAILED = "failed"
+    DISCOVERY_FRU_IDENTITY_INDETERMINATE = "fru-identity-indeterminate"
+    DISCOVERY_FRU_NOT_READY = "fru-not-ready"
+    DISCOVERY_FRU_STATE_INDETERMINATE = "fru-state-indeterminate"
+    DISCOVERY_ILLEGAL_FRU = "illegal-fru"
+    DISCOVERY_IN_PROGRESS = "in-progress"
+    DISCOVERY_INSUFFICIENTLY_EQUIPPED = "insufficiently-equipped"
+    DISCOVERY_INVALID_ADAPTOR_IOCARD = "invalid-adaptor-iocard"
+    DISCOVERY_MALFORMED_FRU_INFO = "malformed-fru-info"
+    DISCOVERY_RETRY = "retry"
+    DISCOVERY_THROTTLED = "throttled"
+    DISCOVERY_UNDISCOVERED = "undiscovered"
+    FSM_PREV_ASSOCIATE_ACTIVATE_ADAPTOR = "AssociateActivateAdaptor"
+    FSM_PREV_ASSOCIATE_ACTIVATE_BRD_CTLR = "AssociateActivateBrdCtlr"
+    FSM_PREV_ASSOCIATE_ACTIVATE_CMC = "AssociateActivateCmc"
+    FSM_PREV_ASSOCIATE_ACTIVATE_LOCAL_DISK = "AssociateActivateLocalDisk"
+    FSM_PREV_ASSOCIATE_ACTIVATE_SAS_EXPANDER = "AssociateActivateSasExpander"
+    FSM_PREV_ASSOCIATE_ACTIVATE_STORAGE_CTLR = "AssociateActivateStorageCtlr"
+    FSM_PREV_ASSOCIATE_BEGIN = "AssociateBegin"
+    FSM_PREV_ASSOCIATE_COPY_REMOTE = "AssociateCopyRemote"
+    FSM_PREV_ASSOCIATE_DELETE_CURL_DOWNLOADED_IMAGES = "AssociateDeleteCurlDownloadedImages"
+    FSM_PREV_ASSOCIATE_DELETE_IMAGES_REMOTE = "AssociateDeleteImagesRemote"
+    FSM_PREV_ASSOCIATE_DISK_ZONING_CONFIG = "AssociateDiskZoningConfig"
+    FSM_PREV_ASSOCIATE_DOWNLOAD_IMAGES = "AssociateDownloadImages"
+    FSM_PREV_ASSOCIATE_FAIL = "AssociateFail"
+    FSM_PREV_ASSOCIATE_POLL_ADAPTOR_ACTIVATION = "AssociatePollAdaptorActivation"
+    FSM_PREV_ASSOCIATE_POLL_BRD_CTLR_ACTIVATION = "AssociatePollBrdCtlrActivation"
+    FSM_PREV_ASSOCIATE_POLL_CMC_ACTIVATION = "AssociatePollCmcActivation"
+    FSM_PREV_ASSOCIATE_POLL_POST_DISK_ZONE_STORAGE_INV_CIMC = "AssociatePollPostDiskZoneStorageInvCIMC"
+    FSM_PREV_ASSOCIATE_POLL_SAS_EXPANDER_ACTIVATE = "AssociatePollSasExpanderActivate"
+    FSM_PREV_ASSOCIATE_POLL_STORAGE_CTLR_ACTIVATION = "AssociatePollStorageCtlrActivation"
+    FSM_PREV_ASSOCIATE_POLL_UPDATE_CMC = "AssociatePollUpdateCmc"
+    FSM_PREV_ASSOCIATE_POLL_UPDATE_CRUZ = "AssociatePollUpdateCruz"
+    FSM_PREV_ASSOCIATE_POLL_UPDATE_SAS_EXPANDER = "AssociatePollUpdateSasExpander"
+    FSM_PREV_ASSOCIATE_POST_DISK_ZONE_STORAGE_INV_CIMC = "AssociatePostDiskZoneStorageInvCIMC"
+    FSM_PREV_ASSOCIATE_POST_DISK_ZONE_STORAGE_INV_CMC = "AssociatePostDiskZoneStorageInvCMC"
+    FSM_PREV_ASSOCIATE_POWER_OFF_SERVERS = "AssociatePowerOffServers"
+    FSM_PREV_ASSOCIATE_POWER_ON_SERVERS = "AssociatePowerOnServers"
+    FSM_PREV_ASSOCIATE_SUCCESS = "AssociateSuccess"
+    FSM_PREV_ASSOCIATE_UNLOCK_FIRMWARE_IMAGE = "AssociateUnlockFirmwareImage"
+    FSM_PREV_ASSOCIATE_UPDATE_CMC = "AssociateUpdateCmc"
+    FSM_PREV_ASSOCIATE_UPDATE_CRUZ = "AssociateUpdateCruz"
+    FSM_PREV_ASSOCIATE_UPDATE_SAS_EXPANDER = "AssociateUpdateSasExpander"
+    FSM_PREV_ASSOCIATE_WAIT_BEFORE_INSTALLATION = "AssociateWaitBeforeInstallation"
+    FSM_PREV_ASSOCIATE_WAIT_FOR_POWER_OFF = "AssociateWaitForPowerOff"
+    FSM_PREV_CHASSIS_UPGRADE_ACTIVATE_ADAPTOR = "ChassisUpgradeActivateAdaptor"
+    FSM_PREV_CHASSIS_UPGRADE_ACTIVATE_BRD_CTLR = "ChassisUpgradeActivateBrdCtlr"
+    FSM_PREV_CHASSIS_UPGRADE_ACTIVATE_CMC = "ChassisUpgradeActivateCmc"
+    FSM_PREV_CHASSIS_UPGRADE_ACTIVATE_LOCAL_DISK = "ChassisUpgradeActivateLocalDisk"
+    FSM_PREV_CHASSIS_UPGRADE_ACTIVATE_SAS_EXPANDER = "ChassisUpgradeActivateSasExpander"
+    FSM_PREV_CHASSIS_UPGRADE_ACTIVATE_STORAGE_CTLR = "ChassisUpgradeActivateStorageCtlr"
+    FSM_PREV_CHASSIS_UPGRADE_BEGIN = "ChassisUpgradeBegin"
+    FSM_PREV_CHASSIS_UPGRADE_FAIL = "ChassisUpgradeFail"
+    FSM_PREV_CHASSIS_UPGRADE_POLL_ADAPTOR_ACTIVATION = "ChassisUpgradePollAdaptorActivation"
+    FSM_PREV_CHASSIS_UPGRADE_POLL_BRD_CTLR_ACTIVATION = "ChassisUpgradePollBrdCtlrActivation"
+    FSM_PREV_CHASSIS_UPGRADE_POLL_CMC_ACTIVATION = "ChassisUpgradePollCmcActivation"
+    FSM_PREV_CHASSIS_UPGRADE_POLL_LOCAL_DISK_ACTIVATE = "ChassisUpgradePollLocalDiskActivate"
+    FSM_PREV_CHASSIS_UPGRADE_POLL_SAS_EXPANDER_ACTIVATE = "ChassisUpgradePollSasExpanderActivate"
+    FSM_PREV_CHASSIS_UPGRADE_POLL_STORAGE_CTLR_ACTIVATION = "ChassisUpgradePollStorageCtlrActivation"
+    FSM_PREV_CHASSIS_UPGRADE_POLL_UPDATE_STATUS = "ChassisUpgradePollUpdateStatus"
+    FSM_PREV_CHASSIS_UPGRADE_POWER_OFF_SERVERS = "ChassisUpgradePowerOffServers"
+    FSM_PREV_CHASSIS_UPGRADE_POWER_ON_SERVERS = "ChassisUpgradePowerOnServers"
+    FSM_PREV_CHASSIS_UPGRADE_RESET_SAS_EXPANDER = "ChassisUpgradeResetSasExpander"
+    FSM_PREV_CHASSIS_UPGRADE_SUCCESS = "ChassisUpgradeSuccess"
+    FSM_PREV_CHASSIS_UPGRADE_UPDATE_REQUEST = "ChassisUpgradeUpdateRequest"
+    FSM_PREV_CHASSIS_UPGRADE_WAIT_FOR_POWER_OFF = "ChassisUpgradeWaitForPowerOff"
+    FSM_PREV_DISASSOCIATE_BEGIN = "DisassociateBegin"
+    FSM_PREV_DISASSOCIATE_COMPLETE = "DisassociateComplete"
+    FSM_PREV_DISASSOCIATE_FAIL = "DisassociateFail"
+    FSM_PREV_DISASSOCIATE_SUCCESS = "DisassociateSuccess"
     FSM_PREV_DYNAMIC_REALLOCATION_BEGIN = "DynamicReallocationBegin"
     FSM_PREV_DYNAMIC_REALLOCATION_CONFIG = "DynamicReallocationConfig"
     FSM_PREV_DYNAMIC_REALLOCATION_FAIL = "DynamicReallocationFail"
@@ -31,6 +110,7 @@ class EquipmentChassisConsts:
     FSM_PREV_OOB_STORAGE_ADMIN_CFG_BEGIN = "OobStorageAdminCfgBegin"
     FSM_PREV_OOB_STORAGE_ADMIN_CFG_FAIL = "OobStorageAdminCfgFail"
     FSM_PREV_OOB_STORAGE_ADMIN_CFG_OOB_STORAGE_CONFIG = "OobStorageAdminCfgOobStorageConfig"
+    FSM_PREV_OOB_STORAGE_ADMIN_CFG_OOB_STORAGE_INVENTORY = "OobStorageAdminCfgOobStorageInventory"
     FSM_PREV_OOB_STORAGE_ADMIN_CFG_SUCCESS = "OobStorageAdminCfgSuccess"
     FSM_PREV_POWER_CAP_BEGIN = "PowerCapBegin"
     FSM_PREV_POWER_CAP_CONFIG = "PowerCapConfig"
@@ -164,6 +244,7 @@ class EquipmentChassisConsts:
     FSM_RMT_INV_ERR_CODE_ERR_SERVICE_NOT_READY = "ERR-service-not-ready"
     FSM_RMT_INV_ERR_CODE_ERR_SESSION_CACHE_FULL = "ERR-session-cache-full"
     FSM_RMT_INV_ERR_CODE_ERR_SESSION_NOT_FOUND = "ERR-session-not-found"
+    FSM_RMT_INV_ERR_CODE_ERR_SET_MIN_PASSPHRASE_LENGTH = "ERR-set-min-passphrase-length"
     FSM_RMT_INV_ERR_CODE_ERR_SET_NETWORK = "ERR-set-network"
     FSM_RMT_INV_ERR_CODE_ERR_SET_PASSWORD_STRENGTH_CHECK = "ERR-set-password-strength-check"
     FSM_RMT_INV_ERR_CODE_ERR_SET_PORT_CHANNEL = "ERR-set-port-channel"
@@ -181,6 +262,64 @@ class EquipmentChassisConsts:
     FSM_RMT_INV_ERR_CODE_ERR_XML_PARSE_ERROR = "ERR-xml-parse-error"
     FSM_RMT_INV_ERR_CODE_NONE = "none"
     FSM_STAMP_NEVER = "never"
+    FSM_STATUS_ASSOCIATE_ACTIVATE_ADAPTOR = "AssociateActivateAdaptor"
+    FSM_STATUS_ASSOCIATE_ACTIVATE_BRD_CTLR = "AssociateActivateBrdCtlr"
+    FSM_STATUS_ASSOCIATE_ACTIVATE_CMC = "AssociateActivateCmc"
+    FSM_STATUS_ASSOCIATE_ACTIVATE_LOCAL_DISK = "AssociateActivateLocalDisk"
+    FSM_STATUS_ASSOCIATE_ACTIVATE_SAS_EXPANDER = "AssociateActivateSasExpander"
+    FSM_STATUS_ASSOCIATE_ACTIVATE_STORAGE_CTLR = "AssociateActivateStorageCtlr"
+    FSM_STATUS_ASSOCIATE_BEGIN = "AssociateBegin"
+    FSM_STATUS_ASSOCIATE_COPY_REMOTE = "AssociateCopyRemote"
+    FSM_STATUS_ASSOCIATE_DELETE_CURL_DOWNLOADED_IMAGES = "AssociateDeleteCurlDownloadedImages"
+    FSM_STATUS_ASSOCIATE_DELETE_IMAGES_REMOTE = "AssociateDeleteImagesRemote"
+    FSM_STATUS_ASSOCIATE_DISK_ZONING_CONFIG = "AssociateDiskZoningConfig"
+    FSM_STATUS_ASSOCIATE_DOWNLOAD_IMAGES = "AssociateDownloadImages"
+    FSM_STATUS_ASSOCIATE_FAIL = "AssociateFail"
+    FSM_STATUS_ASSOCIATE_POLL_ADAPTOR_ACTIVATION = "AssociatePollAdaptorActivation"
+    FSM_STATUS_ASSOCIATE_POLL_BRD_CTLR_ACTIVATION = "AssociatePollBrdCtlrActivation"
+    FSM_STATUS_ASSOCIATE_POLL_CMC_ACTIVATION = "AssociatePollCmcActivation"
+    FSM_STATUS_ASSOCIATE_POLL_POST_DISK_ZONE_STORAGE_INV_CIMC = "AssociatePollPostDiskZoneStorageInvCIMC"
+    FSM_STATUS_ASSOCIATE_POLL_SAS_EXPANDER_ACTIVATE = "AssociatePollSasExpanderActivate"
+    FSM_STATUS_ASSOCIATE_POLL_STORAGE_CTLR_ACTIVATION = "AssociatePollStorageCtlrActivation"
+    FSM_STATUS_ASSOCIATE_POLL_UPDATE_CMC = "AssociatePollUpdateCmc"
+    FSM_STATUS_ASSOCIATE_POLL_UPDATE_CRUZ = "AssociatePollUpdateCruz"
+    FSM_STATUS_ASSOCIATE_POLL_UPDATE_SAS_EXPANDER = "AssociatePollUpdateSasExpander"
+    FSM_STATUS_ASSOCIATE_POST_DISK_ZONE_STORAGE_INV_CIMC = "AssociatePostDiskZoneStorageInvCIMC"
+    FSM_STATUS_ASSOCIATE_POST_DISK_ZONE_STORAGE_INV_CMC = "AssociatePostDiskZoneStorageInvCMC"
+    FSM_STATUS_ASSOCIATE_POWER_OFF_SERVERS = "AssociatePowerOffServers"
+    FSM_STATUS_ASSOCIATE_POWER_ON_SERVERS = "AssociatePowerOnServers"
+    FSM_STATUS_ASSOCIATE_SUCCESS = "AssociateSuccess"
+    FSM_STATUS_ASSOCIATE_UNLOCK_FIRMWARE_IMAGE = "AssociateUnlockFirmwareImage"
+    FSM_STATUS_ASSOCIATE_UPDATE_CMC = "AssociateUpdateCmc"
+    FSM_STATUS_ASSOCIATE_UPDATE_CRUZ = "AssociateUpdateCruz"
+    FSM_STATUS_ASSOCIATE_UPDATE_SAS_EXPANDER = "AssociateUpdateSasExpander"
+    FSM_STATUS_ASSOCIATE_WAIT_BEFORE_INSTALLATION = "AssociateWaitBeforeInstallation"
+    FSM_STATUS_ASSOCIATE_WAIT_FOR_POWER_OFF = "AssociateWaitForPowerOff"
+    FSM_STATUS_CHASSIS_UPGRADE_ACTIVATE_ADAPTOR = "ChassisUpgradeActivateAdaptor"
+    FSM_STATUS_CHASSIS_UPGRADE_ACTIVATE_BRD_CTLR = "ChassisUpgradeActivateBrdCtlr"
+    FSM_STATUS_CHASSIS_UPGRADE_ACTIVATE_CMC = "ChassisUpgradeActivateCmc"
+    FSM_STATUS_CHASSIS_UPGRADE_ACTIVATE_LOCAL_DISK = "ChassisUpgradeActivateLocalDisk"
+    FSM_STATUS_CHASSIS_UPGRADE_ACTIVATE_SAS_EXPANDER = "ChassisUpgradeActivateSasExpander"
+    FSM_STATUS_CHASSIS_UPGRADE_ACTIVATE_STORAGE_CTLR = "ChassisUpgradeActivateStorageCtlr"
+    FSM_STATUS_CHASSIS_UPGRADE_BEGIN = "ChassisUpgradeBegin"
+    FSM_STATUS_CHASSIS_UPGRADE_FAIL = "ChassisUpgradeFail"
+    FSM_STATUS_CHASSIS_UPGRADE_POLL_ADAPTOR_ACTIVATION = "ChassisUpgradePollAdaptorActivation"
+    FSM_STATUS_CHASSIS_UPGRADE_POLL_BRD_CTLR_ACTIVATION = "ChassisUpgradePollBrdCtlrActivation"
+    FSM_STATUS_CHASSIS_UPGRADE_POLL_CMC_ACTIVATION = "ChassisUpgradePollCmcActivation"
+    FSM_STATUS_CHASSIS_UPGRADE_POLL_LOCAL_DISK_ACTIVATE = "ChassisUpgradePollLocalDiskActivate"
+    FSM_STATUS_CHASSIS_UPGRADE_POLL_SAS_EXPANDER_ACTIVATE = "ChassisUpgradePollSasExpanderActivate"
+    FSM_STATUS_CHASSIS_UPGRADE_POLL_STORAGE_CTLR_ACTIVATION = "ChassisUpgradePollStorageCtlrActivation"
+    FSM_STATUS_CHASSIS_UPGRADE_POLL_UPDATE_STATUS = "ChassisUpgradePollUpdateStatus"
+    FSM_STATUS_CHASSIS_UPGRADE_POWER_OFF_SERVERS = "ChassisUpgradePowerOffServers"
+    FSM_STATUS_CHASSIS_UPGRADE_POWER_ON_SERVERS = "ChassisUpgradePowerOnServers"
+    FSM_STATUS_CHASSIS_UPGRADE_RESET_SAS_EXPANDER = "ChassisUpgradeResetSasExpander"
+    FSM_STATUS_CHASSIS_UPGRADE_SUCCESS = "ChassisUpgradeSuccess"
+    FSM_STATUS_CHASSIS_UPGRADE_UPDATE_REQUEST = "ChassisUpgradeUpdateRequest"
+    FSM_STATUS_CHASSIS_UPGRADE_WAIT_FOR_POWER_OFF = "ChassisUpgradeWaitForPowerOff"
+    FSM_STATUS_DISASSOCIATE_BEGIN = "DisassociateBegin"
+    FSM_STATUS_DISASSOCIATE_COMPLETE = "DisassociateComplete"
+    FSM_STATUS_DISASSOCIATE_FAIL = "DisassociateFail"
+    FSM_STATUS_DISASSOCIATE_SUCCESS = "DisassociateSuccess"
     FSM_STATUS_DYNAMIC_REALLOCATION_BEGIN = "DynamicReallocationBegin"
     FSM_STATUS_DYNAMIC_REALLOCATION_CONFIG = "DynamicReallocationConfig"
     FSM_STATUS_DYNAMIC_REALLOCATION_FAIL = "DynamicReallocationFail"
@@ -188,6 +327,7 @@ class EquipmentChassisConsts:
     FSM_STATUS_OOB_STORAGE_ADMIN_CFG_BEGIN = "OobStorageAdminCfgBegin"
     FSM_STATUS_OOB_STORAGE_ADMIN_CFG_FAIL = "OobStorageAdminCfgFail"
     FSM_STATUS_OOB_STORAGE_ADMIN_CFG_OOB_STORAGE_CONFIG = "OobStorageAdminCfgOobStorageConfig"
+    FSM_STATUS_OOB_STORAGE_ADMIN_CFG_OOB_STORAGE_INVENTORY = "OobStorageAdminCfgOobStorageInventory"
     FSM_STATUS_OOB_STORAGE_ADMIN_CFG_SUCCESS = "OobStorageAdminCfgSuccess"
     FSM_STATUS_POWER_CAP_BEGIN = "PowerCapBegin"
     FSM_STATUS_POWER_CAP_CONFIG = "PowerCapConfig"
@@ -220,6 +360,7 @@ class EquipmentChassisConsts:
     MFG_TIME_NOT_APPLICABLE = "not-applicable"
     OPER_STATE_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     OPER_STATE_AUTO_UPGRADE = "auto-upgrade"
+    OPER_STATE_BACKPLANE_PORT_PROBLEM = "backplane-port-problem"
     OPER_STATE_BIOS_POST_TIMEOUT = "bios-post-timeout"
     OPER_STATE_CHASSIS_LIMIT_EXCEEDED = "chassis-limit-exceeded"
     OPER_STATE_CONFIG = "config"
@@ -250,6 +391,7 @@ class EquipmentChassisConsts:
     OPER_STATE_VOLTAGE_PROBLEM = "voltage-problem"
     OPERABILITY_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     OPERABILITY_AUTO_UPGRADE = "auto-upgrade"
+    OPERABILITY_BACKPLANE_PORT_PROBLEM = "backplane-port-problem"
     OPERABILITY_BIOS_POST_TIMEOUT = "bios-post-timeout"
     OPERABILITY_CHASSIS_LIMIT_EXCEEDED = "chassis-limit-exceeded"
     OPERABILITY_CONFIG = "config"
@@ -290,6 +432,10 @@ class EquipmentChassisConsts:
     PRESENCE_EMPTY = "empty"
     PRESENCE_EQUIPPED = "equipped"
     PRESENCE_EQUIPPED_DEPRECATED = "equipped-deprecated"
+    PRESENCE_EQUIPPED_DISC_ERROR = "equipped-disc-error"
+    PRESENCE_EQUIPPED_DISC_IN_PROGRESS = "equipped-disc-in-progress"
+    PRESENCE_EQUIPPED_DISC_NOT_STARTED = "equipped-disc-not-started"
+    PRESENCE_EQUIPPED_DISC_UNKNOWN = "equipped-disc-unknown"
     PRESENCE_EQUIPPED_IDENTITY_UNESTABLISHABLE = "equipped-identity-unestablishable"
     PRESENCE_EQUIPPED_NOT_PRIMARY = "equipped-not-primary"
     PRESENCE_EQUIPPED_SLAVE = "equipped-slave"
@@ -306,6 +452,7 @@ class EquipmentChassisConsts:
     PRESENCE_UNKNOWN = "unknown"
     SEEPROM_OPER_STATE_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     SEEPROM_OPER_STATE_AUTO_UPGRADE = "auto-upgrade"
+    SEEPROM_OPER_STATE_BACKPLANE_PORT_PROBLEM = "backplane-port-problem"
     SEEPROM_OPER_STATE_BIOS_POST_TIMEOUT = "bios-post-timeout"
     SEEPROM_OPER_STATE_CHASSIS_LIMIT_EXCEEDED = "chassis-limit-exceeded"
     SEEPROM_OPER_STATE_CONFIG = "config"
@@ -334,6 +481,9 @@ class EquipmentChassisConsts:
     SEEPROM_OPER_STATE_UNKNOWN = "unknown"
     SEEPROM_OPER_STATE_UPGRADE_PROBLEM = "upgrade-problem"
     SEEPROM_OPER_STATE_VOLTAGE_PROBLEM = "voltage-problem"
+    SERVICE_STATE_IN_MAINTENANCE = "in-maintenance"
+    SERVICE_STATE_IN_SERVICE = "in-service"
+    SERVICE_STATE_OUT_OF_SERVICE = "out-of-service"
     THERMAL_LOWER_CRITICAL = "lower-critical"
     THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
     THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -355,29 +505,33 @@ class EquipmentChassis(ManagedObject):
     consts = EquipmentChassisConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("EquipmentChassis", "equipmentChassis", "chassis-[id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'topSystem'], [u'computeBlade', u'computeBoardController', u'computeCartridge', u'computePsuControl', u'equipmentBeaconLed', u'equipmentChassisFsm', u'equipmentChassisFsmTask', u'equipmentChassisStats', u'equipmentFanModule', u'equipmentHealthLed', u'equipmentIOCard', u'equipmentIndicatorLed', u'equipmentLocatorLed', u'equipmentPsu', u'equipmentSharedIOModule', u'equipmentSwitchIOCard', u'eventInst', u'fabricLocale', u'faultInst', u'faultSuppressTask', u'firmwareActivity', u'firmwareStatus', u'mgmtController', u'powerBudget', u'storageController', u'vnicRackServerDiscoveryProfile'], ["Get", "Set"])
+    mo_meta = MoMeta("EquipmentChassis", "equipmentChassis", "chassis-[id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'topSystem'], [u'computeBlade', u'computeBoardController', u'computeCartridge', u'computePsuControl', u'equipmentBeaconLed', u'equipmentChassisFsm', u'equipmentChassisFsmTask', u'equipmentChassisStats', u'equipmentFanModule', u'equipmentHealthLed', u'equipmentIOCard', u'equipmentIndicatorLed', u'equipmentLocatorLed', u'equipmentPoolable', u'equipmentPsu', u'equipmentSharedIOModule', u'equipmentSwitchIOCard', u'equipmentSystemIOController', u'eventInst', u'fabricLocale', u'faultInst', u'faultSuppressTask', u'firmwareActivity', u'firmwareImageLock', u'firmwareStatus', u'mgmtController', u'powerBudget', u'sesEnclosure', u'storageController', u'storageEnclosure', u'storageSasExpander', u'storageVirtualDriveContainer', u'vnicRackServerDiscoveryProfile'], ["Get", "Set"])
 
     prop_meta = {
         "ack_progress_indicator": MoPropertyMeta("ack_progress_indicator", "ackProgressIndicator", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ack-in-progress", "ack-not-in-progress"], []), 
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["acknowledged", "auto-acknowledge", "decommission", "disable-port-channel", "enable-port-channel", "re-acknowledge", "remove"], []), 
+        "assigned_to_dn": MoPropertyMeta("assigned_to_dn", "assignedToDn", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "association": MoPropertyMeta("association", "association", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["associated", "establishing", "failed", "none", "removing", "throttled"], []), 
+        "availability": MoPropertyMeta("availability", "availability", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["available", "unavailable"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ack-in-progress", "acknowledged", "auto-ack", "evaluation", "ok", "removing", "un-acknowledged", "un-initialized", "unsupported-connectivity"], []), 
         "conn_path": MoPropertyMeta("conn_path", "connPath", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|A|B),){0,3}(defaultValue|unknown|A|B){0,1}""", [], []), 
         "conn_status": MoPropertyMeta("conn_status", "connStatus", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|A|B),){0,3}(defaultValue|unknown|A|B){0,1}""", [], []), 
+        "discovery": MoPropertyMeta("discovery", "discovery", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["complete", "failed", "fru-identity-indeterminate", "fru-not-ready", "fru-state-indeterminate", "illegal-fru", "in-progress", "insufficiently-equipped", "invalid-adaptor-iocard", "malformed-fru-info", "retry", "throttled", "undiscovered"], []), 
         "discovery_status": MoPropertyMeta("discovery_status", "discoveryStatus", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|A|B),){0,3}(defaultValue|unknown|A|B){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "fabric_ep_dn": MoPropertyMeta("fabric_ep_dn", "fabricEpDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_flags": MoPropertyMeta("fsm_flags", "fsmFlags", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-4294967295"]), 
-        "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["DynamicReallocationBegin", "DynamicReallocationConfig", "DynamicReallocationFail", "DynamicReallocationSuccess", "OobStorageAdminCfgBegin", "OobStorageAdminCfgFail", "OobStorageAdminCfgOobStorageConfig", "OobStorageAdminCfgSuccess", "PowerCapBegin", "PowerCapConfig", "PowerCapFail", "PowerCapSuccess", "PsuPolicyConfigBegin", "PsuPolicyConfigExecute", "PsuPolicyConfigFail", "PsuPolicyConfigSuccess", "RemoveChassisBegin", "RemoveChassisCleanupVnicsLocal", "RemoveChassisCleanupVnicsPeer", "RemoveChassisDecomission", "RemoveChassisDisableEndPoint", "RemoveChassisFail", "RemoveChassisSuccess", "RemoveChassisUnIdentifyLocal", "RemoveChassisUnIdentifyPeer", "RemoveChassisWait", "nop"], []), 
+        "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["AssociateActivateAdaptor", "AssociateActivateBrdCtlr", "AssociateActivateCmc", "AssociateActivateLocalDisk", "AssociateActivateSasExpander", "AssociateActivateStorageCtlr", "AssociateBegin", "AssociateCopyRemote", "AssociateDeleteCurlDownloadedImages", "AssociateDeleteImagesRemote", "AssociateDiskZoningConfig", "AssociateDownloadImages", "AssociateFail", "AssociatePollAdaptorActivation", "AssociatePollBrdCtlrActivation", "AssociatePollCmcActivation", "AssociatePollPostDiskZoneStorageInvCIMC", "AssociatePollSasExpanderActivate", "AssociatePollStorageCtlrActivation", "AssociatePollUpdateCmc", "AssociatePollUpdateCruz", "AssociatePollUpdateSasExpander", "AssociatePostDiskZoneStorageInvCIMC", "AssociatePostDiskZoneStorageInvCMC", "AssociatePowerOffServers", "AssociatePowerOnServers", "AssociateSuccess", "AssociateUnlockFirmwareImage", "AssociateUpdateCmc", "AssociateUpdateCruz", "AssociateUpdateSasExpander", "AssociateWaitBeforeInstallation", "AssociateWaitForPowerOff", "ChassisUpgradeActivateAdaptor", "ChassisUpgradeActivateBrdCtlr", "ChassisUpgradeActivateCmc", "ChassisUpgradeActivateLocalDisk", "ChassisUpgradeActivateSasExpander", "ChassisUpgradeActivateStorageCtlr", "ChassisUpgradeBegin", "ChassisUpgradeFail", "ChassisUpgradePollAdaptorActivation", "ChassisUpgradePollBrdCtlrActivation", "ChassisUpgradePollCmcActivation", "ChassisUpgradePollLocalDiskActivate", "ChassisUpgradePollSasExpanderActivate", "ChassisUpgradePollStorageCtlrActivation", "ChassisUpgradePollUpdateStatus", "ChassisUpgradePowerOffServers", "ChassisUpgradePowerOnServers", "ChassisUpgradeResetSasExpander", "ChassisUpgradeSuccess", "ChassisUpgradeUpdateRequest", "ChassisUpgradeWaitForPowerOff", "DisassociateBegin", "DisassociateComplete", "DisassociateFail", "DisassociateSuccess", "DynamicReallocationBegin", "DynamicReallocationConfig", "DynamicReallocationFail", "DynamicReallocationSuccess", "OobStorageAdminCfgBegin", "OobStorageAdminCfgFail", "OobStorageAdminCfgOobStorageConfig", "OobStorageAdminCfgOobStorageInventory", "OobStorageAdminCfgSuccess", "PowerCapBegin", "PowerCapConfig", "PowerCapFail", "PowerCapSuccess", "PsuPolicyConfigBegin", "PsuPolicyConfigExecute", "PsuPolicyConfigFail", "PsuPolicyConfigSuccess", "RemoveChassisBegin", "RemoveChassisCleanupVnicsLocal", "RemoveChassisCleanupVnicsPeer", "RemoveChassisDecomission", "RemoveChassisDisableEndPoint", "RemoveChassisFail", "RemoveChassisSuccess", "RemoveChassisUnIdentifyLocal", "RemoveChassisUnIdentifyPeer", "RemoveChassisWait", "nop"], []), 
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]), 
-        "fsm_rmt_inv_err_code": MoPropertyMeta("fsm_rmt_inv_err_code", "fsmRmtInvErrCode", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["ERR-2fa-auth-retry", "ERR-ACTIVATE-failed", "ERR-ACTIVATE-in-progress", "ERR-ACTIVATE-retry", "ERR-BIOS-TOKENS-OLD-BIOS", "ERR-BIOS-TOKENS-OLD-CIMC", "ERR-BIOS-network-boot-order-not-found", "ERR-BOARDCTRLUPDATE-ignore", "ERR-DIAG-cancelled", "ERR-DIAG-fsm-restarted", "ERR-DIAG-test-failed", "ERR-DNLD-authentication-failure", "ERR-DNLD-hostkey-mismatch", "ERR-DNLD-invalid-image", "ERR-DNLD-no-file", "ERR-DNLD-no-space", "ERR-DNLD-usb-unmounted", "ERR-DNS-delete-error", "ERR-DNS-get-error", "ERR-DNS-set-error", "ERR-Diagnostics-in-progress", "ERR-Diagnostics-memtest-in-progress", "ERR-Diagnostics-network-in-progress", "ERR-FILTER-illegal-format", "ERR-FSM-no-such-state", "ERR-HOST-fru-identity-mismatch", "ERR-HTTP-set-error", "ERR-HTTPS-set-error", "ERR-IBMC-analyze-results", "ERR-IBMC-connect-error", "ERR-IBMC-connector-info-retrieval-error", "ERR-IBMC-fru-retrieval-error", "ERR-IBMC-invalid-end-point-config", "ERR-IBMC-results-not-ready", "ERR-MAX-subscriptions-allowed-error", "ERR-MO-CONFIG-child-object-cant-be-configured", "ERR-MO-META-no-such-object-class", "ERR-MO-PROPERTY-no-such-property", "ERR-MO-PROPERTY-value-out-of-range", "ERR-MO-access-denied", "ERR-MO-deletion-rule-violation", "ERR-MO-duplicate-object", "ERR-MO-illegal-containment", "ERR-MO-illegal-creation", "ERR-MO-illegal-iterator-state", "ERR-MO-illegal-object-lifecycle-transition", "ERR-MO-naming-rule-violation", "ERR-MO-object-not-found", "ERR-MO-resource-allocation", "ERR-NTP-delete-error", "ERR-NTP-get-error", "ERR-NTP-set-error", "ERR-POWER-CAP-UNSUPPORTED", "ERR-POWER-PROFILE-IN-PROGRESS", "ERR-SERVER-mis-connect", "ERR-SWITCH-invalid-if-config", "ERR-TOKEN-request-denied", "ERR-UNABLE-TO-FETCH-BIOS-SETTINGS", "ERR-UPDATE-failed", "ERR-UPDATE-in-progress", "ERR-UPDATE-retry", "ERR-aaa-config-modify-error", "ERR-acct-realm-set-error", "ERR-admin-passwd-set", "ERR-auth-issue", "ERR-auth-realm-get-error", "ERR-auth-realm-set-error", "ERR-authentication", "ERR-authorization-required", "ERR-cli-session-limit-reached", "ERR-create-keyring", "ERR-create-locale", "ERR-create-role", "ERR-create-tp", "ERR-create-user", "ERR-delete-locale", "ERR-delete-role", "ERR-delete-session", "ERR-delete-user", "ERR-downgrade-fail", "ERR-efi-Diagnostics--in-progress", "ERR-enable-mgmt-conn", "ERR-ep-set-error", "ERR-get-max-http-user-sessions", "ERR-http-initializing", "ERR-insufficiently-equipped", "ERR-internal-error", "ERR-ldap-delete-error", "ERR-ldap-get-error", "ERR-ldap-group-modify-error", "ERR-ldap-group-set-error", "ERR-ldap-set-error", "ERR-locale-set-error", "ERR-max-userid-sessions-reached", "ERR-missing-method", "ERR-modify-locale", "ERR-modify-role", "ERR-modify-user", "ERR-modify-user-locale", "ERR-modify-user-role", "ERR-provider-group-modify-error", "ERR-provider-group-set-error", "ERR-radius-get-error", "ERR-radius-global-set-error", "ERR-radius-group-set-error", "ERR-radius-set-error", "ERR-request-timeout", "ERR-reset-adapter", "ERR-role-set-error", "ERR-secondary-node", "ERR-service-not-ready", "ERR-session-cache-full", "ERR-session-not-found", "ERR-set-network", "ERR-set-password-strength-check", "ERR-set-port-channel", "ERR-store-pre-login-banner-msg", "ERR-tacacs-enable-error", "ERR-tacacs-global-set-error", "ERR-tacacs-group-set-error", "ERR-tacacs-plus-get-error", "ERR-tacacs-set-error", "ERR-test-error-1", "ERR-test-error-2", "ERR-timezone-set-error", "ERR-user-account-expired", "ERR-user-set-error", "ERR-xml-parse-error", "none"], ["0-4294967295"]), 
+        "fsm_rmt_inv_err_code": MoPropertyMeta("fsm_rmt_inv_err_code", "fsmRmtInvErrCode", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["ERR-2fa-auth-retry", "ERR-ACTIVATE-failed", "ERR-ACTIVATE-in-progress", "ERR-ACTIVATE-retry", "ERR-BIOS-TOKENS-OLD-BIOS", "ERR-BIOS-TOKENS-OLD-CIMC", "ERR-BIOS-network-boot-order-not-found", "ERR-BOARDCTRLUPDATE-ignore", "ERR-DIAG-cancelled", "ERR-DIAG-fsm-restarted", "ERR-DIAG-test-failed", "ERR-DNLD-authentication-failure", "ERR-DNLD-hostkey-mismatch", "ERR-DNLD-invalid-image", "ERR-DNLD-no-file", "ERR-DNLD-no-space", "ERR-DNLD-usb-unmounted", "ERR-DNS-delete-error", "ERR-DNS-get-error", "ERR-DNS-set-error", "ERR-Diagnostics-in-progress", "ERR-Diagnostics-memtest-in-progress", "ERR-Diagnostics-network-in-progress", "ERR-FILTER-illegal-format", "ERR-FSM-no-such-state", "ERR-HOST-fru-identity-mismatch", "ERR-HTTP-set-error", "ERR-HTTPS-set-error", "ERR-IBMC-analyze-results", "ERR-IBMC-connect-error", "ERR-IBMC-connector-info-retrieval-error", "ERR-IBMC-fru-retrieval-error", "ERR-IBMC-invalid-end-point-config", "ERR-IBMC-results-not-ready", "ERR-MAX-subscriptions-allowed-error", "ERR-MO-CONFIG-child-object-cant-be-configured", "ERR-MO-META-no-such-object-class", "ERR-MO-PROPERTY-no-such-property", "ERR-MO-PROPERTY-value-out-of-range", "ERR-MO-access-denied", "ERR-MO-deletion-rule-violation", "ERR-MO-duplicate-object", "ERR-MO-illegal-containment", "ERR-MO-illegal-creation", "ERR-MO-illegal-iterator-state", "ERR-MO-illegal-object-lifecycle-transition", "ERR-MO-naming-rule-violation", "ERR-MO-object-not-found", "ERR-MO-resource-allocation", "ERR-NTP-delete-error", "ERR-NTP-get-error", "ERR-NTP-set-error", "ERR-POWER-CAP-UNSUPPORTED", "ERR-POWER-PROFILE-IN-PROGRESS", "ERR-SERVER-mis-connect", "ERR-SWITCH-invalid-if-config", "ERR-TOKEN-request-denied", "ERR-UNABLE-TO-FETCH-BIOS-SETTINGS", "ERR-UPDATE-failed", "ERR-UPDATE-in-progress", "ERR-UPDATE-retry", "ERR-aaa-config-modify-error", "ERR-acct-realm-set-error", "ERR-admin-passwd-set", "ERR-auth-issue", "ERR-auth-realm-get-error", "ERR-auth-realm-set-error", "ERR-authentication", "ERR-authorization-required", "ERR-cli-session-limit-reached", "ERR-create-keyring", "ERR-create-locale", "ERR-create-role", "ERR-create-tp", "ERR-create-user", "ERR-delete-locale", "ERR-delete-role", "ERR-delete-session", "ERR-delete-user", "ERR-downgrade-fail", "ERR-efi-Diagnostics--in-progress", "ERR-enable-mgmt-conn", "ERR-ep-set-error", "ERR-get-max-http-user-sessions", "ERR-http-initializing", "ERR-insufficiently-equipped", "ERR-internal-error", "ERR-ldap-delete-error", "ERR-ldap-get-error", "ERR-ldap-group-modify-error", "ERR-ldap-group-set-error", "ERR-ldap-set-error", "ERR-locale-set-error", "ERR-max-userid-sessions-reached", "ERR-missing-method", "ERR-modify-locale", "ERR-modify-role", "ERR-modify-user", "ERR-modify-user-locale", "ERR-modify-user-role", "ERR-provider-group-modify-error", "ERR-provider-group-set-error", "ERR-radius-get-error", "ERR-radius-global-set-error", "ERR-radius-group-set-error", "ERR-radius-set-error", "ERR-request-timeout", "ERR-reset-adapter", "ERR-role-set-error", "ERR-secondary-node", "ERR-service-not-ready", "ERR-session-cache-full", "ERR-session-not-found", "ERR-set-min-passphrase-length", "ERR-set-network", "ERR-set-password-strength-check", "ERR-set-port-channel", "ERR-store-pre-login-banner-msg", "ERR-tacacs-enable-error", "ERR-tacacs-global-set-error", "ERR-tacacs-group-set-error", "ERR-tacacs-plus-get-error", "ERR-tacacs-set-error", "ERR-test-error-1", "ERR-test-error-2", "ERR-timezone-set-error", "ERR-user-account-expired", "ERR-user-set-error", "ERR-xml-parse-error", "none"], ["0-4294967295"]), 
         "fsm_rmt_inv_err_descr": MoPropertyMeta("fsm_rmt_inv_err_descr", "fsmRmtInvErrDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, 0, 510, None, [], []), 
         "fsm_rmt_inv_rslt": MoPropertyMeta("fsm_rmt_inv_rslt", "fsmRmtInvRslt", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, r"""((defaultValue|not-applicable|resource-unavailable|service-unavailable|intermittent-error|sw-defect|service-not-implemented-ignore|extend-timeout|capability-not-implemented-failure|illegal-fru|end-point-unavailable|failure|resource-capacity-exceeded|service-protocol-error|fw-defect|service-not-implemented-fail|task-reset|unidentified-fail|capability-not-supported|end-point-failed|fru-state-indeterminate|resource-dependency|fru-identity-indeterminate|internal-error|hw-defect|service-not-supported|fru-not-supported|end-point-protocol-error|capability-unavailable|fru-not-ready|capability-not-implemented-ignore|fru-info-malformed|timeout),){0,32}(defaultValue|not-applicable|resource-unavailable|service-unavailable|intermittent-error|sw-defect|service-not-implemented-ignore|extend-timeout|capability-not-implemented-failure|illegal-fru|end-point-unavailable|failure|resource-capacity-exceeded|service-protocol-error|fw-defect|service-not-implemented-fail|task-reset|unidentified-fail|capability-not-supported|end-point-failed|fru-state-indeterminate|resource-dependency|fru-identity-indeterminate|internal-error|hw-defect|service-not-supported|fru-not-supported|end-point-protocol-error|capability-unavailable|fru-not-ready|capability-not-implemented-ignore|fru-info-malformed|timeout){0,1}""", [], []), 
         "fsm_stage_descr": MoPropertyMeta("fsm_stage_descr", "fsmStageDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_stamp": MoPropertyMeta("fsm_stamp", "fsmStamp", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []), 
-        "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["DynamicReallocationBegin", "DynamicReallocationConfig", "DynamicReallocationFail", "DynamicReallocationSuccess", "OobStorageAdminCfgBegin", "OobStorageAdminCfgFail", "OobStorageAdminCfgOobStorageConfig", "OobStorageAdminCfgSuccess", "PowerCapBegin", "PowerCapConfig", "PowerCapFail", "PowerCapSuccess", "PsuPolicyConfigBegin", "PsuPolicyConfigExecute", "PsuPolicyConfigFail", "PsuPolicyConfigSuccess", "RemoveChassisBegin", "RemoveChassisCleanupVnicsLocal", "RemoveChassisCleanupVnicsPeer", "RemoveChassisDecomission", "RemoveChassisDisableEndPoint", "RemoveChassisFail", "RemoveChassisSuccess", "RemoveChassisUnIdentifyLocal", "RemoveChassisUnIdentifyPeer", "RemoveChassisWait", "nop"], []), 
+        "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["AssociateActivateAdaptor", "AssociateActivateBrdCtlr", "AssociateActivateCmc", "AssociateActivateLocalDisk", "AssociateActivateSasExpander", "AssociateActivateStorageCtlr", "AssociateBegin", "AssociateCopyRemote", "AssociateDeleteCurlDownloadedImages", "AssociateDeleteImagesRemote", "AssociateDiskZoningConfig", "AssociateDownloadImages", "AssociateFail", "AssociatePollAdaptorActivation", "AssociatePollBrdCtlrActivation", "AssociatePollCmcActivation", "AssociatePollPostDiskZoneStorageInvCIMC", "AssociatePollSasExpanderActivate", "AssociatePollStorageCtlrActivation", "AssociatePollUpdateCmc", "AssociatePollUpdateCruz", "AssociatePollUpdateSasExpander", "AssociatePostDiskZoneStorageInvCIMC", "AssociatePostDiskZoneStorageInvCMC", "AssociatePowerOffServers", "AssociatePowerOnServers", "AssociateSuccess", "AssociateUnlockFirmwareImage", "AssociateUpdateCmc", "AssociateUpdateCruz", "AssociateUpdateSasExpander", "AssociateWaitBeforeInstallation", "AssociateWaitForPowerOff", "ChassisUpgradeActivateAdaptor", "ChassisUpgradeActivateBrdCtlr", "ChassisUpgradeActivateCmc", "ChassisUpgradeActivateLocalDisk", "ChassisUpgradeActivateSasExpander", "ChassisUpgradeActivateStorageCtlr", "ChassisUpgradeBegin", "ChassisUpgradeFail", "ChassisUpgradePollAdaptorActivation", "ChassisUpgradePollBrdCtlrActivation", "ChassisUpgradePollCmcActivation", "ChassisUpgradePollLocalDiskActivate", "ChassisUpgradePollSasExpanderActivate", "ChassisUpgradePollStorageCtlrActivation", "ChassisUpgradePollUpdateStatus", "ChassisUpgradePowerOffServers", "ChassisUpgradePowerOnServers", "ChassisUpgradeResetSasExpander", "ChassisUpgradeSuccess", "ChassisUpgradeUpdateRequest", "ChassisUpgradeWaitForPowerOff", "DisassociateBegin", "DisassociateComplete", "DisassociateFail", "DisassociateSuccess", "DynamicReallocationBegin", "DynamicReallocationConfig", "DynamicReallocationFail", "DynamicReallocationSuccess", "OobStorageAdminCfgBegin", "OobStorageAdminCfgFail", "OobStorageAdminCfgOobStorageConfig", "OobStorageAdminCfgOobStorageInventory", "OobStorageAdminCfgSuccess", "PowerCapBegin", "PowerCapConfig", "PowerCapFail", "PowerCapSuccess", "PsuPolicyConfigBegin", "PsuPolicyConfigExecute", "PsuPolicyConfigFail", "PsuPolicyConfigSuccess", "RemoveChassisBegin", "RemoveChassisCleanupVnicsLocal", "RemoveChassisCleanupVnicsPeer", "RemoveChassisDecomission", "RemoveChassisDisableEndPoint", "RemoveChassisFail", "RemoveChassisSuccess", "RemoveChassisUnIdentifyLocal", "RemoveChassisUnIdentifyPeer", "RemoveChassisWait", "nop"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, None, None, None, [], ["1-255"]), 
         "lc_ts": MoPropertyMeta("lc_ts", "lcTs", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
@@ -386,18 +540,19 @@ class EquipmentChassis(ManagedObject):
         "managing_inst": MoPropertyMeta("managing_inst", "managingInst", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
         "mfg_time": MoPropertyMeta("mfg_time", "mfgTime", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["not-applicable"], []), 
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "oper_qualifier": MoPropertyMeta("oper_qualifier", "operQualifier", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|not-applicable|psu-voltage|iocard-voltage|fabric-unsupported-conn|chassis-post-failure|fan-power|compute-power|fan-inoperable|compute-inoperable|chassis-power|chassis-unsupported|chassis-thermal|psu-perf|iocard-perf|chassis-limit-exceeded|psu-thermal|iocard-thermal|iocard-inaccessible|chassis-inoperable|fan-voltage|removed|compute-voltage|psu-power|iocard-power|chassis-vif-capacity-reduced|chassis-voltage|psu-inoperable|iocard-inoperable|fabric-conn-problem|config|fan-perf|compute-perf|fan-thermal|compute-thermal|chassis-port-channel-enabled|chassis-perf),){0,36}(defaultValue|not-applicable|psu-voltage|iocard-voltage|fabric-unsupported-conn|chassis-post-failure|fan-power|compute-power|fan-inoperable|compute-inoperable|chassis-power|chassis-unsupported|chassis-thermal|psu-perf|iocard-perf|chassis-limit-exceeded|psu-thermal|iocard-thermal|iocard-inaccessible|chassis-inoperable|fan-voltage|removed|compute-voltage|psu-power|iocard-power|chassis-vif-capacity-reduced|chassis-voltage|psu-inoperable|iocard-inoperable|fabric-conn-problem|config|fan-perf|compute-perf|fan-thermal|compute-thermal|chassis-port-channel-enabled|chassis-perf){0,1}""", [], []), 
+        "oper_qualifier": MoPropertyMeta("oper_qualifier", "operQualifier", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|not-applicable|psu-voltage|iocard-voltage|fabric-unsupported-conn|chassis-post-failure|fan-power|compute-power|fan-inoperable|compute-inoperable|chassis-power|chassis-unsupported|chassis-thermal|psu-perf|iocard-perf|chassis-limit-exceeded|psu-thermal|iocard-thermal|iocard-inaccessible|chassis-inoperable|fan-voltage|removed|compute-voltage|backplane-port-problem|psu-power|iocard-power|chassis-vif-capacity-reduced|chassis-voltage|psu-inoperable|iocard-inoperable|fabric-conn-problem|config|fan-perf|compute-perf|fan-thermal|compute-thermal|chassis-port-channel-enabled|chassis-perf),){0,37}(defaultValue|not-applicable|psu-voltage|iocard-voltage|fabric-unsupported-conn|chassis-post-failure|fan-power|compute-power|fan-inoperable|compute-inoperable|chassis-power|chassis-unsupported|chassis-thermal|psu-perf|iocard-perf|chassis-limit-exceeded|psu-thermal|iocard-thermal|iocard-inaccessible|chassis-inoperable|fan-voltage|removed|compute-voltage|backplane-port-problem|psu-power|iocard-power|chassis-vif-capacity-reduced|chassis-voltage|psu-inoperable|iocard-inoperable|fabric-conn-problem|config|fan-perf|compute-perf|fan-thermal|compute-thermal|chassis-port-channel-enabled|chassis-perf){0,1}""", [], []), 
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
-        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
+        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
         "part_number": MoPropertyMeta("part_number", "partNumber", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "power": MoPropertyMeta("power", "power", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["failed", "input-degraded", "input-failed", "ok", "output-degraded", "output-failed", "redundancy-degraded", "redundancy-failed", "unknown"], []), 
-        "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
+        "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "seeprom_oper_state": MoPropertyMeta("seeprom_oper_state", "seepromOperState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
+        "seeprom_oper_state": MoPropertyMeta("seeprom_oper_state", "seepromOperState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "service_state": MoPropertyMeta("service_state", "serviceState", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["in-maintenance", "in-service", "out-of-service"], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
         "thermal_state_qualifier": MoPropertyMeta("thermal_state_qualifier", "thermalStateQualifier", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
@@ -410,10 +565,14 @@ class EquipmentChassis(ManagedObject):
     prop_map = {
         "ackProgressIndicator": "ack_progress_indicator", 
         "adminState": "admin_state", 
+        "assignedToDn": "assigned_to_dn", 
+        "association": "association", 
+        "availability": "availability", 
         "childAction": "child_action", 
         "configState": "config_state", 
         "connPath": "conn_path", 
         "connStatus": "conn_status", 
+        "discovery": "discovery", 
         "discoveryStatus": "discovery_status", 
         "dn": "dn", 
         "fabricEpDn": "fabric_ep_dn", 
@@ -448,6 +607,7 @@ class EquipmentChassis(ManagedObject):
         "sacl": "sacl", 
         "seepromOperState": "seeprom_oper_state", 
         "serial": "serial", 
+        "serviceState": "service_state", 
         "status": "status", 
         "thermal": "thermal", 
         "thermalStateQualifier": "thermal_state_qualifier", 
@@ -462,10 +622,14 @@ class EquipmentChassis(ManagedObject):
         self.id = id
         self.ack_progress_indicator = None
         self.admin_state = None
+        self.assigned_to_dn = None
+        self.association = None
+        self.availability = None
         self.child_action = None
         self.config_state = None
         self.conn_path = None
         self.conn_status = None
+        self.discovery = None
         self.discovery_status = None
         self.fabric_ep_dn = None
         self.flt_aggr = None
@@ -497,6 +661,7 @@ class EquipmentChassis(ManagedObject):
         self.sacl = None
         self.seeprom_oper_state = None
         self.serial = None
+        self.service_state = None
         self.status = None
         self.thermal = None
         self.thermal_state_qualifier = None

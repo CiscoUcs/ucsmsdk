@@ -7,9 +7,11 @@ from ...ucsmeta import VersionMeta
 
 class LstorageVirtualDriveDefConsts:
     ACCESS_POLICY_BLOCKED = "blocked"
+    ACCESS_POLICY_HIDDEN = "hidden"
     ACCESS_POLICY_PLATFORM_DEFAULT = "platform-default"
     ACCESS_POLICY_READ_ONLY = "read-only"
     ACCESS_POLICY_READ_WRITE = "read-write"
+    ACCESS_POLICY_TRANSPORT_READY = "transport-ready"
     ACCESS_POLICY_UNKNOWN = "unknown"
     DRIVE_CACHE_DISABLE = "disable"
     DRIVE_CACHE_ENABLE = "enable"
@@ -50,7 +52,7 @@ class LstorageVirtualDriveDef(ManagedObject):
     mo_meta = MoMeta("LstorageVirtualDriveDef", "lstorageVirtualDriveDef", "virtual-drive-def", VersionMeta.Version224a, "InputOutput", 0x7ff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageDiskGroupConfigDef', u'lstorageDiskGroupConfigPolicy'], [], ["Get", "Set"])
 
     prop_meta = {
-        "access_policy": MoPropertyMeta("access_policy", "accessPolicy", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["blocked", "platform-default", "read-only", "read-write", "unknown"], []), 
+        "access_policy": MoPropertyMeta("access_policy", "accessPolicy", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["blocked", "hidden", "platform-default", "read-only", "read-write", "transport-ready", "unknown"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224a, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "drive_cache": MoPropertyMeta("drive_cache", "driveCache", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["disable", "enable", "no-change", "platform-default", "unknown"], []), 

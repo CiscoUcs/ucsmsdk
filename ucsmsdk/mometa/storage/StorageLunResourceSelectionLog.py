@@ -21,6 +21,7 @@ class StorageLunResourceSelectionLogConsts:
     DECISION_TYPE_VERIFY_LUN_CONFIG = "verify-lun-config"
     DECISION_TYPE_VERIFY_RAID_CONFIG = "verify-raid-config"
     DECISION_TYPE_VERIFY_RESOURCES = "verify-resources"
+    DECISION_TYPE_VERIFY_STRIP_SIZE_CONFIG = "verify-strip-size-config"
     DECISION_TYPE_VERIFY_VIRTUAL_DRIVE_CONFIG = "verify-virtual-drive-config"
     RESULT_FAILED = "failed"
     RESULT_SUCCEEDED = "succeeded"
@@ -37,7 +38,7 @@ class StorageLunResourceSelectionLog(ManagedObject):
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "decision_type": MoPropertyMeta("decision_type", "decisionType", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["affinity", "dedicated-hot-spare", "global-hot-spare", "normal-disk", "select-lun", "share-disk-group", "unspecified", "use-remaining-disk", "use-remaining-space", "verify-controller-config", "verify-disk-config", "verify-diskgroup-config", "verify-lun-config", "verify-raid-config", "verify-resources", "verify-virtual-drive-config"], []), 
+        "decision_type": MoPropertyMeta("decision_type", "decisionType", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["affinity", "dedicated-hot-spare", "global-hot-spare", "normal-disk", "select-lun", "share-disk-group", "unspecified", "use-remaining-disk", "use-remaining-space", "verify-controller-config", "verify-disk-config", "verify-diskgroup-config", "verify-lun-config", "verify-raid-config", "verify-resources", "verify-strip-size-config", "verify-virtual-drive-config"], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version224a, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []), 

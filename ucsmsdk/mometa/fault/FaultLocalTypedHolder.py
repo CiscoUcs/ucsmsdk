@@ -7,6 +7,7 @@ from ...ucsmeta import VersionMeta
 
 class FaultLocalTypedHolderConsts:
     TYPE_ANY = "any"
+    TYPE_CHASSIS_PROFILE = "chassis-profile"
     TYPE_CONFIGURATION = "configuration"
     TYPE_CONNECTIVITY = "connectivity"
     TYPE_ENVIRONMENTAL = "environmental"
@@ -38,7 +39,7 @@ class FaultLocalTypedHolder(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "total_faults": MoPropertyMeta("total_faults", "totalFaults", "ulong", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x20, None, None, None, ["any", "configuration", "connectivity", "environmental", "equipment", "forward", "fsm", "generic", "management", "network", "operational", "security", "server", "sysdebug"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x20, None, None, None, ["any", "chassis-profile", "configuration", "connectivity", "environmental", "equipment", "forward", "fsm", "generic", "management", "network", "operational", "security", "server", "sysdebug"], []), 
     }
 
     prop_map = {

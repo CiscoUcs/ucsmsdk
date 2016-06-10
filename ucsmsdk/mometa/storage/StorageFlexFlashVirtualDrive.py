@@ -15,6 +15,7 @@ class StorageFlexFlashVirtualDriveConsts:
     NUMBER_OF_BLOCKS_UNKNOWN = "unknown"
     OPERABILITY_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     OPERABILITY_AUTO_UPGRADE = "auto-upgrade"
+    OPERABILITY_BACKPLANE_PORT_PROBLEM = "backplane-port-problem"
     OPERABILITY_BIOS_POST_TIMEOUT = "bios-post-timeout"
     OPERABILITY_CHASSIS_LIMIT_EXCEEDED = "chassis-limit-exceeded"
     OPERABILITY_CONFIG = "config"
@@ -43,9 +44,14 @@ class StorageFlexFlashVirtualDriveConsts:
     OPERABILITY_UNKNOWN = "unknown"
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
+    PHYSICAL_BLOCK_SIZE_UNKNOWN = "unknown"
     PRESENCE_EMPTY = "empty"
     PRESENCE_EQUIPPED = "equipped"
     PRESENCE_EQUIPPED_DEPRECATED = "equipped-deprecated"
+    PRESENCE_EQUIPPED_DISC_ERROR = "equipped-disc-error"
+    PRESENCE_EQUIPPED_DISC_IN_PROGRESS = "equipped-disc-in-progress"
+    PRESENCE_EQUIPPED_DISC_NOT_STARTED = "equipped-disc-not-started"
+    PRESENCE_EQUIPPED_DISC_UNKNOWN = "equipped-disc-unknown"
     PRESENCE_EQUIPPED_IDENTITY_UNESTABLISHABLE = "equipped-identity-unestablishable"
     PRESENCE_EQUIPPED_NOT_PRIMARY = "equipped-not-primary"
     PRESENCE_EQUIPPED_SLAVE = "equipped-slave"
@@ -70,6 +76,8 @@ class StorageFlexFlashVirtualDriveConsts:
     RAID_STATE_FFR_STATE_ENABLED_PAIRED_INVALID_BOTH = "FFR_STATE_ENABLED_PAIRED_INVALID_BOTH"
     RAID_STATE_FFR_STATE_ENABLED_PAIRED_INVALID_PRIMARY = "FFR_STATE_ENABLED_PAIRED_INVALID_PRIMARY"
     RAID_STATE_FFR_STATE_ENABLED_PAIRED_INVALID_SECONDARY = "FFR_STATE_ENABLED_PAIRED_INVALID_SECONDARY"
+    RAID_STATE_FFR_STATE_RAID_MIRRORING_DISABLED = "FFR_STATE_RAID_MIRRORING_DISABLED"
+    SIZE_NOT_APPLICABLE = "not-applicable"
     TYPE_MIRROR = "mirror"
     TYPE_MIRROR_STRIPE = "mirror-stripe"
     TYPE_RAID = "raid"
@@ -99,15 +107,16 @@ class StorageFlexFlashVirtualDrive(ManagedObject):
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "number_of_blocks": MoPropertyMeta("number_of_blocks", "numberOfBlocks", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unknown"], ["0-4294967295"]), 
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
-        "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
+        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
+        "physical_block_size": MoPropertyMeta("physical_block_size", "physicalBlockSize", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unknown"], ["0-4294967295"]), 
+        "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
         "raid_health": MoPropertyMeta("raid_health", "raidHealth", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FFR_HEALTH_DEGRADED", "FFR_HEALTH_NA", "FFR_HEALTH_NOT_REPORTING", "FFR_HEALTH_OK"], []), 
-        "raid_state": MoPropertyMeta("raid_state", "raidState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FFR_STATE_DISABLED", "FFR_STATE_ENABLED_NOT_PAIRED", "FFR_STATE_ENABLED_PAIRED", "FFR_STATE_ENABLED_PAIRED_INVALID_BOTH", "FFR_STATE_ENABLED_PAIRED_INVALID_PRIMARY", "FFR_STATE_ENABLED_PAIRED_INVALID_SECONDARY"], []), 
+        "raid_state": MoPropertyMeta("raid_state", "raidState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FFR_STATE_DISABLED", "FFR_STATE_ENABLED_NOT_PAIRED", "FFR_STATE_ENABLED_PAIRED", "FFR_STATE_ENABLED_PAIRED_INVALID_BOTH", "FFR_STATE_ENABLED_PAIRED_INVALID_PRIMARY", "FFR_STATE_ENABLED_PAIRED_INVALID_SECONDARY", "FFR_STATE_RAID_MIRRORING_DISABLED"], []), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "size": MoPropertyMeta("size", "size", "ulong", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "size": MoPropertyMeta("size", "size", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["mirror", "mirror-stripe", "raid", "simple", "stripe", "stripe-dual-parity", "stripe-dual-parity-stripe", "stripe-parity", "stripe-parity-stripe", "unspecified"], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
@@ -123,6 +132,7 @@ class StorageFlexFlashVirtualDrive(ManagedObject):
         "numberOfBlocks": "number_of_blocks", 
         "operQualifierReason": "oper_qualifier_reason", 
         "operability": "operability", 
+        "physicalBlockSize": "physical_block_size", 
         "presence": "presence", 
         "raidHealth": "raid_health", 
         "raidState": "raid_state", 
@@ -146,6 +156,7 @@ class StorageFlexFlashVirtualDrive(ManagedObject):
         self.number_of_blocks = None
         self.oper_qualifier_reason = None
         self.operability = None
+        self.physical_block_size = None
         self.presence = None
         self.raid_health = None
         self.raid_state = None

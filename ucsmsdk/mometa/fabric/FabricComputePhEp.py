@@ -111,6 +111,7 @@ class FabricComputePhEp(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x200, 1, 510, None, [], []), 
         "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-4"]), 
+        "slot_span": MoPropertyMeta("slot_span", "slotSpan", "ushort", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
@@ -154,6 +155,7 @@ class FabricComputePhEp(ManagedObject):
         "sacl": "sacl", 
         "serial": "serial", 
         "slotId": "slot_id", 
+        "slotSpan": "slot_span", 
         "status": "status", 
         "switchId": "switch_id", 
         "transport": "transport", 
@@ -197,6 +199,7 @@ class FabricComputePhEp(ManagedObject):
         self.revision = None
         self.sacl = None
         self.slot_id = None
+        self.slot_span = None
         self.status = None
         self.switch_id = None
         self.transport = None

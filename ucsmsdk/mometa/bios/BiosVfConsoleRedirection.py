@@ -16,6 +16,7 @@ class BiosVfConsoleRedirectionConsts:
     VP_BAUD_RATE_PLATFORM_DEFAULT = "platform-default"
     VP_BAUD_RATE_PLATFORM_RECOMMENDED = "platform-recommended"
     VP_CONSOLE_REDIRECTION_COM_0 = "com-0"
+    VP_CONSOLE_REDIRECTION_COM_1 = "com-1"
     VP_CONSOLE_REDIRECTION_DISABLED = "disabled"
     VP_CONSOLE_REDIRECTION_ENABLED = "enabled"
     VP_CONSOLE_REDIRECTION_PLATFORM_DEFAULT = "platform-default"
@@ -65,7 +66,7 @@ class BiosVfConsoleRedirection(ManagedObject):
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "supported_by_default": MoPropertyMeta("supported_by_default", "supportedByDefault", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []), 
         "vp_baud_rate": MoPropertyMeta("vp_baud_rate", "vpBaudRate", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["115200", "19200", "38400", "57600", "9600", "platform-default", "platform-recommended"], []), 
-        "vp_console_redirection": MoPropertyMeta("vp_console_redirection", "vpConsoleRedirection", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["com-0", "disabled", "enabled", "platform-default", "platform-recommended", "serial-port-a", "serial-port-b"], []), 
+        "vp_console_redirection": MoPropertyMeta("vp_console_redirection", "vpConsoleRedirection", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["com-0", "com-1", "disabled", "enabled", "platform-default", "platform-recommended", "serial-port-a", "serial-port-b"], []), 
         "vp_flow_control": MoPropertyMeta("vp_flow_control", "vpFlowControl", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["none", "platform-default", "platform-recommended", "rts-cts"], []), 
         "vp_legacy_os_redirection": MoPropertyMeta("vp_legacy_os_redirection", "vpLegacyOSRedirection", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["80x24", "80x25", "disabled", "enabled", "platform-default", "platform-recommended"], []), 
         "vp_putty_key_pad": MoPropertyMeta("vp_putty_key_pad", "vpPuttyKeyPad", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["escn", "linux", "platform-default", "platform-recommended", "sco", "vt100", "vt400", "xtermr6"], []), 

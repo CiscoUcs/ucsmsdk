@@ -24,22 +24,22 @@ class FabricLanCloudPolicy(ManagedObject):
     consts = FabricLanCloudPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FabricLanCloudPolicy", "fabricLanCloudPolicy", "lan-policy", VersionMeta.Version311e, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'orgOrg'], [], [None])
+    mo_meta = MoMeta("FabricLanCloudPolicy", "fabricLanCloudPolicy", "lan-policy", VersionMeta.Version227b, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'orgOrg'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version311e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version311e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
-        "mac_aging": MoPropertyMeta("mac_aging", "macAging", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[0-9]{1,7}|(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["mode-default", "never"], ["0-4294967295"]), 
-        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["end-host", "switch"], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["local", "pending-policy", "policy"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
+        "mac_aging": MoPropertyMeta("mac_aging", "macAging", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[0-9]{1,7}|(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["mode-default", "never"], ["0-4294967295"]), 
+        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["end-host", "switch"], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "vlan_compression": MoPropertyMeta("vlan_compression", "vlanCompression", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["disabled", "enabled"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "vlan_compression": MoPropertyMeta("vlan_compression", "vlanCompression", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["disabled", "enabled"], []), 
     }
 
     prop_map = {

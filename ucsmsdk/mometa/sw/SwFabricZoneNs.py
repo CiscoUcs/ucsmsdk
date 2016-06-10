@@ -11,6 +11,8 @@ class SwFabricZoneNsConsts:
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
+    USER_ZONE_ALLOC_STATUS_AVAILABLE = "available"
+    USER_ZONE_ALLOC_STATUS_FULL = "full"
 
 
 class SwFabricZoneNs(ManagedObject):
@@ -30,6 +32,9 @@ class SwFabricZoneNs(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
+        "user_zone_alloc_status": MoPropertyMeta("user_zone_alloc_status", "userZoneAllocStatus", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["available", "full"], []), 
+        "user_zone_count": MoPropertyMeta("user_zone_count", "userZoneCount", "uint", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "user_zone_limit": MoPropertyMeta("user_zone_limit", "userZoneLimit", "uint", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "zone_count": MoPropertyMeta("zone_count", "zoneCount", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
     }
 
@@ -42,6 +47,9 @@ class SwFabricZoneNs(ManagedObject):
         "sacl": "sacl", 
         "status": "status", 
         "switchId": "switch_id", 
+        "userZoneAllocStatus": "user_zone_alloc_status", 
+        "userZoneCount": "user_zone_count", 
+        "userZoneLimit": "user_zone_limit", 
         "zoneCount": "zone_count", 
     }
 
@@ -53,6 +61,9 @@ class SwFabricZoneNs(ManagedObject):
         self.sacl = None
         self.status = None
         self.switch_id = None
+        self.user_zone_alloc_status = None
+        self.user_zone_count = None
+        self.user_zone_limit = None
         self.zone_count = None
 
         ManagedObject.__init__(self, "SwFabricZoneNs", parent_mo_or_dn, **kwargs)

@@ -13,6 +13,8 @@ class FirmwarePackItemConsts:
     TYPE_BLADE_BIOS = "blade-bios"
     TYPE_BLADE_CONTROLLER = "blade-controller"
     TYPE_BOARD_CONTROLLER = "board-controller"
+    TYPE_CHASSIS_BOARD_CONTROLLER = "chassis-board-controller"
+    TYPE_CMC = "cmc"
     TYPE_FLEXFLASH_CONTROLLER = "flexflash-controller"
     TYPE_GRAPHICS_CARD = "graphics-card"
     TYPE_HOST_HBA = "host-hba"
@@ -22,8 +24,12 @@ class FirmwarePackItemConsts:
     TYPE_IOCARD = "iocard"
     TYPE_LOCAL_DISK = "local-disk"
     TYPE_PSU = "psu"
+    TYPE_SAS_EXP_REG_FW = "sas-exp-reg-fw"
     TYPE_SAS_EXPANDER = "sas-expander"
     TYPE_STORAGE_CONTROLLER = "storage-controller"
+    TYPE_STORAGE_CONTROLLER_ONBOARD_DEVICE = "storage-controller-onboard-device"
+    TYPE_STORAGE_CONTROLLER_ONBOARD_DEVICE_CPLD = "storage-controller-onboard-device-cpld"
+    TYPE_STORAGE_DEV_BRIDGE = "storage-dev-bridge"
     TYPE_STORAGE_NODE_CONTROLLER = "storage-node-controller"
     TYPE_SWITCH_KERNEL = "switch-kernel"
     TYPE_SWITCH_SOFTWARE = "switch-software"
@@ -37,7 +43,7 @@ class FirmwarePackItem(ManagedObject):
     consts = FirmwarePackItemConsts()
     naming_props = set([u'hwVendor', u'hwModel', u'type'])
 
-    mo_meta = MoMeta("FirmwarePackItem", "firmwarePackItem", "pack-image-[hw_vendor]|[hw_model]|[type]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin"], [u'firmwareCatalogPack', u'firmwareComputeHostPack', u'firmwareComputeMgmtPack', u'firmwareInfraPack'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FirmwarePackItem", "firmwarePackItem", "pack-image-[hw_vendor]|[hw_model]|[type]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin"], [u'firmwareCatalogPack', u'firmwareChassisPack', u'firmwareComputeHostPack', u'firmwareComputeMgmtPack', u'firmwareInfraPack'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
@@ -48,7 +54,7 @@ class FirmwarePackItem(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "iocard", "local-disk", "psu", "sas-expander", "storage-controller", "storage-node-controller", "switch-kernel", "switch-software", "system", "unspecified"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "chassis-board-controller", "cmc", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "iocard", "local-disk", "psu", "sas-exp-reg-fw", "sas-expander", "storage-controller", "storage-controller-onboard-device", "storage-controller-onboard-device-cpld", "storage-dev-bridge", "storage-node-controller", "switch-kernel", "switch-software", "system", "unspecified"], []), 
         "version": MoPropertyMeta("version", "version", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, 0, 510, None, [], []), 
     }
 

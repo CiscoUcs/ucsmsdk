@@ -7,6 +7,10 @@ from ...ucsmeta import VersionMeta
 
 class EquipmentStorageControllerConfigConsts:
     INT_ID_NONE = "none"
+    PNUOS_SUPPORTED_FALSE = "false"
+    PNUOS_SUPPORTED_NO = "no"
+    PNUOS_SUPPORTED_TRUE = "true"
+    PNUOS_SUPPORTED_YES = "yes"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
@@ -19,7 +23,7 @@ class EquipmentStorageControllerConfig(ManagedObject):
     consts = EquipmentStorageControllerConfigConsts()
     naming_props = set([u'vendor', u'device', u'subvendor', u'subdevice'])
 
-    mo_meta = MoMeta("EquipmentStorageControllerConfig", "equipmentStorageControllerConfig", "ven-[vendor]-dev-[device]-subven-[subvendor]-subdev-[subdevice]", VersionMeta.Version225a, "InputOutput", 0xfff, [], [""], [u'diagSrvCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentSwitchCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentStorageControllerConfig", "equipmentStorageControllerConfig", "ven-[vendor]-dev-[device]-subven-[subvendor]-subdev-[subdevice]", VersionMeta.Version225a, "InputOutput", 0xfff, [], [""], [u'diagSrvCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentIOExpanderCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentStorageEncCapProvider', u'equipmentSwitchCapProvider'], [u'equipmentPciSlotSubOEMIdEntry'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version225a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
@@ -28,6 +32,7 @@ class EquipmentStorageControllerConfig(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version225a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version225a, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version225a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "pnuos_supported": MoPropertyMeta("pnuos_supported", "pnuosSupported", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version225a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version225a, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["local", "pending-policy", "policy"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version225a, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []), 
@@ -48,6 +53,7 @@ class EquipmentStorageControllerConfig(ManagedObject):
         "dn": "dn", 
         "intId": "int_id", 
         "name": "name", 
+        "pnuosSupported": "pnuos_supported", 
         "policyLevel": "policy_level", 
         "policyOwner": "policy_owner", 
         "rn": "rn", 
@@ -71,6 +77,7 @@ class EquipmentStorageControllerConfig(ManagedObject):
         self.descr = None
         self.int_id = None
         self.name = None
+        self.pnuos_supported = None
         self.policy_level = None
         self.policy_owner = None
         self.sacl = None

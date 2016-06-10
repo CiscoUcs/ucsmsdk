@@ -6,6 +6,10 @@ from ...ucsmeta import VersionMeta
 
 
 class LsPowerConsts:
+    SOFT_SHUTDOWN_TIMER_150_SECS = "150-secs"
+    SOFT_SHUTDOWN_TIMER_300_SECS = "300-secs"
+    SOFT_SHUTDOWN_TIMER_600_SECS = "600-secs"
+    SOFT_SHUTDOWN_TIMER_NEVER = "never"
     STATE_ADMIN_DOWN = "admin-down"
     STATE_ADMIN_UP = "admin-up"
     STATE_BMC_RESET_IMMEDIATE = "bmc-reset-immediate"
@@ -38,6 +42,7 @@ class LsPower(ManagedObject):
         "prop_acl": MoPropertyMeta("prop_acl", "propAcl", "ulong", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "soft_shutdown_timer": MoPropertyMeta("soft_shutdown_timer", "softShutdownTimer", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["150-secs", "300-secs", "600-secs", "never"], []), 
         "state": MoPropertyMeta("state", "state", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["admin-down", "admin-up", "bmc-reset-immediate", "bmc-reset-wait", "cmos-reset-immediate", "cycle-immediate", "cycle-wait", "diagnostic-interrupt", "down", "hard-reset-immediate", "hard-reset-wait", "ipmi-reset", "kvm-reset", "soft-shut-down", "soft-shut-down-only", "up"], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
@@ -48,6 +53,7 @@ class LsPower(ManagedObject):
         "propAcl": "prop_acl", 
         "rn": "rn", 
         "sacl": "sacl", 
+        "softShutdownTimer": "soft_shutdown_timer", 
         "state": "state", 
         "status": "status", 
     }
@@ -57,6 +63,7 @@ class LsPower(ManagedObject):
         self.child_action = None
         self.prop_acl = None
         self.sacl = None
+        self.soft_shutdown_timer = None
         self.state = None
         self.status = None
 

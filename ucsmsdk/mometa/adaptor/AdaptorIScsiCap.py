@@ -28,6 +28,7 @@ class AdaptorIScsiCapConsts:
     BOOT_ORDER_TYPE_SAN_DEVICE_ORDER = "san-device-order"
     BOOT_ORDER_TYPE_SDCARD_DEVICE_ORDER = "sdcard-device-order"
     BOOT_ORDER_TYPE_SYSTEM_BOOT_ORDER = "system-boot-order"
+    BOOT_ORDER_TYPE_UEFI_SHELL_DEVICE_ORDER = "uefi-shell-device-order"
     BOOT_ORDER_TYPE_UEFI_TARGET_DEVICE_ORDER = "uefi-target-device-order"
     BOOT_ORDER_TYPE_UNKNOWN_DEVICE_ORDER = "unknown-device-order"
     OFFLOAD_SUPPORT_FALSE = "false"
@@ -52,7 +53,7 @@ class AdaptorIScsiCap(ManagedObject):
     mo_meta = MoMeta("AdaptorIScsiCap", "adaptorIScsiCap", "iscsi", VersionMeta.Version201m, "InputOutput", 0x7ff, [], ["read-only"], [u'adaptorFruCapProvider'], [], ["Get"])
 
     prop_meta = {
-        "boot_order_type": MoPropertyMeta("boot_order_type", "bootOrderType", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["bev-order", "cd-order", "cimc-vmedia-cdd-device-order", "cimc-vmedia-fdd-device-order", "cimc-vmedia-hdd-device-order", "external-usb-device-order", "fdd-order", "hdd-order", "internal-efi-shell", "internal-usb-device-order", "iscsi-any-device-order", "iscsi-device-order", "kvm-vmedia-cdd-device-order", "kvm-vmedia-fdd-device-order", "kvm-vmedia-hdd-device-order", "lan-any-device-order", "local-storage-any-device-order", "network-device-order", "san-any-device-order", "san-device-order", "sdcard-device-order", "system-boot-order", "uefi-target-device-order", "unknown-device-order"], []), 
+        "boot_order_type": MoPropertyMeta("boot_order_type", "bootOrderType", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["bev-order", "cd-order", "cimc-vmedia-cdd-device-order", "cimc-vmedia-fdd-device-order", "cimc-vmedia-hdd-device-order", "external-usb-device-order", "fdd-order", "hdd-order", "internal-efi-shell", "internal-usb-device-order", "iscsi-any-device-order", "iscsi-device-order", "kvm-vmedia-cdd-device-order", "kvm-vmedia-fdd-device-order", "kvm-vmedia-hdd-device-order", "lan-any-device-order", "local-storage-any-device-order", "network-device-order", "san-any-device-order", "san-device-order", "sdcard-device-order", "system-boot-order", "uefi-shell-device-order", "uefi-target-device-order", "unknown-device-order"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "mac_offset1": MoPropertyMeta("mac_offset1", "macOffset1", "byte", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], []), 

@@ -18,7 +18,7 @@ class AdaptorHostFcIfProfile(ManagedObject):
     consts = AdaptorHostFcIfProfileConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("AdaptorHostFcIfProfile", "adaptorHostFcIfProfile", "fc-profile-[name]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ls-config-policy", "ls-server-policy", "ls-storage"], [u'orgOrg'], [u'adaptorFcCdbWorkQueueProfile', u'adaptorFcErrorRecoveryProfile', u'adaptorFcInterruptProfile', u'adaptorFcPortFLogiProfile', u'adaptorFcPortPLogiProfile', u'adaptorFcPortProfile', u'adaptorFcRecvQueueProfile', u'adaptorFcWorkQueueProfile'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AdaptorHostFcIfProfile", "adaptorHostFcIfProfile", "fc-profile-[name]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ls-config-policy", "ls-server-policy", "ls-storage"], [u'orgOrg'], [u'adaptorFcCdbWorkQueueProfile', u'adaptorFcErrorRecoveryProfile', u'adaptorFcFnicProfile', u'adaptorFcInterruptProfile', u'adaptorFcPortFLogiProfile', u'adaptorFcPortPLogiProfile', u'adaptorFcPortProfile', u'adaptorFcRecvQueueProfile', u'adaptorFcWorkQueueProfile'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

@@ -25,6 +25,10 @@ class EquipmentFanModuleStats(ManagedObject):
     mo_meta = MoMeta("EquipmentFanModuleStats", "equipmentFanModuleStats", "stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'equipmentFanModule'], [u'equipmentFanModuleStatsHist'], ["Get"])
 
     prop_meta = {
+        "fan_module_i2_c_errors": MoPropertyMeta("fan_module_i2_c_errors", "FanModuleI2CErrors", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "fan_module_i2_c_errors_avg": MoPropertyMeta("fan_module_i2_c_errors_avg", "FanModuleI2CErrorsAvg", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "fan_module_i2_c_errors_max": MoPropertyMeta("fan_module_i2_c_errors_max", "FanModuleI2CErrorsMax", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "fan_module_i2_c_errors_min": MoPropertyMeta("fan_module_i2_c_errors_min", "FanModuleI2CErrorsMin", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "ambient_temp": MoPropertyMeta("ambient_temp", "ambientTemp", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "ambient_temp_avg": MoPropertyMeta("ambient_temp_avg", "ambientTempAvg", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "ambient_temp_max": MoPropertyMeta("ambient_temp_max", "ambientTempMax", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
@@ -42,6 +46,10 @@ class EquipmentFanModuleStats(ManagedObject):
     }
 
     prop_map = {
+        "FanModuleI2CErrors": "fan_module_i2_c_errors", 
+        "FanModuleI2CErrorsAvg": "fan_module_i2_c_errors_avg", 
+        "FanModuleI2CErrorsMax": "fan_module_i2_c_errors_max", 
+        "FanModuleI2CErrorsMin": "fan_module_i2_c_errors_min", 
         "ambientTemp": "ambient_temp", 
         "ambientTempAvg": "ambient_temp_avg", 
         "ambientTempMax": "ambient_temp_max", 
@@ -60,6 +68,10 @@ class EquipmentFanModuleStats(ManagedObject):
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.fan_module_i2_c_errors = None
+        self.fan_module_i2_c_errors_avg = None
+        self.fan_module_i2_c_errors_max = None
+        self.fan_module_i2_c_errors_min = None
         self.ambient_temp = None
         self.ambient_temp_avg = None
         self.ambient_temp_max = None

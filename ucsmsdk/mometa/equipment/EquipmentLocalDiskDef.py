@@ -18,6 +18,10 @@ class EquipmentLocalDiskDefConsts:
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
+    SELF_ENCRYPTING_DRIVE_FALSE = "false"
+    SELF_ENCRYPTING_DRIVE_NO = "no"
+    SELF_ENCRYPTING_DRIVE_TRUE = "true"
+    SELF_ENCRYPTING_DRIVE_YES = "yes"
     TECHNOLOGY_HDD = "HDD"
     TECHNOLOGY_SSD = "SSD"
     TECHNOLOGY_UNSPECIFIED = "unspecified"
@@ -51,6 +55,7 @@ class EquipmentLocalDiskDef(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "seek_average_read_write": MoPropertyMeta("seek_average_read_write", "seekAverageReadWrite", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "seek_track_to_track_read_write": MoPropertyMeta("seek_track_to_track_read_write", "seekTrackToTrackReadWrite", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "self_encrypting_drive": MoPropertyMeta("self_encrypting_drive", "selfEncryptingDrive", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "technology": MoPropertyMeta("technology", "technology", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["HDD", "SSD", "unspecified"], []), 
     }
@@ -75,6 +80,7 @@ class EquipmentLocalDiskDef(ManagedObject):
         "sacl": "sacl", 
         "seekAverageReadWrite": "seek_average_read_write", 
         "seekTrackToTrackReadWrite": "seek_track_to_track_read_write", 
+        "selfEncryptingDrive": "self_encrypting_drive", 
         "status": "status", 
         "technology": "technology", 
     }
@@ -98,6 +104,7 @@ class EquipmentLocalDiskDef(ManagedObject):
         self.sacl = None
         self.seek_average_read_write = None
         self.seek_track_to_track_read_write = None
+        self.self_encrypting_drive = None
         self.status = None
         self.technology = None
 

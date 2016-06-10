@@ -30,7 +30,7 @@ class LsbootPolicy(ManagedObject):
     consts = LsbootPolicyConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("LsbootPolicy", "lsbootPolicy", "boot-policy-[name]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "ls-config-policy", "ls-server-policy", "ls-storage-policy"], [u'orgOrg', u'policySystemEp'], [u'lsbootBootSecurity', u'lsbootIScsi', u'lsbootLan', u'lsbootSan', u'lsbootStorage', u'lsbootVirtualMedia'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LsbootPolicy", "lsbootPolicy", "boot-policy-[name]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "ls-config-policy", "ls-server-policy", "ls-storage-policy"], [u'orgOrg', u'policySystemEp'], [u'lsbootBootSecurity', u'lsbootEFIShell', u'lsbootIScsi', u'lsbootLan', u'lsbootSan', u'lsbootStorage', u'lsbootVirtualMedia'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "boot_mode": MoPropertyMeta("boot_mode", "bootMode", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["legacy", "uefi"], []), 

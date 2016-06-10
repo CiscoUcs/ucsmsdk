@@ -6,6 +6,7 @@ from ...ucsmeta import VersionMeta
 
 
 class EquipmentStorageLimitCapConsts:
+    MAX_LUNS_PER_DG_UNDEFINED = "undefined"
     ME4308_SUPPORTED_FALSE = "false"
     ME4308_SUPPORTED_NO = "no"
     ME4308_SUPPORTED_TRUE = "true"
@@ -24,6 +25,7 @@ class EquipmentStorageLimitCap(ManagedObject):
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "max_luns": MoPropertyMeta("max_luns", "maxLuns", "ushort", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "max_luns_per_dg": MoPropertyMeta("max_luns_per_dg", "maxLunsPerDG", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["undefined"], ["0-4294967295"]), 
         "me4308_supported": MoPropertyMeta("me4308_supported", "me4308Supported", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
@@ -34,6 +36,7 @@ class EquipmentStorageLimitCap(ManagedObject):
         "childAction": "child_action", 
         "dn": "dn", 
         "maxLuns": "max_luns", 
+        "maxLunsPerDG": "max_luns_per_dg", 
         "me4308Supported": "me4308_supported", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -44,6 +47,7 @@ class EquipmentStorageLimitCap(ManagedObject):
         self._dirty_mask = 0
         self.child_action = None
         self.max_luns = None
+        self.max_luns_per_dg = None
         self.me4308_supported = None
         self.sacl = None
         self.status = None

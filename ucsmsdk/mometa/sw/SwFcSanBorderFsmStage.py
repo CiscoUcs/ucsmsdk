@@ -11,6 +11,7 @@ class SwFcSanBorderFsmStageConsts:
     NAME_ACTIVATE_ZONE_SET_FAIL = "ActivateZoneSetFail"
     NAME_ACTIVATE_ZONE_SET_SUCCESS = "ActivateZoneSetSuccess"
     NAME_ACTIVATE_ZONE_SET_UPDATE_ZONES = "ActivateZoneSetUpdateZones"
+    NAME_ACTIVATE_ZONE_SET_VERIFY_USER_ZONE_CONFIG = "ActivateZoneSetVerifyUserZoneConfig"
     NAME_DEPLOY_BEGIN = "DeployBegin"
     NAME_DEPLOY_FAIL = "DeployFail"
     NAME_DEPLOY_SUCCESS = "DeploySuccess"
@@ -38,7 +39,7 @@ class SwFcSanBorderFsmStage(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "last_update_time": MoPropertyMeta("last_update_time", "lastUpdateTime", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateZoneSetBegin", "ActivateZoneSetFail", "ActivateZoneSetSuccess", "ActivateZoneSetUpdateZones", "DeployBegin", "DeployFail", "DeploySuccess", "DeployUpdateConnectivity", "nop"], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateZoneSetBegin", "ActivateZoneSetFail", "ActivateZoneSetSuccess", "ActivateZoneSetUpdateZones", "ActivateZoneSetVerifyUserZoneConfig", "DeployBegin", "DeployFail", "DeploySuccess", "DeployUpdateConnectivity", "nop"], []), 
         "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "retry": MoPropertyMeta("retry", "retry", "byte", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
