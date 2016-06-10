@@ -401,14 +401,14 @@ class ManagedObject(UcsBase):
             level -= 1
         return None
 
-    def show_hierarchy(self, level=0, break_level=None, show_level=[]):
+    def show_hierarchy(self, level=0, depth=None, show_level=[]):
         """
         Method to return string representation of a managed object.
         """
 
         from .ucscoreutils import print_mo_hierarchy
 
-        print_mo_hierarchy(self._class_id, level, break_level,
+        print_mo_hierarchy(self._class_id, level, depth,
                            show_level)
 
 

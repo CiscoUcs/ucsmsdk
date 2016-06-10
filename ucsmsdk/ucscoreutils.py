@@ -305,7 +305,7 @@ def extract_molist_from_method_response(method_response,
     return mo_list
 
 
-def write_mo_tree(mo, level=0, break_level=None, show_level=[],
+def write_mo_tree(mo, level=0, depth=None, show_level=[],
                   print_tree=True, tree_dict={}, dn=None):
     """
     Prints tree structure of any managed object
@@ -313,7 +313,7 @@ def write_mo_tree(mo, level=0, break_level=None, show_level=[],
     Args:
         mo (object): ManagedObject
         level (int): by default zero
-        break_level (int or None): last level to process
+        depth (int or None): last level to process
         show_level (int list): levels to display
         print_tree (bool): if True, print mo tree
         tree_dict (dict): by default {}
@@ -324,7 +324,7 @@ def write_mo_tree(mo, level=0, break_level=None, show_level=[],
 
     Example:
         mo=handle.query_dn("org-root")\n
-        tree_dict = write_mo_tree(mo, break_level=3, show_level=[1, 3])\n
+        tree_dict = write_mo_tree(mo, depth=3, show_level=[1, 3])\n
     """
 
     if not mo.dn:
@@ -368,12 +368,12 @@ def write_mo_tree(mo, level=0, break_level=None, show_level=[],
     for child in mo.child:
         child.mark_clean()
         level += 1
-        if break_level is None:
-            tree_dict = write_mo_tree(child, level, break_level,
+        if depth is None:
+            tree_dict = write_mo_tree(child, level, depth,
                                       show_level, print_tree,
                                       tree_dict, dn)
-        elif level <= break_level:
-            tree_dict = write_mo_tree(child, level, break_level,
+        elif level <= depth:
+            tree_dict = write_mo_tree(child, level, depth,
                                       show_level, print_tree,
                                       tree_dict, dn)
         level -= 1
@@ -382,7 +382,7 @@ def write_mo_tree(mo, level=0, break_level=None, show_level=[],
 
 
 def extract_mo_tree_from_config_method_response(method_response,
-                                                break_level=None,
+                                                depth=None,
                                                 show_level=[],
                                                 print_tree=False,
                                                 tree_dict={}):
@@ -391,7 +391,7 @@ def extract_mo_tree_from_config_method_response(method_response,
 
     Args:
         method_response (object): ExternalMethod
-        break_level (int or None): last level to process
+        depth (int or None): last level to process
         show_level (int list): levels to display
         print_tree (bool): if True, print mo tree
         tree_dict (dict): by default {}
@@ -401,26 +401,26 @@ def extract_mo_tree_from_config_method_response(method_response,
 
     Example:
         response=handle.query_dn("org-root", need_response=True)\n
-        tree_dict = write_mo_tree(response, break_level=3, show_level=[1, 3])\n
+        tree_dict = write_mo_tree(response, depth=3, show_level=[1, 3])\n
     """
 
     current_mo_list = method_response.out_configs.child
     for current_mo in current_mo_list:
         level = 0
-        tree_dict = write_mo_tree(current_mo, level, break_level,
+        tree_dict = write_mo_tree(current_mo, level, depth,
                                   show_level, print_tree,
                                   tree_dict)
     return tree_dict
 
 
-def print_mo_hierarchy(class_id, level=0, break_level=None, show_level=[]):
+def print_mo_hierarchy(class_id, level=0, depth=None, show_level=[]):
     """
     print hierarchy of class_id
 
     Args:
         class_id (str): class id
         level (int): by default zero
-        break_level (int or None): last level to process
+        depth (int or None): last level to process
         show_level (int list): levels to display
 
     Returns:
@@ -428,7 +428,7 @@ def print_mo_hierarchy(class_id, level=0, break_level=None, show_level=[]):
 
     Example:
         response=handle.query_dn("org-root", need_response=True)\n
-        tree_dict = write_mo_tree(response, break_level=3, show_level=[1, 3])\n
+        tree_dict = write_mo_tree(response, depth=3, show_level=[1, 3])\n
     """
 
     indent = " "
@@ -446,12 +446,12 @@ def print_mo_hierarchy(class_id, level=0, break_level=None, show_level=[]):
     children = sorted(MO_CLASS_META[class_id].children)
 
     level += 1
-    if break_level is None or level <= break_level:
+    if depth is None or level <= depth:
         for ch_ in children:
             child = ucsgenutils.word_u(ch_)
             if child == class_id:
                 continue
-            print_mo_hierarchy(child, level, break_level,
+            print_mo_hierarchy(child, level, depth,
                                show_level)
     level -= 1
 
@@ -526,7 +526,7 @@ class ClassIdMeta(object):
         return out_str
 
 
-def _show_tree(class_id, break_level=None, level=0, ancestor_str="",
+def _show_tree(class_id, depth=None, level=0, ancestor_str="",
                ancestor=[], last_child=True):
 
     meta_class_id = ucsgenutils.word_u(class_id)
@@ -547,7 +547,7 @@ def _show_tree(class_id, break_level=None, level=0, ancestor_str="",
         children = sorted(MO_CLASS_META[meta_class_id].children)
         total = len(children)
         count = 0
-        if break_level is None or level < break_level + 1:
+        if depth is None or level < depth + 1:
             for child in children:
                 count += 1
 
@@ -556,7 +556,7 @@ def _show_tree(class_id, break_level=None, level=0, ancestor_str="",
                 else:
                     ancestor_str_ = ancestor_str + "  |"
 
-                _show_tree(child, break_level, level, ancestor_str_, ancestor,
+                _show_tree(child, depth, level, ancestor_str_, ancestor,
                            total == count)
 
         ancestor.pop(index - 1)
@@ -582,6 +582,7 @@ def search_class_id(class_id):
     meta_class_id = find_class_id_in_mo_meta_ignore_case(class_id=class_id)
 
     if meta_class_id is not None:
+        log.info("matches :" + meta_class_id)
         return meta_class_id
 
     # if class_id not exists in meta
@@ -599,7 +600,7 @@ def search_class_id(class_id):
 
 
 def get_meta_info(class_id, include_prop=True,
-                  show_tree=True, break_level=None):
+                  show_tree=True, depth=None):
     """
     Gets class id meta information
 
@@ -607,7 +608,7 @@ def get_meta_info(class_id, include_prop=True,
         class_id (str): string matching class_id.(case insensitive)
         include_prop (bool): by default True. If False, excludes property.
         show_tree (bool): by default True. If False will not display mo tree.
-        break_level (int): display the hierarchy till respective level.
+        depth (int): display the hierarchy till respective level.
 
     Returns:
         None: If class_id is not present in meta.
@@ -625,7 +626,7 @@ def get_meta_info(class_id, include_prop=True,
 
     Example:
         meta = get_meta_info(class_id="lsserver")
-        meta = get_meta_info(class_id="lsserver", break_level=2)
+        meta = get_meta_info(class_id="lsserver", depth=2)
         meta = get_meta_info(class_id="lsserver", include_prop=False)
         meta = get_meta_info(class_id="lsserver", show_tree=False)
 
@@ -639,7 +640,7 @@ def get_meta_info(class_id, include_prop=True,
         return
 
     if show_tree:
-        _show_tree(class_id=meta_class_id, break_level=break_level)
+        _show_tree(class_id=meta_class_id, depth=depth)
 
     class_id_meta = ClassIdMeta(meta_class_id)
     print(class_id_meta)
