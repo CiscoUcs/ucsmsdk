@@ -1219,7 +1219,6 @@ def _generate_cmdlets(xml_string):
     """
 
     doc = xml.dom.minidom.parseString(xml_string)
-
     cmdlet = ""
     global _display_xml, _outfile_path
     if _display_xml:
@@ -1311,7 +1310,8 @@ def _find_xml_requests_in_file(file_stream, gui_log):
             _extract_xml(file_stream, line)
         elif "[------------- Sending Request to Server ------------" in line:
             line = file_stream.readline()
-            if line is not None:
+            if line is not None and _check_if_any_list_value_in_string(
+                    _multi_line_method,line):
                 # print "[%s]" %(line)
                 _extract_xml(file_stream, line)
         line = file_stream.readline()
