@@ -251,6 +251,27 @@ def ape_get_adaptor_connectivity(cookie, in_fru_model, in_fru_serial, in_fru_ven
     return xml_request
 
 
+def ape_get_ape_firmware_active_side(cookie, in_field_name, in_ip_addr):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ApeGetApeFirmwareActiveSide")
+    method.cookie = cookie
+    method.in_field_name = str(in_field_name)
+    method.in_ip_addr = in_ip_addr
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def ape_get_mc_stats(cookie, in_equipment_serial):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ApeGetMcStats")
+    method.cookie = cookie
+    method.in_equipment_serial = in_equipment_serial
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
 def ape_get_next_id(cookie, in_chassis_id, in_mo_type, in_server_instance_id, in_slot_id):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ApeGetNextId")
@@ -533,6 +554,16 @@ def ape_mux_offline(cookie, in_ch_id, in_mux_slot_id):
     return xml_request
 
 
+def ape_remove_device(cookie, in_serial):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ApeRemoveDevice")
+    method.cookie = cookie
+    method.in_serial = in_serial
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
 def ape_set_adaptor_firmware_version(cookie, in_adaptor_fw_version, in_adaptor_serial):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ApeSetAdaptorFirmwareVersion")
@@ -594,6 +625,18 @@ def ape_set_flex_flash_virtual_raid_information(cookie, in_conrtoller_id, in_ip_
     return xml_request
 
 
+def ape_set_mc_stats(cookie, in_equipment_serial, in_mc_stats, in_stat_ids):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ApeSetMcStats")
+    method.cookie = cookie
+    method.in_equipment_serial = in_equipment_serial
+    method.in_mc_stats = in_mc_stats
+    method.in_stat_ids = in_stat_ids
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
 def ape_set_server_life_cycle(cookie, in_fru_model, in_fru_serial, in_fru_vendor, in_server_lc):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ApeSetServerLifeCycle")
@@ -640,6 +683,18 @@ def ape_trigger_sw_inv(cookie, in_model, in_serial, in_sw_id, in_vendor):
     method.in_serial = in_serial
     method.in_sw_id = in_sw_id
     method.in_vendor = in_vendor
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def ape_update_ape_firmware_active_side(cookie, in_field_name, in_ip_addr, in_side):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ApeUpdateApeFirmwareActiveSide")
+    method.cookie = cookie
+    method.in_field_name = str(in_field_name)
+    method.in_ip_addr = in_ip_addr
+    method.in_side = str(in_side)
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
     return xml_request
@@ -1119,6 +1174,89 @@ def config_scope(cookie, dn, in_class, in_filter, in_recursive, in_hierarchical=
     return xml_request
 
 
+def equipment_clone(cookie, dn, in_chassis_profile_name, in_target_org, in_hierarchical=YesOrNo.FALSE):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("EquipmentClone")
+    method.cookie = cookie
+    method.dn = dn
+    method.in_chassis_profile_name = in_chassis_profile_name
+    method.in_hierarchical = (("false", "true")[in_hierarchical in ucsgenutils.AFFIRMATIVE_LIST])
+    method.in_target_org = in_target_org
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def equipment_instantiate_n_named_template(cookie, dn, in_error_on_existing, in_name_set, in_target_org, in_hierarchical=YesOrNo.FALSE):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("EquipmentInstantiateNNamedTemplate")
+    method.cookie = cookie
+    method.dn = dn
+    method.in_error_on_existing = in_error_on_existing
+    method.in_hierarchical = (("false", "true")[in_hierarchical in ucsgenutils.AFFIRMATIVE_LIST])
+    method.in_name_set = in_name_set
+    method.in_target_org = in_target_org
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def equipment_instantiate_n_template(cookie, dn, in_chassis_profile_name_prefix_or_empty, in_number_of, in_target_org, in_hierarchical=YesOrNo.FALSE):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("EquipmentInstantiateNTemplate")
+    method.cookie = cookie
+    method.dn = dn
+    method.in_chassis_profile_name_prefix_or_empty = in_chassis_profile_name_prefix_or_empty
+    method.in_hierarchical = (("false", "true")[in_hierarchical in ucsgenutils.AFFIRMATIVE_LIST])
+    method.in_number_of = str(in_number_of)
+    method.in_target_org = in_target_org
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def equipment_instantiate_template(cookie, dn, in_chassis_profile_name, in_error_on_existing, in_target_org, in_hierarchical=YesOrNo.FALSE):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("EquipmentInstantiateTemplate")
+    method.cookie = cookie
+    method.dn = dn
+    method.in_chassis_profile_name = in_chassis_profile_name
+    method.in_error_on_existing = in_error_on_existing
+    method.in_hierarchical = (("false", "true")[in_hierarchical in ucsgenutils.AFFIRMATIVE_LIST])
+    method.in_target_org = in_target_org
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def equipment_resolve_templates(cookie, dn, in_exclude_if_bound, in_filter, in_type, in_hierarchical=YesOrNo.FALSE):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("EquipmentResolveTemplates")
+    method.cookie = cookie
+    method.dn = dn
+    method.in_exclude_if_bound = in_exclude_if_bound
+    method.in_filter = in_filter
+    method.in_hierarchical = (("false", "true")[in_hierarchical in ucsgenutils.AFFIRMATIVE_LIST])
+    method.in_type = in_type
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def equipment_templatise(cookie, dn, in_target_org, in_template_name, in_template_type, in_hierarchical=YesOrNo.FALSE):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("EquipmentTemplatise")
+    method.cookie = cookie
+    method.dn = dn
+    method.in_hierarchical = (("false", "true")[in_hierarchical in ucsgenutils.AFFIRMATIVE_LIST])
+    method.in_target_org = in_target_org
+    method.in_template_name = in_template_name
+    method.in_template_type = in_template_type
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
 def event_register_event_channel(cookie, in_dn):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("EventRegisterEventChannel")
@@ -1322,6 +1460,18 @@ def ls_templatise(cookie, dn, in_target_org, in_template_name, in_template_type,
     method.in_target_org = in_target_org
     method.in_template_name = in_template_name
     method.in_template_type = in_template_type
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def lstorage_create_zoning_from_inv(cookie, in_chassis_dn, in_disk_zoning_policy_name, in_target_org):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("LstorageCreateZoningFromInv")
+    method.cookie = cookie
+    method.in_chassis_dn = in_chassis_dn
+    method.in_disk_zoning_policy_name = in_disk_zoning_policy_name
+    method.in_target_org = in_target_org
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
     return xml_request

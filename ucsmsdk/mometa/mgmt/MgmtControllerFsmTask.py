@@ -13,20 +13,27 @@ class MgmtControllerFsmTaskConsts:
     ITEM_ACTIVATE_ADAPTOR = "ActivateAdaptor"
     ITEM_ACTIVATE_BMC = "ActivateBMC"
     ITEM_ACTIVATE_CMC = "ActivateCMC"
+    ITEM_ACTIVATE_COLUSA_CMC = "ActivateColusaCMC"
     ITEM_ACTIVATE_IOM = "ActivateIOM"
+    ITEM_ACTIVATE_LOCAL_DISK = "ActivateLocalDisk"
+    ITEM_ACTIVATE_SAS_EXPANDER = "ActivateSasExpander"
+    ITEM_ENABLE_SECURE_BOOT = "EnableSecureBoot"
     ITEM_EXT_MGMT_IF_CONFIG = "ExtMgmtIfConfig"
     ITEM_EXT_MGMT_INTERFACE_CONFIG = "ExtMgmtInterfaceConfig"
     ITEM_LOCK_CONFIG = "LockConfig"
     ITEM_ONLINE = "Online"
     ITEM_POWER_BUDGET_RECLAIM_CONFIG = "PowerBudgetReclaimConfig"
+    ITEM_POWER_CAP = "PowerCap"
     ITEM_REGISTRY_CONFIG = "RegistryConfig"
     ITEM_SYS_CONFIG = "SysConfig"
     ITEM_UPDATE_ADAPTOR = "UpdateAdaptor"
     ITEM_UPDATE_BMC = "UpdateBMC"
     ITEM_UPDATE_BOARD_CONTROLLER = "UpdateBoardController"
     ITEM_UPDATE_CMC = "UpdateCMC"
+    ITEM_UPDATE_COLUSA_CMC = "UpdateColusaCMC"
     ITEM_UPDATE_IOM = "UpdateIOM"
     ITEM_UPDATE_RAID_CONTROLLER = "UpdateRaidController"
+    ITEM_UPDATE_SAS_EXPANDER = "UpdateSasExpander"
     ITEM_UPDATE_SWITCH = "UpdateSwitch"
     ITEM_UPDATE_UCSMANAGER = "UpdateUCSManager"
     ITEM_NOP = "nop"
@@ -45,7 +52,7 @@ class MgmtControllerFsmTask(ManagedObject):
         "completion": MoPropertyMeta("completion", "completion", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cancelled", "completed", "processing", "scheduled"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "flags": MoPropertyMeta("flags", "flags", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""(defaultValue){0,1}""", [], []), 
-        "item": MoPropertyMeta("item", "item", "string", VersionMeta.Version111j, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateAdaptor", "ActivateBMC", "ActivateCMC", "ActivateIOM", "ExtMgmtIfConfig", "ExtMgmtInterfaceConfig", "LockConfig", "Online", "PowerBudgetReclaimConfig", "RegistryConfig", "SysConfig", "UpdateAdaptor", "UpdateBMC", "UpdateBoardController", "UpdateCMC", "UpdateIOM", "UpdateRaidController", "UpdateSwitch", "UpdateUCSManager", "nop"], []), 
+        "item": MoPropertyMeta("item", "item", "string", VersionMeta.Version111j, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateAdaptor", "ActivateBMC", "ActivateCMC", "ActivateColusaCMC", "ActivateIOM", "ActivateLocalDisk", "ActivateSasExpander", "EnableSecureBoot", "ExtMgmtIfConfig", "ExtMgmtInterfaceConfig", "LockConfig", "Online", "PowerBudgetReclaimConfig", "PowerCap", "RegistryConfig", "SysConfig", "UpdateAdaptor", "UpdateBMC", "UpdateBoardController", "UpdateCMC", "UpdateColusaCMC", "UpdateIOM", "UpdateRaidController", "UpdateSasExpander", "UpdateSwitch", "UpdateUCSManager", "nop"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "seq_id": MoPropertyMeta("seq_id", "seqId", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 

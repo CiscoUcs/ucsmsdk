@@ -13,9 +13,6 @@ class SwEthLanPcConsts:
     ADMIN_SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
-    AUTO_NEGOTIATE_AUTO = "auto"
-    AUTO_NEGOTIATE_NONE = "none"
-    AUTO_NEGOTIATE_UNSET = "unset"
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
     IF_ROLE_FCOE_STORAGE = "fcoe-storage"
@@ -66,7 +63,6 @@ class SwEthLanPc(ManagedObject):
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["10gbps", "1gbps", "20gbps", "40gbps", "indeterminate"], []), 
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
-        "auto_negotiate": MoPropertyMeta("auto_negotiate", "autoNegotiate", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto", "none", "unset"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
@@ -93,7 +89,6 @@ class SwEthLanPc(ManagedObject):
     prop_map = {
         "adminSpeed": "admin_speed", 
         "adminState": "admin_state", 
-        "autoNegotiate": "auto_negotiate", 
         "childAction": "child_action", 
         "dn": "dn", 
         "epDn": "ep_dn", 
@@ -122,7 +117,6 @@ class SwEthLanPc(ManagedObject):
         self.port_id = port_id
         self.admin_speed = None
         self.admin_state = None
-        self.auto_negotiate = None
         self.child_action = None
         self.ep_dn = None
         self.if_role = None

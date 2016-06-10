@@ -6,6 +6,8 @@ from ...ucsmeta import VersionMeta
 
 
 class StorageItemConsts:
+    ALARM_TYPE_MAJOR = "major"
+    ALARM_TYPE_MINOR = "minor"
     OPER_STATE_CLEAN = "clean"
     OPER_STATE_MOUNTED = "mounted"
     OPER_STATE_NOT_CLEAN = "not-clean"
@@ -26,6 +28,7 @@ class StorageItem(ManagedObject):
     mo_meta = MoMeta("StorageItem", "storageItem", "stor-part-[name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'networkElement'], [u'faultInst'], ["Get"])
 
     prop_meta = {
+        "alarm_type": MoPropertyMeta("alarm_type", "alarmType", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["major", "minor"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
@@ -38,6 +41,7 @@ class StorageItem(ManagedObject):
     }
 
     prop_map = {
+        "alarmType": "alarm_type", 
         "childAction": "child_action", 
         "dn": "dn", 
         "name": "name", 
@@ -52,6 +56,7 @@ class StorageItem(ManagedObject):
     def __init__(self, parent_mo_or_dn, name, **kwargs):
         self._dirty_mask = 0
         self.name = name
+        self.alarm_type = None
         self.child_action = None
         self.oper_state = None
         self.sacl = None

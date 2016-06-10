@@ -12,11 +12,19 @@ class MgmtControllerConsts:
     DIMM_BLACKLISTING_OPER_STATE_ENABLED = "enabled"
     DIMM_BLACKLISTING_OPER_STATE_UNKNOWN = "unknown"
     DIMM_BLACKLISTING_OPER_STATE_UNSUPPORTED = "unsupported"
+    DISK_ZONING_STATE_DEPLOYED = "deployed"
+    DISK_ZONING_STATE_FAILED = "failed"
+    DISK_ZONING_STATE_INVENTORY_END = "inventory-end"
+    DISK_ZONING_STATE_INVENTORY_START = "inventory-start"
+    DISK_ZONING_STATE_PROCESSING = "processing"
+    DISK_ZONING_STATE_UNKNOWN = "unknown"
     FSM_PREV_ACTIVATE_ADAPTOR_ACTIVATE = "ActivateAdaptorActivate"
+    FSM_PREV_ACTIVATE_ADAPTOR_ACTIVATE_PEER = "ActivateAdaptorActivatePeer"
     FSM_PREV_ACTIVATE_ADAPTOR_BEGIN = "ActivateAdaptorBegin"
     FSM_PREV_ACTIVATE_ADAPTOR_FAIL = "ActivateAdaptorFail"
     FSM_PREV_ACTIVATE_ADAPTOR_POLL_ACTIVATE_STATUS = "ActivateAdaptorPollActivateStatus"
     FSM_PREV_ACTIVATE_ADAPTOR_POWER_OFF_SERVERS = "ActivateAdaptorPowerOffServers"
+    FSM_PREV_ACTIVATE_ADAPTOR_POWER_ON_SERVERS = "ActivateAdaptorPowerOnServers"
     FSM_PREV_ACTIVATE_ADAPTOR_RESET = "ActivateAdaptorReset"
     FSM_PREV_ACTIVATE_ADAPTOR_SERVERS_POWER_OFF_COMPLETION = "ActivateAdaptorServersPowerOffCompletion"
     FSM_PREV_ACTIVATE_ADAPTOR_SUCCESS = "ActivateAdaptorSuccess"
@@ -31,11 +39,33 @@ class MgmtControllerConsts:
     FSM_PREV_ACTIVATE_CMCPOLL_ACTIVATION = "ActivateCMCPollActivation"
     FSM_PREV_ACTIVATE_CMCRESET = "ActivateCMCReset"
     FSM_PREV_ACTIVATE_CMCSUCCESS = "ActivateCMCSuccess"
+    FSM_PREV_ACTIVATE_COLUSA_CMCACTIVATE = "ActivateColusaCMCActivate"
+    FSM_PREV_ACTIVATE_COLUSA_CMCBEGIN = "ActivateColusaCMCBegin"
+    FSM_PREV_ACTIVATE_COLUSA_CMCFAIL = "ActivateColusaCMCFail"
+    FSM_PREV_ACTIVATE_COLUSA_CMCPOLL_ACTIVATION = "ActivateColusaCMCPollActivation"
+    FSM_PREV_ACTIVATE_COLUSA_CMCRESET = "ActivateColusaCMCReset"
+    FSM_PREV_ACTIVATE_COLUSA_CMCSUCCESS = "ActivateColusaCMCSuccess"
     FSM_PREV_ACTIVATE_IOMACTIVATE = "ActivateIOMActivate"
     FSM_PREV_ACTIVATE_IOMBEGIN = "ActivateIOMBegin"
     FSM_PREV_ACTIVATE_IOMFAIL = "ActivateIOMFail"
     FSM_PREV_ACTIVATE_IOMRESET = "ActivateIOMReset"
     FSM_PREV_ACTIVATE_IOMSUCCESS = "ActivateIOMSuccess"
+    FSM_PREV_ACTIVATE_LOCAL_DISK_ACTIVATE = "ActivateLocalDiskActivate"
+    FSM_PREV_ACTIVATE_LOCAL_DISK_BEGIN = "ActivateLocalDiskBegin"
+    FSM_PREV_ACTIVATE_LOCAL_DISK_FAIL = "ActivateLocalDiskFail"
+    FSM_PREV_ACTIVATE_LOCAL_DISK_POLL_ACTIVATE_STATUS = "ActivateLocalDiskPollActivateStatus"
+    FSM_PREV_ACTIVATE_LOCAL_DISK_SUCCESS = "ActivateLocalDiskSuccess"
+    FSM_PREV_ACTIVATE_SAS_EXPANDER_ACTIVATE = "ActivateSasExpanderActivate"
+    FSM_PREV_ACTIVATE_SAS_EXPANDER_BEGIN = "ActivateSasExpanderBegin"
+    FSM_PREV_ACTIVATE_SAS_EXPANDER_FAIL = "ActivateSasExpanderFail"
+    FSM_PREV_ACTIVATE_SAS_EXPANDER_POLL_ACTIVATE_STATUS = "ActivateSasExpanderPollActivateStatus"
+    FSM_PREV_ACTIVATE_SAS_EXPANDER_SUCCESS = "ActivateSasExpanderSuccess"
+    FSM_PREV_ENABLE_SECURE_BOOT_BEGIN = "EnableSecureBootBegin"
+    FSM_PREV_ENABLE_SECURE_BOOT_FAIL = "EnableSecureBootFail"
+    FSM_PREV_ENABLE_SECURE_BOOT_POLL_UPDATE_STATUS = "EnableSecureBootPollUpdateStatus"
+    FSM_PREV_ENABLE_SECURE_BOOT_RESET = "EnableSecureBootReset"
+    FSM_PREV_ENABLE_SECURE_BOOT_SUCCESS = "EnableSecureBootSuccess"
+    FSM_PREV_ENABLE_SECURE_BOOT_UPDATE_REQUEST = "EnableSecureBootUpdateRequest"
     FSM_PREV_EXT_MGMT_IF_CONFIG_BEGIN = "ExtMgmtIfConfigBegin"
     FSM_PREV_EXT_MGMT_IF_CONFIG_FAIL = "ExtMgmtIfConfigFail"
     FSM_PREV_EXT_MGMT_IF_CONFIG_PRIMARY = "ExtMgmtIfConfigPrimary"
@@ -48,6 +78,7 @@ class MgmtControllerConsts:
     FSM_PREV_EXT_MGMT_INTERFACE_CONFIG_CMCVLAN_CFG = "ExtMgmtInterfaceConfigCMCVlanCfg"
     FSM_PREV_EXT_MGMT_INTERFACE_CONFIG_CMCVLAN_CFG_PEER = "ExtMgmtInterfaceConfigCMCVlanCfgPeer"
     FSM_PREV_EXT_MGMT_INTERFACE_CONFIG_FAIL = "ExtMgmtInterfaceConfigFail"
+    FSM_PREV_EXT_MGMT_INTERFACE_CONFIG_STANDBY_CMCVLAN_CFG = "ExtMgmtInterfaceConfigStandbyCMCVlanCfg"
     FSM_PREV_EXT_MGMT_INTERFACE_CONFIG_SUCCESS = "ExtMgmtInterfaceConfigSuccess"
     FSM_PREV_LOCK_CONFIG_BEGIN = "LockConfigBegin"
     FSM_PREV_LOCK_CONFIG_FAIL = "LockConfigFail"
@@ -65,6 +96,10 @@ class MgmtControllerConsts:
     FSM_PREV_POWER_BUDGET_RECLAIM_CONFIG_POWER_OFF_RECLAIM = "PowerBudgetReclaimConfigPowerOffReclaim"
     FSM_PREV_POWER_BUDGET_RECLAIM_CONFIG_POWER_OFF_WAIT = "PowerBudgetReclaimConfigPowerOffWait"
     FSM_PREV_POWER_BUDGET_RECLAIM_CONFIG_SUCCESS = "PowerBudgetReclaimConfigSuccess"
+    FSM_PREV_POWER_CAP_BEGIN = "PowerCapBegin"
+    FSM_PREV_POWER_CAP_CONFIG = "PowerCapConfig"
+    FSM_PREV_POWER_CAP_FAIL = "PowerCapFail"
+    FSM_PREV_POWER_CAP_SUCCESS = "PowerCapSuccess"
     FSM_PREV_REGISTRY_CONFIG_BEGIN = "RegistryConfigBegin"
     FSM_PREV_REGISTRY_CONFIG_FAIL = "RegistryConfigFail"
     FSM_PREV_REGISTRY_CONFIG_REMOVE = "RegistryConfigRemove"
@@ -79,6 +114,7 @@ class MgmtControllerConsts:
     FSM_PREV_UPDATE_ADAPTOR_POLL_UPDATE_STATUS = "UpdateAdaptorPollUpdateStatus"
     FSM_PREV_UPDATE_ADAPTOR_SUCCESS = "UpdateAdaptorSuccess"
     FSM_PREV_UPDATE_ADAPTOR_UPDATE_REQUEST = "UpdateAdaptorUpdateRequest"
+    FSM_PREV_UPDATE_ADAPTOR_UPDATE_REQUEST_PEER = "UpdateAdaptorUpdateRequestPeer"
     FSM_PREV_UPDATE_BMCBEGIN = "UpdateBMCBegin"
     FSM_PREV_UPDATE_BMCFAIL = "UpdateBMCFail"
     FSM_PREV_UPDATE_BMCPOLL_UPDATE_STATUS = "UpdateBMCPollUpdateStatus"
@@ -88,6 +124,7 @@ class MgmtControllerConsts:
     FSM_PREV_UPDATE_BOARD_CONTROLLER_FAIL = "UpdateBoardControllerFail"
     FSM_PREV_UPDATE_BOARD_CONTROLLER_POLL_UPDATE_STATUS = "UpdateBoardControllerPollUpdateStatus"
     FSM_PREV_UPDATE_BOARD_CONTROLLER_POWER_OFF_SERVERS = "UpdateBoardControllerPowerOffServers"
+    FSM_PREV_UPDATE_BOARD_CONTROLLER_POWER_ON_SERVERS = "UpdateBoardControllerPowerOnServers"
     FSM_PREV_UPDATE_BOARD_CONTROLLER_PREPARE_FOR_UPDATE = "UpdateBoardControllerPrepareForUpdate"
     FSM_PREV_UPDATE_BOARD_CONTROLLER_SERVERS_POWER_OFF_COMPLETION = "UpdateBoardControllerServersPowerOffCompletion"
     FSM_PREV_UPDATE_BOARD_CONTROLLER_SUCCESS = "UpdateBoardControllerSuccess"
@@ -97,6 +134,11 @@ class MgmtControllerConsts:
     FSM_PREV_UPDATE_CMCPOLL_UPDATE_STATUS = "UpdateCMCPollUpdateStatus"
     FSM_PREV_UPDATE_CMCSUCCESS = "UpdateCMCSuccess"
     FSM_PREV_UPDATE_CMCUPDATE_REQUEST = "UpdateCMCUpdateRequest"
+    FSM_PREV_UPDATE_COLUSA_CMCBEGIN = "UpdateColusaCMCBegin"
+    FSM_PREV_UPDATE_COLUSA_CMCFAIL = "UpdateColusaCMCFail"
+    FSM_PREV_UPDATE_COLUSA_CMCPOLL_UPDATE_STATUS = "UpdateColusaCMCPollUpdateStatus"
+    FSM_PREV_UPDATE_COLUSA_CMCSUCCESS = "UpdateColusaCMCSuccess"
+    FSM_PREV_UPDATE_COLUSA_CMCUPDATE_REQUEST = "UpdateColusaCMCUpdateRequest"
     FSM_PREV_UPDATE_IOMBEGIN = "UpdateIOMBegin"
     FSM_PREV_UPDATE_IOMCOPY_IOMIMG_TO_SUB = "UpdateIOMCopyIOMImgToSub"
     FSM_PREV_UPDATE_IOMCOPY_IMG_FROM_REP = "UpdateIOMCopyImgFromRep"
@@ -110,9 +152,15 @@ class MgmtControllerConsts:
     FSM_PREV_UPDATE_RAID_CONTROLLER_POLL_ACTIVATION = "UpdateRaidControllerPollActivation"
     FSM_PREV_UPDATE_RAID_CONTROLLER_POLL_UPDATE_STATUS = "UpdateRaidControllerPollUpdateStatus"
     FSM_PREV_UPDATE_RAID_CONTROLLER_POWER_OFF_SERVERS = "UpdateRaidControllerPowerOffServers"
+    FSM_PREV_UPDATE_RAID_CONTROLLER_POWER_ON_SERVERS = "UpdateRaidControllerPowerOnServers"
     FSM_PREV_UPDATE_RAID_CONTROLLER_SERVERS_POWER_OFF_COMPLETION = "UpdateRaidControllerServersPowerOffCompletion"
     FSM_PREV_UPDATE_RAID_CONTROLLER_SUCCESS = "UpdateRaidControllerSuccess"
     FSM_PREV_UPDATE_RAID_CONTROLLER_UPDATE_REQUEST = "UpdateRaidControllerUpdateRequest"
+    FSM_PREV_UPDATE_SAS_EXPANDER_BEGIN = "UpdateSasExpanderBegin"
+    FSM_PREV_UPDATE_SAS_EXPANDER_FAIL = "UpdateSasExpanderFail"
+    FSM_PREV_UPDATE_SAS_EXPANDER_POLL_UPDATE_STATUS = "UpdateSasExpanderPollUpdateStatus"
+    FSM_PREV_UPDATE_SAS_EXPANDER_SUCCESS = "UpdateSasExpanderSuccess"
+    FSM_PREV_UPDATE_SAS_EXPANDER_UPDATE_REQUEST = "UpdateSasExpanderUpdateRequest"
     FSM_PREV_UPDATE_SWITCH_BEGIN = "UpdateSwitchBegin"
     FSM_PREV_UPDATE_SWITCH_COPY_TO_LOCAL = "UpdateSwitchCopyToLocal"
     FSM_PREV_UPDATE_SWITCH_COPY_TO_PEER = "UpdateSwitchCopyToPeer"
@@ -245,6 +293,7 @@ class MgmtControllerConsts:
     FSM_RMT_INV_ERR_CODE_ERR_SERVICE_NOT_READY = "ERR-service-not-ready"
     FSM_RMT_INV_ERR_CODE_ERR_SESSION_CACHE_FULL = "ERR-session-cache-full"
     FSM_RMT_INV_ERR_CODE_ERR_SESSION_NOT_FOUND = "ERR-session-not-found"
+    FSM_RMT_INV_ERR_CODE_ERR_SET_MIN_PASSPHRASE_LENGTH = "ERR-set-min-passphrase-length"
     FSM_RMT_INV_ERR_CODE_ERR_SET_NETWORK = "ERR-set-network"
     FSM_RMT_INV_ERR_CODE_ERR_SET_PASSWORD_STRENGTH_CHECK = "ERR-set-password-strength-check"
     FSM_RMT_INV_ERR_CODE_ERR_SET_PORT_CHANNEL = "ERR-set-port-channel"
@@ -263,10 +312,12 @@ class MgmtControllerConsts:
     FSM_RMT_INV_ERR_CODE_NONE = "none"
     FSM_STAMP_NEVER = "never"
     FSM_STATUS_ACTIVATE_ADAPTOR_ACTIVATE = "ActivateAdaptorActivate"
+    FSM_STATUS_ACTIVATE_ADAPTOR_ACTIVATE_PEER = "ActivateAdaptorActivatePeer"
     FSM_STATUS_ACTIVATE_ADAPTOR_BEGIN = "ActivateAdaptorBegin"
     FSM_STATUS_ACTIVATE_ADAPTOR_FAIL = "ActivateAdaptorFail"
     FSM_STATUS_ACTIVATE_ADAPTOR_POLL_ACTIVATE_STATUS = "ActivateAdaptorPollActivateStatus"
     FSM_STATUS_ACTIVATE_ADAPTOR_POWER_OFF_SERVERS = "ActivateAdaptorPowerOffServers"
+    FSM_STATUS_ACTIVATE_ADAPTOR_POWER_ON_SERVERS = "ActivateAdaptorPowerOnServers"
     FSM_STATUS_ACTIVATE_ADAPTOR_RESET = "ActivateAdaptorReset"
     FSM_STATUS_ACTIVATE_ADAPTOR_SERVERS_POWER_OFF_COMPLETION = "ActivateAdaptorServersPowerOffCompletion"
     FSM_STATUS_ACTIVATE_ADAPTOR_SUCCESS = "ActivateAdaptorSuccess"
@@ -281,11 +332,33 @@ class MgmtControllerConsts:
     FSM_STATUS_ACTIVATE_CMCPOLL_ACTIVATION = "ActivateCMCPollActivation"
     FSM_STATUS_ACTIVATE_CMCRESET = "ActivateCMCReset"
     FSM_STATUS_ACTIVATE_CMCSUCCESS = "ActivateCMCSuccess"
+    FSM_STATUS_ACTIVATE_COLUSA_CMCACTIVATE = "ActivateColusaCMCActivate"
+    FSM_STATUS_ACTIVATE_COLUSA_CMCBEGIN = "ActivateColusaCMCBegin"
+    FSM_STATUS_ACTIVATE_COLUSA_CMCFAIL = "ActivateColusaCMCFail"
+    FSM_STATUS_ACTIVATE_COLUSA_CMCPOLL_ACTIVATION = "ActivateColusaCMCPollActivation"
+    FSM_STATUS_ACTIVATE_COLUSA_CMCRESET = "ActivateColusaCMCReset"
+    FSM_STATUS_ACTIVATE_COLUSA_CMCSUCCESS = "ActivateColusaCMCSuccess"
     FSM_STATUS_ACTIVATE_IOMACTIVATE = "ActivateIOMActivate"
     FSM_STATUS_ACTIVATE_IOMBEGIN = "ActivateIOMBegin"
     FSM_STATUS_ACTIVATE_IOMFAIL = "ActivateIOMFail"
     FSM_STATUS_ACTIVATE_IOMRESET = "ActivateIOMReset"
     FSM_STATUS_ACTIVATE_IOMSUCCESS = "ActivateIOMSuccess"
+    FSM_STATUS_ACTIVATE_LOCAL_DISK_ACTIVATE = "ActivateLocalDiskActivate"
+    FSM_STATUS_ACTIVATE_LOCAL_DISK_BEGIN = "ActivateLocalDiskBegin"
+    FSM_STATUS_ACTIVATE_LOCAL_DISK_FAIL = "ActivateLocalDiskFail"
+    FSM_STATUS_ACTIVATE_LOCAL_DISK_POLL_ACTIVATE_STATUS = "ActivateLocalDiskPollActivateStatus"
+    FSM_STATUS_ACTIVATE_LOCAL_DISK_SUCCESS = "ActivateLocalDiskSuccess"
+    FSM_STATUS_ACTIVATE_SAS_EXPANDER_ACTIVATE = "ActivateSasExpanderActivate"
+    FSM_STATUS_ACTIVATE_SAS_EXPANDER_BEGIN = "ActivateSasExpanderBegin"
+    FSM_STATUS_ACTIVATE_SAS_EXPANDER_FAIL = "ActivateSasExpanderFail"
+    FSM_STATUS_ACTIVATE_SAS_EXPANDER_POLL_ACTIVATE_STATUS = "ActivateSasExpanderPollActivateStatus"
+    FSM_STATUS_ACTIVATE_SAS_EXPANDER_SUCCESS = "ActivateSasExpanderSuccess"
+    FSM_STATUS_ENABLE_SECURE_BOOT_BEGIN = "EnableSecureBootBegin"
+    FSM_STATUS_ENABLE_SECURE_BOOT_FAIL = "EnableSecureBootFail"
+    FSM_STATUS_ENABLE_SECURE_BOOT_POLL_UPDATE_STATUS = "EnableSecureBootPollUpdateStatus"
+    FSM_STATUS_ENABLE_SECURE_BOOT_RESET = "EnableSecureBootReset"
+    FSM_STATUS_ENABLE_SECURE_BOOT_SUCCESS = "EnableSecureBootSuccess"
+    FSM_STATUS_ENABLE_SECURE_BOOT_UPDATE_REQUEST = "EnableSecureBootUpdateRequest"
     FSM_STATUS_EXT_MGMT_IF_CONFIG_BEGIN = "ExtMgmtIfConfigBegin"
     FSM_STATUS_EXT_MGMT_IF_CONFIG_FAIL = "ExtMgmtIfConfigFail"
     FSM_STATUS_EXT_MGMT_IF_CONFIG_PRIMARY = "ExtMgmtIfConfigPrimary"
@@ -298,6 +371,7 @@ class MgmtControllerConsts:
     FSM_STATUS_EXT_MGMT_INTERFACE_CONFIG_CMCVLAN_CFG = "ExtMgmtInterfaceConfigCMCVlanCfg"
     FSM_STATUS_EXT_MGMT_INTERFACE_CONFIG_CMCVLAN_CFG_PEER = "ExtMgmtInterfaceConfigCMCVlanCfgPeer"
     FSM_STATUS_EXT_MGMT_INTERFACE_CONFIG_FAIL = "ExtMgmtInterfaceConfigFail"
+    FSM_STATUS_EXT_MGMT_INTERFACE_CONFIG_STANDBY_CMCVLAN_CFG = "ExtMgmtInterfaceConfigStandbyCMCVlanCfg"
     FSM_STATUS_EXT_MGMT_INTERFACE_CONFIG_SUCCESS = "ExtMgmtInterfaceConfigSuccess"
     FSM_STATUS_LOCK_CONFIG_BEGIN = "LockConfigBegin"
     FSM_STATUS_LOCK_CONFIG_FAIL = "LockConfigFail"
@@ -315,6 +389,10 @@ class MgmtControllerConsts:
     FSM_STATUS_POWER_BUDGET_RECLAIM_CONFIG_POWER_OFF_RECLAIM = "PowerBudgetReclaimConfigPowerOffReclaim"
     FSM_STATUS_POWER_BUDGET_RECLAIM_CONFIG_POWER_OFF_WAIT = "PowerBudgetReclaimConfigPowerOffWait"
     FSM_STATUS_POWER_BUDGET_RECLAIM_CONFIG_SUCCESS = "PowerBudgetReclaimConfigSuccess"
+    FSM_STATUS_POWER_CAP_BEGIN = "PowerCapBegin"
+    FSM_STATUS_POWER_CAP_CONFIG = "PowerCapConfig"
+    FSM_STATUS_POWER_CAP_FAIL = "PowerCapFail"
+    FSM_STATUS_POWER_CAP_SUCCESS = "PowerCapSuccess"
     FSM_STATUS_REGISTRY_CONFIG_BEGIN = "RegistryConfigBegin"
     FSM_STATUS_REGISTRY_CONFIG_FAIL = "RegistryConfigFail"
     FSM_STATUS_REGISTRY_CONFIG_REMOVE = "RegistryConfigRemove"
@@ -329,6 +407,7 @@ class MgmtControllerConsts:
     FSM_STATUS_UPDATE_ADAPTOR_POLL_UPDATE_STATUS = "UpdateAdaptorPollUpdateStatus"
     FSM_STATUS_UPDATE_ADAPTOR_SUCCESS = "UpdateAdaptorSuccess"
     FSM_STATUS_UPDATE_ADAPTOR_UPDATE_REQUEST = "UpdateAdaptorUpdateRequest"
+    FSM_STATUS_UPDATE_ADAPTOR_UPDATE_REQUEST_PEER = "UpdateAdaptorUpdateRequestPeer"
     FSM_STATUS_UPDATE_BMCBEGIN = "UpdateBMCBegin"
     FSM_STATUS_UPDATE_BMCFAIL = "UpdateBMCFail"
     FSM_STATUS_UPDATE_BMCPOLL_UPDATE_STATUS = "UpdateBMCPollUpdateStatus"
@@ -338,6 +417,7 @@ class MgmtControllerConsts:
     FSM_STATUS_UPDATE_BOARD_CONTROLLER_FAIL = "UpdateBoardControllerFail"
     FSM_STATUS_UPDATE_BOARD_CONTROLLER_POLL_UPDATE_STATUS = "UpdateBoardControllerPollUpdateStatus"
     FSM_STATUS_UPDATE_BOARD_CONTROLLER_POWER_OFF_SERVERS = "UpdateBoardControllerPowerOffServers"
+    FSM_STATUS_UPDATE_BOARD_CONTROLLER_POWER_ON_SERVERS = "UpdateBoardControllerPowerOnServers"
     FSM_STATUS_UPDATE_BOARD_CONTROLLER_PREPARE_FOR_UPDATE = "UpdateBoardControllerPrepareForUpdate"
     FSM_STATUS_UPDATE_BOARD_CONTROLLER_SERVERS_POWER_OFF_COMPLETION = "UpdateBoardControllerServersPowerOffCompletion"
     FSM_STATUS_UPDATE_BOARD_CONTROLLER_SUCCESS = "UpdateBoardControllerSuccess"
@@ -347,6 +427,11 @@ class MgmtControllerConsts:
     FSM_STATUS_UPDATE_CMCPOLL_UPDATE_STATUS = "UpdateCMCPollUpdateStatus"
     FSM_STATUS_UPDATE_CMCSUCCESS = "UpdateCMCSuccess"
     FSM_STATUS_UPDATE_CMCUPDATE_REQUEST = "UpdateCMCUpdateRequest"
+    FSM_STATUS_UPDATE_COLUSA_CMCBEGIN = "UpdateColusaCMCBegin"
+    FSM_STATUS_UPDATE_COLUSA_CMCFAIL = "UpdateColusaCMCFail"
+    FSM_STATUS_UPDATE_COLUSA_CMCPOLL_UPDATE_STATUS = "UpdateColusaCMCPollUpdateStatus"
+    FSM_STATUS_UPDATE_COLUSA_CMCSUCCESS = "UpdateColusaCMCSuccess"
+    FSM_STATUS_UPDATE_COLUSA_CMCUPDATE_REQUEST = "UpdateColusaCMCUpdateRequest"
     FSM_STATUS_UPDATE_IOMBEGIN = "UpdateIOMBegin"
     FSM_STATUS_UPDATE_IOMCOPY_IOMIMG_TO_SUB = "UpdateIOMCopyIOMImgToSub"
     FSM_STATUS_UPDATE_IOMCOPY_IMG_FROM_REP = "UpdateIOMCopyImgFromRep"
@@ -360,9 +445,15 @@ class MgmtControllerConsts:
     FSM_STATUS_UPDATE_RAID_CONTROLLER_POLL_ACTIVATION = "UpdateRaidControllerPollActivation"
     FSM_STATUS_UPDATE_RAID_CONTROLLER_POLL_UPDATE_STATUS = "UpdateRaidControllerPollUpdateStatus"
     FSM_STATUS_UPDATE_RAID_CONTROLLER_POWER_OFF_SERVERS = "UpdateRaidControllerPowerOffServers"
+    FSM_STATUS_UPDATE_RAID_CONTROLLER_POWER_ON_SERVERS = "UpdateRaidControllerPowerOnServers"
     FSM_STATUS_UPDATE_RAID_CONTROLLER_SERVERS_POWER_OFF_COMPLETION = "UpdateRaidControllerServersPowerOffCompletion"
     FSM_STATUS_UPDATE_RAID_CONTROLLER_SUCCESS = "UpdateRaidControllerSuccess"
     FSM_STATUS_UPDATE_RAID_CONTROLLER_UPDATE_REQUEST = "UpdateRaidControllerUpdateRequest"
+    FSM_STATUS_UPDATE_SAS_EXPANDER_BEGIN = "UpdateSasExpanderBegin"
+    FSM_STATUS_UPDATE_SAS_EXPANDER_FAIL = "UpdateSasExpanderFail"
+    FSM_STATUS_UPDATE_SAS_EXPANDER_POLL_UPDATE_STATUS = "UpdateSasExpanderPollUpdateStatus"
+    FSM_STATUS_UPDATE_SAS_EXPANDER_SUCCESS = "UpdateSasExpanderSuccess"
+    FSM_STATUS_UPDATE_SAS_EXPANDER_UPDATE_REQUEST = "UpdateSasExpanderUpdateRequest"
     FSM_STATUS_UPDATE_SWITCH_BEGIN = "UpdateSwitchBegin"
     FSM_STATUS_UPDATE_SWITCH_COPY_TO_LOCAL = "UpdateSwitchCopyToLocal"
     FSM_STATUS_UPDATE_SWITCH_COPY_TO_PEER = "UpdateSwitchCopyToPeer"
@@ -408,6 +499,8 @@ class MgmtControllerConsts:
     SUBJECT_CHASSIS = "chassis"
     SUBJECT_CMC = "cmc"
     SUBJECT_IOCARD = "iocard"
+    SUBJECT_LOCAL_DISK = "local-disk"
+    SUBJECT_SAS_EXPANDER = "sas-expander"
     SUBJECT_SERVER_UNIT = "server-unit"
     SUBJECT_SWITCH = "switch"
     SUBJECT_SYSTEM = "system"
@@ -420,23 +513,24 @@ class MgmtController(ManagedObject):
     consts = MgmtControllerConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtController", "mgmtController", "mgmt", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], [u'adaptorUnit', u'computeBlade', u'computeBoardController', u'computeExtBoard', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis', u'equipmentFex', u'equipmentIOCard', u'equipmentSharedIOModule', u'equipmentSwitchIOCard', u'networkElement', u'storageController', u'topSystem'], [u'cimcvmediaActualMountList', u'eventInst', u'fabricLocale', u'faultInst', u'firmwareBootDefinition', u'firmwareRunning', u'firmwareUpdatable', u'mgmtCimcSecureBoot', u'mgmtConnection', u'mgmtControllerFsm', u'mgmtControllerFsmTask', u'mgmtHealthStatus', u'mgmtIf', u'mgmtInterface', u'mgmtProfDerivedInterface', u'sysdebugMEpLog', u'vnicIpV4PooledAddr', u'vnicIpV4ProfDerivedAddr', u'vnicIpV4StaticAddr'], ["Get"])
+    mo_meta = MoMeta("MgmtController", "mgmtController", "mgmt", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], [u'adaptorUnit', u'computeBlade', u'computeBoardController', u'computeExtBoard', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis', u'equipmentFex', u'equipmentIOCard', u'equipmentSharedIOModule', u'equipmentSwitchIOCard', u'equipmentSystemIOController', u'networkElement', u'storageController', u'storageLocalDisk', u'storageSasExpander', u'topSystem'], [u'cimcvmediaActualMountList', u'eventInst', u'fabricLocale', u'faultInst', u'firmwareBootDefinition', u'firmwareRunning', u'firmwareUpdatable', u'mgmtCimcSecureBoot', u'mgmtCmcSecureBoot', u'mgmtConnection', u'mgmtControllerFsm', u'mgmtControllerFsmTask', u'mgmtHealthStatus', u'mgmtIf', u'mgmtInterface', u'mgmtProfDerivedInterface', u'sysdebugMEpLog', u'vnicIpV4PooledAddr', u'vnicIpV4ProfDerivedAddr', u'vnicIpV4StaticAddr'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "desired_maintenance_mode": MoPropertyMeta("desired_maintenance_mode", "desiredMaintenanceMode", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lpc-reset", "normal"], []), 
         "dimm_blacklisting_oper_state": MoPropertyMeta("dimm_blacklisting_oper_state", "dimmBlacklistingOperState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled", "unknown", "unsupported"], []), 
+        "disk_zoning_state": MoPropertyMeta("disk_zoning_state", "diskZoningState", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["deployed", "failed", "inventory-end", "inventory-start", "processing", "unknown"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_flags": MoPropertyMeta("fsm_flags", "fsmFlags", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-4294967295"]), 
-        "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["ActivateAdaptorActivate", "ActivateAdaptorBegin", "ActivateAdaptorFail", "ActivateAdaptorPollActivateStatus", "ActivateAdaptorPowerOffServers", "ActivateAdaptorReset", "ActivateAdaptorServersPowerOffCompletion", "ActivateAdaptorSuccess", "ActivateBMCActivate", "ActivateBMCBegin", "ActivateBMCFail", "ActivateBMCReset", "ActivateBMCSuccess", "ActivateCMCActivate", "ActivateCMCBegin", "ActivateCMCFail", "ActivateCMCPollActivation", "ActivateCMCReset", "ActivateCMCSuccess", "ActivateIOMActivate", "ActivateIOMBegin", "ActivateIOMFail", "ActivateIOMReset", "ActivateIOMSuccess", "ExtMgmtIfConfigBegin", "ExtMgmtIfConfigFail", "ExtMgmtIfConfigPrimary", "ExtMgmtIfConfigSecondary", "ExtMgmtIfConfigSuccess", "ExtMgmtInterfaceConfigActive", "ExtMgmtInterfaceConfigBegin", "ExtMgmtInterfaceConfigCIMCVlanCfgLocal", "ExtMgmtInterfaceConfigCIMCVlanCfgPeer", "ExtMgmtInterfaceConfigCMCVlanCfg", "ExtMgmtInterfaceConfigCMCVlanCfgPeer", "ExtMgmtInterfaceConfigFail", "ExtMgmtInterfaceConfigSuccess", "LockConfigBegin", "LockConfigFail", "LockConfigPowerButtonLockConfig", "LockConfigSuccess", "OnlineBegin", "OnlineBmcConfigureConnLocal", "OnlineBmcConfigureConnPeer", "OnlineFail", "OnlineSuccess", "OnlineSwConfigureConnLocal", "OnlineSwConfigureConnPeer", "PowerBudgetReclaimConfigBegin", "PowerBudgetReclaimConfigFail", "PowerBudgetReclaimConfigPowerOffReclaim", "PowerBudgetReclaimConfigPowerOffWait", "PowerBudgetReclaimConfigSuccess", "RegistryConfigBegin", "RegistryConfigFail", "RegistryConfigRemove", "RegistryConfigSuccess", "SysConfigBegin", "SysConfigFail", "SysConfigPrimary", "SysConfigSecondary", "SysConfigSuccess", "UpdateAdaptorBegin", "UpdateAdaptorFail", "UpdateAdaptorPollUpdateStatus", "UpdateAdaptorSuccess", "UpdateAdaptorUpdateRequest", "UpdateBMCBegin", "UpdateBMCFail", "UpdateBMCPollUpdateStatus", "UpdateBMCSuccess", "UpdateBMCUpdateRequest", "UpdateBoardControllerBegin", "UpdateBoardControllerFail", "UpdateBoardControllerPollUpdateStatus", "UpdateBoardControllerPowerOffServers", "UpdateBoardControllerPrepareForUpdate", "UpdateBoardControllerServersPowerOffCompletion", "UpdateBoardControllerSuccess", "UpdateBoardControllerUpdateRequest", "UpdateCMCBegin", "UpdateCMCFail", "UpdateCMCPollUpdateStatus", "UpdateCMCSuccess", "UpdateCMCUpdateRequest", "UpdateIOMBegin", "UpdateIOMCopyIOMImgToSub", "UpdateIOMCopyImgFromRep", "UpdateIOMFail", "UpdateIOMPollUpdateStatus", "UpdateIOMSuccess", "UpdateIOMUpdateRequest", "UpdateRaidControllerActivate", "UpdateRaidControllerBegin", "UpdateRaidControllerFail", "UpdateRaidControllerPollActivation", "UpdateRaidControllerPollUpdateStatus", "UpdateRaidControllerPowerOffServers", "UpdateRaidControllerServersPowerOffCompletion", "UpdateRaidControllerSuccess", "UpdateRaidControllerUpdateRequest", "UpdateSwitchBegin", "UpdateSwitchCopyToLocal", "UpdateSwitchCopyToPeer", "UpdateSwitchFail", "UpdateSwitchResetLocal", "UpdateSwitchResetRemote", "UpdateSwitchSuccess", "UpdateSwitchUpdateLocal", "UpdateSwitchUpdateRemote", "UpdateSwitchVerifyLocal", "UpdateSwitchVerifyRemote", "UpdateUCSManagerBegin", "UpdateUCSManagerCopyExtToLocal", "UpdateUCSManagerCopyExtToPeer", "UpdateUCSManagerExecute", "UpdateUCSManagerFail", "UpdateUCSManagerStart", "UpdateUCSManagerSuccess", "nop"], []), 
+        "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["ActivateAdaptorActivate", "ActivateAdaptorActivatePeer", "ActivateAdaptorBegin", "ActivateAdaptorFail", "ActivateAdaptorPollActivateStatus", "ActivateAdaptorPowerOffServers", "ActivateAdaptorPowerOnServers", "ActivateAdaptorReset", "ActivateAdaptorServersPowerOffCompletion", "ActivateAdaptorSuccess", "ActivateBMCActivate", "ActivateBMCBegin", "ActivateBMCFail", "ActivateBMCReset", "ActivateBMCSuccess", "ActivateCMCActivate", "ActivateCMCBegin", "ActivateCMCFail", "ActivateCMCPollActivation", "ActivateCMCReset", "ActivateCMCSuccess", "ActivateColusaCMCActivate", "ActivateColusaCMCBegin", "ActivateColusaCMCFail", "ActivateColusaCMCPollActivation", "ActivateColusaCMCReset", "ActivateColusaCMCSuccess", "ActivateIOMActivate", "ActivateIOMBegin", "ActivateIOMFail", "ActivateIOMReset", "ActivateIOMSuccess", "ActivateLocalDiskActivate", "ActivateLocalDiskBegin", "ActivateLocalDiskFail", "ActivateLocalDiskPollActivateStatus", "ActivateLocalDiskSuccess", "ActivateSasExpanderActivate", "ActivateSasExpanderBegin", "ActivateSasExpanderFail", "ActivateSasExpanderPollActivateStatus", "ActivateSasExpanderSuccess", "EnableSecureBootBegin", "EnableSecureBootFail", "EnableSecureBootPollUpdateStatus", "EnableSecureBootReset", "EnableSecureBootSuccess", "EnableSecureBootUpdateRequest", "ExtMgmtIfConfigBegin", "ExtMgmtIfConfigFail", "ExtMgmtIfConfigPrimary", "ExtMgmtIfConfigSecondary", "ExtMgmtIfConfigSuccess", "ExtMgmtInterfaceConfigActive", "ExtMgmtInterfaceConfigBegin", "ExtMgmtInterfaceConfigCIMCVlanCfgLocal", "ExtMgmtInterfaceConfigCIMCVlanCfgPeer", "ExtMgmtInterfaceConfigCMCVlanCfg", "ExtMgmtInterfaceConfigCMCVlanCfgPeer", "ExtMgmtInterfaceConfigFail", "ExtMgmtInterfaceConfigStandbyCMCVlanCfg", "ExtMgmtInterfaceConfigSuccess", "LockConfigBegin", "LockConfigFail", "LockConfigPowerButtonLockConfig", "LockConfigSuccess", "OnlineBegin", "OnlineBmcConfigureConnLocal", "OnlineBmcConfigureConnPeer", "OnlineFail", "OnlineSuccess", "OnlineSwConfigureConnLocal", "OnlineSwConfigureConnPeer", "PowerBudgetReclaimConfigBegin", "PowerBudgetReclaimConfigFail", "PowerBudgetReclaimConfigPowerOffReclaim", "PowerBudgetReclaimConfigPowerOffWait", "PowerBudgetReclaimConfigSuccess", "PowerCapBegin", "PowerCapConfig", "PowerCapFail", "PowerCapSuccess", "RegistryConfigBegin", "RegistryConfigFail", "RegistryConfigRemove", "RegistryConfigSuccess", "SysConfigBegin", "SysConfigFail", "SysConfigPrimary", "SysConfigSecondary", "SysConfigSuccess", "UpdateAdaptorBegin", "UpdateAdaptorFail", "UpdateAdaptorPollUpdateStatus", "UpdateAdaptorSuccess", "UpdateAdaptorUpdateRequest", "UpdateAdaptorUpdateRequestPeer", "UpdateBMCBegin", "UpdateBMCFail", "UpdateBMCPollUpdateStatus", "UpdateBMCSuccess", "UpdateBMCUpdateRequest", "UpdateBoardControllerBegin", "UpdateBoardControllerFail", "UpdateBoardControllerPollUpdateStatus", "UpdateBoardControllerPowerOffServers", "UpdateBoardControllerPowerOnServers", "UpdateBoardControllerPrepareForUpdate", "UpdateBoardControllerServersPowerOffCompletion", "UpdateBoardControllerSuccess", "UpdateBoardControllerUpdateRequest", "UpdateCMCBegin", "UpdateCMCFail", "UpdateCMCPollUpdateStatus", "UpdateCMCSuccess", "UpdateCMCUpdateRequest", "UpdateColusaCMCBegin", "UpdateColusaCMCFail", "UpdateColusaCMCPollUpdateStatus", "UpdateColusaCMCSuccess", "UpdateColusaCMCUpdateRequest", "UpdateIOMBegin", "UpdateIOMCopyIOMImgToSub", "UpdateIOMCopyImgFromRep", "UpdateIOMFail", "UpdateIOMPollUpdateStatus", "UpdateIOMSuccess", "UpdateIOMUpdateRequest", "UpdateRaidControllerActivate", "UpdateRaidControllerBegin", "UpdateRaidControllerFail", "UpdateRaidControllerPollActivation", "UpdateRaidControllerPollUpdateStatus", "UpdateRaidControllerPowerOffServers", "UpdateRaidControllerPowerOnServers", "UpdateRaidControllerServersPowerOffCompletion", "UpdateRaidControllerSuccess", "UpdateRaidControllerUpdateRequest", "UpdateSasExpanderBegin", "UpdateSasExpanderFail", "UpdateSasExpanderPollUpdateStatus", "UpdateSasExpanderSuccess", "UpdateSasExpanderUpdateRequest", "UpdateSwitchBegin", "UpdateSwitchCopyToLocal", "UpdateSwitchCopyToPeer", "UpdateSwitchFail", "UpdateSwitchResetLocal", "UpdateSwitchResetRemote", "UpdateSwitchSuccess", "UpdateSwitchUpdateLocal", "UpdateSwitchUpdateRemote", "UpdateSwitchVerifyLocal", "UpdateSwitchVerifyRemote", "UpdateUCSManagerBegin", "UpdateUCSManagerCopyExtToLocal", "UpdateUCSManagerCopyExtToPeer", "UpdateUCSManagerExecute", "UpdateUCSManagerFail", "UpdateUCSManagerStart", "UpdateUCSManagerSuccess", "nop"], []), 
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]), 
-        "fsm_rmt_inv_err_code": MoPropertyMeta("fsm_rmt_inv_err_code", "fsmRmtInvErrCode", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["ERR-2fa-auth-retry", "ERR-ACTIVATE-failed", "ERR-ACTIVATE-in-progress", "ERR-ACTIVATE-retry", "ERR-BIOS-TOKENS-OLD-BIOS", "ERR-BIOS-TOKENS-OLD-CIMC", "ERR-BIOS-network-boot-order-not-found", "ERR-BOARDCTRLUPDATE-ignore", "ERR-DIAG-cancelled", "ERR-DIAG-fsm-restarted", "ERR-DIAG-test-failed", "ERR-DNLD-authentication-failure", "ERR-DNLD-hostkey-mismatch", "ERR-DNLD-invalid-image", "ERR-DNLD-no-file", "ERR-DNLD-no-space", "ERR-DNLD-usb-unmounted", "ERR-DNS-delete-error", "ERR-DNS-get-error", "ERR-DNS-set-error", "ERR-Diagnostics-in-progress", "ERR-Diagnostics-memtest-in-progress", "ERR-Diagnostics-network-in-progress", "ERR-FILTER-illegal-format", "ERR-FSM-no-such-state", "ERR-HOST-fru-identity-mismatch", "ERR-HTTP-set-error", "ERR-HTTPS-set-error", "ERR-IBMC-analyze-results", "ERR-IBMC-connect-error", "ERR-IBMC-connector-info-retrieval-error", "ERR-IBMC-fru-retrieval-error", "ERR-IBMC-invalid-end-point-config", "ERR-IBMC-results-not-ready", "ERR-MAX-subscriptions-allowed-error", "ERR-MO-CONFIG-child-object-cant-be-configured", "ERR-MO-META-no-such-object-class", "ERR-MO-PROPERTY-no-such-property", "ERR-MO-PROPERTY-value-out-of-range", "ERR-MO-access-denied", "ERR-MO-deletion-rule-violation", "ERR-MO-duplicate-object", "ERR-MO-illegal-containment", "ERR-MO-illegal-creation", "ERR-MO-illegal-iterator-state", "ERR-MO-illegal-object-lifecycle-transition", "ERR-MO-naming-rule-violation", "ERR-MO-object-not-found", "ERR-MO-resource-allocation", "ERR-NTP-delete-error", "ERR-NTP-get-error", "ERR-NTP-set-error", "ERR-POWER-CAP-UNSUPPORTED", "ERR-POWER-PROFILE-IN-PROGRESS", "ERR-SERVER-mis-connect", "ERR-SWITCH-invalid-if-config", "ERR-TOKEN-request-denied", "ERR-UNABLE-TO-FETCH-BIOS-SETTINGS", "ERR-UPDATE-failed", "ERR-UPDATE-in-progress", "ERR-UPDATE-retry", "ERR-aaa-config-modify-error", "ERR-acct-realm-set-error", "ERR-admin-passwd-set", "ERR-auth-issue", "ERR-auth-realm-get-error", "ERR-auth-realm-set-error", "ERR-authentication", "ERR-authorization-required", "ERR-cli-session-limit-reached", "ERR-create-keyring", "ERR-create-locale", "ERR-create-role", "ERR-create-tp", "ERR-create-user", "ERR-delete-locale", "ERR-delete-role", "ERR-delete-session", "ERR-delete-user", "ERR-downgrade-fail", "ERR-efi-Diagnostics--in-progress", "ERR-enable-mgmt-conn", "ERR-ep-set-error", "ERR-get-max-http-user-sessions", "ERR-http-initializing", "ERR-insufficiently-equipped", "ERR-internal-error", "ERR-ldap-delete-error", "ERR-ldap-get-error", "ERR-ldap-group-modify-error", "ERR-ldap-group-set-error", "ERR-ldap-set-error", "ERR-locale-set-error", "ERR-max-userid-sessions-reached", "ERR-missing-method", "ERR-modify-locale", "ERR-modify-role", "ERR-modify-user", "ERR-modify-user-locale", "ERR-modify-user-role", "ERR-provider-group-modify-error", "ERR-provider-group-set-error", "ERR-radius-get-error", "ERR-radius-global-set-error", "ERR-radius-group-set-error", "ERR-radius-set-error", "ERR-request-timeout", "ERR-reset-adapter", "ERR-role-set-error", "ERR-secondary-node", "ERR-service-not-ready", "ERR-session-cache-full", "ERR-session-not-found", "ERR-set-network", "ERR-set-password-strength-check", "ERR-set-port-channel", "ERR-store-pre-login-banner-msg", "ERR-tacacs-enable-error", "ERR-tacacs-global-set-error", "ERR-tacacs-group-set-error", "ERR-tacacs-plus-get-error", "ERR-tacacs-set-error", "ERR-test-error-1", "ERR-test-error-2", "ERR-timezone-set-error", "ERR-user-account-expired", "ERR-user-set-error", "ERR-xml-parse-error", "none"], ["0-4294967295"]), 
+        "fsm_rmt_inv_err_code": MoPropertyMeta("fsm_rmt_inv_err_code", "fsmRmtInvErrCode", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["ERR-2fa-auth-retry", "ERR-ACTIVATE-failed", "ERR-ACTIVATE-in-progress", "ERR-ACTIVATE-retry", "ERR-BIOS-TOKENS-OLD-BIOS", "ERR-BIOS-TOKENS-OLD-CIMC", "ERR-BIOS-network-boot-order-not-found", "ERR-BOARDCTRLUPDATE-ignore", "ERR-DIAG-cancelled", "ERR-DIAG-fsm-restarted", "ERR-DIAG-test-failed", "ERR-DNLD-authentication-failure", "ERR-DNLD-hostkey-mismatch", "ERR-DNLD-invalid-image", "ERR-DNLD-no-file", "ERR-DNLD-no-space", "ERR-DNLD-usb-unmounted", "ERR-DNS-delete-error", "ERR-DNS-get-error", "ERR-DNS-set-error", "ERR-Diagnostics-in-progress", "ERR-Diagnostics-memtest-in-progress", "ERR-Diagnostics-network-in-progress", "ERR-FILTER-illegal-format", "ERR-FSM-no-such-state", "ERR-HOST-fru-identity-mismatch", "ERR-HTTP-set-error", "ERR-HTTPS-set-error", "ERR-IBMC-analyze-results", "ERR-IBMC-connect-error", "ERR-IBMC-connector-info-retrieval-error", "ERR-IBMC-fru-retrieval-error", "ERR-IBMC-invalid-end-point-config", "ERR-IBMC-results-not-ready", "ERR-MAX-subscriptions-allowed-error", "ERR-MO-CONFIG-child-object-cant-be-configured", "ERR-MO-META-no-such-object-class", "ERR-MO-PROPERTY-no-such-property", "ERR-MO-PROPERTY-value-out-of-range", "ERR-MO-access-denied", "ERR-MO-deletion-rule-violation", "ERR-MO-duplicate-object", "ERR-MO-illegal-containment", "ERR-MO-illegal-creation", "ERR-MO-illegal-iterator-state", "ERR-MO-illegal-object-lifecycle-transition", "ERR-MO-naming-rule-violation", "ERR-MO-object-not-found", "ERR-MO-resource-allocation", "ERR-NTP-delete-error", "ERR-NTP-get-error", "ERR-NTP-set-error", "ERR-POWER-CAP-UNSUPPORTED", "ERR-POWER-PROFILE-IN-PROGRESS", "ERR-SERVER-mis-connect", "ERR-SWITCH-invalid-if-config", "ERR-TOKEN-request-denied", "ERR-UNABLE-TO-FETCH-BIOS-SETTINGS", "ERR-UPDATE-failed", "ERR-UPDATE-in-progress", "ERR-UPDATE-retry", "ERR-aaa-config-modify-error", "ERR-acct-realm-set-error", "ERR-admin-passwd-set", "ERR-auth-issue", "ERR-auth-realm-get-error", "ERR-auth-realm-set-error", "ERR-authentication", "ERR-authorization-required", "ERR-cli-session-limit-reached", "ERR-create-keyring", "ERR-create-locale", "ERR-create-role", "ERR-create-tp", "ERR-create-user", "ERR-delete-locale", "ERR-delete-role", "ERR-delete-session", "ERR-delete-user", "ERR-downgrade-fail", "ERR-efi-Diagnostics--in-progress", "ERR-enable-mgmt-conn", "ERR-ep-set-error", "ERR-get-max-http-user-sessions", "ERR-http-initializing", "ERR-insufficiently-equipped", "ERR-internal-error", "ERR-ldap-delete-error", "ERR-ldap-get-error", "ERR-ldap-group-modify-error", "ERR-ldap-group-set-error", "ERR-ldap-set-error", "ERR-locale-set-error", "ERR-max-userid-sessions-reached", "ERR-missing-method", "ERR-modify-locale", "ERR-modify-role", "ERR-modify-user", "ERR-modify-user-locale", "ERR-modify-user-role", "ERR-provider-group-modify-error", "ERR-provider-group-set-error", "ERR-radius-get-error", "ERR-radius-global-set-error", "ERR-radius-group-set-error", "ERR-radius-set-error", "ERR-request-timeout", "ERR-reset-adapter", "ERR-role-set-error", "ERR-secondary-node", "ERR-service-not-ready", "ERR-session-cache-full", "ERR-session-not-found", "ERR-set-min-passphrase-length", "ERR-set-network", "ERR-set-password-strength-check", "ERR-set-port-channel", "ERR-store-pre-login-banner-msg", "ERR-tacacs-enable-error", "ERR-tacacs-global-set-error", "ERR-tacacs-group-set-error", "ERR-tacacs-plus-get-error", "ERR-tacacs-set-error", "ERR-test-error-1", "ERR-test-error-2", "ERR-timezone-set-error", "ERR-user-account-expired", "ERR-user-set-error", "ERR-xml-parse-error", "none"], ["0-4294967295"]), 
         "fsm_rmt_inv_err_descr": MoPropertyMeta("fsm_rmt_inv_err_descr", "fsmRmtInvErrDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, 0, 510, None, [], []), 
         "fsm_rmt_inv_rslt": MoPropertyMeta("fsm_rmt_inv_rslt", "fsmRmtInvRslt", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, r"""((defaultValue|not-applicable|resource-unavailable|service-unavailable|intermittent-error|sw-defect|service-not-implemented-ignore|extend-timeout|capability-not-implemented-failure|illegal-fru|end-point-unavailable|failure|resource-capacity-exceeded|service-protocol-error|fw-defect|service-not-implemented-fail|task-reset|unidentified-fail|capability-not-supported|end-point-failed|fru-state-indeterminate|resource-dependency|fru-identity-indeterminate|internal-error|hw-defect|service-not-supported|fru-not-supported|end-point-protocol-error|capability-unavailable|fru-not-ready|capability-not-implemented-ignore|fru-info-malformed|timeout),){0,32}(defaultValue|not-applicable|resource-unavailable|service-unavailable|intermittent-error|sw-defect|service-not-implemented-ignore|extend-timeout|capability-not-implemented-failure|illegal-fru|end-point-unavailable|failure|resource-capacity-exceeded|service-protocol-error|fw-defect|service-not-implemented-fail|task-reset|unidentified-fail|capability-not-supported|end-point-failed|fru-state-indeterminate|resource-dependency|fru-identity-indeterminate|internal-error|hw-defect|service-not-supported|fru-not-supported|end-point-protocol-error|capability-unavailable|fru-not-ready|capability-not-implemented-ignore|fru-info-malformed|timeout){0,1}""", [], []), 
         "fsm_stage_descr": MoPropertyMeta("fsm_stage_descr", "fsmStageDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_stamp": MoPropertyMeta("fsm_stamp", "fsmStamp", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []), 
-        "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["ActivateAdaptorActivate", "ActivateAdaptorBegin", "ActivateAdaptorFail", "ActivateAdaptorPollActivateStatus", "ActivateAdaptorPowerOffServers", "ActivateAdaptorReset", "ActivateAdaptorServersPowerOffCompletion", "ActivateAdaptorSuccess", "ActivateBMCActivate", "ActivateBMCBegin", "ActivateBMCFail", "ActivateBMCReset", "ActivateBMCSuccess", "ActivateCMCActivate", "ActivateCMCBegin", "ActivateCMCFail", "ActivateCMCPollActivation", "ActivateCMCReset", "ActivateCMCSuccess", "ActivateIOMActivate", "ActivateIOMBegin", "ActivateIOMFail", "ActivateIOMReset", "ActivateIOMSuccess", "ExtMgmtIfConfigBegin", "ExtMgmtIfConfigFail", "ExtMgmtIfConfigPrimary", "ExtMgmtIfConfigSecondary", "ExtMgmtIfConfigSuccess", "ExtMgmtInterfaceConfigActive", "ExtMgmtInterfaceConfigBegin", "ExtMgmtInterfaceConfigCIMCVlanCfgLocal", "ExtMgmtInterfaceConfigCIMCVlanCfgPeer", "ExtMgmtInterfaceConfigCMCVlanCfg", "ExtMgmtInterfaceConfigCMCVlanCfgPeer", "ExtMgmtInterfaceConfigFail", "ExtMgmtInterfaceConfigSuccess", "LockConfigBegin", "LockConfigFail", "LockConfigPowerButtonLockConfig", "LockConfigSuccess", "OnlineBegin", "OnlineBmcConfigureConnLocal", "OnlineBmcConfigureConnPeer", "OnlineFail", "OnlineSuccess", "OnlineSwConfigureConnLocal", "OnlineSwConfigureConnPeer", "PowerBudgetReclaimConfigBegin", "PowerBudgetReclaimConfigFail", "PowerBudgetReclaimConfigPowerOffReclaim", "PowerBudgetReclaimConfigPowerOffWait", "PowerBudgetReclaimConfigSuccess", "RegistryConfigBegin", "RegistryConfigFail", "RegistryConfigRemove", "RegistryConfigSuccess", "SysConfigBegin", "SysConfigFail", "SysConfigPrimary", "SysConfigSecondary", "SysConfigSuccess", "UpdateAdaptorBegin", "UpdateAdaptorFail", "UpdateAdaptorPollUpdateStatus", "UpdateAdaptorSuccess", "UpdateAdaptorUpdateRequest", "UpdateBMCBegin", "UpdateBMCFail", "UpdateBMCPollUpdateStatus", "UpdateBMCSuccess", "UpdateBMCUpdateRequest", "UpdateBoardControllerBegin", "UpdateBoardControllerFail", "UpdateBoardControllerPollUpdateStatus", "UpdateBoardControllerPowerOffServers", "UpdateBoardControllerPrepareForUpdate", "UpdateBoardControllerServersPowerOffCompletion", "UpdateBoardControllerSuccess", "UpdateBoardControllerUpdateRequest", "UpdateCMCBegin", "UpdateCMCFail", "UpdateCMCPollUpdateStatus", "UpdateCMCSuccess", "UpdateCMCUpdateRequest", "UpdateIOMBegin", "UpdateIOMCopyIOMImgToSub", "UpdateIOMCopyImgFromRep", "UpdateIOMFail", "UpdateIOMPollUpdateStatus", "UpdateIOMSuccess", "UpdateIOMUpdateRequest", "UpdateRaidControllerActivate", "UpdateRaidControllerBegin", "UpdateRaidControllerFail", "UpdateRaidControllerPollActivation", "UpdateRaidControllerPollUpdateStatus", "UpdateRaidControllerPowerOffServers", "UpdateRaidControllerServersPowerOffCompletion", "UpdateRaidControllerSuccess", "UpdateRaidControllerUpdateRequest", "UpdateSwitchBegin", "UpdateSwitchCopyToLocal", "UpdateSwitchCopyToPeer", "UpdateSwitchFail", "UpdateSwitchResetLocal", "UpdateSwitchResetRemote", "UpdateSwitchSuccess", "UpdateSwitchUpdateLocal", "UpdateSwitchUpdateRemote", "UpdateSwitchVerifyLocal", "UpdateSwitchVerifyRemote", "UpdateUCSManagerBegin", "UpdateUCSManagerCopyExtToLocal", "UpdateUCSManagerCopyExtToPeer", "UpdateUCSManagerExecute", "UpdateUCSManagerFail", "UpdateUCSManagerStart", "UpdateUCSManagerSuccess", "nop"], []), 
+        "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["ActivateAdaptorActivate", "ActivateAdaptorActivatePeer", "ActivateAdaptorBegin", "ActivateAdaptorFail", "ActivateAdaptorPollActivateStatus", "ActivateAdaptorPowerOffServers", "ActivateAdaptorPowerOnServers", "ActivateAdaptorReset", "ActivateAdaptorServersPowerOffCompletion", "ActivateAdaptorSuccess", "ActivateBMCActivate", "ActivateBMCBegin", "ActivateBMCFail", "ActivateBMCReset", "ActivateBMCSuccess", "ActivateCMCActivate", "ActivateCMCBegin", "ActivateCMCFail", "ActivateCMCPollActivation", "ActivateCMCReset", "ActivateCMCSuccess", "ActivateColusaCMCActivate", "ActivateColusaCMCBegin", "ActivateColusaCMCFail", "ActivateColusaCMCPollActivation", "ActivateColusaCMCReset", "ActivateColusaCMCSuccess", "ActivateIOMActivate", "ActivateIOMBegin", "ActivateIOMFail", "ActivateIOMReset", "ActivateIOMSuccess", "ActivateLocalDiskActivate", "ActivateLocalDiskBegin", "ActivateLocalDiskFail", "ActivateLocalDiskPollActivateStatus", "ActivateLocalDiskSuccess", "ActivateSasExpanderActivate", "ActivateSasExpanderBegin", "ActivateSasExpanderFail", "ActivateSasExpanderPollActivateStatus", "ActivateSasExpanderSuccess", "EnableSecureBootBegin", "EnableSecureBootFail", "EnableSecureBootPollUpdateStatus", "EnableSecureBootReset", "EnableSecureBootSuccess", "EnableSecureBootUpdateRequest", "ExtMgmtIfConfigBegin", "ExtMgmtIfConfigFail", "ExtMgmtIfConfigPrimary", "ExtMgmtIfConfigSecondary", "ExtMgmtIfConfigSuccess", "ExtMgmtInterfaceConfigActive", "ExtMgmtInterfaceConfigBegin", "ExtMgmtInterfaceConfigCIMCVlanCfgLocal", "ExtMgmtInterfaceConfigCIMCVlanCfgPeer", "ExtMgmtInterfaceConfigCMCVlanCfg", "ExtMgmtInterfaceConfigCMCVlanCfgPeer", "ExtMgmtInterfaceConfigFail", "ExtMgmtInterfaceConfigStandbyCMCVlanCfg", "ExtMgmtInterfaceConfigSuccess", "LockConfigBegin", "LockConfigFail", "LockConfigPowerButtonLockConfig", "LockConfigSuccess", "OnlineBegin", "OnlineBmcConfigureConnLocal", "OnlineBmcConfigureConnPeer", "OnlineFail", "OnlineSuccess", "OnlineSwConfigureConnLocal", "OnlineSwConfigureConnPeer", "PowerBudgetReclaimConfigBegin", "PowerBudgetReclaimConfigFail", "PowerBudgetReclaimConfigPowerOffReclaim", "PowerBudgetReclaimConfigPowerOffWait", "PowerBudgetReclaimConfigSuccess", "PowerCapBegin", "PowerCapConfig", "PowerCapFail", "PowerCapSuccess", "RegistryConfigBegin", "RegistryConfigFail", "RegistryConfigRemove", "RegistryConfigSuccess", "SysConfigBegin", "SysConfigFail", "SysConfigPrimary", "SysConfigSecondary", "SysConfigSuccess", "UpdateAdaptorBegin", "UpdateAdaptorFail", "UpdateAdaptorPollUpdateStatus", "UpdateAdaptorSuccess", "UpdateAdaptorUpdateRequest", "UpdateAdaptorUpdateRequestPeer", "UpdateBMCBegin", "UpdateBMCFail", "UpdateBMCPollUpdateStatus", "UpdateBMCSuccess", "UpdateBMCUpdateRequest", "UpdateBoardControllerBegin", "UpdateBoardControllerFail", "UpdateBoardControllerPollUpdateStatus", "UpdateBoardControllerPowerOffServers", "UpdateBoardControllerPowerOnServers", "UpdateBoardControllerPrepareForUpdate", "UpdateBoardControllerServersPowerOffCompletion", "UpdateBoardControllerSuccess", "UpdateBoardControllerUpdateRequest", "UpdateCMCBegin", "UpdateCMCFail", "UpdateCMCPollUpdateStatus", "UpdateCMCSuccess", "UpdateCMCUpdateRequest", "UpdateColusaCMCBegin", "UpdateColusaCMCFail", "UpdateColusaCMCPollUpdateStatus", "UpdateColusaCMCSuccess", "UpdateColusaCMCUpdateRequest", "UpdateIOMBegin", "UpdateIOMCopyIOMImgToSub", "UpdateIOMCopyImgFromRep", "UpdateIOMFail", "UpdateIOMPollUpdateStatus", "UpdateIOMSuccess", "UpdateIOMUpdateRequest", "UpdateRaidControllerActivate", "UpdateRaidControllerBegin", "UpdateRaidControllerFail", "UpdateRaidControllerPollActivation", "UpdateRaidControllerPollUpdateStatus", "UpdateRaidControllerPowerOffServers", "UpdateRaidControllerPowerOnServers", "UpdateRaidControllerServersPowerOffCompletion", "UpdateRaidControllerSuccess", "UpdateRaidControllerUpdateRequest", "UpdateSasExpanderBegin", "UpdateSasExpanderFail", "UpdateSasExpanderPollUpdateStatus", "UpdateSasExpanderSuccess", "UpdateSasExpanderUpdateRequest", "UpdateSwitchBegin", "UpdateSwitchCopyToLocal", "UpdateSwitchCopyToPeer", "UpdateSwitchFail", "UpdateSwitchResetLocal", "UpdateSwitchResetRemote", "UpdateSwitchSuccess", "UpdateSwitchUpdateLocal", "UpdateSwitchUpdateRemote", "UpdateSwitchVerifyLocal", "UpdateSwitchVerifyRemote", "UpdateUCSManagerBegin", "UpdateUCSManagerCopyExtToLocal", "UpdateUCSManagerCopyExtToPeer", "UpdateUCSManagerExecute", "UpdateUCSManagerFail", "UpdateUCSManagerStart", "UpdateUCSManagerSuccess", "nop"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "guid": MoPropertyMeta("guid", "guid", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x8, None, None, None, ["A", "B", "NONE"], []), 
@@ -452,8 +546,8 @@ class MgmtController(ManagedObject):
         "storage_oob_config_supported": MoPropertyMeta("storage_oob_config_supported", "storageOobConfigSupported", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "storage_oob_interface_supported": MoPropertyMeta("storage_oob_interface_supported", "storageOobInterfaceSupported", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "storage_subsystem_state": MoPropertyMeta("storage_subsystem_state", "storageSubsystemState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["initialized", "initializing", "uninitialized", "unknown", "unsupported"], []), 
-        "subject": MoPropertyMeta("subject", "subject", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["adaptor", "blade", "board-controller", "chassis", "cmc", "iocard", "server-unit", "switch", "system", "unknown"], []), 
-        "supported_capability": MoPropertyMeta("supported_capability", "supportedCapability", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|modify-maintenance-mode),){0,2}(defaultValue|none|modify-maintenance-mode){0,1}""", [], []), 
+        "subject": MoPropertyMeta("subject", "subject", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["adaptor", "blade", "board-controller", "chassis", "cmc", "iocard", "local-disk", "sas-expander", "server-unit", "switch", "system", "unknown"], []), 
+        "supported_capability": MoPropertyMeta("supported_capability", "supportedCapability", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|modify-maintenance-mode|factory-reset|local-storage),){0,4}(defaultValue|none|modify-maintenance-mode|factory-reset|local-storage){0,1}""", [], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
     }
 
@@ -461,6 +555,7 @@ class MgmtController(ManagedObject):
         "childAction": "child_action", 
         "desiredMaintenanceMode": "desired_maintenance_mode", 
         "dimmBlacklistingOperState": "dimm_blacklisting_oper_state", 
+        "diskZoningState": "disk_zoning_state", 
         "dn": "dn", 
         "fsmDescr": "fsm_descr", 
         "fsmFlags": "fsm_flags", 
@@ -497,6 +592,7 @@ class MgmtController(ManagedObject):
         self.child_action = None
         self.desired_maintenance_mode = None
         self.dimm_blacklisting_oper_state = None
+        self.disk_zoning_state = None
         self.fsm_descr = None
         self.fsm_flags = None
         self.fsm_prev = None

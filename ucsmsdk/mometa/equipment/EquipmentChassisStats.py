@@ -22,10 +22,9 @@ class EquipmentChassisStats(ManagedObject):
 
     prop_meta = {
         "chassis_i2_c_errors": MoPropertyMeta("chassis_i2_c_errors", "ChassisI2CErrors", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "chassis_i2_c_errors_delta": MoPropertyMeta("chassis_i2_c_errors_delta", "ChassisI2CErrorsDelta", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "chassis_i2_c_errors_delta_avg": MoPropertyMeta("chassis_i2_c_errors_delta_avg", "ChassisI2CErrorsDeltaAvg", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "chassis_i2_c_errors_delta_max": MoPropertyMeta("chassis_i2_c_errors_delta_max", "ChassisI2CErrorsDeltaMax", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "chassis_i2_c_errors_delta_min": MoPropertyMeta("chassis_i2_c_errors_delta_min", "ChassisI2CErrorsDeltaMin", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "chassis_i2_c_errors_avg": MoPropertyMeta("chassis_i2_c_errors_avg", "ChassisI2CErrorsAvg", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "chassis_i2_c_errors_max": MoPropertyMeta("chassis_i2_c_errors_max", "ChassisI2CErrorsMax", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "chassis_i2_c_errors_min": MoPropertyMeta("chassis_i2_c_errors_min", "ChassisI2CErrorsMin", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "input_power": MoPropertyMeta("input_power", "inputPower", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -48,10 +47,9 @@ class EquipmentChassisStats(ManagedObject):
 
     prop_map = {
         "ChassisI2CErrors": "chassis_i2_c_errors", 
-        "ChassisI2CErrorsDelta": "chassis_i2_c_errors_delta", 
-        "ChassisI2CErrorsDeltaAvg": "chassis_i2_c_errors_delta_avg", 
-        "ChassisI2CErrorsDeltaMax": "chassis_i2_c_errors_delta_max", 
-        "ChassisI2CErrorsDeltaMin": "chassis_i2_c_errors_delta_min", 
+        "ChassisI2CErrorsAvg": "chassis_i2_c_errors_avg", 
+        "ChassisI2CErrorsMax": "chassis_i2_c_errors_max", 
+        "ChassisI2CErrorsMin": "chassis_i2_c_errors_min", 
         "childAction": "child_action", 
         "dn": "dn", 
         "inputPower": "input_power", 
@@ -75,10 +73,9 @@ class EquipmentChassisStats(ManagedObject):
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
         self.chassis_i2_c_errors = None
-        self.chassis_i2_c_errors_delta = None
-        self.chassis_i2_c_errors_delta_avg = None
-        self.chassis_i2_c_errors_delta_max = None
-        self.chassis_i2_c_errors_delta_min = None
+        self.chassis_i2_c_errors_avg = None
+        self.chassis_i2_c_errors_max = None
+        self.chassis_i2_c_errors_min = None
         self.child_action = None
         self.input_power = None
         self.input_power_avg = None

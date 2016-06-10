@@ -13,9 +13,6 @@ class SwEthEstcEpConsts:
     ADMIN_SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
-    AUTO_NEGOTIATE_AUTO = "auto"
-    AUTO_NEGOTIATE_NONE = "none"
-    AUTO_NEGOTIATE_UNSET = "unset"
     CDP_DISABLED = "disabled"
     CDP_ENABLED = "enabled"
     CHASSIS_ID_N_A = "N/A"
@@ -71,7 +68,6 @@ class SwEthEstcEp(ManagedObject):
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["10gbps", "1gbps", "20gbps", "40gbps", "indeterminate"], []), 
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["disabled", "enabled"], []), 
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "auto_negotiate": MoPropertyMeta("auto_negotiate", "autoNegotiate", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto", "none", "unset"], []), 
         "border_aggr_port_id": MoPropertyMeta("border_aggr_port_id", "borderAggrPortId", "uint", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], []), 
         "border_port_id": MoPropertyMeta("border_port_id", "borderPortId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], []), 
         "border_slot_id": MoPropertyMeta("border_slot_id", "borderSlotId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, [], []), 
@@ -113,7 +109,6 @@ class SwEthEstcEp(ManagedObject):
         "adminSpeed": "admin_speed", 
         "adminState": "admin_state", 
         "aggrPortId": "aggr_port_id", 
-        "autoNegotiate": "auto_negotiate", 
         "borderAggrPortId": "border_aggr_port_id", 
         "borderPortId": "border_port_id", 
         "borderSlotId": "border_slot_id", 
@@ -158,7 +153,6 @@ class SwEthEstcEp(ManagedObject):
         self.admin_speed = None
         self.admin_state = None
         self.aggr_port_id = None
-        self.auto_negotiate = None
         self.border_aggr_port_id = None
         self.border_port_id = None
         self.border_slot_id = None

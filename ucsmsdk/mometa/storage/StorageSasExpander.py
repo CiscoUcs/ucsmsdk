@@ -6,8 +6,20 @@ from ...ucsmeta import VersionMeta
 
 
 class StorageSasExpanderConsts:
+    EXPANDER_STATE_DEGRADED = "degraded"
+    EXPANDER_STATE_INOPERABLE = "inoperable"
+    EXPANDER_STATE_NOT_READY = "not-ready"
+    EXPANDER_STATE_OPERABLE = "operable"
+    EXPANDER_STATE_RESOURCE_UNAVAILABLE = "resource-unavailable"
+    EXPANDER_STATE_UNKNOWN = "unknown"
+    EXPANDER_STATE_UNREACHABLE = "unreachable"
+    LC_ALLOCATED = "allocated"
+    LC_AVAILABLE = "available"
+    LC_DEALLOCATED = "deallocated"
+    LC_REPURPOSED = "repurposed"
     OPER_STATE_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     OPER_STATE_AUTO_UPGRADE = "auto-upgrade"
+    OPER_STATE_BACKPLANE_PORT_PROBLEM = "backplane-port-problem"
     OPER_STATE_BIOS_POST_TIMEOUT = "bios-post-timeout"
     OPER_STATE_CHASSIS_LIMIT_EXCEEDED = "chassis-limit-exceeded"
     OPER_STATE_CONFIG = "config"
@@ -38,6 +50,7 @@ class StorageSasExpanderConsts:
     OPER_STATE_VOLTAGE_PROBLEM = "voltage-problem"
     OPERABILITY_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     OPERABILITY_AUTO_UPGRADE = "auto-upgrade"
+    OPERABILITY_BACKPLANE_PORT_PROBLEM = "backplane-port-problem"
     OPERABILITY_BIOS_POST_TIMEOUT = "bios-post-timeout"
     OPERABILITY_CHASSIS_LIMIT_EXCEEDED = "chassis-limit-exceeded"
     OPERABILITY_CONFIG = "config"
@@ -91,6 +104,10 @@ class StorageSasExpanderConsts:
     PRESENCE_EMPTY = "empty"
     PRESENCE_EQUIPPED = "equipped"
     PRESENCE_EQUIPPED_DEPRECATED = "equipped-deprecated"
+    PRESENCE_EQUIPPED_DISC_ERROR = "equipped-disc-error"
+    PRESENCE_EQUIPPED_DISC_IN_PROGRESS = "equipped-disc-in-progress"
+    PRESENCE_EQUIPPED_DISC_NOT_STARTED = "equipped-disc-not-started"
+    PRESENCE_EQUIPPED_DISC_UNKNOWN = "equipped-disc-unknown"
     PRESENCE_EQUIPPED_IDENTITY_UNESTABLISHABLE = "equipped-identity-unestablishable"
     PRESENCE_EQUIPPED_NOT_PRIMARY = "equipped-not-primary"
     PRESENCE_EQUIPPED_SLAVE = "equipped-slave"
@@ -105,6 +122,7 @@ class StorageSasExpanderConsts:
     PRESENCE_NOT_SUPPORTED = "not-supported"
     PRESENCE_UNAUTHORIZED = "unauthorized"
     PRESENCE_UNKNOWN = "unknown"
+    TEMPERATURE_NOT_APPLICABLE = "not-applicable"
     THERMAL_LOWER_CRITICAL = "lower-critical"
     THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
     THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -114,6 +132,10 @@ class StorageSasExpanderConsts:
     THERMAL_UPPER_CRITICAL = "upper-critical"
     THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
     THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
+    UPLINK_STATE_MISCONNECT = "misconnect"
+    UPLINK_STATE_OPTIMAL = "optimal"
+    UPLINK_STATE_SUB_OPTIMAL = "sub-optimal"
+    UPLINK_STATE_UNKNOWN = "unknown"
     VOLTAGE_LOWER_CRITICAL = "lower-critical"
     VOLTAGE_LOWER_NON_CRITICAL = "lower-non-critical"
     VOLTAGE_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -131,47 +153,68 @@ class StorageSasExpander(ManagedObject):
     consts = StorageSasExpanderConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("StorageSasExpander", "storageSasExpander", "sas-expander-[id]", VersionMeta.Version226a, "InputOutput", 0x3f, [], ["read-only"], [u'computeBoard'], [u'firmwareBootDefinition', u'firmwareRunning'], [None])
+    mo_meta = MoMeta("StorageSasExpander", "storageSasExpander", "sas-expander-[id]", VersionMeta.Version226a, "InputOutput", 0x3f, [], ["read-only"], [u'computeBoard', u'equipmentChassis'], [u'faultInst', u'firmwareBootDefinition', u'firmwareRunning', u'mgmtController', u'storageOnboardDevice', u'storageSasUpLink'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version226a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "current_epfb": MoPropertyMeta("current_epfb", "currentEPFB", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "elid": MoPropertyMeta("elid", "elid", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "expander_state": MoPropertyMeta("expander_state", "expanderState", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "inoperable", "not-ready", "operable", "resource-unavailable", "unknown", "unreachable"], []), 
         "fw_region_one": MoPropertyMeta("fw_region_one", "fwRegionOne", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "fw_region_two": MoPropertyMeta("fw_region_two", "fwRegionTwo", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "fw_running_region": MoPropertyMeta("fw_running_region", "fwRunningRegion", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version226a, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []), 
+        "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []), 
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "mfg_major_rev": MoPropertyMeta("mfg_major_rev", "mfgMajorRev", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "mfg_minor_rev": MoPropertyMeta("mfg_minor_rev", "mfgMinorRev", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "mfg_platform_id": MoPropertyMeta("mfg_platform_id", "mfgPlatformId", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
-        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
+        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
         "perf": MoPropertyMeta("perf", "perf", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
+        "persisted_epfb": MoPropertyMeta("persisted_epfb", "persistedEPFB", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "power": MoPropertyMeta("power", "power", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "error", "failed", "not-supported", "off", "offduty", "offline", "ok", "on", "online", "power-save", "test", "unknown"], []), 
-        "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
+        "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "sas_address": MoPropertyMeta("sas_address", "sasAddress", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "start_slot_num": MoPropertyMeta("start_slot_num", "startSlotNum", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version226a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "temperature": MoPropertyMeta("temperature", "temperature", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
+        "total_slots": MoPropertyMeta("total_slots", "totalSlots", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "uplink_state": MoPropertyMeta("uplink_state", "uplinkState", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["misconnect", "optimal", "sub-optimal", "unknown"], []), 
+        "uplink_state_reason": MoPropertyMeta("uplink_state_reason", "uplinkStateReason", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "voltage": MoPropertyMeta("voltage", "voltage", "string", VersionMeta.Version226a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
     }
 
     prop_map = {
         "childAction": "child_action", 
+        "currentEPFB": "current_epfb", 
         "dn": "dn", 
+        "elid": "elid", 
+        "expanderState": "expander_state", 
         "fwRegionOne": "fw_region_one", 
         "fwRegionTwo": "fw_region_two", 
         "fwRunningRegion": "fw_running_region", 
         "id": "id", 
+        "lc": "lc", 
         "locationDn": "location_dn", 
+        "mfgMajorRev": "mfg_major_rev", 
+        "mfgMinorRev": "mfg_minor_rev", 
+        "mfgPlatformId": "mfg_platform_id", 
         "model": "model", 
         "operQualifierReason": "oper_qualifier_reason", 
         "operState": "oper_state", 
         "operability": "operability", 
         "perf": "perf", 
+        "persistedEPFB": "persisted_epfb", 
         "power": "power", 
         "presence": "presence", 
         "revision": "revision", 
@@ -179,8 +222,13 @@ class StorageSasExpander(ManagedObject):
         "sacl": "sacl", 
         "sasAddress": "sas_address", 
         "serial": "serial", 
+        "startSlotNum": "start_slot_num", 
         "status": "status", 
+        "temperature": "temperature", 
         "thermal": "thermal", 
+        "totalSlots": "total_slots", 
+        "uplinkState": "uplink_state", 
+        "uplinkStateReason": "uplink_state_reason", 
         "vendor": "vendor", 
         "voltage": "voltage", 
     }
@@ -189,23 +237,36 @@ class StorageSasExpander(ManagedObject):
         self._dirty_mask = 0
         self.id = id
         self.child_action = None
+        self.current_epfb = None
+        self.elid = None
+        self.expander_state = None
         self.fw_region_one = None
         self.fw_region_two = None
         self.fw_running_region = None
+        self.lc = None
         self.location_dn = None
+        self.mfg_major_rev = None
+        self.mfg_minor_rev = None
+        self.mfg_platform_id = None
         self.model = None
         self.oper_qualifier_reason = None
         self.oper_state = None
         self.operability = None
         self.perf = None
+        self.persisted_epfb = None
         self.power = None
         self.presence = None
         self.revision = None
         self.sacl = None
         self.sas_address = None
         self.serial = None
+        self.start_slot_num = None
         self.status = None
+        self.temperature = None
         self.thermal = None
+        self.total_slots = None
+        self.uplink_state = None
+        self.uplink_state_reason = None
         self.vendor = None
         self.voltage = None
 

@@ -58,6 +58,10 @@ class PowerBudgetConsts:
     POWER_AVAIL_STATE_AVAILABLE = "available"
     POWER_AVAIL_STATE_UNAVAILABLE = "unavailable"
     POWER_AVAIL_STATE_UNKNOWN = "unknown"
+    POWER_CAP_SUPPORT_ENABLED_FALSE = "false"
+    POWER_CAP_SUPPORT_ENABLED_NO = "no"
+    POWER_CAP_SUPPORT_ENABLED_TRUE = "true"
+    POWER_CAP_SUPPORT_ENABLED_YES = "yes"
     POWER_DEPLOY_STATE_DEPLOY_NEEDED = "deploy-needed"
     POWER_DEPLOY_STATE_DEPLOYED = "deployed"
     POWER_DEPLOY_STATE_UNKNOWN = "unknown"
@@ -93,7 +97,7 @@ class PowerBudget(ManagedObject):
     consts = PowerBudgetConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PowerBudget", "powerBudget", "budget", VersionMeta.Version111j, "InputOutput", 0x7f, [], ["admin", "power-mgmt"], [u'computeBlade', u'computeExtBoard', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis'], [u'faultInst', u'powerProfiledPower'], ["Get", "Set"])
+    mo_meta = MoMeta("PowerBudget", "powerBudget", "budget", VersionMeta.Version111j, "InputOutput", 0x7f, [], ["admin", "power-mgmt"], [u'computeBlade', u'computeExtBoard', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis', u'equipmentFex', u'networkElement'], [u'faultInst', u'powerProfiledPower'], ["Get", "Set"])
 
     prop_meta = {
         "admin_committed": MoPropertyMeta("admin_committed", "adminCommitted", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]), 
@@ -120,6 +124,7 @@ class PowerBudget(ManagedObject):
         "oper_prof_method": MoPropertyMeta("oper_prof_method", "operProfMethod", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["default", "nodemgr", "pnuos", "static", "unknown"], []), 
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["budgeted", "budgeting", "deployed", "deploying", "discovery-budgeted", "discovery-retry", "firmware-mismatch", "non-compliant", "not-capped", "unbudgeted"], []), 
         "power_avail_state": MoPropertyMeta("power_avail_state", "powerAvailState", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["available", "unavailable", "unknown"], []), 
+        "power_cap_support_enabled": MoPropertyMeta("power_cap_support_enabled", "powerCapSupportEnabled", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "power_deploy_state": MoPropertyMeta("power_deploy_state", "powerDeployState", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["deploy-needed", "deployed", "unknown"], []), 
         "power_on_deploy": MoPropertyMeta("power_on_deploy", "powerOnDeploy", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "prio": MoPropertyMeta("prio", "prio", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no-cap", "utility"], ["1-10"]), 
@@ -162,6 +167,7 @@ class PowerBudget(ManagedObject):
         "operProfMethod": "oper_prof_method", 
         "operState": "oper_state", 
         "powerAvailState": "power_avail_state", 
+        "powerCapSupportEnabled": "power_cap_support_enabled", 
         "powerDeployState": "power_deploy_state", 
         "powerOnDeploy": "power_on_deploy", 
         "prio": "prio", 
@@ -204,6 +210,7 @@ class PowerBudget(ManagedObject):
         self.oper_prof_method = None
         self.oper_state = None
         self.power_avail_state = None
+        self.power_cap_support_enabled = None
         self.power_deploy_state = None
         self.power_on_deploy = None
         self.prio = None

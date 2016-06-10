@@ -18,7 +18,13 @@ class BiosVfCoreMultiProcessingConsts:
     VP_CORE_MULTI_PROCESSING_16 = "16"
     VP_CORE_MULTI_PROCESSING_17 = "17"
     VP_CORE_MULTI_PROCESSING_18 = "18"
+    VP_CORE_MULTI_PROCESSING_19 = "19"
     VP_CORE_MULTI_PROCESSING_2 = "2"
+    VP_CORE_MULTI_PROCESSING_20 = "20"
+    VP_CORE_MULTI_PROCESSING_21 = "21"
+    VP_CORE_MULTI_PROCESSING_22 = "22"
+    VP_CORE_MULTI_PROCESSING_23 = "23"
+    VP_CORE_MULTI_PROCESSING_24 = "24"
     VP_CORE_MULTI_PROCESSING_3 = "3"
     VP_CORE_MULTI_PROCESSING_4 = "4"
     VP_CORE_MULTI_PROCESSING_5 = "5"
@@ -47,7 +53,7 @@ class BiosVfCoreMultiProcessing(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "supported_by_default": MoPropertyMeta("supported_by_default", "supportedByDefault", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []), 
-        "vp_core_multi_processing": MoPropertyMeta("vp_core_multi_processing", "vpCoreMultiProcessing", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["1", "10", "11", "12", "13", "14", "15", "16", "17", "18", "2", "3", "4", "5", "6", "7", "8", "9", "all", "platform-default", "platform-recommended"], []), 
+        "vp_core_multi_processing": MoPropertyMeta("vp_core_multi_processing", "vpCoreMultiProcessing", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["1", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "2", "20", "21", "22", "23", "24", "3", "4", "5", "6", "7", "8", "9", "all", "platform-default", "platform-recommended"], []), 
     }
 
     prop_map = {

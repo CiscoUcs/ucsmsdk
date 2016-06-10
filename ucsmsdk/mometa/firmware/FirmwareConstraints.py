@@ -15,7 +15,7 @@ class FirmwareConstraints(ManagedObject):
     consts = FirmwareConstraintsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareConstraints", "firmwareConstraints", "fw-constraints", VersionMeta.Version223a, "InputOutput", 0x1f, [], [""], [u'diagSrvCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentSwitchCapProvider'], [u'firmwarePCHStorageConfigConstraint', u'firmwareProcessorTypeConstraint', u'firmwareServerTypeConstraint', u'firmwareVicSlotConstraint', u'firmwareVnicCdnConstraint'], [None])
+    mo_meta = MoMeta("FirmwareConstraints", "firmwareConstraints", "fw-constraints", VersionMeta.Version223a, "InputOutput", 0x1f, [], [""], [u'diagSrvCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentIOExpanderCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentStorageEncCapProvider', u'equipmentSwitchCapProvider'], [u'firmwarePCHStorageConfigConstraint', u'firmwareProcessorTypeConstraint', u'firmwareRackPowerCapConstraint', u'firmwareServerTypeConstraint', u'firmwareTPMConstraint', u'firmwareVicSlotConstraint', u'firmwareVnicCdnConstraint'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

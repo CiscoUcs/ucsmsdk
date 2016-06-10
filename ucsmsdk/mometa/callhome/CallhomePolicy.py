@@ -11,6 +11,7 @@ class CallhomePolicyConsts:
     CAUSE_ADAPTOR_MISMATCH = "adaptor-mismatch"
     CAUSE_ARP_TARGETS_CONFIG_ERROR = "arp-targets-config-error"
     CAUSE_ASSOCIATION_FAILED = "association-failed"
+    CAUSE_BACKPLANE_PORT_PROBLEM = "backplane-port-problem"
     CAUSE_CONFIGURATION_FAILURE = "configuration-failure"
     CAUSE_CONFIGURATION_MISMATCH = "configuration-mismatch"
     CAUSE_CONNECTIVITY_PROBLEM = "connectivity-problem"
@@ -24,6 +25,8 @@ class CallhomePolicyConsts:
     CAUSE_EQUIPMENT_OFFLINE = "equipment-offline"
     CAUSE_EQUIPMENT_PROBLEM = "equipment-problem"
     CAUSE_EQUIPMENT_REMOVED = "equipment-removed"
+    CAUSE_EQUIPMENT_UNACKNOWLEDGED = "equipment-unacknowledged"
+    CAUSE_EQUIPMENT_UNHEALTHY = "equipment-unhealthy"
     CAUSE_FAN_REMOVAL = "fan-removal"
     CAUSE_FRU_PROBLEM = "fru-problem"
     CAUSE_HEALTH_CRITICAL = "health-critical"
@@ -31,6 +34,7 @@ class CallhomePolicyConsts:
     CAUSE_HEALTH_LED_AMBER_BLINKING = "health-led-amber-blinking"
     CAUSE_HEALTH_MAJOR = "health-major"
     CAUSE_IDENTITY_UNESTABLISHABLE = "identity-unestablishable"
+    CAUSE_IMAGE_UNUSABLE = "image-unusable"
     CAUSE_INVENTORY_FAILED = "inventory-failed"
     CAUSE_KERNEL_MEM_CRITICAL_THRESHOLD = "kernel-mem-critical-threshold"
     CAUSE_LICENSE_GRACEPERIOD_EXPIRED = "license-graceperiod-expired"
@@ -64,7 +68,7 @@ class CallhomePolicy(ManagedObject):
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
-        "cause": MoPropertyMeta("cause", "cause", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x4, None, None, None, ["adaptor-mismatch", "arp-targets-config-error", "association-failed", "configuration-failure", "configuration-mismatch", "connectivity-problem", "election-failure", "equipment-degraded", "equipment-deprecated", "equipment-disabled", "equipment-inaccessible", "equipment-inoperable", "equipment-missing", "equipment-offline", "equipment-problem", "equipment-removed", "fan-removal", "fru-problem", "health-critical", "health-led-amber", "health-led-amber-blinking", "health-major", "identity-unestablishable", "inventory-failed", "kernel-mem-critical-threshold", "license-graceperiod-expired", "limit-reached", "link-down", "management-services-failure", "management-services-unresponsive", "memory-error", "mgmtif-down", "ndisc-targets-config-error", "near-max-limit", "not-supported", "port-failed", "power-problem", "psu-insufficient", "psu-mixed-mode", "thermal-problem", "unspecified", "version-incompatible", "vif-ids-mismatch", "voltage-problem"], []), 
+        "cause": MoPropertyMeta("cause", "cause", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x4, None, None, None, ["adaptor-mismatch", "arp-targets-config-error", "association-failed", "backplane-port-problem", "configuration-failure", "configuration-mismatch", "connectivity-problem", "election-failure", "equipment-degraded", "equipment-deprecated", "equipment-disabled", "equipment-inaccessible", "equipment-inoperable", "equipment-missing", "equipment-offline", "equipment-problem", "equipment-removed", "equipment-unacknowledged", "equipment-unhealthy", "fan-removal", "fru-problem", "health-critical", "health-led-amber", "health-led-amber-blinking", "health-major", "identity-unestablishable", "image-unusable", "inventory-failed", "kernel-mem-critical-threshold", "license-graceperiod-expired", "limit-reached", "link-down", "management-services-failure", "management-services-unresponsive", "memory-error", "mgmtif-down", "ndisc-targets-config-error", "near-max-limit", "not-supported", "port-failed", "power-problem", "psu-insufficient", "psu-mixed-mode", "thermal-problem", "unspecified", "version-incompatible", "vif-ids-mismatch", "voltage-problem"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 

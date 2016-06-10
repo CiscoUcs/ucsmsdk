@@ -15,6 +15,8 @@ class CommSvcEpFsmStageConsts:
     NAME_RESTART_WEB_SVC_SUCCESS = "restartWebSvcSuccess"
     NAME_UPDATE_SVC_EP_BEGIN = "updateSvcEpBegin"
     NAME_UPDATE_SVC_EP_FAIL = "updateSvcEpFail"
+    NAME_UPDATE_SVC_EP_INIT_IPTABLES_LOCAL = "updateSvcEpInitIptablesLocal"
+    NAME_UPDATE_SVC_EP_INIT_IPTABLES_PEER = "updateSvcEpInitIptablesPeer"
     NAME_UPDATE_SVC_EP_PROPOGATE_EP_SETTINGS = "updateSvcEpPropogateEpSettings"
     NAME_UPDATE_SVC_EP_PROPOGATE_EP_TIME_ZONE_SETTINGS_LOCAL = "updateSvcEpPropogateEpTimeZoneSettingsLocal"
     NAME_UPDATE_SVC_EP_PROPOGATE_EP_TIME_ZONE_SETTINGS_PEER = "updateSvcEpPropogateEpTimeZoneSettingsPeer"
@@ -47,7 +49,7 @@ class CommSvcEpFsmStage(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "last_update_time": MoPropertyMeta("last_update_time", "lastUpdateTime", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["nop", "restartWebSvcBegin", "restartWebSvcFail", "restartWebSvcLocal", "restartWebSvcPeer", "restartWebSvcSuccess", "updateSvcEpBegin", "updateSvcEpFail", "updateSvcEpPropogateEpSettings", "updateSvcEpPropogateEpTimeZoneSettingsLocal", "updateSvcEpPropogateEpTimeZoneSettingsPeer", "updateSvcEpPropogateEpTimeZoneSettingsToAdaptorsLocal", "updateSvcEpPropogateEpTimeZoneSettingsToAdaptorsPeer", "updateSvcEpPropogateEpTimeZoneSettingsToFexIomLocal", "updateSvcEpPropogateEpTimeZoneSettingsToFexIomPeer", "updateSvcEpSetEpLocal", "updateSvcEpSetEpPeer", "updateSvcEpSuccess"], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["nop", "restartWebSvcBegin", "restartWebSvcFail", "restartWebSvcLocal", "restartWebSvcPeer", "restartWebSvcSuccess", "updateSvcEpBegin", "updateSvcEpFail", "updateSvcEpInitIptablesLocal", "updateSvcEpInitIptablesPeer", "updateSvcEpPropogateEpSettings", "updateSvcEpPropogateEpTimeZoneSettingsLocal", "updateSvcEpPropogateEpTimeZoneSettingsPeer", "updateSvcEpPropogateEpTimeZoneSettingsToAdaptorsLocal", "updateSvcEpPropogateEpTimeZoneSettingsToAdaptorsPeer", "updateSvcEpPropogateEpTimeZoneSettingsToFexIomLocal", "updateSvcEpPropogateEpTimeZoneSettingsToFexIomPeer", "updateSvcEpSetEpLocal", "updateSvcEpSetEpPeer", "updateSvcEpSuccess"], []), 
         "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "retry": MoPropertyMeta("retry", "retry", "byte", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 

@@ -11,6 +11,7 @@ class BiosVfCPUPowerManagementConsts:
     VP_CPUPOWER_MANAGEMENT_CUSTOM = "custom"
     VP_CPUPOWER_MANAGEMENT_DISABLED = "disabled"
     VP_CPUPOWER_MANAGEMENT_ENERGY_EFFICIENT = "energy-efficient"
+    VP_CPUPOWER_MANAGEMENT_PERFORMANCE = "performance"
     VP_CPUPOWER_MANAGEMENT_PLATFORM_DEFAULT = "platform-default"
     VP_CPUPOWER_MANAGEMENT_PLATFORM_RECOMMENDED = "platform-recommended"
 
@@ -31,7 +32,7 @@ class BiosVfCPUPowerManagement(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "supported_by_default": MoPropertyMeta("supported_by_default", "supportedByDefault", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []), 
-        "vp_cpu_power_management": MoPropertyMeta("vp_cpu_power_management", "vpCPUPowerManagement", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["custom", "disabled", "energy-efficient", "platform-default", "platform-recommended"], []), 
+        "vp_cpu_power_management": MoPropertyMeta("vp_cpu_power_management", "vpCPUPowerManagement", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["custom", "disabled", "energy-efficient", "performance", "platform-default", "platform-recommended"], []), 
     }
 
     prop_map = {

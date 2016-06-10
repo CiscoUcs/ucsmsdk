@@ -9,6 +9,7 @@ class FirmwareBundleTypeConsts:
     TYPE_B_SERIES_BUNDLE = "b-series-bundle"
     TYPE_C_SERIES_BUNDLE = "c-series-bundle"
     TYPE_CATALOG = "catalog"
+    TYPE_CHASSIS_BUNDLE = "chassis-bundle"
     TYPE_FULL_BUNDLE = "full-bundle"
     TYPE_IMAGE = "image"
     TYPE_INFRASTRUCTURE_BUNDLE = "infrastructure-bundle"
@@ -32,7 +33,7 @@ class FirmwareBundleType(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x20, None, None, None, ["b-series-bundle", "c-series-bundle", "catalog", "full-bundle", "image", "infrastructure-bundle", "m-series-bundle", "s-series-bundle", "unknown"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x20, None, None, None, ["b-series-bundle", "c-series-bundle", "catalog", "chassis-bundle", "full-bundle", "image", "infrastructure-bundle", "m-series-bundle", "s-series-bundle", "unknown"], []), 
     }
 
     prop_map = {

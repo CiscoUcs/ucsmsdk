@@ -15,9 +15,6 @@ class SwFcMonDestEpConsts:
     ADMIN_SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
-    AUTO_NEGOTIATE_AUTO = "auto"
-    AUTO_NEGOTIATE_NONE = "none"
-    AUTO_NEGOTIATE_UNSET = "unset"
     CHASSIS_ID_N_A = "N/A"
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
@@ -59,7 +56,6 @@ class SwFcMonDestEp(ManagedObject):
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["16gbps", "1gbps", "2gbps", "4gbps", "8gbps", "auto", "indeterminate"], []), 
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "auto_negotiate": MoPropertyMeta("auto_negotiate", "autoNegotiate", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto", "none", "unset"], []), 
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
@@ -88,7 +84,6 @@ class SwFcMonDestEp(ManagedObject):
         "adminSpeed": "admin_speed", 
         "adminState": "admin_state", 
         "aggrPortId": "aggr_port_id", 
-        "autoNegotiate": "auto_negotiate", 
         "chassisId": "chassis_id", 
         "childAction": "child_action", 
         "dn": "dn", 
@@ -120,7 +115,6 @@ class SwFcMonDestEp(ManagedObject):
         self.admin_speed = None
         self.admin_state = None
         self.aggr_port_id = None
-        self.auto_negotiate = None
         self.chassis_id = None
         self.child_action = None
         self.ep_dn = None

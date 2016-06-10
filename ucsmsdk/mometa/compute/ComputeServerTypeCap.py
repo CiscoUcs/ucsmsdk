@@ -8,6 +8,7 @@ from ...ucsmeta import VersionMeta
 class ComputeServerTypeCapConsts:
     TYPE_APPLIANCE = "appliance"
     TYPE_GENERAL_PURPOSE = "general-purpose"
+    TYPE_SHARED_IO = "shared-io"
 
 
 class ComputeServerTypeCap(ManagedObject):
@@ -24,7 +25,7 @@ class ComputeServerTypeCap(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["appliance", "general-purpose"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["appliance", "general-purpose", "shared-io"], []), 
     }
 
     prop_map = {

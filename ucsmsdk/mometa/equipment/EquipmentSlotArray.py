@@ -54,7 +54,7 @@ class EquipmentSlotArray(ManagedObject):
     consts = EquipmentSlotArrayConsts()
     naming_props = set([u'selector'])
 
-    mo_meta = MoMeta("EquipmentSlotArray", "equipmentSlotArray", "[selector]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], [""], [u'diagSrvCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentSwitchCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentSlotArray", "equipmentSlotArray", "[selector]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], [""], [u'diagSrvCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentIOExpanderCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentStorageEncCapProvider', u'equipmentSwitchCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
@@ -70,10 +70,10 @@ class EquipmentSlotArray(ManagedObject):
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
         "location": MoPropertyMeta("location", "location", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["back", "bottom", "front", "left", "right", "top", "unknown"], []), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "number_of_onboard_disks": MoPropertyMeta("number_of_onboard_disks", "numberOfOnboardDisks", "ushort", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "number_of_onboard_disks": MoPropertyMeta("number_of_onboard_disks", "numberOfOnboardDisks", "ushort", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "number_of_slots": MoPropertyMeta("number_of_slots", "numberOfSlots", "ushort", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "onboard_disk_base_port_no": MoPropertyMeta("onboard_disk_base_port_no", "onboardDiskBasePortNo", "ushort", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "onboard_disk_first_index": MoPropertyMeta("onboard_disk_first_index", "onboardDiskFirstIndex", "ushort", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "onboard_disk_base_port_no": MoPropertyMeta("onboard_disk_base_port_no", "onboardDiskBasePortNo", "ushort", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "onboard_disk_first_index": MoPropertyMeta("onboard_disk_first_index", "onboardDiskFirstIndex", "ushort", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "orientation": MoPropertyMeta("orientation", "orientation", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["horizontal", "unknown", "vertical"], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []), 

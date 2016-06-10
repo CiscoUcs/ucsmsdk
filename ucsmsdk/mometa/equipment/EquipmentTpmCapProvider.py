@@ -22,7 +22,7 @@ class EquipmentTpmCapProvider(ManagedObject):
     consts = EquipmentTpmCapProviderConsts()
     naming_props = set([u'vendor', u'model', u'revision'])
 
-    mo_meta = MoMeta("EquipmentTpmCapProvider", "equipmentTpmCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], [""], [u'capabilityCatalogue'], [u'equipmentManufacturingDef', u'equipmentPhysicalDef', u'equipmentPicture', u'equipmentServiceDef', u'equipmentSlotArrayRef', u'firmwareType', u'firmwareUpgradeConstraint'], ["Get"])
+    mo_meta = MoMeta("EquipmentTpmCapProvider", "equipmentTpmCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], [""], [u'capabilityCatalogue', u'equipmentHwCapDerivativeProvider'], [u'equipmentManufacturingDef', u'equipmentPhysicalDef', u'equipmentPicture', u'equipmentServiceDef', u'equipmentSlotArrayRef', u'firmwareType', u'firmwareUpgradeConstraint'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

@@ -30,10 +30,9 @@ class EquipmentPsuStatsHist(ManagedObject):
 
     prop_meta = {
         "psu_i2_c_errors": MoPropertyMeta("psu_i2_c_errors", "PsuI2CErrors", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "psu_i2_c_errors_delta": MoPropertyMeta("psu_i2_c_errors_delta", "PsuI2CErrorsDelta", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "psu_i2_c_errors_delta_avg": MoPropertyMeta("psu_i2_c_errors_delta_avg", "PsuI2CErrorsDeltaAvg", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "psu_i2_c_errors_delta_max": MoPropertyMeta("psu_i2_c_errors_delta_max", "PsuI2CErrorsDeltaMax", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "psu_i2_c_errors_delta_min": MoPropertyMeta("psu_i2_c_errors_delta_min", "PsuI2CErrorsDeltaMin", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "psu_i2_c_errors_avg": MoPropertyMeta("psu_i2_c_errors_avg", "PsuI2CErrorsAvg", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "psu_i2_c_errors_max": MoPropertyMeta("psu_i2_c_errors_max", "PsuI2CErrorsMax", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "psu_i2_c_errors_min": MoPropertyMeta("psu_i2_c_errors_min", "PsuI2CErrorsMin", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "ambient_temp": MoPropertyMeta("ambient_temp", "ambientTemp", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "ambient_temp_avg": MoPropertyMeta("ambient_temp_avg", "ambientTempAvg", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "ambient_temp_max": MoPropertyMeta("ambient_temp_max", "ambientTempMax", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
@@ -76,10 +75,9 @@ class EquipmentPsuStatsHist(ManagedObject):
 
     prop_map = {
         "PsuI2CErrors": "psu_i2_c_errors", 
-        "PsuI2CErrorsDelta": "psu_i2_c_errors_delta", 
-        "PsuI2CErrorsDeltaAvg": "psu_i2_c_errors_delta_avg", 
-        "PsuI2CErrorsDeltaMax": "psu_i2_c_errors_delta_max", 
-        "PsuI2CErrorsDeltaMin": "psu_i2_c_errors_delta_min", 
+        "PsuI2CErrorsAvg": "psu_i2_c_errors_avg", 
+        "PsuI2CErrorsMax": "psu_i2_c_errors_max", 
+        "PsuI2CErrorsMin": "psu_i2_c_errors_min", 
         "ambientTemp": "ambient_temp", 
         "ambientTempAvg": "ambient_temp_avg", 
         "ambientTempMax": "ambient_temp_max", 
@@ -124,10 +122,9 @@ class EquipmentPsuStatsHist(ManagedObject):
         self._dirty_mask = 0
         self.id = id
         self.psu_i2_c_errors = None
-        self.psu_i2_c_errors_delta = None
-        self.psu_i2_c_errors_delta_avg = None
-        self.psu_i2_c_errors_delta_max = None
-        self.psu_i2_c_errors_delta_min = None
+        self.psu_i2_c_errors_avg = None
+        self.psu_i2_c_errors_max = None
+        self.psu_i2_c_errors_min = None
         self.ambient_temp = None
         self.ambient_temp_avg = None
         self.ambient_temp_max = None

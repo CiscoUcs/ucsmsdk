@@ -33,7 +33,7 @@ class TrigLocalSched(ManagedObject):
     consts = TrigLocalSchedConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("TrigLocalSched", "trigLocalSched", "local-sched-default", VersionMeta.Version211a, "InputOutput", 0xff, [], ["admin"], [u'computeFwSyncAck', u'faultSuppressTask', u'firmwareAck', u'firmwareInfra', u'lsmaintAck', u'mgmtBackupPolicyConfig', u'topSystem', u'trigTest'], [u'trigAbsWindow', u'trigLocalAbsWindow', u'trigRecurrWindow'], ["Add", "Get"])
+    mo_meta = MoMeta("TrigLocalSched", "trigLocalSched", "local-sched-default", VersionMeta.Version211a, "InputOutput", 0xff, [], ["admin"], [u'computeFwSyncAck', u'cpmaintAck', u'faultSuppressTask', u'firmwareAck', u'firmwareInfra', u'lsmaintAck', u'mgmtBackupPolicyConfig', u'topSystem', u'trigTest'], [u'trigAbsWindow', u'trigLocalAbsWindow', u'trigRecurrWindow'], ["Add", "Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["trigger", "trigger-immediate", "triggered", "untriggered", "user-ack", "user-discard"], []), 

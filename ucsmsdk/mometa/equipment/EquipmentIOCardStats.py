@@ -38,10 +38,9 @@ class EquipmentIOCardStats(ManagedObject):
 
     prop_meta = {
         "iom_i2_c_errors": MoPropertyMeta("iom_i2_c_errors", "IomI2CErrors", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "iom_i2_c_errors_delta": MoPropertyMeta("iom_i2_c_errors_delta", "IomI2CErrorsDelta", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "iom_i2_c_errors_delta_avg": MoPropertyMeta("iom_i2_c_errors_delta_avg", "IomI2CErrorsDeltaAvg", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "iom_i2_c_errors_delta_max": MoPropertyMeta("iom_i2_c_errors_delta_max", "IomI2CErrorsDeltaMax", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "iom_i2_c_errors_delta_min": MoPropertyMeta("iom_i2_c_errors_delta_min", "IomI2CErrorsDeltaMin", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "iom_i2_c_errors_avg": MoPropertyMeta("iom_i2_c_errors_avg", "IomI2CErrorsAvg", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "iom_i2_c_errors_max": MoPropertyMeta("iom_i2_c_errors_max", "IomI2CErrorsMax", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "iom_i2_c_errors_min": MoPropertyMeta("iom_i2_c_errors_min", "IomI2CErrorsMin", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "ambient_temp": MoPropertyMeta("ambient_temp", "ambientTemp", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "ambient_temp_avg": MoPropertyMeta("ambient_temp_avg", "ambientTempAvg", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "ambient_temp_max": MoPropertyMeta("ambient_temp_max", "ambientTempMax", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
@@ -72,10 +71,9 @@ class EquipmentIOCardStats(ManagedObject):
 
     prop_map = {
         "IomI2CErrors": "iom_i2_c_errors", 
-        "IomI2CErrorsDelta": "iom_i2_c_errors_delta", 
-        "IomI2CErrorsDeltaAvg": "iom_i2_c_errors_delta_avg", 
-        "IomI2CErrorsDeltaMax": "iom_i2_c_errors_delta_max", 
-        "IomI2CErrorsDeltaMin": "iom_i2_c_errors_delta_min", 
+        "IomI2CErrorsAvg": "iom_i2_c_errors_avg", 
+        "IomI2CErrorsMax": "iom_i2_c_errors_max", 
+        "IomI2CErrorsMin": "iom_i2_c_errors_min", 
         "ambientTemp": "ambient_temp", 
         "ambientTempAvg": "ambient_temp_avg", 
         "ambientTempMax": "ambient_temp_max", 
@@ -107,10 +105,9 @@ class EquipmentIOCardStats(ManagedObject):
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
         self.iom_i2_c_errors = None
-        self.iom_i2_c_errors_delta = None
-        self.iom_i2_c_errors_delta_avg = None
-        self.iom_i2_c_errors_delta_max = None
-        self.iom_i2_c_errors_delta_min = None
+        self.iom_i2_c_errors_avg = None
+        self.iom_i2_c_errors_max = None
+        self.iom_i2_c_errors_min = None
         self.ambient_temp = None
         self.ambient_temp_avg = None
         self.ambient_temp_max = None
