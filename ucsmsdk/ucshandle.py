@@ -13,6 +13,7 @@
 
 
 import logging
+import threading
 
 from . import ucsgenutils
 from . import ucscoreutils
@@ -51,6 +52,7 @@ class UcsHandle(UcsSession):
         UcsSession.__init__(self, ip, username, password, port, secure, proxy)
         self.__commit_buf = {}
         self.__commit_buf_tagged = {}
+        self.__threaded = False
 
     def set_dump_xml(self):
         """
@@ -65,6 +67,31 @@ class UcsHandle(UcsSession):
         """
 
         self._unset_dump_xml()
+
+    def set_mode_threading(self):
+        """
+        Indicates that the application is utlising handle in
+        thread context.
+        Calling this method internally ensures that the commit_buffers
+        are separated based on the name of the threads.
+        This makes every thread a separate transaction that does not
+        interfere with other threads.
+        """
+        self.__threaded = True
+
+    def unset_mode_threading(self):
+        """
+        Unsets the threaded mode of operation.
+        Applications use the common common_buffer in this mode.
+        Only one simultaneous transaction is possible here on
+        """
+        self.__threaded = False
+
+    def is_threading_enabled(self):
+        """
+        returns if threading mode is set
+        """
+        return self.__threaded
 
     def login(self, auto_refresh=False, force=False):
         """
@@ -532,6 +559,22 @@ class UcsHandle(UcsSession):
 
         self.__commit_buf_tagged[tag][mo.dn] = mo
 
+    def _auto_set_tag_context(self, tag):
+        """
+        sets the tag automatically to the thread name
+        when threading mode is enabled
+        This makes sure that every thread gets it's own
+        commit buffer.
+        """
+        # if the user already specified a tag, return the same
+        if tag is not None:
+            return tag
+
+        if not self.is_threading_enabled():
+            return None
+
+        return threading.currentThread().name
+
     def add_mo(self, mo, modify_present=False, tag=None):
         """
         Adds a managed object to the UcsHandle commit buffer.
@@ -551,6 +594,8 @@ class UcsHandle(UcsSession):
             obj = handle.add_mo(mo)\n
             handle.commit()\n
         """
+
+        tag = self._auto_set_tag_context(tag)
 
         if modify_present in ucsgenutils.AFFIRMATIVE_LIST:
             mo.status = "created,modified"
@@ -579,6 +624,8 @@ class UcsHandle(UcsSession):
             handle.commit()\n
         """
 
+        tag = self._auto_set_tag_context(tag)
+
         mo.status = "modified"
         self._update_commit_buf(mo, tag)
 
@@ -600,6 +647,8 @@ class UcsHandle(UcsSession):
             obj = handle.remove_mo(mo)\n
             handle.commit()\n
         """
+
+        tag = self._auto_set_tag_context(tag)
 
         mo.status = "deleted"
         if mo.parent_mo:
@@ -627,6 +676,8 @@ class UcsHandle(UcsSession):
         from .ucsbasetype import ConfigMap, Dn, DnSet, Pair
         from .ucsmethodfactory import config_resolve_dns
         from .ucsmethodfactory import config_conf_mos
+
+        tag = self._auto_set_tag_context(tag)
 
         refresh_dict = {}
         mo_dict = self._get_commit_buf(tag)
@@ -694,6 +745,9 @@ class UcsHandle(UcsSession):
         Example:
             handle.commit_buffer_discard()
         """
+
+        tag = self._auto_set_tag_context(tag)
+
         if tag is None:
             self.__commit_buf = {}
 
