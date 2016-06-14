@@ -346,23 +346,21 @@ def compare_ucs_mo(ref_obj, diff_obj,
     Compares the state of two managed objects with same dn.
 
     Args:
-        ref_obj (list): list of Managed Objects of reference ucsm
-        diff_obj (list): list of Managed Objects of difference ucsm
-        exclude_different (bool): by default False. If set to True, will
-                                  compare mos only which exist on both
-                                  reference and difference ucsm respectively
-        include_equal (bool): by default False. If set to True, will also
-                              display properties which are equal
-        version_filter (bool): by default True: If set to False, ignore
-                                  properties which is introduced in later ucsm
-                                  version than reference ucsm
-        include_operational (bool): by default False: If set to True, compares
-                                    all the properties of mo.
-        xlate_org (str): org-dn, should be used compare objects of same type
-                         under different org. org-dn of reference mo.
-        xlate_map (dict) : {"difference_dn": "reference_dn"}
-                           Should be used to compare objects of same type with
-                           different dn.
+        ref_obj (list): list of Managed Objects of reference UCSM
+        diff_obj (list): list of Managed Objects of difference UCSM
+        exclude_different (bool): default:False. When True, compares MOs that
+                                  exist on both reference and difference UCSM
+        include_equal (bool): default:False. When True, also displays MOs which
+                              are equal.
+        version_filter (bool): default:True. When False, ignores properties
+                               which is introduced in later UCSM version than
+                               reference UCSM version.
+        include_operational (bool): default:False. When True, compares all the
+                                    properties of mo.
+        xlate_org (str): org-dn of reference mo, compares objects of same type
+                         and same rn under different org.
+        xlate_map (dict) : {"difference_dn": "reference_dn"}, compares objects
+                            of same type with different dn.
     Returns:
         List of MoDiff objects:
         MoDiff Object : dn - dn of Managed Object
