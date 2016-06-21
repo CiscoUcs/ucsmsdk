@@ -320,7 +320,7 @@ class UcsSession(object):
                       file_url=file_url,
                       file_dir=file_dir,
                       file_name=file_name,
-                      progrss=progress)
+                      progress=progress)
 
         self.__driver.remove_header('Cookie')
 
