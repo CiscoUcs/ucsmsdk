@@ -484,7 +484,12 @@ def get_naming_props(rn_str, rn_pattern):
 
 class ClassIdMeta(object):
 
-    def __init__(self, class_id):
+    def __init__(
+            self,
+            class_id,
+            include_prop=True,
+            show_tree=True,
+            depth=None):
         self.__mo_meta = MO_CLASS_META[class_id]
         self.class_id = class_id
         self.xml_attribute = self.__mo_meta.xml_attribute
@@ -496,17 +501,28 @@ class ClassIdMeta(object):
         self.children = self.__mo_meta.children
         self.props = {}
 
-    def get_prop_dict(self):
-        class_obj = load_class(self.class_id)
-        self.props = class_obj.prop_meta
+        self._str_tree = "\n"
+        self._str_props = "\n"
+
+        if show_tree:
+            self._str_tree = _show_tree(class_id, depth)
+
+        if include_prop:
+            class_obj = load_class(self.class_id)
+            self.props = class_obj.prop_meta
+            for prop in sorted(self.props):
+                self._str_props += str(self.props[prop]) + "\n"
 
     def __str__(self):
         """
         Method to return string representation.
         """
-
         ts = 8
-        out_str = "\n"
+        out_str = ""
+
+        out_str += self._str_tree
+
+        out_str += "\n"
         out_str += str("ClassId").ljust(ts * 4) + str(self.class_id) + "\n"
         out_str += ("-" * len("ClassId")).ljust(ts * 4) + "-" * len(
             self.class_id) + "\n"
@@ -523,6 +539,8 @@ class ClassIdMeta(object):
             "\n"
         out_str += str("children").ljust(ts * 4) + ':' + str(self.children)
 
+        out_str += self._str_props
+
         return out_str
 
 
@@ -531,19 +549,20 @@ def _show_tree(class_id, depth=None, level=0, ancestor_str="",
 
     meta_class_id = ucsgenutils.word_u(class_id)
 
+    out_str = ""
     if not ancestor:
         for parent in sorted(MO_CLASS_META[meta_class_id].parents):
-            print("[" + ucsgenutils.word_u(parent) + "]")
+            out_str += "[" + ucsgenutils.word_u(parent) + "]" + "\n"
 
     index = len(ancestor) + 1
 
     level += 1
 
     if meta_class_id in ancestor:
-        print("%s  |-%s" % (ancestor_str, meta_class_id))
+        out_str += ancestor_str + "  |-" + meta_class_id + "\n"
     else:
         ancestor.append(meta_class_id)
-        print("%s  |-%s" % (ancestor_str, meta_class_id))
+        out_str += ancestor_str + "  |-" + meta_class_id + "\n"
         children = sorted(MO_CLASS_META[meta_class_id].children)
         total = len(children)
         count = 0
@@ -556,10 +575,11 @@ def _show_tree(class_id, depth=None, level=0, ancestor_str="",
                 else:
                     ancestor_str_ = ancestor_str + "  |"
 
-                _show_tree(child, depth, level, ancestor_str_, ancestor,
-                           total == count)
+                out_str += _show_tree(child, depth, level,
+                                      ancestor_str_, ancestor, total == count)
 
         ancestor.pop(index - 1)
+    return out_str
 
 
 def search_class_id(class_id):
@@ -582,7 +602,6 @@ def search_class_id(class_id):
     meta_class_id = find_class_id_in_mo_meta_ignore_case(class_id=class_id)
 
     if meta_class_id is not None:
-        log.info("matches :" + meta_class_id)
         return meta_class_id
 
     # if class_id not exists in meta
@@ -608,7 +627,7 @@ def get_meta_info(class_id, include_prop=True,
         class_id (str): string matching class_id.(case insensitive)
         include_prop (bool): by default True. If False, excludes property.
         show_tree (bool): by default True. If False will not display mo tree.
-        depth (int): display the hierarchy till respective level.
+        depth (int): depth to which hierarchy is displayed.
 
     Returns:
         None: If class_id is not present in meta.
@@ -639,19 +658,4 @@ def get_meta_info(class_id, include_prop=True,
     if not meta_class_id:
         return
 
-    if show_tree:
-        _show_tree(class_id=meta_class_id, depth=depth)
-
-    class_id_meta = ClassIdMeta(meta_class_id)
-    print(class_id_meta)
-
-    if include_prop:
-        class_id_meta.get_prop_dict()
-        props = class_id_meta.props
-        if not props:
-            log.debug("\nNo property info available for %s" % class_id)
-            return class_id_meta
-        for prop in sorted(props):
-            print(props[prop])
-
-    return class_id_meta
+    return ClassIdMeta(meta_class_id, include_prop, show_tree, depth)
