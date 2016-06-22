@@ -10,15 +10,31 @@
 * Documentation: https://CiscoUcs.github.io/ucsmsdk_docs/
 
 ## Installation
+
+The SDK can be installed using any of ways below,
+
+### From pip:
+
+Installs the last released version,
+
 ```
-    - Install pip (skip if pip is already available):
-        wget https://bootstrap.pypa.io/get-pip.py
-        python get-pip.py
+    pip install ucsmsdk
+```
+
+### From github:
+
+Installs the latest top of the tree development version,
+
+```
+    # Install pip (skip if pip is already available):
+    wget https://bootstrap.pypa.io/get-pip.py
+    python get-pip.py
 
     git clone https://github.com/CiscoUcs/ucsmsdk.git
     cd ucsmsdk
     make install
 ```
+
 ## Documentation
 
 * We have an extensive list of samples at https://github.com/ciscoucs/ucsmsdk_samples
