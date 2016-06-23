@@ -549,21 +549,19 @@ class UcsSession(object):
         if self.__refresh_timer:
             self.__refresh_timer.cancel()
 
-        if self.__cookie:
-            # TO DO NewParam inDelaySec introduced in 224b
-            elem = aaa_logout(self.__cookie, 301)
-            response = self.post_elem(elem)
+        elem = aaa_logout(self.__cookie, 301)
+        response = self.post_elem(elem)
 
-            if response.error_code == "555":
-                return True
-
-            if response.error_code != 0:
-                raise UcsException(response.error_code,
-                                   response.error_descr)
-
-            self.__clear()
-
+        if response.error_code == "555":
             return True
+
+        if response.error_code != 0:
+            raise UcsException(response.error_code,
+                               response.error_descr)
+
+        self.__clear()
+
+        return True
 
     def _set_dump_xml(self):
         """
