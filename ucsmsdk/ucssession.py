@@ -212,6 +212,25 @@ class UcsSession(object):
 
         return response_str
 
+    def dump_xml_request(self, elem):
+        from . import ucsxmlcodec as xc
+        if not self.__dump_xml:
+            return
+
+        if elem.tag == "aaaLogin":
+            elem.attrib['inPassword'] = "*********"
+            xml_str = xc.to_xml_str(elem)
+            log.debug('%s ====> %s' % (self.__uri, xml_str))
+            elem.attrib['inPassword'] = self.__password
+            xml_str = xc.to_xml_str(elem)
+        else:
+            xml_str = xc.to_xml_str(elem)
+            log.debug('%s ====> %s' % (self.__uri, xml_str))
+
+    def dump_xml_response(self, resp):
+        if self.__dump_xml:
+            log.debug('%s <==== %s' % (self.__uri, resp))
+
     def post_elem(self, elem):
         """
         sends the request and receives the response from ucsm server using xml
@@ -230,28 +249,14 @@ class UcsSession(object):
         from . import ucsxmlcodec as xc
 
         tx_lock.acquire()
-        # check if the cookie is latest
-        if 'cookie' in elem.attrib and elem.attrib[
-                'cookie'] != "" and elem.attrib['cookie'] != self.cookie:
+        if self._is_stale_cookie(elem):
             elem.attrib['cookie'] = self.cookie
 
-        dump_xml = self.__dump_xml
-        if dump_xml:
-            if elem.tag == "aaaLogin":
-                elem.attrib['inPassword'] = "*********"
-                xml_str = xc.to_xml_str(elem)
-                log.debug('%s ====> %s' % (self.__uri, xml_str))
-                elem.attrib['inPassword'] = self.__password
-                xml_str = xc.to_xml_str(elem)
-            else:
-                xml_str = xc.to_xml_str(elem)
-                log.debug('%s ====> %s' % (self.__uri, xml_str))
-        else:
-            xml_str = xc.to_xml_str(elem)
+        self.dump_xml_request(elem)
+        xml_str = xc.to_xml_str(elem)
 
         response_str = self.post_xml(xml_str)
-        if dump_xml:
-            log.debug('%s <==== %s' % (self.__uri, response_str))
+        self.dump_xml_response(response_str)
 
         if response_str:
             response = xc.from_xml_str(response_str, self)
@@ -357,7 +362,6 @@ class UcsSession(object):
         else:
             interval = 60
         self.__refresh_timer = Timer(interval, self._refresh)
-        # TODO:handle exit and logout active connections. revert from daemon
         self.__refresh_timer.setDaemon(True)
         self.__refresh_timer.start()
 
@@ -374,6 +378,10 @@ class UcsSession(object):
         if response.error_code != 0:
             return
         self.__cookie = response.out_cookie
+
+    def _is_stale_cookie(self, elem):
+        return 'cookie' in elem.attrib and elem.attrib[
+            'cookie'] != "" and elem.attrib['cookie'] != self.cookie
 
     def _refresh(self, auto_relogin=False):
         """
