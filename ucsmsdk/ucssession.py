@@ -405,7 +405,7 @@ class UcsSession(object):
         self.__start_refresh_timer()
         return True
 
-    def __validate_ucsm(self):
+    def __is_ucsm(self):
         """
         Internal method to validate if connecting server is UCS.
         """
@@ -450,6 +450,45 @@ class UcsSession(object):
                 self._logout()
         return False
 
+    def _update_version(self, response=None):
+        from .ucscoremeta import UcsVersion
+        from .ucsmethodfactory import config_resolve_dn
+        from .mometa.top.TopSystem import TopSystem
+        from .mometa.firmware.FirmwareRunning import FirmwareRunning, \
+            FirmwareRunningConsts
+
+        # If the aaaLogin response has the version populated, we do not
+        # need to query for it
+        # There are cases where version is missing from aaaLogin response
+        # In such cases the later part of this method populates it
+        if response.out_version is not None and response.out_version != "":
+            return
+
+        top_system = TopSystem()
+        firmware = FirmwareRunning(top_system,
+                                   FirmwareRunningConsts.DEPLOYMENT_SYSTEM)
+        elem = config_resolve_dn(cookie=self.__cookie,
+                                 dn=firmware.dn)
+        response = self.post_elem(elem)
+        if response.error_code != 0:
+            raise UcsException(response.error_code,
+                               response.error_descr)
+        firmware = response.out_config.child[0]
+        self.__version = UcsVersion(firmware.version)
+
+    def _update_domain_name_and_ip(self):
+        from .ucsmethodfactory import config_resolve_dn
+        from .mometa.top.TopSystem import TopSystem
+
+        top_system = TopSystem()
+        elem = config_resolve_dn(cookie=self.__cookie, dn=top_system.dn)
+        response = self.post_elem(elem)
+        if response.error_code != 0:
+            raise UcsException(response.error_code, response.error_descr)
+        top_system = response.out_config.child[0]
+        self.__ucs = top_system.name
+        self.__virtual_ipv4_address = top_system.address
+
     def _login(self, auto_refresh=False, force=False):
         """
         Internal method responsible to do a login on UCSM server.
@@ -463,13 +502,7 @@ class UcsSession(object):
         Returns:
             True on successful connect
         """
-
-        from .mometa.top.TopSystem import TopSystem
-        from .mometa.firmware.FirmwareRunning import FirmwareRunning, \
-            FirmwareRunningConsts
-        from .ucscoremeta import UcsVersion
         from .ucsmethodfactory import aaa_login
-        from .ucsmethodfactory import config_resolve_dn
 
         self.__force = force
 
@@ -485,30 +518,11 @@ class UcsSession(object):
         self.__update(response)
 
         # Verify not to connect to IMC
-        if not self.__validate_ucsm():
+        if not self.__is_ucsm():
             raise UcsLoginError("Not a supported server.")
 
-        top_system = TopSystem()
-        if response.out_version is None or response.out_version == "":
-            firmware = FirmwareRunning(top_system,
-                                       FirmwareRunningConsts.DEPLOYMENT_SYSTEM)
-            elem = config_resolve_dn(cookie=self.__cookie,
-                                     dn=firmware.dn)
-            response = self.post_elem(elem)
-            if response.error_code != 0:
-                raise UcsException(response.error_code,
-                                   response.error_descr)
-            firmware = response.out_config.child[0]
-            self._version = UcsVersion(firmware.version)
-
-        top_system = TopSystem()
-        elem = config_resolve_dn(cookie=self.__cookie, dn=top_system.dn)
-        response = self.post_elem(elem)
-        if response.error_code != 0:
-            raise UcsException(response.error_code, response.error_descr)
-        top_system = response.out_config.child[0]
-        self._ucs = top_system.name
-        self.__virtual_ipv4_address = top_system.address
+        self._update_version(response)
+        self._update_domain_name_and_ip()
 
         if auto_refresh:
             self.__start_refresh_timer()
