@@ -231,7 +231,8 @@ class UcsSession(object):
 
         tx_lock.acquire()
         # check if the cookie is latest
-        if 'cookie' in elem.attrib and elem.attrib['cookie'] != "" and elem.attrib['cookie'] != self.cookie:
+        if 'cookie' in elem.attrib and elem.attrib[
+                'cookie'] != "" and elem.attrib['cookie'] != self.cookie:
             elem.attrib['cookie'] = self.cookie
 
         dump_xml = self.__dump_xml
@@ -267,7 +268,12 @@ class UcsSession(object):
         tx_lock.release()
         return None
 
-    def file_download(self, url_suffix, file_dir, file_name, progress=Progress()):
+    def file_download(
+            self,
+            url_suffix,
+            file_dir,
+            file_name,
+            progress=Progress()):
         """
         Downloads the file from ucsm server
 
@@ -300,7 +306,12 @@ class UcsSession(object):
 
         self.__driver.remove_header('Cookie')
 
-    def file_upload(self, url_suffix, file_dir, file_name, progress=Progress()):
+    def file_upload(
+            self,
+            url_suffix,
+            file_dir,
+            file_name,
+            progress=Progress()):
         """
         Uploads the file on UCSM server.
 
