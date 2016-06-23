@@ -123,7 +123,7 @@ class UcsSession(object):
         Generates UCSM URI used for connection
 
         Args:
-            port (int): port The port number to be used during connection
+            port (int or None): The port number to be used during connection
             secure (bool or None): True for secure connection otherwise False
 
         Returns:
@@ -133,34 +133,10 @@ class UcsSession(object):
             uri = __create_uri(port=443, secure=True)
         """
 
-        if secure is not None and port is not None:
-            self.__secure = secure
-            self.__port = int(port)
-        elif secure is not None and port is None:
-            if secure:
-                self.__port = 443
-                self.__secure = True
-            else:
-                self.__port = 80
-                self.__secure = False
-        elif secure is None and port is not None:
-            if int(port) == 80:
-                self.__secure = False
-                self.__port = 80
-            elif int(port) == 443:
-                self.__secure = True
-                self.__port = 443
-            else:
-                self.__secure = True
-                self.__port = int(port)
-        else:
-            self.__secure = True
-            self.__port = 443
+        port = _get_port(port, secure)
+        protocol = _get_proto(port, secure)
 
-        https_or_http = ("http", "https")[self.__secure]
-        host = self.__ip
-        port = str(self.__port)
-        uri = "%s://%s%s%s" % (https_or_http, host, ":", port)
+        uri = "%s://%s%s%s" % (protocol, self.__ip, ":", str(port))
         return uri
 
     def __clear(self):
@@ -575,3 +551,21 @@ class UcsSession(object):
         Internal method to set dump_xml to False
         """
         self.__dump_xml = False
+
+
+def _get_port(port, secure):
+    if port is not None:
+        return int(port)
+
+    if secure is False:
+        return 80
+    return 443
+
+
+def _get_proto(port, secure):
+    if secure is None:
+        if port == "80":
+            return "http"
+    elif secure is False:
+        return "http"
+    return "https"
