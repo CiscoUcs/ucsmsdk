@@ -212,6 +212,25 @@ class UcsSession(object):
 
         return response_str
 
+    def dump_xml_request(self, elem):
+        from . import ucsxmlcodec as xc
+        if not self.__dump_xml:
+            return
+
+        if elem.tag == "aaaLogin":
+            elem.attrib['inPassword'] = "*********"
+            xml_str = xc.to_xml_str(elem)
+            log.debug('%s ====> %s' % (self.__uri, xml_str))
+            elem.attrib['inPassword'] = self.__password
+            xml_str = xc.to_xml_str(elem)
+        else:
+            xml_str = xc.to_xml_str(elem)
+            log.debug('%s ====> %s' % (self.__uri, xml_str))
+
+    def dump_xml_response(self, resp):
+        if self.__dump_xml:
+            log.debug('%s <==== %s' % (self.__uri, resp))
+
     def post_elem(self, elem):
         """
         sends the request and receives the response from ucsm server using xml
@@ -230,28 +249,14 @@ class UcsSession(object):
         from . import ucsxmlcodec as xc
 
         tx_lock.acquire()
-        # check if the cookie is latest
-        if 'cookie' in elem.attrib and elem.attrib[
-                'cookie'] != "" and elem.attrib['cookie'] != self.cookie:
+        if self._is_stale_cookie(elem):
             elem.attrib['cookie'] = self.cookie
 
-        dump_xml = self.__dump_xml
-        if dump_xml:
-            if elem.tag == "aaaLogin":
-                elem.attrib['inPassword'] = "*********"
-                xml_str = xc.to_xml_str(elem)
-                log.debug('%s ====> %s' % (self.__uri, xml_str))
-                elem.attrib['inPassword'] = self.__password
-                xml_str = xc.to_xml_str(elem)
-            else:
-                xml_str = xc.to_xml_str(elem)
-                log.debug('%s ====> %s' % (self.__uri, xml_str))
-        else:
-            xml_str = xc.to_xml_str(elem)
+        self.dump_xml_request(elem)
+        xml_str = xc.to_xml_str(elem)
 
         response_str = self.post_xml(xml_str)
-        if dump_xml:
-            log.debug('%s <==== %s' % (self.__uri, response_str))
+        self.dump_xml_response(response_str)
 
         if response_str:
             response = xc.from_xml_str(response_str, self)
@@ -357,7 +362,6 @@ class UcsSession(object):
         else:
             interval = 60
         self.__refresh_timer = Timer(interval, self._refresh)
-        # TODO:handle exit and logout active connections. revert from daemon
         self.__refresh_timer.setDaemon(True)
         self.__refresh_timer.start()
 
@@ -374,6 +378,10 @@ class UcsSession(object):
         if response.error_code != 0:
             return
         self.__cookie = response.out_cookie
+
+    def _is_stale_cookie(self, elem):
+        return 'cookie' in elem.attrib and elem.attrib[
+            'cookie'] != "" and elem.attrib['cookie'] != self.cookie
 
     def _refresh(self, auto_relogin=False):
         """
@@ -405,7 +413,7 @@ class UcsSession(object):
         self.__start_refresh_timer()
         return True
 
-    def __validate_ucsm(self):
+    def __is_ucsm(self):
         """
         Internal method to validate if connecting server is UCS.
         """
@@ -450,6 +458,45 @@ class UcsSession(object):
                 self._logout()
         return False
 
+    def _update_version(self, response=None):
+        from .ucscoremeta import UcsVersion
+        from .ucsmethodfactory import config_resolve_dn
+        from .mometa.top.TopSystem import TopSystem
+        from .mometa.firmware.FirmwareRunning import FirmwareRunning, \
+            FirmwareRunningConsts
+
+        # If the aaaLogin response has the version populated, we do not
+        # need to query for it
+        # There are cases where version is missing from aaaLogin response
+        # In such cases the later part of this method populates it
+        if response.out_version is not None and response.out_version != "":
+            return
+
+        top_system = TopSystem()
+        firmware = FirmwareRunning(top_system,
+                                   FirmwareRunningConsts.DEPLOYMENT_SYSTEM)
+        elem = config_resolve_dn(cookie=self.__cookie,
+                                 dn=firmware.dn)
+        response = self.post_elem(elem)
+        if response.error_code != 0:
+            raise UcsException(response.error_code,
+                               response.error_descr)
+        firmware = response.out_config.child[0]
+        self.__version = UcsVersion(firmware.version)
+
+    def _update_domain_name_and_ip(self):
+        from .ucsmethodfactory import config_resolve_dn
+        from .mometa.top.TopSystem import TopSystem
+
+        top_system = TopSystem()
+        elem = config_resolve_dn(cookie=self.__cookie, dn=top_system.dn)
+        response = self.post_elem(elem)
+        if response.error_code != 0:
+            raise UcsException(response.error_code, response.error_descr)
+        top_system = response.out_config.child[0]
+        self.__ucs = top_system.name
+        self.__virtual_ipv4_address = top_system.address
+
     def _login(self, auto_refresh=False, force=False):
         """
         Internal method responsible to do a login on UCSM server.
@@ -463,13 +510,7 @@ class UcsSession(object):
         Returns:
             True on successful connect
         """
-
-        from .mometa.top.TopSystem import TopSystem
-        from .mometa.firmware.FirmwareRunning import FirmwareRunning, \
-            FirmwareRunningConsts
-        from .ucscoremeta import UcsVersion
         from .ucsmethodfactory import aaa_login
-        from .ucsmethodfactory import config_resolve_dn
 
         self.__force = force
 
@@ -485,30 +526,11 @@ class UcsSession(object):
         self.__update(response)
 
         # Verify not to connect to IMC
-        if not self.__validate_ucsm():
+        if not self.__is_ucsm():
             raise UcsLoginError("Not a supported server.")
 
-        top_system = TopSystem()
-        if response.out_version is None or response.out_version == "":
-            firmware = FirmwareRunning(top_system,
-                                       FirmwareRunningConsts.DEPLOYMENT_SYSTEM)
-            elem = config_resolve_dn(cookie=self.__cookie,
-                                     dn=firmware.dn)
-            response = self.post_elem(elem)
-            if response.error_code != 0:
-                raise UcsException(response.error_code,
-                                   response.error_descr)
-            firmware = response.out_config.child[0]
-            self._version = UcsVersion(firmware.version)
-
-        top_system = TopSystem()
-        elem = config_resolve_dn(cookie=self.__cookie, dn=top_system.dn)
-        response = self.post_elem(elem)
-        if response.error_code != 0:
-            raise UcsException(response.error_code, response.error_descr)
-        top_system = response.out_config.child[0]
-        self._ucs = top_system.name
-        self.__virtual_ipv4_address = top_system.address
+        self._update_version(response)
+        self._update_domain_name_and_ip()
 
         if auto_refresh:
             self.__start_refresh_timer()
@@ -535,21 +557,19 @@ class UcsSession(object):
         if self.__refresh_timer:
             self.__refresh_timer.cancel()
 
-        if self.__cookie:
-            # TO DO NewParam inDelaySec introduced in 224b
-            elem = aaa_logout(self.__cookie, 301)
-            response = self.post_elem(elem)
+        elem = aaa_logout(self.__cookie, 301)
+        response = self.post_elem(elem)
 
-            if response.error_code == "555":
-                return True
-
-            if response.error_code != 0:
-                raise UcsException(response.error_code,
-                                   response.error_descr)
-
-            self.__clear()
-
+        if response.error_code == "555":
             return True
+
+        if response.error_code != 0:
+            raise UcsException(response.error_code,
+                               response.error_descr)
+
+        self.__clear()
+
+        return True
 
     def _set_dump_xml(self):
         """
