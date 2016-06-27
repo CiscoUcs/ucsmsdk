@@ -12,6 +12,7 @@
 # limitations under the License.
 
 
+import os
 import time
 import logging
 import threading
@@ -19,7 +20,7 @@ from threading import Timer
 
 from .ucsexception import UcsException, UcsLoginError
 from .ucsdriver import UcsDriver
-from .ucsgenutils import Progress
+from .ucsgenutils import Progress, str_to_bool
 
 log = logging.getLogger('ucs')
 tx_lock = threading.Lock()
@@ -53,6 +54,7 @@ class UcsSession(object):
 
         self.__refresh_timer = None
         self.__force = False
+        self.__auto_refresh = False
 
         self.__dump_xml = False
         self.__redirect = False
@@ -513,6 +515,7 @@ class UcsSession(object):
         from .ucsmethodfactory import aaa_login
 
         self.__force = force
+        self.__auto_refresh = auto_refresh
 
         if self.__validate_connection():
             return True
@@ -582,6 +585,116 @@ class UcsSession(object):
         Internal method to set dump_xml to False
         """
         self.__dump_xml = False
+
+    def freeze(self, path=None):
+        """
+        serialize the handle in xml
+        """
+
+        from ucsxmlcodec import convert_dict_to_xml
+
+        if not path:
+            path = os.path.join(os.getcwd(), "ucshandle.xml")
+        file_path = path
+        log.info("UcsHandle is stored at <%s>." % file_path)
+
+        ucshandle_attrs = dict(
+            ip=str(self.__ip),
+            username=str(self.__username),
+            password=str(self.__password),
+            uri=str(self.__uri),
+            name=str(self.__name),
+            cookie=str(self.__cookie),
+            session_id=str(self.__session_id),
+            version=str(self.__version),
+            refresh_period=str(self.__refresh_period),
+            priv=str(self.__priv),
+            domains=str(self.__domains),
+            channel=str(self.__channel),
+            evt_channel=str(self.__evt_channel),
+            last_update_time=str(self.__last_update_time),
+            force=str(self.__force),
+            auto_refresh=str(self.__auto_refresh),
+            dump_xml=str(self.__dump_xml),
+            redirect=str(self.__redirect)
+        )
+
+        if self.__proxy:
+            ucshandle_attrs['proxy'] = str(self.__proxy)
+
+        xml_str = convert_dict_to_xml('ucselement', **ucshandle_attrs)
+
+        fh = open(file_path, 'wb')
+        fh.write(xml_str)
+
+    @staticmethod
+    def unfreeze(path=None, validate=False):
+        """
+        De-serialize the handle in xml
+        """
+
+        import ucshandle
+        import ucsxmlcodec
+
+        if not path:
+            path = os.path.join(os.getcwd(), "ucshandle.xml")
+        file_path = path
+
+        root = ucsxmlcodec.extract_root_elem(xml_file=file_path)
+        print(root)
+
+        ip = root.attrib['ip']
+        username = root.attrib['username']
+        password = root.attrib['password']
+
+        if 'proxy' in root.attrib:
+            proxy = root.attrib['proxy']
+        else:
+            proxy = None
+
+        handle = ucshandle.UcsHandle(ip=ip,
+                                     username=username,
+                                     password=password,
+                                     proxy=proxy)
+
+        setattr(handle, '_UcsSession__uri', root.attrib['uri'])
+        setattr(handle, '_UcsSession__name', root.attrib['name'])
+        setattr(handle, '_UcsSession__cookie', root.attrib['cookie'])
+        setattr(handle, '_UcsSession__session_id', root.attrib['session_id'])
+        setattr(handle, '_UcsSession__version', root.attrib['version'])
+        setattr(handle, '_UcsSession__refresh_period',
+                root.attrib['refresh_period'])
+        setattr(handle, '_UcsSession__priv', root.attrib['priv'])
+        setattr(handle, '_UcsSession__domains', root.attrib['domains'])
+        setattr(handle, '_UcsSession__channel', root.attrib['channel'])
+        setattr(handle, '_UcsSession__evt_channel', root.attrib['evt_channel'])
+        setattr(handle, '_UcsSession__last_update_time',
+                root.attrib['last_update_time'])
+
+        setattr(handle, '_UcsSession__force',
+                str_to_bool(root.attrib['force']))
+        setattr(handle, '_UcsSession__auto_refresh',
+                str_to_bool(root.attrib['auto_refresh']))
+
+        setattr(handle, '_UcsSession__dump_xml',
+                str_to_bool(root.attrib['dump_xml']))
+        setattr(handle, '_UcsSession__redirect',
+                str_to_bool(root.attrib['redirect']))
+
+        auto_refresh = handle._UcsSession__auto_refresh
+        force = handle._UcsSession__force
+
+        if validate:
+            handle._login(auto_refresh=auto_refresh, force=force)
+            return handle
+
+        if not handle.__validate_connection():
+            raise ValueError("UcsHandle is expired")
+
+        if auto_refresh:
+            handle._UcsSession__start_refresh_timer()
+
+        return handle
 
 
 def _get_port(port, secure):
