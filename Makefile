@@ -67,7 +67,7 @@ docs:
 	rm -f docs/ucsmsdk.rst
 	rm -f docs/modules.rst
 	rm -f docs/ucsmsdk.*
-	sphinx-apidoc -o docs/ ucsmsdk
+	sphinx-apidoc -o docs/ -d 1 -E ucsmsdk
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html

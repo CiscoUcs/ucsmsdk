@@ -9,12 +9,11 @@ Welcome to ucsmsdk's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
 
+   ucsmsdk_ug
    ucsmsdk
    readme
-   installation
-   usage
    contributing
    authors
    history
