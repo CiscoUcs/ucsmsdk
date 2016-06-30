@@ -216,6 +216,38 @@ class ManagedObject(UcsBase):
         out_str += "\n"
         return out_str
 
+    def to_dict(self, include_children=True, depth=None, level=0):
+        mo_dict = {self._class_id: None}
+
+        prop_dict = {}
+        for prop, prop_value in sorted(ucsgenutils.iteritems(self.__dict__)):
+            if prop in ManagedObject.__internal_prop or prop.startswith(
+                    "_ManagedObject__"):
+                continue
+            prop_dict[prop] = prop_value
+
+        if not self._child or not include_children:
+            mo_dict[self._class_id] = prop_dict
+            return mo_dict
+
+        level += 1
+        if depth is None or level < depth:
+            prop_dict['child'] = []
+            for ch in self._child:
+                prop_dict['child'].append(ch.to_dict(include_children,
+                                                     depth,
+                                                     level))
+
+        mo_dict[self._class_id] = prop_dict
+        return mo_dict
+
+    def to_json(self, include_children=True, depth=None):
+        import json
+
+        return json.dumps(self.to_dict(include_children, depth),
+                          indent=2,
+                          sort_keys=True)
+
     def mark_dirty(self):
         """
         This method marks the managed object dirty.
@@ -665,3 +697,34 @@ class GenericMo(UcsBase):
                 out_str += str(prop).ljust(ts * 4) + ':' + str(prop_val) + "\n"
 
             return out_str
+
+    def to_dict(self, include_children=True, depth=None, level=0):
+        mo_dict = {self._class_id: None}
+
+        prop_dict = {}
+        for prop, prop_value in sorted(ucsgenutils.iteritems(self.__dict__)):
+            if prop.startswith('_'):
+                continue
+            prop_dict[prop] = prop_value
+
+        if not self._child or not include_children:
+            mo_dict[self._class_id] = prop_dict
+            return mo_dict
+
+        level += 1
+        if depth is None or level < depth:
+            prop_dict['child'] = []
+            for ch in self._child:
+                prop_dict['child'].append(ch.to_dict(include_children,
+                                                     depth,
+                                                     level))
+
+        mo_dict[self._class_id] = prop_dict
+        return mo_dict
+
+    def to_json(self, include_children=True, depth=None):
+        import json
+
+        return json.dumps(self.to_dict(include_children, depth),
+                          indent=2,
+                          sort_keys=True)
