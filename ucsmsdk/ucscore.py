@@ -135,6 +135,46 @@ class UcsBase(object):
                 xml_obj = SubElement(xml_doc, class_tag)
         return xml_obj
 
+    def _not_mo_prop(self, prop):
+        pass
+
+    def __get_prop_dict(self):
+
+        prop_dict = {}
+        for prop, prop_value in sorted(ucsgenutils.iteritems(self.__dict__)):
+            if self._not_mo_prop(prop):
+                continue
+            prop_dict[prop] = prop_value
+
+        return prop_dict
+
+    def to_dict(self, include_children=True, depth=None, level=0):
+
+        mo_dict = {self._class_id: None}
+        prop_dict = self.__get_prop_dict()
+
+        if not self._child or not include_children:
+            mo_dict[self._class_id] = prop_dict
+            return mo_dict
+
+        level += 1
+        if depth is None or level < depth:
+            prop_dict['child'] = []
+            for ch in self._child:
+                prop_dict['child'].append(ch.to_dict(include_children,
+                                                     depth,
+                                                     level))
+
+        mo_dict[self._class_id] = prop_dict
+        return mo_dict
+
+    def to_json(self, include_children=True, depth=None):
+        import json
+
+        return json.dumps(self.to_dict(include_children, depth),
+                          indent=2,
+                          sort_keys=True)
+
 
 class AbstractFilter(UcsBase):
     """class AbstractFilter."""
