@@ -85,30 +85,26 @@ def ucs_gui_launch(handle, need_url=False):
 
                 java_str = ucsgenutils.get_java_version()
                 log.debug("Java Version: <%s>" % java_str)
-                if re.match(r'1.8', java_str):
-                    debug_str = '\t<property ' \
-                                    'name="jnlp.ucsm.log.show.encrypted" ' \
-                                    'value="true"/>'
-                elif re.match(r'1.7', java_str):
-                    if int(java_str.rsplit('_')[1]) >= 45:
-                        debug_str = '\t<property ' \
-                                    'name="jnlp.ucsm.log.show.encrypted" ' \
-                                    'value="true"/>'
-                    else:
-                        debug_str = '\t<property ' \
-                                    'name="log.show.encrypted" ' \
-                                    'value="true"/>'
-                else:
-                    debug_str = '\t<property ' \
-                                'name="log.show.encrypted" ' \
+
+                # Adding both the property to enable the secure log in UCSM
+                # independent of java versions.
+                # if java version < 1.7_45, property to use is
+                # "log.show.encrypted"
+                # if java version >= 1.7_45, property to use is
+                # "jnlp.ucsm.log.show.encrypted"
+
+                debug_str_old_java = '\t<property ' \
+                            'name="log.show.encrypted" ' \
+                            'value="true"/>'
+
+                debug_str_new_java = '\t<property ' \
+                                'name="jnlp.ucsm.log.show.encrypted" ' \
                                 'value="true"/>'
 
-                log.debug("Enable Log String is %s." % debug_str)
                 for line in fileinput.input(jnlp_file, inplace=1):
                     if re.search(r'^\s*</resources>\s*$', line):
-                        # print debug_str
-                        print(debug_str)
-                    # print line,
+                        print(debug_str_old_java)
+                        print(debug_str_new_java)
                     line = line.strip('\n') if line else line
                     print(line)
                 subprocess.call([javaws_path, jnlp_file])

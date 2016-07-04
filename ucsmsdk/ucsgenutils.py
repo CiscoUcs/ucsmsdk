@@ -226,17 +226,21 @@ def upload_file(driver, uri, file_dir, file_name, progress=Progress()):
 
 def check_registry_key(java_key):
     """ Method checks for the java in the registry entries. """
+
+    # Added KEY_WOW64_64KEY, KEY_ALL_ACCESS. This lets 32bit python access
+    # registry keys of 64bit Application on Windows supporting 64 bit.
+
     try:
         from _winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKey, \
-            QueryValueEx
+            QueryValueEx, KEY_WOW64_64KEY, KEY_ALL_ACCESS
     except:
         from winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKey, \
-            QueryValueEx
+            QueryValueEx, KEY_WOW64_64KEY, KEY_ALL_ACCESS
 
     path = None
     try:
         a_reg = ConnectRegistry(None, HKEY_LOCAL_MACHINE)
-        r_key = OpenKey(a_reg, java_key)
+        r_key = OpenKey(a_reg, java_key, 0, KEY_WOW64_64KEY + KEY_ALL_ACCESS)
         for i_cnt in range(1024):
             current_version = QueryValueEx(r_key, "CurrentVersion")
             if current_version is not None:
