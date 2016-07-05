@@ -336,7 +336,7 @@ under the parent ``org-root``
 ``handle.commit()`` is called.
 
 `Add Mo API
-reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html?highlight=add_mo#ucsmsdk.ucshandle.UcsHandle.add_mo>`__
+reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html#ucsmsdk.ucshandle.UcsHandle.add_mo>`__
 
 Querying Objects
 ~~~~~~~~~~~~~~~~
@@ -373,16 +373,16 @@ Querying Objects
        object_dict = handle.query_classid("orgOrg", "fabricVlan")
 
 `Query DN API
-reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html?highlight=add_mo#ucsmsdk.ucshandle.UcsHandle.query_dn>`__
+reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html#ucsmsdk.ucshandle.UcsHandle.query_dn>`__
 
 `Query DNs API
-reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html?highlight=add_mo#ucsmsdk.ucshandle.UcsHandle.query_dns>`__
+reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html#ucsmsdk.ucshandle.UcsHandle.query_dns>`__
 
 `Query Class Id API
-reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html?highlight=add_mo#ucsmsdk.ucshandle.UcsHandle.query_classid>`__
+reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html#ucsmsdk.ucshandle.UcsHandle.query_classid>`__
 
 `Query Class Ids API
-reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html?highlight=add_mo#ucsmsdk.ucshandle.UcsHandle.query_classids>`__
+reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html#ucsmsdk.ucshandle.UcsHandle.query_classids>`__
 
 Querying Objects With Filters
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -455,7 +455,7 @@ Modifying Objects
 ``commit()`` is invoked.
 
 `Set Mo API
-reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html?highlight=add_mo#ucsmsdk.ucshandle.UcsHandle.set_mo>`__
+reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html#ucsmsdk.ucshandle.UcsHandle.set_mo>`__
 
 Deleting Objects
 ~~~~~~~~~~~~~~~~
@@ -474,7 +474,7 @@ Deleting Objects
 ``commit()`` is invoked.
 
 `Remove Mo API
-reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html?highlight=add_mo#ucsmsdk.ucshandle.UcsHandle.remove_mo>`__
+reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.html#ucsmsdk.ucshandle.UcsHandle.remove_mo>`__
 
 Transaction
 ~~~~~~~~~~~
@@ -759,7 +759,7 @@ Type of backups:
                  file_name= backup_filename)
 
 `Backup Ucs API
-Reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.utils.html?highlight=backup_ucs#ucsmsdk.utils.ucsbackup.backup_ucs>`__
+Reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.utils.html#ucsmsdk.utils.ucsbackup.backup_ucs>`__
 
 Import Ucs
 ~~~~~~~~~~
@@ -779,7 +779,7 @@ server
                          file_name=import_filename)
 
 `Import Ucs API
-Reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.utils.html?highlight=backup_ucs#ucsmsdk.utils.ucsbackup.import_ucs_backup>`__
+Reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.utils.html#ucsmsdk.utils.ucsbackup.import_ucs_backup>`__
 
 Start GUI Session
 -----------------
@@ -796,7 +796,7 @@ already present.
     ucs_gui_launch(handle)
 
 `Start UCS GUI API
-Reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.utils.html?highlight=ucs_gui_launch#ucsmsdk.utils.ucsguilaunch.ucs_gui_launch>`__
+Reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.utils.html#ucsmsdk.utils.ucsguilaunch.ucs_gui_launch>`__
 
 **note**: This method is specific to launching UCSM JAVA GUI. It does
 not work for UCSM HTML UI
@@ -835,7 +835,7 @@ server(blade/rack)
     ucs_kvm_launch(handle, rack_unit=rack_mo)
 
 `Start KVM Session API
-Reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.utils.html?highlight=ucs_kvm_launch#ucsmsdk.utils.ucskvmlaunch.ucs_kvm_launch>`__
+Reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.utils.html#ucsmsdk.utils.ucskvmlaunch.ucs_kvm_launch>`__
 
 Advanced Features
 -----------------
