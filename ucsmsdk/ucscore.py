@@ -148,22 +148,21 @@ class UcsBase(object):
 
         return prop_dict
 
-    def to_dict(self, include_children=True, depth=None, level=0):
+    def __process_children(self, depth, level=0):
+        level += 1
+        if depth is None or level < depth:
+            children = []
+            for ch in self._child:
+                children.append(ch.to_dict(True, depth))
+            return children
+
+    def to_dict(self, include_children=True, depth=None):
 
         mo_dict = {self._class_id: None}
         prop_dict = self.__get_prop_dict()
 
-        if not self._child or not include_children:
-            mo_dict[self._class_id] = prop_dict
-            return mo_dict
-
-        level += 1
-        if depth is None or level < depth:
-            prop_dict['child'] = []
-            for ch in self._child:
-                prop_dict['child'].append(ch.to_dict(include_children,
-                                                     depth,
-                                                     level))
+        if include_children and self.__process_children(depth):
+            prop_dict['child'] = self.__process_children(depth)
 
         mo_dict[self._class_id] = prop_dict
         return mo_dict
