@@ -208,14 +208,14 @@ class UcsEventHandle(object):
                          failure_value, transient_value,
                          change_list=None):
         if isinstance(mo, ucsmo.GenericMo):
-            n_prop = prop
-            n_prop_val = mo.properties[n_prop]
-        elif prop not in mo.prop_meta:
-            n_prop = prop
-            n_prop_val = getattr(mo, n_prop)
+            ucs_prop = prop
+            n_prop_val = mo.properties[prop]
+        elif prop in mo.prop_meta:
+            ucs_prop = mo.prop_meta[prop].xml_attribute
+            n_prop_val = getattr(mo, prop)
         else:
-            n_prop = mo.prop_meta[prop].xml_attribute
-            n_prop_val = getattr(mo, n_prop)
+            ucs_prop = mo.prop_meta[prop].xml_attribute
+            n_prop_val = getattr(mo, ucs_prop)
 
         if change_list and n_prop not in change_list:
             return False
@@ -250,7 +250,11 @@ class UcsEventHandle(object):
 
         if self.__prop_val_exist(pmo, prop, success_value,
                                  failure_value, transient_value):
-            log.info("Successful")
+            if watch_block.callback:
+                ctxt = watch_block.params['context']
+                if ctxt:
+                    ctxt["done"] = True
+                watch_block.callback(pmo)
             self.__wb_to_remove.append(watch_block)
 
     def __dequeue_mo_prop_event(self, prop, watch_block, time_left=None):
@@ -273,7 +277,8 @@ class UcsEventHandle(object):
                                  transient_value, attributes):
             if watch_block.callback:
                 ctxt = watch_block.params['context']
-                ctxt["done"] = True
+                if ctxt:
+                    ctxt["done"] = True
                 watch_block.callback(mce)
             self.__wb_to_remove.append(watch_block)
 
@@ -350,7 +355,8 @@ class UcsEventHandle(object):
                 for wb in self.__wb_to_remove:
                     if "context" in wb.params:
                         ctxt = wb.params['context']
-                        ctxt["done"] = True
+                        if ctxt:
+                            ctxt["done"] = True
                     self.watch_block_remove(wb)
                 self.__wb_to_remove = []
 
@@ -558,7 +564,7 @@ class UcsEventHandle(object):
         return self.__wbs
 
 
-def wait(handle, mo, prop, value, cb, timeout_sec=None):
+def wait(handle, mo, prop, value, cb, timeout_sec=None, poll_sec=None):
     """
     Waits for `mo.prop == value`
 
@@ -569,6 +575,7 @@ def wait(handle, mo, prop, value, cb, timeout_sec=None):
         value (str): property value to wait for
         cb(function): callback on success
         timeout_sec (int): timeout
+        poll_sec (int): polling interval in seconds
 
     Returns:
         None
@@ -590,8 +597,14 @@ def wait(handle, mo, prop, value, cb, timeout_sec=None):
         success_value = [value]
 
     # create a watch block
-    ueh.add(managed_object=mo, prop=prop, success_value=success_value,
-            call_back=cb, timeout_sec=timeout_sec, context=context)
+    ueh.add(
+        managed_object=mo,
+        prop=prop,
+        success_value=success_value,
+        call_back=cb,
+        timeout_sec=timeout_sec,
+        poll_sec=poll_sec,
+        context=context)
 
     # wait for the event to occur
     while not context["done"]:
