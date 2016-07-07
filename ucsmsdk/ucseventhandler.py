@@ -110,6 +110,21 @@ class UcsEventHandle(object):
         self._lowest_timeout = None
         self._wb_to_remove = []
 
+    def _process_method_vessel(self, root, elems):
+        for in_stimuli in root:
+            for cmce in in_stimuli:
+                for in_config in cmce:
+                    for mo_elem in in_config:
+                        elems.append(
+                            (mo_elem, cmce.attrib.get('inEid')))
+        return elems
+
+    def _process_mo_change_event(self, root, elems):
+        for in_config in root:
+            for mo_elem in in_config:
+                elems.append(mo_elem)
+        return elems
+
     def _get_mo_elem(self, xml_str):
         """
         Internal method to extract mo elements from xml string
@@ -118,16 +133,9 @@ class UcsEventHandle(object):
         root = xc.extract_root_elem(xml_str)
         mo_elems = []
         if root.tag == "methodVessel":
-            for in_stimuli in root:
-                for cmce in in_stimuli:
-                    for in_config in cmce:
-                        for mo_elem in in_config:
-                            mo_elems.append(
-                                (mo_elem, cmce.attrib.get('inEid')))
+            mo_elems = self._process_method_vessel(root, mo_elems)
         elif root.tag == "configMoChangeEvent":
-            for in_config in root:
-                for mo_elem in in_config:
-                    mo_elems.append(mo_elem)
+            mo_elems = self._process_mo_change_event(root, mo_elems)
         return mo_elems
 
     def _enqueue_function(self):
@@ -204,24 +212,50 @@ class UcsEventHandle(object):
 
         return mce
 
-    def _prop_val_exist(self, mo, prop, success_value,
-                        change_list=None):
+    def _get_ucs_prop_name(self, mo, python_prop):
         if isinstance(mo, ucsmo.GenericMo):
-            ucs_prop = prop
-            n_prop_val = mo.properties[prop]
-        elif prop in mo.prop_meta:
-            ucs_prop = mo.prop_meta[prop].xml_attribute
-            n_prop_val = getattr(mo, prop)
+            return python_prop
+        elif python_prop in mo.prop_meta:
+            # return the Ucs equivalent of this property
+            # so `usr_lbl` will be returned as `usrLbl`
+            return mo.prop_meta[python_prop].xml_attribute
         else:
-            ucs_prop = mo.prop_meta[prop].xml_attribute
-            n_prop_val = getattr(mo, ucs_prop)
+            # we do not know about this property
+            # return the same back - no other option
+            return python_prop
 
-        if change_list and ucs_prop not in change_list:
+
+    def _get_prop_value(self, mo, python_prop):
+        if isinstance(mo, ucsmo.GenericMo):
+            return mo.properties[python_prop]
+        elif python_prop in mo.prop_meta:
+            return getattr(mo, python_prop)
+        elif python_prop in vars(mo):
+            # we do not know about this property
+            # but the property seems to be available
+            # in the mo. so return mo[prop]
+            return getattr(mo, python_prop)
+        else:
+            # Not sure what we can do!!
+            return None
+
+    def _should_skip_prop_match(self, prop, change_list):
+        # if prop is not a part of change_list
+        # skip processing the property
+        return change_list and prop not in change_list
+
+    def _is_property_in_success_values(self, value, success_values):
+        return len(success_values) > 0 and (value in success_values)
+
+    def _prop_val_match(self, mo, prop, success_values,
+                        change_list=None):
+        ucs_prop = self._get_ucs_prop_name(mo, prop)
+        prop_val = self._get_prop_value(mo, prop)
+
+        if self._should_skip_prop_match(ucs_prop, change_list):
             return False
 
-        if len(success_value) > 0 and (n_prop_val in success_value):
-            return True
-        return False
+        return self._is_property_in_success_values(prop_val, success_values)
 
     def _invoke_callback_and_set_done(self, wb, mce):
         if wb.callback:
@@ -250,7 +284,7 @@ class UcsEventHandle(object):
         if self._lowest_timeout is None or self._lowest_timeout > poll_sec:
             self._lowest_timeout = poll_sec
 
-        if self._prop_val_exist(pmo, prop, success_value):
+        if self._prop_val_match(pmo, prop, success_value):
             mce = MoChangeEvent(mo=pmo)
             self._invoke_callback_and_set_done(watch_block, mce)
             self._wb_to_remove.append(watch_block)
@@ -269,7 +303,7 @@ class UcsEventHandle(object):
 
         # checks if prop value exist in success value(s)
         attributes = mce.change_list
-        if self._prop_val_exist(mce.mo, prop, success_value, attributes):
+        if self._prop_val_match(mce.mo, prop, success_value, attributes):
             self._invoke_callback_and_set_done(watch_block, mce)
             self._wb_to_remove.append(watch_block)
 
