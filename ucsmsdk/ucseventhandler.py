@@ -138,6 +138,22 @@ class UcsEventHandle(object):
             mo_elems = self._process_mo_change_event(root, mo_elems)
         return mo_elems
 
+    def _can_enqueue(self):
+        return self._event_chan_resp and len(self._wbs) and (self._handle.cookie is not None)
+
+    def _process_event_channel_resp(self, resp):
+        for mo_elem in self._get_mo_elem(resp):
+            gmo = ucsmo.generic_mo_from_xml_elem(mo_elem[0])
+            mce = MoChangeEvent(event_id=mo_elem[1],
+                                mo=gmo.to_mo(),
+                                change_list=gmo.properties.keys())
+
+            for watch_block in self._wbs:
+                if watch_block.fmce(mce):
+                    watch_block.enqueue(mce)
+                    with self._condition:
+                        self._condition.notify()
+
     def _enqueue_function(self):
         """
         Internal method used by add_event_handler.
@@ -153,25 +169,10 @@ class UcsEventHandle(object):
             raise
 
         try:
-            while self._event_chan_resp and len(self._wbs):
-
-                if self._handle.cookie is None or \
-                        self._event_chan_resp is None:
-                    break
-
+            while self._can_enqueue():
                 resp = self._event_chan_resp.readline()
                 resp = self._event_chan_resp.read(int(resp))
-                for mo_elem in self._get_mo_elem(resp):
-                    gmo = ucsmo.generic_mo_from_xml_elem(mo_elem[0])
-                    mce = MoChangeEvent(event_id=mo_elem[1],
-                                        mo=gmo.to_mo(),
-                                        change_list=gmo.properties.keys())
-
-                    for watch_block in self._wbs:
-                        if watch_block.fmce(mce):
-                            watch_block.enqueue(mce)
-                            with self._condition:
-                                self._condition.notify()
+                self._process_event_channel_resp(resp)
 
             if len(self._wbs) == 0:
                 self._condition.acquire()
