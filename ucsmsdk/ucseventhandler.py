@@ -205,7 +205,6 @@ class UcsEventHandle(object):
         return mce
 
     def _prop_val_exist(self, mo, prop, success_value,
-                        failure_value, transient_value,
                         change_list=None):
         if isinstance(mo, ucsmo.GenericMo):
             ucs_prop = prop
@@ -220,9 +219,7 @@ class UcsEventHandle(object):
         if change_list and ucs_prop not in change_list:
             return False
 
-        if (len(success_value) > 0 and n_prop_val in success_value) or \
-                (len(failure_value) > 0 and n_prop_val in failure_value) or \
-                (len(transient_value) > 0 and n_prop_val in transient_value):
+        if len(success_value) > 0 and (n_prop_val in success_value):
             return True
         return False
 
@@ -237,8 +234,6 @@ class UcsEventHandle(object):
                               timeout_sec=None, time_left=None):
 
         success_value = watch_block.params["success_value"]
-        failure_value = watch_block.params["failure_value"]
-        transient_value = watch_block.params["transient_value"]
 
         if not success_value or len(success_value) < 1:
             raise ValueError("success_value is missing.")
@@ -255,8 +250,7 @@ class UcsEventHandle(object):
         if self._lowest_timeout is None or self._lowest_timeout > poll_sec:
             self._lowest_timeout = poll_sec
 
-        if self._prop_val_exist(pmo, prop, success_value,
-                                failure_value, transient_value):
+        if self._prop_val_exist(pmo, prop, success_value):
             mce = MoChangeEvent(mo=pmo)
             self._invoke_callback_and_set_done(watch_block, mce)
             self._wb_to_remove.append(watch_block)
@@ -264,8 +258,6 @@ class UcsEventHandle(object):
     def _dequeue_mo_prop_event(self, prop, watch_block, time_left=None):
 
         success_value = watch_block.params["success_value"]
-        failure_value = watch_block.params["failure_value"]
-        transient_value = watch_block.params["transient_value"]
 
         if not success_value or len(success_value) < 1:
             raise ValueError("success_value is missing.")
@@ -275,10 +267,9 @@ class UcsEventHandle(object):
         if mce is None:
             return
 
-        # checks if prop value exist in success or failure or transient values
+        # checks if prop value exist in success value(s)
         attributes = mce.change_list
-        if self._prop_val_exist(mce.mo, prop, success_value, failure_value,
-                                transient_value, attributes):
+        if self._prop_val_exist(mce.mo, prop, success_value, attributes):
             self._invoke_callback_and_set_done(watch_block, mce)
             self._wb_to_remove.append(watch_block)
 
@@ -472,8 +463,6 @@ class UcsEventHandle(object):
             managed_object=None,
             prop=None,
             success_value=[],
-            failure_value=[],
-            transient_value=[],
             poll_sec=None,
             timeout_sec=None,
             call_back=None,
@@ -483,15 +472,13 @@ class UcsEventHandle(object):
 
         An event handler can be added using this method where an user can
         subscribe for the event channel from UCS and can monitor those events
-        for any specific success value or failure value for a managed object.
+        for any specific success value for a managed object.
 
         Args:
             class_id (str): managed object class id
             managed_object (ManagedObject)
             prop (str) - property of the managed object to monitor
             success_value (list) - success values of a prop
-            failure_value (list) - failure values of a prop
-            transient_value (list) - transient values of a prop
             poll_sec - specifies the time in seconds for polling event.
             timeout_sec - time after which method should stop monitoring.
             call_back - call back method
@@ -518,8 +505,6 @@ class UcsEventHandle(object):
                       'managed_object': managed_object,
                       'prop': prop,
                       'success_value': success_value,
-                      'failure_value': failure_value,
-                      'transient_value': transient_value,
                       'poll_sec': poll_sec,
                       'timeout_sec': timeout_sec,
                       'call_back': call_back,
