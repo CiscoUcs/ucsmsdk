@@ -99,18 +99,18 @@ class UcsEventHandle(object):
     """This class provides api to add and remove event handler."""
 
     def __init__(self, handle):
-        self.__handle = handle
-        self.__lock_object = None
-        self.__wbs = []
-        self.__wbs_lock = Lock()
-        self.__enqueue_thread = None
-        self.__condition = Condition()
-        self.__event_chan_resp = None
-        self.__dequeue_thread = None
-        self.__lowest_timeout = None
-        self.__wb_to_remove = []
+        self._handle = handle
+        self._lock_object = None
+        self._wbs = []
+        self._wbs_lock = Lock()
+        self._enqueue_thread = None
+        self._condition = Condition()
+        self._event_chan_resp = None
+        self._dequeue_thread = None
+        self._lowest_timeout = None
+        self._wb_to_remove = []
 
-    def __get_mo_elem(self, xml_str):
+    def _get_mo_elem(self, xml_str):
         """
         Internal method to extract mo elements from xml string
         """
@@ -130,7 +130,7 @@ class UcsEventHandle(object):
                     mo_elems.append(mo_elem)
         return mo_elems
 
-    def __enqueue_function(self):
+    def _enqueue_function(self):
         """
         Internal method used by add_event_handler.
         Provides functionality of enqueue/dequeue of the events and
@@ -138,52 +138,52 @@ class UcsEventHandle(object):
         """
 
         try:
-            xml_query = '<eventSubscribe cookie="%s"/>' % self.__handle.cookie
-            self.__event_chan_resp = self.__handle.post_xml(
+            xml_query = '<eventSubscribe cookie="%s"/>' % self._handle.cookie
+            self._event_chan_resp = self._handle.post_xml(
                 xml_str=xml_query.encode(), read=False)
         except Exception:
             raise
 
         try:
-            while self.__event_chan_resp and len(self.__wbs):
+            while self._event_chan_resp and len(self._wbs):
 
-                if self.__handle.cookie is None or \
-                        self.__event_chan_resp is None:
+                if self._handle.cookie is None or \
+                        self._event_chan_resp is None:
                     break
 
-                resp = self.__event_chan_resp.readline()
-                resp = self.__event_chan_resp.read(int(resp))
-                for mo_elem in self.__get_mo_elem(resp):
+                resp = self._event_chan_resp.readline()
+                resp = self._event_chan_resp.read(int(resp))
+                for mo_elem in self._get_mo_elem(resp):
                     gmo = ucsmo.generic_mo_from_xml_elem(mo_elem[0])
                     mce = MoChangeEvent(event_id=mo_elem[1],
                                         mo=gmo.to_mo(),
                                         change_list=gmo.properties.keys())
 
-                    for watch_block in self.__wbs:
+                    for watch_block in self._wbs:
                         if watch_block.fmce(mce):
                             watch_block.enqueue(mce)
-                            with self.__condition:
-                                self.__condition.notify()
+                            with self._condition:
+                                self._condition.notify()
 
-            if len(self.__wbs) == 0:
-                self.__condition.acquire()
-                self.__condition.notify()
-                self.__condition.release()
+            if len(self._wbs) == 0:
+                self._condition.acquire()
+                self._condition.notify()
+                self._condition.release()
         except:
             raise
 
-    def __thread_enqueue_start(self):
+    def _thread_enqueue_start(self):
         """
         Internal method to start the enqueue thread which adds the events in
         an internal queue.
         """
 
-        self.__enqueue_thread = Thread(name="enqueue_thread",
-                                       target=self.__enqueue_function)
-        self.__enqueue_thread.daemon = True
-        self.__enqueue_thread.start()
+        self._enqueue_thread = Thread(name="enqueue_thread",
+                                      target=self._enqueue_function)
+        self._enqueue_thread.daemon = True
+        self._enqueue_thread.start()
 
-    def __time_left(self, watch_block):
+    def _time_left(self, watch_block):
         timeout_sec = watch_block.params["timeout_sec"]
         start_time = watch_block.params["start_time"]
         time_diff = datetime.datetime.now() - start_time
@@ -193,20 +193,20 @@ class UcsEventHandle(object):
             return 0
         # return 2147483647
 
-    def __dequeue_mce(self, time_left, watch_block):
+    def _dequeue_mce(self, time_left, watch_block):
         if time_left and time_left > 0:
-            if self.__lowest_timeout is None or \
-                    self.__lowest_timeout > time_left:
-                self.__lowest_timeout = time_left
+            if self._lowest_timeout is None or \
+                    self._lowest_timeout > time_left:
+                self._lowest_timeout = time_left
             mce = watch_block.dequeue(time_left)
         else:
             mce = watch_block.dequeue(2147483647)
 
         return mce
 
-    def __prop_val_exist(self, mo, prop, success_value,
-                         failure_value, transient_value,
-                         change_list=None):
+    def _prop_val_exist(self, mo, prop, success_value,
+                        failure_value, transient_value,
+                        change_list=None):
         if isinstance(mo, ucsmo.GenericMo):
             ucs_prop = prop
             n_prop_val = mo.properties[prop]
@@ -217,7 +217,7 @@ class UcsEventHandle(object):
             ucs_prop = mo.prop_meta[prop].xml_attribute
             n_prop_val = getattr(mo, ucs_prop)
 
-        if change_list and n_prop not in change_list:
+        if change_list and ucs_prop not in change_list:
             return False
 
         if (len(success_value) > 0 and n_prop_val in success_value) or \
@@ -233,8 +233,8 @@ class UcsEventHandle(object):
                 ctxt["done"] = True
             wb.callback(mce)
 
-    def __dequeue_mo_prop_poll(self, mo, prop, poll_sec, watch_block,
-                               timeout_sec=None, time_left=None):
+    def _dequeue_mo_prop_poll(self, mo, prop, poll_sec, watch_block,
+                              timeout_sec=None, time_left=None):
 
         success_value = watch_block.params["success_value"]
         failure_value = watch_block.params["failure_value"]
@@ -243,7 +243,7 @@ class UcsEventHandle(object):
         if not success_value or len(success_value) < 1:
             raise ValueError("success_value is missing.")
 
-        pmo = self.__handle.query_dn(mo.dn)
+        pmo = self._handle.query_dn(mo.dn)
         if pmo is None:
             UcsWarning('Mo ' + pmo.dn + ' not found.')
             return
@@ -252,16 +252,16 @@ class UcsEventHandle(object):
             if time_left < poll_sec:
                 poll_sec = timeout_sec - time_left
 
-        if self.__lowest_timeout is None or self.__lowest_timeout > poll_sec:
-            self.__lowest_timeout = poll_sec
+        if self._lowest_timeout is None or self._lowest_timeout > poll_sec:
+            self._lowest_timeout = poll_sec
 
-        if self.__prop_val_exist(pmo, prop, success_value,
-                                 failure_value, transient_value):
+        if self._prop_val_exist(pmo, prop, success_value,
+                                failure_value, transient_value):
             mce = MoChangeEvent(mo=pmo)
             self._invoke_callback_and_set_done(watch_block, mce)
-            self.__wb_to_remove.append(watch_block)
+            self._wb_to_remove.append(watch_block)
 
-    def __dequeue_mo_prop_event(self, prop, watch_block, time_left=None):
+    def _dequeue_mo_prop_event(self, prop, watch_block, time_left=None):
 
         success_value = watch_block.params["success_value"]
         failure_value = watch_block.params["failure_value"]
@@ -271,21 +271,21 @@ class UcsEventHandle(object):
             raise ValueError("success_value is missing.")
 
         # dequeue mce
-        mce = self.__dequeue_mce(time_left, watch_block)
+        mce = self._dequeue_mce(time_left, watch_block)
         if mce is None:
             return
 
         # checks if prop value exist in success or failure or transient values
         attributes = mce.change_list
-        if self.__prop_val_exist(mce.mo, prop, success_value, failure_value,
-                                 transient_value, attributes):
+        if self._prop_val_exist(mce.mo, prop, success_value, failure_value,
+                                transient_value, attributes):
             self._invoke_callback_and_set_done(watch_block, mce)
-            self.__wb_to_remove.append(watch_block)
+            self._wb_to_remove.append(watch_block)
 
-    def __dequeue_mo_until_removed(self, watch_block, time_left=None):
+    def _dequeue_mo_until_removed(self, watch_block, time_left=None):
 
         # dequeue mce
-        mce = self.__dequeue_mce(time_left, watch_block)
+        mce = self._dequeue_mce(time_left, watch_block)
         if mce is None:
             return
 
@@ -294,26 +294,26 @@ class UcsEventHandle(object):
 
         # watch mo until gets deleted
         if mce.mo.status == "deleted":
-            self.__wb_to_remove.append(watch_block)
+            self._wb_to_remove.append(watch_block)
 
-    def __dequeue_all_class_id(self, watch_block, time_left=None):
+    def _dequeue_all_class_id(self, watch_block, time_left=None):
 
         # dequeue mce
-        mce = self.__dequeue_mce(time_left, watch_block)
+        mce = self._dequeue_mce(time_left, watch_block)
         if mce is not None and watch_block.callback is not None:
             watch_block.callback(mce)
 
-    def __dequeue_function(self):
+    def _dequeue_function(self):
         """
         Internal method to dequeue to events.
         """
 
-        while len(self.__wbs):
-            self.__lowest_timeout = None
-            self.__wb_to_remove = []
+        while len(self._wbs):
+            self._lowest_timeout = None
+            self._wb_to_remove = []
 
             try:
-                for watch_block in self.__wbs:
+                for watch_block in self._wbs:
                     mo = watch_block.params["managed_object"]
                     prop = watch_block.params["prop"]
                     poll_sec = watch_block.params["poll_sec"]
@@ -322,61 +322,61 @@ class UcsEventHandle(object):
                     # checks if watch_block is not timed out, else remove
                     time_left = None
                     if timeout_sec is not None:
-                        time_left = self.__time_left(watch_block)
+                        time_left = self._time_left(watch_block)
                         if time_left <= 0:
-                            self.__wb_to_remove.append(watch_block)
+                            self._wb_to_remove.append(watch_block)
                             continue
 
                     # poll for mo. Not to monitor event.
                     if poll_sec is not None and mo is not None:
-                        self.__dequeue_mo_prop_poll(mo, prop, poll_sec,
-                                                    watch_block, timeout_sec,
-                                                    time_left)
+                        self._dequeue_mo_prop_poll(mo, prop, poll_sec,
+                                                   watch_block, timeout_sec,
+                                                   time_left)
                     elif mo is not None:
                         # watch mo until prop_val changed to desired value
                         if prop is not None:
-                            self.__dequeue_mo_prop_event(prop, watch_block,
-                                                         time_left)
+                            self._dequeue_mo_prop_event(prop, watch_block,
+                                                        time_left)
                         # watch mo until it is removed
                         else:
-                            self.__dequeue_mo_until_removed(watch_block,
-                                                            time_left)
+                            self._dequeue_mo_until_removed(watch_block,
+                                                           time_left)
                     elif mo is None:
                         # watch all event or specific to class_id
-                        self.__dequeue_all_class_id(watch_block, time_left)
+                        self._dequeue_all_class_id(watch_block, time_left)
             except Exception as e:
                 log.info(str(e))
-                self.__wb_to_remove.append(watch_block)
+                self._wb_to_remove.append(watch_block)
 
             # removing watch_block
-            if len(self.__wb_to_remove):
-                self.__wbs_lock.acquire()
+            if len(self._wb_to_remove):
+                self._wbs_lock.acquire()
 
-                for wb in self.__wb_to_remove:
+                for wb in self._wb_to_remove:
                     if "context" in wb.params:
                         ctxt = wb.params['context']
                         if ctxt:
                             ctxt["done"] = True
                     self.watch_block_remove(wb)
-                self.__wb_to_remove = []
+                self._wb_to_remove = []
 
-                self.__wbs_lock.release()
+                self._wbs_lock.release()
 
             # wait for more events only if watch_block exists
-            if len(self.__wbs):
-                with self.__condition:
-                    self.__condition.wait(self.__lowest_timeout)
+            if len(self._wbs):
+                with self._condition:
+                    self._condition.wait(self._lowest_timeout)
         return
 
-    def __thread_dequeue_start(self):
+    def _thread_dequeue_start(self):
         """
         Internal method to start dequeue thread.
         """
 
-        self.__dequeue_thread = Thread(name="dequeue_thread",
-                                       target=self.__dequeue_function)
-        self.__dequeue_thread.daemon = True
-        self.__dequeue_thread.start()
+        self._dequeue_thread = Thread(name="dequeue_thread",
+                                      target=self._dequeue_function)
+        self._dequeue_thread.daemon = True
+        self._dequeue_thread.start()
 
     def watch_block_add(self, params,
                         filter_callback,
@@ -386,10 +386,10 @@ class UcsEventHandle(object):
         Internal method to add a watch block for starting event monitoring.
         """
 
-        if self.__handle.cookie is None:
+        if self._handle.cookie is None:
             return None
 
-        self.__wbs_lock.acquire()
+        self._wbs_lock.acquire()
         watch_block = WatchBlock(params,
                                  filter_callback,
                                  capacity,
@@ -398,8 +398,8 @@ class UcsEventHandle(object):
         if watch_block is not None and watch_block.callback is None:
             watch_block.callback = watch_block.dequeue_default_callback
 
-        self.__wbs.append(watch_block)
-        self.__wbs_lock.release()
+        self._wbs.append(watch_block)
+        self._wbs_lock.release()
         return watch_block
 
     def watch_block_remove(self, watch_block):
@@ -407,8 +407,8 @@ class UcsEventHandle(object):
         Internal method to remove a watch block for
         stopping event monitoring.
         """
-        if watch_block in self.__wbs:
-            self.__wbs.remove(watch_block)
+        if watch_block in self._wbs:
+            self._wbs.remove(watch_block)
 
     def _add_class_id_watch(self, class_id):
         if ucscoreutils.find_class_id_in_mo_meta_ignore_case(class_id) is None:
@@ -528,10 +528,10 @@ class UcsEventHandle(object):
                                            filter_callback=filter_callback,
                                            callback=call_back)
 
-        if watch_block is not None and len(self.__wbs) == 1:
+        if watch_block is not None and len(self._wbs) == 1:
             if poll_sec is None:
-                self.__thread_enqueue_start()
-            self.__thread_dequeue_start()
+                self._thread_enqueue_start()
+            self._thread_dequeue_start()
 
         return watch_block
 
@@ -540,28 +540,28 @@ class UcsEventHandle(object):
         Removes an event handler.
         """
 
-        self.__wbs_lock.acquire()
-        if watch_block in self.__wbs:
+        self._wbs_lock.acquire()
+        if watch_block in self._wbs:
             self.watch_block_remove(watch_block)
         else:
             UcsWarning("Event handler not found")
-        self.__wbs_lock.release()
+        self._wbs_lock.release()
 
     def clean(self):
         """
         Removes all the watch blocks from the event handler
         """
 
-        self.__wbs_lock.acquire()
-        for each in self.__wbs:
+        self._wbs_lock.acquire()
+        for each in self._wbs:
             self.watch_block_remove(each)
-        self.__wbs_lock.release()
+        self._wbs_lock.release()
 
     def get(self):
         """
         Returns the list of event handlers.
         """
-        return self.__wbs
+        return self._wbs
 
 
 def wait(handle, mo, prop, value, cb, timeout_sec=None, poll_sec=None):
