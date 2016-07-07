@@ -63,7 +63,7 @@ class WatchBlock(object):
         self.capacity = capacity
         self.params = params
         self.overflow = False
-        self.error_code = 0  # TODO:error_code to call notify as per PowerTool
+        self.error_code = 0
         self.event_q = Queue()  # infinite size Queue
 
     def dequeue(self, miliseconds_timeout):
@@ -226,7 +226,7 @@ class UcsEventHandle(object):
             return True
         return False
 
-    def _invoke_callback_and_set_done(wb, mce):
+    def _invoke_callback_and_set_done(self, wb, mce):
         if wb.callback:
             ctxt = wb.params['context']
             if ctxt:
@@ -348,25 +348,30 @@ class UcsEventHandle(object):
                 log.info(str(e))
                 self._wb_to_remove.append(watch_block)
 
-            # removing watch_block
-            if len(self._wb_to_remove):
-                self._wbs_lock.acquire()
-
-                for wb in self._wb_to_remove:
-                    if "context" in wb.params:
-                        ctxt = wb.params['context']
-                        if ctxt:
-                            ctxt["done"] = True
-                    self.watch_block_remove(wb)
-                self._wb_to_remove = []
-
-                self._wbs_lock.release()
+            # remove any watch blocks in to_remove list
+            self._process_wb_remove_list()
 
             # wait for more events only if watch_block exists
             if len(self._wbs):
                 with self._condition:
                     self._condition.wait(self._lowest_timeout)
         return
+
+    def _process_wb_remove_list(self):
+        if len(self._wb_to_remove) == 0:
+            return
+
+        self._wbs_lock.acquire()
+
+        for wb in self._wb_to_remove:
+            if "context" in wb.params:
+                ctxt = wb.params['context']
+                if ctxt:
+                    ctxt["done"] = True
+            self.watch_block_remove(wb)
+        self._wb_to_remove = []
+
+        self._wbs_lock.release()
 
     def _thread_dequeue_start(self):
         """
