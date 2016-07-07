@@ -226,6 +226,13 @@ class UcsEventHandle(object):
             return True
         return False
 
+    def _invoke_callback_and_set_done(wb, mce):
+        if wb.callback:
+            ctxt = wb.params['context']
+            if ctxt:
+                ctxt["done"] = True
+            wb.callback(mce)
+
     def __dequeue_mo_prop_poll(self, mo, prop, poll_sec, watch_block,
                                timeout_sec=None, time_left=None):
 
@@ -250,11 +257,8 @@ class UcsEventHandle(object):
 
         if self.__prop_val_exist(pmo, prop, success_value,
                                  failure_value, transient_value):
-            if watch_block.callback:
-                ctxt = watch_block.params['context']
-                if ctxt:
-                    ctxt["done"] = True
-                watch_block.callback(pmo)
+            mce = MoChangeEvent(mo=pmo)
+            self._invoke_callback_and_set_done(watch_block, mce)
             self.__wb_to_remove.append(watch_block)
 
     def __dequeue_mo_prop_event(self, prop, watch_block, time_left=None):
@@ -275,11 +279,7 @@ class UcsEventHandle(object):
         attributes = mce.change_list
         if self.__prop_val_exist(mce.mo, prop, success_value, failure_value,
                                  transient_value, attributes):
-            if watch_block.callback:
-                ctxt = watch_block.params['context']
-                if ctxt:
-                    ctxt["done"] = True
-                watch_block.callback(mce)
+            self._invoke_callback_and_set_done(watch_block, mce)
             self.__wb_to_remove.append(watch_block)
 
     def __dequeue_mo_until_removed(self, watch_block, time_left=None):
