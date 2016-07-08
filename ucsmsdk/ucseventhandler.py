@@ -139,7 +139,9 @@ class UcsEventHandle(object):
         return mo_elems
 
     def _can_enqueue(self):
-        return self._event_chan_resp and len(self._wbs) and (self._handle.cookie is not None)
+        return self._event_chan_resp and len(
+            self._wbs) and (
+            self._handle.cookie is not None)
 
     def _notify_to_dequeue(self):
         with self._condition:
@@ -232,7 +234,6 @@ class UcsEventHandle(object):
             # we do not know about this property
             # return the same back - no other option
             return python_prop
-
 
     def _get_prop_value(self, mo, python_prop):
         if isinstance(mo, ucsmo.GenericMo):
