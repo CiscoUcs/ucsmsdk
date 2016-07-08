@@ -141,7 +141,13 @@ class UcsEventHandle(object):
     def _can_enqueue(self):
         return self._event_chan_resp and len(self._wbs) and (self._handle.cookie is not None)
 
+    def _notify_to_dequeue(self):
+        with self._condition:
+            self._condition.notify()
+
     def _process_event_channel_resp(self, resp):
+        enqueued = False
+
         for mo_elem in self._get_mo_elem(resp):
             gmo = ucsmo.generic_mo_from_xml_elem(mo_elem[0])
             mce = MoChangeEvent(event_id=mo_elem[1],
@@ -151,8 +157,10 @@ class UcsEventHandle(object):
             for watch_block in self._wbs:
                 if watch_block.fmce(mce):
                     watch_block.enqueue(mce)
-                    with self._condition:
-                        self._condition.notify()
+                    enqueued = True
+
+        if enqueued:
+            self._notify_to_dequeue()
 
     def _enqueue_function(self):
         """
