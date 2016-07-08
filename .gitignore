@@ -42,5 +42,8 @@ output/*/index.html
 # Sphinx
 docs/_build
 
+# Idea IDE
+.idea/*
+
 .DS_Store
 tags
