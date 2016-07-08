@@ -50,7 +50,7 @@ def watch_mo(mce):
     event_flag = True
 
 
-def test_watch_mo():
+def test_001_watch_mo():
     mo = handle.query_dn(dn)
     if mo is None:
         raise ValueError("Mo does no exist")
@@ -66,7 +66,7 @@ def test_watch_mo():
     assert event_flag
 
 
-def test_watch_mo_remove():
+def test_002_watch_mo_remove():
     mo = handle.query_dn(dn)
     if mo is None:
         raise ValueError("Mo does no exist")

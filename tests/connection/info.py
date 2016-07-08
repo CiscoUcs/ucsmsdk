@@ -30,8 +30,8 @@ def custom_setup():
     hostname = config.get(host, "hostname")
     username = config.get(host, "username")
     password = config.get(host, "password")
-    handle = UcsHandle(hostname, username, password, port=80)
-    handle.login()
+    handle = UcsHandle(hostname, username, password)
+    handle.login(auto_refresh=True, force=True)
     return handle
 
 
