@@ -712,6 +712,10 @@ Wait Until Condition
 
 ``wait_for_event`` is used to wait until a specific condition.
 
+It works by monitoring the Ucs Event Channel or by periodically polling
+the server. Polling mode is used when ``poll_sec`` argument is specified.
+Specifying a timeout is highly recommended.
+
 Arguments:
 
 -  mo: object that is monitored
@@ -719,6 +723,7 @@ Arguments:
 -  value: success value
 -  cb: done callback
 -  timeout: (Optional) timeout in seconds
+-  poll_sec: (Optional) polling interval in seconds when using poll mode
 
 ::
 
@@ -730,6 +735,7 @@ Arguments:
 
     # call done_callback when (sp_mo.descr == "demo")
     handle.wait_for_event(sp_mo, "descr", "demo", done_callback)
+
 
 Backup And Import
 -----------------
