@@ -619,6 +619,9 @@ def wait(handle, mo, prop, value, cb, timeout_sec=None, poll_sec=None):
         wait_for_event method
     """
 
+    if mo is None:
+        return
+
     # create a new event handler
     ueh = UcsEventHandle(handle)
 
