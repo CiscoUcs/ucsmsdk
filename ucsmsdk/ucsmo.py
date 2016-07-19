@@ -110,7 +110,6 @@ class ManagedObject(UcsBase):
     def _is_unknown_property(self, prop):
         return prop not in self.prop_meta
 
-
     @property
     def parent_mo(self):
         """Getter method of ManagedObject Class"""
