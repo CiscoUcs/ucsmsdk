@@ -70,32 +70,42 @@ class ManagedObject(UcsBase):
         self.__xtra_props = {}
         self.__xtra_props_dirty_mask = 0x1
 
-        if parent_mo_or_dn:
-            if isinstance(parent_mo_or_dn, ManagedObject):
-                self.__parent_mo = parent_mo_or_dn
-                self.__parent_dn = self.__parent_mo.dn
-            elif isinstance(parent_mo_or_dn, str):
-                self.__parent_dn = parent_mo_or_dn
-            else:
-                raise ValueError('parent mo or dn must be specified')
+        self._set_parent_mo_or_dn(parent_mo_or_dn)
 
-        if not from_xml_response:
-            self._rn_set()
-            self._dn_set()
+        self._rn_set(from_xml_response)
+        self._dn_set(from_xml_response)
 
-        xml_attribute = self.mo_meta.xml_attribute
+        UcsBase.__init__(self, ucsgenutils.word_u(self.mo_meta.xml_attribute))
 
-        UcsBase.__init__(self, ucsgenutils.word_u(xml_attribute))
-        # self.mark_dirty()
+        self._set_child_of_parent_mo()
+        self._set_mo_prop_value(kwargs)
 
+    def _set_parent_mo_or_dn(self, parent_mo_or_dn):
+        if not parent_mo_or_dn:
+            return
+
+        if isinstance(parent_mo_or_dn, ManagedObject):
+            self.__parent_mo = parent_mo_or_dn
+            self.__parent_dn = parent_mo_or_dn.dn
+        elif isinstance(parent_mo_or_dn, str):
+            self.__parent_dn = parent_mo_or_dn
+        else:
+            raise ValueError('parent mo or dn must be specified')
+
+    def _set_child_of_parent_mo(self):
         if self.__parent_mo:
             self.__parent_mo.child_add(self)
 
+    def _set_mo_prop_value(self, kwargs):
         if kwargs:
             for prop_name, prop_value in ucsgenutils.iteritems(kwargs):
-                if prop_name not in self.prop_meta:
+                if self._is_unknown_property(prop_name):
                     log.debug("Unknown property %s" % prop_name)
-                self.__set_prop(prop_name, prop_value)
+                if prop_value is not None:
+                    self.__set_prop(prop_name, prop_value)
+
+    def _is_unknown_property(self, prop):
+        return prop not in self.prop_meta
 
     @property
     def parent_mo(self):
@@ -103,20 +113,26 @@ class ManagedObject(UcsBase):
 
         return self.__parent_mo
 
-    def _rn_set(self):
+    def _rn_set(self, from_xml_response=False):
         """
         Internal method to set rn
         """
+
+        if from_xml_response:
+            return
 
         if "prop_meta" in dir(self) and "rn" in self.prop_meta:
             self.rn = self.make_rn()
         else:
             self.rn = ""
 
-    def _dn_set(self):
+    def _dn_set(self, from_xml_response=False):
         """
         Internal method to set dn
         """
+
+        if from_xml_response:
+            return
 
         if "prop_meta" in dir(self) and "dn" in self.prop_meta:
             if self.__parent_dn:
