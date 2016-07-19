@@ -104,9 +104,6 @@ class ManagedObject(UcsBase):
                 if prop_value is not None:
                     self.__set_prop(prop_name, prop_value)
 
-    def _is_known_property(self, prop):
-        return prop in self.prop_meta
-
     def _is_unknown_property(self, prop):
         return prop not in self.prop_meta
 
