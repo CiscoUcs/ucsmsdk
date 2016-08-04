@@ -248,7 +248,7 @@ class UcsSession(object):
 
         from . import ucsxmlcodec as xc
 
-        tx_lock.acquire()
+        self._tx_lock_acquire_conditional(elem)
         if self._is_stale_cookie(elem):
             elem.attrib['cookie'] = self.cookie
 
@@ -267,11 +267,27 @@ class UcsSession(object):
             if elem.tag == "aaaRefresh":
                 self._update_cookie(response)
 
-            tx_lock.release()
+            self._tx_lock_release_conditional(elem)
             return response
 
-        tx_lock.release()
+        self._tx_lock_release_conditional(elem)
         return None
+
+    def _tx_lock_acquire_conditional(self, elem):
+        """
+        tx_lock is used to maintain the order of messages
+        Let aaaLogout always pass, and not be stuck for locks.
+        """
+        if elem.tag != "aaaLogout":
+            tx_lock.acquire()
+
+    def _tx_lock_release_conditional(self, elem):
+        """
+        Release the global tx_lock.
+        We do not acquire lock for aaaLogout
+        """
+        if elem.tag != "aaaLogout":
+            tx_lock.release()
 
     def file_download(
             self,
