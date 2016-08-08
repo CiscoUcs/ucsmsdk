@@ -203,41 +203,43 @@ def _generate_inner_nodes(elem, tag, parent_dn, parent_tag, parent_verb):
 
 def _generate_outer_nodes(elem):
 
-    if elem.tag == "topRoot":
-
-        top_nodes = []
-        for child in elem.getchildren():
-            class_id = ucsgenutils.word_u(child.tag)
-            if not ucscoreutils.is_valid_class_id(class_id) \
-                    or class_id not in classid_dn_map:
-                continue
-
-            parent_nodes = []
-            for sub_child in child.getchildren():
-                if _ignore_elem(sub_child):
-                    continue
-                parent_node = Node(elem=child,
-                                   tag="obj",
-                                   parent_dn=None,
-                                   parent_tag=None,
-                                   parent_verb=None)
-                parent_node.verb = "Get"
-                parent_node.dn = classid_dn_map[class_id]
-
-                child_node = _generate_inner_nodes(
-                    elem=sub_child,
-                    tag="mo",
-                    parent_dn=parent_node.dn,
-                    parent_tag=parent_node.tag,
-                    parent_verb=parent_node.verb)
-                if child_node.verb == "Add":
-                    parent_node.is_used = True
-
-                parent_node.child.append(child_node)
-                parent_nodes.append(parent_node)
-            top_nodes.append(parent_nodes)
-
+    top_nodes = []
+    if elem.tag != "topRoot":
         return top_nodes
+
+    for child in elem.getchildren():
+        class_id = ucsgenutils.word_u(child.tag)
+        if not ucscoreutils.is_valid_class_id(class_id) \
+                or class_id not in classid_dn_map:
+            continue
+
+        parent_nodes = []
+        for sub_child in child.getchildren():
+            if _ignore_elem(sub_child):
+                continue
+            parent_node = Node(elem=child,
+                               tag="obj",
+                               parent_dn=None,
+                               parent_tag=None,
+                               parent_verb=None)
+            parent_node.verb = "Get"
+            parent_node.dn = classid_dn_map[class_id]
+
+            child_node = _generate_inner_nodes(
+                elem=sub_child,
+                tag="mo",
+                parent_dn=parent_node.dn,
+                parent_tag=parent_node.tag,
+                parent_verb=parent_node.verb)
+
+            if child_node.verb == "Add":
+                parent_node.is_used = True
+
+            parent_node.child.append(child_node)
+            parent_nodes.append(parent_node)
+        top_nodes.append(parent_nodes)
+
+    return top_nodes
 
 
 def _generate_query(elem):
@@ -249,27 +251,36 @@ def _generate_query(elem):
         for parent_node in parent_nodes:
             query += str(parent_node)
             query += "\n"
-
     return query
 
 
-def convert_from_backup(file_path, dump_to_file=False, dump_file_path=None):
-    if not os.path.exists(file_path):
-        raise ValueError("%s does not exists." % file_path)
+def convert_from_backup(backup_file, output_file=None):
+    """
+    converts UCS backup xml to a python script for the equivalent
+    configuration.
 
-    tree = ET.parse(file_path)
+    Args:
+        backup_file (str): input file path for backup xml.
+        output_file (str or None): file in which output is desired.
+                                   None for stdout
+
+    Example:
+        convert_from_backup(backup_file="/home/user/backup.xml",
+                            output_file="/home/user/output.py")
+
+        convert_from_backup(backup_file="/home/user/backup.xml")
+
+    """
+    if not os.path.exists(backup_file):
+        raise ValueError("%s does not exists." % backup_file)
+
+    tree = ET.parse(backup_file)
     root = tree.getroot()
 
-    if dump_to_file in ucsgenutils.AFFIRMATIVE_LIST:
-        if dump_file_path:
-            script_output = _generate_query(root)
-            print("### Script Output is in file < " + dump_file_path + " >")
-            _outfile = open(dump_file_path, 'w')
-            _outfile.write(script_output)
-            _outfile.close()
-        else:
-            print("Provide dump_file_path")
-            return
+    script_output = _generate_query(root)
+    if output_file:
+        _outfile = open(output_file, 'w')
+        _outfile.write(script_output)
+        _outfile.close()
     else:
-        script_output = _generate_query(root)
         print(script_output)
