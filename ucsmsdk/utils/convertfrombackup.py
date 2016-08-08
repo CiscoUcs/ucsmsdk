@@ -49,7 +49,6 @@ def _ignore_elem(elem):
     if elem.tag.startswith('aaa'):
         return True
     if elem.tag in ["biosVfUCSMBootOrderRuleControl",
-                    "biosVfUCSMBootOrderRuleControl",
                     "biosVfOptionROMLoad",
                     "policyControlEp",
                     "storageLocalDiskPartition"]:
@@ -58,6 +57,7 @@ def _ignore_elem(elem):
 
 
 class Node(object):
+
     def __init__(self, elem, tag,
                  parent_dn=None, parent_tag=None, parent_verb=None):
         self.elem = elem
@@ -119,7 +119,7 @@ class Node(object):
     def _create_add_query(self):
         property_map = self._create_add_prop_map()
         property_map_str = ", ".join(
-            [k + "=" + '"'+v+'"'
+            [k + "=" + '"' + v + '"'
              for k, v in ucsgenutils.iteritems(property_map)])
 
         return "%s = %s(parent_mo_or_dn=%s, %s)\n" % (
