@@ -102,6 +102,12 @@ class Node(object):
     def _create_prop_map(self, *args):
         property_map = {}
         for attribute in self.elem.attrib:
+            if attribute not in self.prop_map:
+                print(
+                    "attribute:" +
+                    attribute +
+                    " not recognised by this version of SDK. Ignoring..")
+                continue
             prop_name_py = self.prop_map[attribute]
             prop_access = self.prop_meta[prop_name_py].access
             if prop_access in args:
