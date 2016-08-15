@@ -682,7 +682,6 @@ class UcsHandle(UcsSession):
         refresh_dict = {}
         mo_dict = self._get_commit_buf(tag)
         if not mo_dict:
-            log.debug("Commit Buffer is Empty")
             return None
 
         config_map = ConfigMap()
