@@ -120,6 +120,27 @@ def load_module(module_name):
         return module_import
 
 
+def get_import_str(class_id):
+    """
+    Returns the complete import string for a given class/method
+
+    Args:
+        class_id (str): class_id
+
+    Returns:
+        equivalent import string for the class_id
+    """
+
+    class_id = ucsgenutils.word_u(class_id)
+    if class_id and class_id in MO_CLASS_ID:
+        mod_class_id = ucsgenutils.word_l(class_id)
+        class_id_sub_pkg = re.match("([a-z])+", mod_class_id).group()
+        return mometa.__name__ + ".%s.%s" % (class_id_sub_pkg, class_id)
+    elif class_id and class_id in METHOD_CLASS_ID:
+        return methodmeta.__name__ + ".%sMeta" % (class_id)
+    return None
+
+
 def load_class(class_id):
     """
     This loads the class into the current name space
@@ -130,21 +151,14 @@ def load_class(class_id):
     Returns:
         MangedObject or ExtenalMethod Object or None
     """
-
     class_id = ucsgenutils.word_u(class_id)
-    if class_id and class_id in MO_CLASS_ID:
-        mod_class_id = ucsgenutils.word_l(class_id)
-        class_id_sub_pkg = re.match("([a-z])+", mod_class_id).group()
-        mo_pkg = mometa.__name__ + ".%s.%s" % (class_id_sub_pkg, class_id)
-        mo_module = __import__(mo_pkg, globals(), locals(), [class_id])
-        mo_class = getattr(mo_module, class_id)
-        return mo_class
-    elif class_id and class_id in METHOD_CLASS_ID:
-        mo_import = methodmeta.__name__ + ".%sMeta" % (class_id)
-        method_meta = __import__(mo_import, globals(), locals(),
-                                 [class_id])
-        return getattr(method_meta, class_id)
-    return None
+    import_str = get_import_str(class_id)
+    if import_str is None:
+        return None
+
+    imported_module = __import__(import_str, globals(), locals(), [class_id])
+    imported_class = getattr(imported_module, class_id)
+    return imported_class
 
 
 def load_mo(elem):

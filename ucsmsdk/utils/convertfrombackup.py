@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # Copyright 2013 Cisco Systems, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,8 +29,8 @@ except ImportError:
 
 import os
 import re
-from .. import ucsgenutils
-from .. import ucscoreutils
+from ucsmsdk import ucsgenutils
+from ucsmsdk import ucscoreutils
 
 import logging
 
@@ -43,6 +44,16 @@ classid_dn_map = {
     "CallHomeEp": "call-home",
     "TopSystem": "sys"
 }
+
+import_list = []
+
+
+def _generate_imports(imports):
+    import_str = ""
+    for each in imports:
+        import_str += "from " + ucscoreutils.get_import_str(each) + " import " + each + "\n"
+    import_str += "\n\n"
+    return import_str
 
 
 def _ignore_elem(elem):
@@ -72,7 +83,6 @@ class Node(object):
         self.prop_map = self.class_ref.prop_map
         self.dn = self._make_dn()
         self.verb = self._get_verb()
-        self.is_used = False
         self.child = []
 
     def _get_verb(self):
@@ -104,7 +114,7 @@ class Node(object):
         for attribute in self.elem.attrib:
             if attribute not in self.prop_map:
                 print(
-                    "attribute:" +
+                    "# attribute:" +
                     attribute +
                     " not recognised by this version of SDK. Ignoring..")
                 continue
@@ -112,7 +122,9 @@ class Node(object):
             prop_access = self.prop_meta[prop_name_py].access
             if prop_access in args:
                 continue
-            property_map[prop_name_py] = self.elem.attrib[attribute]
+            prop_val = self.elem.attrib[attribute]
+            if prop_val != "":
+                property_map[prop_name_py] = prop_val
 
         return property_map
 
@@ -123,6 +135,8 @@ class Node(object):
         return self._create_prop_map(0, 1, 2, 4)
 
     def _create_add_query(self):
+        if self.class_id not in import_list:
+            import_list.append(self.class_id)
         property_map = self._create_add_prop_map()
         property_map_str = ", ".join(
             [k + "=" + '"' + v + '"'
@@ -132,6 +146,9 @@ class Node(object):
             self.tag, self.class_id, self.parent_tag, property_map_str)
 
     def _create_set_query(self):
+        if self.class_id not in import_list:
+            import_list.append(self.class_id)
+
         if self.parent_verb not in ("Add", "Set"):
             query = '%s = handle.query_dn("%s")\n' % (self.tag, self.dn)
             property_map = self._create_set_prop_map()
@@ -147,7 +164,7 @@ class Node(object):
 
     def get_query(self):
         query = ""
-        if self.verb == "Get" and self.is_used:
+        if self.verb == "Get":
             query = self._create_get_query()
         elif self.verb == "Add":
             query = self._create_add_query()
@@ -178,15 +195,8 @@ class Node(object):
         return query
 
 
-def _generate_inner_nodes(elem, tag, parent_dn, parent_tag, parent_verb):
-
-    class_id = ucsgenutils.word_u(elem.tag)
-    if not ucscoreutils.is_valid_class_id(class_id):
-        return
-
-    node = Node(elem, tag, parent_dn, parent_tag, parent_verb)
-
-    call_count = 1
+def _process_child_elem(elem, tag, node, iter_count):
+    call_count = iter_count
     for child in elem.getchildren():
         if _ignore_elem(child):
             continue
@@ -197,14 +207,26 @@ def _generate_inner_nodes(elem, tag, parent_dn, parent_tag, parent_verb):
                           parent_dn=node.dn,
                           parent_tag=node.tag,
                           parent_verb=node.verb)
-        if node.verb == "Get" and child_node.verb == "Add":
-            node.is_used = True
 
         node.child.append(child_node)
-        if node.verb != "Get" and child_node.verb != "Get":
-            call_count += 1
+        call_count += 1
 
-    return node
+        ret_obj = _process_child_elem(child, tag, child_node, call_count)
+        call_count = ret_obj["iter_count"]
+
+    return {"node": node, "iter_count": call_count}
+
+
+def _generate_inner_nodes(elem, tag, parent_dn, parent_tag, parent_verb):
+
+    class_id = ucsgenutils.word_u(elem.tag)
+    if not ucscoreutils.is_valid_class_id(class_id):
+        return
+
+    node = Node(elem, tag, parent_dn, parent_tag, parent_verb)
+    ret_obj = _process_child_elem(elem, tag, node, 1)
+
+    return ret_obj["node"]
 
 
 def _generate_outer_nodes(elem):
@@ -223,6 +245,7 @@ def _generate_outer_nodes(elem):
         for sub_child in child.getchildren():
             if _ignore_elem(sub_child):
                 continue
+
             parent_node = Node(elem=child,
                                tag="obj",
                                parent_dn=None,
@@ -237,9 +260,6 @@ def _generate_outer_nodes(elem):
                 parent_dn=parent_node.dn,
                 parent_tag=parent_node.tag,
                 parent_verb=parent_node.verb)
-
-            if child_node.verb == "Add":
-                parent_node.is_used = True
 
             parent_node.child.append(child_node)
             parent_nodes.append(parent_node)
@@ -284,9 +304,22 @@ def convert_from_backup(backup_file, output_file=None):
     root = tree.getroot()
 
     script_output = _generate_query(root)
+    imports_str = _generate_imports(import_list)
+    boilerplate_start_str = """#!/usr/bin/env python
+
+from ucsmsdk.ucshandle import UcsHandle
+
+handle = UcsHandle(ip="", user="", password="")
+handle.login()
+
+"""
+
+    boilerplate_end_str = """handle.logout()"""
+
+    final_str = boilerplate_start_str + imports_str + script_output + boilerplate_end_str
     if output_file:
         _outfile = open(output_file, 'w')
-        _outfile.write(script_output)
+        _outfile.write(final_str)
         _outfile.close()
     else:
-        print(script_output)
+        print(final_str)
