@@ -309,7 +309,7 @@ def convert_from_backup(backup_file, output_file=None):
 
 from ucsmsdk.ucshandle import UcsHandle
 
-handle = UcsHandle(ip="", user="", password="")
+handle = UcsHandle(ip="", username="", password="")
 handle.login()
 
 """
