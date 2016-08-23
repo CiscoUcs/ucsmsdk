@@ -21,24 +21,48 @@ If you are reporting a bug, please include:
 * Any details about your local setup that might be helpful in troubleshooting.
 * Detailed steps to reproduce the bug.
 
-Fix Bugs
-~~~~~~~~
+Submitting pull requests to change the documentation or code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Look through the GitHub issues for bugs. Anything tagged with "bug"
-is open to whoever wants to implement it.
+Changes can be proposed by sending a pull request (PR). A maintainer will
+review the changes and provide feedback.
 
-Implement Features
-~~~~~~~~~~~~~~~~~~
+The pull request will be merged into the master branch after discussion.
 
-Look through the GitHub issues for features. Anything tagged with "feature"
-is open to whoever wants to implement it.
+Please make sure to run the tests and that the tests pass before submitting the
+PR. Please keep in mind that some changes might not be merged if the
+maintainers decide they can't be merged.
 
-Write Documentation
-~~~~~~~~~~~~~~~~~~~
+Please squash your commits to one commit per fix or feature. The resulting
+commit should have a single meaningful message.
 
-ucsmsdk could always use more documentation, whether as part of the
-official ucsmsdk docs, in docstrings, or even on the web in blog posts,
-articles, and such.
+Commit message guidelines
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The short summary should include the name of the directory or file affected by
+the commit (e.g.: utils: added a new utility method to get status).
+
+A longer description of what the commit does should start on the third line
+when such a description is deemed necessary.
+
+If you have trouble with the appropriate git commands to handle these
+requirements, please let us know! We're happy to help.
+
+Legal Stuff: Sign your work
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You must sign off on your work by adding your signature at the end of the
+commit message. Your signature certifies that you wrote the patch or otherwise
+have the right to pass it on as an open-source patch.
+
+If you set your user.name and user.email git configuration options, you can
+sign your commits automatically with git commit -s.
+
+    git config user.name "Joe Smith"
+    git config user.email joe.smith@email.com
+
+git commit -s should be used now to sign the commits automatically, instead of
+git commit.
 
 Submit Feedback
 ~~~~~~~~~~~~~~~
@@ -51,11 +75,4 @@ If you are proposing a feature:
 * Keep the scope as narrow as possible, to make it easier to implement.
 * Remember that this is a volunteer-driven project, and that contributions
   are welcome :)
-
-Pull Request Guidelines
------------------------
-
-Before you submit a pull request, check that it meets these guidelines:
-
-1. Make sure that the code follows the PEP8 guidelines
 
