@@ -45,7 +45,8 @@ Table of Contents
 
 10. `Start GUI Session <#start-gui-session>`__
 11. `Start KVM Session <#start-kvm-session>`__
-12. `Advanced Features <#advanced-features>`__
+12. `Technical Support <#technical-support>`__
+13. `Advanced Features <#advanced-features>`__
 
     1. `Compare And Sync UCS <#compare-and-sync-ucs>`__
     2. `Multiple Parallel
@@ -258,7 +259,7 @@ Installation Steps
 ::
 
     git clone https://github.com/CiscoUcs/ucsmsdk/
-    cd ucsmsdk 
+    cd ucsmsdk
     sudo make install
 
 Uninstallation
@@ -429,7 +430,7 @@ methods
 
    ::
 
-       filter_str = '''(name, "demo", type="eq") or ((name, "demo_1") and 
+       filter_str = '''(name, "demo", type="eq") or ((name, "demo_1") and
                                                    (name, "[0-9]_1"))'''
        sp = handle.query_classid(class_id="LsServer", filter_str=filter_str)
 
@@ -580,15 +581,15 @@ Until then it prints equivalent script for operations done on the UI.
 
 ::
 
-    xml_str=’‘’<configConfRename 
-                    dn=”org-root/ls-ra1” 
-                    inNewName=”ra2” 
-                    inHierarchical=”false”> 
+    xml_str=’‘’<configConfRename
+                    dn=”org-root/ls-ra1”
+                    inNewName=”ra2”
+                    inHierarchical=”false”>
                     </configConfRename>’‘’
 
     convert_to_ucs_python(xml=True, request=xml_str)
 
-API documentation: \ ``convert_to_ucs_python``\ 
+API documentation: \ ``convert_to_ucs_python``\
 
 **note**:
 
@@ -601,8 +602,8 @@ The following workaround can be applied in such cases,
 ::
 
 
-    $ sudo find / -name '.ucsm' 
-    ./Library/Application Support/Oracle/Java/Deployment/log/.ucsm 
+    $ sudo find / -name '.ucsm'
+    ./Library/Application Support/Oracle/Java/Deployment/log/.ucsm
     $
 
 -  Run ``convert_to_ucs_python`` by specifying the ``path``
@@ -621,7 +622,7 @@ object.
 
 ::
 
-    from ucsmsdk.ucscoreutils import get_meta_info  
+    from ucsmsdk.ucscoreutils import get_meta_info
 
     class_meta = get_meta_info("FabricVlan")
     print class_meta
@@ -670,38 +671,38 @@ sample output: (truncated)
          |     |-FaultInst
          |-FaultInst
 
-    ClassId                         FabricVlan  
+    ClassId                         FabricVlan
     -------                         ----------
-    xml_attribute                   :fabricVlan  
-    rn                              :net-[name]  
-    min_version                     :1.0(1e)  
-    access                          :InputOutput  
-    access_privilege                :['admin', 'ext-lan-config', 'ext-lan-policy']  
-    parents                         :[u'fabricEthEstc', u'fabricEthEstcCloud', u'fabricEthLan', u'fabricLanCloud']  
+    xml_attribute                   :fabricVlan
+    rn                              :net-[name]
+    min_version                     :1.0(1e)
+    access                          :InputOutput
+    access_privilege                :['admin', 'ext-lan-config', 'ext-lan-policy']
+    parents                         :[u'fabricEthEstc', u'fabricEthEstcCloud', u'fabricEthLan', u'fabricLanCloud']
     children                        :[u'fabricEthMonFiltEp', u'fabricEthMonSrcEp', u'fabricEthVlanPc', u'fabricEthVlanPortEp', u'fabricPoolableVlan', u'fabricSwSubGroup', u'faultInst']
 
-    Property                        assoc_primary_vlan_state  
+    Property                        assoc_primary_vlan_state
     --------                        ------------------------
-    xml_attribute                   :assocPrimaryVlanState  
-    field_type                      :string  
-    min_version                     :2.2(2c)  
-    access                          :READ_ONLY  
-    min_length                      :None  
-    max_length                      :None  
-    pattern                         :None  
-    value_set                       :['does-not-exists', 'is-empty', 'is-in-error-state', 'is-not-primary-type', 'ok']  
+    xml_attribute                   :assocPrimaryVlanState
+    field_type                      :string
+    min_version                     :2.2(2c)
+    access                          :READ_ONLY
+    min_length                      :None
+    max_length                      :None
+    pattern                         :None
+    value_set                       :['does-not-exists', 'is-empty', 'is-in-error-state', 'is-not-primary-type', 'ok']
     range_val                       :[]
 
-    Property                        assoc_primary_vlan_switch_id  
+    Property                        assoc_primary_vlan_switch_id
     --------                        ----------------------------
-    xml_attribute                   :assocPrimaryVlanSwitchId  
-    field_type                      :string  
-    min_version                     :2.2(2c)  
-    access                          :READ_ONLY  
-    min_length                      :None  
-    max_length                      :None  
-    pattern                         :None  
-    value_set                       :['A', 'B', 'NONE']  
+    xml_attribute                   :assocPrimaryVlanSwitchId
+    field_type                      :string
+    min_version                     :2.2(2c)
+    access                          :READ_ONLY
+    min_length                      :None
+    max_length                      :None
+    pattern                         :None
+    value_set                       :['A', 'B', 'NONE']
     range_val                       :[]
 
 Watch Ucs Events
@@ -731,7 +732,7 @@ Arguments:
         print mo_change_event.mo
 
 
-    sp_mo = handle.query_dn("org-root/ls-sp_demo")  
+    sp_mo = handle.query_dn("org-root/ls-sp_demo")
 
     # call done_callback when (sp_mo.descr == "demo")
     handle.wait_for_event(sp_mo, "descr", "demo", done_callback)
@@ -759,9 +760,9 @@ Type of backups:
     backup_dir = “/home/user/backup”
     backup_filename = “config_backup.xml”
 
-    backup_ucs(handle, 
-                 backup_type=”config-logical”, 
-                 file_dir= backup_dir, 
+    backup_ucs(handle,
+                 backup_type=”config-logical”,
+                 file_dir= backup_dir,
                  file_name= backup_filename)
 
 `Backup Ucs API
@@ -780,8 +781,8 @@ server
     import_dir = “/home/user/backup”
     import_filename = “config_backup.xml”
 
-    import_ucs_backup(handle, 
-                         file_dir=import_dir, 
+    import_ucs_backup(handle,
+                         file_dir=import_dir,
                          file_name=import_filename)
 
 `Import Ucs API
@@ -843,6 +844,105 @@ server(blade/rack)
 `Start KVM Session API
 Reference <https://ciscoucs.github.io/ucsmsdk_docs/ucsmsdk.utils.html#ucsmsdk.utils.ucskvmlaunch.ucs_kvm_launch>`__
 
+Technical Support
+-----------------
+
+``get_tech_support`` facilitates technical support for UCSM and related
+components. ``option`` parameter defines the type of technical support that is
+desired. ``**kwargs`` are ``key1=val1, key2=val2`` type named arguments that
+need to be specified depending on the component for which technical support is
+being trigerred.
+
+For example, if the user wants to trigger technical support for
+``option=chassis``, then he/she will also need to pass
+``chassis_id=1, cimc_id=1`` or ``chassis_id=1, iom_id=1``.
+
+The below examples show the corresponding arguments that apply to the
+component for which tech support is being taken. Please note that these
+parameters should only be specified towards the end and not before the existing
+named paramters.
+
+- Create Tech Support for UCSM
+
+::
+
+    from ucsmsdk.utils.ucstechsupport import get_tech_support
+    get_tech_support(handle,
+                     option="ucsm",
+                     file_dir='.',
+                     file_name="ucsm.tar",
+                     timeout=1800)
+
+
+- Create Tech Support for UCSM-MGMT
+
+::
+
+    from ucsmsdk.utils.ucstechsupport import get_tech_support
+    get_tech_support(handle,
+                     option="ucsm-mgmt",
+                     file_dir='.',
+                     file_name="ucsm.tar",
+                     timeout=1800)
+
+- Create Tech Support for Chassis-CIMC
+
+::
+
+    from ucsmsdk.utils.ucstechsupport import get_tech_support
+    get_tech_support(handle,
+                     option="chassis",
+                     file_dir='.',
+                     file_name="cimc.tar",
+                     timeout=1800,
+                     chassis_id=1,
+                     cimc_id=1,
+                     adapter_id="all"
+                     )
+
+- Create Tech Support for Chassis-IOM
+
+::
+
+    from ucsmsdk.utils.ucstechsupport import get_tech_support
+    get_tech_support(handle,
+                     option="chassis",
+                     file_dir='.',
+                     file_name="cimc.tar",
+                     timeout=1800,
+                     chassis_id=1,
+                     iom_id=1,
+                     )
+
+- Create Tech Support for Rackserver
+
+::
+
+    from ucsmsdk.utils.ucstechsupport import get_tech_support
+    get_tech_support(handle,
+                     option="rack-server",
+                     file_dir='.',
+                     file_name="cimc.tar",
+                     timeout=1800,
+                     rack_server_id=1,
+                     rack_adapter_id="all"
+                     )
+
+- Create Tech Support for Fabric Extender
+
+::
+
+    from ucsmsdk.utils.ucstechsupport import get_tech_support
+    get_tech_support(handle,
+                     option="fabric-extender",
+                     file_dir='.',
+                     file_name="fex.tar",
+                     timeout=1800,
+                     fex_id=1
+                     )
+
+
+
 Advanced Features
 -----------------
 
@@ -857,8 +957,8 @@ Compare objects with same DN on different domains
 ::
 
     dn_to_compare = ”org-root/ls-sp”
-    ref_mo = [ref_handle.query_dn(dn=dn_to_compare)] 
-    diff_mo = [diff_handle.query_dn(dn=dn_to_compare)] 
+    ref_mo = [ref_handle.query_dn(dn=dn_to_compare)]
+    diff_mo = [diff_handle.query_dn(dn=dn_to_compare)]
 
     difference = compare_ucs_mo(ref_mo, diff_mo)
 
@@ -868,8 +968,8 @@ Compare objects with same DN on different domains
 ::
 
     # difference parameter is the output of compare_ucs_mo
-    sync_ucs_mo(ref_handle, 
-                  difference=difference, 
+    sync_ucs_mo(ref_handle,
+                  difference=difference,
                   delete_not_present=True)
 
 Multiple Parallel Transactions
@@ -882,9 +982,9 @@ This enables multiple parallel transactions,
 
 ::
 
-    handle.add_mo(mo1, tag="trans_1")  
-    handle.add_mo(mo2, tag="trans_2")  
-    handle.add_mo(mo3, tag="trans_1")  
+    handle.add_mo(mo1, tag="trans_1")
+    handle.add_mo(mo2, tag="trans_2")
+    handle.add_mo(mo3, tag="trans_1")
     handle.remove_mo(mo4, tag="trans_2")
 
     # Commit transaction #2
@@ -893,7 +993,7 @@ This enables multiple parallel transactions,
     handle.add_mo(mo5, tag="trans_1")
 
     # Commit transaction #1
-    handle.commit(tag="trans_1")  
+    handle.commit(tag="trans_1")
 
 Threading Mode
 ~~~~~~~~~~~~~~
