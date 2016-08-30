@@ -191,6 +191,10 @@ def poll_wait_for_tech_support(handle, ts_mo, timeout):
             if duration == 0:
                 _fail_and_remove_ts(
                     handle, ts, 'TechSupport creation timed out')
+        except AttributeError as err:
+            raise UcsValidationException(
+                "Please check the validity of the input parameters. " \
+                "Please also check for free space in bootflash.")
         except Exception as err:
             _check_for_failure(err)
 
