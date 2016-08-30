@@ -137,6 +137,11 @@ def _set_ts_options_servermemory(ts_cmd_opt, kwargs):
     ts_cmd_opt.major_opt_type = TechSupOptsConsts.MAJOR_OPT_TYPE_SERVER_MEMORY
 
 
+def _set_ts_command_options(ts_cmd_opt, kwargs):
+    if _is_valid_arg("command_options", kwargs):
+        ts_cmd_opt.command_options = str(kwargs["command_options"])
+
+
 def _set_ts_options(option, ts_cmd_opt, kwargs):
     if option == "ucsm":
         _set_ts_options_ucsm(ts_cmd_opt, kwargs)
@@ -153,6 +158,8 @@ def _set_ts_options(option, ts_cmd_opt, kwargs):
     else:
         raise UcsValidationException('Unrecognised option value: ' + option)
 
+    _set_ts_command_options(ts_cmd_opt, kwargs)
+
 
 def _check_for_failure(err):
     # The following error messages define the criteria for
@@ -160,15 +167,17 @@ def _check_for_failure(err):
     # There are occasinal Request Timeouts, which could be ignored
     # if the subsequent calls are being replied to by the server.
     failure_conditions = ["urlopen error",
-                          "TechSupport creation timed out"]
+                          "TechSupport creation timed out",
+                          "TechSupport creation failed"]
     for each in failure_conditions:
         if each in str(err):
             raise
 
 
 def _fail_and_remove_ts(handle, ts_mo, err):
-    handle.remove_mo(ts_mo)
-    handle.commit()
+    if ts_mo:
+        handle.remove_mo(ts_mo)
+        handle.commit()
     raise UcsValidationException(err)
 
 
@@ -181,6 +190,8 @@ def poll_wait_for_tech_support(handle, ts_mo, timeout):
     while True:
         try:
             ts = handle.query_dn(ts_mo.dn)
+            if ts is None:
+                _fail_and_remove_ts(handle, ts, 'TechSupport creation failed')
             if ts.oper_state == TechSupConsts.OPER_STATE_AVAILABLE:
                 break
             if ts.oper_state == TechSupConsts.OPER_STATE_FAILED or \
@@ -234,6 +245,7 @@ def get_tech_support(handle,
                         - rack-server
                             Mandates that user specifies "rack_server_id"
                         - server-memory
+                            Mandates that user specifies "server_id_list"
         remove_from_ucs (bool): Remove the created technical support, if True
         download (bool): download the technical support if True
         kwargs: key=value pairs relevant to the seleced option
@@ -276,6 +288,13 @@ def get_tech_support(handle,
                          file_dir=".",
                          file_name="techsupport.tar",
                          fex_id=1)
+
+        get_tech_support(handle,
+                         option="server-memory",
+                         file_dir=".",
+                         file_name="techsupport.tar",
+                         server_id_list="1,2")
+
     """
     from ..mometa.sysdebug.SysdebugTechSupportCmdOpt import \
         SysdebugTechSupportCmdOpt
