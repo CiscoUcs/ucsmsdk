@@ -73,7 +73,7 @@ class WatchBlock(object):
                 log.debug("queue error:" + str(self.error_code))
                 return None
             if not self.event_q.empty():
-                mo_chg_event = self.event_q.get()
+                mo_chg_event = self.event_q.get_nowait()
                 return mo_chg_event
             else:
                 return None
@@ -84,6 +84,9 @@ class WatchBlock(object):
             self.event_q.put(cmce)
         else:
             self.overflow = True
+
+    def queue_size(self):
+        return self.event_q.qsize()
 
     def dequeue_default_callback(self, mce):
         """Default callback method."""
@@ -342,7 +345,6 @@ class UcsEventHandle(object):
         """
         Internal method to dequeue to events.
         """
-
         while len(self._wbs):
             self._lowest_timeout = None
             self._wb_to_remove = []
@@ -362,23 +364,26 @@ class UcsEventHandle(object):
                             self._wb_to_remove.append(watch_block)
                             continue
 
+                    # Dequeue any change events for a specified watch_block
                     # poll for mo. Not to monitor event.
                     if poll_sec is not None and mo is not None:
                         self._dequeue_mo_prop_poll(mo, prop, poll_sec,
                                                    watch_block, timeout_sec,
                                                    time_left)
                     elif mo is not None:
-                        # watch mo until prop_val changed to desired value
-                        if prop is not None:
-                            self._dequeue_mo_prop_event(prop, watch_block,
-                                                        time_left)
-                        # watch mo until it is removed
-                        else:
-                            self._dequeue_mo_until_removed(watch_block,
-                                                           time_left)
+                        while watch_block.queue_size() > 0:
+                            # watch mo until prop_val changed to desired value
+                            if prop is not None:
+                                self._dequeue_mo_prop_event(prop, watch_block,
+                                                            time_left)
+                            # watch mo until it is removed
+                            else:
+                                self._dequeue_mo_until_removed(watch_block,
+                                                               time_left)
                     elif mo is None:
-                        # watch all event or specific to class_id
-                        self._dequeue_all_class_id(watch_block, time_left)
+                        while watch_block.queue_size() > 0:
+                            # watch all event or specific to class_id
+                            self._dequeue_all_class_id(watch_block, time_left)
             except Exception as e:
                 log.info(str(e))
                 self._wb_to_remove.append(watch_block)

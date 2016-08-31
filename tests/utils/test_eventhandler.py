@@ -49,7 +49,7 @@ def user_callback(mce):
     finished = True
 
 
-def wait_method(poll_sec=0):
+def wait_method(poll_sec=None):
     # Always clear the label
     sp.usr_lbl = ""
     handle.add_mo(sp, modify_present=True)
@@ -65,7 +65,7 @@ def wait_method(poll_sec=0):
     )
 
 
-def wait_method_for_multiple_values(poll_sec=0):
+def wait_method_for_multiple_values(poll_sec=None):
     handle.wait_for_event(
         mo=sp,
         prop="usr_lbl",
