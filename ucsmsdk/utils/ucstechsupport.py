@@ -80,8 +80,8 @@ def _set_ts_options_ucsm_mgmt(ts_cmd_opt, kwargs):
 def _validate_chassis_options(kwargs):
     if not _is_valid_arg("chassis_id", kwargs):
         raise UcsValidationException('chassis_id should be specified')
-    if "cimc_id" not in kwargs and "iom_id" not in kwargs:
-        raise UcsValidationException('cimc_id/iom_id should be specified')
+    if "cimc_id" not in kwargs and "iom_id" not in kwargs and "cartridge_id" not in kwargs:
+        raise UcsValidationException('cimc_id/iom_id/cartridge_id should be specified')
 
 
 def _set_ts_options_chassis(ts_cmd_opt, kwargs):
@@ -97,6 +97,13 @@ def _set_ts_options_chassis(ts_cmd_opt, kwargs):
             ts_cmd_opt.cimc_adapter_id = TechSupOptsConsts.CIMC_ADAPTER_ID_ALL
     elif _is_valid_arg("iom_id", kwargs):
         ts_cmd_opt.chassis_iom_id = str(kwargs["iom_id"])
+    elif _is_valid_arg("cartridge_id", kwargs):
+        ts_cmd_opt.chassis_cartridge_id = str(kwargs["cartridge_id"])
+        if ts_cmd_opt.chassis_cartridge_id != "all":
+            if _is_valid_arg("cartridge_cimc_id", kwargs):
+                ts_cmd_opt.cartridge_cimc_id = str(kwargs["cartridge_cimc_id"])
+            else:
+                raise UcsValidationException('cartridge_cimc_id should be specified')
 
 
 def _validate_rackserver_options(kwargs):
@@ -239,7 +246,9 @@ def get_tech_support(handle,
                         - ucsm-mgmt
                         - chassis:
                             Mandates that user specifies "chassis_id"
-                            Either "cimc_id" or "iom_id"
+                            Either "cimc_id" or "iom_id" or "cartridge_id"
+                            When specific "cartridge_id" is given, instead of "all",
+                            mandatory "cartridge_cimc_id" must also be given
                         - fabric-extender
                             Mandates that user specifies "fex_id"
                         - rack-server
@@ -275,6 +284,14 @@ def get_tech_support(handle,
                          file_name="techsupport.tar",
                          chassis_id=1,
                          iom_id=1)
+
+        get_tech_support(handle,
+                         option="chassis",
+                         file_dir=".",
+                         file_name="techsupport.tar",
+                         chassis_id=1,
+                         cartridge_id=1,
+                         cartridge_cimc_id=1)
 
         get_tech_support(handle,
                          option="rack-server",
