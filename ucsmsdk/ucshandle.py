@@ -777,6 +777,6 @@ class UcsHandle(UcsSession):
             sp_mo = handle.query_dn("org-root/ls-demoSP")
             wait_for_event(sp_mo, 'descr', 'demo_description', cb)
         """
-        from ucseventhandler import wait
+        from .ucseventhandler import wait
 
         wait(self, mo, prop, value, cb, timeout_sec=timeout, poll_sec=poll_sec)

@@ -210,3 +210,14 @@ def test_wait_for_poll_multiple():
     t3.join()
 
     assert_equal(finished, True)
+
+def test_wait_for_event_timeout_noenqueue():
+
+    handle.wait_for_event(
+        mo=sp,
+        prop="usr_lbl",
+        value="trigger",
+        cb=user_callback,
+        timeout=5
+    )
+

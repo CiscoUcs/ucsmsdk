@@ -363,6 +363,11 @@ class UcsEventHandle(object):
                         if time_left <= 0:
                             self._wb_to_remove.append(watch_block)
                             continue
+                    if self._lowest_timeout is None:
+                        self._lowest_timeout = time_left
+                    elif self._lowest_timeout < time_left:
+                        self._lowest_timeout = time_left
+
 
                     # Dequeue any change events for a specified watch_block
                     # poll for mo. Not to monitor event.
