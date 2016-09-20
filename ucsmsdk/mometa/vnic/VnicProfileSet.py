@@ -187,9 +187,9 @@ class VnicProfileSet(ManagedObject):
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "gen_num": MoPropertyMeta("gen_num", "genNum", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "vlan_group_update": MoPropertyMeta("vlan_group_update", "vlanGroupUpdate", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["na", "vlan-group-update"], []), 
+        "vlan_group_update": MoPropertyMeta("vlan_group_update", "vlanGroupUpdate", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["na", "vlan-group-update"], []), 
     }
 
     prop_map = {

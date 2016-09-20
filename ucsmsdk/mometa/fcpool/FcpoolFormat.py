@@ -37,7 +37,7 @@ class FcpoolFormat(ManagedObject):
         "format": MoPropertyMeta("format", "format", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, 0, 256, r"""(([A-Fa-f0-9][A-Fa-f0-9]:){7}[A-Fa-f0-9][A-Fa-f0-9])|0""", [], []), 
         "mask": MoPropertyMeta("mask", "mask", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, None, None, None, ["FF:FF:FF:FF:FF:FF:FF:Fx", "FF:FF:FF:FF:FF:FF:FF:xx", "FF:FF:FF:FF:FF:FF:Fx:xx", "FF:FF:FF:FF:FF:FF:xx:xx", "FF:FF:FF:FF:FF:Fx:xx:xx", "FF:FF:FF:FF:FF:xx:xx:xx", "FF:FF:FF:FF:Fx:xx:xx:xx", "FF:FF:FF:FF:xx:xx:xx:xx", "FF:FF:FF:Fx:xx:xx:xx:xx", "FF:FF:FF:xx:xx:xx:xx:xx", "FF:FF:Fx:xx:xx:xx:xx:xx", "FF:FF:xx:xx:xx:xx:xx:xx", "FF:Fx:xx:xx:xx:xx:xx:xx", "FF:xx:xx:xx:xx:xx:xx:xx", "Fx:xx:xx:xx:xx:xx:xx:xx"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 

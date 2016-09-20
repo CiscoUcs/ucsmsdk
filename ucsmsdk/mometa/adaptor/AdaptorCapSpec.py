@@ -20,6 +20,7 @@ class AdaptorCapSpecConsts:
     TYPE_FCOE = "fcoe"
     TYPE_NON_VIRTUALIZED_ETH_IF = "non-virtualized-eth-if"
     TYPE_NON_VIRTUALIZED_FC_IF = "non-virtualized-fc-if"
+    TYPE_ORACLE_RAC_SUPPORT = "oracle-rac-support"
     TYPE_PATH_ENCAP_CONSOLIDATED = "path-encap-consolidated"
     TYPE_PATH_ENCAP_VIRTUAL = "path-encap-virtual"
     TYPE_PATH_ENCAP_VIRTUAL_CE = "path-encap-virtual-ce"
@@ -55,9 +56,9 @@ class AdaptorCapSpec(ManagedObject):
         "maximum": MoPropertyMeta("maximum", "maximum", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unspecified"], ["0-4294967295"]), 
         "nf_version_lo": MoPropertyMeta("nf_version_lo", "nfVersionLo", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20, None, None, None, ["cdn-support", "eth-flow-monitoring-netflow", "eth-nvgre", "eth-nvgre-vmq", "eth-roce", "eth-vxlan", "fcoe", "non-virtualized-eth-if", "non-virtualized-fc-if", "path-encap-consolidated", "path-encap-virtual", "path-encap-virtual-ce", "protected-eth-if", "protected-fc-if", "protected-fcoe", "pxeboot-config-support", "uplink-aggregation", "virtualized-ce-eth-if", "virtualized-eth-if", "virtualized-eth-sriov", "virtualized-eth-sriov-usnic", "virtualized-eth-vmq", "virtualized-fc-if", "virtualized-fc-sriov", "virtualized-scsi-if"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20, None, None, None, ["cdn-support", "eth-flow-monitoring-netflow", "eth-nvgre", "eth-nvgre-vmq", "eth-roce", "eth-vxlan", "fcoe", "non-virtualized-eth-if", "non-virtualized-fc-if", "oracle-rac-support", "path-encap-consolidated", "path-encap-virtual", "path-encap-virtual-ce", "protected-eth-if", "protected-fc-if", "protected-fcoe", "pxeboot-config-support", "uplink-aggregation", "virtualized-ce-eth-if", "virtualized-eth-if", "virtualized-eth-sriov", "virtualized-eth-sriov-usnic", "virtualized-eth-vmq", "virtualized-fc-if", "virtualized-fc-sriov", "virtualized-scsi-if"], []), 
     }
 
     prop_map = {

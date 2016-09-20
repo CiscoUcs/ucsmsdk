@@ -33,7 +33,7 @@ class FirmwareExcludeServerComponent(ManagedObject):
     consts = FirmwareExcludeServerComponentConsts()
     naming_props = set([u'serverComponent'])
 
-    mo_meta = MoMeta("FirmwareExcludeServerComponent", "firmwareExcludeServerComponent", "exclude-server-component-[server_component]", VersionMeta.Version227b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config-policy", "ls-server-policy"], [u'firmwareComputeHostPack'], [], [None])
+    mo_meta = MoMeta("FirmwareExcludeServerComponent", "firmwareExcludeServerComponent", "exclude-server-component-[server_component]", VersionMeta.Version227b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config-policy", "ls-server-policy"], [u'firmwareComputeHostPack'], [], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

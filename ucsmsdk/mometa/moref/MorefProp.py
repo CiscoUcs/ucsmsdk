@@ -17,7 +17,7 @@ class MorefProp(ManagedObject):
     consts = MorefPropConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("MorefProp", "morefProp", "[name]", VersionMeta.Version227b, "InputOutput", 0xff, [], ["admin"], [u'morefFruRef', u'morefRef'], [], [None])
+    mo_meta = MoMeta("MorefProp", "morefProp", "[name]", VersionMeta.Version227b, "InputOutput", 0xff, [], ["admin"], [u'morefFruRef', u'morefRef'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["applied", "deleted", "unapplied"], []), 
@@ -25,7 +25,7 @@ class MorefProp(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version227b, MoPropertyMeta.NAMING, 0x10, 1, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "value": MoPropertyMeta("value", "value", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x80, 0, 510, None, [], []), 
     }

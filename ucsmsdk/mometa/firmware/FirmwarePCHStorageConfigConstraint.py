@@ -15,7 +15,7 @@ class FirmwarePCHStorageConfigConstraint(ManagedObject):
     consts = FirmwarePCHStorageConfigConstraintConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwarePCHStorageConfigConstraint", "firmwarePCHStorageConfigConstraint", "constraint-pch-storage-config", VersionMeta.Version227b, "InputOutput", 0x1f, [], [""], [u'firmwareConstraints'], [], [None])
+    mo_meta = MoMeta("FirmwarePCHStorageConfigConstraint", "firmwarePCHStorageConfigConstraint", "constraint-pch-storage-config", VersionMeta.Version227b, "InputOutput", 0x1f, [], [""], [u'firmwareConstraints'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

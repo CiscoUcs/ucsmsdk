@@ -204,7 +204,7 @@ class SysdebugLogExportPolicy(ManagedObject):
         "proto": MoPropertyMeta("proto", "proto", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["ftp", "http", "nfs-copy", "none", "scp", "sftp", "tftp"], []), 
         "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x1000, None, None, r"""[!""#%&'\(\)\*\+,\-\./:;<>@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{0,80}""", [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x2000, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "user": MoPropertyMeta("user", "user", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x8000, 0, 510, None, [], []), 
     }

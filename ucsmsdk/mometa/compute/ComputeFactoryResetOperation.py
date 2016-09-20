@@ -41,7 +41,7 @@ class ComputeFactoryResetOperation(ManagedObject):
         "oper_status": MoPropertyMeta("oper_status", "operStatus", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cimc-reset-complete", "cimc-reset-in-progress", "idle", "running", "scrub-stage-complete"], []), 
         "reset_trigger": MoPropertyMeta("reset_trigger", "resetTrigger", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["canceled", "idle", "triggered"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "storage_scrub": MoPropertyMeta("storage_scrub", "storageScrub", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["no-scrub", "scrub", "unknown"], []), 
     }

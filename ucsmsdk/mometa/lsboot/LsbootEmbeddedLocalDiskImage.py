@@ -22,7 +22,7 @@ class LsbootEmbeddedLocalDiskImage(ManagedObject):
     consts = LsbootEmbeddedLocalDiskImageConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsbootEmbeddedLocalDiskImage", "lsbootEmbeddedLocalDiskImage", "embedded-local-jbod", VersionMeta.Version227b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], [u'lsbootLocalStorage'], [u'lsbootEmbeddedLocalDiskImagePath'], [None])
+    mo_meta = MoMeta("LsbootEmbeddedLocalDiskImage", "lsbootEmbeddedLocalDiskImage", "embedded-local-jbod", VersionMeta.Version227b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], [u'lsbootLocalStorage'], [u'lsbootEmbeddedLocalDiskImagePath'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
