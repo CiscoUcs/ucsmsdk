@@ -10,7 +10,6 @@ prop_meta = {
     "in_blade_pack_version": MethodPropertyMeta("InBladePackVersion", "inBladePackVersion", "Xs:string", "Version142b", "Input", False),
     "in_host_pack_dns": MethodPropertyMeta("InHostPackDns", "inHostPackDns", "DnSet", "Version142b", "Input", True),
     "in_infra_pack_version": MethodPropertyMeta("InInfraPackVersion", "inInfraPackVersion", "Xs:string", "Version142b", "Input", False),
-    "in_m_series_pack_version": MethodPropertyMeta("InMSeriesPackVersion", "inMSeriesPackVersion", "Xs:string", "Version142b", "Input", False),
     "in_rack_pack_version": MethodPropertyMeta("InRackPackVersion", "inRackPackVersion", "Xs:string", "Version142b", "Input", False),
     "out_config_set": MethodPropertyMeta("OutConfigSet", "outConfigSet", "ConfigSet", "Version142b", "Output", True),
 }
@@ -21,7 +20,6 @@ prop_map = {
     "inBladePackVersion": "in_blade_pack_version",
     "inHostPackDns": "in_host_pack_dns",
     "inInfraPackVersion": "in_infra_pack_version",
-    "inMSeriesPackVersion": "in_m_series_pack_version",
     "inRackPackVersion": "in_rack_pack_version",
     "outConfigSet": "out_config_set",
 }
