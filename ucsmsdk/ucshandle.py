@@ -753,6 +753,18 @@ class UcsHandle(UcsSession):
         if tag in self.__commit_buf_tagged:
             del self.__commit_buf_tagged[tag]
 
+    def is_valid(self):
+        """
+        Checks if the cookie in the handle is still valid
+        """
+
+        # If the cookie is not valid, we will receive an exception.
+        try:
+            self.query_dn("org-root")
+        except Exception as e:
+            return False
+        return True
+
     def wait_for_event(self, mo, prop, value, cb, timeout=None, poll_sec=None):
         """
         Waits for `mo.prop == value` and invokes the passed callback
