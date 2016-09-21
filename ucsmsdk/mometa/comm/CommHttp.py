@@ -26,7 +26,7 @@ class CommHttp(ManagedObject):
     consts = CommHttpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommHttp", "commHttp", "http-svc", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["aaa", "admin"], [u'commSvcEp'], [], ["Get", "Set"])
+    mo_meta = MoMeta("CommHttp", "commHttp", "http-svc", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["aaa", "admin"], [u'commSvcEp'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
@@ -41,9 +41,10 @@ class CommHttp(ManagedObject):
         "port": MoPropertyMeta("port", "port", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, [], ["1-65535"]), 
         "proto": MoPropertyMeta("proto", "proto", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["all", "none", "tcp", "udp"], []), 
         "redirect_state": MoPropertyMeta("redirect_state", "redirectState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["disabled", "enabled"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x200, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "request_timeout": MoPropertyMeta("request_timeout", "requestTimeout", "uint", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, [], ["90-300"]), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x400, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {
@@ -59,6 +60,7 @@ class CommHttp(ManagedObject):
         "port": "port", 
         "proto": "proto", 
         "redirectState": "redirect_state", 
+        "requestTimeout": "request_timeout", 
         "rn": "rn", 
         "sacl": "sacl", 
         "status": "status", 
@@ -77,6 +79,7 @@ class CommHttp(ManagedObject):
         self.port = None
         self.proto = None
         self.redirect_state = None
+        self.request_timeout = None
         self.sacl = None
         self.status = None
 

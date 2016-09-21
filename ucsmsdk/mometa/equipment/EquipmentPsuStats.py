@@ -27,7 +27,7 @@ class EquipmentPsuStats(ManagedObject):
     mo_meta = MoMeta("EquipmentPsuStats", "equipmentPsuStats", "stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'equipmentPsu'], [u'equipmentPsuStatsHist'], ["Get"])
 
     prop_meta = {
-        "psu_i2_c_errors": MoPropertyMeta("psu_i2_c_errors", "PsuI2CErrors", "ulong", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "psu_i2_c_errors": MoPropertyMeta("psu_i2_c_errors", "PsuI2CErrors", "ulong", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "psu_i2_c_errors_avg": MoPropertyMeta("psu_i2_c_errors_avg", "PsuI2CErrorsAvg", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "psu_i2_c_errors_max": MoPropertyMeta("psu_i2_c_errors_max", "PsuI2CErrorsMax", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "psu_i2_c_errors_min": MoPropertyMeta("psu_i2_c_errors_min", "PsuI2CErrorsMin", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -65,7 +65,7 @@ class EquipmentPsuStats(ManagedObject):
         "psu_temp1": MoPropertyMeta("psu_temp1", "psuTemp1", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "psu_temp2": MoPropertyMeta("psu_temp2", "psuTemp2", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "suspect": MoPropertyMeta("suspect", "suspect", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "thresholded": MoPropertyMeta("thresholded", "thresholded", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 

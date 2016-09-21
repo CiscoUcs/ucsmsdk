@@ -27,7 +27,7 @@ class DiagNetworkTest(ManagedObject):
         "length": MoPropertyMeta("length", "length", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], ["1-1440"]), 
         "order": MoPropertyMeta("order", "order", "byte", VersionMeta.Version131c, MoPropertyMeta.NAMING, 0x10, None, None, None, [], ["1-64"]), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["A", "B", "NONE"], []), 
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["eth", "fc"], []), 

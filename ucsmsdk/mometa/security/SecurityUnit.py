@@ -137,7 +137,7 @@ class SecurityUnit(ManagedObject):
     consts = SecurityUnitConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("SecurityUnit", "securityUnit", "security-unit-[id]", VersionMeta.Version227b, "InputOutput", 0x3f, [], ["read-only"], [u'computeBoard'], [], [None])
+    mo_meta = MoMeta("SecurityUnit", "securityUnit", "security-unit-[id]", VersionMeta.Version227b, "InputOutput", 0x3f, [], ["read-only"], [u'computeBoard'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

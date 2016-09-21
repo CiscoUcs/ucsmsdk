@@ -35,15 +35,15 @@ class SysdebugTechSupportCmdOpt(ManagedObject):
         "chassis_iom_id": MoPropertyMeta("chassis_iom_id", "chassisIomId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["all"], ["0-2"]), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x40, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "cimc_adapter_id": MoPropertyMeta("cimc_adapter_id", "cimcAdapterId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["all"], ["0-8"]), 
-        "command_options": MoPropertyMeta("command_options", "commandOptions", "string", VersionMeta.Version226a, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((defaultValue|none|ucsm-exclude-commands|ucsm-include-fi-detail),){0,3}(defaultValue|none|ucsm-exclude-commands|ucsm-include-fi-detail){0,1}""", [], []), 
+        "command_options": MoPropertyMeta("command_options", "commandOptions", "string", VersionMeta.Version226c, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((defaultValue|none|ucsm-exclude-commands|ucsm-include-fi-detail),){0,3}(defaultValue|none|ucsm-exclude-commands|ucsm-include-fi-detail){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x200, 0, 256, None, [], []), 
         "fab_ext_id": MoPropertyMeta("fab_ext_id", "fabExtId", "ushort", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, [], ["1-255"]), 
         "major_opt_type": MoPropertyMeta("major_opt_type", "majorOptType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["chassis", "fex", "server", "server-memory", "ucsm", "ucsm-mgmt"], []), 
         "rack_server_adapter_id": MoPropertyMeta("rack_server_adapter_id", "rackServerAdapterId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, ["all"], ["0-8"]), 
         "rack_server_id": MoPropertyMeta("rack_server_id", "rackServerId", "ushort", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, [], ["1-255"]), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4000, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "server_id_list": MoPropertyMeta("server_id_list", "serverIdList", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x8000, 0, 510, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "server_id_list": MoPropertyMeta("server_id_list", "serverIdList", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x8000, 0, 510, None, [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 

@@ -262,6 +262,28 @@ def ape_get_ape_firmware_active_side(cookie, in_field_name, in_ip_addr):
     return xml_request
 
 
+def ape_get_inventory_from_storage_registrar(cookie, in_disk_model, in_disk_serial, in_disk_vendor):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ApeGetInventoryFromStorageRegistrar")
+    method.cookie = cookie
+    method.in_disk_model = in_disk_model
+    method.in_disk_serial = in_disk_serial
+    method.in_disk_vendor = in_disk_vendor
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def ape_get_ip_from_serial(cookie, in_equipment_serial):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ApeGetIpFromSerial")
+    method.cookie = cookie
+    method.in_equipment_serial = in_equipment_serial
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
 def ape_get_mc_stats(cookie, in_equipment_serial):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ApeGetMcStats")
@@ -329,12 +351,13 @@ def ape_inject_stimuli(cookie, in_from_svc, in_stimuli, in_to_svc):
     return xml_request
 
 
-def ape_insert_new_chassis(cookie, in_device_primary_key, in_model, in_serial, in_vendor):
+def ape_insert_new_chassis(cookie, in_device_primary_key, in_model, in_peer_type, in_serial, in_vendor):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ApeInsertNewChassis")
     method.cookie = cookie
     method.in_device_primary_key = in_device_primary_key
     method.in_model = in_model
+    method.in_peer_type = in_peer_type
     method.in_serial = in_serial
     method.in_vendor = in_vendor
 
@@ -970,7 +993,7 @@ def config_get_xml_file_str(cookie, in_file_path):
     return xml_request
 
 
-def config_install_all_impact(cookie, dn, in_blade_pack_version, in_host_pack_dns, in_infra_pack_version, in_m_series_pack_version, in_rack_pack_version):
+def config_install_all_impact(cookie, dn, in_blade_pack_version, in_host_pack_dns, in_infra_pack_version, in_rack_pack_version):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ConfigInstallAllImpact")
     method.cookie = cookie
@@ -978,7 +1001,6 @@ def config_install_all_impact(cookie, dn, in_blade_pack_version, in_host_pack_dn
     method.in_blade_pack_version = in_blade_pack_version
     method.in_host_pack_dns = in_host_pack_dns
     method.in_infra_pack_version = in_infra_pack_version
-    method.in_m_series_pack_version = in_m_series_pack_version
     method.in_rack_pack_version = in_rack_pack_version
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)

@@ -15,6 +15,8 @@ class StorageEnclosureCapConsts:
     TYPE_HDD_MOTHER_BOARD = "hdd-mother-board"
     TYPE_IOE_NVME_ENCLOSURE = "ioe-nvme-enclosure"
     TYPE_SB_NVME_ENCLOSURE = "sb-nvme-enclosure"
+    TYPE_SERVER_FRONT_LOAD = "server-front-load"
+    TYPE_SERVER_PCH = "server-pch"
     TYPE_UNKNOWN = "unknown"
 
 
@@ -24,24 +26,26 @@ class StorageEnclosureCap(ManagedObject):
     consts = StorageEnclosureCapConsts()
     naming_props = set([u'type'])
 
-    mo_meta = MoMeta("StorageEnclosureCap", "storageEnclosureCap", "physical-holder-[type]", VersionMeta.Version911z, "InputOutput", 0x3f, [], [""], [u'equipmentChassisCapProvider'], [u'storageHwRevisionModifier'], [None])
+    mo_meta = MoMeta("StorageEnclosureCap", "storageEnclosureCap", "physical-holder-[type]", VersionMeta.Version312b, "InputOutput", 0x3f, [], [""], [u'equipmentBladeCapProvider', u'equipmentChassisCapProvider', u'equipmentRackUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version911z, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "num_slots": MoPropertyMeta("num_slots", "numSlots", "ushort", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "removable": MoPropertyMeta("removable", "removable", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version911z, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version911z, MoPropertyMeta.NAMING, 0x20, None, None, None, ["dedicated-rear-ssd-enclosure", "hdd-expansion-tray", "hdd-mother-board", "ioe-nvme-enclosure", "sb-nvme-enclosure", "unknown"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "disk_variant": MoPropertyMeta("disk_variant", "diskVariant", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "num_slots": MoPropertyMeta("num_slots", "numSlots", "ushort", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "removable": MoPropertyMeta("removable", "removable", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x20, None, None, None, ["dedicated-rear-ssd-enclosure", "hdd-expansion-tray", "hdd-mother-board", "ioe-nvme-enclosure", "sb-nvme-enclosure", "server-front-load", "server-pch", "unknown"], []), 
     }
 
     prop_map = {
         "childAction": "child_action", 
         "descr": "descr", 
+        "diskVariant": "disk_variant", 
         "dn": "dn", 
         "id": "id", 
         "numSlots": "num_slots", 
@@ -57,6 +61,7 @@ class StorageEnclosureCap(ManagedObject):
         self.type = type
         self.child_action = None
         self.descr = None
+        self.disk_variant = None
         self.id = None
         self.num_slots = None
         self.removable = None

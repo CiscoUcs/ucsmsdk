@@ -24,19 +24,19 @@ class StorageSasLinkDescriptor(ManagedObject):
     consts = StorageSasLinkDescriptorConsts()
     naming_props = set([u'serverId', u'controllerType', u'controllerId', u'id'])
 
-    mo_meta = MoMeta("StorageSasLinkDescriptor", "storageSasLinkDescriptor", "sas-link-desc-server-[server_id]-controller-[controller_type]-[controller_id]-id-[id]", VersionMeta.Version911z, "InputOutput", 0x1ff, [], [""], [u'equipmentChassisCapProvider'], [], [None])
+    mo_meta = MoMeta("StorageSasLinkDescriptor", "storageSasLinkDescriptor", "sas-link-desc-server-[server_id]-controller-[controller_type]-[controller_id]-id-[id]", VersionMeta.Version312b, "InputOutput", 0x1ff, [], [""], [u'equipmentChassisCapProvider'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version911z, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "controller_id": MoPropertyMeta("controller_id", "controllerId", "uint", VersionMeta.Version911z, MoPropertyMeta.NAMING, 0x4, None, None, None, [], []), 
-        "controller_type": MoPropertyMeta("controller_type", "controllerType", "string", VersionMeta.Version911z, MoPropertyMeta.NAMING, 0x8, None, None, None, ["FLASH", "HBA", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version911z, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []), 
-        "link_descr": MoPropertyMeta("link_descr", "linkDescr", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "server_id": MoPropertyMeta("server_id", "serverId", "uint", VersionMeta.Version911z, MoPropertyMeta.NAMING, 0x80, None, None, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version911z, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "controller_id": MoPropertyMeta("controller_id", "controllerId", "uint", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x4, None, None, None, [], []), 
+        "controller_type": MoPropertyMeta("controller_type", "controllerType", "string", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x8, None, None, None, ["FLASH", "HBA", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []), 
+        "link_descr": MoPropertyMeta("link_descr", "linkDescr", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "server_id": MoPropertyMeta("server_id", "serverId", "uint", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x80, None, None, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

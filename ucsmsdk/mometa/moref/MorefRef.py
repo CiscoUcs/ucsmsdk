@@ -15,14 +15,14 @@ class MorefRef(ManagedObject):
     consts = MorefRefConsts()
     naming_props = set([u'moRn'])
 
-    mo_meta = MoMeta("MorefRef", "morefRef", "[mo_rn]", VersionMeta.Version227b, "InputOutput", 0x3f, [], ["admin"], [u'morefFruRef', u'morefImportRoot', u'morefRef'], [u'morefProp', u'morefRef'], [None])
+    mo_meta = MoMeta("MorefRef", "morefRef", "[mo_rn]", VersionMeta.Version227b, "InputOutput", 0x3f, [], ["admin"], [u'morefFruRef', u'morefImportRoot', u'morefRef'], [u'morefProp', u'morefRef'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "mo_rn": MoPropertyMeta("mo_rn", "moRn", "string", VersionMeta.Version227b, MoPropertyMeta.NAMING, 0x8, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 

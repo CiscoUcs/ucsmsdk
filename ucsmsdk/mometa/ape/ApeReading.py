@@ -23,7 +23,7 @@ class ApeReading(ManagedObject):
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []), 
         "is_analog": MoPropertyMeta("is_analog", "is_analog", "ushort", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "sensor_type": MoPropertyMeta("sensor_type", "sensorType", "ushort", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, [], []), 
         "state": MoPropertyMeta("state", "state", "ushort", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 

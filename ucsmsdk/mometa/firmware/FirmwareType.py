@@ -42,6 +42,9 @@ class FirmwareTypeConsts:
     FW_FPGA_REVISION_SUPPORTED_NO = "no"
     FW_FPGA_REVISION_SUPPORTED_TRUE = "true"
     FW_FPGA_REVISION_SUPPORTED_YES = "yes"
+    INSTALL_PATH_DEFAULT = "default"
+    INSTALL_PATH_IB = "ib"
+    INSTALL_PATH_OOB = "oob"
 
 
 class FirmwareType(ManagedObject):
@@ -57,11 +60,12 @@ class FirmwareType(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "ep": MoPropertyMeta("ep", "ep", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "catalog", "chassis-board-controller", "cmc", "debug-plug-in", "diag", "fex", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "iocard", "local-disk", "mgmt-ext", "psu", "sas-exp-reg-fw", "sas-expander", "storage-controller", "storage-controller-onboard-device", "storage-controller-onboard-device-cpld", "storage-dev-bridge", "storage-node-controller", "switch", "switch-kernel", "switch-software", "system", "unspecified"], []), 
         "fw_fpga_revision_supported": MoPropertyMeta("fw_fpga_revision_supported", "fwFpgaRevisionSupported", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "install_path": MoPropertyMeta("install_path", "installPath", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["default", "ib", "oob"], []), 
         "inv_tag": MoPropertyMeta("inv_tag", "invTag", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, 1, 510, None, [], []), 
         "max_ver": MoPropertyMeta("max_ver", "maxVer", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "min_ver": MoPropertyMeta("min_ver", "minVer", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
@@ -70,6 +74,7 @@ class FirmwareType(ManagedObject):
         "dn": "dn", 
         "ep": "ep", 
         "fwFpgaRevisionSupported": "fw_fpga_revision_supported", 
+        "installPath": "install_path", 
         "invTag": "inv_tag", 
         "maxVer": "max_ver", 
         "minVer": "min_ver", 
@@ -84,6 +89,7 @@ class FirmwareType(ManagedObject):
         self.child_action = None
         self.ep = None
         self.fw_fpga_revision_supported = None
+        self.install_path = None
         self.max_ver = None
         self.min_ver = None
         self.sacl = None

@@ -36,7 +36,7 @@ class NetworkOperLevel(ManagedObject):
         "primary_vlan_count": MoPropertyMeta("primary_vlan_count", "primaryVlanCount", "uint", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "primary_vlan_count_status": MoPropertyMeta("primary_vlan_count_status", "primaryVlanCountStatus", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "within-limit"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "secondary_vlan_count": MoPropertyMeta("secondary_vlan_count", "secondaryVlanCount", "uint", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "secondary_vlan_count_status": MoPropertyMeta("secondary_vlan_count_status", "secondaryVlanCountStatus", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "within-limit"], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 

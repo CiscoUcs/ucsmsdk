@@ -20,7 +20,7 @@ class CallhomeAnonymousReporting(ManagedObject):
     consts = CallhomeAnonymousReportingConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CallhomeAnonymousReporting", "callhomeAnonymousReporting", "anonymousreporting", VersionMeta.Version223a, "InputOutput", 0x7f, [], ["admin"], [u'callhomeEp'], [], [None])
+    mo_meta = MoMeta("CallhomeAnonymousReporting", "callhomeAnonymousReporting", "anonymousreporting", VersionMeta.Version223a, "InputOutput", 0x7f, [], ["admin"], [u'callhomeEp'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["off", "on"], []), 
@@ -28,7 +28,7 @@ class CallhomeAnonymousReporting(ManagedObject):
         "count": MoPropertyMeta("count", "count", "uint", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "sleep_interval": MoPropertyMeta("sleep_interval", "sleepInterval", "uint", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "user_acknowledged": MoPropertyMeta("user_acknowledged", "userAcknowledged", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["false", "no", "true", "yes"], []), 

@@ -23,7 +23,7 @@ class AdaptorHostfcHwAddrCap(ManagedObject):
         "mac_offset1": MoPropertyMeta("mac_offset1", "macOffset1", "byte", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], []), 
         "mac_offset2": MoPropertyMeta("mac_offset2", "macOffset2", "byte", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "wwn_reverse_mask_a": MoPropertyMeta("wwn_reverse_mask_a", "wwnReverseMaskA", "ulong", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, [], []), 
         "wwn_reverse_mask_b": MoPropertyMeta("wwn_reverse_mask_b", "wwnReverseMaskB", "ulong", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, [], []), 

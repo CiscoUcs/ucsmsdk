@@ -45,31 +45,31 @@ class LstorageDasScsiLun(ManagedObject):
     consts = LstorageDasScsiLunConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("LstorageDasScsiLun", "lstorageDasScsiLun", "das-scsi-lun-[name]", VersionMeta.Version224a, "InputOutput", 0x7fff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageProfile', u'lstorageProfileDef'], [u'faultInst', u'storageLocalDiskConfigDef'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LstorageDasScsiLun", "lstorageDasScsiLun", "das-scsi-lun-[name]", VersionMeta.Version224b, "InputOutput", 0x7fff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageProfile', u'lstorageProfileDef'], [u'faultInst', u'storageLocalDiskConfigDef'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["offline", "online", "undeployed"], []), 
-        "auto_deploy": MoPropertyMeta("auto_deploy", "autoDeploy", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["auto-deploy", "no-auto-deploy"], []), 
-        "boot_dev": MoPropertyMeta("boot_dev", "bootDev", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224a, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "config_qualifier": MoPropertyMeta("config_qualifier", "configQualifier", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|not-applicable|identity-assignment|unsupported-storage-capability|lun-id-conflict|missing-firmware-image|lun-capacity-exceeded|insufficient-lun-resources|lun-limit-exceeded|lun-ownership-conflict|storage-unavailable),){0,10}(defaultValue|not-applicable|identity-assignment|unsupported-storage-capability|lun-id-conflict|missing-firmware-image|lun-capacity-exceeded|insufficient-lun-resources|lun-limit-exceeded|lun-ownership-conflict|storage-unavailable){0,1}""", [], []), 
-        "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["applied", "applying", "failed-to-apply", "ok"], []), 
+        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["offline", "online", "undeployed"], []), 
+        "auto_deploy": MoPropertyMeta("auto_deploy", "autoDeploy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["auto-deploy", "no-auto-deploy"], []), 
+        "boot_dev": MoPropertyMeta("boot_dev", "bootDev", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "config_qualifier": MoPropertyMeta("config_qualifier", "configQualifier", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|not-applicable|identity-assignment|unsupported-storage-capability|lun-id-conflict|missing-firmware-image|lun-capacity-exceeded|insufficient-lun-resources|lun-limit-exceeded|lun-ownership-conflict|storage-unavailable),){0,10}(defaultValue|not-applicable|identity-assignment|unsupported-storage-capability|lun-id-conflict|missing-firmware-image|lun-capacity-exceeded|insufficient-lun-resources|lun-limit-exceeded|lun-ownership-conflict|storage-unavailable){0,1}""", [], []), 
+        "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["applied", "applying", "failed-to-apply", "ok"], []), 
         "deferred_naming": MoPropertyMeta("deferred_naming", "deferredNaming", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["false", "no", "true", "yes"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
-        "expand_to_avail": MoPropertyMeta("expand_to_avail", "expandToAvail", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["false", "no", "true", "yes"], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
+        "expand_to_avail": MoPropertyMeta("expand_to_avail", "expandToAvail", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["false", "no", "true", "yes"], []), 
         "fractional_size": MoPropertyMeta("fractional_size", "fractionalSize", "ulong", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, [], ["0-1023"]), 
-        "local_disk_policy_name": MoPropertyMeta("local_disk_policy_name", "localDiskPolicyName", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "lun_dn": MoPropertyMeta("lun_dn", "lunDn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "local_disk_policy_name": MoPropertyMeta("local_disk_policy_name", "localDiskPolicyName", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "lun_dn": MoPropertyMeta("lun_dn", "lunDn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "lun_map_type": MoPropertyMeta("lun_map_type", "lunMapType", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["non-shared", "shared", "unassigned"], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version224a, MoPropertyMeta.NAMING, 0x400, None, None, r"""[\-\.:_a-zA-Z0-9]{1,10}""", [], []), 
-        "oper_local_disk_policy_name": MoPropertyMeta("oper_local_disk_policy_name", "operLocalDiskPolicyName", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["compute-degraded", "compute-inoperable", "offline", "online", "undefined"], []), 
-        "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["not-applicable"], ["0-64"]), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x1000, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "size": MoPropertyMeta("size", "size", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, ["unspecified"], ["0-102400"]), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "storage_class": MoPropertyMeta("storage_class", "storageClass", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["das", "san"], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version224b, MoPropertyMeta.NAMING, 0x400, None, None, r"""[\-\.:_a-zA-Z0-9]{1,10}""", [], []), 
+        "oper_local_disk_policy_name": MoPropertyMeta("oper_local_disk_policy_name", "operLocalDiskPolicyName", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["compute-degraded", "compute-inoperable", "offline", "online", "undefined"], []), 
+        "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["not-applicable"], ["0-64"]), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x1000, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "size": MoPropertyMeta("size", "size", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, ["unspecified"], ["0-102400"]), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "storage_class": MoPropertyMeta("storage_class", "storageClass", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["das", "san"], []), 
     }
 
     prop_map = {

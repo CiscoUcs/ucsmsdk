@@ -49,7 +49,7 @@ class SysdebugBackupBehavior(ManagedObject):
         "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x200, 0, 64, None, [], []), 
         "remote_path": MoPropertyMeta("remote_path", "remotePath", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x400, 1, 128, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x800, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x1000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "user": MoPropertyMeta("user", "user", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2000, 0, 510, None, [], []), 
     }

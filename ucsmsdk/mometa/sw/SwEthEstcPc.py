@@ -73,7 +73,7 @@ class SwEthEstcPc(ManagedObject):
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["10gbps", "1gbps", "20gbps", "40gbps", "indeterminate"], []), 
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
-        "border_aggr_port_id": MoPropertyMeta("border_aggr_port_id", "borderAggrPortId", "uint", VersionMeta.Version302a, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, [], []), 
+        "border_aggr_port_id": MoPropertyMeta("border_aggr_port_id", "borderAggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, [], []), 
         "border_port_id": MoPropertyMeta("border_port_id", "borderPortId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], []), 
         "border_slot_id": MoPropertyMeta("border_slot_id", "borderSlotId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], []), 
         "cdp": MoPropertyMeta("cdp", "cdp", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 
@@ -96,7 +96,7 @@ class SwEthEstcPc(ManagedObject):
         "protocol": MoPropertyMeta("protocol", "protocol", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lacp", "static"], []), 
         "recv_flow_ctrl": MoPropertyMeta("recv_flow_ctrl", "recvFlowCtrl", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["off", "on"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x400, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "send_flow_ctrl": MoPropertyMeta("send_flow_ctrl", "sendFlowCtrl", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["off", "on"], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 

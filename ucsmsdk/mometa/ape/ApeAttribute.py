@@ -15,16 +15,16 @@ class ApeAttribute(ManagedObject):
     consts = ApeAttributeConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("ApeAttribute", "apeAttribute", "attribute-[id]", VersionMeta.Version224a, "InputOutput", 0xff, [], ["read-only"], [u'apeMcTable'], [], [None])
+    mo_meta = MoMeta("ApeAttribute", "apeAttribute", "attribute-[id]", VersionMeta.Version224b, "InputOutput", 0xff, [], ["read-only"], [u'apeMcTable'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version224a, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []), 
-        "ip": MoPropertyMeta("ip", "ip", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x10, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224a, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version224b, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []), 
+        "ip": MoPropertyMeta("ip", "ip", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x10, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224a, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "value": MoPropertyMeta("value", "value", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x80, 0, 510, None, [], []), 
     }
 

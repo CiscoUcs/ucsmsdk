@@ -26,7 +26,7 @@ class LstorageControllerDef(ManagedObject):
     consts = LstorageControllerDefConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("LstorageControllerDef", "lstorageControllerDef", "controller-def-[name]", VersionMeta.Version227b, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageProfile', u'lstorageProfileDef', u'storageController'], [u'lstorageControllerModeConfig', u'lstorageControllerQualifier'], [None])
+    mo_meta = MoMeta("LstorageControllerDef", "lstorageControllerDef", "controller-def-[name]", VersionMeta.Version227b, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageProfile', u'lstorageProfileDef', u'storageController'], [u'lstorageControllerModeConfig', u'lstorageControllerQualifier'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["offline", "online", "undeployed"], []), 

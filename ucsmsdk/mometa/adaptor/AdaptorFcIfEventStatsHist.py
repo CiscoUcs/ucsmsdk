@@ -100,7 +100,7 @@ class AdaptorFcIfEventStatsHist(ManagedObject):
         "n_os_count_delta_max": MoPropertyMeta("n_os_count_delta_max", "nOSCountDeltaMax", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 
         "n_os_count_delta_min": MoPropertyMeta("n_os_count_delta_min", "nOSCountDeltaMin", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "seconds_since_last_reset": MoPropertyMeta("seconds_since_last_reset", "secondsSinceLastReset", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 
         "seconds_since_last_reset_delta": MoPropertyMeta("seconds_since_last_reset_delta", "secondsSinceLastResetDelta", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 
         "seconds_since_last_reset_delta_avg": MoPropertyMeta("seconds_since_last_reset_delta_avg", "secondsSinceLastResetDeltaAvg", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA"], ["0-4294967295"]), 

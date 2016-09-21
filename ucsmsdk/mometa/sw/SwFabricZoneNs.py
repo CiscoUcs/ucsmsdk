@@ -29,12 +29,12 @@ class SwFabricZoneNs(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "limit": MoPropertyMeta("limit", "limit", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
-        "user_zone_alloc_status": MoPropertyMeta("user_zone_alloc_status", "userZoneAllocStatus", "string", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, ["available", "full"], []), 
-        "user_zone_count": MoPropertyMeta("user_zone_count", "userZoneCount", "uint", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "user_zone_limit": MoPropertyMeta("user_zone_limit", "userZoneLimit", "uint", VersionMeta.Version911z, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "user_zone_alloc_status": MoPropertyMeta("user_zone_alloc_status", "userZoneAllocStatus", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["available", "full"], []), 
+        "user_zone_count": MoPropertyMeta("user_zone_count", "userZoneCount", "uint", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "user_zone_limit": MoPropertyMeta("user_zone_limit", "userZoneLimit", "uint", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "zone_count": MoPropertyMeta("zone_count", "zoneCount", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
     }
 
