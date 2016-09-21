@@ -3,6 +3,24 @@
 History
 -------
 
+0.9.2.0 (2016-09-21)
+---------------------
+
+* Support for UCSM 3.1(2b)
+* Adds Support for Generating python APIs from a Ucs backup xml -
+  `convert_from_backup`
+* Adds Infra to facilitate and notify users of API deprecation
+* Allows the ucsmsdk/apis layer APIs to pass in None values to indicate that no
+  change is rquested to those specific params
+* Adds a method to check if the handle.cookie is still valid
+* Fix in eventhandlers, where some events were not getting processed
+* Fix in eventhandlers, where timeout was not getting triggered until new
+  events
+* Fix in get_ucs_tech_support, where techsupport for rack server was failing
+* Fix in logout, where a Ctrl+C was causing stale connections on the server
+* Deprecated `get_ucs_tech_support` in favour of `get_tech_support`. The newer
+  API simplifies the API
+
 0.9.1.1 (2016-07-12)
 ---------------------
 
