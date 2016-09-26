@@ -166,7 +166,8 @@ def load_mo(elem):
     This loads the managed object  into the current name space
 
     Args:
-        class_id (str): class_id
+        elem (xml element): xml element representation of the class and
+                            it's attributes
 
     Returns:
         MangedObject
@@ -180,7 +181,7 @@ def load_mo(elem):
     mo_class_param_dict = {}
     for param in mo_class_params:
         mo_class_param_dict[param] = elem.attrib[
-            mo_class.PROPERTY_MAP[param]]
+            mo_class.prop_map[param]]
 
     mo_obj = mo_class(parent_mo_or_dn="", **mo_class_param_dict)
     return mo_obj
@@ -294,7 +295,8 @@ def extract_molist_from_method_response(method_response,
 
     Example:
         response = handle.query_dn("org-root", need_response=True)\n
-        molist = extract_molist_from_method_response(method_response=response, in_hierarchical=True)
+        molist = extract_molist_from_method_response(method_response=response,
+                                                     in_hierarchical=True)
     """
 
     mo_list = []
@@ -482,7 +484,8 @@ def get_naming_props(rn_str, rn_pattern):
         dictionary
 
     Example:
-        naming_props = get_naming_props(rn_str="ls-test_sp", rn_pattern="ls-[name]")
+        naming_props = get_naming_props(rn_str="ls-test_sp",
+                                        rn_pattern="ls-[name]")
     """
 
     rn_regex = re.sub(r"\[(.+?)\]", r"(?P<\1>.+)", rn_pattern)
