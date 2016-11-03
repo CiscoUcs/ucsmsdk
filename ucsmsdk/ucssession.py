@@ -258,8 +258,9 @@ class UcsSession(object):
         response_str = self.post_xml(xml_str)
         self.dump_xml_response(response_str)
 
-        if response_str:
-            response = xc.from_xml_str(response_str, self)
+        try:
+            if response_str:
+                response = xc.from_xml_str(response_str, self)
 
             # Cookie update should happen with-in the lock
             # this ensures that the next packet goes out
@@ -269,6 +270,9 @@ class UcsSession(object):
 
             self._tx_lock_release_conditional(elem)
             return response
+        except:
+            self._tx_lock_release_conditional(elem)
+            raise
 
         self._tx_lock_release_conditional(elem)
         return None
