@@ -28,7 +28,7 @@ class EquipmentPfcMmuCap(ManagedObject):
         "fcoe_jumbo_nodrop": MoPropertyMeta("fcoe_jumbo_nodrop", "fcoeJumboNodrop", "byte", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-100"]), 
         "fcoe_normal_nodrop": MoPropertyMeta("fcoe_normal_nodrop", "fcoeNormalNodrop", "byte", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-100"]), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version311e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
-        "jumbo_breakout_port": MoPropertyMeta("jumbo_breakout_port", "jumboBreakoutPort", "byte", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "jumbo_breakout_port": MoPropertyMeta("jumbo_breakout_port", "jumboBreakoutPort", "byte", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-255"]), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []), 

@@ -43,7 +43,7 @@ class QosclassEthBE(ManagedObject):
         "cos": MoPropertyMeta("cos", "cos", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["any"], ["0-6", "255-255"]), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "drop": MoPropertyMeta("drop", "drop", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["drop", "no-drop"], []), 
-        "mtu": MoPropertyMeta("mtu", "mtu", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["fc", "normal"], ["0-4294967295"]), 
+        "mtu": MoPropertyMeta("mtu", "mtu", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["fc", "normal"], ["1500-9216"]), 
         "multicast_optimize": MoPropertyMeta("multicast_optimize", "multicastOptimize", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["false", "no", "true", "yes"], []), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "priority": MoPropertyMeta("priority", "priority", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["best-effort", "bronze", "fc", "gold", "platinum", "silver"], []), 

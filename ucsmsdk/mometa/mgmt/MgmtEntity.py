@@ -96,7 +96,7 @@ class MgmtEntity(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "ssh_auth_keys_csum": MoPropertyMeta("ssh_auth_keys_csum", "sshAuthKeysCsum", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "ssh_auth_keys_size": MoPropertyMeta("ssh_auth_keys_size", "sshAuthKeysSize", "ulong", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "ssh_key_status": MoPropertyMeta("ssh_key_status", "sshKeyStatus", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["matched", "mismatched", "none"], ["0-4294967295"]), 
+        "ssh_key_status": MoPropertyMeta("ssh_key_status", "sshKeyStatus", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["matched", "mismatched", "none"], ["0-18446744073709551615"]), 
         "ssh_root_pub_key_csum": MoPropertyMeta("ssh_root_pub_key_csum", "sshRootPubKeyCsum", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "ssh_root_pub_key_size": MoPropertyMeta("ssh_root_pub_key_size", "sshRootPubKeySize", "ulong", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "state": MoPropertyMeta("state", "state", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["down", "unknown", "up"], []), 

@@ -34,7 +34,7 @@ class AdaptorFamilyTypeDef(ManagedObject):
         "is_multi_port": MoPropertyMeta("is_multi_port", "isMultiPort", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["false", "no", "true", "yes"], []), 
         "is_passthrough": MoPropertyMeta("is_passthrough", "isPassthrough", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["false", "no", "true", "yes"], []), 
         "is_retimer_required": MoPropertyMeta("is_retimer_required", "isRetimerRequired", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["false", "no", "true", "yes"], []), 
-        "num_dce_ports": MoPropertyMeta("num_dce_ports", "numDcePorts", "uint", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, [], []), 
+        "num_dce_ports": MoPropertyMeta("num_dce_ports", "numDcePorts", "uint", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, [], ["0-4294967295"]), 
         "port_family": MoPropertyMeta("port_family", "portFamily", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x80, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 

@@ -15,7 +15,7 @@ class EquipmentPciSlotSubOEMIdEntry(ManagedObject):
     consts = EquipmentPciSlotSubOEMIdEntryConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("EquipmentPciSlotSubOEMIdEntry", "equipmentPciSlotSubOEMIdEntry", "pci-slot-suboemid-entry-[name]", VersionMeta.Version312b, "InputOutput", 0x3f, [], [""], [u'equipmentStorageControllerConfig'], [], [None])
+    mo_meta = MoMeta("EquipmentPciSlotSubOEMIdEntry", "equipmentPciSlotSubOEMIdEntry", "pci-slot-suboemid-entry-[name]", VersionMeta.Version312b, "InputOutput", 0x3f, [], [""], [u'equipmentStorageControllerConfig'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
@@ -24,7 +24,7 @@ class EquipmentPciSlotSubOEMIdEntry(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "sub_oem_id": MoPropertyMeta("sub_oem_id", "subOemId", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["undefined"], ["0-4294967295"]), 
+        "sub_oem_id": MoPropertyMeta("sub_oem_id", "subOemId", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["undefined"], ["0-65535"]), 
     }
 
     prop_map = {

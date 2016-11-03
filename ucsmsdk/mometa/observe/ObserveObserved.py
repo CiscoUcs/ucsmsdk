@@ -192,7 +192,7 @@ class ObserveObserved(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "data_src_app_type": MoPropertyMeta("data_src_app_type", "dataSrcAppType", "string", VersionMeta.Version211a, MoPropertyMeta.CREATE_ONLY, 0x4, 0, 510, None, [], []), 
-        "data_src_sys_id": MoPropertyMeta("data_src_sys_id", "dataSrcSysId", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []), 
+        "data_src_sys_id": MoPropertyMeta("data_src_sys_id", "dataSrcSysId", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x8, None, None, None, [], ["0-4294967295"]), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["ResolveControllerFsmBegin", "ResolveControllerFsmExecute", "ResolveControllerFsmFail", "ResolveControllerFsmSuccess", "ResolvePolicyFsmBegin", "ResolvePolicyFsmExecute", "ResolvePolicyFsmFail", "ResolvePolicyFsmSuccess", "ResolveResourceFsmBegin", "ResolveResourceFsmExecute", "ResolveResourceFsmFail", "ResolveResourceFsmSuccess", "ResolveVMFsmBegin", "ResolveVMFsmExecute", "ResolveVMFsmFail", "ResolveVMFsmSuccess", "nop"], []), 

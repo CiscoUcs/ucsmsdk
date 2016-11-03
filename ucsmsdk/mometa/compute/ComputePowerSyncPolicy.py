@@ -21,7 +21,7 @@ class ComputePowerSyncPolicy(ManagedObject):
     consts = ComputePowerSyncPolicyConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("ComputePowerSyncPolicy", "computePowerSyncPolicy", "power-sync-[name]", VersionMeta.Version312b, "InputOutput", 0x1ff, [], ["admin", "ls-compute", "ls-config-policy", "ls-server", "ls-server-policy"], [u'orgOrg'], [], [None])
+    mo_meta = MoMeta("ComputePowerSyncPolicy", "computePowerSyncPolicy", "power-sync-[name]", VersionMeta.Version312b, "InputOutput", 0x1ff, [], ["admin", "ls-compute", "ls-config-policy", "ls-server", "ls-server-policy"], [u'orgOrg'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

@@ -180,13 +180,13 @@ class IdentMetaSystem(ManagedObject):
         "fsm_stamp": MoPropertyMeta("fsm_stamp", "fsmStamp", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []), 
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "syncBegin", "syncExecute", "syncFail", "syncPing", "syncSuccess", "ucscUnivSyncBegin", "ucscUnivSyncExecute", "ucscUnivSyncFail", "ucscUnivSyncSuccess"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
-        "generation": MoPropertyMeta("generation", "generation", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "generation": MoPropertyMeta("generation", "generation", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
         "next_req_id": MoPropertyMeta("next_req_id", "nextReqId", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "sysid": MoPropertyMeta("sysid", "sysid", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "ucsc_generation": MoPropertyMeta("ucsc_generation", "ucscGeneration", "uint", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "ucsc_generation": MoPropertyMeta("ucsc_generation", "ucscGeneration", "uint", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
     }
 
     prop_map = {

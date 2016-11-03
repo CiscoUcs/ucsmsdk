@@ -28,14 +28,14 @@ class LicenseFeatureCapProvider(ManagedObject):
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "def_quant": MoPropertyMeta("def_quant", "defQuant", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, [], []), 
+        "def_quant": MoPropertyMeta("def_quant", "defQuant", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, [], ["0-4294967295"]), 
         "deleted": MoPropertyMeta("deleted", "deleted", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "deprecated": MoPropertyMeta("deprecated", "deprecated", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "element_load_failures": MoPropertyMeta("element_load_failures", "elementLoadFailures", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "elements_loaded": MoPropertyMeta("elements_loaded", "elementsLoaded", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "feature_name": MoPropertyMeta("feature_name", "featureName", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x10, 1, 64, None, [], []), 
-        "gencount": MoPropertyMeta("gencount", "gencount", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "gencount": MoPropertyMeta("gencount", "gencount", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
         "grace_period": MoPropertyMeta("grace_period", "gracePeriod", "ulong", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, [], []), 
         "lic_vendor": MoPropertyMeta("lic_vendor", "licVendor", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x40, 1, 510, None, [], []), 
         "lic_version": MoPropertyMeta("lic_version", "licVersion", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x80, 1, 510, None, [], []), 
