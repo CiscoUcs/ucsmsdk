@@ -31,7 +31,7 @@ class ComputeFactoryResetOperation(ManagedObject):
     consts = ComputeFactoryResetOperationConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeFactoryResetOperation", "computeFactoryResetOperation", "factory-reset", VersionMeta.Version227b, "InputOutput", 0x1ff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [], [None])
+    mo_meta = MoMeta("ComputeFactoryResetOperation", "computeFactoryResetOperation", "factory-reset", VersionMeta.Version227b, "InputOutput", 0x1ff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

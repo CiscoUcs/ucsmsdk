@@ -40,7 +40,7 @@ class PowerProfiledPower(ManagedObject):
         "min_norm_post_power": MoPropertyMeta("min_norm_post_power", "minNormPostPower", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]), 
         "min_post_power": MoPropertyMeta("min_post_power", "minPostPower", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]), 
         "pre_discovery_power": MoPropertyMeta("pre_discovery_power", "preDiscoveryPower", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]), 
-        "profile_run_time": MoPropertyMeta("profile_run_time", "profileRunTime", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "profile_run_time": MoPropertyMeta("profile_run_time", "profileRunTime", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
         "profiled_boot": MoPropertyMeta("profiled_boot", "profiledBoot", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]), 
         "profiled_max": MoPropertyMeta("profiled_max", "profiledMax", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]), 
         "profiled_min": MoPropertyMeta("profiled_min", "profiledMin", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]), 

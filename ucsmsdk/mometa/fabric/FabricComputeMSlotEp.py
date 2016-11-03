@@ -254,7 +254,7 @@ class FabricComputeMSlotEp(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
-        "fru_ident_trig_ts": MoPropertyMeta("fru_ident_trig_ts", "fruIdentTrigTs", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["never"], ["0-4294967295"]), 
+        "fru_ident_trig_ts": MoPropertyMeta("fru_ident_trig_ts", "fruIdentTrigTs", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["never"], ["0-18446744073709551615"]), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, None, ["IdentifyBegin", "IdentifyExecuteLocal", "IdentifyExecutePeer", "IdentifyFail", "IdentifySuccess", "nop"], []), 
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]), 

@@ -93,7 +93,7 @@ class DcxVIf(ManagedObject):
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "admin-down", "error", "link-down", "passive", "unknown"], []), 
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "prot_peer_id": MoPropertyMeta("prot_peer_id", "protPeerId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "prot_peer_id": MoPropertyMeta("prot_peer_id", "protPeerId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
         "prot_role": MoPropertyMeta("prot_role", "protRole", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["backup", "primary", "unprotected"], []), 
         "prot_state": MoPropertyMeta("prot_state", "protState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "no-protection", "passive"], []), 
         "qos_control": MoPropertyMeta("qos_control", "qosControl", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["full", "full-with-exception", "none"], []), 

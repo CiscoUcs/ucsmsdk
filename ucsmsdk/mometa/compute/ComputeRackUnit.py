@@ -1523,7 +1523,7 @@ class ComputeRackUnit(ManagedObject):
         "local_id": MoPropertyMeta("local_id", "localId", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "low_voltage_memory": MoPropertyMeta("low_voltage_memory", "lowVoltageMemory", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["low-voltage", "not-applicable", "regular-voltage"], []), 
         "managing_inst": MoPropertyMeta("managing_inst", "managingInst", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
-        "memory_speed": MoPropertyMeta("memory_speed", "memorySpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable", "unspecified"], ["0-4294967295"]), 
+        "memory_speed": MoPropertyMeta("memory_speed", "memorySpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable", "unspecified"], ["0-65535"]), 
         "mfg_time": MoPropertyMeta("mfg_time", "mfgTime", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["not-applicable"], []), 
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 

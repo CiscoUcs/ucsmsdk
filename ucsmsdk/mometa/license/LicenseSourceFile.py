@@ -28,7 +28,7 @@ class LicenseSourceFile(ManagedObject):
         "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x8, 1, 32, None, [], []), 
         "line": MoPropertyMeta("line", "line", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x10, 1, 510, None, [], []), 
         "pak": MoPropertyMeta("pak", "pak", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "quant": MoPropertyMeta("quant", "quant", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "quant": MoPropertyMeta("quant", "quant", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "sig": MoPropertyMeta("sig", "sig", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 

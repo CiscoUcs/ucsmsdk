@@ -15,7 +15,7 @@ class EquipmentCapModSpec(ManagedObject):
     consts = EquipmentCapModSpecConsts()
     naming_props = set([u'path'])
 
-    mo_meta = MoMeta("EquipmentCapModSpec", "equipmentCapModSpec", "modspec-[path]", VersionMeta.Version227b, "InputOutput", 0x3f, [], [""], [u'equipmentHwCapDerivativeProvider'], [], [None])
+    mo_meta = MoMeta("EquipmentCapModSpec", "equipmentCapModSpec", "modspec-[path]", VersionMeta.Version227b, "InputOutput", 0x3f, [], [""], [u'equipmentHwCapDerivativeProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

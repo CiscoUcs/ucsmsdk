@@ -40,7 +40,7 @@ class EquipmentStorageControllerConfig(ManagedObject):
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version225a, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "storage_bios_mode": MoPropertyMeta("storage_bios_mode", "storageBiosMode", "string", VersionMeta.Version225a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "storagepid": MoPropertyMeta("storagepid", "storagepid", "string", VersionMeta.Version225a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "sub_oem_id": MoPropertyMeta("sub_oem_id", "subOemId", "string", VersionMeta.Version225a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["undefined"], ["0-4294967295"]), 
+        "sub_oem_id": MoPropertyMeta("sub_oem_id", "subOemId", "string", VersionMeta.Version225a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["undefined"], ["0-65535"]), 
         "subdevice": MoPropertyMeta("subdevice", "subdevice", "uint", VersionMeta.Version225a, MoPropertyMeta.NAMING, 0x200, None, None, None, [], []), 
         "subvendor": MoPropertyMeta("subvendor", "subvendor", "uint", VersionMeta.Version225a, MoPropertyMeta.NAMING, 0x400, None, None, None, [], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "uint", VersionMeta.Version225a, MoPropertyMeta.NAMING, 0x800, None, None, None, [], []), 

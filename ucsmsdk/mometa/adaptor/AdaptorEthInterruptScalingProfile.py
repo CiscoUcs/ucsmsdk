@@ -16,7 +16,7 @@ class AdaptorEthInterruptScalingProfile(ManagedObject):
     consts = AdaptorEthInterruptScalingProfileConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorEthInterruptScalingProfile", "adaptorEthInterruptScalingProfile", "eth-interrupt-scaling", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], [u'adaptorHostEthIf', u'adaptorHostEthIfProfile', u'adaptorUsnicConnDef'], [], [None])
+    mo_meta = MoMeta("AdaptorEthInterruptScalingProfile", "adaptorEthInterruptScalingProfile", "eth-interrupt-scaling", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], [u'adaptorHostEthIf', u'adaptorHostEthIfProfile', u'adaptorUsnicConnDef'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 

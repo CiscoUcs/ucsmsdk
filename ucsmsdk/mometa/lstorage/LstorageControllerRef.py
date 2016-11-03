@@ -24,7 +24,7 @@ class LstorageControllerRef(ManagedObject):
     consts = LstorageControllerRefConsts()
     naming_props = set([u'serverId', u'controllerType', u'controllerId'])
 
-    mo_meta = MoMeta("LstorageControllerRef", "lstorageControllerRef", "server-[server_id]-controller-[controller_type]-[controller_id]", VersionMeta.Version312b, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'lstorageDiskSlot'], [], ["Get"])
+    mo_meta = MoMeta("LstorageControllerRef", "lstorageControllerRef", "server-[server_id]-controller-[controller_type]-[controller_id]", VersionMeta.Version312b, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'lstorageDiskSlot'], [], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

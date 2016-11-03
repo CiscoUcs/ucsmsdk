@@ -95,7 +95,7 @@ class DcxVc(ManagedObject):
         "cos": MoPropertyMeta("cos", "cos", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["any"], ["0-6", "255-255"]), 
         "derived_from_id": MoPropertyMeta("derived_from_id", "derivedFromId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "encap": MoPropertyMeta("encap", "encap", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["consolidated", "virtual", "virtual-ce"], ["0-4294967295"]), 
+        "encap": MoPropertyMeta("encap", "encap", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["consolidated", "virtual", "virtual-ce"], ["0-255"]), 
         "fcoe_id": MoPropertyMeta("fcoe_id", "fcoeId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "forge_mac": MoPropertyMeta("forge_mac", "forgeMac", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allow", "deny"], []), 

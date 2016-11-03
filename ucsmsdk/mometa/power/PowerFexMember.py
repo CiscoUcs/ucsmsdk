@@ -20,7 +20,7 @@ class PowerFexMember(ManagedObject):
     consts = PowerFexMemberConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("PowerFexMember", "powerFexMember", "fex-member-[id]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["admin", "power-mgmt", "read-only"], [u'powerGroup'], [], [None])
+    mo_meta = MoMeta("PowerFexMember", "powerFexMember", "fex-member-[id]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["admin", "power-mgmt", "read-only"], [u'powerGroup'], [], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

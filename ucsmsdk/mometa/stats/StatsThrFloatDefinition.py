@@ -1190,7 +1190,7 @@ class StatsThrFloatDefinition(ManagedObject):
 
     prop_meta = {
         "auto_recovery": MoPropertyMeta("auto_recovery", "autoRecovery", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
-        "auto_recovery_time": MoPropertyMeta("auto_recovery_time", "autoRecoveryTime", "ushort", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, [], []), 
+        "auto_recovery_time": MoPropertyMeta("auto_recovery_time", "autoRecoveryTime", "ushort", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, [], ["0-65535"]), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
