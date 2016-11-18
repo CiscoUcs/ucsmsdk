@@ -728,6 +728,8 @@ class UcsHandle(UcsSession):
 
         if len(ackables) == 0:
             for mo in affected:
+                if not isinstance(mo, EquipmentChassis):
+                    continue
                 if 'chassis-vif-capacity-reduced' in mo.oper_qualifier:
                     output.append("""Detected reduced VIF capacity. Check
                                   if all fabric port channel member links
@@ -742,9 +744,9 @@ class UcsHandle(UcsSession):
                                   decrease on IOCard.""")
             return
 
-        immediate_reboot_warnings = []
-        ack_reboot_warnings = []
-        timer_reboot_warnings = []
+        immediate_reboot_warn = []
+        ack_reboot_warn = []
+        timer_reboot_warn = []
         fail_warn = []
         minor_warn = []
         ret_list = []
@@ -795,11 +797,11 @@ class UcsHandle(UcsSession):
                 if ack.disr:
                     l_temp = None
                     if ack.deployment_mode == LsmaintAckConsts.DEPLOYMENT_MODE_IMMEDIATE:
-                        l_temp = immediate_reboot_warnings
+                        l_temp = immediate_reboot_warn
                     elif ack.deployment_mode == LsmaintAckConsts.DEPLOYMENT_MODE_TIMER_AUTOMATIC:
-                        l_temp = timer_reboot_warnings
+                        l_temp = timer_reboot_warn
                     elif ack.deployment_mode == LsmaintAckConsts.DEPLOYMENT_MODE_USER_ACK:
-                        l_temp = ack_reboot_warnings
+                        l_temp = ack_reboot_warn
                     else:
                         continue
 
@@ -819,12 +821,12 @@ class UcsHandle(UcsSession):
             ret_list.append("Will cause a Configuration Failure of:" + ''.join(fail_warn))
         if len(minor_warn) > 0:
             ret_list.append("Will cause a non fatal Configuration Warning for:" + ''.join(minor_warn))
-        if len(immediate_reboot_warnings) > 0:
-            ret_list.append("Will cause the Immediate Reboot of:" + ''.join(immediate_reboot_warnings))
-        if len(ack_reboot_warnings) > 0:
-            ret_list.append("Will require User Acknowledgement before the Reboot of:" + ''.join(ack_reboot_warnings))
-        if len(timer_reboot_warnings) > 0:
-            ret_list.append("Will Reboot in the Maintenance interval of:" + ''.join(timer_reboot_warnings))
+        if len(immediate_reboot_warn) > 0:
+            ret_list.append("Will cause the Immediate Reboot of:" + ''.join(immediate_reboot_warn))
+        if len(ack_reboot_warn) > 0:
+            ret_list.append("Will require User Acknowledgement before the Reboot of:" + ''.join(ack_reboot_warn))
+        if len(timer_reboot_warn) > 0:
+            ret_list.append("Will Reboot in the Maintenance interval of:" + ''.join(timer_reboot_warn))
         return ret_list
 
     def commit(self, tag=None):
