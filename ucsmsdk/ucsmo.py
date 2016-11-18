@@ -87,8 +87,8 @@ class ManagedObject(UcsBase):
         if isinstance(parent_mo_or_dn, ManagedObject):
             self.__parent_mo = parent_mo_or_dn
             self.__parent_dn = parent_mo_or_dn.dn
-        elif isinstance(parent_mo_or_dn, str):
-            self.__parent_dn = parent_mo_or_dn
+        elif isinstance(parent_mo_or_dn, str) or isinstance(parent_mo_or_dn, unicode):
+            self.__parent_dn = str(parent_mo_or_dn)
         else:
             raise ValueError('parent mo or dn must be specified')
 

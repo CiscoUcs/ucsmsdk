@@ -12,6 +12,7 @@
 # limitations under the License.
 
 
+import re
 import logging
 import threading
 
@@ -655,6 +656,203 @@ class UcsHandle(UcsSession):
             mo.parent_mo.child_remove(mo)
 
         self._update_commit_buf(mo, tag)
+
+    def estimate_impact(self, tag=None):
+        from .ucsbasetype import ConfigMap, Pair
+        from .ucsmethodfactory import config_estimate_impact
+
+        tag = self._auto_set_tag_context(tag)
+        mo_dict = self._get_commit_buf(tag)
+        if not mo_dict:
+            return None
+        config_map = ConfigMap()
+        for mo_dn in mo_dict:
+            mo = mo_dict[mo_dn]
+            child_list = mo.child
+            while len(child_list) > 0:
+                current_child_list = child_list
+                child_list = []
+                for child_mo in current_child_list:
+                    child_list.extend(child_mo.child)
+
+            pair = Pair()
+            pair.key = mo_dn
+            pair.child_add(mo_dict[mo_dn])
+            config_map.child_add(pair)
+
+        elem = config_estimate_impact(self.cookie, config_map)
+        response = self.post_elem(elem)
+        if response.error_code != 0:
+            raise UcsException(response.error_code, response.error_descr)
+
+        impact = self._get_transaction_impact(response)
+        print(''.join(impact))
+
+    def _get_transaction_impact(self, rsp):
+        from .mometa.lsmaint.LsmaintAck import LsmaintAck, LsmaintAckConsts
+        from .mometa.equipment.EquipmentChassis import EquipmentChassis
+        from .ucsmo import ManagedObject
+
+        ackables = []
+        affected = []
+        old_ackables = []
+        old_affected = []
+        output = []
+
+        if not rsp:
+            return
+
+        for pair in rsp.out_ackables.child:
+            for mo in pair.child:
+                if not isinstance(mo, ManagedObject):
+                    continue
+                ackables.append(mo)
+
+        for pair in rsp.out_affected.child:
+            for mo in pair.child:
+                if not isinstance(mo, ManagedObject):
+                    continue
+                affected.append(mo)
+
+        for pair in rsp.out_old_ackables.child:
+            for mo in pair.child:
+                if not isinstance(mo, ManagedObject):
+                    continue
+                old_ackables.append(mo)
+
+        for pair in rsp.out_old_affected.child:
+            for mo in pair.child:
+                if not isinstance(mo, ManagedObject):
+                    continue
+                old_affected.append(mo)
+
+        if len(ackables) == 0:
+            for mo in affected:
+                if not isinstance(mo, EquipmentChassis):
+                    continue
+                if 'chassis-vif-capacity-reduced' in mo.oper_qualifier:
+                    output.append("""Detected reduced VIF capacity. Check
+                                  if all fabric port channel member links
+                                  are connected to the same port group on
+                                  fabric interconnect. If not then change
+                                  the connectivity accordingly and
+                                  re-acknowledge the chassis.""")
+                elif 'chassis-port-channel-enabled' in mo.oper_qualifier:
+                    output.append("""Connectivity mode changed to fabric
+                                  port channel on one or both the IOCards.
+                                  This might result in VIF capacity
+                                  decrease on IOCard.""")
+            return
+
+        immediate_reboot_warn = []
+        ack_reboot_warn = []
+        timer_reboot_warn = []
+        fail_warn = []
+        minor_warn = []
+        ret_list = []
+
+        for ack in ackables:
+            if isinstance(ack, LsmaintAck):
+                m = re.search('(.*)/(.*)$', ack.dn)
+                parent_dn = m.group(1)
+
+                for each in old_ackables:
+                    if ack.dn == each.dn:
+                        pending_ack = ack
+                        break
+
+                if ack.config_issues:
+                    for each in affected:
+                        if each.dn == parent_dn:
+                            server_mo = each
+                            break
+
+                    for each in old_affected:
+                        if each.dn == parent_dn:
+                            original_server_mo = each
+                            break
+
+                    if server_mo and server_mo.status != "deleted":
+                        if (server_mo.config_state == "applied" and ack.config_issues !=
+                                "incompatible-bios-image" and ack.config_issues != "invalid-wwn"):
+                            minor_warn.append(
+                                "\n" + server_mo._class_id + " " + server_mo.name + "(" + server_mo.dn + ")")
+                            if server_mo.pn_dn:
+                                minor_warn.append(
+                                    " [Server: " + server_mo.pn_dn + "]")
+                            minor_warn.append(
+                                "\n Reason: " + ack.config_issues)
+                            if original_server_mo.config_qualifier:
+                                minor_warn.append(
+                                    "\n Pre-existing configuration issues:" +
+                                    original_server_mo.config_qualifier)
+                                minor_warn.append(
+                                    "\n Warning: Due to the presence of pre-existing configuration issues, the impact of the current changes cannot be properly evaluated\n\n")
+                            else:
+                                minor_warn.append("\n")
+                        else:
+                            fail_warn.append(
+                                "\n" + server_mo._class_id + " " + server_mo.name + "(" + server_mo.dn + ")")
+                            if server_mo.pn_dn:
+                                fail_warn.append(
+                                    " [Server: " + server_mo.pn_dn + "]")
+                            fail_warn.append("\n Reason: " + ack.config_issues)
+                            if original_server_mo.config_qualifier:
+                                fail_warn.append(
+                                    "\n Pre-existing configuration issues:" +
+                                    original_server_mo.config_qualifier)
+                                fail_warn.append(
+                                    "\n Warning: Due to the presence of pre-existing configuration issues, the impact of the current changes cannot be properly evaluated\n\n")
+                            else:
+                                fail_warn.append("\n")
+
+                if ack.disr:
+                    l_temp = None
+                    if ack.deployment_mode == LsmaintAckConsts.DEPLOYMENT_MODE_IMMEDIATE:
+                        l_temp = immediate_reboot_warn
+                    elif ack.deployment_mode == LsmaintAckConsts.DEPLOYMENT_MODE_TIMER_AUTOMATIC:
+                        l_temp = timer_reboot_warn
+                    elif ack.deployment_mode == LsmaintAckConsts.DEPLOYMENT_MODE_USER_ACK:
+                        l_temp = ack_reboot_warn
+                    else:
+                        continue
+
+                    for each in affected:
+                        if each.dn == parent_dn:
+                            server_mo = each
+
+                    if server_mo:
+                        l_temp.append(
+                            "\n" + server_mo._class_id + " " + server_mo.name + "(" + server_mo.dn + ")")
+                        if server_mo.pn_dn:
+                            l_temp.append(" [Server: " + server_mo.pn_dn + "]")
+                        l_temp.append("\n")
+                        if pending_ack and pending_ack.disr:
+                            l_temp.append(
+                                " Pre-existing pending disruptions: " +
+                                pending_ack.change_details)
+
+        if len(fail_warn) > 0:
+            ret_list.append(
+                "Will cause a Configuration Failure of:" +
+                ''.join(fail_warn))
+        if len(minor_warn) > 0:
+            ret_list.append(
+                "Will cause a non fatal Configuration Warning for:" +
+                ''.join(minor_warn))
+        if len(immediate_reboot_warn) > 0:
+            ret_list.append(
+                "Will cause the Immediate Reboot of:" +
+                ''.join(immediate_reboot_warn))
+        if len(ack_reboot_warn) > 0:
+            ret_list.append(
+                "Will require User Acknowledgement before the Reboot of:" +
+                ''.join(ack_reboot_warn))
+        if len(timer_reboot_warn) > 0:
+            ret_list.append(
+                "Will Reboot in the Maintenance interval of:" +
+                ''.join(timer_reboot_warn))
+        return ret_list
 
     def commit(self, tag=None):
         """
