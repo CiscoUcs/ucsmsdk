@@ -773,24 +773,36 @@ class UcsHandle(UcsSession):
                             break
 
                     if server_mo and server_mo.status != "deleted":
-                        if (server_mo.config_state == "applied" and ack.config_issues != "incompatible-bios-image" and ack.config_issues != "invalid-wwn"):
-                            minor_warn.append("\n" + server_mo._class_id + " " + server_mo.name + "(" + server_mo.dn + ")")
+                        if (server_mo.config_state == "applied" and ack.config_issues !=
+                                "incompatible-bios-image" and ack.config_issues != "invalid-wwn"):
+                            minor_warn.append(
+                                "\n" + server_mo._class_id + " " + server_mo.name + "(" + server_mo.dn + ")")
                             if server_mo.pn_dn:
-                                minor_warn.append(" [Server: " + server_mo.pn_dn + "]")
-                            minor_warn.append("\n Reason: " + ack.config_issues)
+                                minor_warn.append(
+                                    " [Server: " + server_mo.pn_dn + "]")
+                            minor_warn.append(
+                                "\n Reason: " + ack.config_issues)
                             if original_server_mo.config_qualifier:
-                                minor_warn.append("\n Pre-existing configuration issues:" + original_server_mo.config_qualifier)
-                                minor_warn.append("\n Warning: Due to the presence of pre-existing configuration issues, the impact of the current changes cannot be properly evaluated\n\n")
+                                minor_warn.append(
+                                    "\n Pre-existing configuration issues:" +
+                                    original_server_mo.config_qualifier)
+                                minor_warn.append(
+                                    "\n Warning: Due to the presence of pre-existing configuration issues, the impact of the current changes cannot be properly evaluated\n\n")
                             else:
                                 minor_warn.append("\n")
                         else:
-                            fail_warn.append("\n" + server_mo._class_id + " " + server_mo.name + "(" + server_mo.dn + ")")
+                            fail_warn.append(
+                                "\n" + server_mo._class_id + " " + server_mo.name + "(" + server_mo.dn + ")")
                             if server_mo.pn_dn:
-                                fail_warn.append(" [Server: " + server_mo.pn_dn + "]")
+                                fail_warn.append(
+                                    " [Server: " + server_mo.pn_dn + "]")
                             fail_warn.append("\n Reason: " + ack.config_issues)
                             if original_server_mo.config_qualifier:
-                                fail_warn.append("\n Pre-existing configuration issues:" + original_server_mo.config_qualifier)
-                                fail_warn.append("\n Warning: Due to the presence of pre-existing configuration issues, the impact of the current changes cannot be properly evaluated\n\n")
+                                fail_warn.append(
+                                    "\n Pre-existing configuration issues:" +
+                                    original_server_mo.config_qualifier)
+                                fail_warn.append(
+                                    "\n Warning: Due to the presence of pre-existing configuration issues, the impact of the current changes cannot be properly evaluated\n\n")
                             else:
                                 fail_warn.append("\n")
 
@@ -810,23 +822,36 @@ class UcsHandle(UcsSession):
                             server_mo = each
 
                     if server_mo:
-                        l_temp.append("\n" + server_mo._class_id + " " + server_mo.name + "(" + server_mo.dn + ")")
+                        l_temp.append(
+                            "\n" + server_mo._class_id + " " + server_mo.name + "(" + server_mo.dn + ")")
                         if server_mo.pn_dn:
                             l_temp.append(" [Server: " + server_mo.pn_dn + "]")
                         l_temp.append("\n")
                         if pending_ack and pending_ack.disr:
-                            l_temp.append(" Pre-existing pending disruptions: " + pending_ack.change_details)
+                            l_temp.append(
+                                " Pre-existing pending disruptions: " +
+                                pending_ack.change_details)
 
         if len(fail_warn) > 0:
-            ret_list.append("Will cause a Configuration Failure of:" + ''.join(fail_warn))
+            ret_list.append(
+                "Will cause a Configuration Failure of:" +
+                ''.join(fail_warn))
         if len(minor_warn) > 0:
-            ret_list.append("Will cause a non fatal Configuration Warning for:" + ''.join(minor_warn))
+            ret_list.append(
+                "Will cause a non fatal Configuration Warning for:" +
+                ''.join(minor_warn))
         if len(immediate_reboot_warn) > 0:
-            ret_list.append("Will cause the Immediate Reboot of:" + ''.join(immediate_reboot_warn))
+            ret_list.append(
+                "Will cause the Immediate Reboot of:" +
+                ''.join(immediate_reboot_warn))
         if len(ack_reboot_warn) > 0:
-            ret_list.append("Will require User Acknowledgement before the Reboot of:" + ''.join(ack_reboot_warn))
+            ret_list.append(
+                "Will require User Acknowledgement before the Reboot of:" +
+                ''.join(ack_reboot_warn))
         if len(timer_reboot_warn) > 0:
-            ret_list.append("Will Reboot in the Maintenance interval of:" + ''.join(timer_reboot_warn))
+            ret_list.append(
+                "Will Reboot in the Maintenance interval of:" +
+                ''.join(timer_reboot_warn))
         return ret_list
 
     def commit(self, tag=None):
