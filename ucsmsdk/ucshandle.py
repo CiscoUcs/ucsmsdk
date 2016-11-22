@@ -685,22 +685,44 @@ class UcsHandle(UcsSession):
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
 
-        impact = self._get_transaction_impact(response)
-        print(''.join(impact))
+        return self._get_transaction_impact(response)
+
+    def _get_impact_message(self, l_type, params):
+        msg = []
+        msg_prefix = {
+            "warning": "Will cause a non fatal configuration warning for",
+            "failure": "Will cause a configuration failure of",
+            "reboot_immediate": "Will cause the immediate reboot of",
+            "reboot_user_ack": "Will require user acknowledgement before the reboot of",
+            "reboot_timer": "Will reboot in the maintenance interval of"
+        }
+        msg.append(msg_prefix[l_type] + ":")
+        msg.append(params["class_id"] + " " + params["name"] + "(" + params["dn"] + ")")
+        if params["pn_dn"]:
+            msg.append("[Server: " + params["pn_dn"] + "]")
+        if params["issues"]:
+            msg.append("Reason: " + params["issues"])
+        return ' '.join(msg)
 
     def _get_transaction_impact(self, rsp):
+        """
+        Outputs a json object, that can have the following keys,
+            "failure", "warning", "reboot_user_ack", "reboot_immediate",
+            "reboot_maintenance", "misc"
+        """
         from .mometa.lsmaint.LsmaintAck import LsmaintAck, LsmaintAckConsts
         from .mometa.equipment.EquipmentChassis import EquipmentChassis
         from .ucsmo import ManagedObject
+        import json
 
         ackables = []
         affected = []
         old_ackables = []
         old_affected = []
-        output = []
+        msg_buf = {}
 
         if not rsp:
-            return
+            return json.dumps(msg_buf)
 
         for pair in rsp.out_ackables.child:
             for mo in pair.child:
@@ -731,25 +753,10 @@ class UcsHandle(UcsSession):
                 if not isinstance(mo, EquipmentChassis):
                     continue
                 if 'chassis-vif-capacity-reduced' in mo.oper_qualifier:
-                    output.append("""Detected reduced VIF capacity. Check
-                                  if all fabric port channel member links
-                                  are connected to the same port group on
-                                  fabric interconnect. If not then change
-                                  the connectivity accordingly and
-                                  re-acknowledge the chassis.""")
+                    msg_buf["misc"] = """Detected reduced VIF capacity. Check if all fabric port channel member links are connected to the same port group on fabric interconnect. If not then change the connectivity accordingly and re-acknowledge the chassis."""
                 elif 'chassis-port-channel-enabled' in mo.oper_qualifier:
-                    output.append("""Connectivity mode changed to fabric
-                                  port channel on one or both the IOCards.
-                                  This might result in VIF capacity
-                                  decrease on IOCard.""")
-            return
-
-        immediate_reboot_warn = []
-        ack_reboot_warn = []
-        timer_reboot_warn = []
-        fail_warn = []
-        minor_warn = []
-        ret_list = []
+                    msg_buf["misc"] = """Connectivity mode changed to fabric port channel on one or both the IOCards. This might result in VIF capacity decrease on IOCard."""
+            return json.dumps(msg_buf)
 
         for ack in ackables:
             if isinstance(ack, LsmaintAck):
@@ -769,90 +776,75 @@ class UcsHandle(UcsSession):
 
                     for each in old_affected:
                         if each.dn == parent_dn:
-                            original_server_mo = each
+                            orig_server_mo = each
                             break
 
                     if server_mo and server_mo.status != "deleted":
                         if (server_mo.config_state == "applied" and ack.config_issues !=
                                 "incompatible-bios-image" and ack.config_issues != "invalid-wwn"):
-                            minor_warn.append(
-                                "\n" + server_mo._class_id + " " + server_mo.name + "(" + server_mo.dn + ")")
-                            if server_mo.pn_dn:
-                                minor_warn.append(
-                                    " [Server: " + server_mo.pn_dn + "]")
-                            minor_warn.append(
-                                "\n Reason: " + ack.config_issues)
-                            if original_server_mo.config_qualifier:
-                                minor_warn.append(
-                                    "\n Pre-existing configuration issues:" +
-                                    original_server_mo.config_qualifier)
-                                minor_warn.append(
-                                    "\n Warning: Due to the presence of pre-existing configuration issues, the impact of the current changes cannot be properly evaluated\n\n")
-                            else:
-                                minor_warn.append("\n")
+                            l_type = "warning"
                         else:
-                            fail_warn.append(
-                                "\n" + server_mo._class_id + " " + server_mo.name + "(" + server_mo.dn + ")")
-                            if server_mo.pn_dn:
-                                fail_warn.append(
-                                    " [Server: " + server_mo.pn_dn + "]")
-                            fail_warn.append("\n Reason: " + ack.config_issues)
-                            if original_server_mo.config_qualifier:
-                                fail_warn.append(
-                                    "\n Pre-existing configuration issues:" +
-                                    original_server_mo.config_qualifier)
-                                fail_warn.append(
-                                    "\n Warning: Due to the presence of pre-existing configuration issues, the impact of the current changes cannot be properly evaluated\n\n")
-                            else:
-                                fail_warn.append("\n")
+                            l_type = "failure"
+
+                        params = {
+                            "class_id": server_mo._class_id,
+                            "name": server_mo.name,
+                            "dn": server_mo.dn,
+                            "pn_dn": server_mo.pn_dn,
+                            "issues": ack.config_issues
+                        }
+
+                        params["message"] = self._get_impact_message(l_type,
+                                                                     params)
+
+                        if l_type not in msg_buf:
+                            msg_buf[l_type] = []
+
+                        if orig_server_mo.config_qualifier:
+                            params["pending"] = {
+                                "conf_qual": orig_server_mo.config_qualifier,
+                                "message": "Warning: Due to the presence of pre-existing configuration issues the impact of the current changes cannot be properly evaluated"
+                            }
+                        msg_buf[l_type].append(params)
 
                 if ack.disr:
-                    l_temp = None
                     if ack.deployment_mode == LsmaintAckConsts.DEPLOYMENT_MODE_IMMEDIATE:
-                        l_temp = immediate_reboot_warn
+                        l_type = "reboot_immediate"
                     elif ack.deployment_mode == LsmaintAckConsts.DEPLOYMENT_MODE_TIMER_AUTOMATIC:
-                        l_temp = timer_reboot_warn
+                        l_type = "reboot_timer"
                     elif ack.deployment_mode == LsmaintAckConsts.DEPLOYMENT_MODE_USER_ACK:
-                        l_temp = ack_reboot_warn
+                        l_type = "reboot_user_ack"
                     else:
                         continue
 
                     for each in affected:
                         if each.dn == parent_dn:
                             server_mo = each
+                            break
 
                     if server_mo:
-                        l_temp.append(
-                            "\n" + server_mo._class_id + " " + server_mo.name + "(" + server_mo.dn + ")")
-                        if server_mo.pn_dn:
-                            l_temp.append(" [Server: " + server_mo.pn_dn + "]")
-                        l_temp.append("\n")
-                        if pending_ack and pending_ack.disr:
-                            l_temp.append(
-                                " Pre-existing pending disruptions: " +
-                                pending_ack.change_details)
+                        params = {
+                                "class_id": server_mo._class_id,
+                                "name": server_mo.name,
+                                "dn": server_mo.dn,
+                                "pn_dn": server_mo.pn_dn,
+                                "issues": ack.config_issues
+                             }
+                        params["message"] = self._get_impact_message(l_type,
+                                                                     params)
 
-        if len(fail_warn) > 0:
-            ret_list.append(
-                "Will cause a Configuration Failure of:" +
-                ''.join(fail_warn))
-        if len(minor_warn) > 0:
-            ret_list.append(
-                "Will cause a non fatal Configuration Warning for:" +
-                ''.join(minor_warn))
-        if len(immediate_reboot_warn) > 0:
-            ret_list.append(
-                "Will cause the Immediate Reboot of:" +
-                ''.join(immediate_reboot_warn))
-        if len(ack_reboot_warn) > 0:
-            ret_list.append(
-                "Will require User Acknowledgement before the Reboot of:" +
-                ''.join(ack_reboot_warn))
-        if len(timer_reboot_warn) > 0:
-            ret_list.append(
-                "Will Reboot in the Maintenance interval of:" +
-                ''.join(timer_reboot_warn))
-        return ret_list
+                        if l_type not in msg_buf:
+                            msg_buf[l_type] = []
+
+                        if pending_ack and pending_ack.disr:
+                            params["pending"] = {
+                                "old_pn_dn": pending_ack.old_pn_dn,
+                                "change_details": pending_ack.change_details,
+                                "changed_by": pending_ack.change_by,
+                                "message": "Pre-existing pending disruptions: " + pending_ack.change_details
+                            }
+                        msg_buf[l_type].append(params)
+        return json.dumps(msg_buf, indent=4)
 
     def commit(self, tag=None):
         """
