@@ -707,7 +707,7 @@ class UcsHandle(UcsSession):
     def _get_transaction_impact(self, rsp):
         """
         Outputs a json object, that can have the following keys,
-            "failure", "warning", "reboot_user_ack", "reboot_immedaite",
+            "failure", "warning", "reboot_user_ack", "reboot_immediate",
             "reboot_maintenance", "misc"
         """
         from .mometa.lsmaint.LsmaintAck import LsmaintAck, LsmaintAckConsts
