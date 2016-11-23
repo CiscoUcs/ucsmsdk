@@ -47,17 +47,17 @@ class SmartRedirectHandler(urllib2.HTTPRedirectHandler):
         return resp_status
 
 
-class TLS1Handler(urllib2.HTTPSHandler):
+class TLSHandler(urllib2.HTTPSHandler):
     """Like HTTPSHandler but more specific"""
 
     def __init__(self):
         urllib2.HTTPSHandler.__init__(self)
 
     def https_open(self, req):
-        return self.do_open(TLS1Connection, req)
+        return self.do_open(TLSConnection, req)
 
 
-class TLS1Connection(httplib.HTTPSConnection):
+class TLSConnection(httplib.HTTPSConnection):
     """Like HTTPSConnection but more specific"""
 
     def __init__(self, host, **kwargs):
@@ -80,9 +80,20 @@ class TLS1Connection(httplib.HTTPSConnection):
             self.sock = sock
             self._tunnel()
 
-        # This is the only difference; default wrap_socket uses SSLv23
-        self.sock = ssl.wrap_socket(sock, self.key_file, self.cert_file,
-                                    ssl_version=ssl.PROTOCOL_TLSv1)
+        if sys.version_info >= (2, 7, 9):
+            # Since python 2.7.9, tls 1.1 and 1.2 are supported via
+            # SSLContext
+            ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
+            ssl_context.options |= ssl.OP_NO_SSLv2
+            ssl_context.options |= ssl.OP_NO_SSLv3
+            if self.key_file and self.cert_file:
+                ssl_context.load_cert_chain(keyfile=self.key_file,
+                                            certfile=self.cert_file)
+            self.sock = ssl_context.wrap_socket(sock)
+        else:
+            # fallback to TLSv1
+            self.sock = ssl.wrap_socket(sock, self.key_file, self.cert_file,
+                                        ssl_version=ssl.PROTOCOL_TLSv1)
 
 
 class UcsDriver(object):
@@ -108,7 +119,7 @@ class UcsDriver(object):
         Internal method to handle redirection and use TLS protocol.
         """
 
-        handlers = [SmartRedirectHandler, TLS1Handler]
+        handlers = [SmartRedirectHandler, TLSHandler]
         if self.__proxy:
             proxy_handler = urllib2.ProxyHandler(
                 {'http': self.__proxy, 'https': self.__proxy})
