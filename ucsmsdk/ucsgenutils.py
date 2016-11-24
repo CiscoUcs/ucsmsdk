@@ -40,6 +40,15 @@ reserved_keywords = [
     "return", "try", "while", "with", "yield"]
 
 
+def str_to_bool(s):
+    """
+    convert case insensitive 'true' string to bool True else False
+    """
+    if s in AFFIRMATIVE_LIST:
+        return True
+    return False
+
+
 def is_python_reserved(word):
     """
     Check if it is python reserved word.
