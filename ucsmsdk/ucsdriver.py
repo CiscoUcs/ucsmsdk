@@ -47,6 +47,55 @@ class SmartRedirectHandler(urllib2.HTTPRedirectHandler):
         return resp_status
 
 
+class TLSHandler(urllib2.HTTPSHandler):
+    """Like HTTPSHandler but more specific"""
+
+    def __init__(self):
+        urllib2.HTTPSHandler.__init__(self)
+
+    def https_open(self, req):
+        return self.do_open(TLSConnection, req)
+
+
+class TLSConnection(httplib.HTTPSConnection):
+    """Like HTTPSConnection but more specific"""
+
+    def __init__(self, host, **kwargs):
+        httplib.HTTPSConnection.__init__(self, host, **kwargs)
+
+    def connect(self):
+        """Overrides HTTPSConnection.connect to specify TLS version"""
+        # Standard implementation from HTTPSConnection, which is not
+        # designed for extension, unfortunately
+        if sys.version_info >= (2, 7):
+            sock = socket.create_connection((self.host, self.port),
+                                            self.timeout, self.source_address)
+        elif sys.version_info >= (2, 6):
+            sock = socket.create_connection((self.host, self.port),
+                                            self.timeout)
+        else:
+            sock = socket.create_connection((self.host, self.port))
+
+        if getattr(self, '_tunnel_host', None):
+            self.sock = sock
+            self._tunnel()
+
+        if sys.version_info >= (2, 7, 9):
+            # Since python 2.7.9, tls 1.1 and 1.2 are supported via
+            # SSLContext
+            ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
+            ssl_context.options |= ssl.OP_NO_SSLv2
+            ssl_context.options |= ssl.OP_NO_SSLv3
+            if self.key_file and self.cert_file:
+                ssl_context.load_cert_chain(keyfile=self.key_file,
+                                            certfile=self.cert_file)
+            self.sock = ssl_context.wrap_socket(sock)
+        else:
+            # fallback to TLSv1
+            self.sock = ssl.wrap_socket(sock, self.key_file, self.cert_file,
+                                        ssl_version=ssl.PROTOCOL_TLSv1)
+
+
 class TLS1Handler(urllib2.HTTPSHandler):
     """Like HTTPSHandler but more specific"""
 
@@ -80,7 +129,7 @@ class TLS1Connection(httplib.HTTPSConnection):
             self.sock = sock
             self._tunnel()
 
-        # This is the only difference; default wrap_socket uses SSLv23
+        # fallback to TLSv1
         self.sock = ssl.wrap_socket(sock, self.key_file, self.cert_file,
                                     ssl_version=ssl.PROTOCOL_TLSv1)
 
@@ -103,12 +152,18 @@ class UcsDriver(object):
         self.__headers = {}
         self.__handlers = self.__get_handlers()
 
-    def __get_handlers(self):
+    def update_handlers(self, tls_proto=None):
+        self.__handlers = self.__get_handlers(tls_proto)
+
+    def __get_handlers(self, tls_proto="tlsv1"):
         """
         Internal method to handle redirection and use TLS protocol.
         """
 
-        handlers = [SmartRedirectHandler, TLS1Handler]
+        # tls_handler implements a fallback mechanism for servers that
+        # do not support TLS 1.1/1.2
+        tls_handler = (TLSHandler, TLS1Handler)[tls_proto == "tlsv1"]
+        handlers = [SmartRedirectHandler, tls_handler]
         if self.__proxy:
             proxy_handler = urllib2.ProxyHandler(
                 {'http': self.__proxy, 'https': self.__proxy})
@@ -204,7 +259,16 @@ class UcsDriver(object):
                 log.debug('%s ====> %s' % (uri, data))
 
             opener = urllib2.build_opener(*self.__handlers)
-            response = opener.open(request)
+            try:
+                response = opener.open(request)
+            except Exception as e:
+                if "SSL".lower() not in str(e).lower():
+                    raise
+
+                # Fallback to TLSv1 for this server
+                self.update_handlers(tls_proto="tlsv1")
+                opener = urllib2.build_opener(*self.__handlers)
+                response = opener.open(request)
 
             if type(response) is list:
                 if len(response) == 2 and \
