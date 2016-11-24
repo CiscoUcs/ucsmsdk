@@ -96,6 +96,44 @@ class TLSConnection(httplib.HTTPSConnection):
                                         ssl_version=ssl.PROTOCOL_TLSv1)
 
 
+class TLS1Handler(urllib2.HTTPSHandler):
+    """Like HTTPSHandler but more specific"""
+
+    def __init__(self):
+        urllib2.HTTPSHandler.__init__(self)
+
+    def https_open(self, req):
+        return self.do_open(TLS1Connection, req)
+
+
+class TLS1Connection(httplib.HTTPSConnection):
+    """Like HTTPSConnection but more specific"""
+
+    def __init__(self, host, **kwargs):
+        httplib.HTTPSConnection.__init__(self, host, **kwargs)
+
+    def connect(self):
+        """Overrides HTTPSConnection.connect to specify TLS version"""
+        # Standard implementation from HTTPSConnection, which is not
+        # designed for extension, unfortunately
+        if sys.version_info >= (2, 7):
+            sock = socket.create_connection((self.host, self.port),
+                                            self.timeout, self.source_address)
+        elif sys.version_info >= (2, 6):
+            sock = socket.create_connection((self.host, self.port),
+                                            self.timeout)
+        else:
+            sock = socket.create_connection((self.host, self.port))
+
+        if getattr(self, '_tunnel_host', None):
+            self.sock = sock
+            self._tunnel()
+
+        # fallback to TLSv1
+        self.sock = ssl.wrap_socket(sock, self.key_file, self.cert_file,
+                                    ssl_version=ssl.PROTOCOL_TLSv1)
+
+
 class UcsDriver(object):
     """
     This class is responsible to create http and https connection using urllib
@@ -114,12 +152,18 @@ class UcsDriver(object):
         self.__headers = {}
         self.__handlers = self.__get_handlers()
 
-    def __get_handlers(self):
+    def update_handlers(self, tls_proto=None):
+        self.__handlers = self.__get_handlers(tls_proto)
+
+    def __get_handlers(self, tls_proto="tlsv1"):
         """
         Internal method to handle redirection and use TLS protocol.
         """
 
-        handlers = [SmartRedirectHandler, TLSHandler]
+        # tls_handler implements a fallback mechanism for servers that
+        # do not support TLS 1.1/1.2
+        tls_handler = (TLSHandler, TLS1Handler)[tls_proto == "tlsv1"]
+        handlers = [SmartRedirectHandler, tls_handler]
         if self.__proxy:
             proxy_handler = urllib2.ProxyHandler(
                 {'http': self.__proxy, 'https': self.__proxy})
@@ -215,7 +259,16 @@ class UcsDriver(object):
                 log.debug('%s ====> %s' % (uri, data))
 
             opener = urllib2.build_opener(*self.__handlers)
-            response = opener.open(request)
+            try:
+                response = opener.open(request)
+            except Exception as e:
+                if "SSL".lower() not in str(e).lower():
+                    raise
+
+                # Fallback to TLSv1 for this server
+                self.update_handlers(tls_proto="tlsv1")
+                opener = urllib2.build_opener(*self.__handlers)
+                response = opener.open(request)
 
             if type(response) is list:
                 if len(response) == 2 and \
