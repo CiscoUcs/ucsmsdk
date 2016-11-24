@@ -14,6 +14,7 @@
 
 import logging
 import threading
+import jsonpickle
 
 from . import ucsgenutils
 from . import ucscoreutils
@@ -792,3 +793,10 @@ class UcsHandle(UcsSession):
         from .ucseventhandler import wait
 
         wait(self, mo, prop, value, cb, timeout_sec=timeout, poll_sec=poll_sec)
+
+    def freeze(self):
+        return jsonpickle.encode(self)
+
+    @staticmethod
+    def unfreeze(frozen_handle):
+        return jsonpickle.decode(frozen_handle)
