@@ -6,7 +6,7 @@
 
 # Python SDK for Cisco UCS
 
-* Apache License, Version 2.0 (the "License") 
+* Apache License, Version 2.0 (the "License")
 * Documentation: https://CiscoUcs.github.io/ucsmsdk_docs/
 
 ## Installation
@@ -44,4 +44,7 @@ Installs the latest top of the tree development version,
 ## Community:
 
 * We are on Slack - slack requires registration, but the ucspython team is open invitation to
-  anyone to register [here](https://ucspython.herokuapp.com) 
+  anyone to register [here](https://ucspython.herokuapp.com)
+
+
+
