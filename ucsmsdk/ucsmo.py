@@ -107,6 +107,27 @@ class ManagedObject(UcsBase):
     def _is_unknown_property(self, prop):
         return prop not in self.prop_meta
 
+    def check_prop_match(self, **kwargs):
+        for prop_name in kwargs:
+            if self._is_unknown_property(prop_name):
+                raise ValueError("Unknown Property Name Exception - "
+                                 "Class [%s]: Prop <%s> "
+                                 % (self.__class__.__name__, prop_name))
+
+            if kwargs[prop_name] != getattr(self, prop_name):
+                return False
+        return True
+
+    def set_prop_multiple(self, **kwargs):
+        for prop_name in kwargs:
+            if self._is_unknown_property(prop_name):
+                UcsWarning("Unknown Property Name for "
+                           "Class [%s]: Prop <%s>, setting it forcefully"
+                           % (self.__class__.__name__, prop_name))
+                self.__set_prop(prop_name, kwargs[prop_name], forced=True)
+            else:
+                self.__set_prop(prop_name, kwargs[prop_name])
+
     @property
     def parent_mo(self):
         """Getter method of ManagedObject Class"""
