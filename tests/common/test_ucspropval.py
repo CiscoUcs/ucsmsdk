@@ -12,21 +12,30 @@
 # limitations under the License.
 
 from nose.tools import *
-from ucsmsdk.mometa.ls.LsServer import LsServer
+from ..connection.info import custom_setup, custom_teardown
 
+handle = None
 obj = None
 
 
-def setup_func():
+def setup_module():
+    from ucsmsdk.mometa.ls.LsServer import LsServer
     global obj
-    obj = LsServer("org-root", "test")
+    global handle
+
+    handle = custom_setup()
+    obj = LsServer("org-root", "test", usr_lbl="sample")
+
+    handle.add_mo(obj, True)
+    handle.commit()
 
 
-def teardown_func():
-    pass
+def teardown_module():
+    handle.remove_mo(obj)
+    handle.commit()
+    custom_teardown(handle)
 
 
-@with_setup(setup_func, teardown_func)
 @raises(Exception)
 def test_001_set_ro_property():
     # This is a read only property
@@ -34,17 +43,39 @@ def test_001_set_ro_property():
     obj.oper_state = "up"
 
 
-@with_setup(setup_func, teardown_func)
 def test_002_set_rw_property():
     # This is a read write property.
     # Should happen without any issues
     obj.descr = "test_description"
 
 
-@with_setup(setup_func(), teardown_func())
 @raises(Exception)
 def test_003_set_naming_property():
     # This is a naming property. so, it is create only
     # Should fail with an exception
     obj.name = "test1"
 
+
+def test_004_check_existing_prop_match():
+    # Checking property aginst existing property
+    bool_var = obj.check_prop_match(usr_lbl="sample")
+    assert_equal(bool_var, True)
+
+
+@raises(Exception)
+def test_005_check_nonexisting_prop_match():
+    # Checking property aginst non-existing property
+    bool_var = obj.check_prop_match(usr_lbl="new_label")
+    assert_equal(bool_var, True)
+
+
+def test_006_set_prop_multiple():
+    # Setting multiple property of object
+    obj.set_prop_multiple(usr_lbl="new_label",
+                          vmedia_policy_name="test_vmedia_pol")
+    handle.set_mo(obj)
+    handle.commit()
+
+    new_obj = handle.query_dn(obj.dn)
+    assert_equal(new_obj.usr_lbl, "new_label")
+    assert_equal(new_obj.vmedia_policy_name, "test_vmedia_pol")
