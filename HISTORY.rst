@@ -3,6 +3,19 @@
 History
 -------
 
+0.9.2.1 ()
+---------------------
+
+* Support for estimating impact of a transaction - `handle.estimate_impact`
+* Support for TLS 1.1, 1.2 Newer UCSM releases support TLS1.2. HTTPS connection
+  to the servers with newer releases might fail in absence of TLS1.1/1.2
+  support.
+* Added command line script to make running `convert_to_ucs_python` easier.
+  bin/watch_ucs.py in the github repo.
+* Special characters like <,>,& in XML values are deemed invalid and cause
+  failure in parsing XML. Added a recovery logic if these exist in the XML
+  value fields.
+
 0.9.2.0 (2016-09-21)
 ---------------------
 
