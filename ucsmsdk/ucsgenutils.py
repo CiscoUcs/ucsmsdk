@@ -518,3 +518,23 @@ def iteritems(d):
         return d.iteritems()
     except AttributeError:
         return d.items()
+
+
+def remove_invalid_chars(xml_str):
+    replace_dict = {
+        '<': '&lt;',
+        '>': '&gt;',
+        '&': '&amp;'
+    }
+    to_repl = {}
+    for value in re.findall('"([^"]*)"', xml_str):
+        for key in replace_dict.keys():
+            if key in value:
+                if value in to_repl:
+                    to_repl[value] = to_repl[value].replace(key,
+                                                            replace_dict[key])
+                else:
+                    to_repl[value] = value.replace(key, replace_dict[key])
+    for each in to_repl:
+        xml_str = xml_str.replace(each, to_repl[each])
+    return xml_str

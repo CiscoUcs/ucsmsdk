@@ -81,7 +81,12 @@ def from_xml_str(xml_str, handle=None):
         root_element = extract_root_elem(xml_str)\n
     """
 
-    root_elem = ET.fromstring(xml_str)
+    try:
+        root_elem = ET.fromstring(xml_str)
+    except:
+        recovered_xml = ucsgenutils.remove_invalid_chars(xml_str)
+        root_elem = ET.fromstring(recovered_xml)
+
     if root_elem.tag == "error":
         error_code = root_elem.attrib['errorCode']
         error_descr = root_elem.attrib['errorDescr']
