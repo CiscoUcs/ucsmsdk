@@ -247,6 +247,7 @@ class UcsSession(object):
         """
 
         from . import ucsxmlcodec as xc
+        from .ucsgenutils import remove_invalid_chars
 
         self._tx_lock_acquire_conditional(elem)
         if self._is_stale_cookie(elem):
@@ -260,7 +261,11 @@ class UcsSession(object):
 
         try:
             if response_str:
-                response = xc.from_xml_str(response_str, self)
+                try:
+                    response = xc.from_xml_str(response_str, self)
+                except:
+                    recovered_str = remove_invalid_chars(response_str)
+                    response = xc.from_xml_str(recovered_str, self)
 
             # Cookie update should happen with-in the lock
             # this ensures that the next packet goes out
