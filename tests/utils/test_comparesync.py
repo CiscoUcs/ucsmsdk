@@ -30,8 +30,8 @@ def static_setup():
     ref_handle = UcsHandle("192.168.1.1", "admin", "password")
     diff_handle = UcsHandle("192.168.1.2", "admin", "password")
 
-    ref_handle.__dict__['_UcsSession__version'] = UcsVersion("2.2(5a)")
-    diff_handle.__dict__['_UcsSession__version'] = UcsVersion("2.2(2c)")
+    ref_handle.__dict__['_UcsSession__version'] = "2.2(5a)"
+    diff_handle.__dict__['_UcsSession__version'] = "2.2(2c)"
 
 
 def test_compare_same_obj_with_diff_props():
