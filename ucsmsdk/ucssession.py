@@ -13,6 +13,7 @@
 
 
 import time
+import json
 import logging
 import threading
 from threading import Timer
@@ -53,6 +54,7 @@ class UcsSession(object):
 
         self.__refresh_timer = None
         self.__force = False
+        self.__auto_refresh = False
 
         self.__dump_xml = False
         self.__redirect = False
@@ -92,7 +94,8 @@ class UcsSession(object):
 
     @property
     def version(self):
-        return self.__version
+        from .ucscoremeta import UcsVersion
+        return UcsVersion(self.__version)
 
     @property
     def refresh_period(self):
@@ -117,6 +120,40 @@ class UcsSession(object):
     @property
     def last_update_time(self):
         return self.__last_update_time
+
+    def _freeze(self):
+        save = {
+            "ip": self.__ip,
+            "username": self.__username,
+            "password": self.__password,
+            "proxy": self.__proxy,
+            "uri": self.__uri,
+            "ucs": self.__ucs,
+            "name": self.__name,
+            "cookie": self.__cookie,
+            "session_id": self.__session_id,
+            "version": self.__version,
+            "refresh_period": self.__refresh_period,
+            "priv": self.__priv,
+            "domains": self.__domains,
+            "channel": self.__channel,
+            "evt_channel": self.__evt_channel,
+            "last_update_time": self.__last_update_time,
+            "force": self.__force,
+            "auto_refresh": self.__auto_refresh,
+            "dump_xml": self.__dump_xml,
+            "redirect": self.__redirect
+        }
+        return json.dumps(save)
+
+    def _unfreeze(self, params_json):
+        params_dict = json.loads(params_json)
+        for param in params_dict:
+            setattr(self, '_UcsSession__' + param, params_dict[param])
+
+        # cookie might be stale, if so relogin
+        if self.__auto_refresh:
+            self._refresh(auto_relogin=True)
 
     def __create_uri(self, port, secure):
         """
@@ -159,13 +196,10 @@ class UcsSession(object):
         """
         Internal method to update the session variables
         """
-
-        from .ucscoremeta import UcsVersion
-
         self.__name = response.out_name
         self.__cookie = response.out_cookie
         self.__session_id = response.out_session_id
-        self.__version = UcsVersion(response.out_version)
+        self.__version = response.out_version
         self.__refresh_period = int(response.out_refresh_period)
         self.__priv = response.out_priv
         self.__domains = response.out_domains
@@ -502,7 +536,7 @@ class UcsSession(object):
             raise UcsException(response.error_code,
                                response.error_descr)
         firmware = response.out_config.child[0]
-        self.__version = UcsVersion(firmware.version)
+        self.__version = firmware.version
 
     def _update_domain_name_and_ip(self):
         from .ucsmethodfactory import config_resolve_dn
@@ -532,6 +566,7 @@ class UcsSession(object):
         """
         from .ucsmethodfactory import aaa_login
 
+        self.__auto_refresh = auto_refresh
         self.__force = force
 
         if self.__validate_connection():

@@ -985,8 +985,10 @@ class UcsHandle(UcsSession):
         wait(self, mo, prop, value, cb, timeout_sec=timeout, poll_sec=poll_sec)
 
     def freeze(self):
-        return jsonpickle.encode(self)
+        return self._freeze()
 
     @staticmethod
     def unfreeze(frozen_handle):
-        return jsonpickle.decode(frozen_handle)
+        handle = UcsHandle("", "", "")
+        handle._unfreeze(frozen_handle)
+        return handle
