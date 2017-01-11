@@ -58,6 +58,7 @@ class UcsSession(object):
 
         self.__dump_xml = False
         self.__redirect = False
+        self.__threaded = False
         self.__driver = UcsDriver(proxy=self.__proxy)
 
     @property
@@ -121,6 +122,10 @@ class UcsSession(object):
     def last_update_time(self):
         return self.__last_update_time
 
+    @property
+    def threaded(self):
+        return self.__threaded
+
     def _freeze(self):
         save = {
             "ip": self.__ip,
@@ -142,7 +147,8 @@ class UcsSession(object):
             "force": self.__force,
             "auto_refresh": self.__auto_refresh,
             "dump_xml": self.__dump_xml,
-            "redirect": self.__redirect
+            "redirect": self.__redirect,
+            "threaded": self.__threaded
         }
         return json.dumps(save)
 
@@ -150,6 +156,9 @@ class UcsSession(object):
         params_dict = json.loads(params_json)
         for param in params_dict:
             setattr(self, '_UcsSession__' + param, params_dict[param])
+
+        # update the drvier if a proxy configuration exists
+        self.__driver = UcsDriver(proxy=self.__proxy)
 
         # cookie might be stale, if so relogin
         if self.__auto_refresh:
@@ -637,6 +646,9 @@ class UcsSession(object):
         Internal method to set dump_xml to False
         """
         self.__dump_xml = False
+
+    def _set_mode_threading(self, enable=False):
+        self.__threaded = enable
 
 
 def _get_port(port, secure):

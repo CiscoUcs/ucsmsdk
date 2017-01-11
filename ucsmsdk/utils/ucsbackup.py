@@ -46,7 +46,7 @@ def backup_ucs(handle, backup_type, file_dir, file_name, timeout_in_sec=600,
         file_dir = "/home/user/backup"\n
         file_name = "config_backup.xml"\n
         backup_ucs(handle, backup_type="config-logical",
-                    file_dir=test_support, file_name=file_name)\n
+                    file_dir=file_dir, file_name=file_name)\n
     """
 
     from ..mometa.mgmt.MgmtBackup import MgmtBackup, MgmtBackupConsts
