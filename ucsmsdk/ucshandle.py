@@ -54,7 +54,6 @@ class UcsHandle(UcsSession):
         UcsSession.__init__(self, ip, username, password, port, secure, proxy)
         self.__commit_buf = {}
         self.__commit_buf_tagged = {}
-        self.__threaded = False
 
     def set_dump_xml(self):
         """
@@ -79,7 +78,7 @@ class UcsHandle(UcsSession):
         This makes every thread a separate transaction that does not
         interfere with other threads.
         """
-        self.__threaded = True
+        self._set_mode_threading(enable=True)
 
     def unset_mode_threading(self):
         """
@@ -87,13 +86,13 @@ class UcsHandle(UcsSession):
         Applications use the common common_buffer in this mode.
         Only one simultaneous transaction is possible here on
         """
-        self.__threaded = False
+        self._set_mode_threading(enable=False)
 
     def is_threading_enabled(self):
         """
         returns if threading mode is set
         """
-        return self.__threaded
+        return self.threaded
 
     def login(self, auto_refresh=False, force=False):
         """
@@ -985,8 +984,10 @@ class UcsHandle(UcsSession):
         wait(self, mo, prop, value, cb, timeout_sec=timeout, poll_sec=poll_sec)
 
     def freeze(self):
-        return jsonpickle.encode(self)
+        return self._freeze()
 
     @staticmethod
     def unfreeze(frozen_handle):
-        return jsonpickle.decode(frozen_handle)
+        handle = UcsHandle("", "", "")
+        handle._unfreeze(frozen_handle)
+        return handle
