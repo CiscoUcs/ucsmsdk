@@ -15,7 +15,6 @@
 import re
 import logging
 import threading
-import jsonpickle
 
 from . import ucsgenutils
 from . import ucscoreutils

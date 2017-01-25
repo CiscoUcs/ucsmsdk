@@ -16,7 +16,7 @@ with open('HISTORY.rst') as history_file:
 
 setup(
     name='ucsmsdk',
-    version='0.9.3.0',
+    version='0.9.3.1',
     description="Python SDK for Cisco UCS",
     long_description=readme + '\n\n' + history,
     author="Cisco Systems Inc",
@@ -28,7 +28,7 @@ setup(
     package_dir={'ucsmsdk':
                  'ucsmsdk'},
     include_package_data=True,
-    install_requires=['pyparsing', 'jsonpickle'],
+    install_requires=['pyparsing'],
     license="http://www.apache.org/licenses/LICENSE-2.0",
     zip_safe=False,
     keywords='ucsmsdk',
