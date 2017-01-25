@@ -3,7 +3,7 @@
 History
 -------
 
-0.9.2.1 ()
+0.9.3.0 (2017-01-25)
 ---------------------
 
 * Support for estimating impact of a transaction - `handle.estimate_impact`
@@ -15,6 +15,8 @@ History
 * Special characters like <,>,& in XML values are deemed invalid and cause
   failure in parsing XML. Added a recovery logic if these exist in the XML
   value fields.
+* Support for serialization, deserialization of UcsHandle
+* Support for UCSM inventory via `get_inventory` API
 
 0.9.2.0 (2016-09-21)
 ---------------------
