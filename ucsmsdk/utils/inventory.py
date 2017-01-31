@@ -276,7 +276,7 @@ def _get_inventory_csv(inventory, file_name, spec=inventory_spec):
     if file_name is None:
         raise UcsOperationError("Inventory collection",
                                 "file_name is a required parameter")
-    f = csv.writer(open(file_name, "wb"))
+    f = csv.writer(open(file_name, "w"))
 
     x = inventory
     for comp in spec:
@@ -351,7 +351,7 @@ def _get_inventory_html(inventory, file_name, spec=inventory_spec):
     if file_name is None:
         raise UcsOperationError("Inventory collection",
                                 "file_name is a required parameter")
-    f = open(file_name, "wb")
+    f = open(file_name, "w")
 
     html = ""
     html += "<html>\n"
