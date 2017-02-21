@@ -235,7 +235,14 @@ class UcsHandle(UcsSession):
         if not dns:
             raise ValueError("Provide Comma Separated string of Dns")
 
-        dn_list = [dn.strip() for dn in dns]
+        dn_list = []
+        for dn in dns:
+            if isinstance(dn, list):
+                for each in dn:
+                    dn_list.append(each.strip())
+            elif isinstance(dn, str):
+                dn_list.append(dn.strip())
+
         dn_dict = {}
         for dn_ in dn_list:
             dn_dict[dn_] = None
@@ -279,7 +286,14 @@ class UcsHandle(UcsSession):
         if not class_ids:
             raise ValueError("Provide Comma Separated string of Class Ids")
 
-        class_id_list = [class_id.strip() for class_id in class_ids]
+        class_id_list = []
+        for class_id in class_ids:
+            if isinstance(class_id, list):
+                for each in class_id:
+                    class_id_list.append(each.strip())
+            elif isinstance(class_id, str):
+                class_id_list.append(class_id.strip())
+
         class_id_dict = {}
         class_id_set = ClassIdSet()
 
