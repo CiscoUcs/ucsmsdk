@@ -219,7 +219,7 @@ class UcsHandle(UcsSession):
         of their distinguised names.
 
         Args:
-            dns (comma separated strings): distinguished names to be
+            dns (list or comma separated strings): distinguished names to be
                 queried for
 
         Returns:
@@ -227,15 +227,23 @@ class UcsHandle(UcsSession):
 
         Example:
             obj = handle.lookup_by_dns("fabric/lan/net-100", "fabric/lan/net-101")
+            obj = handle.lookup_by_dns(["fabric/lan/net-100", "fabric/lan/net-101"])
         """
 
         from .ucsbasetype import DnSet, Dn
         from .ucsmethodfactory import config_resolve_dns
 
         if not dns:
-            raise ValueError("Provide Comma Separated string of Dns")
+            raise ValueError("Provide a list or Comma Separated string of Dns")
 
-        dn_list = [dn.strip() for dn in dns]
+        dn_list = []
+        for dn in dns:
+            if isinstance(dn, list):
+                for each in dn:
+                    dn_list.append(each.strip())
+            elif isinstance(dn, str):
+                dn_list.append(dn.strip())
+
         dn_dict = {}
         for dn_ in dn_list:
             dn_dict[dn_] = None
@@ -263,13 +271,15 @@ class UcsHandle(UcsSession):
         of their class Ids.
 
         Args:
-            class_ids (comma separated strings): Class Ids to be queried for
+            class_ids (list or comma separated strings): Class Ids to be
+                                                        queried for
 
         Returns:
         Dictionary {class_id1: [objects], class_id2: [objects]}
 
         Example:
             obj = handle.lookup_by_dns("OrgOrg", "LsServer")
+            obj = handle.lookup_by_dns(["OrgOrg", "LsServer"])
         """
 
         # ToDo - How to handle unknown class_id
@@ -277,9 +287,17 @@ class UcsHandle(UcsSession):
         from .ucsmeta import MO_CLASS_ID
 
         if not class_ids:
-            raise ValueError("Provide Comma Separated string of Class Ids")
+            raise ValueError("Provide a list or Comma Separated string of \
+                             Class Ids")
 
-        class_id_list = [class_id.strip() for class_id in class_ids]
+        class_id_list = []
+        for class_id in class_ids:
+            if isinstance(class_id, list):
+                for each in class_id:
+                    class_id_list.append(each.strip())
+            elif isinstance(class_id, str):
+                class_id_list.append(class_id.strip())
+
         class_id_dict = {}
         class_id_set = ClassIdSet()
 
