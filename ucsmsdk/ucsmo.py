@@ -227,6 +227,22 @@ class ManagedObject(UcsBase):
                 self._dirty_mask |= prop_meta.mask
         object.__setattr__(self, name, value)
 
+    def __json__(self):
+        # return the json dict
+        dict = {'class_id': self._class_id}
+        for prop, prop_value in sorted(ucsgenutils.iteritems(self.__dict__)):
+            if prop in ManagedObject.__internal_prop or prop.startswith(
+                    "_ManagedObject__"):
+                continue
+            if prop in self.__xtra_props:
+                del dict[prop]
+                prop = "[X]" + str(prop)
+                dict[prop] = prop_value
+            else:
+                dict[prop] = prop_value
+
+        return dict
+
     def __str__(self):
         """
         Method to return string representation of a managed object.
@@ -236,12 +252,8 @@ class ManagedObject(UcsBase):
         out_str = "\n"
         out_str += "Managed Object\t\t\t:\t" + str(self._class_id) + "\n"
         out_str += "-" * len("Managed Object") + "\n"
-        for prop, prop_value in sorted(ucsgenutils.iteritems(self.__dict__)):
-            if prop in ManagedObject.__internal_prop or prop.startswith(
-                    "_ManagedObject__"):
-                continue
-            if prop in self.__xtra_props:
-                prop = "[X]" + str(prop)
+
+        for prop, prop_value in ucsgenutils.iteritems(self.__json__()):
             out_str += str(prop).ljust(ts * 4) + ':' + str(
                 prop_value) + "\n"
         # print unknown properties
