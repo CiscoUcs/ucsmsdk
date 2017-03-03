@@ -1,13 +1,13 @@
 [![](https://img.shields.io/travis/CiscoUcs/ucsmsdk.svg)](https://travis-ci.org/CiscoUcs/ucsmsdk)
 [![](https://ucspython.herokuapp.com/badge.svg)](https://ucspython.herokuapp.com)
 [![](https://img.shields.io/pypi/v/ucsmsdk.svg)](https://pypi.python.org/pypi/ucsmsdk)
-[![Code Health](https://landscape.io/github/CiscoUcs/ucsmsdk/master/landscape.svg?style=flat)](https://landscape.io/github/CiscoUcs/ucsmsdk/master)
 [![Code Climate](https://codeclimate.com/github/CiscoUcs/ucsmsdk/badges/gpa.svg)](https://codeclimate.com/github/CiscoUcs/ucsmsdk)
+[![Documentation Status](https://readthedocs.org/projects/ucsmsdk/badge/?version=latest)](http://ucsmsdk.readthedocs.io/en/latest/?badge=latest)
 
 # Python SDK for Cisco UCS
 
 * Apache License, Version 2.0 (the "License") 
-* Documentation: https://CiscoUcs.github.io/ucsmsdk_docs/
+* Documentation: http://ucsmsdk.readthedocs.io/
 
 ## Installation
 
@@ -37,8 +37,8 @@ Installs the latest top of the tree development version,
 
 ## Documentation
 
-* We have an extensive list of samples at https://github.com/ciscoucs/ucsmsdk_samples
-* We encourage contriutions to the samples repository
+* https://github.com/ciscoucs/ucsm_apis provides APIs for many Ucs operations.
+* We encourage contriutions to the ucsm_apis repository
 
 
 ## Community:
