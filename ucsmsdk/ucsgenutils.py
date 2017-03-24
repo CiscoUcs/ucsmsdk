@@ -519,6 +519,8 @@ def iteritems(d):
     except AttributeError:
         return d.items()
 
+def add_escape_chars(xml_str):
+    return xml_str.replace("\n", "&#xA;")
 
 def remove_invalid_chars(xml_str):
     replace_dict = {
