@@ -114,7 +114,8 @@ class ManagedObject(UcsBase):
                                  "Class [%s]: Prop <%s> "
                                  % (self.__class__.__name__, prop_name))
 
-            if kwargs[prop_name] != getattr(self, prop_name):
+            if kwargs[prop_name] is not None and \
+                    kwargs[prop_name] != getattr(self, prop_name):
                 return False
         return True
 
@@ -216,7 +217,7 @@ class ManagedObject(UcsBase):
                         prop_meta.access != \
                         ucscoremeta.MoPropertyMeta.CREATE_ONLY:
                     raise ValueError("%s is not a read-write property." % name)
-            if not prop_meta.validate_property_value(value):
+            if value and not prop_meta.validate_property_value(value):
                 raise ValueError("Invalid Value Exception - "
                                  "[%s]: Prop <%s>, Value<%s>. "
                                  % (self.__class__.__name__,

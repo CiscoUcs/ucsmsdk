@@ -161,8 +161,9 @@ class UcsSession(object):
         self.__driver = UcsDriver(proxy=self.__proxy)
 
         # cookie might be stale, if so relogin
-        if self.__auto_refresh:
+        if self.__auto_refresh and not self.__validate_connection():
             self._refresh(auto_relogin=True)
+            self.__auto_refresh = True
 
     def __create_uri(self, port, secure):
         """

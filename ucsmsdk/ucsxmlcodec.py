@@ -82,7 +82,8 @@ def from_xml_str(xml_str, handle=None):
     """
 
     try:
-        root_elem = ET.fromstring(xml_str)
+        xml_raw_str = ucsgenutils.add_escape_chars(xml_str)
+        root_elem = ET.fromstring(xml_raw_str)
     except:
         recovered_xml = ucsgenutils.remove_invalid_chars(xml_str)
         root_elem = ET.fromstring(recovered_xml)
