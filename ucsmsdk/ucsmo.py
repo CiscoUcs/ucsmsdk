@@ -235,7 +235,6 @@ class ManagedObject(UcsBase):
                     "_ManagedObject__"):
                 continue
             if prop in self.__xtra_props:
-                del dict[prop]
                 prop = "[X]" + str(prop)
                 dict[prop] = prop_value
             else:
