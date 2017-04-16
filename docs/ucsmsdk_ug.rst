@@ -716,6 +716,7 @@ Wait Until Condition
 It works by monitoring the Ucs Event Channel or by periodically polling
 the server. Polling mode is used when ``poll_sec`` argument is specified.
 Specifying a timeout is highly recommended.
+test CI
 
 Arguments:
 
