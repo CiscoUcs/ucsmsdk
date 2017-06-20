@@ -146,10 +146,10 @@ class UcsDriver(object):
         driver = UcsDriver(proxy="192.168.1.1:80")
     """
 
-    def __init__(self, proxy=None):
-        self.__redirect_uri = None
+    def __init__(self, redirect_uri=None, proxy=None, headers={}):
+        self.__redirect_uri = redirect_uri
         self.__proxy = proxy
-        self.__headers = {}
+        self.__headers = headers
         self.__handlers = self.__get_handlers()
 
     def update_handlers(self, tls_proto=None):

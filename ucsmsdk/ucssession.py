@@ -33,7 +33,7 @@ class UcsSession(object):
     """
 
     def __init__(self, ip, username, password, port=None, secure=None,
-                 proxy=None):
+                 proxy=None, redirect_uri=None, headers={}):
         self.__ip = ip
         self.__username = username
         self.__password = password
@@ -59,7 +59,8 @@ class UcsSession(object):
         self.__dump_xml = False
         self.__redirect = False
         self.__threaded = False
-        self.__driver = UcsDriver(proxy=self.__proxy)
+        self.__driver = UcsDriver(redirect_uri=redirect_uri,
+                                  proxy=self.__proxy, headers=headers)
 
     @property
     def ip(self):

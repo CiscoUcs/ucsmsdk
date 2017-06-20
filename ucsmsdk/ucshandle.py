@@ -49,8 +49,10 @@ class UcsHandle(UcsSession):
     """
 
     def __init__(self, ip, username, password, port=None, secure=None,
-                 proxy=None):
-        UcsSession.__init__(self, ip, username, password, port, secure, proxy)
+                 proxy=None, redirect_uri=None, headers={}):
+        UcsSession.__init__(self, ip=ip, username=username, password=password,
+                            port=port, secure=secure, proxy=proxy,
+                            redirect_uri=redirect_uri, headers=headers)
         self.__commit_buf = {}
         self.__commit_buf_tagged = {}
 

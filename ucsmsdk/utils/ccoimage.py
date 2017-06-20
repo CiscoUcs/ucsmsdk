@@ -139,7 +139,7 @@ def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None,
     log.debug(credential)
 
     # send request to server
-    driver = UcsDriver(proxy)
+    driver = UcsDriver(proxy=proxy)
     driver.add_header("Authorization", "Basic %s" % credential)
     ida_xml_response = driver.post(uri=url,
                                    data=input_xml.encode(),
@@ -234,7 +234,7 @@ def get_ucs_cco_image(image, file_dir, proxy=None):
     image_url = image.url
     print("Processing Image " + str(image.image_name))
 
-    driver = UcsDriver(proxy)
+    driver = UcsDriver(proxy=proxy)
     driver.add_header("Authorization", "Basic %s" % image.network_credential)
     ucsgenutils.download_file(driver,
                               file_url=image_url,
