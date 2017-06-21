@@ -61,6 +61,9 @@ class UcsSession(object):
         self.__threaded = False
         self.__driver = UcsDriver(proxy=self.__proxy)
 
+        self.__udi = "PID:%sVID:%sSN:%s" %("-", "", "")
+        self.__pid = None
+
     @property
     def ip(self):
         return self.__ip
@@ -125,6 +128,15 @@ class UcsSession(object):
     @property
     def threaded(self):
         return self.__threaded
+
+    @property
+    def udi(self):
+        return self.__udi
+
+    @property
+    def pid(self):
+        return self.__pid
+
 
     def _freeze(self):
         save = {
