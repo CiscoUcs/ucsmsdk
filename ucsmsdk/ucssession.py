@@ -663,7 +663,7 @@ def _get_port(port, secure):
 
 def _get_proto(port, secure):
     if secure is None:
-        if port == "80":
+        if port == 80:
             return "http"
     elif secure is False:
         return "http"
