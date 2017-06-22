@@ -22,9 +22,8 @@ from __future__ import unicode_literals
 import os
 import logging
 
-
 from . import asdutils as au
-from . import asdimagehandler as aih
+from . import asddatatypes as adt
 from ... import ucsgenutils
 from ...ucsexception import UcsOperationError, UcsValidationException, UcsWarning
 from ...ucsdriver import UcsDriver
@@ -34,7 +33,8 @@ log = logging.getLogger('ucs')
 
 def get_ucs_software_image_list(handle, username, password=None,
                                 mdf_id=None, software_id=None,
-                                category="default", type="firmware",
+                                category=adt.AsdConsts.DEFAULT,
+                                type=adt.AsdConsts.FIRMWARE,
                                 model=None, all_releases=False, proxy=None):
     import getpass
 
@@ -49,10 +49,9 @@ def get_ucs_software_image_list(handle, username, password=None,
 
     if mdf_id and software_id:
         # use mdf_id to fetch image list
-        image_meta = au.filter_image_meta_by_mdf(image_meta_list, mdf_id)
-        if not image_meta:
-            raise UcsOperationError("get_ucs_software_image_list",
-                    "Invalid mdf_id <%s>." % mdf_id)
+        image_meta = au.filter_image_meta_mdf(image_meta_list, mdf_id)
+        if image_meta is None:
+            raise UcsOperationError("get_ucs_software_image_list", "Invalid mdf_id <%s>." % mdf_id)
 
         image_firmware_id = image_meta.attrib['FirmwareId']
         image_firmware_version = image_meta.attrib['FirmwareVersion']
@@ -72,8 +71,8 @@ def get_ucs_software_image_list(handle, username, password=None,
         if model:
             UcsWarning("model parameter is ignored.")
 
-        image_meta = au.filter_image_meta(image_meta_list,
-                                       mode=AsdConstants.B_SERIES,
+        image_meta = au.filter_image_meta_category(image_meta_list,
+                                       mode=adt.AsdConsts.B_SERIES,
                                        category=category)
 
         image_category = image_meta.attrib['Category']
@@ -85,13 +84,13 @@ def get_ucs_software_image_list(handle, username, password=None,
 
         mdf_id = image_mdf_id
 
-        if image_category == AsdConstants.INFRASTRUCTURE:
+        if image_category == adt.AsdConsts.INFRASTRUCTURE:
             software_id = image_firmware_id
             version = image_firmware_version
 
-            if type == AsdConstants.DRIVERS:
+            if type == adt.AsdConsts.DRIVERS:
                 UcsWarning("type parameter is ignored.")
-        elif type == AsdConstants.DRIVERS:
+        elif type == adt.AsdConsts.DRIVERS:
             software_id = image_driver_id
             version = image_driver_version
         else:
@@ -99,8 +98,6 @@ def get_ucs_software_image_list(handle, username, password=None,
             version = image_firmware_version
 
 
-    #host_config = adt.HostConfig(username, password, proxy)
-    #access_token = host_config.access_token
     access_token = au.get_access_token(username, password, proxy)
     if not access_token:
         raise UcsOperationError("get_ucs_software_image_list",

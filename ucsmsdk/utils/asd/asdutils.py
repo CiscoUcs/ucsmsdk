@@ -20,6 +20,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 from collections import defaultdict
+from operator import attrgetter
 
 import os
 import logging
@@ -50,9 +51,7 @@ def get_image_meta_list():
 
 def filter_image_meta_category(meta_list, mode, category):
     for meta in meta_list:
-        meta_mode = meta.attrib['Mode']
-        meta_category = meta.attrib['Category']
-        if meta_mode == mode and meta_category == category:
+        if meta.attrib['Mode'] == mode and meta.attrib['Category'] == category:
             return meta
 
 
