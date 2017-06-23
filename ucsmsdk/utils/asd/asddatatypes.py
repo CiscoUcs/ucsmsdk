@@ -87,3 +87,25 @@ class UcsAsdImage(object):
         for key in d:
             setattr(self, key, d[key])
 
+    def __str__(self):
+        """
+        Overridden str
+        """
+        tab_size = 8
+        out_str = "\n"
+        out_str += str("name").ljust(tab_size * 4) + ':' + str(
+            self.image_name) + "\n"
+        out_str += str("version").ljust(tab_size * 4) + ':' + str(
+            self.image_version) + "\n"
+        out_str += str("size").ljust(tab_size * 4) + ':' + str(
+            self.image_size) + "\n"
+        out_str += str("description").ljust(tab_size * 4) + ':' + str(
+            self.image_description) + "\n"
+        out_str += str("checksum_md5").ljust(tab_size * 4) + ':' + str(
+            self.image_checksums['md5_checksum']) + "\n"
+        out_str += str("access_token").ljust(tab_size * 4) + ':' + str(
+            self.access_token) + "\n"
+        out_str += str("proxy").ljust(tab_size * 4) + ':' + str(
+            self.proxy) + "\n"
+        out_str += "\n"
+        return out_str

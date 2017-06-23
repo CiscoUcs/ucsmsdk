@@ -135,7 +135,7 @@ def get_ucs_software_image(image, file_dir):
                                file_dir="/home/user/images")\n
     """
 
-    if not isinstance(image, UcsAsdImage):
+    if not isinstance(image, adt.UcsAsdImage):
         raise UcsValidationException("Invalid Image.")
 
     if not os.path.isdir(file_dir):
@@ -144,7 +144,7 @@ def get_ucs_software_image(image, file_dir):
 
     local_file = os.path.join(file_dir, str(image.image_name))
     if os.path.exists(local_file):
-        if au.is_correct_image(local_file):
+        if au.is_correct_image(local_file, image):
             UcsWarning("File <%s> already exist. Exiting." % local_file)
             return
         else:
@@ -172,19 +172,12 @@ def get_ucs_software_image(image, file_dir):
                               file_dir=file_dir,
                               file_name=str(image.image_name))
 
-    driver = UcsDriver(proxy)
-    driver.add_header("Authorization", "Basic %s" % image.network_credential)
-    ucsgenutils.download_file(driver,
-                              file_url=image_url,
-                              file_dir=file_dir,
-                              file_name=str(image.image_name))
-
     local_file = os.path.join(file_dir, str(image.image_name))
     if not os.path.exists(local_file):
         raise UcsOperationError("get_ucs_software_image",
                                 "File not downloaded.")
 
-    if not au.is_correct_image(local_file):
+    if not au.is_correct_image(local_file, image):
         raise UcsOperationError("get_ucs_software_image",
                                 "Invalid Image.Deleting it.")
 
