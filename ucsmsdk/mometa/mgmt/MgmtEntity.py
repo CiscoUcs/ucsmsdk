@@ -41,6 +41,9 @@ class MgmtEntityConsts:
     ID_A = "A"
     ID_B = "B"
     ID_NONE = "NONE"
+    LEAD_ID_FOR_AUTO_INSTALL_A = "A"
+    LEAD_ID_FOR_AUTO_INSTALL_B = "B"
+    LEAD_ID_FOR_AUTO_INSTALL_NONE = "NONE"
     LEADERSHIP_ELECTION_FAILED = "electionFailed"
     LEADERSHIP_ELECTION_IN_PROGRESS = "electionInProgress"
     LEADERSHIP_INAPPLICABLE = "inapplicable"
@@ -89,6 +92,7 @@ class MgmtEntity(ManagedObject):
         "ha_readiness": MoPropertyMeta("ha_readiness", "haReadiness", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["downgraded", "notReady", "ready", "unknown"], []), 
         "ha_ready": MoPropertyMeta("ha_ready", "haReady", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, None, None, None, ["A", "B", "NONE"], []), 
+        "lead_id_for_auto_install": MoPropertyMeta("lead_id_for_auto_install", "leadIdForAutoInstall", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
         "leadership": MoPropertyMeta("leadership", "leadership", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["electionFailed", "electionInProgress", "inapplicable", "primary", "subordinate", "unknown"], []), 
         "mgmt_services_state": MoPropertyMeta("mgmt_services_state", "mgmtServicesState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["down", "switchoverInProgress", "unknown", "unresponsive", "up"], []), 
         "problems": MoPropertyMeta("problems", "problems", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -118,6 +122,7 @@ class MgmtEntity(ManagedObject):
         "haReadiness": "ha_readiness", 
         "haReady": "ha_ready", 
         "id": "id", 
+        "leadIdForAutoInstall": "lead_id_for_auto_install", 
         "leadership": "leadership", 
         "mgmtServicesState": "mgmt_services_state", 
         "problems": "problems", 
@@ -147,6 +152,7 @@ class MgmtEntity(ManagedObject):
         self.ha_failure_reason = None
         self.ha_readiness = None
         self.ha_ready = None
+        self.lead_id_for_auto_install = None
         self.leadership = None
         self.mgmt_services_state = None
         self.problems = None

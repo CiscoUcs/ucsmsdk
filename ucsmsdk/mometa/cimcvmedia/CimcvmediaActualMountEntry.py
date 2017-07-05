@@ -48,6 +48,7 @@ class CimcvmediaActualMountEntryConsts:
     MOUNT_PROTOCOL_HTTPS = "https"
     MOUNT_PROTOCOL_NFS = "nfs"
     MOUNT_PROTOCOL_UNKNOWN = "unknown"
+    OPER_MOUNT_STATUS_MOUNT_EJECTED_BY_OS = "mount-ejected-by-os"
     OPER_MOUNT_STATUS_MOUNT_FAILED = "mount-failed"
     OPER_MOUNT_STATUS_MOUNTED = "mounted"
     OPER_MOUNT_STATUS_MOUNTING = "mounting"
@@ -59,6 +60,10 @@ class CimcvmediaActualMountEntryConsts:
     PWD_SET_NO = "no"
     PWD_SET_TRUE = "true"
     PWD_SET_YES = "yes"
+    REMAP_ON_EJECT_FALSE = "false"
+    REMAP_ON_EJECT_NO = "no"
+    REMAP_ON_EJECT_TRUE = "true"
+    REMAP_ON_EJECT_YES = "yes"
 
 
 class CimcvmediaActualMountEntry(ManagedObject):
@@ -67,7 +72,7 @@ class CimcvmediaActualMountEntry(ManagedObject):
     consts = CimcvmediaActualMountEntryConsts()
     naming_props = set([u'virtualDiskId'])
 
-    mo_meta = MoMeta("CimcvmediaActualMountEntry", "cimcvmediaActualMountEntry", "actual-mount-entry-[virtual_disk_id]", VersionMeta.Version222c, "InputOutput", 0x3ffff, [], ["read-only"], [u'cimcvmediaActualMountList'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("CimcvmediaActualMountEntry", "cimcvmediaActualMountEntry", "actual-mount-entry-[virtual_disk_id]", VersionMeta.Version222c, "InputOutput", 0x7ffff, [], ["read-only"], [u'cimcvmediaActualMountList'], [u'faultInst'], ["Get"])
 
     prop_meta = {
         "auth_option": MoPropertyMeta("auth_option", "authOption", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["default", "none", "ntlm", "ntlmi", "ntlmssp", "ntlmsspi", "ntlmv2", "ntlmv2i"], []), 
@@ -81,17 +86,18 @@ class CimcvmediaActualMountEntry(ManagedObject):
         "image_path": MoPropertyMeta("image_path", "imagePath", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, [], []), 
         "mapping_name": MoPropertyMeta("mapping_name", "mappingName", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "mount_protocol": MoPropertyMeta("mount_protocol", "mountProtocol", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["cifs", "http", "https", "nfs", "unknown"], []), 
-        "oper_mount_status": MoPropertyMeta("oper_mount_status", "operMountStatus", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["mount-failed", "mounted", "mounting", "not-mounted", "unknown", "unmount-failed", "unmounting"], []), 
+        "oper_mount_status": MoPropertyMeta("oper_mount_status", "operMountStatus", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["mount-ejected-by-os", "mount-failed", "mounted", "mounting", "not-mounted", "unknown", "unmount-failed", "unmounting"], []), 
         "password": MoPropertyMeta("password", "password", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""[!""#%&'\(\)\*\+,\-\./:;<>@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{0,128}""", [], []), 
         "pwd_set": MoPropertyMeta("pwd_set", "pwdSet", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "remote_host": MoPropertyMeta("remote_host", "remoteHost", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""^[A-Za-z]([A-Za-z0-9_.-]*[A-Za-z0-9])?([A-Za-z]([A-Za-z0-9._-]*[A-Za-z0-9])?)*$|^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$|^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})$|^:((:[0-9a-fA-F]{1,4}){1,7}|:)$""", [], []), 
-        "remote_ip_address": MoPropertyMeta("remote_ip_address", "remoteIpAddress", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x1000, None, None, r"""^[A-Za-z]([A-Za-z0-9_.-]*[A-Za-z0-9])?([A-Za-z]([A-Za-z0-9._-]*[A-Za-z0-9])?)*$|^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$|^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})$|^:((:[0-9a-fA-F]{1,4}){1,7}|:)$""", [], []), 
-        "remote_port": MoPropertyMeta("remote_port", "remotePort", "uint", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x4000, 0, 256, None, [], []), 
+        "remap_on_eject": MoPropertyMeta("remap_on_eject", "remapOnEject", "string", None, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["false", "no", "true", "yes"], []), 
+        "remote_host": MoPropertyMeta("remote_host", "remoteHost", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x1000, None, None, r"""^[A-Za-z]([A-Za-z0-9_.-]*[A-Za-z0-9])?([A-Za-z]([A-Za-z0-9._-]*[A-Za-z0-9])?)*$|^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$|^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})$|^:((:[0-9a-fA-F]{1,4}){1,7}|:)$""", [], []), 
+        "remote_ip_address": MoPropertyMeta("remote_ip_address", "remoteIpAddress", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x2000, None, None, r"""^[A-Za-z]([A-Za-z0-9_.-]*[A-Za-z0-9])?([A-Za-z]([A-Za-z0-9._-]*[A-Za-z0-9])?)*$|^([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$|^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})$|^:((:[0-9a-fA-F]{1,4}){1,7}|:)$""", [], []), 
+        "remote_port": MoPropertyMeta("remote_port", "remotePort", "uint", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x4000, None, None, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x8000, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x8000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "user_id": MoPropertyMeta("user_id", "userId", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x10000, 0, 63, None, [], []), 
-        "virtual_disk_id": MoPropertyMeta("virtual_disk_id", "virtualDiskId", "byte", VersionMeta.Version222c, MoPropertyMeta.NAMING, 0x20000, None, None, None, [], ["0-8"]), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x10000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "user_id": MoPropertyMeta("user_id", "userId", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x20000, 0, 63, None, [], []), 
+        "virtual_disk_id": MoPropertyMeta("virtual_disk_id", "virtualDiskId", "byte", VersionMeta.Version222c, MoPropertyMeta.NAMING, 0x40000, None, None, None, [], ["0-8"]), 
     }
 
     prop_map = {
@@ -109,6 +115,7 @@ class CimcvmediaActualMountEntry(ManagedObject):
         "operMountStatus": "oper_mount_status", 
         "password": "password", 
         "pwdSet": "pwd_set", 
+        "remapOnEject": "remap_on_eject", 
         "remoteHost": "remote_host", 
         "remoteIpAddress": "remote_ip_address", 
         "remotePort": "remote_port", 
@@ -135,6 +142,7 @@ class CimcvmediaActualMountEntry(ManagedObject):
         self.oper_mount_status = None
         self.password = None
         self.pwd_set = None
+        self.remap_on_eject = None
         self.remote_host = None
         self.remote_ip_address = None
         self.remote_port = None

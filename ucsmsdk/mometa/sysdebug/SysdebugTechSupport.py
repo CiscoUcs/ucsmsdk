@@ -196,6 +196,7 @@ class SysdebugTechSupport(ManagedObject):
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["created", "delete", "init", "prepare-download", "start"], []), 
+        "checksum": MoPropertyMeta("checksum", "checksum", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "creation_ts": MoPropertyMeta("creation_ts", "creationTS", "ulong", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
@@ -223,6 +224,7 @@ class SysdebugTechSupport(ManagedObject):
 
     prop_map = {
         "adminState": "admin_state", 
+        "checksum": "checksum", 
         "childAction": "child_action", 
         "creationTS": "creation_ts", 
         "descr": "descr", 
@@ -252,6 +254,7 @@ class SysdebugTechSupport(ManagedObject):
         self._dirty_mask = 0
         self.creation_ts = creation_ts
         self.admin_state = None
+        self.checksum = None
         self.child_action = None
         self.descr = None
         self.fsm_descr = None

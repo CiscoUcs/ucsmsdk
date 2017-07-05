@@ -54,7 +54,7 @@ class SwEthTargetEp(ManagedObject):
     consts = SwEthTargetEpConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("SwEthTargetEp", "swEthTargetEp", "eth-target-[name]", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["read-only"], [u'swEthEstcEp', u'swEthEstcPc'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("SwEthTargetEp", "swEthTargetEp", "eth-target-[name]", VersionMeta.Version141i, "InputOutput", 0xff, [], ["read-only"], [u'swEthEstcEp', u'swEthEstcPc'], [u'faultInst'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 
@@ -87,6 +87,7 @@ class SwEthTargetEp(ManagedObject):
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
+        "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", None, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
         "warnings": MoPropertyMeta("warnings", "warnings", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|fc-zoning-enabled|configuration-error),){0,3}(defaultValue|none|fc-zoning-enabled|configuration-error){0,1}""", [], []), 
     }
 
@@ -121,6 +122,7 @@ class SwEthTargetEp(ManagedObject):
         "switchId": "switch_id", 
         "transport": "transport", 
         "type": "type", 
+        "usrLbl": "usr_lbl", 
         "warnings": "warnings", 
     }
 
@@ -154,6 +156,7 @@ class SwEthTargetEp(ManagedObject):
         self.switch_id = None
         self.transport = None
         self.type = None
+        self.usr_lbl = None
         self.warnings = None
 
         ManagedObject.__init__(self, "SwEthTargetEp", parent_mo_or_dn, **kwargs)

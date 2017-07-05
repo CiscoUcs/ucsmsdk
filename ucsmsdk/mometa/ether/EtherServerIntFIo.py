@@ -216,6 +216,8 @@ class EtherServerIntFIoConsts:
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
+    USER_RECOVERY_OPERATION_NONE = "none"
+    USER_RECOVERY_OPERATION_RESET = "reset"
     XCVR_TYPE_1000BASECX = "1000basecx"
     XCVR_TYPE_1000BASELH = "1000baselh"
     XCVR_TYPE_1000BASELX = "1000baselx"
@@ -316,7 +318,7 @@ class EtherServerIntFIo(ManagedObject):
     consts = EtherServerIntFIoConsts()
     naming_props = set([u'portId'])
 
-    mo_meta = MoMeta("EtherServerIntFIo", "etherServerIntFIo", "port-[port_id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'diagSrvCtrl', u'portGroup'], [u'equipmentXcvr', u'etherErrStats', u'etherLossStats', u'etherPauseStats', u'etherRxStats', u'etherServerIntFIoFsm', u'etherServerIntFIoFsmTask', u'etherTxStats', u'eventInst', u'faultInst', u'lldpAcquired', u'portDomainEp', u'portTrustMode', u'swUlan'], ["Get"])
+    mo_meta = MoMeta("EtherServerIntFIo", "etherServerIntFIo", "port-[port_id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin"], [u'diagSrvCtrl', u'portGroup'], [u'equipmentXcvr', u'etherErrStats', u'etherLossStats', u'etherPauseStats', u'etherRxStats', u'etherServerIntFIoFsm', u'etherServerIntFIoFsmTask', u'etherTxStats', u'eventInst', u'faultInst', u'lldpAcquired', u'portDomainEp', u'portTrustMode', u'swUlan'], ["Get"])
 
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["10gbps", "1gbps", "20gbps", "40gbps", "indeterminate"], []), 
@@ -369,6 +371,7 @@ class EtherServerIntFIo(ManagedObject):
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
         "ts": MoPropertyMeta("ts", "ts", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
+        "user_recovery_operation": MoPropertyMeta("user_recovery_operation", "userRecoveryOperation", "string", None, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["none", "reset"], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "xcvr_type": MoPropertyMeta("xcvr_type", "xcvrType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["1000basecx", "1000baselh", "1000baselx", "1000basesx", "1000baset", "1000baseunknown", "1000basevx", "1000basex", "1000basezx", "10gbaseer", "10gbaselr", "10gbaselrm", "10gbasesr", "10gbasezr", "cwdm1471", "cwdm1531", "cwdm1551", "dwdmsfp", "fet", "h10gacu10m", "h10gacu15m", "h10gacu1m", "h10gacu3m", "h10gacu5m", "h10gacu7m", "h10gacuaoc10m", "h10gacuaoc15m", "h10gacuaoc1m", "h10gacuaoc2m", "h10gacuaoc3m", "h10gacuaoc5m", "h10gacuaoc7m", "h10gaoc10m", "h10gaoc1m", "h10gaoc2m", "h10gaoc3m", "h10gaoc5m", "h10gaoc7m", "h10gcu10m", "h10gcu1m", "h10gcu2m", "h10gcu3m", "h10gcu5m", "h10gcu7m", "h10glrmsm", "h10gusr", "qsfp40gcr4", "qsfp40gcsr4", "qsfp40gfet", "qsfp40glr4", "qsfp40gsr4", "qsfp40gsrbd", "qsfp4sfp10gcu1m", "qsfp4sfp10gcu2m", "qsfp4sfp10gcu3m", "qsfp4sfp10gcu5m", "qsfp4x10ga0c10m", "qsfp4x10ga0c1m", "qsfp4x10ga0c2m", "qsfp4x10ga0c3m", "qsfp4x10ga0c5m", "qsfp4x10ga0c7m", "qsfp4x10ga0cunknown", "qsfp4x10gac10m", "qsfp4x10gac1m", "qsfp4x10gac3m", "qsfp4x10gac5m", "qsfp4x10gac7m", "qsfp4x10glr", "qsfph40gacu10m", "qsfph40gacu1m", "qsfph40gacu3m", "qsfph40gacu5m", "qsfph40gacu7m", "qsfph40gaoc10m", "qsfph40gaoc15m", "qsfph40gaoc1m", "qsfph40gaoc2m", "qsfph40gaoc3m", "qsfph40gaoc5m", "qsfph40gaoc7m", "qsfph40gaocunknown", "qsfph40gcu1m", "qsfph40gcu2m", "qsfph40gcu3m", "qsfph40gcu5m", "qsfploop", "qsfpqsa", "qsfpunknown", "sfp", "unknown", "x2"], []), 
     }
@@ -424,6 +427,7 @@ class EtherServerIntFIo(ManagedObject):
         "transport": "transport", 
         "ts": "ts", 
         "type": "type", 
+        "userRecoveryOperation": "user_recovery_operation", 
         "vendor": "vendor", 
         "xcvrType": "xcvr_type", 
     }
@@ -478,6 +482,7 @@ class EtherServerIntFIo(ManagedObject):
         self.transport = None
         self.ts = None
         self.type = None
+        self.user_recovery_operation = None
         self.vendor = None
         self.xcvr_type = None
 

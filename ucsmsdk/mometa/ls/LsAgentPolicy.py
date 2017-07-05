@@ -12,6 +12,9 @@ class LsAgentPolicyConsts:
     CAPABILITY_STATES = "states"
     CAPABILITY_STATS = "stats"
     INT_ID_NONE = "none"
+    LOAD_CATALOG_LOAD = "load"
+    LOAD_CATALOG_NO_LOAD = "no-load"
+    LOAD_CATALOG_UNKNOWN = "unknown"
     MODE_FULL = "full"
     MODE_NO_AGENT = "no-agent"
     MODE_READ_ONLY = "read-only"
@@ -34,6 +37,7 @@ class LsAgentPolicy(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
+        "load_catalog": MoPropertyMeta("load_catalog", "loadCatalog", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["load", "no-load", "unknown"], []), 
         "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["full", "no-agent", "read-only"], []), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -49,6 +53,7 @@ class LsAgentPolicy(ManagedObject):
         "descr": "descr", 
         "dn": "dn", 
         "intId": "int_id", 
+        "loadCatalog": "load_catalog", 
         "mode": "mode", 
         "name": "name", 
         "policyLevel": "policy_level", 
@@ -65,6 +70,7 @@ class LsAgentPolicy(ManagedObject):
         self.child_action = None
         self.descr = None
         self.int_id = None
+        self.load_catalog = None
         self.mode = None
         self.policy_level = None
         self.policy_owner = None

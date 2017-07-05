@@ -70,7 +70,7 @@ class SwUlan(ManagedObject):
     consts = SwUlanConsts()
     naming_props = set([u'purpose'])
 
-    mo_meta = MoMeta("SwUlan", "swUlan", "vlan-[purpose]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["read-only"], [u'dcxVc', u'etherServerIntFIo', u'swAccessEp', u'swUtilityDomain'], [], ["Get"])
+    mo_meta = MoMeta("SwUlan", "swUlan", "vlan-[purpose]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["read-only"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'dcxVc', u'etherServerIntFIo', u'swAccessEp', u'swUtilityDomain'], [], ["Get"])
 
     prop_meta = {
         "assoc_primary_vlan_state": MoPropertyMeta("assoc_primary_vlan_state", "assocPrimaryVlanState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["does-not-exists", "is-empty", "is-in-error-state", "is-not-primary-type", "ok"], []), 

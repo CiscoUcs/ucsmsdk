@@ -171,7 +171,7 @@ class PolicyControlEp(ManagedObject):
     consts = PolicyControlEpConsts()
     naming_props = set([u'type'])
 
-    mo_meta = MoMeta("PolicyControlEp", "policyControlEp", "control-ep-[type]", VersionMeta.Version211a, "InputOutput", 0x1fff, [], ["admin"], [u'topSystem'], [u'eventInst', u'faultInst', u'policyCentraleSync', u'policyCommunication', u'policyConfigBackup', u'policyControlEpFsm', u'policyControlEpFsmTask', u'policyDateTime', u'policyDiscovery', u'policyDns', u'policyEquipment', u'policyFault', u'policyIdResolvePolicy', u'policyInfraFirmware', u'policyMEp', u'policyMonitoring', u'policyPortConfig', u'policyPowerMgmt', u'policyPsu', u'policySecurity', u'policyStorageAutoConfig'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("PolicyControlEp", "policyControlEp", "control-ep-[type]", VersionMeta.Version211a, "InputOutput", 0x1fff, [], ["admin"], [u'topSystem'], [u'eventInst', u'faultInst', u'policyCentraleSync', u'policyCommunication', u'policyConfigBackup', u'policyControlEpFsm', u'policyControlEpFsmTask', u'policyDateTime', u'policyDestEp', u'policyDiscovery', u'policyDns', u'policyEquipment', u'policyFault', u'policyIdResolvePolicy', u'policyInfraFirmware', u'policyMEp', u'policyMonitoring', u'policyPortConfig', u'policyPowerMgmt', u'policyPsu', u'policySecurity', u'policySourceApp', u'policyStorageAutoConfig'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "ack_state": MoPropertyMeta("ack_state", "ackState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["acked", "no-ack"], []), 

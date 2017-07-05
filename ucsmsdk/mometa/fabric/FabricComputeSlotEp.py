@@ -241,7 +241,7 @@ class FabricComputeSlotEp(ManagedObject):
     consts = FabricComputeSlotEpConsts()
     naming_props = set([u'slotId'])
 
-    mo_meta = MoMeta("FabricComputeSlotEp", "fabricComputeSlotEp", "slot-[slot_id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'fabricChassisEp'], [u'eventInst', u'fabricComputeSlotEpFsm', u'fabricComputeSlotEpFsmTask', u'fabricIf', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("FabricComputeSlotEp", "fabricComputeSlotEp", "slot-[slot_id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'fabricChassisEp'], [u'eventInst', u'fabricComputeSlotEpFsm', u'fabricComputeSlotEpFsmTask', u'fabricIf', u'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["acknowledged", "reacknowledge"], []), 
@@ -297,6 +297,7 @@ class FabricComputeSlotEp(ManagedObject):
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
+        "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", None, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
     }
 
@@ -354,6 +355,7 @@ class FabricComputeSlotEp(ManagedObject):
         "switchId": "switch_id", 
         "transport": "transport", 
         "type": "type", 
+        "usrLbl": "usr_lbl", 
         "vendor": "vendor", 
     }
 
@@ -410,6 +412,7 @@ class FabricComputeSlotEp(ManagedObject):
         self.switch_id = None
         self.transport = None
         self.type = None
+        self.usr_lbl = None
         self.vendor = None
 
         ManagedObject.__init__(self, "FabricComputeSlotEp", parent_mo_or_dn, **kwargs)

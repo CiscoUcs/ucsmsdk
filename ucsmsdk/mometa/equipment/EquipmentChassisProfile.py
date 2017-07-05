@@ -231,7 +231,7 @@ class EquipmentChassisProfile(ManagedObject):
     consts = EquipmentChassisProfileConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("EquipmentChassisProfile", "equipmentChassisProfile", "cp-[name]", VersionMeta.Version312b, "InputOutput", 0x7fff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentTier', u'orgOrg'], [u'cpmaintAck', u'equipmentBinding', u'equipmentChassisIssues', u'equipmentChassisProfileAssocCtx', u'equipmentChassisProfileFsm', u'equipmentChassisProfileFsmTask', u'equipmentRequirement', u'eventInst', u'faultInst', u'lstorageDiskZoningConfigDef'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("EquipmentChassisProfile", "equipmentChassisProfile", "cp-[name]", VersionMeta.Version312b, "InputOutput", 0xffff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentTier', u'orgOrg'], [u'cpmaintAck', u'equipmentBinding', u'equipmentChassisIssues', u'equipmentChassisProfileAssocCtx', u'equipmentChassisProfileFsm', u'equipmentChassisProfileFsmTask', u'equipmentRequirement', u'eventInst', u'faultInst', u'lstorageDiskZoningConfigDef'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "assign_state": MoPropertyMeta("assign_state", "assignState", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["assigned", "failed", "unassigned"], []), 
@@ -239,11 +239,12 @@ class EquipmentChassisProfile(ManagedObject):
         "chassis_dn": MoPropertyMeta("chassis_dn", "chassisDn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "chassis_fw_policy_name": MoPropertyMeta("chassis_fw_policy_name", "chassisFwPolicyName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "config_qualifier": MoPropertyMeta("config_qualifier", "configQualifier", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|not-applicable|chassis-profile-not-supported|migration|non-interrupt-fsm-running|insufficient-resources|physical-requirement|chassis-undiscovered|resource-ownership-conflict|chassis-unavailable|invalid-chassis-pack|missing-firmware-image|insufficient-power-budget),){0,12}(defaultValue|not-applicable|chassis-profile-not-supported|migration|non-interrupt-fsm-running|insufficient-resources|physical-requirement|chassis-undiscovered|resource-ownership-conflict|chassis-unavailable|invalid-chassis-pack|missing-firmware-image|insufficient-power-budget){0,1}""", [], []), 
+        "compute_conn_policy_name": MoPropertyMeta("compute_conn_policy_name", "computeConnPolicyName", "string", None, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "config_qualifier": MoPropertyMeta("config_qualifier", "configQualifier", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|not-applicable|chassis-profile-not-supported|migration|firmware-version-mismatch|non-interrupt-fsm-running|insufficient-resources|compute-conn-invalid-hw-config|physical-requirement|chassis-undiscovered|chassis-feature-capability-mismatch|resource-ownership-conflict|compute-conn-unsupported-cmc-version|chassis-unavailable|invalid-chassis-pack|missing-firmware-image|chassis-feature-capability-mismatch-non-fatal|compute-second-controller-unsupported-cmc-version|insufficient-power-budget),){0,18}(defaultValue|not-applicable|chassis-profile-not-supported|migration|firmware-version-mismatch|non-interrupt-fsm-running|insufficient-resources|compute-conn-invalid-hw-config|physical-requirement|chassis-undiscovered|chassis-feature-capability-mismatch|resource-ownership-conflict|compute-conn-unsupported-cmc-version|chassis-unavailable|invalid-chassis-pack|missing-firmware-image|chassis-feature-capability-mismatch-non-fatal|compute-second-controller-unsupported-cmc-version|insufficient-power-budget){0,1}""", [], []), 
         "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["applied", "applying", "failed-to-apply", "not-applied"], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "disk_zoning_policy_name": MoPropertyMeta("disk_zoning_policy_name", "diskZoningPolicyName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "disk_zoning_policy_name": MoPropertyMeta("disk_zoning_policy_name", "diskZoningPolicyName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "fsm_flags": MoPropertyMeta("fsm_flags", "fsmFlags", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-4294967295"]), 
@@ -257,24 +258,25 @@ class EquipmentChassisProfile(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, None, ["ConfigureAnalyzeImpact", "ConfigureApplyConfig", "ConfigureApplyPolicies", "ConfigureApplyTemplate", "ConfigureBegin", "ConfigureEvaluateAssociation", "ConfigureFail", "ConfigureResolveDistributable", "ConfigureResolveDistributableNames", "ConfigureResolveImages", "ConfigureResolvePolicies", "ConfigureResolveSchedule", "ConfigureSuccess", "ConfigureValidatePolicyOwnership", "ConfigureWaitForAssocCompletion", "ConfigureWaitForMaintPermission", "nop"], []), 
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
-        "maint_policy_name": MoPropertyMeta("maint_policy_name", "maintPolicyName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x80, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
+        "maint_policy_name": MoPropertyMeta("maint_policy_name", "maintPolicyName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
         "oper_chassis_fw_policy_name": MoPropertyMeta("oper_chassis_fw_policy_name", "operChassisFwPolicyName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "oper_compute_conn_policy_name": MoPropertyMeta("oper_compute_conn_policy_name", "operComputeConnPolicyName", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "oper_disk_zoning_policy_name": MoPropertyMeta("oper_disk_zoning_policy_name", "operDiskZoningPolicyName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "oper_maint_policy_name": MoPropertyMeta("oper_maint_policy_name", "operMaintPolicyName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "oper_src_templ_name": MoPropertyMeta("oper_src_templ_name", "operSrcTemplName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["chassis-failed", "chassis-mismatch", "config", "config-failure", "decomissioning", "degraded", "diagnostics", "diagnostics-failed", "disabled", "discovery", "discovery-failed", "inaccessible", "indeterminate", "inoperable", "maintenance", "maintenance-failed", "ok", "operable", "pending-reassociation", "pending-reboot", "power-off", "removed", "restart", "test", "test-failed", "unassociated", "unconfig", "unconfig-failed"], []), 
         "owner": MoPropertyMeta("owner", "owner", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["management", "policy", "tier"], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["local", "pending-policy", "policy"], []), 
         "prop_acl": MoPropertyMeta("prop_acl", "propAcl", "ulong", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "resolve_remote": MoPropertyMeta("resolve_remote", "resolveRemote", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["no", "yes"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x400, 0, 256, None, [], []), 
+        "resolve_remote": MoPropertyMeta("resolve_remote", "resolveRemote", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["no", "yes"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x800, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "src_templ_name": MoPropertyMeta("src_templ_name", "srcTemplName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x1000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version312b, MoPropertyMeta.CREATE_ONLY, 0x2000, None, None, None, ["initial-template", "instance", "updating-template"], []), 
-        "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
+        "src_templ_name": MoPropertyMeta("src_templ_name", "srcTemplName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x2000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version312b, MoPropertyMeta.CREATE_ONLY, 0x4000, None, None, None, ["initial-template", "instance", "updating-template"], []), 
+        "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x8000, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
         "uuid": MoPropertyMeta("uuid", "uuid", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F]){8}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){12})|0""", [], []), 
     }
 
@@ -284,6 +286,7 @@ class EquipmentChassisProfile(ManagedObject):
         "chassisDn": "chassis_dn", 
         "chassisFwPolicyName": "chassis_fw_policy_name", 
         "childAction": "child_action", 
+        "computeConnPolicyName": "compute_conn_policy_name", 
         "configQualifier": "config_qualifier", 
         "configState": "config_state", 
         "descr": "descr", 
@@ -305,6 +308,7 @@ class EquipmentChassisProfile(ManagedObject):
         "maintPolicyName": "maint_policy_name", 
         "name": "name", 
         "operChassisFwPolicyName": "oper_chassis_fw_policy_name", 
+        "operComputeConnPolicyName": "oper_compute_conn_policy_name", 
         "operDiskZoningPolicyName": "oper_disk_zoning_policy_name", 
         "operMaintPolicyName": "oper_maint_policy_name", 
         "operSrcTemplName": "oper_src_templ_name", 
@@ -331,6 +335,7 @@ class EquipmentChassisProfile(ManagedObject):
         self.chassis_dn = None
         self.chassis_fw_policy_name = None
         self.child_action = None
+        self.compute_conn_policy_name = None
         self.config_qualifier = None
         self.config_state = None
         self.descr = None
@@ -350,6 +355,7 @@ class EquipmentChassisProfile(ManagedObject):
         self.int_id = None
         self.maint_policy_name = None
         self.oper_chassis_fw_policy_name = None
+        self.oper_compute_conn_policy_name = None
         self.oper_disk_zoning_policy_name = None
         self.oper_maint_policy_name = None
         self.oper_src_templ_name = None

@@ -15,6 +15,7 @@ class FirmwarePackItemConsts:
     TYPE_BOARD_CONTROLLER = "board-controller"
     TYPE_CHASSIS_BOARD_CONTROLLER = "chassis-board-controller"
     TYPE_CMC = "cmc"
+    TYPE_FI_SERVICE_PACK = "fi-service-pack"
     TYPE_FLEXFLASH_CONTROLLER = "flexflash-controller"
     TYPE_GRAPHICS_CARD = "graphics-card"
     TYPE_HOST_HBA = "host-hba"
@@ -23,6 +24,7 @@ class FirmwarePackItemConsts:
     TYPE_HOST_NIC_OPTIONROM = "host-nic-optionrom"
     TYPE_IOCARD = "iocard"
     TYPE_LOCAL_DISK = "local-disk"
+    TYPE_MGMT_SERVICE_PACK = "mgmt-service-pack"
     TYPE_PSU = "psu"
     TYPE_SAS_EXP_REG_FW = "sas-exp-reg-fw"
     TYPE_SAS_EXPANDER = "sas-expander"
@@ -54,7 +56,7 @@ class FirmwarePackItem(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "chassis-board-controller", "cmc", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "iocard", "local-disk", "psu", "sas-exp-reg-fw", "sas-expander", "storage-controller", "storage-controller-onboard-device", "storage-controller-onboard-device-cpld", "storage-dev-bridge", "storage-node-controller", "switch-kernel", "switch-software", "system", "unspecified"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "chassis-board-controller", "cmc", "fi-service-pack", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "iocard", "local-disk", "mgmt-service-pack", "psu", "sas-exp-reg-fw", "sas-expander", "storage-controller", "storage-controller-onboard-device", "storage-controller-onboard-device-cpld", "storage-dev-bridge", "storage-node-controller", "switch-kernel", "switch-software", "system", "unspecified"], []), 
         "version": MoPropertyMeta("version", "version", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, 0, 510, None, [], []), 
     }
 

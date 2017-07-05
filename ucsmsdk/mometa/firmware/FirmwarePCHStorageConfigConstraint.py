@@ -6,7 +6,10 @@ from ...ucsmeta import VersionMeta
 
 
 class FirmwarePCHStorageConfigConstraintConsts:
-    pass
+    CHECK_RUNNING_VER_FALSE = "false"
+    CHECK_RUNNING_VER_NO = "no"
+    CHECK_RUNNING_VER_TRUE = "true"
+    CHECK_RUNNING_VER_YES = "yes"
 
 
 class FirmwarePCHStorageConfigConstraint(ManagedObject):
@@ -18,6 +21,7 @@ class FirmwarePCHStorageConfigConstraint(ManagedObject):
     mo_meta = MoMeta("FirmwarePCHStorageConfigConstraint", "firmwarePCHStorageConfigConstraint", "constraint-pch-storage-config", VersionMeta.Version227b, "InputOutput", 0x1f, [], [""], [u'firmwareConstraints'], [], ["Get"])
 
     prop_meta = {
+        "check_running_ver": MoPropertyMeta("check_running_ver", "checkRunningVer", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "min_bios_version": MoPropertyMeta("min_bios_version", "minBiosVersion", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
@@ -28,6 +32,7 @@ class FirmwarePCHStorageConfigConstraint(ManagedObject):
     }
 
     prop_map = {
+        "checkRunningVer": "check_running_ver", 
         "childAction": "child_action", 
         "dn": "dn", 
         "minBiosVersion": "min_bios_version", 
@@ -39,6 +44,7 @@ class FirmwarePCHStorageConfigConstraint(ManagedObject):
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.check_running_ver = None
         self.child_action = None
         self.min_bios_version = None
         self.min_cimc_version = None

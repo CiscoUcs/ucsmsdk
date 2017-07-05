@@ -54,7 +54,7 @@ class FabricChassisEp(ManagedObject):
     consts = FabricChassisEpConsts()
     naming_props = set([u'chassisId'])
 
-    mo_meta = MoMeta("FabricChassisEp", "fabricChassisEp", "chassis-[chassis_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], [u'fabricDceSrv'], [u'fabricCartridgeSlotEp', u'fabricComputeSlotEp', u'faultInst'], ["Get"])
+    mo_meta = MoMeta("FabricChassisEp", "fabricChassisEp", "chassis-[chassis_id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["read-only"], [u'fabricDceSrv'], [u'fabricCartridgeSlotEp', u'fabricComputeSlotEp', u'faultInst'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
@@ -90,6 +90,7 @@ class FabricChassisEp(ManagedObject):
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
+        "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", None, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
     }
 
@@ -127,6 +128,7 @@ class FabricChassisEp(ManagedObject):
         "switchId": "switch_id", 
         "transport": "transport", 
         "type": "type", 
+        "usrLbl": "usr_lbl", 
         "vendor": "vendor", 
     }
 
@@ -163,6 +165,7 @@ class FabricChassisEp(ManagedObject):
         self.switch_id = None
         self.transport = None
         self.type = None
+        self.usr_lbl = None
         self.vendor = None
 
         ManagedObject.__init__(self, "FabricChassisEp", parent_mo_or_dn, **kwargs)

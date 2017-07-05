@@ -30,7 +30,7 @@ class VnicLanConnTempl(ManagedObject):
     consts = VnicLanConnTemplConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("VnicLanConnTempl", "vnicLanConnTempl", "lan-conn-templ-[name]", VersionMeta.Version101e, "InputOutput", 0x1fffff, [], ["admin", "ls-network", "ls-network-policy"], [u'orgOrg'], [u'faultInst', u'vnicDynamicConPolicyRef', u'vnicEtherIf', u'vnicFcOEIf', u'vnicUsnicConPolicyRef', u'vnicVmqConPolicyRef'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicLanConnTempl", "vnicLanConnTempl", "lan-conn-templ-[name]", VersionMeta.Version101e, "InputOutput", 0x1fffff, [], ["admin", "ls-network", "ls-network-policy"], [u'orgOrg'], [u'fabricNetGroupRef', u'fabricSanGroupRef', u'faultInst', u'vnicDynamicConPolicyRef', u'vnicEtherIf', u'vnicFcOEIf', u'vnicUsnicConPolicyRef', u'vnicVmqConPolicyRef'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_cdn_name": MoPropertyMeta("admin_cdn_name", "adminCdnName", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 

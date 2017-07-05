@@ -14,6 +14,10 @@ class EquipmentGraphicsCardCapProviderConsts:
     DEPRECATED_NO = "no"
     DEPRECATED_TRUE = "true"
     DEPRECATED_YES = "yes"
+    MODE_CHANGE_SUPPORTED_FALSE = "false"
+    MODE_CHANGE_SUPPORTED_NO = "no"
+    MODE_CHANGE_SUPPORTED_TRUE = "true"
+    MODE_CHANGE_SUPPORTED_YES = "yes"
 
 
 class EquipmentGraphicsCardCapProvider(ManagedObject):
@@ -35,6 +39,7 @@ class EquipmentGraphicsCardCapProvider(ManagedObject):
         "load_errors": MoPropertyMeta("load_errors", "loadErrors", "uint", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_warnings": MoPropertyMeta("load_warnings", "loadWarnings", "uint", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "mgmt_plane_ver": MoPropertyMeta("mgmt_plane_ver", "mgmtPlaneVer", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "mode_change_supported": MoPropertyMeta("mode_change_supported", "modeChangeSupported", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version213a, MoPropertyMeta.NAMING, 0x8, 1, 510, None, [], []), 
         "num_gpu": MoPropertyMeta("num_gpu", "numGpu", "uint", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "prom_card_type": MoPropertyMeta("prom_card_type", "promCardType", "ushort", VersionMeta.Version213a, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], []), 
@@ -57,6 +62,7 @@ class EquipmentGraphicsCardCapProvider(ManagedObject):
         "loadErrors": "load_errors", 
         "loadWarnings": "load_warnings", 
         "mgmtPlaneVer": "mgmt_plane_ver", 
+        "modeChangeSupported": "mode_change_supported", 
         "model": "model", 
         "numGpu": "num_gpu", 
         "promCardType": "prom_card_type", 
@@ -82,6 +88,7 @@ class EquipmentGraphicsCardCapProvider(ManagedObject):
         self.load_errors = None
         self.load_warnings = None
         self.mgmt_plane_ver = None
+        self.mode_change_supported = None
         self.num_gpu = None
         self.prom_card_type = None
         self.sacl = None

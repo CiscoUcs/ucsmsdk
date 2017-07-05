@@ -12,6 +12,8 @@ class CallhomePolicyConsts:
     CAUSE_ARP_TARGETS_CONFIG_ERROR = "arp-targets-config-error"
     CAUSE_ASSOCIATION_FAILED = "association-failed"
     CAUSE_BACKPLANE_PORT_PROBLEM = "backplane-port-problem"
+    CAUSE_CHASSIS_INTRUSION = "chassis-intrusion"
+    CAUSE_CONFIG_PROBLEM = "config-problem"
     CAUSE_CONFIGURATION_FAILURE = "configuration-failure"
     CAUSE_CONFIGURATION_MISMATCH = "configuration-mismatch"
     CAUSE_CONNECTIVITY_PROBLEM = "connectivity-problem"
@@ -27,8 +29,11 @@ class CallhomePolicyConsts:
     CAUSE_EQUIPMENT_REMOVED = "equipment-removed"
     CAUSE_EQUIPMENT_UNACKNOWLEDGED = "equipment-unacknowledged"
     CAUSE_EQUIPMENT_UNHEALTHY = "equipment-unhealthy"
+    CAUSE_FABRIC_EVACUATED = "fabric-evacuated"
     CAUSE_FAN_REMOVAL = "fan-removal"
     CAUSE_FRU_PROBLEM = "fru-problem"
+    CAUSE_HARDWARE_INVENTORY_MISMATCH = "hardware-inventory-mismatch"
+    CAUSE_HARDWARE_MISMATCH = "hardware-mismatch"
     CAUSE_HEALTH_CRITICAL = "health-critical"
     CAUSE_HEALTH_LED_AMBER = "health-led-amber"
     CAUSE_HEALTH_LED_AMBER_BLINKING = "health-led-amber-blinking"
@@ -43,10 +48,13 @@ class CallhomePolicyConsts:
     CAUSE_MANAGEMENT_SERVICES_FAILURE = "management-services-failure"
     CAUSE_MANAGEMENT_SERVICES_UNRESPONSIVE = "management-services-unresponsive"
     CAUSE_MEMORY_ERROR = "memory-error"
+    CAUSE_MGMT_DB_CORRUPTION = "mgmt-db-corruption"
     CAUSE_MGMTIF_DOWN = "mgmtif-down"
     CAUSE_NDISC_TARGETS_CONFIG_ERROR = "ndisc-targets-config-error"
     CAUSE_NEAR_MAX_LIMIT = "near-max-limit"
     CAUSE_NOT_SUPPORTED = "not-supported"
+    CAUSE_PCI_CONFIG_ISSUE = "pci-config-issue"
+    CAUSE_PCI_CONFIG_MISMATCH = "pci-config-mismatch"
     CAUSE_PORT_FAILED = "port-failed"
     CAUSE_POWER_PROBLEM = "power-problem"
     CAUSE_PSU_INSUFFICIENT = "psu-insufficient"
@@ -68,7 +76,7 @@ class CallhomePolicy(ManagedObject):
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
-        "cause": MoPropertyMeta("cause", "cause", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x4, None, None, None, ["adaptor-mismatch", "arp-targets-config-error", "association-failed", "backplane-port-problem", "configuration-failure", "configuration-mismatch", "connectivity-problem", "election-failure", "equipment-degraded", "equipment-deprecated", "equipment-disabled", "equipment-inaccessible", "equipment-inoperable", "equipment-missing", "equipment-offline", "equipment-problem", "equipment-removed", "equipment-unacknowledged", "equipment-unhealthy", "fan-removal", "fru-problem", "health-critical", "health-led-amber", "health-led-amber-blinking", "health-major", "identity-unestablishable", "image-unusable", "inventory-failed", "kernel-mem-critical-threshold", "license-graceperiod-expired", "limit-reached", "link-down", "management-services-failure", "management-services-unresponsive", "memory-error", "mgmtif-down", "ndisc-targets-config-error", "near-max-limit", "not-supported", "port-failed", "power-problem", "psu-insufficient", "psu-mixed-mode", "thermal-problem", "unspecified", "version-incompatible", "vif-ids-mismatch", "voltage-problem"], []), 
+        "cause": MoPropertyMeta("cause", "cause", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x4, None, None, None, ["adaptor-mismatch", "arp-targets-config-error", "association-failed", "backplane-port-problem", "chassis-intrusion", "config-problem", "configuration-failure", "configuration-mismatch", "connectivity-problem", "election-failure", "equipment-degraded", "equipment-deprecated", "equipment-disabled", "equipment-inaccessible", "equipment-inoperable", "equipment-missing", "equipment-offline", "equipment-problem", "equipment-removed", "equipment-unacknowledged", "equipment-unhealthy", "fabric-evacuated", "fan-removal", "fru-problem", "hardware-inventory-mismatch", "hardware-mismatch", "health-critical", "health-led-amber", "health-led-amber-blinking", "health-major", "identity-unestablishable", "image-unusable", "inventory-failed", "kernel-mem-critical-threshold", "license-graceperiod-expired", "limit-reached", "link-down", "management-services-failure", "management-services-unresponsive", "memory-error", "mgmt-db-corruption", "mgmtif-down", "ndisc-targets-config-error", "near-max-limit", "not-supported", "pci-config-issue", "pci-config-mismatch", "port-failed", "power-problem", "psu-insufficient", "psu-mixed-mode", "thermal-problem", "unspecified", "version-incompatible", "vif-ids-mismatch", "voltage-problem"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
