@@ -29,7 +29,7 @@ class FirmwareComputeHostPack(ManagedObject):
     consts = FirmwareComputeHostPackConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("FirmwareComputeHostPack", "firmwareComputeHostPack", "fw-host-pack-[name]", VersionMeta.Version101e, "InputOutput", 0x7fff, [], ["admin", "ls-compute", "ls-config-policy", "ls-server-policy"], [u'orgOrg'], [u'firmwareExcludeServerComponent', u'firmwarePackItem'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FirmwareComputeHostPack", "firmwareComputeHostPack", "fw-host-pack-[name]", VersionMeta.Version101e, "InputOutput", 0xffff, [], ["admin", "ls-compute", "ls-config-policy", "ls-server-policy"], [u'orgOrg'], [u'firmwareExcludeServerComponent', u'firmwarePackItem'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "blade_bundle_name": MoPropertyMeta("blade_bundle_name", "bladeBundleName", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
@@ -49,9 +49,11 @@ class FirmwareComputeHostPack(ManagedObject):
         "rack_bundle_version": MoPropertyMeta("rack_bundle_version", "rackBundleVersion", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x400, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x800, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "stage_size": MoPropertyMeta("stage_size", "stageSize", "ushort", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "update_trigger": MoPropertyMeta("update_trigger", "updateTrigger", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["immediate"], []), 
+        "service_pack_bundle_name": MoPropertyMeta("service_pack_bundle_name", "servicePackBundleName", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "service_pack_bundle_version": MoPropertyMeta("service_pack_bundle_version", "servicePackBundleVersion", "string", None, MoPropertyMeta.READ_WRITE, 0x1000, 0, 510, None, [], []), 
+        "stage_size": MoPropertyMeta("stage_size", "stageSize", "ushort", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "update_trigger": MoPropertyMeta("update_trigger", "updateTrigger", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["immediate"], []), 
     }
 
     prop_map = {
@@ -72,6 +74,8 @@ class FirmwareComputeHostPack(ManagedObject):
         "rackBundleVersion": "rack_bundle_version", 
         "rn": "rn", 
         "sacl": "sacl", 
+        "servicePackBundleName": "service_pack_bundle_name", 
+        "servicePackBundleVersion": "service_pack_bundle_version", 
         "stageSize": "stage_size", 
         "status": "status", 
         "updateTrigger": "update_trigger", 
@@ -94,6 +98,8 @@ class FirmwareComputeHostPack(ManagedObject):
         self.rack_bundle_name = None
         self.rack_bundle_version = None
         self.sacl = None
+        self.service_pack_bundle_name = None
+        self.service_pack_bundle_version = None
         self.stage_size = None
         self.status = None
         self.update_trigger = None

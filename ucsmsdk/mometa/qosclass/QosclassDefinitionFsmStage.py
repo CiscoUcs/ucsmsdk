@@ -12,6 +12,7 @@ class QosclassDefinitionFsmStageConsts:
     NAME_CONFIG_GLOBAL_QO_SSET_LOCAL = "configGlobalQoSSetLocal"
     NAME_CONFIG_GLOBAL_QO_SSET_PEER = "configGlobalQoSSetPeer"
     NAME_CONFIG_GLOBAL_QO_SSUCCESS = "configGlobalQoSSuccess"
+    NAME_CONFIG_GLOBAL_QO_SWAIT_FOR_USER_ACK = "configGlobalQoSWaitForUserAck"
     NAME_NOP = "nop"
     STAGE_STATUS_FAIL = "fail"
     STAGE_STATUS_IN_PROGRESS = "inProgress"
@@ -35,7 +36,7 @@ class QosclassDefinitionFsmStage(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "last_update_time": MoPropertyMeta("last_update_time", "lastUpdateTime", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["configGlobalQoSBegin", "configGlobalQoSFail", "configGlobalQoSSetLocal", "configGlobalQoSSetPeer", "configGlobalQoSSuccess", "nop"], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["configGlobalQoSBegin", "configGlobalQoSFail", "configGlobalQoSSetLocal", "configGlobalQoSSetPeer", "configGlobalQoSSuccess", "configGlobalQoSWaitForUserAck", "nop"], []), 
         "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "retry": MoPropertyMeta("retry", "retry", "byte", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 

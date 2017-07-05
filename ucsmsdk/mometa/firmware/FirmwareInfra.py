@@ -56,6 +56,7 @@ class FirmwareInfra(ManagedObject):
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "oper_scheduler": MoPropertyMeta("oper_scheduler", "operScheduler", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "oper_service_pack_version": MoPropertyMeta("oper_service_pack_version", "operServicePackVersion", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "applied", "apply-pending", "evaluated", "evaluation-pending", "expired", "none", "pending", "untriggered", "waiting-for-dependency", "waiting-for-maint-window", "waiting-for-user"], []), 
         "oper_version": MoPropertyMeta("oper_version", "operVersion", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -76,6 +77,7 @@ class FirmwareInfra(ManagedObject):
         "intId": "int_id", 
         "name": "name", 
         "operScheduler": "oper_scheduler", 
+        "operServicePackVersion": "oper_service_pack_version", 
         "operState": "oper_state", 
         "operVersion": "oper_version", 
         "policyLevel": "policy_level", 
@@ -96,6 +98,7 @@ class FirmwareInfra(ManagedObject):
         self.int_id = None
         self.name = None
         self.oper_scheduler = None
+        self.oper_service_pack_version = None
         self.oper_state = None
         self.oper_version = None
         self.policy_level = None

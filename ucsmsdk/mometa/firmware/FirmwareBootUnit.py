@@ -49,7 +49,7 @@ class FirmwareBootUnit(ManagedObject):
     consts = FirmwareBootUnitConsts()
     naming_props = set([u'type'])
 
-    mo_meta = MoMeta("FirmwareBootUnit", "firmwareBootUnit", "bootunit-[type]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin"], [u'firmwareBootDefinition'], [u'faultInst', u'firmwareInstallable'], ["Get", "Set"])
+    mo_meta = MoMeta("FirmwareBootUnit", "firmwareBootUnit", "bootunit-[type]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin"], [u'firmwareBootDefinition'], [u'faultInst', u'firmwareInstallable', u'firmwareServicePack'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["force-trigger", "trigger", "triggered"], []), 
@@ -66,7 +66,7 @@ class FirmwareBootUnit(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "skip_validation": MoPropertyMeta("skip_validation", "skipValidation", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["false", "no", "true", "yes"], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x400, None, None, r"""((kernel|system|combined|boot-loader),){0,3}(kernel|system|combined|boot-loader){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x400, None, None, r"""((kernel|system|combined|boot-loader|service-pack),){0,4}(kernel|system|combined|boot-loader|service-pack){0,1}""", [], []), 
         "version": MoPropertyMeta("version", "version", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800, 0, 510, None, [], []), 
     }
 

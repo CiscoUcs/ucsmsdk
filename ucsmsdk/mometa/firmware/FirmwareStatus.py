@@ -22,6 +22,22 @@ class FirmwareStatusConsts:
     OPER_STATE_THROTTLED = "throttled"
     OPER_STATE_UPDATING = "updating"
     OPER_STATE_UPGRADING = "upgrading"
+    SERVICE_PACK_OPER_STATE_ACTIVATING = "activating"
+    SERVICE_PACK_OPER_STATE_AUTO_ACTIVATING = "auto-activating"
+    SERVICE_PACK_OPER_STATE_AUTO_UPDATING = "auto-updating"
+    SERVICE_PACK_OPER_STATE_BAD_IMAGE = "bad-image"
+    SERVICE_PACK_OPER_STATE_FAILED = "failed"
+    SERVICE_PACK_OPER_STATE_FAULTY_STATE = "faulty-state"
+    SERVICE_PACK_OPER_STATE_PENDING_NEXT_BOOT = "pending-next-boot"
+    SERVICE_PACK_OPER_STATE_PENDING_POWER_CYCLE = "pending-power-cycle"
+    SERVICE_PACK_OPER_STATE_READY = "ready"
+    SERVICE_PACK_OPER_STATE_REBOOTING = "rebooting"
+    SERVICE_PACK_OPER_STATE_REBUILDING = "rebuilding"
+    SERVICE_PACK_OPER_STATE_SCHEDULED = "scheduled"
+    SERVICE_PACK_OPER_STATE_SET_STARTUP = "set-startup"
+    SERVICE_PACK_OPER_STATE_THROTTLED = "throttled"
+    SERVICE_PACK_OPER_STATE_UPDATING = "updating"
+    SERVICE_PACK_OPER_STATE_UPGRADING = "upgrading"
 
 
 class FirmwareStatus(ManagedObject):
@@ -42,6 +58,8 @@ class FirmwareStatus(ManagedObject):
         "pld_version": MoPropertyMeta("pld_version", "pldVersion", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "service_pack_oper_state": MoPropertyMeta("service_pack_oper_state", "servicePackOperState", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["activating", "auto-activating", "auto-updating", "bad-image", "failed", "faulty-state", "pending-next-boot", "pending-power-cycle", "ready", "rebooting", "rebuilding", "scheduled", "set-startup", "throttled", "updating", "upgrading"], []), 
+        "service_pack_version": MoPropertyMeta("service_pack_version", "servicePackVersion", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
@@ -55,6 +73,8 @@ class FirmwareStatus(ManagedObject):
         "pldVersion": "pld_version", 
         "rn": "rn", 
         "sacl": "sacl", 
+        "servicePackOperState": "service_pack_oper_state", 
+        "servicePackVersion": "service_pack_version", 
         "status": "status", 
     }
 
@@ -67,6 +87,8 @@ class FirmwareStatus(ManagedObject):
         self.package_version = None
         self.pld_version = None
         self.sacl = None
+        self.service_pack_oper_state = None
+        self.service_pack_version = None
         self.status = None
 
         ManagedObject.__init__(self, "FirmwareStatus", parent_mo_or_dn, **kwargs)

@@ -26,6 +26,10 @@ class LstorageVirtualDriveDefConsts:
     READ_POLICY_PLATFORM_DEFAULT = "platform-default"
     READ_POLICY_READ_AHEAD = "read-ahead"
     READ_POLICY_UNKNOWN = "unknown"
+    SECURITY_FALSE = "false"
+    SECURITY_NO = "no"
+    SECURITY_TRUE = "true"
+    SECURITY_YES = "yes"
     STRIP_SIZE_1024_KB = "1024KB"
     STRIP_SIZE_128_KB = "128KB"
     STRIP_SIZE_16_KB = "16KB"
@@ -49,7 +53,7 @@ class LstorageVirtualDriveDef(ManagedObject):
     consts = LstorageVirtualDriveDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LstorageVirtualDriveDef", "lstorageVirtualDriveDef", "virtual-drive-def", VersionMeta.Version224b, "InputOutput", 0x7ff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageDiskGroupConfigDef', u'lstorageDiskGroupConfigPolicy'], [], ["Get", "Set"])
+    mo_meta = MoMeta("LstorageVirtualDriveDef", "lstorageVirtualDriveDef", "virtual-drive-def", VersionMeta.Version224b, "InputOutput", 0xfff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageDiskGroupConfigDef', u'lstorageDiskGroupConfigPolicy'], [], ["Get", "Set"])
 
     prop_meta = {
         "access_policy": MoPropertyMeta("access_policy", "accessPolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["blocked", "hidden", "platform-default", "read-only", "read-write", "transport-ready", "unknown"], []), 
@@ -60,9 +64,10 @@ class LstorageVirtualDriveDef(ManagedObject):
         "read_policy": MoPropertyMeta("read_policy", "readPolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["normal", "platform-default", "read-ahead", "unknown"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "strip_size": MoPropertyMeta("strip_size", "stripSize", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["1024KB", "128KB", "16KB", "256KB", "32KB", "512KB", "64KB", "8KB", "platform-default", "unspecified"], []), 
-        "write_cache_policy": MoPropertyMeta("write_cache_policy", "writeCachePolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["always-write-back", "platform-default", "unknown", "write-back-good-bbu", "write-through"], []), 
+        "security": MoPropertyMeta("security", "security", "string", None, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["false", "no", "true", "yes"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "strip_size": MoPropertyMeta("strip_size", "stripSize", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["1024KB", "128KB", "16KB", "256KB", "32KB", "512KB", "64KB", "8KB", "platform-default", "unspecified"], []), 
+        "write_cache_policy": MoPropertyMeta("write_cache_policy", "writeCachePolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["always-write-back", "platform-default", "unknown", "write-back-good-bbu", "write-through"], []), 
     }
 
     prop_map = {
@@ -74,6 +79,7 @@ class LstorageVirtualDriveDef(ManagedObject):
         "readPolicy": "read_policy", 
         "rn": "rn", 
         "sacl": "sacl", 
+        "security": "security", 
         "status": "status", 
         "stripSize": "strip_size", 
         "writeCachePolicy": "write_cache_policy", 
@@ -87,6 +93,7 @@ class LstorageVirtualDriveDef(ManagedObject):
         self.io_policy = None
         self.read_policy = None
         self.sacl = None
+        self.security = None
         self.status = None
         self.strip_size = None
         self.write_cache_policy = None

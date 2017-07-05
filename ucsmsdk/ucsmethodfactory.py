@@ -68,11 +68,46 @@ def aaa_get_auth_token_client(in_cookie):
     return xml_request
 
 
+def aaa_get_auth_token_internal(cookie, in_id, in_ipv4, in_locales, in_parent_sess, in_priv, in_remote, in_role_list, in_user):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("AaaGetAuthTokenInternal")
+    method.cookie = cookie
+    method.in_id = str(in_id)
+    method.in_ipv4 = in_ipv4
+    method.in_locales = in_locales
+    method.in_parent_sess = in_parent_sess
+    method.in_priv = in_priv
+    method.in_remote = in_remote
+    method.in_role_list = in_role_list
+    method.in_user = in_user
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
 def aaa_get_kvm_launch_url(in_cookie, in_ipv4):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("AaaGetKVMLaunchUrl")
     method.in_cookie = in_cookie
     method.in_ipv4 = in_ipv4
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def aaa_get_kvm_launch_url_internal(cookie, in_cimc_ipv4, in_ipv4, in_ipv6, in_locales, in_parent_sess, in_priv, in_remote, in_role_list, in_user):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("AaaGetKVMLaunchUrlInternal")
+    method.cookie = cookie
+    method.in_cimc_ipv4 = in_cimc_ipv4
+    method.in_ipv4 = in_ipv4
+    method.in_ipv6 = in_ipv6
+    method.in_locales = in_locales
+    method.in_parent_sess = in_parent_sess
+    method.in_priv = in_priv
+    method.in_remote = in_remote
+    method.in_role_list = in_role_list
+    method.in_user = in_user
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
     return xml_request
@@ -84,6 +119,25 @@ def aaa_get_n_compute_auth_token_by_dn(cookie, in_cookie, in_dn, in_number_of):
     method.cookie = cookie
     method.in_dn = in_dn
     method.in_number_of = str(in_number_of)
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def aaa_get_n_compute_auth_token_internal_by_dn(cookie, in_dn, in_id, in_ipv4, in_locales, in_number_of, in_parent_sess, in_priv, in_remote, in_role_list, in_user):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("AaaGetNComputeAuthTokenInternalByDn")
+    method.cookie = cookie
+    method.in_dn = in_dn
+    method.in_id = str(in_id)
+    method.in_ipv4 = in_ipv4
+    method.in_locales = in_locales
+    method.in_number_of = str(in_number_of)
+    method.in_parent_sess = in_parent_sess
+    method.in_priv = in_priv
+    method.in_remote = in_remote
+    method.in_role_list = in_role_list
+    method.in_user = in_user
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
     return xml_request
@@ -124,6 +178,23 @@ def aaa_refresh(in_cookie, in_name, in_password):
     method.in_cookie = in_cookie
     method.in_name = in_name
     method.in_password = in_password
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def aaa_setup_shell_access_internal(cookie, in_id, in_locales, in_parent_sess, in_priv, in_remote, in_role_list, in_ssh_key, in_user):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("AaaSetupShellAccessInternal")
+    method.cookie = cookie
+    method.in_id = str(in_id)
+    method.in_locales = in_locales
+    method.in_parent_sess = in_parent_sess
+    method.in_priv = in_priv
+    method.in_remote = in_remote
+    method.in_role_list = in_role_list
+    method.in_ssh_key = in_ssh_key
+    method.in_user = in_user
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
     return xml_request
@@ -745,6 +816,32 @@ def ape_update_bios_firmware_version(cookie, in_config):
     return xml_request
 
 
+def ape_update_server_absence(cookie, in_device_primary_key, in_model, in_serial, in_vendor):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ApeUpdateServerAbsence")
+    method.cookie = cookie
+    method.in_device_primary_key = in_device_primary_key
+    method.in_model = in_model
+    method.in_serial = in_serial
+    method.in_vendor = in_vendor
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def ape_update_server_presence(cookie, in_device_primary_key, in_model, in_serial, in_vendor):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ApeUpdateServerPresence")
+    method.cookie = cookie
+    method.in_device_primary_key = in_device_primary_key
+    method.in_model = in_model
+    method.in_serial = in_serial
+    method.in_vendor = in_vendor
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
 def ape_update_storage_ctlr_firmware_version(cookie, in_config):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ApeUpdateStorageCtlrFirmwareVersion")
@@ -765,7 +862,7 @@ def compute_get_inventory(cookie, in_faults_only):
     return xml_request
 
 
-def config_check_compatibility(cookie, dn, in_blade_pack_version, in_detail_result, in_infra_pack_version, in_rack_pack_version):
+def config_check_compatibility(cookie, dn, in_blade_pack_version, in_detail_result, in_infra_pack_version, in_rack_pack_version, in_service_pack_bundle_version):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ConfigCheckCompatibility")
     method.cookie = cookie
@@ -774,6 +871,7 @@ def config_check_compatibility(cookie, dn, in_blade_pack_version, in_detail_resu
     method.in_detail_result = in_detail_result
     method.in_infra_pack_version = in_infra_pack_version
     method.in_rack_pack_version = in_rack_pack_version
+    method.in_service_pack_bundle_version = in_service_pack_bundle_version
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
     return xml_request
@@ -993,7 +1091,7 @@ def config_get_xml_file_str(cookie, in_file_path):
     return xml_request
 
 
-def config_install_all_impact(cookie, dn, in_blade_pack_version, in_host_pack_dns, in_infra_pack_version, in_rack_pack_version):
+def config_install_all_impact(cookie, dn, in_blade_pack_version, in_host_pack_dns, in_infra_pack_version, in_rack_pack_version, in_service_pack_bundle_version):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ConfigInstallAllImpact")
     method.cookie = cookie
@@ -1002,6 +1100,7 @@ def config_install_all_impact(cookie, dn, in_blade_pack_version, in_host_pack_dn
     method.in_host_pack_dns = in_host_pack_dns
     method.in_infra_pack_version = in_infra_pack_version
     method.in_rack_pack_version = in_rack_pack_version
+    method.in_service_pack_bundle_version = in_service_pack_bundle_version
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
     return xml_request

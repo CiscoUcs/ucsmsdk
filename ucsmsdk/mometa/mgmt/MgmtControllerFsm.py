@@ -34,6 +34,7 @@ class MgmtControllerFsmConsts:
     CURRENT_FSM_UPDATE_SAS_EXPANDER = "UpdateSasExpander"
     CURRENT_FSM_UPDATE_SWITCH = "UpdateSwitch"
     CURRENT_FSM_UPDATE_UCSMANAGER = "UpdateUCSManager"
+    CURRENT_FSM_UPDATE_UCSMANAGER_SP = "UpdateUCSManagerSP"
     CURRENT_FSM_NOP = "nop"
     FSM_STATUS_FAIL = "fail"
     FSM_STATUS_IN_PROGRESS = "inProgress"
@@ -185,7 +186,7 @@ class MgmtControllerFsm(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "completion_time": MoPropertyMeta("completion_time", "completionTime", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []), 
-        "current_fsm": MoPropertyMeta("current_fsm", "currentFsm", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ActivateAdaptor", "ActivateBMC", "ActivateCMC", "ActivateColusaCMC", "ActivateIOM", "ActivateLocalDisk", "ActivateSasExpander", "EnableSecureBoot", "ExtMgmtIfConfig", "ExtMgmtInterfaceConfig", "LockConfig", "Online", "PowerBudgetReclaimConfig", "PowerCap", "RegistryConfig", "SysConfig", "UpdateAdaptor", "UpdateBMC", "UpdateBoardController", "UpdateCMC", "UpdateColusaBoardController", "UpdateColusaCMC", "UpdateIOM", "UpdateRaidController", "UpdateSasExpander", "UpdateSwitch", "UpdateUCSManager", "nop"], []), 
+        "current_fsm": MoPropertyMeta("current_fsm", "currentFsm", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ActivateAdaptor", "ActivateBMC", "ActivateCMC", "ActivateColusaCMC", "ActivateIOM", "ActivateLocalDisk", "ActivateSasExpander", "EnableSecureBoot", "ExtMgmtIfConfig", "ExtMgmtInterfaceConfig", "LockConfig", "Online", "PowerBudgetReclaimConfig", "PowerCap", "RegistryConfig", "SysConfig", "UpdateAdaptor", "UpdateBMC", "UpdateBoardController", "UpdateCMC", "UpdateColusaBoardController", "UpdateColusaCMC", "UpdateIOM", "UpdateRaidController", "UpdateSasExpander", "UpdateSwitch", "UpdateUCSManager", "UpdateUCSManagerSP", "nop"], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["fail", "inProgress", "nop", "pending", "skip", "success", "throttled"], []), 

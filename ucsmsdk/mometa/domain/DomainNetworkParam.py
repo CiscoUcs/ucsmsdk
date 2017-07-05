@@ -15,7 +15,7 @@ class DomainNetworkParam(ManagedObject):
     consts = DomainNetworkParamConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("DomainNetworkParam", "domainNetworkParam", "network-param-[name]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["admin"], [u'domainEnvironmentFeature', u'domainNetworkFeature', u'domainServerFeature', u'domainStorageFeature'], [], [None])
+    mo_meta = MoMeta("DomainNetworkParam", "domainNetworkParam", "network-param-[name]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["admin"], [u'domainChassisFeature', u'domainEnvironmentFeature', u'domainNetworkFeature', u'domainServerFeature', u'domainStorageFeature'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

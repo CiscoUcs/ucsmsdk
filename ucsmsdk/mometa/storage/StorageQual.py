@@ -6,6 +6,7 @@ from ...ucsmeta import VersionMeta
 
 
 class StorageQualConsts:
+    BLOCK_SIZE_512 = "512"
     BLOCK_SIZE_UNKNOWN = "unknown"
     DISK_TYPE_HDD = "HDD"
     DISK_TYPE_SSD = "SSD"
@@ -30,7 +31,7 @@ class StorageQual(ManagedObject):
     mo_meta = MoMeta("StorageQual", "storageQual", "local-storage", VersionMeta.Version101e, "InputOutput", 0x3fff, [], ["admin", "pn-policy"], [u'computeQual'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "block_size": MoPropertyMeta("block_size", "blockSize", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["unknown"], ["0-4294967295"]), 
+        "block_size": MoPropertyMeta("block_size", "blockSize", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["512", "unknown"], ["0-4294967295"]), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "disk_type": MoPropertyMeta("disk_type", "diskType", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["HDD", "SSD", "unspecified"], []), 
         "diskless": MoPropertyMeta("diskless", "diskless", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["no", "unspecified", "yes"], []), 

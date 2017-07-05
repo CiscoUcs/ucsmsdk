@@ -58,7 +58,7 @@ class FabricEthVlanPortEp(ManagedObject):
     consts = FabricEthVlanPortEpConsts()
     naming_props = set([u'switchId', u'slotId', u'portId'])
 
-    mo_meta = MoMeta("FabricEthVlanPortEp", "fabricEthVlanPortEp", "phys-switch-[switch_id]-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0xfff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricNetGroup', u'fabricSwSubGroup', u'fabricVlan'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricEthVlanPortEp", "fabricEthVlanPortEp", "phys-switch-[switch_id]-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x1fff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricNetGroup', u'fabricSwSubGroup', u'fabricVlan'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
@@ -91,6 +91,7 @@ class FabricEthVlanPortEp(ManagedObject):
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x800, None, None, None, ["A", "B", "NONE"], []), 
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
+        "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", None, MoPropertyMeta.READ_WRITE, 0x1000, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
         "warnings": MoPropertyMeta("warnings", "warnings", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|fc-zoning-enabled|configuration-error),){0,3}(defaultValue|none|fc-zoning-enabled|configuration-error){0,1}""", [], []), 
     }
 
@@ -125,6 +126,7 @@ class FabricEthVlanPortEp(ManagedObject):
         "switchId": "switch_id", 
         "transport": "transport", 
         "type": "type", 
+        "usrLbl": "usr_lbl", 
         "warnings": "warnings", 
     }
 
@@ -158,6 +160,7 @@ class FabricEthVlanPortEp(ManagedObject):
         self.status = None
         self.transport = None
         self.type = None
+        self.usr_lbl = None
         self.warnings = None
 
         ManagedObject.__init__(self, "FabricEthVlanPortEp", parent_mo_or_dn, **kwargs)

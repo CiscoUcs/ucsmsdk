@@ -176,6 +176,7 @@ class SysdebugCore(ManagedObject):
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["downloaded", "init", "prepare-download"], []), 
+        "checksum": MoPropertyMeta("checksum", "checksum", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
@@ -202,6 +203,7 @@ class SysdebugCore(ManagedObject):
 
     prop_map = {
         "adminState": "admin_state", 
+        "checksum": "checksum", 
         "childAction": "child_action", 
         "descr": "descr", 
         "dn": "dn", 
@@ -231,6 +233,7 @@ class SysdebugCore(ManagedObject):
         self.name = name
         self.switch_id = switch_id
         self.admin_state = None
+        self.checksum = None
         self.child_action = None
         self.descr = None
         self.fsm_descr = None

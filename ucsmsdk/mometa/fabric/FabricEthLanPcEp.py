@@ -69,7 +69,7 @@ class FabricEthLanPcEp(ManagedObject):
     consts = FabricEthLanPcEpConsts()
     naming_props = set([u'slotId', u'portId'])
 
-    mo_meta = MoMeta("FabricEthLanPcEp", "fabricEthLanPcEp", "ep-slot-[slot_id]-port-[port_id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEthLanPc', u'fabricSubGroup'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricEthLanPcEp", "fabricEthLanPcEp", "ep-slot-[slot_id]-port-[port_id]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEthLanPc', u'fabricSubGroup'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
@@ -105,6 +105,7 @@ class FabricEthLanPcEp(ManagedObject):
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
         "udld_oper_state": MoPropertyMeta("udld_oper_state", "udldOperState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-disabled", "bidirectional", "echo-empty", "mismatch", "tx-rx-loop", "unidirectional", "unknown"], []), 
+        "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", None, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
         "warnings": MoPropertyMeta("warnings", "warnings", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|fc-zoning-enabled|configuration-error),){0,3}(defaultValue|none|fc-zoning-enabled|configuration-error){0,1}""", [], []), 
     }
 
@@ -142,6 +143,7 @@ class FabricEthLanPcEp(ManagedObject):
         "transport": "transport", 
         "type": "type", 
         "udldOperState": "udld_oper_state", 
+        "usrLbl": "usr_lbl", 
         "warnings": "warnings", 
     }
 
@@ -178,6 +180,7 @@ class FabricEthLanPcEp(ManagedObject):
         self.transport = None
         self.type = None
         self.udld_oper_state = None
+        self.usr_lbl = None
         self.warnings = None
 
         ManagedObject.__init__(self, "FabricEthLanPcEp", parent_mo_or_dn, **kwargs)
