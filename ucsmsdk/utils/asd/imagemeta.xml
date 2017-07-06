@@ -1,0 +1,43 @@
+<CcoImageMetas>
+
+  <CcoImageMeta Mode="B-Series" MdfId="283853163" FirmwareId="283655681" DriverId="283853158" Category="Default" FirmwareVersion="2.1(2a)" DriverVersion="2.1(2a)" />
+  <CcoImageMeta Mode="B-Series" MdfId="283612660" FirmwareId="283655658" Category="Infrastructure" FirmwareVersion="2.1(2a)" />
+  <CcoImageMeta Mode="B-Series" MdfId="286284472" FirmwareId="283655681" DriverId="283853158" Category="ModularServer" FirmwareVersion="2.5(1a)" DriverVersion="2.5(1)" />
+  <CcoImageMeta Mode="B-Series" MdfId="283862063" FirmwareId="283655681" DriverId="283853158" Category="Rack" FirmwareVersion="2.1(2a)" DriverVersion="1.4(5b)" />
+
+  <CcoImageMeta Mode="UcsCentral" MdfId="284308174" FirmwareId="284308194" DriverId="" FirmwareVersion="1.2(1a)" />
+
+  <CcoImageMeta Mode="C-Series" MdfId="284444317" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C22-M3" FirmwareVersion="1.5(1b)" DriverVersion="1.5(1a)" />
+  <CcoImageMeta Mode="C-Series" MdfId="284444319" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C24-M3" FirmwareVersion="1.5(1b)" DriverVersion="1.5(1a)" />
+  <CcoImageMeta Mode="C-Series" MdfId="284296253" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C220-M3" FirmwareVersion="1.5(1b)" DriverVersion="1.5(1a)" />
+  <CcoImageMeta Mode="C-Series" MdfId="286281345" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C220-M4" FirmwareVersion="2.0(3d)2" DriverVersion="2.0.3" />
+  <CcoImageMeta Mode="C-Series" MdfId="284296254" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C240-M3" FirmwareVersion="1.5(1b)" DriverVersion="1.5(1a)" />
+  <CcoImageMeta Mode="C-Series" MdfId="286281356" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C240-M4" FirmwareVersion="2.0(3d)2" DriverVersion="2.0.3" />
+  <CcoImageMeta Mode="C-Series" MdfId="283862072" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C260-M2" FirmwareVersion="1.5(1b)" DriverVersion="1.5(1a)" />
+  <CcoImageMeta Mode="C-Series" MdfId="284512335" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C420-M3" FirmwareVersion="1.5(1b)" DriverVersion="1.5(1a)" />
+  <CcoImageMeta Mode="C-Series" MdfId="283862074" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C460-M2" FirmwareVersion="1.5(1b)" DriverVersion="1.5(1a)"/>
+  <CcoImageMeta Mode="C-Series" MdfId="286265859" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C460-M4" FirmwareVersion="1.5(6a)" DriverVersion="1.5(6)"/>
+  <CcoImageMeta Mode="C-Series" MdfId="286281425" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C3160" FirmwareVersion="2.0(2c)1" DriverVersion="2.0.2"/>
+  <CcoImageMeta Mode="C-Series" MdfId="286289336" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C3260" FirmwareVersion="2.0(9i)" DriverVersion="2.0.7.a"/>
+  <CcoImageMeta Mode="E-Series" MdfId="286231777" FirmwareId="284480160" DriverId="" Model ="UCS-EN120S-M2" FirmwareVersion="2.3.1" DriverVersion="" />
+  <CcoImageMeta Mode="E-Series" MdfId="284479227" FirmwareId="284480160" DriverId="284480162" Model ="UCS-EN140S-M1" FirmwareVersion="2.3.1" DriverVersion="" />
+  <CcoImageMeta Mode="E-Series" MdfId="286231776" FirmwareId="284480160" DriverId="" Model ="UCS-EN140S-M2" FirmwareVersion="2.3.1" DriverVersion="" />
+  <CcoImageMeta Mode="E-Series" MdfId="284479265" FirmwareId="284480160" DriverId="284480162" Model ="UCS-E140DP-M1" FirmwareVersion="2.3.1" DriverVersion="" />
+  <CcoImageMeta Mode="E-Series" MdfId="284479264" FirmwareId="284480160" DriverId="" Model ="UCS-E140D-M1" FirmwareVersion="2.3.1" DriverVersion="" />
+  <CcoImageMeta Mode="E-Series" MdfId="284479267" FirmwareId="284480160" DriverId="284480162" Model ="UCS-E160DP-M1" FirmwareVersion="2.3.1" DriverVersion="" />
+  <CcoImageMeta Mode="E-Series" MdfId="284479266" FirmwareId="284480160" DriverId="284480162" Model ="UCS-E160D-M1" FirmwareVersion="2.3.1" DriverVersion=""/>
+  <CcoImageMeta Mode="E-Series" MdfId="286281321" FirmwareId="284480160" DriverId="" Model ="UCS-E160D-M2" FirmwareVersion="2.3.3" DriverVersion=""/>
+  <CcoImageMeta Mode="E-Series" MdfId="286281332" FirmwareId="284480160" DriverId="" Model ="UCS-E180D-M2" FirmwareVersion="2.3.3" DriverVersion="" />
+  <!-- <CcoImageMeta Mode="C-Series" MdfId="283860963" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C200-M1"/>
+
+    <CcoImageMeta Mode="B-Series" MdfId="283612660" FirmwareId="" DriverId="283853158" Category="Infrastructure" />
+    <CcoImageMeta Mode="C-Series" MdfId="283860950" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C200-M2"/>
+    <CcoImageMeta Mode="C-Series" MdfId="283862068" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C210-M1"/>
+    <CcoImageMeta Mode="C-Series" MdfId="283862069" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C210-M2"/>
+    <CcoImageMeta Mode="C-Series" MdfId="283862070" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C250-M1"/>
+    <CcoImageMeta Mode="C-Series" MdfId="283862071" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C250-M2"/>
+    <CcoImageMeta Mode="C-Series" MdfId="283862073" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C460-M1"/>
+    <CcoImageMeta Mode="C-Series" MdfId="286289336" FirmwareId="283850974" DriverId="283853158" Model ="UCSC-C3260"/>
+    <CcoImageMeta Mode="E-Series" MdfId="286291240" FirmwareId="284480160" DriverId="" Model ="UCS-EN140N" />
+    <CcoImageMeta Mode="E-Series" MdfId="286291251" FirmwareId="284480160" DriverId="" Model ="UCS-EN120E" /> -->
+</CcoImageMetas>
