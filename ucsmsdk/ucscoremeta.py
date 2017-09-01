@@ -108,12 +108,12 @@ class UcsVersion(object):
             return 1
 
         if self.__major != version.major:
-            return ord(self.__major) - ord(version.major)
+            return ord(version.major) - ord(self.__major)
         if self.__minor != version.minor:
-            return ord(self.__minor) - ord(version.major)
+            return ord(version.major) - ord(self.__minor)
         if self.__mr != version.mr:
-            return ord(self.__mr) - ord(version.mr)
-        return ord(self.__patch) - ord(version.patch)
+            return ord(version.mr) - ord(self.__mr)
+        return ord(version.patch) - ord(self.__patch)
 
     def __gt__(self, version):
         return self.compare_to(version) > 0
