@@ -226,8 +226,8 @@ class UcsHandle(UcsSession):
             Dictionary {dn1: object, dn2: object2}
 
         Example:
-            obj = handle.lookup_by_dns("fabric/lan/net-100", "fabric/lan/net-101")
-            obj = handle.lookup_by_dns(["fabric/lan/net-100", "fabric/lan/net-101"])
+            obj = handle.query_dns("fabric/lan/net-100", "fabric/lan/net-101")
+            obj = handle.query_dns(["fabric/lan/net-100", "fabric/lan/net-101"])
         """
 
         from .ucsbasetype import DnSet, Dn
@@ -278,8 +278,8 @@ class UcsHandle(UcsSession):
         Dictionary {class_id1: [objects], class_id2: [objects]}
 
         Example:
-            obj = handle.lookup_by_dns("OrgOrg", "LsServer")
-            obj = handle.lookup_by_dns(["OrgOrg", "LsServer"])
+            obj = handle.query_classids("OrgOrg", "LsServer")
+            obj = handle.query_classids(["OrgOrg", "LsServer"])
         """
 
         # ToDo - How to handle unknown class_id
@@ -343,10 +343,10 @@ class UcsHandle(UcsSession):
             externalmethod object   if need_response=True\n
 
         Example:
-            obj = handle.lookup_by_dn("fabric/lan/net-100")\n
-            obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True)\n
-            obj = handle.lookup_by_dn("fabric/lan/net-100", need_response=True)\n
-            obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True, need_response=True)\n
+            obj = handle.query_dn("fabric/lan/net-100")\n
+            obj = handle.query_dn("fabric/lan/net-100", hierarchy=True)\n
+            obj = handle.query_dn("fabric/lan/net-100", need_response=True)\n
+            obj = handle.query_dn("fabric/lan/net-100", hierarchy=True, need_response=True)\n
         """
 
         from .ucsbasetype import DnSet, Dn
