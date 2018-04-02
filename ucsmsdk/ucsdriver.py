@@ -1,4 +1,4 @@
-# Copyright 2015 Cisco Systems, Inc.
+# Copyright 2017 Cisco Systems, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -155,7 +155,7 @@ class UcsDriver(object):
     def update_handlers(self, tls_proto=None):
         self.__handlers = self.__get_handlers(tls_proto)
 
-    def __get_handlers(self, tls_proto="tlsv1"):
+    def __get_handlers(self, tls_proto=None):
         """
         Internal method to handle redirection and use TLS protocol.
         """
