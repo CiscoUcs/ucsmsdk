@@ -293,32 +293,36 @@ class UcsSession(object):
         from . import ucsxmlcodec as xc
 
         self._tx_lock_acquire_conditional(elem)
-        if self._is_stale_cookie(elem):
-            elem.attrib['cookie'] = self.cookie
-
-        self.dump_xml_request(elem)
-        xml_str = xc.to_xml_str(elem)
-
-        response_str = self.post_xml(xml_str)
-        self.dump_xml_response(response_str)
-
         try:
-            if response_str:
-                response = xc.from_xml_str(response_str, self)
+            if self._is_stale_cookie(elem):
+                elem.attrib['cookie'] = self.cookie
 
-            # Cookie update should happen with-in the lock
-            # this ensures that the next packet goes out
-            # with the new cookie
-            if elem.tag == "aaaRefresh":
-                self._update_cookie(response)
+            self.dump_xml_request(elem)
+            xml_str = xc.to_xml_str(elem)
 
+            response_str = self.post_xml(xml_str)
+            self.dump_xml_response(response_str)
+
+            try:
+                if response_str:
+                    response = xc.from_xml_str(response_str, self)
+
+                # Cookie update should happen with-in the lock
+                # this ensures that the next packet goes out
+                # with the new cookie
+                if elem.tag == "aaaRefresh":
+                    self._update_cookie(response)
+
+                # self._tx_lock_release_conditional(elem)
+                # Moved to finally block
+                return response
+            except:
+                # self._tx_lock_release_conditional(elem)
+                # Moved to finally block
+                raise
+        finally:
             self._tx_lock_release_conditional(elem)
-            return response
-        except:
-            self._tx_lock_release_conditional(elem)
-            raise
 
-        self._tx_lock_release_conditional(elem)
         return None
 
     def _tx_lock_acquire_conditional(self, elem):
