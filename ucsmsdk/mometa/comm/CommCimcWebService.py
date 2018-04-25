@@ -24,7 +24,7 @@ class CommCimcWebService(ManagedObject):
     consts = CommCimcWebServiceConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommCimcWebService", "commCimcWebService", "cimc-web-svc", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["aaa", "admin"], [u'commSvcEp'], [], [None])
+    mo_meta = MoMeta("CommCimcWebService", "commCimcWebService", "cimc-web-svc", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["aaa", "admin"], [u'commSvcEp'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 

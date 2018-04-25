@@ -33,13 +33,13 @@ class FirmwareInfraPack(ManagedObject):
     consts = FirmwareInfraPackConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("FirmwareInfraPack", "firmwareInfraPack", "fw-infra-pack-[name]", VersionMeta.Version211a, "InputOutput", 0x7fff, [], ["admin"], [u'orgOrg'], [u'firmwarePackItem'], ["Get", "Set"])
+    mo_meta = MoMeta("FirmwareInfraPack", "firmwareInfraPack", "fw-infra-pack-[name]", VersionMeta.Version211a, "InputOutput", 0x7fff, [], ["admin"], [u'orgOrg'], [u'firmwareBackupVersionHolder', u'firmwarePackItem'], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "evacuate": MoPropertyMeta("evacuate", "evacuate", "string", None, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["false", "no", "true", "yes"], []), 
+        "evacuate": MoPropertyMeta("evacuate", "evacuate", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["false", "no", "true", "yes"], []), 
         "force_deploy": MoPropertyMeta("force_deploy", "forceDeploy", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["false", "no", "true", "yes"], []), 
         "infra_bundle_name": MoPropertyMeta("infra_bundle_name", "infraBundleName", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "infra_bundle_version": MoPropertyMeta("infra_bundle_version", "infraBundleVersion", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x40, 0, 510, None, [], []), 
@@ -50,8 +50,8 @@ class FirmwareInfraPack(ManagedObject):
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["local", "pending-policy", "policy"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x400, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "service_pack_bundle_name": MoPropertyMeta("service_pack_bundle_name", "servicePackBundleName", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "service_pack_bundle_version": MoPropertyMeta("service_pack_bundle_version", "servicePackBundleVersion", "string", None, MoPropertyMeta.READ_WRITE, 0x800, 0, 510, None, [], []), 
+        "service_pack_bundle_name": MoPropertyMeta("service_pack_bundle_name", "servicePackBundleName", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "service_pack_bundle_version": MoPropertyMeta("service_pack_bundle_version", "servicePackBundleVersion", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x800, 0, 510, None, [], []), 
         "skip_validation": MoPropertyMeta("skip_validation", "skipValidation", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "stage_size": MoPropertyMeta("stage_size", "stageSize", "ushort", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 

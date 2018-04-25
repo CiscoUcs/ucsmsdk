@@ -17,6 +17,9 @@ class EquipmentLocalDiskControllerDefConsts:
     CONTROLLER_DEF_TYPE_NVME_HHHL = "nvme-hhhl"
     CONTROLLER_DEF_TYPE_NVME_MEZZ = "nvme-mezz"
     CONTROLLER_DEF_TYPE_SLOT_BASED = "slot-based"
+    CONTROLLER_SUB_TYPE_NONE = "none"
+    CONTROLLER_SUB_TYPE_PSATA = "psata"
+    CONTROLLER_SUB_TYPE_SSATA = "ssata"
     DISK_SHARING_SUPPORTED_FALSE = "false"
     DISK_SHARING_SUPPORTED_NO = "no"
     DISK_SHARING_SUPPORTED_TRUE = "true"
@@ -25,6 +28,10 @@ class EquipmentLocalDiskControllerDefConsts:
     FORCE_UPDATE_VERSION_NO = "no"
     FORCE_UPDATE_VERSION_TRUE = "true"
     FORCE_UPDATE_VERSION_YES = "yes"
+    HOT_PLUG_SUPPORTED_FALSE = "false"
+    HOT_PLUG_SUPPORTED_NO = "no"
+    HOT_PLUG_SUPPORTED_TRUE = "true"
+    HOT_PLUG_SUPPORTED_YES = "yes"
     INT_ID_NONE = "none"
     JBOD_SHARING_SUPPORTED_FALSE = "false"
     JBOD_SHARING_SUPPORTED_NO = "no"
@@ -66,10 +73,12 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "config_parm_mod_supported": MoPropertyMeta("config_parm_mod_supported", "configParmModSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "controller_def_type": MoPropertyMeta("controller_def_type", "controllerDefType", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["dual", "embedded", "none", "nvme", "nvme-hhhl", "nvme-mezz", "slot-based"], []), 
+        "controller_sub_type": MoPropertyMeta("controller_sub_type", "controllerSubType", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["none", "psata", "ssata"], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "disk_sharing_supported": MoPropertyMeta("disk_sharing_supported", "diskSharingSupported", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "force_update_version": MoPropertyMeta("force_update_version", "forceUpdateVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "hot_plug_supported": MoPropertyMeta("hot_plug_supported", "hotPlugSupported", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
         "jbod_sharing_supported": MoPropertyMeta("jbod_sharing_supported", "jbodSharingSupported", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
@@ -89,10 +98,12 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         "childAction": "child_action", 
         "configParmModSupported": "config_parm_mod_supported", 
         "controllerDefType": "controller_def_type", 
+        "controllerSubType": "controller_sub_type", 
         "descr": "descr", 
         "diskSharingSupported": "disk_sharing_supported", 
         "dn": "dn", 
         "forceUpdateVersion": "force_update_version", 
+        "hotPlugSupported": "hot_plug_supported", 
         "intId": "int_id", 
         "jbodSharingSupported": "jbod_sharing_supported", 
         "name": "name", 
@@ -113,9 +124,11 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         self.child_action = None
         self.config_parm_mod_supported = None
         self.controller_def_type = None
+        self.controller_sub_type = None
         self.descr = None
         self.disk_sharing_supported = None
         self.force_update_version = None
+        self.hot_plug_supported = None
         self.int_id = None
         self.jbod_sharing_supported = None
         self.name = None

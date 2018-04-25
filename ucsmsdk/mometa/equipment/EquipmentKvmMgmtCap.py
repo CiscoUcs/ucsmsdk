@@ -23,7 +23,8 @@ class EquipmentKvmMgmtCap(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "is_supported": MoPropertyMeta("is_supported", "isSupported", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []), 
         "min_cimc_version": MoPropertyMeta("min_cimc_version", "minCimcVersion", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "min_web_ui_supported_cimc_ver": MoPropertyMeta("min_web_ui_supported_cimc_ver", "minWebUISupportedCimcVer", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "min_kvm_cert_supported_cimc_ver": MoPropertyMeta("min_kvm_cert_supported_cimc_ver", "minKvmCertSupportedCimcVer", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "min_web_ui_supported_cimc_ver": MoPropertyMeta("min_web_ui_supported_cimc_ver", "minWebUISupportedCimcVer", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
@@ -34,6 +35,7 @@ class EquipmentKvmMgmtCap(ManagedObject):
         "dn": "dn", 
         "isSupported": "is_supported", 
         "minCimcVersion": "min_cimc_version", 
+        "minKvmCertSupportedCimcVer": "min_kvm_cert_supported_cimc_ver", 
         "minWebUISupportedCimcVer": "min_web_ui_supported_cimc_ver", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -45,6 +47,7 @@ class EquipmentKvmMgmtCap(ManagedObject):
         self.child_action = None
         self.is_supported = None
         self.min_cimc_version = None
+        self.min_kvm_cert_supported_cimc_ver = None
         self.min_web_ui_supported_cimc_ver = None
         self.sacl = None
         self.status = None

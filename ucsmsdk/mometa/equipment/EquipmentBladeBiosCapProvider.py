@@ -32,6 +32,7 @@ class EquipmentBladeBiosCapProvider(ManagedObject):
         "element_load_failures": MoPropertyMeta("element_load_failures", "elementLoadFailures", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "elements_loaded": MoPropertyMeta("elements_loaded", "elementsLoaded", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "gencount": MoPropertyMeta("gencount", "gencount", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
+        "generation": MoPropertyMeta("generation", "generation", "ushort", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_errors": MoPropertyMeta("load_errors", "loadErrors", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_warnings": MoPropertyMeta("load_warnings", "loadWarnings", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "mgmt_plane_ver": MoPropertyMeta("mgmt_plane_ver", "mgmtPlaneVer", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
@@ -53,6 +54,7 @@ class EquipmentBladeBiosCapProvider(ManagedObject):
         "elementLoadFailures": "element_load_failures", 
         "elementsLoaded": "elements_loaded", 
         "gencount": "gencount", 
+        "generation": "generation", 
         "loadErrors": "load_errors", 
         "loadWarnings": "load_warnings", 
         "mgmtPlaneVer": "mgmt_plane_ver", 
@@ -77,6 +79,7 @@ class EquipmentBladeBiosCapProvider(ManagedObject):
         self.element_load_failures = None
         self.elements_loaded = None
         self.gencount = None
+        self.generation = None
         self.load_errors = None
         self.load_warnings = None
         self.mgmt_plane_ver = None

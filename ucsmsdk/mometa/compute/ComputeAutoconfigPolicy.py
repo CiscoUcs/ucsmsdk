@@ -18,7 +18,7 @@ class ComputeAutoconfigPolicy(ManagedObject):
     consts = ComputeAutoconfigPolicyConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("ComputeAutoconfigPolicy", "computeAutoconfigPolicy", "autoconfig-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "pn-policy"], [u'orgOrg'], [u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("ComputeAutoconfigPolicy", "computeAutoconfigPolicy", "autoconfig-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "pn-policy"], [u'orgOrg'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

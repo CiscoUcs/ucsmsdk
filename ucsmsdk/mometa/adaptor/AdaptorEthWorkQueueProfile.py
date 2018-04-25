@@ -15,7 +15,7 @@ class AdaptorEthWorkQueueProfile(ManagedObject):
     consts = AdaptorEthWorkQueueProfileConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorEthWorkQueueProfile", "adaptorEthWorkQueueProfile", "eth-work-q", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], [u'adaptorHostEthIf', u'adaptorHostEthIfProfile', u'adaptorUsnicConnDef'], [], ["Get", "Set"])
+    mo_meta = MoMeta("AdaptorEthWorkQueueProfile", "adaptorEthWorkQueueProfile", "eth-work-q", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], [u'adaptorHostEthIf', u'adaptorHostEthIfProfile', u'adaptorUsnicConnDef', u'adaptorVmmqConnDef'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

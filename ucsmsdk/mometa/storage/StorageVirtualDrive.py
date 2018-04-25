@@ -110,6 +110,7 @@ class StorageVirtualDriveConsts:
     OPERABILITY_INOPERABLE = "inoperable"
     OPERABILITY_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPERABILITY_MALFORMED_FRU = "malformed-fru"
+    OPERABILITY_NON_OPTIMAL = "non-optimal"
     OPERABILITY_NOT_SUPPORTED = "not-supported"
     OPERABILITY_OPERABLE = "operable"
     OPERABILITY_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -120,6 +121,7 @@ class StorageVirtualDriveConsts:
     OPERABILITY_REMOVED = "removed"
     OPERABILITY_THERMAL_PROBLEM = "thermal-problem"
     OPERABILITY_UNKNOWN = "unknown"
+    OPERABILITY_UNSUPPORTED_CONFIG = "unsupported-config"
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
     PHYSICAL_BLOCK_SIZE_512 = "512"
@@ -190,7 +192,7 @@ class StorageVirtualDrive(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
         "drive_cache": MoPropertyMeta("drive_cache", "driveCache", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disable", "enable", "no-change", "unknown"], []), 
-        "drive_security": MoPropertyMeta("drive_security", "driveSecurity", "string", None, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["false", "no", "true", "yes"], []), 
+        "drive_security": MoPropertyMeta("drive_security", "driveSecurity", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["false", "no", "true", "yes"], []), 
         "drive_state": MoPropertyMeta("drive_state", "driveState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cache-degraded", "degraded", "offline", "optimal", "partially-degraded", "rebuilding", "unknown"], []), 
         "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x80, None, None, None, ["unspecified"], ["0-4294967295"]), 
         "io_policy": MoPropertyMeta("io_policy", "ioPolicy", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cached", "direct", "unknown"], []), 
@@ -202,7 +204,7 @@ class StorageVirtualDrive(ManagedObject):
         "oper_device_id": MoPropertyMeta("oper_device_id", "operDeviceId", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unspecified"], ["0-4294967295"]), 
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["compute-degraded", "compute-inoperable", "offline", "online", "undefined"], []), 
-        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
+        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
         "physical_block_size": MoPropertyMeta("physical_block_size", "physicalBlockSize", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["512", "unknown"], ["0-4294967295"]), 
         "pn_dn": MoPropertyMeta("pn_dn", "pnDn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
@@ -211,7 +213,7 @@ class StorageVirtualDrive(ManagedObject):
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "security_flags": MoPropertyMeta("security_flags", "securityFlags", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|driveSecurityCapable|driveSecurityEnable),){0,3}(defaultValue|none|driveSecurityCapable|driveSecurityEnable){0,1}""", [], []), 
+        "security_flags": MoPropertyMeta("security_flags", "securityFlags", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|driveSecurityCapable|driveSecurityEnable),){0,3}(defaultValue|none|driveSecurityCapable|driveSecurityEnable){0,1}""", [], []), 
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "size": MoPropertyMeta("size", "size", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-18446744073709551615"]), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 

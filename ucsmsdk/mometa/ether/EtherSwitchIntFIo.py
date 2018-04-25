@@ -25,6 +25,7 @@ class EtherSwitchIntFIoConsts:
     DISCOVERY_NEW = "new"
     DISCOVERY_PRESENT = "present"
     DISCOVERY_UN_INITIALIZED = "un-initialized"
+    DISCOVERY_UN_SUPPORTED = "un-supported"
     ENCAP_DOT1Q = "dot1q"
     ENCAP_ISL = "isl"
     ENCAP_NEGOTIATE = "negotiate"
@@ -185,7 +186,7 @@ class EtherSwitchIntFIo(ManagedObject):
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "del_fe_ts": MoPropertyMeta("del_fe_ts", "delFeTs", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["never"], ["0-18446744073709551615"]), 
-        "discovery": MoPropertyMeta("discovery", "discovery", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["absent", "mis-connect", "missing", "new", "present", "un-initialized"], []), 
+        "discovery": MoPropertyMeta("discovery", "discovery", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["absent", "mis-connect", "missing", "new", "present", "un-initialized", "un-supported"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "encap": MoPropertyMeta("encap", "encap", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["dot1q", "isl", "negotiate", "proprietary", "unknown"], []), 
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 

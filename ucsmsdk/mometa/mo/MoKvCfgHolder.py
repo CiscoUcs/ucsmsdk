@@ -19,16 +19,16 @@ class MoKvCfgHolder(ManagedObject):
     consts = MoKvCfgHolderConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MoKvCfgHolder", "moKvCfgHolder", "cfg-kv", None, "InputOutput", 0x3f, [], ["admin"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'lsServer', u'orgOrg'], [u'moIpV4AddrKv', u'moIpV6AddrKv', u'moKv', u'moVnicKv'], [None])
+    mo_meta = MoMeta("MoKvCfgHolder", "moKvCfgHolder", "cfg-kv", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["admin"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'lsServer', u'orgOrg'], [u'moIpV4AddrKv', u'moIpV6AddrKv', u'moKv', u'moVnicKv'], ["Get", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", None, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", None, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "file_tx_admin_state": MoPropertyMeta("file_tx_admin_state", "fileTxAdminState", "string", None, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["disabled", "enabled"], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["config-failure", "not-supported", "ok"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", None, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", None, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "file_tx_admin_state": MoPropertyMeta("file_tx_admin_state", "fileTxAdminState", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["disabled", "enabled"], []), 
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["config-failure", "not-supported", "ok"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

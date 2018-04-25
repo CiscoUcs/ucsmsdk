@@ -9,6 +9,10 @@ class MgmtConnectionConsts:
     ACK_ACKNOWLEDGED = "acknowledged"
     ACK_UN_INITIALIZED = "un-initialized"
     ACK_UNSUPPORTED_CONNECTIVITY = "unsupported-connectivity"
+    IS_LLDP_DISCOVERY_POLICY_FALSE = "false"
+    IS_LLDP_DISCOVERY_POLICY_NO = "no"
+    IS_LLDP_DISCOVERY_POLICY_TRUE = "true"
+    IS_LLDP_DISCOVERY_POLICY_YES = "yes"
     OPER_STATE_ACKNOWLEDGED = "acknowledged"
     OPER_STATE_UN_INITIALIZED = "un-initialized"
     OPER_STATE_UNSUPPORTED_CONNECTIVITY = "unsupported-connectivity"
@@ -28,7 +32,9 @@ class MgmtConnection(ManagedObject):
     prop_meta = {
         "ack": MoPropertyMeta("ack", "ack", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["acknowledged", "un-initialized", "unsupported-connectivity"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "connection_serial": MoPropertyMeta("connection_serial", "connectionSerial", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "is_lldp_discovery_policy": MoPropertyMeta("is_lldp_discovery_policy", "isLldpDiscoveryPolicy", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["acknowledged", "un-initialized", "unsupported-connectivity"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
@@ -39,7 +45,9 @@ class MgmtConnection(ManagedObject):
     prop_map = {
         "ack": "ack", 
         "childAction": "child_action", 
+        "connectionSerial": "connection_serial", 
         "dn": "dn", 
+        "isLldpDiscoveryPolicy": "is_lldp_discovery_policy", 
         "operState": "oper_state", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -52,6 +60,8 @@ class MgmtConnection(ManagedObject):
         self.type = type
         self.ack = None
         self.child_action = None
+        self.connection_serial = None
+        self.is_lldp_discovery_policy = None
         self.oper_state = None
         self.sacl = None
         self.status = None

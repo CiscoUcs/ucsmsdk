@@ -20,24 +20,24 @@ class SysdebugDiagnosticLog(ManagedObject):
     consts = SysdebugDiagnosticLogConsts()
     naming_props = set([u'name', u'switchId'])
 
-    mo_meta = MoMeta("SysdebugDiagnosticLog", "sysdebugDiagnosticLog", "diag-log-[name]-[switch_id]", None, "InputOutput", 0xff, [], ["admin", "operations"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'sysdebugDiagnosticLogRepository'], [], [None])
+    mo_meta = MoMeta("SysdebugDiagnosticLog", "sysdebugDiagnosticLog", "diag-log-[name]-[switch_id]", VersionMeta.Version321d, "InputOutput", 0xff, [], ["admin", "operations"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'sysdebugDiagnosticLogRepository'], [], ["Get", "Set"])
 
     prop_meta = {
-        "checksum": MoPropertyMeta("checksum", "checksum", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", None, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", None, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", None, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "ip": MoPropertyMeta("ip", "ip", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
-        "name": MoPropertyMeta("name", "name", "string", None, MoPropertyMeta.NAMING, 0x10, 1, 128, None, [], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "created", "unknown"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", None, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "size": MoPropertyMeta("size", "size", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", None, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "switch_id": MoPropertyMeta("switch_id", "switchId", "string", None, MoPropertyMeta.NAMING, 0x80, None, None, None, ["A", "B", "NONE"], []), 
-        "tftp_uri": MoPropertyMeta("tftp_uri", "tftpUri", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "ts": MoPropertyMeta("ts", "ts", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
-        "uri": MoPropertyMeta("uri", "uri", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "checksum": MoPropertyMeta("checksum", "checksum", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "ip": MoPropertyMeta("ip", "ip", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version321d, MoPropertyMeta.NAMING, 0x10, 1, 128, None, [], []), 
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "created", "unknown"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "size": MoPropertyMeta("size", "size", "uint", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version321d, MoPropertyMeta.NAMING, 0x80, None, None, None, ["A", "B", "NONE"], []), 
+        "tftp_uri": MoPropertyMeta("tftp_uri", "tftpUri", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "ts": MoPropertyMeta("ts", "ts", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
+        "uri": MoPropertyMeta("uri", "uri", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
     }
 
     prop_map = {

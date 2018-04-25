@@ -10,6 +10,7 @@ class EquipmentPsuStatsConsts:
     AMBIENT_TEMP_AVG_NOT_APPLICABLE = "not-applicable"
     AMBIENT_TEMP_MAX_NOT_APPLICABLE = "not-applicable"
     AMBIENT_TEMP_MIN_NOT_APPLICABLE = "not-applicable"
+    INPUT_POWER_NOT_APPLICABLE = "Not-Applicable"
     PSU_TEMP1_NOT_APPLICABLE = "not-applicable"
     PSU_TEMP2_NOT_APPLICABLE = "not-applicable"
     SUSPECT_FALSE = "false"
@@ -41,7 +42,7 @@ class EquipmentPsuStats(ManagedObject):
         "input210v_avg": MoPropertyMeta("input210v_avg", "input210vAvg", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "input210v_max": MoPropertyMeta("input210v_max", "input210vMax", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "input210v_min": MoPropertyMeta("input210v_min", "input210vMin", "float", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "input_power": MoPropertyMeta("input_power", "inputPower", "float", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "input_power": MoPropertyMeta("input_power", "inputPower", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["Not-Applicable"], ["0-4294967295"]), 
         "input_power_avg": MoPropertyMeta("input_power_avg", "inputPowerAvg", "float", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "input_power_max": MoPropertyMeta("input_power_max", "inputPowerMax", "float", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "input_power_min": MoPropertyMeta("input_power_min", "inputPowerMin", "float", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 

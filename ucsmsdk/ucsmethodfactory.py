@@ -1032,6 +1032,18 @@ def config_find_host_pack_dependencies(cookie, dn, in_host_pack_dns):
     return xml_request
 
 
+def config_find_pack_dependencies(cookie, dn, in_chassis_pack_dns, in_host_pack_dns):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ConfigFindPackDependencies")
+    method.cookie = cookie
+    method.dn = dn
+    method.in_chassis_pack_dns = in_chassis_pack_dns
+    method.in_host_pack_dns = in_host_pack_dns
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
 def config_find_permitted(cookie, dn, in_class_id, in_filter, in_hierarchical=YesOrNo.FALSE):
     """ Auto-generated UCS XML API Method. """
     method = ExternalMethod("ConfigFindPermitted")
@@ -1099,6 +1111,19 @@ def config_install_all_impact(cookie, dn, in_blade_pack_version, in_host_pack_dn
     method.in_blade_pack_version = in_blade_pack_version
     method.in_host_pack_dns = in_host_pack_dns
     method.in_infra_pack_version = in_infra_pack_version
+    method.in_rack_pack_version = in_rack_pack_version
+    method.in_service_pack_bundle_version = in_service_pack_bundle_version
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def config_install_chassis_impact(cookie, dn, in_chassis_pack_dns, in_rack_pack_version, in_service_pack_bundle_version):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ConfigInstallChassisImpact")
+    method.cookie = cookie
+    method.dn = dn
+    method.in_chassis_pack_dns = in_chassis_pack_dns
     method.in_rack_pack_version = in_rack_pack_version
     method.in_service_pack_bundle_version = in_service_pack_bundle_version
 
@@ -1290,6 +1315,21 @@ def config_scope(cookie, dn, in_class, in_filter, in_recursive, in_hierarchical=
     method.in_filter = in_filter
     method.in_hierarchical = (("false", "true")[in_hierarchical in ucsgenutils.AFFIRMATIVE_LIST])
     method.in_recursive = in_recursive
+
+    xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
+    return xml_request
+
+
+def config_update_all_impact(cookie, dn, in_blade_pack_version, in_chassis_pack_dns, in_host_pack_dns, in_infra_pack_version, in_rack_pack_version):
+    """ Auto-generated UCS XML API Method. """
+    method = ExternalMethod("ConfigUpdateAllImpact")
+    method.cookie = cookie
+    method.dn = dn
+    method.in_blade_pack_version = in_blade_pack_version
+    method.in_chassis_pack_dns = in_chassis_pack_dns
+    method.in_host_pack_dns = in_host_pack_dns
+    method.in_infra_pack_version = in_infra_pack_version
+    method.in_rack_pack_version = in_rack_pack_version
 
     xml_request = method.to_xml(option=WriteXmlOption.DIRTY)
     return xml_request

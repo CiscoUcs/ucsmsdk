@@ -64,7 +64,7 @@ class LstorageVirtualDriveDef(ManagedObject):
         "read_policy": MoPropertyMeta("read_policy", "readPolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["normal", "platform-default", "read-ahead", "unknown"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "security": MoPropertyMeta("security", "security", "string", None, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["false", "no", "true", "yes"], []), 
+        "security": MoPropertyMeta("security", "security", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["false", "no", "true", "yes"], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "strip_size": MoPropertyMeta("strip_size", "stripSize", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["1024KB", "128KB", "16KB", "256KB", "32KB", "512KB", "64KB", "8KB", "platform-default", "unspecified"], []), 
         "write_cache_policy": MoPropertyMeta("write_cache_policy", "writeCachePolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["always-write-back", "platform-default", "unknown", "write-back-good-bbu", "write-through"], []), 

@@ -234,7 +234,7 @@ class UcsDriver(object):
     def get(self, uri):
         pass
 
-    def post(self, uri, data=None, dump_xml=False, read=True):
+    def post(self, uri, data=None, dump_xml=False, read=True, timeout=None):
         """
         sends the web request and receives the response from ucsm server
 
@@ -243,6 +243,7 @@ class UcsDriver(object):
             data (str): request data to send via post request
             dump_xml (bool): if True, displays request and response
             read (bool): if True, returns response.read() else returns object.
+            timeout (int): if set, this will be used as timeout in secs for urllib2
 
         Returns:
             response xml string or response object
@@ -260,7 +261,7 @@ class UcsDriver(object):
 
             opener = urllib2.build_opener(*self.__handlers)
             try:
-                response = opener.open(request)
+                response = opener.open(request, timeout=timeout)
             except Exception as e:
                 if "SSL".lower() not in str(e).lower():
                     raise
@@ -268,7 +269,7 @@ class UcsDriver(object):
                 # Fallback to TLSv1 for this server
                 self.update_handlers(tls_proto="tlsv1")
                 opener = urllib2.build_opener(*self.__handlers)
-                response = opener.open(request)
+                response = opener.open(request, timeout=timeout)
 
             if type(response) is list:
                 if len(response) == 2 and \
@@ -281,7 +282,7 @@ class UcsDriver(object):
                         log.debug('%s <==== %s' % (uri, data))
 
                     opener = urllib2.build_opener(*self.__handlers)
-                    response = opener.open(request)
+                    response = opener.open(request, timeout=timeout)
                     # response = urllib2.urlopen(request)
             if read:
                 response = response.read().decode('utf-8')

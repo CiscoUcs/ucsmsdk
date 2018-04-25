@@ -31,7 +31,7 @@ class LsmaintMaintPolicy(ManagedObject):
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "data_disr": MoPropertyMeta("data_disr", "dataDisr", "string", None, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["immediate", "user-ack"], []), 
+        "data_disr": MoPropertyMeta("data_disr", "dataDisr", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["immediate", "user-ack"], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 

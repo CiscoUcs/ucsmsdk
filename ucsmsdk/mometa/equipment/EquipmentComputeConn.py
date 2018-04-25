@@ -16,15 +16,15 @@ class EquipmentComputeConn(ManagedObject):
     consts = EquipmentComputeConnConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentComputeConn", "equipmentComputeConn", "compute-conn", None, "InputOutput", 0x1f, [], ["read-only"], [u'equipmentChassis'], [u'faultInst'], [None])
+    mo_meta = MoMeta("EquipmentComputeConn", "equipmentComputeConn", "compute-conn", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["read-only"], [u'equipmentChassis'], [u'faultInst'], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", None, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", None, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", None, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "server_sioc_connectivity": MoPropertyMeta("server_sioc_connectivity", "serverSiocConnectivity", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["single-server-dual-sioc", "single-server-single-sioc"], []), 
-        "status": MoPropertyMeta("status", "status", "string", None, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "server_sioc_connectivity": MoPropertyMeta("server_sioc_connectivity", "serverSiocConnectivity", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["single-server-dual-sioc", "single-server-single-sioc"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

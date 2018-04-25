@@ -46,6 +46,7 @@ class StorageVDMemberEpConsts:
     OPERABILITY_INOPERABLE = "inoperable"
     OPERABILITY_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPERABILITY_MALFORMED_FRU = "malformed-fru"
+    OPERABILITY_NON_OPTIMAL = "non-optimal"
     OPERABILITY_NOT_SUPPORTED = "not-supported"
     OPERABILITY_OPERABLE = "operable"
     OPERABILITY_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -56,6 +57,7 @@ class StorageVDMemberEpConsts:
     OPERABILITY_REMOVED = "removed"
     OPERABILITY_THERMAL_PROBLEM = "thermal-problem"
     OPERABILITY_UNKNOWN = "unknown"
+    OPERABILITY_UNSUPPORTED_CONFIG = "unsupported-config"
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
     PRESENCE_EMPTY = "empty"
@@ -105,7 +107,7 @@ class StorageVDMemberEp(ManagedObject):
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version224b, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []), 
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
+        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
         "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 

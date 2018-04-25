@@ -6,10 +6,16 @@ from ...ucsmeta import VersionMeta
 
 
 class StorageSasExpanderConsts:
+    CONNECTION_MANAGEMENT_DEFAULT = "default"
+    CONNECTION_MANAGEMENT_DISABLED = "disabled"
+    CONNECTION_MANAGEMENT_ENABLED = "enabled"
+    CONNECTION_MANAGEMENT_UNKNOWN = "unknown"
     EXPANDER_STATE_DEGRADED = "degraded"
+    EXPANDER_STATE_DISCOVERY = "discovery"
     EXPANDER_STATE_INOPERABLE = "inoperable"
     EXPANDER_STATE_NOT_READY = "not-ready"
     EXPANDER_STATE_OPERABLE = "operable"
+    EXPANDER_STATE_REBOOT_PENDING = "reboot-pending"
     EXPANDER_STATE_RESOURCE_UNAVAILABLE = "resource-unavailable"
     EXPANDER_STATE_UNKNOWN = "unknown"
     EXPANDER_STATE_UNREACHABLE = "unreachable"
@@ -37,6 +43,7 @@ class StorageSasExpanderConsts:
     OPER_STATE_INOPERABLE = "inoperable"
     OPER_STATE_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPER_STATE_MALFORMED_FRU = "malformed-fru"
+    OPER_STATE_NON_OPTIMAL = "non-optimal"
     OPER_STATE_NOT_SUPPORTED = "not-supported"
     OPER_STATE_OPERABLE = "operable"
     OPER_STATE_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -47,6 +54,7 @@ class StorageSasExpanderConsts:
     OPER_STATE_REMOVED = "removed"
     OPER_STATE_THERMAL_PROBLEM = "thermal-problem"
     OPER_STATE_UNKNOWN = "unknown"
+    OPER_STATE_UNSUPPORTED_CONFIG = "unsupported-config"
     OPER_STATE_UPGRADE_PROBLEM = "upgrade-problem"
     OPER_STATE_VOLTAGE_PROBLEM = "voltage-problem"
     OPERABILITY_ACCESSIBILITY_PROBLEM = "accessibility-problem"
@@ -69,6 +77,7 @@ class StorageSasExpanderConsts:
     OPERABILITY_INOPERABLE = "inoperable"
     OPERABILITY_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPERABILITY_MALFORMED_FRU = "malformed-fru"
+    OPERABILITY_NON_OPTIMAL = "non-optimal"
     OPERABILITY_NOT_SUPPORTED = "not-supported"
     OPERABILITY_OPERABLE = "operable"
     OPERABILITY_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -79,6 +88,7 @@ class StorageSasExpanderConsts:
     OPERABILITY_REMOVED = "removed"
     OPERABILITY_THERMAL_PROBLEM = "thermal-problem"
     OPERABILITY_UNKNOWN = "unknown"
+    OPERABILITY_UNSUPPORTED_CONFIG = "unsupported-config"
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
     PERF_LOWER_CRITICAL = "lower-critical"
@@ -159,11 +169,12 @@ class StorageSasExpander(ManagedObject):
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version226c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "config_check_point": MoPropertyMeta("config_check_point", "configCheckPoint", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|firmware-inventory-reported),){0,2}(defaultValue|unknown|firmware-inventory-reported){0,1}""", [], []), 
+        "config_check_point": MoPropertyMeta("config_check_point", "configCheckPoint", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|firmware-inventory-reported),){0,2}(defaultValue|unknown|firmware-inventory-reported){0,1}""", [], []), 
+        "connection_management": MoPropertyMeta("connection_management", "connectionManagement", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["default", "disabled", "enabled", "unknown"], []), 
         "current_epfb": MoPropertyMeta("current_epfb", "currentEPFB", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "elid": MoPropertyMeta("elid", "elid", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "expander_state": MoPropertyMeta("expander_state", "expanderState", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "inoperable", "not-ready", "operable", "resource-unavailable", "unknown", "unreachable"], []), 
+        "expander_state": MoPropertyMeta("expander_state", "expanderState", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "discovery", "inoperable", "not-ready", "operable", "reboot-pending", "resource-unavailable", "unknown", "unreachable"], []), 
         "fw_region_one": MoPropertyMeta("fw_region_one", "fwRegionOne", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "fw_region_two": MoPropertyMeta("fw_region_two", "fwRegionTwo", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "fw_running_region": MoPropertyMeta("fw_running_region", "fwRunningRegion", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
@@ -175,8 +186,8 @@ class StorageSasExpander(ManagedObject):
         "mfg_platform_id": MoPropertyMeta("mfg_platform_id", "mfgPlatformId", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
-        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
+        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
         "perf": MoPropertyMeta("perf", "perf", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
         "persisted_epfb": MoPropertyMeta("persisted_epfb", "persistedEPFB", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "power": MoPropertyMeta("power", "power", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "error", "failed", "not-supported", "off", "offduty", "offline", "ok", "on", "online", "power-save", "test", "unknown"], []), 
@@ -200,6 +211,7 @@ class StorageSasExpander(ManagedObject):
     prop_map = {
         "childAction": "child_action", 
         "configCheckPoint": "config_check_point", 
+        "connectionManagement": "connection_management", 
         "currentEPFB": "current_epfb", 
         "dn": "dn", 
         "elid": "elid", 
@@ -242,6 +254,7 @@ class StorageSasExpander(ManagedObject):
         self.id = id
         self.child_action = None
         self.config_check_point = None
+        self.connection_management = None
         self.current_epfb = None
         self.elid = None
         self.expander_state = None

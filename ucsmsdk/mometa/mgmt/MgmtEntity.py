@@ -92,7 +92,7 @@ class MgmtEntity(ManagedObject):
         "ha_readiness": MoPropertyMeta("ha_readiness", "haReadiness", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["downgraded", "notReady", "ready", "unknown"], []), 
         "ha_ready": MoPropertyMeta("ha_ready", "haReady", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, None, None, None, ["A", "B", "NONE"], []), 
-        "lead_id_for_auto_install": MoPropertyMeta("lead_id_for_auto_install", "leadIdForAutoInstall", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
+        "lead_id_for_auto_install": MoPropertyMeta("lead_id_for_auto_install", "leadIdForAutoInstall", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
         "leadership": MoPropertyMeta("leadership", "leadership", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["electionFailed", "electionInProgress", "inapplicable", "primary", "subordinate", "unknown"], []), 
         "mgmt_services_state": MoPropertyMeta("mgmt_services_state", "mgmtServicesState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["down", "switchoverInProgress", "unknown", "unresponsive", "up"], []), 
         "problems": MoPropertyMeta("problems", "problems", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 

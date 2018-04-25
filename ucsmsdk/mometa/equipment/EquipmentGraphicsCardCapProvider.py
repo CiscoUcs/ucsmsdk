@@ -39,7 +39,7 @@ class EquipmentGraphicsCardCapProvider(ManagedObject):
         "load_errors": MoPropertyMeta("load_errors", "loadErrors", "uint", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_warnings": MoPropertyMeta("load_warnings", "loadWarnings", "uint", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "mgmt_plane_ver": MoPropertyMeta("mgmt_plane_ver", "mgmtPlaneVer", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "mode_change_supported": MoPropertyMeta("mode_change_supported", "modeChangeSupported", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "mode_change_supported": MoPropertyMeta("mode_change_supported", "modeChangeSupported", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version213a, MoPropertyMeta.NAMING, 0x8, 1, 510, None, [], []), 
         "num_gpu": MoPropertyMeta("num_gpu", "numGpu", "uint", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "prom_card_type": MoPropertyMeta("prom_card_type", "promCardType", "ushort", VersionMeta.Version213a, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], []), 

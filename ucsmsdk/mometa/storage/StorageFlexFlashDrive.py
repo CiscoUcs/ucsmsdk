@@ -60,6 +60,7 @@ class StorageFlexFlashDriveConsts:
     OPERABILITY_INOPERABLE = "inoperable"
     OPERABILITY_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPERABILITY_MALFORMED_FRU = "malformed-fru"
+    OPERABILITY_NON_OPTIMAL = "non-optimal"
     OPERABILITY_NOT_SUPPORTED = "not-supported"
     OPERABILITY_OPERABLE = "operable"
     OPERABILITY_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -70,6 +71,7 @@ class StorageFlexFlashDriveConsts:
     OPERABILITY_REMOVED = "removed"
     OPERABILITY_THERMAL_PROBLEM = "thermal-problem"
     OPERABILITY_UNKNOWN = "unknown"
+    OPERABILITY_UNSUPPORTED_CONFIG = "unsupported-config"
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
     OPERATION_STATE_PARTITION_MIRRORED = "PARTITION_MIRRORED"
@@ -115,6 +117,7 @@ class StorageFlexFlashDriveConsts:
     PRESENCE_UNKNOWN = "unknown"
     REMOVABLE_NA = "NA"
     REMOVABLE_NO = "no"
+    REMOVABLE_NO_CHANGE = "no-change"
     REMOVABLE_YES = "yes"
     SIZE_NOT_APPLICABLE = "not-applicable"
     VISIBLE_NO = "no"
@@ -144,11 +147,11 @@ class StorageFlexFlashDrive(ManagedObject):
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version221b, MoPropertyMeta.NAMING, 0x10, 1, 510, None, [], []), 
         "number_of_blocks": MoPropertyMeta("number_of_blocks", "numberOfBlocks", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unknown"], ["0-18446744073709551615"]), 
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
+        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
         "operation_state": MoPropertyMeta("operation_state", "operationState", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["PARTITION_MIRRORED", "PARTITION_MIRRORED_ERASING", "PARTITION_MIRRORED_ERASING_FAIL", "PARTITION_MIRRORED_ERASING_SUCCESS", "PARTITION_MIRRORED_SYNCING", "PARTITION_MIRRORED_SYNCING_FAIL", "PARTITION_MIRRORED_SYNCING_SUCCESS", "PARTITION_MIRRORED_UPDATING", "PARTITION_MIRRORED_UPDATING_FAIL", "PARTITION_MIRRORED_UPDATING_SUCCESS", "PARTITION_NON_MIRRORED", "PARTITION_NON_MIRRORED_ERASING", "PARTITION_NON_MIRRORED_ERASING_FAIL", "PARTITION_NON_MIRRORED_ERASING_SUCCESS", "PARTITION_NON_MIRRORED_UPDATING", "PARTITION_NON_MIRRORED_UPDATING_FAIL", "PARTITION_NON_MIRRORED_UPDATING_SUCCESS", "unknown"], []), 
         "physical_block_size": MoPropertyMeta("physical_block_size", "physicalBlockSize", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["512", "unknown"], ["0-4294967295"]), 
         "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
-        "removable": MoPropertyMeta("removable", "removable", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA", "no", "yes"], []), 
+        "removable": MoPropertyMeta("removable", "removable", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA", "no", "no-change", "yes"], []), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 

@@ -28,17 +28,17 @@ class FirmwareServicePack(ManagedObject):
     consts = FirmwareServicePackConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareServicePack", "firmwareServicePack", "servicepack", None, "InputOutput", 0x3f, [], ["admin"], [u'firmwareBootUnit', u'firmwareRunning'], [], [None])
+    mo_meta = MoMeta("FirmwareServicePack", "firmwareServicePack", "servicepack", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["admin"], [u'firmwareBootUnit', u'firmwareRunning'], [], ["Get", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", None, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "default_sp_version": MoPropertyMeta("default_sp_version", "defaultSpVersion", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", None, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "last_known_status": MoPropertyMeta("last_known_status", "lastKnownStatus", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "active-committed", "active-committed-on-reload", "active-on-reload", "failed", "inactive", "inactive-committed", "inactive-committed-on-reload", "inactive-on-reload", "not-installed", "ready", "transient", "unknown", "unknown-installer-busy"], []), 
-        "modules": MoPropertyMeta("modules", "modules", "string", None, MoPropertyMeta.READ_WRITE, 0x8, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", None, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", None, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "default_sp_version": MoPropertyMeta("default_sp_version", "defaultSpVersion", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "last_known_status": MoPropertyMeta("last_known_status", "lastKnownStatus", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "active-committed", "active-committed-on-reload", "active-on-reload", "failed", "inactive", "inactive-committed", "inactive-committed-on-reload", "inactive-on-reload", "not-installed", "ready", "transient", "unknown", "unknown-installer-busy"], []), 
+        "modules": MoPropertyMeta("modules", "modules", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x8, 0, 510, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

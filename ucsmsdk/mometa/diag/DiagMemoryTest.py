@@ -30,22 +30,22 @@ class DiagMemoryTest(ManagedObject):
     consts = DiagMemoryTestConsts()
     naming_props = set([u'order'])
 
-    mo_meta = MoMeta("DiagMemoryTest", "diagMemoryTest", "test-[order]", None, "InputOutput", 0x1fff, [], ["admin", "pn-policy"], [u'diagRunPolicy'], [], [None])
+    mo_meta = MoMeta("DiagMemoryTest", "diagMemoryTest", "test-[order]", VersionMeta.Version321d, "InputOutput", 0x1fff, [], ["admin", "pn-policy"], [u'diagRunPolicy'], [], ["Get", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", None, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "cpu_filter": MoPropertyMeta("cpu_filter", "cpuFilter", "string", None, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["all-cpus", "p0-p1-cpus"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", None, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "uint", None, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], ["0-4294967295"]), 
-        "loop_count": MoPropertyMeta("loop_count", "loopCount", "uint", None, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, [], ["1-1000"]), 
-        "mem_chunk_size": MoPropertyMeta("mem_chunk_size", "memChunkSize", "string", None, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["5mb-chunk", "big-chunk"], []), 
-        "mem_size": MoPropertyMeta("mem_size", "memSize", "string", None, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["all"], ["0-4096"]), 
-        "order": MoPropertyMeta("order", "order", "byte", None, MoPropertyMeta.NAMING, 0x100, None, None, None, [], ["1-64"]), 
-        "pattern": MoPropertyMeta("pattern", "pattern", "string", None, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["butterfly", "killer", "prbs", "prbs-addr", "prbs-killer"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", None, MoPropertyMeta.READ_ONLY, 0x400, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", None, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", None, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, ["disk", "memtest", "pci", "pmem2", "processor", "stress"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "cpu_filter": MoPropertyMeta("cpu_filter", "cpuFilter", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["all-cpus", "p0-p1-cpus"], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], ["0-4294967295"]), 
+        "loop_count": MoPropertyMeta("loop_count", "loopCount", "uint", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, [], ["1-1000"]), 
+        "mem_chunk_size": MoPropertyMeta("mem_chunk_size", "memChunkSize", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["5mb-chunk", "big-chunk"], []), 
+        "mem_size": MoPropertyMeta("mem_size", "memSize", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["all"], ["0-4096"]), 
+        "order": MoPropertyMeta("order", "order", "byte", VersionMeta.Version321d, MoPropertyMeta.NAMING, 0x100, None, None, None, [], ["1-64"]), 
+        "pattern": MoPropertyMeta("pattern", "pattern", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["butterfly", "killer", "prbs", "prbs-addr", "prbs-killer"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x400, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, ["disk", "memtest", "pci", "pmem2", "processor", "stress"], []), 
     }
 
     prop_map = {

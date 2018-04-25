@@ -75,7 +75,7 @@ class DcxVIf(ManagedObject):
     consts = DcxVIfConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("DcxVIf", "dcxVIf", "vif-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'adaptorExtEthIf', u'adaptorFcOEIf', u'adaptorHostEthIf', u'adaptorHostFcIf', u'adaptorHostServiceEthIf'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("DcxVIf", "dcxVIf", "vif-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'adaptorExtEthIf', u'adaptorExtEthIfPc', u'adaptorFcOEIf', u'adaptorHostEthIf', u'adaptorHostFcIf', u'adaptorHostServiceEthIf'], [u'faultInst'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 

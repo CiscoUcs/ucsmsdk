@@ -6,13 +6,17 @@ from ...ucsmeta import VersionMeta
 
 
 class StorageControllerConsts:
+    ADMIN_ACTION_CLEAN_HX_STATE = "clean-hx-state"
     ADMIN_ACTION_CLEAR_BOOT_CONFIGURATION = "clear-boot-configuration"
     ADMIN_ACTION_CLEAR_FOREIGN_CONFIGURATION = "clear-foreign-configuration"
     ADMIN_ACTION_DISABLE_SECURITY = "disable-security"
     ADMIN_ACTION_ENABLE_SECURITY = "enable-security"
     ADMIN_ACTION_IMPORT_FOREIGN_CONFIGURATION = "import-foreign-configuration"
     ADMIN_ACTION_MODIFY_KEY = "modify-key"
+    ADMIN_ACTION_RESCAN_HX_INVENTORY = "rescan-hx-inventory"
+    ADMIN_ACTION_SECURE_HX_DRIVES = "secure-hx-drives"
     ADMIN_ACTION_SKIP_INITIAL_CONFIG = "skip-initial-config"
+    ADMIN_ACTION_TEST_KMIP_CONNECTIVITY = "test-kmip-connectivity"
     ADMIN_ACTION_UNLOCK_DISK = "unlock-disk"
     ADMIN_ACTION_UNPIN_CACHE_ALL = "unpin-cache-all"
     ADMIN_ACTION_UNSPECIFIED = "unspecified"
@@ -28,14 +32,20 @@ class StorageControllerConsts:
     CONFIG_STATE_ORPHANED = "orphaned"
     CONFIG_STATE_UNKNOWN = "unknown"
     CONTROLLER_STATUS_DEGRADED = "degraded"
+    CONTROLLER_STATUS_DELETED = "deleted"
     CONTROLLER_STATUS_FAILED = "failed"
+    CONTROLLER_STATUS_MODERATE_FAULT = "moderate-fault"
     CONTROLLER_STATUS_OPTIMAL = "optimal"
+    CONTROLLER_STATUS_SEVERE_FAULT = "severe-fault"
     CONTROLLER_STATUS_UNKNOWN = "unknown"
     CONTROLLER_STATUS_UNRESPONSIVE = "unresponsive"
     FAULT_MONITORING_NOT_SUPPORTED = "notSupported"
     FAULT_MONITORING_SUPPORTED = "supported"
     ID_COUNT_MIN = "min"
     ID_COUNT_UNKNOWN = "unknown"
+    JBOD_MODE_DISABLED = "disabled"
+    JBOD_MODE_ENABLED = "enabled"
+    JBOD_MODE_UNKNOWN = "unknown"
     LC_ALLOCATED = "allocated"
     LC_AVAILABLE = "available"
     LC_DEALLOCATED = "deallocated"
@@ -78,6 +88,7 @@ class StorageControllerConsts:
     OPER_STATE_INOPERABLE = "inoperable"
     OPER_STATE_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPER_STATE_MALFORMED_FRU = "malformed-fru"
+    OPER_STATE_NON_OPTIMAL = "non-optimal"
     OPER_STATE_NOT_SUPPORTED = "not-supported"
     OPER_STATE_OPERABLE = "operable"
     OPER_STATE_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -88,6 +99,7 @@ class StorageControllerConsts:
     OPER_STATE_REMOVED = "removed"
     OPER_STATE_THERMAL_PROBLEM = "thermal-problem"
     OPER_STATE_UNKNOWN = "unknown"
+    OPER_STATE_UNSUPPORTED_CONFIG = "unsupported-config"
     OPER_STATE_UPGRADE_PROBLEM = "upgrade-problem"
     OPER_STATE_VOLTAGE_PROBLEM = "voltage-problem"
     OPERABILITY_ACCESSIBILITY_PROBLEM = "accessibility-problem"
@@ -110,6 +122,7 @@ class StorageControllerConsts:
     OPERABILITY_INOPERABLE = "inoperable"
     OPERABILITY_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPERABILITY_MALFORMED_FRU = "malformed-fru"
+    OPERABILITY_NON_OPTIMAL = "non-optimal"
     OPERABILITY_NOT_SUPPORTED = "not-supported"
     OPERABILITY_OPERABLE = "operable"
     OPERABILITY_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -120,6 +133,7 @@ class StorageControllerConsts:
     OPERABILITY_REMOVED = "removed"
     OPERABILITY_THERMAL_PROBLEM = "thermal-problem"
     OPERABILITY_UNKNOWN = "unknown"
+    OPERABILITY_UNSUPPORTED_CONFIG = "unsupported-config"
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
     OPROM_BOOT_STATUS_DISABLED = "disabled"
@@ -174,6 +188,12 @@ class StorageControllerConsts:
     REBUILD_RATE_NOT_APPLICABLE = "not-applicable"
     REBUILD_RATE_UNKNOWN = "unknown"
     SUB_OEM_ID_UNKNOWN = "unknown"
+    SUB_TYPE_NA = "NA"
+    SUB_TYPE_NVME_FRONT = "NVME-FRONT"
+    SUB_TYPE_NVME_HHHL = "NVME-HHHL"
+    SUB_TYPE_NVME_M2 = "NVME-M2"
+    SUB_TYPE_NVME_MEZZ = "NVME-MEZZ"
+    SUB_TYPE_NVME_REAR = "NVME-REAR"
     THERMAL_LOWER_CRITICAL = "lower-critical"
     THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
     THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -185,6 +205,7 @@ class StorageControllerConsts:
     THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     TYPE_FLASH = "FLASH"
     TYPE_HBA = "HBA"
+    TYPE_M2 = "M2"
     TYPE_NVME = "NVME"
     TYPE_PCH = "PCH"
     TYPE_PT = "PT"
@@ -213,24 +234,25 @@ class StorageController(ManagedObject):
     mo_meta = MoMeta("StorageController", "storageController", "storage-[type]-[id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'computeBoard', u'equipmentChassis'], [u'equipmentInventoryStatus', u'faultInst', u'firmwareBootDefinition', u'firmwareRunning', u'lstorageControllerDef', u'mgmtController', u'storageDrive', u'storageEmbeddedStorage', u'storageEnclosure', u'storageLocalDisk', u'storageLocalDiskConfigDef', u'storageLocalDiskEp', u'storageLocalLun', u'storageMezzFlashLife', u'storageNvmeStats', u'storageNvmeStorage', u'storageOnboardDevice', u'storageOperation', u'storageRaidBattery', u'storageVirtualDrive', u'storageVirtualDriveEp'], ["Get"])
 
     prop_meta = {
-        "admin_action": MoPropertyMeta("admin_action", "adminAction", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["clear-boot-configuration", "clear-foreign-configuration", "disable-security", "enable-security", "import-foreign-configuration", "modify-key", "skip-initial-config", "unlock-disk", "unpin-cache-all", "unspecified"], []), 
+        "admin_action": MoPropertyMeta("admin_action", "adminAction", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["clean-hx-state", "clear-boot-configuration", "clear-foreign-configuration", "disable-security", "enable-security", "import-foreign-configuration", "modify-key", "rescan-hx-inventory", "secure-hx-drives", "skip-initial-config", "test-kmip-connectivity", "unlock-disk", "unpin-cache-all", "unspecified"], []), 
         "admin_action_trigger": MoPropertyMeta("admin_action_trigger", "adminActionTrigger", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["canceled", "idle", "triggered"], []), 
-        "admin_security_key": MoPropertyMeta("admin_security_key", "adminSecurityKey", "string", None, MoPropertyMeta.READ_WRITE, 0x8, 0, 510, None, [], []), 
-        "asset_tag": MoPropertyMeta("asset_tag", "assetTag", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
+        "admin_security_key": MoPropertyMeta("admin_security_key", "adminSecurityKey", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x8, 0, 510, None, [], []), 
+        "asset_tag": MoPropertyMeta("asset_tag", "assetTag", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x10, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A", "applied", "apply-failed", "applying", "not-applied", "not-in-use", "orphaned", "unknown"], []), 
-        "controller_flags": MoPropertyMeta("controller_flags", "controllerFlags", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|driveSecurityCapable|driveSecurityEnable),){0,3}(defaultValue|none|driveSecurityCapable|driveSecurityEnable){0,1}""", [], []), 
+        "controller_flags": MoPropertyMeta("controller_flags", "controllerFlags", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|driveSecurityCapable|driveSecurityEnable),){0,3}(defaultValue|none|driveSecurityCapable|driveSecurityEnable){0,1}""", [], []), 
         "controller_ops": MoPropertyMeta("controller_ops", "controllerOps", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|unlock-disk|get-phy-errors|ctlr-shutdown|set-suboem|get-foreign-configuration|no-ops-supported|disable-security|clear-all-config|get-pinned-list|set-factory-defaults|clear-foreign-configuration|modify|update-boot-drive|unpin-cache|get-time-secs|import-foreign-configuration|clear-boot-drive|ctlr-lock-operation|set-time-secs|get-suboem|get-tty-log),){0,22}(defaultValue|unknown|unlock-disk|get-phy-errors|ctlr-shutdown|set-suboem|get-foreign-configuration|no-ops-supported|disable-security|clear-all-config|get-pinned-list|set-factory-defaults|clear-foreign-configuration|modify|update-boot-drive|unpin-cache|get-time-secs|import-foreign-configuration|clear-boot-drive|ctlr-lock-operation|set-time-secs|get-suboem|get-tty-log){0,1}""", [], []), 
-        "controller_status": MoPropertyMeta("controller_status", "controllerStatus", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "failed", "optimal", "unknown", "unresponsive"], []), 
+        "controller_status": MoPropertyMeta("controller_status", "controllerStatus", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive"], []), 
         "default_strip_size": MoPropertyMeta("default_strip_size", "defaultStripSize", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|not-applicable|8KB|16KB|32KB|64KB|128KB|256KB|512KB|1MB|2MB|4MB|8MB|16MB|32MB|64MB|128MB|256MB|512MB),){0,19}(defaultValue|unknown|not-applicable|8KB|16KB|32KB|64KB|128KB|256KB|512KB|1MB|2MB|4MB|8MB|16MB|32MB|64MB|128MB|256MB|512MB){0,1}""", [], []), 
         "device_raid_support": MoPropertyMeta("device_raid_support", "deviceRaidSupport", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "disk_ops": MoPropertyMeta("disk_ops", "diskOps", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|clear-secure-foreign-config-drive|set-rebuild-status|clear-foreign-configuration|cancel-rebuild|make-offline|make-ghsp|no-ops-supported|get-phy-errors|set-copyback-status|set-state|get-pd-progress|prepare-to-remove|make-dhsp|remove|smart-ssd-support|enable-security-on-jbod|set-boot-drive|get-foreign-configuration|undo-prepare-to-remove|remove-hsp|locate-start|clear-secure-drive|update-lrop-status|import-foreign-configuration|start-rebuild|make-online|locate-stop),){0,28}(defaultValue|unknown|clear-secure-foreign-config-drive|set-rebuild-status|clear-foreign-configuration|cancel-rebuild|make-offline|make-ghsp|no-ops-supported|get-phy-errors|set-copyback-status|set-state|get-pd-progress|prepare-to-remove|make-dhsp|remove|smart-ssd-support|enable-security-on-jbod|set-boot-drive|get-foreign-configuration|undo-prepare-to-remove|remove-hsp|locate-start|clear-secure-drive|update-lrop-status|import-foreign-configuration|start-rebuild|make-online|locate-stop){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
-        "err_description": MoPropertyMeta("err_description", "errDescription", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 64, None, [], []), 
+        "err_description": MoPropertyMeta("err_description", "errDescription", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 64, None, [], []), 
         "fault_monitoring": MoPropertyMeta("fault_monitoring", "faultMonitoring", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["notSupported", "supported"], []), 
         "hw_revision": MoPropertyMeta("hw_revision", "hwRevision", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x40, None, None, None, [], ["1-64"]), 
         "id_count": MoPropertyMeta("id_count", "idCount", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["min", "unknown"], ["0-4294967295"]), 
+        "jbod_mode": MoPropertyMeta("jbod_mode", "jbodMode", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled", "unknown"], []), 
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []), 
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["AHCI", "HBA", "NVME", "PHBA", "PRAID", "RAID", "SWRAID", "XSDS", "unknown"], []), 
@@ -240,13 +262,14 @@ class StorageController(ManagedObject):
         "oob_controller_id": MoPropertyMeta("oob_controller_id", "oobControllerId", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]), 
         "oob_interface_supported": MoPropertyMeta("oob_interface_supported", "oobInterfaceSupported", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
-        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
+        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
         "oprom_boot_status": MoPropertyMeta("oprom_boot_status", "opromBootStatus", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled", "unknown"], []), 
         "part_number": MoPropertyMeta("part_number", "partNumber", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "pci_addr": MoPropertyMeta("pci_addr", "pciAddr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "pci_slot": MoPropertyMeta("pci_slot", "pciSlot", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "pci_slot_raw_name": MoPropertyMeta("pci_slot_raw_name", "pciSlotRawName", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "perf": MoPropertyMeta("perf", "perf", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
         "pinned_cache_status": MoPropertyMeta("pinned_cache_status", "pinnedCacheStatus", "string", VersionMeta.Version252a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled", "unknown"], []), 
         "power": MoPropertyMeta("power", "power", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "error", "failed", "not-supported", "off", "offduty", "offline", "ok", "on", "online", "power-save", "test", "unknown"], []), 
@@ -260,9 +283,10 @@ class StorageController(ManagedObject):
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "sub_oem_id": MoPropertyMeta("sub_oem_id", "subOemId", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unknown"], ["0-255"]), 
+        "sub_type": MoPropertyMeta("sub_type", "subType", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA", "NVME-FRONT", "NVME-HHHL", "NVME-M2", "NVME-MEZZ", "NVME-REAR"], []), 
         "supported_strip_sizes": MoPropertyMeta("supported_strip_sizes", "supportedStripSizes", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|not-applicable|8KB|16KB|32KB|64KB|128KB|256KB|512KB|1MB|2MB|4MB|8MB|16MB|32MB|64MB|128MB|256MB|512MB),){0,19}(defaultValue|unknown|not-applicable|8KB|16KB|32KB|64KB|128KB|256KB|512KB|1MB|2MB|4MB|8MB|16MB|32MB|64MB|128MB|256MB|512MB){0,1}""", [], []), 
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x200, None, None, None, ["FLASH", "HBA", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x200, None, None, None, ["FLASH", "HBA", "M2", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []), 
         "variant_type": MoPropertyMeta("variant_type", "variantType", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "vid": MoPropertyMeta("vid", "vid", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
@@ -289,6 +313,7 @@ class StorageController(ManagedObject):
         "hwRevision": "hw_revision", 
         "id": "id", 
         "idCount": "id_count", 
+        "jbodMode": "jbod_mode", 
         "lc": "lc", 
         "locationDn": "location_dn", 
         "mode": "mode", 
@@ -305,6 +330,7 @@ class StorageController(ManagedObject):
         "pciAddr": "pci_addr", 
         "pciSlot": "pci_slot", 
         "pciSlotRawName": "pci_slot_raw_name", 
+        "peerDn": "peer_dn", 
         "perf": "perf", 
         "pinnedCacheStatus": "pinned_cache_status", 
         "power": "power", 
@@ -318,6 +344,7 @@ class StorageController(ManagedObject):
         "serial": "serial", 
         "status": "status", 
         "subOemId": "sub_oem_id", 
+        "subType": "sub_type", 
         "supportedStripSizes": "supported_strip_sizes", 
         "thermal": "thermal", 
         "type": "type", 
@@ -348,6 +375,7 @@ class StorageController(ManagedObject):
         self.fault_monitoring = None
         self.hw_revision = None
         self.id_count = None
+        self.jbod_mode = None
         self.lc = None
         self.location_dn = None
         self.mode = None
@@ -364,6 +392,7 @@ class StorageController(ManagedObject):
         self.pci_addr = None
         self.pci_slot = None
         self.pci_slot_raw_name = None
+        self.peer_dn = None
         self.perf = None
         self.pinned_cache_status = None
         self.power = None
@@ -376,6 +405,7 @@ class StorageController(ManagedObject):
         self.serial = None
         self.status = None
         self.sub_oem_id = None
+        self.sub_type = None
         self.supported_strip_sizes = None
         self.thermal = None
         self.variant_type = None

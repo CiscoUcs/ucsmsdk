@@ -22,7 +22,7 @@ class EquipmentRackUnitCapProvider(ManagedObject):
     consts = EquipmentRackUnitCapProviderConsts()
     naming_props = set([u'vendor', u'model', u'revision'])
 
-    mo_meta = MoMeta("EquipmentRackUnitCapProvider", "equipmentRackUnitCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], [""], [u'capabilityCatalogue', u'equipmentHwCapDerivativeProvider'], [u'adaptorFruCapRef', u'computeConstraintDef', u'computeMemoryUnitConstraintDef', u'computePciCap', u'computeServerTypeCap', u'equipmentAdvancedBootOrder', u'equipmentBiosDef', u'equipmentBiosTokenOverride', u'equipmentBladeAGLibrary', u'equipmentBoardControllerDef', u'equipmentBootDeviceConstraints', u'equipmentCimcVmedia', u'equipmentCiscoOsOpenGate', u'equipmentDimmMapping', u'equipmentDiscoveryCap', u'equipmentDriveSecCap', u'equipmentFruVariant', u'equipmentGraphicsCardCapRef', u'equipmentHostMgmtControllerCap', u'equipmentHwRevisionModifier', u'equipmentHxCap', u'equipmentInbandMgmtCap', u'equipmentKvmMgmtCap', u'equipmentLocalDiskControllerCapRef', u'equipmentManufacturingDef', u'equipmentPciSlotIdMapping', u'equipmentPhysicalDef', u'equipmentPicture', u'equipmentPowerCapDef', u'equipmentRackFanModuleDef', u'equipmentSecureBoot', u'equipmentServerCorrectUuidBehavior', u'equipmentServerFeatureCap', u'equipmentServiceDef', u'equipmentSlotArray', u'equipmentSlotArrayRef', u'equipmentStorageControllerConfig', u'equipmentStorageControllerSlotDef', u'equipmentStorageSasExpanderCapRef', u'equipmentUuidFeatureCap', u'firmwareConstraints', u'firmwareType', u'firmwareUpgradeConstraint', u'storageEnclosureCap'], ["Get"])
+    mo_meta = MoMeta("EquipmentRackUnitCapProvider", "equipmentRackUnitCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], [""], [u'capabilityCatalogue', u'equipmentHwCapDerivativeProvider'], [u'adaptorFruCapRef', u'computeConstraintDef', u'computeMemoryUnitConstraintDef', u'computePciCap', u'computeServerTypeCap', u'equipmentAdvancedBootOrder', u'equipmentBiosDef', u'equipmentBiosTokenOverride', u'equipmentBladeAGLibrary', u'equipmentBoardControllerDef', u'equipmentBootDeviceConstraints', u'equipmentCimcVmedia', u'equipmentCiscoOsOpenGate', u'equipmentDiagFeatureSupport', u'equipmentDimmMapping', u'equipmentDiscoveryCap', u'equipmentDriveSecCap', u'equipmentEmbeddedControllerConfig', u'equipmentFlexFlashNonRemovable', u'equipmentFruVariant', u'equipmentGraphicsCardCapRef', u'equipmentHostMgmtControllerCap', u'equipmentHwRevisionModifier', u'equipmentHxCap', u'equipmentInbandMgmtCap', u'equipmentKvmMgmtCap', u'equipmentLocalDiskControllerCapRef', u'equipmentManufacturingDef', u'equipmentNvmeDef', u'equipmentPciSlotIdMapping', u'equipmentPcieSlotOrientation', u'equipmentPhysicalDef', u'equipmentPicture', u'equipmentPnuosBootMode', u'equipmentPowerCapDef', u'equipmentRackFanModuleDef', u'equipmentSecureBoot', u'equipmentServerCorrectUuidBehavior', u'equipmentServerFeatureCap', u'equipmentServiceDef', u'equipmentSlotArray', u'equipmentSlotArrayRef', u'equipmentStorageControllerConfig', u'equipmentStorageControllerSlotDef', u'equipmentStorageSasExpanderCapRef', u'equipmentUuidFeatureCap', u'firmwareConstraints', u'firmwareType', u'firmwareUpgradeConstraint', u'storageEnclosureCap'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
@@ -32,6 +32,7 @@ class EquipmentRackUnitCapProvider(ManagedObject):
         "element_load_failures": MoPropertyMeta("element_load_failures", "elementLoadFailures", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "elements_loaded": MoPropertyMeta("elements_loaded", "elementsLoaded", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "gencount": MoPropertyMeta("gencount", "gencount", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
+        "generation": MoPropertyMeta("generation", "generation", "ushort", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_errors": MoPropertyMeta("load_errors", "loadErrors", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_warnings": MoPropertyMeta("load_warnings", "loadWarnings", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "max_local_disks": MoPropertyMeta("max_local_disks", "maxLocalDisks", "ushort", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -53,6 +54,7 @@ class EquipmentRackUnitCapProvider(ManagedObject):
         "elementLoadFailures": "element_load_failures", 
         "elementsLoaded": "elements_loaded", 
         "gencount": "gencount", 
+        "generation": "generation", 
         "loadErrors": "load_errors", 
         "loadWarnings": "load_warnings", 
         "maxLocalDisks": "max_local_disks", 
@@ -77,6 +79,7 @@ class EquipmentRackUnitCapProvider(ManagedObject):
         self.element_load_failures = None
         self.elements_loaded = None
         self.gencount = None
+        self.generation = None
         self.load_errors = None
         self.load_warnings = None
         self.max_local_disks = None

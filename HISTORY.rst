@@ -3,6 +3,16 @@
 History
 -------
 
+0.9.3.2 (2018-04-25)
+---------------------
+* Support for UCSM release 3.2(3a)
+* Support for accepting array arguments in query_classids, query_dns
+* Support for setting response timeout for the UCSM operations (query/config)
+* Handling `auto_refresh` flag in unfreeze
+* Fixing issue with None value check of property by removing None check from validation of property/check_prop_match
+* Fixing issue where error happens with commit when threading is enabled and commit buffer is empty
+* Fixing issue where ssl with "Only TLS 1.2" does not work
+
 0.9.3.1 (2017-01-25)
 ---------------------
 

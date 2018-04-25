@@ -29,7 +29,7 @@ class CapabilityFeatureLimits(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "feature_status": MoPropertyMeta("feature_status", "featureStatus", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["supported", "unsupported"], []), 
         "limit": MoPropertyMeta("limit", "limit", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "min_ucsm_version": MoPropertyMeta("min_ucsm_version", "minUCSMVersion", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "min_ucsm_version": MoPropertyMeta("min_ucsm_version", "minUCSMVersion", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x8, 1, 510, None, [], []), 
         "platform": MoPropertyMeta("platform", "platform", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x10, None, None, None, ["ucs6100", "ucs6200", "ucs6300", "ucs6300UP", "ucs6324"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 

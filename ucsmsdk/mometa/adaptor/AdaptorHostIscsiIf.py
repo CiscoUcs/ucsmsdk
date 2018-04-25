@@ -24,6 +24,7 @@ class AdaptorHostIscsiIfConsts:
     DISCOVERY_NEW = "new"
     DISCOVERY_PRESENT = "present"
     DISCOVERY_UN_INITIALIZED = "un-initialized"
+    DISCOVERY_UN_SUPPORTED = "un-supported"
     HOST_VISIBLE_NO = "no"
     HOST_VISIBLE_OS_DEPENDENT = "os-dependent"
     HOST_VISIBLE_YES = "yes"
@@ -76,6 +77,7 @@ class AdaptorHostIscsiIfConsts:
     OPER_STATE_INOPERABLE = "inoperable"
     OPER_STATE_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPER_STATE_MALFORMED_FRU = "malformed-fru"
+    OPER_STATE_NON_OPTIMAL = "non-optimal"
     OPER_STATE_NOT_SUPPORTED = "not-supported"
     OPER_STATE_OPERABLE = "operable"
     OPER_STATE_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -86,6 +88,7 @@ class AdaptorHostIscsiIfConsts:
     OPER_STATE_REMOVED = "removed"
     OPER_STATE_THERMAL_PROBLEM = "thermal-problem"
     OPER_STATE_UNKNOWN = "unknown"
+    OPER_STATE_UNSUPPORTED_CONFIG = "unsupported-config"
     OPER_STATE_UPGRADE_PROBLEM = "upgrade-problem"
     OPER_STATE_VOLTAGE_PROBLEM = "voltage-problem"
     OPERABILITY_ACCESSIBILITY_PROBLEM = "accessibility-problem"
@@ -108,6 +111,7 @@ class AdaptorHostIscsiIfConsts:
     OPERABILITY_INOPERABLE = "inoperable"
     OPERABILITY_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPERABILITY_MALFORMED_FRU = "malformed-fru"
+    OPERABILITY_NON_OPTIMAL = "non-optimal"
     OPERABILITY_NOT_SUPPORTED = "not-supported"
     OPERABILITY_OPERABLE = "operable"
     OPERABILITY_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -118,6 +122,7 @@ class AdaptorHostIscsiIfConsts:
     OPERABILITY_REMOVED = "removed"
     OPERABILITY_THERMAL_PROBLEM = "thermal-problem"
     OPERABILITY_UNKNOWN = "unknown"
+    OPERABILITY_UNSUPPORTED_CONFIG = "unsupported-config"
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
     ORDER_UNSPECIFIED = "unspecified"
@@ -210,7 +215,7 @@ class AdaptorHostIscsiIf(ManagedObject):
         "cdn_name": MoPropertyMeta("cdn_name", "cdnName", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "discovery": MoPropertyMeta("discovery", "discovery", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["absent", "mis-connect", "missing", "new", "present", "un-initialized"], []), 
+        "discovery": MoPropertyMeta("discovery", "discovery", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["absent", "mis-connect", "missing", "new", "present", "un-initialized", "un-supported"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "eth_ep_dn": MoPropertyMeta("eth_ep_dn", "ethEpDn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
@@ -227,8 +232,8 @@ class AdaptorHostIscsiIf(ManagedObject):
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
-        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "upgrade-problem", "voltage-problem"], []), 
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
+        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
         "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["unspecified"], ["0-65535"]), 
         "original_mac": MoPropertyMeta("original_mac", "originalMac", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []), 
         "pci_addr": MoPropertyMeta("pci_addr", "pciAddr", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 

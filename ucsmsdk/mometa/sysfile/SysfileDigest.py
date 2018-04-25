@@ -20,7 +20,7 @@ class SysfileDigest(ManagedObject):
     mo_meta = MoMeta("SysfileDigest", "sysfileDigest", "filedigest-[name]-[creation_ts]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["read-only"], [], [], [None])
 
     prop_meta = {
-        "checksum": MoPropertyMeta("checksum", "checksum", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "checksum": MoPropertyMeta("checksum", "checksum", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "creation_ts": MoPropertyMeta("creation_ts", "creationTS", "ulong", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x4, None, None, None, [], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 

@@ -8,6 +8,10 @@ from ...ucsmeta import VersionMeta
 class AdaptorEthRoCEProfileConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
+    V1_DISABLED = "disabled"
+    V1_ENABLED = "enabled"
+    V2_DISABLED = "disabled"
+    V2_ENABLED = "enabled"
 
 
 class AdaptorEthRoCEProfile(ManagedObject):
@@ -16,7 +20,7 @@ class AdaptorEthRoCEProfile(ManagedObject):
     consts = AdaptorEthRoCEProfileConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorEthRoCEProfile", "adaptorEthRoCEProfile", "eth-roce", VersionMeta.Version223a, "InputOutput", 0x1ff, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], [u'adaptorHostEthIf', u'adaptorHostEthIfProfile'], [], ["Get", "Set"])
+    mo_meta = MoMeta("AdaptorEthRoCEProfile", "adaptorEthRoCEProfile", "eth-roce", VersionMeta.Version223a, "InputOutput", 0x7ff, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], [u'adaptorHostEthIf', u'adaptorHostEthIfProfile', u'adaptorVmmqConnDef'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
@@ -28,6 +32,8 @@ class AdaptorEthRoCEProfile(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "v1": MoPropertyMeta("v1", "v1", "string", None, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["disabled", "enabled"], []), 
+        "v2": MoPropertyMeta("v2", "v2", "string", None, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["disabled", "enabled"], []), 
     }
 
     prop_map = {
@@ -40,6 +46,8 @@ class AdaptorEthRoCEProfile(ManagedObject):
         "rn": "rn", 
         "sacl": "sacl", 
         "status": "status", 
+        "v1": "v1", 
+        "v2": "v2", 
     }
 
     def __init__(self, parent_mo_or_dn, **kwargs):
@@ -51,5 +59,7 @@ class AdaptorEthRoCEProfile(ManagedObject):
         self.resource_groups = None
         self.sacl = None
         self.status = None
+        self.v1 = None
+        self.v2 = None
 
         ManagedObject.__init__(self, "AdaptorEthRoCEProfile", parent_mo_or_dn, **kwargs)

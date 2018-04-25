@@ -49,8 +49,9 @@ class UcsHandle(UcsSession):
     """
 
     def __init__(self, ip, username, password, port=None, secure=None,
-                 proxy=None):
-        UcsSession.__init__(self, ip, username, password, port, secure, proxy)
+                 proxy=None, timeout=None):
+        UcsSession.__init__(self, ip, username, password, port, secure, proxy,
+                timeout)
         self.__commit_buf = {}
         self.__commit_buf_tagged = {}
 
@@ -67,6 +68,20 @@ class UcsHandle(UcsSession):
         """
 
         self._unset_dump_xml()
+
+    def set_timeout(self, timeout=None):
+        """
+        Sets timeout (in seconds) for the request
+        """
+
+        self._set_timeout(timeout)
+
+    def unset_timeout(self):
+        """
+        Disable timeout for the request
+        """
+
+        self._unset_timeout()
 
     def set_mode_threading(self):
         """
@@ -93,7 +108,7 @@ class UcsHandle(UcsSession):
         """
         return self.threaded
 
-    def login(self, auto_refresh=False, force=False):
+    def login(self, auto_refresh=False, force=False, timeout=None):
         """
         Initiates a connection to the server referenced by the UcsHandle.
         A cookie is populated in the UcsHandle, if the login is successful.
@@ -103,6 +118,7 @@ class UcsHandle(UcsSession):
                 continuously
             force (bool): if set to True it reconnects even if cookie exists
                 and is valid for respective connection.
+            timeout (int): timeout value in secs
 
         Returns:
             True on successful connect
@@ -116,14 +132,14 @@ class UcsHandle(UcsSession):
             where handle is UcsHandle()
         """
 
-        return self._login(auto_refresh, force)
+        return self._login(auto_refresh, force, timeout=timeout)
 
-    def logout(self):
+    def logout(self, timeout=None):
         """
         Disconnects from the server referenced by the UcsHandle.
 
         Args:
-            None
+            timeout (int): timeout value in secs
 
         Returns:
             True on successful disconnect
@@ -136,7 +152,7 @@ class UcsHandle(UcsSession):
 
         return self._logout()
 
-    def process_xml_elem(self, elem):
+    def process_xml_elem(self, elem, timeout=None):
         """
         process_xml_elem is a helper method which posts xml elements to the
         server and returns parsed response. It's role is to operate on the
@@ -145,6 +161,7 @@ class UcsHandle(UcsSession):
 
         Args:
             elem (xml element object)
+            timeout (int): timeout value in secs
 
         Returns:
             mo list or external method object
@@ -154,7 +171,7 @@ class UcsHandle(UcsSession):
             dn_objs = handle.process_xml_elem(elem)
         """
 
-        response = self.post_elem(elem)
+        response = self.post_elem(elem, timeout=timeout)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
 
@@ -175,7 +192,7 @@ class UcsHandle(UcsSession):
         else:
             return response
 
-    def get_auth_token(self):
+    def get_auth_token(self, timeout=None):
         """
         Returns a token that is used for UCS authentication.
 
@@ -184,6 +201,7 @@ class UcsHandle(UcsSession):
 
         Returns:
             auth_token (str)
+            timeout (int): timeout value in secs
 
         Example:
             handle.get_auth_token()
@@ -203,7 +221,7 @@ class UcsHandle(UcsSession):
                 in_cookie=self.cookie,
                 in_dn=mo[0].dn,
                 in_number_of=1)
-            response = self.post_elem(elem)
+            response = self.post_elem(elem, timeout=timeout)
             if response.error_code != 0:
                 raise UcsException(response.error_code,
                                    response.error_descr)
@@ -325,7 +343,7 @@ class UcsHandle(UcsSession):
 
         return class_id_dict
 
-    def query_dn(self, dn, hierarchy=False, need_response=False):
+    def query_dn(self, dn, hierarchy=False, need_response=False, timeout=None):
         """
         Finds an object using it's distinguished name.
 
@@ -336,6 +354,7 @@ class UcsHandle(UcsSession):
             need_response(bool): True/False,
                                 return the response xml node, instead of parsed
                                 objects
+            timeout (int): timeout value in secs
 
         Returns:
             managedobject or None   by default\n
@@ -363,7 +382,7 @@ class UcsHandle(UcsSession):
         elem = config_resolve_dns(cookie=self.cookie,
                                   in_dns=dn_set,
                                   in_hierarchical=hierarchy)
-        response = self.post_elem(elem)
+        response = self.post_elem(elem, timeout=timeout)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
 
@@ -382,7 +401,7 @@ class UcsHandle(UcsSession):
         return mo
 
     def query_classid(self, class_id=None, filter_str=None, hierarchy=False,
-                      need_response=False):
+                      need_response=False, timeout=None):
         """
         Finds an object using it's class id.
 
@@ -408,6 +427,7 @@ class UcsHandle(UcsSession):
                              hierarchical objects.
             need_response(bool): if set to True will return only response
                                 object.
+            timeout (int): timeout value in secs
 
 
         Returns:
@@ -450,7 +470,7 @@ class UcsHandle(UcsSession):
                                     class_id=meta_class_id,
                                     in_filter=in_filter,
                                     in_hierarchical=hierarchy)
-        response = self.post_elem(elem)
+        response = self.post_elem(elem, timeout=timeout)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
 
@@ -463,7 +483,7 @@ class UcsHandle(UcsSession):
         return out_mo_list
 
     def query_children(self, in_mo=None, in_dn=None, class_id=None,
-                       filter_str=None, hierarchy=False):
+                       filter_str=None, hierarchy=False, timeout=None):
         """
         Finds children of a given managed object or distinguished name.
         Arguments can be specified to query only a specific type(class_id)
@@ -503,6 +523,7 @@ class UcsHandle(UcsSession):
                                 object.
             hierarchy(bool): if set to True will return all the child
                               hierarchical objects.
+            timeout (int): timeout value in secs
 
         Returns:
             managedobjectlist or None   by default\n
@@ -552,7 +573,7 @@ class UcsHandle(UcsSession):
                                        in_dn=parent_dn,
                                        in_filter=in_filter,
                                        in_hierarchical=hierarchy)
-        response = self.post_elem(elem)
+        response = self.post_elem(elem, timeout=timeout)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
 
@@ -565,6 +586,10 @@ class UcsHandle(UcsSession):
     def _get_commit_buf(self, tag=None):
         if tag is None:
             return self.__commit_buf
+
+        if tag not in self.__commit_buf_tagged:
+            self.__commit_buf_tagged[tag] = {}
+
         return self.__commit_buf_tagged[tag]
 
     def _update_commit_buf(self, mo, tag=None):
@@ -674,7 +699,7 @@ class UcsHandle(UcsSession):
 
         self._update_commit_buf(mo, tag)
 
-    def estimate_impact(self, tag=None):
+    def estimate_impact(self, tag=None, timeout=None):
         from .ucsbasetype import ConfigMap, Pair
         from .ucsmethodfactory import config_estimate_impact
 
@@ -698,7 +723,7 @@ class UcsHandle(UcsSession):
             config_map.child_add(pair)
 
         elem = config_estimate_impact(self.cookie, config_map)
-        response = self.post_elem(elem)
+        response = self.post_elem(elem, timeout=timeout)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
 
@@ -863,7 +888,7 @@ class UcsHandle(UcsSession):
                         msg_buf[l_type].append(params)
         return json.dumps(msg_buf, indent=4)
 
-    def commit(self, tag=None):
+    def commit(self, tag=None, timeout=None):
         """
         Commit the buffer to the server. Pushes all the configuration changes
         so far to the server.
@@ -872,6 +897,7 @@ class UcsHandle(UcsSession):
 
         Args:
             None
+            timeout (int): timeout value in secs
 
         Returns:
             None
@@ -910,7 +936,7 @@ class UcsHandle(UcsSession):
 
         elem = config_conf_mos(self.cookie, config_map,
                                False)
-        response = self.post_elem(elem)
+        response = self.post_elem(elem, timeout=timeout)
         if response.error_code != 0:
             self.commit_buffer_discard(tag)
             raise UcsException(response.error_code, response.error_descr)
@@ -928,7 +954,7 @@ class UcsHandle(UcsSession):
 
             elem = config_resolve_dns(cookie=self.cookie,
                                       in_dns=dn_set)
-            response = self.post_elem(elem)
+            response = self.post_elem(elem, timeout=timeout)
             if response.error_code != 0:
                 raise UcsException(response.error_code,
                                    response.error_descr)
