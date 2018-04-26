@@ -33,6 +33,9 @@ class BiosBootDevGrpConsts:
     TYPE_LAN_ANY_DEVICE_ORDER = "lan-any-device-order"
     TYPE_LOCAL_STORAGE_ANY_DEVICE_ORDER = "local-storage-any-device-order"
     TYPE_NETWORK_DEVICE_ORDER = "network-device-order"
+    TYPE_NVME_DEVICE_ORDER = "nvme-device-order"
+    TYPE_NVME_DISK_SSD_DEVICE_ORDER = "nvme-disk-ssd-device-order"
+    TYPE_NVME_PCI_SSD_DEVICE_ORDER = "nvme-pci-ssd-device-order"
     TYPE_SAN_ANY_DEVICE_ORDER = "san-any-device-order"
     TYPE_SAN_DEVICE_ORDER = "san-device-order"
     TYPE_SDCARD_DEVICE_ORDER = "sdcard-device-order"
@@ -60,7 +63,7 @@ class BiosBootDevGrp(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["bev-order", "cd-order", "cimc-vmedia-cdd-device-order", "cimc-vmedia-fdd-device-order", "cimc-vmedia-hdd-device-order", "external-usb-device-order", "fdd-order", "hdd-order", "internal-efi-shell", "internal-usb-device-order", "iscsi-any-device-order", "iscsi-device-order", "kvm-vmedia-cdd-device-order", "kvm-vmedia-fdd-device-order", "kvm-vmedia-hdd-device-order", "lan-any-device-order", "local-storage-any-device-order", "network-device-order", "san-any-device-order", "san-device-order", "sdcard-device-order", "system-boot-order", "uefi-shell-device-order", "uefi-target-device-order", "unknown-device-order"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["bev-order", "cd-order", "cimc-vmedia-cdd-device-order", "cimc-vmedia-fdd-device-order", "cimc-vmedia-hdd-device-order", "external-usb-device-order", "fdd-order", "hdd-order", "internal-efi-shell", "internal-usb-device-order", "iscsi-any-device-order", "iscsi-device-order", "kvm-vmedia-cdd-device-order", "kvm-vmedia-fdd-device-order", "kvm-vmedia-hdd-device-order", "lan-any-device-order", "local-storage-any-device-order", "network-device-order", "nvme-device-order", "nvme-disk-ssd-device-order", "nvme-pci-ssd-device-order", "san-any-device-order", "san-device-order", "sdcard-device-order", "system-boot-order", "uefi-shell-device-order", "uefi-target-device-order", "unknown-device-order"], []), 
     }
 
     prop_map = {

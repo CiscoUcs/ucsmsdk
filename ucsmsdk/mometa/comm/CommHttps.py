@@ -34,7 +34,7 @@ class CommHttps(ManagedObject):
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
-        "allowed_ssl_protocols": MoPropertyMeta("allowed_ssl_protocols", "allowedSSLProtocols", "string", None, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["all", "tlsv1_2"], []), 
+        "allowed_ssl_protocols": MoPropertyMeta("allowed_ssl_protocols", "allowedSSLProtocols", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["all", "tlsv1_2"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "cipher_suite": MoPropertyMeta("cipher_suite", "cipherSuite", "string", VersionMeta.Version203a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[!\+,\-\./:;<=>\?@\[\\a-zA-Z0-9]{0,256}""", [], []), 
         "cipher_suite_mode": MoPropertyMeta("cipher_suite_mode", "cipherSuiteMode", "string", VersionMeta.Version203a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["custom", "high-strength", "low-strength", "medium-strength"], []), 

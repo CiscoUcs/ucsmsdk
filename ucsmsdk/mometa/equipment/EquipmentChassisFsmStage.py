@@ -26,6 +26,7 @@ class EquipmentChassisFsmStageConsts:
     NAME_ASSOCIATE_POLL_CMC_ACTIVATION = "AssociatePollCmcActivation"
     NAME_ASSOCIATE_POLL_POST_DISK_ZONE_STORAGE_INV_CIMC = "AssociatePollPostDiskZoneStorageInvCIMC"
     NAME_ASSOCIATE_POLL_SAS_EXPANDER_ACTIVATE = "AssociatePollSasExpanderActivate"
+    NAME_ASSOCIATE_POLL_SAS_EXPANDER_CONFIG = "AssociatePollSasExpanderConfig"
     NAME_ASSOCIATE_POLL_STORAGE_CTLR_ACTIVATION = "AssociatePollStorageCtlrActivation"
     NAME_ASSOCIATE_POLL_UPDATE_ADAPTOR = "AssociatePollUpdateAdaptor"
     NAME_ASSOCIATE_POLL_UPDATE_CMC = "AssociatePollUpdateCmc"
@@ -34,6 +35,7 @@ class EquipmentChassisFsmStageConsts:
     NAME_ASSOCIATE_POST_DISK_ZONE_STORAGE_INV_CMC = "AssociatePostDiskZoneStorageInvCMC"
     NAME_ASSOCIATE_POWER_OFF_SERVERS = "AssociatePowerOffServers"
     NAME_ASSOCIATE_POWER_ON_SERVERS = "AssociatePowerOnServers"
+    NAME_ASSOCIATE_SAS_EXPANDER_CONFIG = "AssociateSasExpanderConfig"
     NAME_ASSOCIATE_SUCCESS = "AssociateSuccess"
     NAME_ASSOCIATE_UNLOCK_FIRMWARE_IMAGE = "AssociateUnlockFirmwareImage"
     NAME_ASSOCIATE_UPDATE_ADAPTOR = "AssociateUpdateAdaptor"
@@ -70,6 +72,21 @@ class EquipmentChassisFsmStageConsts:
     NAME_DYNAMIC_REALLOCATION_CONFIG = "DynamicReallocationConfig"
     NAME_DYNAMIC_REALLOCATION_FAIL = "DynamicReallocationFail"
     NAME_DYNAMIC_REALLOCATION_SUCCESS = "DynamicReallocationSuccess"
+    NAME_FW_UPGRADE_BEGIN = "FwUpgradeBegin"
+    NAME_FW_UPGRADE_COPY_REMOTE = "FwUpgradeCopyRemote"
+    NAME_FW_UPGRADE_DELETE_CURL_DOWNLOADED_IMAGES = "FwUpgradeDeleteCurlDownloadedImages"
+    NAME_FW_UPGRADE_DELETE_IMAGES_REMOTE = "FwUpgradeDeleteImagesRemote"
+    NAME_FW_UPGRADE_DOWNLOAD_IMAGES = "FwUpgradeDownloadImages"
+    NAME_FW_UPGRADE_FAIL = "FwUpgradeFail"
+    NAME_FW_UPGRADE_POLL_UPDATE_ADAPTOR = "FwUpgradePollUpdateAdaptor"
+    NAME_FW_UPGRADE_POLL_UPDATE_CMC = "FwUpgradePollUpdateCmc"
+    NAME_FW_UPGRADE_POLL_UPDATE_SAS_EXPANDER = "FwUpgradePollUpdateSasExpander"
+    NAME_FW_UPGRADE_SUCCESS = "FwUpgradeSuccess"
+    NAME_FW_UPGRADE_UNLOCK_FIRMWARE_IMAGE = "FwUpgradeUnlockFirmwareImage"
+    NAME_FW_UPGRADE_UPDATE_ADAPTOR = "FwUpgradeUpdateAdaptor"
+    NAME_FW_UPGRADE_UPDATE_CMC = "FwUpgradeUpdateCmc"
+    NAME_FW_UPGRADE_UPDATE_SAS_EXPANDER = "FwUpgradeUpdateSasExpander"
+    NAME_FW_UPGRADE_WAIT_BEFORE_INSTALLATION = "FwUpgradeWaitBeforeInstallation"
     NAME_OOB_STORAGE_ADMIN_CFG_BEGIN = "OobStorageAdminCfgBegin"
     NAME_OOB_STORAGE_ADMIN_CFG_FAIL = "OobStorageAdminCfgFail"
     NAME_OOB_STORAGE_ADMIN_CFG_OOB_STORAGE_CONFIG = "OobStorageAdminCfgOobStorageConfig"
@@ -79,6 +96,7 @@ class EquipmentChassisFsmStageConsts:
     NAME_POWER_CAP_CONFIG = "PowerCapConfig"
     NAME_POWER_CAP_FAIL = "PowerCapFail"
     NAME_POWER_CAP_SUCCESS = "PowerCapSuccess"
+    NAME_POWER_CAP_WAIT = "PowerCapWait"
     NAME_PSU_POLICY_CONFIG_BEGIN = "PsuPolicyConfigBegin"
     NAME_PSU_POLICY_CONFIG_EXECUTE = "PsuPolicyConfigExecute"
     NAME_PSU_POLICY_CONFIG_FAIL = "PsuPolicyConfigFail"
@@ -116,7 +134,7 @@ class EquipmentChassisFsmStage(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "last_update_time": MoPropertyMeta("last_update_time", "lastUpdateTime", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["AssociateActivateAdaptor", "AssociateActivateBrdCtlr", "AssociateActivateCmc", "AssociateActivateLocalDisk", "AssociateActivateSasExpander", "AssociateActivateStorageCtlr", "AssociateBegin", "AssociateConfigChassisAdapterConnectivity", "AssociateCopyRemote", "AssociateDeleteCurlDownloadedImages", "AssociateDeleteImagesRemote", "AssociateDiskZoningConfig", "AssociateDownloadImages", "AssociateFail", "AssociatePollAdaptorActivation", "AssociatePollBrdCtlrActivation", "AssociatePollCmcActivation", "AssociatePollPostDiskZoneStorageInvCIMC", "AssociatePollSasExpanderActivate", "AssociatePollStorageCtlrActivation", "AssociatePollUpdateAdaptor", "AssociatePollUpdateCmc", "AssociatePollUpdateSasExpander", "AssociatePostDiskZoneStorageInvCIMC", "AssociatePostDiskZoneStorageInvCMC", "AssociatePowerOffServers", "AssociatePowerOnServers", "AssociateSuccess", "AssociateUnlockFirmwareImage", "AssociateUpdateAdaptor", "AssociateUpdateCmc", "AssociateUpdateSasExpander", "AssociateWaitBeforeInstallation", "AssociateWaitForPowerOff", "ChassisUpgradeActivateAdaptor", "ChassisUpgradeActivateBrdCtlr", "ChassisUpgradeActivateCmc", "ChassisUpgradeActivateLocalDisk", "ChassisUpgradeActivateSasExpander", "ChassisUpgradeActivateStorageCtlr", "ChassisUpgradeBegin", "ChassisUpgradeFail", "ChassisUpgradePollAdaptorActivation", "ChassisUpgradePollBrdCtlrActivation", "ChassisUpgradePollCmcActivation", "ChassisUpgradePollLocalDiskActivate", "ChassisUpgradePollSasExpanderActivate", "ChassisUpgradePollStorageCtlrActivation", "ChassisUpgradePollUpdateStatus", "ChassisUpgradePowerOffServers", "ChassisUpgradePowerOnServers", "ChassisUpgradeResetSasExpander", "ChassisUpgradeSuccess", "ChassisUpgradeUpdateRequest", "ChassisUpgradeWaitForPowerOff", "DisassociateBegin", "DisassociateComplete", "DisassociateFail", "DisassociateSuccess", "DynamicReallocationBegin", "DynamicReallocationConfig", "DynamicReallocationFail", "DynamicReallocationSuccess", "OobStorageAdminCfgBegin", "OobStorageAdminCfgFail", "OobStorageAdminCfgOobStorageConfig", "OobStorageAdminCfgOobStorageInventory", "OobStorageAdminCfgSuccess", "PowerCapBegin", "PowerCapConfig", "PowerCapFail", "PowerCapSuccess", "PsuPolicyConfigBegin", "PsuPolicyConfigExecute", "PsuPolicyConfigFail", "PsuPolicyConfigSuccess", "RemoveChassisBegin", "RemoveChassisCleanupVnicsLocal", "RemoveChassisCleanupVnicsPeer", "RemoveChassisDecomission", "RemoveChassisDisableEndPoint", "RemoveChassisFail", "RemoveChassisSuccess", "RemoveChassisUnIdentifyLocal", "RemoveChassisUnIdentifyPeer", "RemoveChassisWait", "nop"], []), 
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["AssociateActivateAdaptor", "AssociateActivateBrdCtlr", "AssociateActivateCmc", "AssociateActivateLocalDisk", "AssociateActivateSasExpander", "AssociateActivateStorageCtlr", "AssociateBegin", "AssociateConfigChassisAdapterConnectivity", "AssociateCopyRemote", "AssociateDeleteCurlDownloadedImages", "AssociateDeleteImagesRemote", "AssociateDiskZoningConfig", "AssociateDownloadImages", "AssociateFail", "AssociatePollAdaptorActivation", "AssociatePollBrdCtlrActivation", "AssociatePollCmcActivation", "AssociatePollPostDiskZoneStorageInvCIMC", "AssociatePollSasExpanderActivate", "AssociatePollSasExpanderConfig", "AssociatePollStorageCtlrActivation", "AssociatePollUpdateAdaptor", "AssociatePollUpdateCmc", "AssociatePollUpdateSasExpander", "AssociatePostDiskZoneStorageInvCIMC", "AssociatePostDiskZoneStorageInvCMC", "AssociatePowerOffServers", "AssociatePowerOnServers", "AssociateSasExpanderConfig", "AssociateSuccess", "AssociateUnlockFirmwareImage", "AssociateUpdateAdaptor", "AssociateUpdateCmc", "AssociateUpdateSasExpander", "AssociateWaitBeforeInstallation", "AssociateWaitForPowerOff", "ChassisUpgradeActivateAdaptor", "ChassisUpgradeActivateBrdCtlr", "ChassisUpgradeActivateCmc", "ChassisUpgradeActivateLocalDisk", "ChassisUpgradeActivateSasExpander", "ChassisUpgradeActivateStorageCtlr", "ChassisUpgradeBegin", "ChassisUpgradeFail", "ChassisUpgradePollAdaptorActivation", "ChassisUpgradePollBrdCtlrActivation", "ChassisUpgradePollCmcActivation", "ChassisUpgradePollLocalDiskActivate", "ChassisUpgradePollSasExpanderActivate", "ChassisUpgradePollStorageCtlrActivation", "ChassisUpgradePollUpdateStatus", "ChassisUpgradePowerOffServers", "ChassisUpgradePowerOnServers", "ChassisUpgradeResetSasExpander", "ChassisUpgradeSuccess", "ChassisUpgradeUpdateRequest", "ChassisUpgradeWaitForPowerOff", "DisassociateBegin", "DisassociateComplete", "DisassociateFail", "DisassociateSuccess", "DynamicReallocationBegin", "DynamicReallocationConfig", "DynamicReallocationFail", "DynamicReallocationSuccess", "FwUpgradeBegin", "FwUpgradeCopyRemote", "FwUpgradeDeleteCurlDownloadedImages", "FwUpgradeDeleteImagesRemote", "FwUpgradeDownloadImages", "FwUpgradeFail", "FwUpgradePollUpdateAdaptor", "FwUpgradePollUpdateCmc", "FwUpgradePollUpdateSasExpander", "FwUpgradeSuccess", "FwUpgradeUnlockFirmwareImage", "FwUpgradeUpdateAdaptor", "FwUpgradeUpdateCmc", "FwUpgradeUpdateSasExpander", "FwUpgradeWaitBeforeInstallation", "OobStorageAdminCfgBegin", "OobStorageAdminCfgFail", "OobStorageAdminCfgOobStorageConfig", "OobStorageAdminCfgOobStorageInventory", "OobStorageAdminCfgSuccess", "PowerCapBegin", "PowerCapConfig", "PowerCapFail", "PowerCapSuccess", "PowerCapWait", "PsuPolicyConfigBegin", "PsuPolicyConfigExecute", "PsuPolicyConfigFail", "PsuPolicyConfigSuccess", "RemoveChassisBegin", "RemoveChassisCleanupVnicsLocal", "RemoveChassisCleanupVnicsPeer", "RemoveChassisDecomission", "RemoveChassisDisableEndPoint", "RemoveChassisFail", "RemoveChassisSuccess", "RemoveChassisUnIdentifyLocal", "RemoveChassisUnIdentifyPeer", "RemoveChassisWait", "nop"], []), 
         "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "retry": MoPropertyMeta("retry", "retry", "byte", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 

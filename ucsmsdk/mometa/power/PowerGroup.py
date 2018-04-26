@@ -11,6 +11,7 @@ class PowerGroupConsts:
     CUR_REQ_POWER_UNBOUNDED = "unbounded"
     CURRENT_POWER_UNBOUNDED = "unbounded"
     INT_ID_NONE = "none"
+    MAX_REQ_POWER_UNBOUNDED = "unbounded"
     MIN_REQ_POWER_UNBOUNDED = "unbounded"
     OPER_COMMITTED_UNBOUNDED = "unbounded"
     OPER_PEAK_UNBOUNDED = "unbounded"
@@ -39,6 +40,7 @@ class PowerGroup(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
+        "max_req_power": MoPropertyMeta("max_req_power", "maxReqPower", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]), 
         "min_req_power": MoPropertyMeta("min_req_power", "minReqPower", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version111j, MoPropertyMeta.NAMING, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
         "oper_committed": MoPropertyMeta("oper_committed", "operCommitted", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]), 
@@ -63,6 +65,7 @@ class PowerGroup(ManagedObject):
         "dn": "dn", 
         "fltAggr": "flt_aggr", 
         "intId": "int_id", 
+        "maxReqPower": "max_req_power", 
         "minReqPower": "min_req_power", 
         "name": "name", 
         "operCommitted": "oper_committed", 
@@ -88,6 +91,7 @@ class PowerGroup(ManagedObject):
         self.descr = None
         self.flt_aggr = None
         self.int_id = None
+        self.max_req_power = None
         self.min_req_power = None
         self.oper_committed = None
         self.oper_peak = None

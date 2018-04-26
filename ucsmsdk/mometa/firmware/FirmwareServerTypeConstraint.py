@@ -21,7 +21,7 @@ class FirmwareServerTypeConstraint(ManagedObject):
     mo_meta = MoMeta("FirmwareServerTypeConstraint", "firmwareServerTypeConstraint", "constraint-server-type", VersionMeta.Version311e, "InputOutput", 0x1f, [], [""], [u'firmwareConstraints'], [], ["Get"])
 
     prop_meta = {
-        "check_running_ver": MoPropertyMeta("check_running_ver", "checkRunningVer", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "check_running_ver": MoPropertyMeta("check_running_ver", "checkRunningVer", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version311e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "min_bios_version": MoPropertyMeta("min_bios_version", "minBiosVersion", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 

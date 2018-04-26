@@ -9,6 +9,7 @@ class StorageLocalDiskEpConsts:
     BOOTABLE_FALSE = "false"
     BOOTABLE_TRUE = "true"
     BOOTABLE_UNKNOWN = "unknown"
+    DISK_STATE_NA = "NA"
     DISK_STATE_BAD = "bad"
     DISK_STATE_COPYBACK = "copyback"
     DISK_STATE_DEDICATED_HOT_SPARE = "dedicated-hot-spare"
@@ -45,7 +46,7 @@ class StorageLocalDiskEp(ManagedObject):
         "bootable": MoPropertyMeta("bootable", "bootable", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "true", "unknown"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "disk_dn": MoPropertyMeta("disk_dn", "diskDn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "disk_state": MoPropertyMeta("disk_state", "diskState", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["bad", "copyback", "dedicated-hot-spare", "disabled-for-removal", "failed", "foreign-configuration", "global-hot-spare", "good", "jbod", "locked-foreign-configuration", "offline", "online", "predictive-failure", "rebuilding", "unconfigured-bad", "unconfigured-good", "unknown", "zeroing"], []), 
+        "disk_state": MoPropertyMeta("disk_state", "diskState", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA", "bad", "copyback", "dedicated-hot-spare", "disabled-for-removal", "failed", "foreign-configuration", "global-hot-spare", "good", "jbod", "locked-foreign-configuration", "offline", "online", "predictive-failure", "rebuilding", "unconfigured-bad", "unconfigured-good", "unknown", "zeroing"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "enc_id": MoPropertyMeta("enc_id", "encId", "uint", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []), 
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x10, None, None, None, [], []), 

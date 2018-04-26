@@ -20,6 +20,7 @@ class EquipmentStorageSasExpanderCapRef(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version226c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "min_boot_fw_cimc_version": MoPropertyMeta("min_boot_fw_cimc_version", "minBootFwCimcVersion", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "min_cimc_version": MoPropertyMeta("min_cimc_version", "minCimcVersion", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version226c, MoPropertyMeta.NAMING, 0x8, 1, 510, None, [], []), 
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version226c, MoPropertyMeta.NAMING, 0x10, 1, 510, None, [], []), 
@@ -32,6 +33,7 @@ class EquipmentStorageSasExpanderCapRef(ManagedObject):
     prop_map = {
         "childAction": "child_action", 
         "dn": "dn", 
+        "minBootFwCimcVersion": "min_boot_fw_cimc_version", 
         "minCimcVersion": "min_cimc_version", 
         "model": "model", 
         "revision": "revision", 
@@ -47,6 +49,7 @@ class EquipmentStorageSasExpanderCapRef(ManagedObject):
         self.model = model
         self.revision = revision
         self.child_action = None
+        self.min_boot_fw_cimc_version = None
         self.min_cimc_version = None
         self.sacl = None
         self.status = None

@@ -15,7 +15,7 @@ class LsbootLocalStorage(ManagedObject):
     consts = LsbootLocalStorageConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsbootLocalStorage", "lsbootLocalStorage", "local-storage", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], [u'lsbootStorage'], [u'lsbootDefaultLocalImage', u'lsbootEmbeddedLocalDiskImage', u'lsbootEmbeddedLocalLunImage', u'lsbootLocalDiskImage', u'lsbootLocalHddImage', u'lsbootUsbExternalImage', u'lsbootUsbFlashStorageImage', u'lsbootUsbInternalImage'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("LsbootLocalStorage", "lsbootLocalStorage", "local-storage", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], [u'lsbootStorage'], [u'lsbootDefaultLocalImage', u'lsbootEmbeddedLocalDiskImage', u'lsbootEmbeddedLocalLunImage', u'lsbootLocalDiskImage', u'lsbootLocalHddImage', u'lsbootNvme', u'lsbootUsbExternalImage', u'lsbootUsbFlashStorageImage', u'lsbootUsbInternalImage'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

@@ -25,7 +25,7 @@ class BiosVfUSBConfiguration(ManagedObject):
     consts = BiosVfUSBConfigurationConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("BiosVfUSBConfiguration", "biosVfUSBConfiguration", "USB-Configuration", VersionMeta.Version223a, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], [u'biosSettings', u'biosVProfile'], [], ["Get", "Set"])
+    mo_meta = MoMeta("BiosVfUSBConfiguration", "biosVfUSBConfiguration", "USB-Configuration", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], [u'biosSettings', u'biosVProfile'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
@@ -35,8 +35,8 @@ class BiosVfUSBConfiguration(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "supported_by_default": MoPropertyMeta("supported_by_default", "supportedByDefault", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []), 
-        "vp_legacy_usb_support": MoPropertyMeta("vp_legacy_usb_support", "vpLegacyUSBSupport", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["auto", "disabled", "enabled", "platform-default", "platform-recommended"], []), 
-        "vp_xhci_mode": MoPropertyMeta("vp_xhci_mode", "vpXHCIMode", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["disabled", "enabled", "platform-default", "platform-recommended"], []), 
+        "vp_legacy_usb_support": MoPropertyMeta("vp_legacy_usb_support", "vpLegacyUSBSupport", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto", "disabled", "enabled", "platform-default", "platform-recommended"], []), 
+        "vp_xhci_mode": MoPropertyMeta("vp_xhci_mode", "vpXHCIMode", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["disabled", "enabled", "platform-default", "platform-recommended"], []), 
     }
 
     prop_map = {

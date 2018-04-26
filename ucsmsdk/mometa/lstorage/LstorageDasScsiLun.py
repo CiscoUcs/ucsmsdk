@@ -67,7 +67,7 @@ class LstorageDasScsiLun(ManagedObject):
         "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["not-applicable"], ["0-64"]), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x1000, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "size": MoPropertyMeta("size", "size", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, ["unspecified"], ["0-102400"]), 
+        "size": MoPropertyMeta("size", "size", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, ["unspecified"], ["0-245760"]), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "storage_class": MoPropertyMeta("storage_class", "storageClass", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["das", "san"], []), 
     }

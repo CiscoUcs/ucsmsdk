@@ -35,6 +35,12 @@ class SwAccessEpConsts:
     LC_PENDING = "pending"
     LC_REPURPOSED = "repurposed"
     PEER_CHASSIS_ID_N_A = "N/A"
+    PRIORITY_FLOW_CTRL_AUTO = "auto"
+    PRIORITY_FLOW_CTRL_ON = "on"
+    RECV_FLOW_CTRL_OFF = "off"
+    RECV_FLOW_CTRL_ON = "on"
+    SEND_FLOW_CTRL_OFF = "off"
+    SEND_FLOW_CTRL_ON = "on"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -68,8 +74,11 @@ class SwAccessEp(ManagedObject):
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []), 
+        "priority_flow_ctrl": MoPropertyMeta("priority_flow_ctrl", "priorityFlowCtrl", "string", VersionMeta.Version322b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto", "on"], []), 
+        "recv_flow_ctrl": MoPropertyMeta("recv_flow_ctrl", "recvFlowCtrl", "string", VersionMeta.Version322b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["off", "on"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "send_flow_ctrl": MoPropertyMeta("send_flow_ctrl", "sendFlowCtrl", "string", VersionMeta.Version322b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["off", "on"], []), 
         "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80, None, None, None, [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
@@ -97,8 +106,11 @@ class SwAccessEp(ManagedObject):
         "peerPortId": "peer_port_id", 
         "peerSlotId": "peer_slot_id", 
         "portId": "port_id", 
+        "priorityFlowCtrl": "priority_flow_ctrl", 
+        "recvFlowCtrl": "recv_flow_ctrl", 
         "rn": "rn", 
         "sacl": "sacl", 
+        "sendFlowCtrl": "send_flow_ctrl", 
         "slotId": "slot_id", 
         "status": "status", 
         "switchId": "switch_id", 
@@ -127,7 +139,10 @@ class SwAccessEp(ManagedObject):
         self.peer_dn = None
         self.peer_port_id = None
         self.peer_slot_id = None
+        self.priority_flow_ctrl = None
+        self.recv_flow_ctrl = None
         self.sacl = None
+        self.send_flow_ctrl = None
         self.status = None
         self.switch_id = None
         self.transport = None

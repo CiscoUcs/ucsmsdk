@@ -6,6 +6,10 @@ from ...ucsmeta import VersionMeta
 
 
 class EquipmentAdaptorDefConsts:
+    FORCE_UPDATE_VERSION_FALSE = "false"
+    FORCE_UPDATE_VERSION_NO = "no"
+    FORCE_UPDATE_VERSION_TRUE = "true"
+    FORCE_UPDATE_VERSION_YES = "yes"
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -26,6 +30,7 @@ class EquipmentAdaptorDef(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "ethernet_port_speed": MoPropertyMeta("ethernet_port_speed", "ethernetPortSpeed", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-18446744073709551615"]), 
         "fibre_channel_port_speed": MoPropertyMeta("fibre_channel_port_speed", "fibreChannelPortSpeed", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-18446744073709551615"]), 
+        "force_update_version": MoPropertyMeta("force_update_version", "forceUpdateVersion", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -41,6 +46,7 @@ class EquipmentAdaptorDef(ManagedObject):
         "dn": "dn", 
         "ethernetPortSpeed": "ethernet_port_speed", 
         "fibreChannelPortSpeed": "fibre_channel_port_speed", 
+        "forceUpdateVersion": "force_update_version", 
         "intId": "int_id", 
         "name": "name", 
         "policyLevel": "policy_level", 
@@ -56,6 +62,7 @@ class EquipmentAdaptorDef(ManagedObject):
         self.descr = None
         self.ethernet_port_speed = None
         self.fibre_channel_port_speed = None
+        self.force_update_version = None
         self.int_id = None
         self.name = None
         self.policy_level = None

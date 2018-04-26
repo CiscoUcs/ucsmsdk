@@ -22,6 +22,10 @@ class CommSnmpConsts:
     PROTO_NONE = "none"
     PROTO_TCP = "tcp"
     PROTO_UDP = "udp"
+    PROTOCOL_ALL = "all"
+    PROTOCOL_NONE = "none"
+    PROTOCOL_TCP = "tcp"
+    PROTOCOL_UDP = "udp"
     SNMP_OPER_STATE_DISABLED = "disabled"
     SNMP_OPER_STATE_ENABLED = "enabled"
 
@@ -32,7 +36,7 @@ class CommSnmp(ManagedObject):
     consts = CommSnmpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommSnmp", "commSnmp", "snmp-svc", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["aaa", "admin"], [u'commSvcEp'], [u'commSnmpTrap', u'commSnmpUser', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("CommSnmp", "commSnmp", "snmp-svc", VersionMeta.Version101e, "InputOutput", 0x3fff, [], ["aaa", "admin"], [u'commSvcEp'], [u'commSnmpTrap', u'commSnmpUser', u'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
@@ -49,12 +53,13 @@ class CommSnmp(ManagedObject):
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["local", "pending-policy", "policy"], []), 
         "port": MoPropertyMeta("port", "port", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-65535"]), 
         "proto": MoPropertyMeta("proto", "proto", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["all", "none", "tcp", "udp"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x200, 0, 256, None, [], []), 
+        "protocol": MoPropertyMeta("protocol", "protocol", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["all", "none", "tcp", "udp"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x400, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "snmp_oper_state": MoPropertyMeta("snmp_oper_state", "snmpOperState", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "sys_contact": MoPropertyMeta("sys_contact", "sysContact", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x800, 0, 255, None, [], []), 
-        "sys_location": MoPropertyMeta("sys_location", "sysLocation", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x1000, 0, 510, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "sys_contact": MoPropertyMeta("sys_contact", "sysContact", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x1000, 0, 255, None, [], []), 
+        "sys_location": MoPropertyMeta("sys_location", "sysLocation", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2000, 0, 510, None, [], []), 
     }
 
     prop_map = {
@@ -72,6 +77,7 @@ class CommSnmp(ManagedObject):
         "policyOwner": "policy_owner", 
         "port": "port", 
         "proto": "proto", 
+        "protocol": "protocol", 
         "rn": "rn", 
         "sacl": "sacl", 
         "snmpOperState": "snmp_oper_state", 
@@ -95,6 +101,7 @@ class CommSnmp(ManagedObject):
         self.policy_owner = None
         self.port = None
         self.proto = None
+        self.protocol = None
         self.sacl = None
         self.snmp_oper_state = None
         self.status = None

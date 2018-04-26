@@ -28,7 +28,7 @@ def teardown_module():
     custom_teardown(handle)
 
 
-def _test_ucs_backup(file_dir, file_name, backup_type):
+def _test_ucs_backup(handle, file_dir, file_name, backup_type):
     backup_ucs(handle,
                backup_type=backup_type,
                file_dir=file_dir,
@@ -37,7 +37,7 @@ def _test_ucs_backup(file_dir, file_name, backup_type):
 
 @with_setup(setup_module, teardown_module)
 def test_ucs_backup():
-    _test_ucs_backup(file_dir="/tmp/backup",
+    _test_ucs_backup(handle, file_dir="/tmp/backup",
                      file_name="config1.xml",
                      backup_type="config-logical")
 
@@ -49,8 +49,9 @@ def test_ucs_backup_after_freeze_unfreeze():
     frozen_handle = h1.freeze()
     h2 = UcsHandle.unfreeze(frozen_handle)
 
+
     # Try a download operation using new handle
-    _test_ucs_backup(file_dir="/tmp/backup",
+    _test_ucs_backup(h2, file_dir="/tmp/backup",
                      file_name="config2.xml",
                      backup_type="config-logical")
 

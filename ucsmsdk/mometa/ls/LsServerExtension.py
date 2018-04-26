@@ -18,7 +18,7 @@ class LsServerExtension(ManagedObject):
     mo_meta = MoMeta("LsServerExtension", "lsServerExtension", "extension", VersionMeta.Version212a, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server"], [u'lsServer'], [], ["Get", "Set"])
 
     prop_meta = {
-        "asset_tag": MoPropertyMeta("asset_tag", "assetTag", "string", None, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
+        "asset_tag": MoPropertyMeta("asset_tag", "assetTag", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "guid": MoPropertyMeta("guid", "guid", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x10, 0, 510, None, [], []), 

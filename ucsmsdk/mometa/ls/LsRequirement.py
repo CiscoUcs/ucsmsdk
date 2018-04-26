@@ -28,8 +28,8 @@ class LsRequirement(ManagedObject):
     mo_meta = MoMeta("LsRequirement", "lsRequirement", "pn-req", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "read-only"], [u'lsServer'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "admin_action": MoPropertyMeta("admin_action", "adminAction", "string", None, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["reapply-config", "unspecified"], []), 
-        "admin_action_trigger": MoPropertyMeta("admin_action_trigger", "adminActionTrigger", "string", None, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["idle", "triggered"], []), 
+        "admin_action": MoPropertyMeta("admin_action", "adminAction", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["reapply-config", "unspecified"], []), 
+        "admin_action_trigger": MoPropertyMeta("admin_action_trigger", "adminActionTrigger", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["idle", "triggered"], []), 
         "assigned_to_dn": MoPropertyMeta("assigned_to_dn", "assignedToDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "compute_ep_dn": MoPropertyMeta("compute_ep_dn", "computeEpDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 

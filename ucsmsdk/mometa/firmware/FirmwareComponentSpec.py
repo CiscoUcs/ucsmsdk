@@ -21,6 +21,7 @@ class FirmwareComponentSpecConsts:
     TYPE_HOST_NIC = "host-nic"
     TYPE_HOST_NIC_OPTIONROM = "host-nic-optionrom"
     TYPE_LOCAL_DISK = "local-disk"
+    TYPE_NVME_MSWITCH = "nvme-mswitch"
     TYPE_PSU = "psu"
     TYPE_SAS_EXP_REG_FW = "sas-exp-reg-fw"
     TYPE_SAS_EXPANDER = "sas-expander"
@@ -46,7 +47,7 @@ class FirmwareComponentSpec(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version227b, MoPropertyMeta.NAMING, 0x20, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "local-disk", "psu", "sas-exp-reg-fw", "sas-expander", "storage-controller", "storage-controller-onboard-device", "storage-controller-onboard-device-cpld", "storage-dev-bridge", "unspecified"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version227b, MoPropertyMeta.NAMING, 0x20, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "local-disk", "nvme-mswitch", "psu", "sas-exp-reg-fw", "sas-expander", "storage-controller", "storage-controller-onboard-device", "storage-controller-onboard-device-cpld", "storage-dev-bridge", "unspecified"], []), 
     }
 
     prop_map = {

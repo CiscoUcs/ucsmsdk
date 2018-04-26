@@ -20,6 +20,7 @@ class MgmtControllerFsmTaskConsts:
     ITEM_ENABLE_SECURE_BOOT = "EnableSecureBoot"
     ITEM_EXT_MGMT_IF_CONFIG = "ExtMgmtIfConfig"
     ITEM_EXT_MGMT_INTERFACE_CONFIG = "ExtMgmtInterfaceConfig"
+    ITEM_KVM_CERT = "KvmCert"
     ITEM_LOCK_CONFIG = "LockConfig"
     ITEM_ONLINE = "Online"
     ITEM_POWER_BUDGET_RECLAIM_CONFIG = "PowerBudgetReclaimConfig"
@@ -54,7 +55,7 @@ class MgmtControllerFsmTask(ManagedObject):
         "completion": MoPropertyMeta("completion", "completion", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cancelled", "completed", "processing", "scheduled"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "flags": MoPropertyMeta("flags", "flags", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""(defaultValue){0,1}""", [], []), 
-        "item": MoPropertyMeta("item", "item", "string", VersionMeta.Version111j, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateAdaptor", "ActivateBMC", "ActivateCMC", "ActivateColusaCMC", "ActivateIOM", "ActivateLocalDisk", "ActivateSasExpander", "EnableSecureBoot", "ExtMgmtIfConfig", "ExtMgmtInterfaceConfig", "LockConfig", "Online", "PowerBudgetReclaimConfig", "PowerCap", "RegistryConfig", "SysConfig", "UpdateAdaptor", "UpdateBMC", "UpdateBoardController", "UpdateCMC", "UpdateColusaBoardController", "UpdateColusaCMC", "UpdateIOM", "UpdateRaidController", "UpdateSasExpander", "UpdateSwitch", "UpdateUCSManager", "UpdateUCSManagerSP", "nop"], []), 
+        "item": MoPropertyMeta("item", "item", "string", VersionMeta.Version111j, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateAdaptor", "ActivateBMC", "ActivateCMC", "ActivateColusaCMC", "ActivateIOM", "ActivateLocalDisk", "ActivateSasExpander", "EnableSecureBoot", "ExtMgmtIfConfig", "ExtMgmtInterfaceConfig", "KvmCert", "LockConfig", "Online", "PowerBudgetReclaimConfig", "PowerCap", "RegistryConfig", "SysConfig", "UpdateAdaptor", "UpdateBMC", "UpdateBoardController", "UpdateCMC", "UpdateColusaBoardController", "UpdateColusaCMC", "UpdateIOM", "UpdateRaidController", "UpdateSasExpander", "UpdateSwitch", "UpdateUCSManager", "UpdateUCSManagerSP", "nop"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "seq_id": MoPropertyMeta("seq_id", "seqId", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 

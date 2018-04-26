@@ -49,6 +49,7 @@ class FirmwareInfra(ManagedObject):
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["trigger", "trigger-immediate", "triggered", "untriggered", "user-ack", "user-discard"], []), 
         "auto_delete": MoPropertyMeta("auto_delete", "autoDelete", "string", VersionMeta.Version211a, MoPropertyMeta.CREATE_ONLY, 0x4, None, None, None, ["false", "no", "true", "yes"], []), 
+        "back_up_version": MoPropertyMeta("back_up_version", "backUpVersion", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
@@ -56,7 +57,7 @@ class FirmwareInfra(ManagedObject):
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "oper_scheduler": MoPropertyMeta("oper_scheduler", "operScheduler", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "oper_service_pack_version": MoPropertyMeta("oper_service_pack_version", "operServicePackVersion", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "oper_service_pack_version": MoPropertyMeta("oper_service_pack_version", "operServicePackVersion", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "applied", "apply-pending", "evaluated", "evaluation-pending", "expired", "none", "pending", "untriggered", "waiting-for-dependency", "waiting-for-maint-window", "waiting-for-user"], []), 
         "oper_version": MoPropertyMeta("oper_version", "operVersion", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -70,6 +71,7 @@ class FirmwareInfra(ManagedObject):
     prop_map = {
         "adminState": "admin_state", 
         "autoDelete": "auto_delete", 
+        "backUpVersion": "back_up_version", 
         "childAction": "child_action", 
         "descr": "descr", 
         "dn": "dn", 
@@ -92,6 +94,7 @@ class FirmwareInfra(ManagedObject):
         self._dirty_mask = 0
         self.admin_state = None
         self.auto_delete = None
+        self.back_up_version = None
         self.child_action = None
         self.descr = None
         self.ignore_cap = None

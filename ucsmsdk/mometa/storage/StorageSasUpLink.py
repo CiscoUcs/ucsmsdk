@@ -8,6 +8,7 @@ from ...ucsmeta import VersionMeta
 class StorageSasUpLinkConsts:
     CONTROLLER_TYPE_FLASH = "FLASH"
     CONTROLLER_TYPE_HBA = "HBA"
+    CONTROLLER_TYPE_M2 = "M2"
     CONTROLLER_TYPE_NVME = "NVME"
     CONTROLLER_TYPE_PCH = "PCH"
     CONTROLLER_TYPE_PT = "PT"
@@ -24,6 +25,7 @@ class StorageSasUpLinkConsts:
     LINK_SPEED_12_GBPS = "12-gbps"
     LINK_SPEED_3_GBPS = "3-gbps"
     LINK_SPEED_6_GBPS = "6-gbps"
+    LINK_SPEED_NA = "NA"
     LINK_SPEED_DISABLED = "disabled"
     LINK_SPEED_DOWN = "down"
     LINK_SPEED_HOST_POWER_OFF = "host-power-off"
@@ -42,12 +44,12 @@ class StorageSasUpLink(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "controller_id": MoPropertyMeta("controller_id", "controllerId", "uint", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x4, None, None, None, [], []), 
-        "controller_type": MoPropertyMeta("controller_type", "controllerType", "string", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x8, None, None, None, ["FLASH", "HBA", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []), 
+        "controller_type": MoPropertyMeta("controller_type", "controllerType", "string", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x8, None, None, None, ["FLASH", "HBA", "M2", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []), 
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []), 
         "link_descr": MoPropertyMeta("link_descr", "linkDescr", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "link_speed": MoPropertyMeta("link_speed", "linkSpeed", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["1-5-gbps", "12-gbps", "3-gbps", "6-gbps", "disabled", "down", "host-power-off", "unknown", "unsupported-device"], []), 
+        "link_speed": MoPropertyMeta("link_speed", "linkSpeed", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["1-5-gbps", "12-gbps", "3-gbps", "6-gbps", "NA", "disabled", "down", "host-power-off", "unknown", "unsupported-device"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "server_id": MoPropertyMeta("server_id", "serverId", "uint", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x80, None, None, None, [], []), 

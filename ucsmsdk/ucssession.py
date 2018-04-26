@@ -33,7 +33,7 @@ class UcsSession(object):
     """
 
     def __init__(self, ip, username, password, port=None, secure=None,
-                 proxy=None):
+                 proxy=None, timeout=None):
         self.__ip = ip
         self.__username = username
         self.__password = password
@@ -55,6 +55,7 @@ class UcsSession(object):
         self.__refresh_timer = None
         self.__force = False
         self.__auto_refresh = False
+        self.__timeout = timeout
 
         self.__dump_xml = False
         self.__redirect = False
@@ -126,6 +127,10 @@ class UcsSession(object):
     def threaded(self):
         return self.__threaded
 
+    @property
+    def timeout(self):
+        return self.__timeout
+
     def _freeze(self):
         save = {
             "ip": self.__ip,
@@ -148,7 +153,8 @@ class UcsSession(object):
             "auto_refresh": self.__auto_refresh,
             "dump_xml": self.__dump_xml,
             "redirect": self.__redirect,
-            "threaded": self.__threaded
+            "threaded": self.__threaded,
+            "timeout": self.__timeout
         }
         return json.dumps(save)
 
@@ -217,13 +223,14 @@ class UcsSession(object):
         self.__evt_channel = response.out_evt_channel
         self.__last_update_time = str(time.asctime())
 
-    def post(self, uri, data=None, read=True):
+    def post(self, uri, data=None, read=True, timeout=None):
         """
         sends the request and receives the response from ucsm server
 
         Args:
             uri (str): URI of the  the UCS Server
             data (str): request data to send via post request
+            timeout (int): if set, this will be used as timeout in secs for urllib2
 
         Returns:
             response xml string
@@ -232,15 +239,19 @@ class UcsSession(object):
             response = post("http://192.168.1.1:80", data=xml_str)
         """
 
-        response = self.__driver.post(uri=uri, data=data, read=read)
+        timeout = self.__timeout if timeout is None else timeout
+        response = self.__driver.post(uri=uri, data=data, read=read,
+                                           timeout=timeout)
         return response
 
-    def post_xml(self, xml_str, read=True):
+    def post_xml(self, xml_str, read=True, timeout=None):
         """
         sends the xml request and receives the response from ucsm server
 
         Args:
             xml_str (str): xml string
+            read (bool): if True, returns response.read() else returns object.
+            timeout (int): if set, this will be used as timeout in secs for urllib2
 
         Returns:
             response xml string
@@ -250,7 +261,7 @@ class UcsSession(object):
         """
 
         ucsm_uri = self.__uri + "/nuova"
-        response_str = self.post(uri=ucsm_uri, data=xml_str, read=read)
+        response_str = self.post(uri=ucsm_uri, data=xml_str, read=read, timeout=timeout)
         if self.__driver.redirect_uri:
             self.__uri = self.__driver.redirect_uri
 
@@ -275,13 +286,14 @@ class UcsSession(object):
         if self.__dump_xml:
             log.debug('%s <==== %s' % (self.__uri, resp))
 
-    def post_elem(self, elem):
+    def post_elem(self, elem, timeout=None):
         """
         sends the request and receives the response from ucsm server using xml
         element
 
         Args:
             elem (xml element)
+            timeout (int): if set, it is used as timeout in secs for urllib2
 
         Returns:
             response xml string
@@ -299,10 +311,9 @@ class UcsSession(object):
         self.dump_xml_request(elem)
         xml_str = xc.to_xml_str(elem)
 
-        response_str = self.post_xml(xml_str)
-        self.dump_xml_response(response_str)
-
         try:
+            response_str = self.post_xml(xml_str, timeout=timeout)
+            self.dump_xml_response(response_str)
             if response_str:
                 response = xc.from_xml_str(response_str, self)
 
@@ -477,7 +488,7 @@ class UcsSession(object):
         self.__start_refresh_timer()
         return True
 
-    def __is_ucsm(self):
+    def __is_ucsm(self, timeout=None):
         """
         Internal method to validate if connecting server is UCS.
         """
@@ -490,7 +501,7 @@ class UcsSession(object):
                                        in_filter=None,
                                        class_id="networkElement")
         try:
-            nw_elem_response = self.post_elem(nw_elem)
+            nw_elem_response = self.post_elem(nw_elem, timeout=timeout)
             if nw_elem_response.error_code != 0:
                 self._logout()
             else:
@@ -500,7 +511,7 @@ class UcsSession(object):
 
         return is_ucs
 
-    def __validate_connection(self):
+    def __validate_connection(self, timeout=None):
         """
         Internal method to validate if needs to reconnect or if exist use the
         existing connection.
@@ -514,7 +525,7 @@ class UcsSession(object):
                 top_system = TopSystem()
                 elem = config_resolve_dn(cookie=self.__cookie,
                                          dn=top_system.dn)
-                response = self.post_elem(elem)
+                response = self.post_elem(elem, timeout=timeout)
                 if response.error_code != 0:
                     return False
                 return True
@@ -561,7 +572,7 @@ class UcsSession(object):
         self.__ucs = top_system.name
         self.__virtual_ipv4_address = top_system.address
 
-    def _login(self, auto_refresh=False, force=False):
+    def _login(self, auto_refresh=False, force=False, timeout=None):
         """
         Internal method responsible to do a login on UCSM server.
 
@@ -570,6 +581,7 @@ class UcsSession(object):
                                     continuously
             force (bool): if set to True it reconnects even if cookie exists
                                     and is valid for respective connection.
+            timeout (int): if set, this will be used as timeout in secs for urllib2
 
         Returns:
             True on successful connect
@@ -579,19 +591,19 @@ class UcsSession(object):
         self.__auto_refresh = auto_refresh
         self.__force = force
 
-        if self.__validate_connection():
+        if self.__validate_connection(timeout=timeout):
             return True
 
         elem = aaa_login(in_name=self.__username,
                          in_password=self.__password)
-        response = self.post_elem(elem)
+        response = self.post_elem(elem, timeout=timeout)
         if response.error_code != 0:
             self.__clear()
             raise UcsException(response.error_code, response.error_descr)
         self.__update(response)
 
         # Verify not to connect to IMC
-        if not self.__is_ucsm():
+        if not self.__is_ucsm(timeout=timeout):
             raise UcsLoginError("Not a supported server.")
 
         self._update_version(response)
@@ -602,12 +614,13 @@ class UcsSession(object):
 
         return True
 
-    def _logout(self):
+    def _logout(self, timeout=None):
         """
         Internal method to disconnect from ucsm server.
 
         Args:
             None
+            timeout (int): if set, this will be used as timeout in secs for urllib2
 
         Returns:
             True on successful disconnect
@@ -623,7 +636,7 @@ class UcsSession(object):
             self.__refresh_timer.cancel()
 
         elem = aaa_logout(self.__cookie, 301)
-        response = self.post_elem(elem)
+        response = self.post_elem(elem, timeout=timeout)
 
         if response.error_code == "555":
             return True
@@ -647,6 +660,19 @@ class UcsSession(object):
         Internal method to set dump_xml to False
         """
         self.__dump_xml = False
+
+    def _set_timeout(self, timeout):
+        """
+        Internal method to set timeout for the request
+        """
+        timeout = None if type(timeout) != int else timeout
+        self.__timeout = timeout
+
+    def _unset_timeout(self):
+        """
+        Internal method to unset timeout for the request
+        """
+        self.__timeout = None
 
     def _set_mode_threading(self, enable=False):
         self.__threaded = enable
