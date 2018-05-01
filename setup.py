@@ -8,6 +8,9 @@ except ImportError:
     from distutils.core import setup
 
 
+with open('requirements.txt') as rf:
+    requirements = rf.readlines()
+
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
@@ -28,7 +31,7 @@ setup(
     package_dir={'ucsmsdk':
                  'ucsmsdk'},
     include_package_data=True,
-    install_requires=['pyparsing'],
+    install_requires=requirements,
     license="http://www.apache.org/licenses/LICENSE-2.0",
     zip_safe=False,
     keywords='ucsmsdk',
