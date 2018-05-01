@@ -11,6 +11,9 @@ except ImportError:
 with open('requirements.txt') as rf:
     requirements = rf.readlines()
 
+with open('test-requirements.txt') as rf:
+    test_requirements = rf.readlines()
+
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
@@ -47,7 +50,7 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
     ],
-    tests_require=['nose'],
+    tests_require=test_requirements,
     test_suite='nose.collector',
     extras_require={
         'ssl': ['pyOpenSSL'],
