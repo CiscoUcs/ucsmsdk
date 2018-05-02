@@ -11,8 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from nose import SkipTest
 from nose.tools import with_setup
-from ..connection.info import custom_setup, custom_teardown
+from ..connection.info import custom_setup, custom_teardown, get_skip_msg
 from ucsmsdk.utils.ucsbackup import backup_ucs
 from ucsmsdk.ucshandle import UcsHandle
 
@@ -22,6 +23,9 @@ handle = None
 def setup_module():
     global handle
     handle = custom_setup()
+    if not handle:
+        msg = get_skip_msg()
+        raise SkipTest(msg)
 
 
 def teardown_module():

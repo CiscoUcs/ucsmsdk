@@ -11,12 +11,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from ..connection.info import custom_setup, custom_teardown
+from nose import SkipTest
+from ..connection.info import custom_setup, custom_teardown, get_skip_msg
 from ucsmsdk.ucshandle import UcsHandle
 
 
 def test_serialize_handle():
     handle1 = custom_setup()
+    if not handle1:
+        msg = get_skip_msg()
+        raise SkipTest(msg)
+
     frozen_handle = handle1.freeze()
     handle2 = UcsHandle.unfreeze(frozen_handle)
     custom_teardown(handle2)

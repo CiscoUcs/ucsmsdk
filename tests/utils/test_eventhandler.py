@@ -13,8 +13,9 @@
 
 import time
 
+from nose import SkipTest
 from nose.tools import *
-from ..connection.info import custom_setup, custom_teardown
+from ..connection.info import custom_setup, custom_teardown, get_skip_msg
 import threading
 
 handle = None
@@ -29,6 +30,9 @@ def setup_module():
 
     global handle, sp, ueh
     handle = custom_setup()
+    if not handle:
+        msg = get_skip_msg()
+        raise SkipTest(msg)
     ueh = UcsEventHandle(handle)
     org = handle.query_dn("org-root")
 

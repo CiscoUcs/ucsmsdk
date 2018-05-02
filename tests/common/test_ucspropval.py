@@ -11,8 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from nose import SkipTest
 from nose.tools import *
-from ..connection.info import custom_setup, custom_teardown
+from ..connection.info import custom_setup, custom_teardown, get_skip_msg
 
 handle = None
 obj = None
@@ -24,6 +25,10 @@ def setup_module():
     global handle
 
     handle = custom_setup()
+    if not handle:
+        msg = get_skip_msg()
+        raise SkipTest(msg)
+
     obj = LsServer("org-root", "test", usr_lbl="sample")
 
     handle.add_mo(obj, True)
@@ -31,8 +36,9 @@ def setup_module():
 
 
 def teardown_module():
-    handle.remove_mo(obj)
-    handle.commit()
+    if handle:
+        handle.remove_mo(obj)
+        handle.commit()
     custom_teardown(handle)
 
 
