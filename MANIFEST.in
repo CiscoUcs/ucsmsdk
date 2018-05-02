@@ -3,6 +3,8 @@ include CONTRIBUTING.rst
 include HISTORY.rst
 include LICENSE
 include README.md
+include requirements.txt
+include test-requirements.txt
 
 include ucsmsdk/ucsconfig.cfg
 

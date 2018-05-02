@@ -8,6 +8,12 @@ except ImportError:
     from distutils.core import setup
 
 
+with open('requirements.txt') as rf:
+    requirements = rf.readlines()
+
+with open('test-requirements.txt') as rf:
+    test_requirements = rf.readlines()
+
 with open('README.md') as readme_file:
     readme = readme_file.read()
 
@@ -28,7 +34,7 @@ setup(
     package_dir={'ucsmsdk':
                  'ucsmsdk'},
     include_package_data=True,
-    install_requires=['pyparsing'],
+    install_requires=requirements,
     license="http://www.apache.org/licenses/LICENSE-2.0",
     zip_safe=False,
     keywords='ucsmsdk',
@@ -44,7 +50,7 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
     ],
-    tests_require=['nose'],
+    tests_require=test_requirements,
     test_suite='nose.collector',
     extras_require={
         'ssl': ['pyOpenSSL'],
