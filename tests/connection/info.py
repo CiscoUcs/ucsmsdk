@@ -12,7 +12,7 @@
 # limitations under the License.
 
 host = "ucs"
-
+skip_msg = "Not connected to a valid UCSM domain."
 
 def custom_setup():
     try:
@@ -26,14 +26,20 @@ def custom_setup():
     config = ConfigParser.RawConfigParser()
     config.read(os.path.join(os.path.dirname(__file__), '..', 'connection',
                              'connection.cfg'))
-
-    hostname = config.get(host, "hostname")
-    username = config.get(host, "username")
-    password = config.get(host, "password")
+    try:
+        hostname = config.get(host, "hostname")
+        username = config.get(host, "username")
+        password = config.get(host, "password")
+    except:
+        return None
     handle = UcsHandle(hostname, username, password)
     handle.login(auto_refresh=True, force=True)
     return handle
 
 
 def custom_teardown(handle):
-    handle.logout()
+    if handle:
+        handle.logout()
+
+def get_skip_msg():
+    return skip_msg
