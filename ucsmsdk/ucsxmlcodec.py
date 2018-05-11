@@ -37,7 +37,7 @@ def to_xml_str(elem):
         xml_str = to_xml_str(elem=xml_element)
     """
 
-    return ET.tostring(elem).replace("&#10;", "\n")
+    return ET.tostring(elem)
 
 
 def extract_root_elem(xml_str):
