@@ -178,7 +178,7 @@ def _check_for_failure(err):
                           "TechSupport creation failed"]
     for each in failure_conditions:
         if each in str(err):
-            raise
+            raise Exception(each)
 
 
 def _fail_and_remove_ts(handle, ts_mo, err):
