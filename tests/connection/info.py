@@ -11,19 +11,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from six.moves import configparser
+
 host = "ucs"
 skip_msg = "Not connected to a valid UCSM domain."
 
-def custom_setup():
-    try:
-        import ConfigParser
-    except:
-        import configparser as ConfigParser
 
+def custom_setup():
     import os
     from ucsmsdk.ucshandle import UcsHandle
 
-    config = ConfigParser.RawConfigParser()
+    config = configparser.RawConfigParser()
     config.read(os.path.join(os.path.dirname(__file__), '..', 'connection',
                              'connection.cfg'))
     try:
@@ -40,6 +38,7 @@ def custom_setup():
 def custom_teardown(handle):
     if handle:
         handle.logout()
+
 
 def get_skip_msg():
     return skip_msg
