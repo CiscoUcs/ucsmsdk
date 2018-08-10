@@ -389,7 +389,6 @@ def _get_config_conf_cmdlet(node, is_pair_node):
         key=key,
         tag=mo_tag,
         import_list=import_list)
-    # print top_cmdlet
 
     if class_node.hasChildNodes() and \
             len(_get_elem_child_nodes(class_node)) > 0:
@@ -1276,7 +1275,6 @@ def _extract_xml(file_stream, line):
     request_string = ""
     line_count = 0
     while line != "":
-        # print request_string
         if read_flag and not re.search(r"^\s*$", line):
             request_string += line + "\n"
             line_count += 1
@@ -1303,7 +1301,6 @@ def _find_xml_requests_in_file(file_stream, gui_log):
     internally.
     """
 
-    # print "Inside _find_xml_requests_in_file_test"
     line = file_stream.readline()
     while line != "":
         if not gui_log:
