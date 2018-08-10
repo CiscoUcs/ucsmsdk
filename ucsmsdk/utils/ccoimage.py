@@ -26,6 +26,9 @@ from .. import ucsgenutils
 from ..ucsexception import UcsValidationException, UcsWarning
 from ..ucsdriver import UcsDriver
 
+from six.moves import input
+
+
 log = logging.getLogger('ucs')
 
 
@@ -107,7 +110,7 @@ def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None,
     import base64
 
     if username is None:
-        username = raw_input("Username: ")
+        username = input("Username: ")
     if password is None:
         password = getpass.getpass()
 
@@ -158,7 +161,6 @@ def get_ucs_cco_image_list(username=None, password=None, mdf_id_list=None,
     # Serialize image nodes in objects
     cco_image_list = []
     for image_node in image_node_list:
-        # print image_node.toxml()
         image = UcsCcoImage()
         image.network_credential = credential
 

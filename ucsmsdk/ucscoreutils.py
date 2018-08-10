@@ -205,7 +205,6 @@ def find_class_id_in_mo_meta_ignore_case(class_id):
         return None
     if class_id in MO_CLASS_ID:
         return class_id
-    # print class_id
     l_class_id = class_id.lower()
     for key in MO_CLASS_ID:
         if key.lower() == l_class_id:
@@ -373,7 +372,6 @@ def write_mo_tree(mo, level=0, depth=None, show_level=[],
         else:
             tree_dict[key_all_mo][mo.class_id].append(mo)
 
-    # print tree_dict
 
     if print_tree:
         if not show_level:
