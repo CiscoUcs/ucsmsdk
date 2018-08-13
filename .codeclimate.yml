@@ -7,6 +7,8 @@ engines:
       - python
   fixme:
     enabled: true
+  sonar-python:
+    enabled: true
   radon:
     enabled: true
 ratings:

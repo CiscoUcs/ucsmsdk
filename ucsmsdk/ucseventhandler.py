@@ -20,6 +20,7 @@ from __future__ import print_function
 
 from six.moves import queue
 
+
 from threading import Condition, Lock, Thread
 import datetime
 import logging
