@@ -22,7 +22,7 @@ with open('HISTORY.rst') as history_file:
 
 setup(
     name='ucsmsdk',
-    version='0.9.3.2',
+    version='0.9.4',
     description="Python SDK for Cisco UCS",
     long_description=readme + '\n\n' + history,
     author="Cisco Systems Inc",
