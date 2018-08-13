@@ -18,14 +18,9 @@ import sys
 import socket
 import ssl
 
-try:
-    import urllib2
-    import httplib
-    from urllib2 import HTTPError
-except:
-    import urllib.request as urllib2
-    import http.client as httplib
-    from urllib.error import HTTPError
+from six.moves import urllib as urllib2
+from six.moves import http_client as httplib
+from six.moves.urllib.error import HTTPError
 
 
 import logging

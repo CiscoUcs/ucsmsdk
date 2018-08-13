@@ -11,15 +11,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from six.moves import configparser
+
 host = "ucs"
 
 
 def ucs_login():
-    import ConfigParser
     import os
     from ucsmsdk.ucshandle import UcsHandle
 
-    config = ConfigParser.RawConfigParser()
+    config = configparser.RawConfigParser()
     config.read(os.path.join(os.path.dirname(__file__), '..', 'connection',
                              'connection.cfg'))
 

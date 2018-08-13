@@ -1017,7 +1017,7 @@ class UcsHandle(UcsSession):
 
         Example:
             def cb(mce):
-                print mce.mo
+                print(mce.mo)
 
             sp_mo = handle.query_dn("org-root/ls-demoSP")
             wait_for_event(sp_mo, 'descr', 'demo_description', cb)

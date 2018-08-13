@@ -29,13 +29,11 @@ def setup():
     pass
     # global handle
     # handle = custom_setup()
-    # print "create"
 
 
 def teardown():
     pass
     # custom_teardown(handle)
-    # print "delete"
 
 
 def test_001_create_gmo_from_xml():

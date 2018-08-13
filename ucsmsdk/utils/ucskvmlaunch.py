@@ -14,12 +14,6 @@
 """
 This module contains the APIs used to launch ucs kvm.
 """
-
-try:
-    from urllib import urlencode
-except:
-    from urllib.parse import urlencode
-
 import subprocess
 import logging
 
@@ -27,6 +21,8 @@ from .. import ucsgenutils
 from ..ucsconstants import NamingId, YesOrNo
 from ..ucsexception import UcsWarning, UcsValidationException, UcsException
 from ..ucscoremeta import UcsVersion
+from six.moves.urllib.parse import urlencode
+
 
 log = logging.getLogger('ucs')
 

@@ -18,10 +18,7 @@ UCSM server.
 
 from __future__ import print_function
 
-try:
-    from Queue import Queue
-except:
-    from queue import Queue
+from six.moves import queue as Queue
 
 from threading import Condition, Lock, Thread
 import datetime
