@@ -6,16 +6,22 @@ from ...ucsmeta import VersionMeta
 
 
 class SwEthEstcEpConsts:
+    ADMIN_SPEED_100GBPS = "100gbps"
     ADMIN_SPEED_10GBPS = "10gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
     ADMIN_SPEED_20GBPS = "20gbps"
+    ADMIN_SPEED_25GBPS = "25gbps"
     ADMIN_SPEED_40GBPS = "40gbps"
+    ADMIN_SPEED_AUTO = "auto"
     ADMIN_SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     CDP_DISABLED = "disabled"
     CDP_ENABLED = "enabled"
     CHASSIS_ID_N_A = "N/A"
+    FEC_AUTO = "auto"
+    FEC_CL74 = "cl74"
+    FEC_CL91 = "cl91"
     FORGE_MAC_ALLOW = "allow"
     FORGE_MAC_DENY = "deny"
     IF_ROLE_DIAG = "diag"
@@ -65,7 +71,7 @@ class SwEthEstcEp(ManagedObject):
     mo_meta = MoMeta("SwEthEstcEp", "swEthEstcEp", "ethestc-ep-slot-[slot_id]port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x7fff, [], ["read-only"], [u'swEthLanBorder', u'swSubGroup'], [u'swEthTargetEp', u'swVlan'], ["Get"])
 
     prop_meta = {
-        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["10gbps", "1gbps", "20gbps", "40gbps", "indeterminate"], []), 
+        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []), 
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["disabled", "enabled"], []), 
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "border_aggr_port_id": MoPropertyMeta("border_aggr_port_id", "borderAggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], ["0-4294967295"]), 
@@ -77,6 +83,7 @@ class SwEthEstcEp(ManagedObject):
         "cos_value": MoPropertyMeta("cos_value", "cosValue", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []), 
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "fec": MoPropertyMeta("fec", "fec", "string", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto", "cl74", "cl91"], []), 
         "forge_mac": MoPropertyMeta("forge_mac", "forgeMac", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allow", "deny"], []), 
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []), 
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []), 
@@ -118,6 +125,7 @@ class SwEthEstcEp(ManagedObject):
         "cosValue": "cos_value", 
         "dn": "dn", 
         "epDn": "ep_dn", 
+        "fec": "fec", 
         "forgeMac": "forge_mac", 
         "ifRole": "if_role", 
         "ifType": "if_type", 
@@ -161,6 +169,7 @@ class SwEthEstcEp(ManagedObject):
         self.child_action = None
         self.cos_value = None
         self.ep_dn = None
+        self.fec = None
         self.forge_mac = None
         self.if_role = None
         self.if_type = None

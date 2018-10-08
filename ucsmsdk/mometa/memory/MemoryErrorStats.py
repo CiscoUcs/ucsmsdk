@@ -21,6 +21,28 @@ class MemoryErrorStats(ManagedObject):
     mo_meta = MoMeta("MemoryErrorStats", "memoryErrorStats", "error-stats", VersionMeta.Version131c, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'memoryUnit'], [], ["Get"])
 
     prop_meta = {
+        "dram_write_data_correctable_crc_errors": MoPropertyMeta("dram_write_data_correctable_crc_errors", "DramWriteDataCorrectableCRCErrors", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_correctable_crc_errors15_min": MoPropertyMeta("dram_write_data_correctable_crc_errors15_min", "DramWriteDataCorrectableCRCErrors15Min", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_correctable_crc_errors15_min_h": MoPropertyMeta("dram_write_data_correctable_crc_errors15_min_h", "DramWriteDataCorrectableCRCErrors15MinH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_correctable_crc_errors1_day": MoPropertyMeta("dram_write_data_correctable_crc_errors1_day", "DramWriteDataCorrectableCRCErrors1Day", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_correctable_crc_errors1_day_h": MoPropertyMeta("dram_write_data_correctable_crc_errors1_day_h", "DramWriteDataCorrectableCRCErrors1DayH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_correctable_crc_errors1_hour": MoPropertyMeta("dram_write_data_correctable_crc_errors1_hour", "DramWriteDataCorrectableCRCErrors1Hour", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_correctable_crc_errors1_hour_h": MoPropertyMeta("dram_write_data_correctable_crc_errors1_hour_h", "DramWriteDataCorrectableCRCErrors1HourH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_correctable_crc_errors1_week": MoPropertyMeta("dram_write_data_correctable_crc_errors1_week", "DramWriteDataCorrectableCRCErrors1Week", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_correctable_crc_errors1_week_h": MoPropertyMeta("dram_write_data_correctable_crc_errors1_week_h", "DramWriteDataCorrectableCRCErrors1WeekH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_correctable_crc_errors2_weeks": MoPropertyMeta("dram_write_data_correctable_crc_errors2_weeks", "DramWriteDataCorrectableCRCErrors2Weeks", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_correctable_crc_errors2_weeks_h": MoPropertyMeta("dram_write_data_correctable_crc_errors2_weeks_h", "DramWriteDataCorrectableCRCErrors2WeeksH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_un_correctable_crc_errors": MoPropertyMeta("dram_write_data_un_correctable_crc_errors", "DramWriteDataUnCorrectableCRCErrors", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_un_correctable_crc_errors15_min": MoPropertyMeta("dram_write_data_un_correctable_crc_errors15_min", "DramWriteDataUnCorrectableCRCErrors15Min", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_un_correctable_crc_errors15_min_h": MoPropertyMeta("dram_write_data_un_correctable_crc_errors15_min_h", "DramWriteDataUnCorrectableCRCErrors15MinH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_un_correctable_crc_errors1_day": MoPropertyMeta("dram_write_data_un_correctable_crc_errors1_day", "DramWriteDataUnCorrectableCRCErrors1Day", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_un_correctable_crc_errors1_day_h": MoPropertyMeta("dram_write_data_un_correctable_crc_errors1_day_h", "DramWriteDataUnCorrectableCRCErrors1DayH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_un_correctable_crc_errors1_hour": MoPropertyMeta("dram_write_data_un_correctable_crc_errors1_hour", "DramWriteDataUnCorrectableCRCErrors1Hour", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_un_correctable_crc_errors1_hour_h": MoPropertyMeta("dram_write_data_un_correctable_crc_errors1_hour_h", "DramWriteDataUnCorrectableCRCErrors1HourH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_un_correctable_crc_errors1_week": MoPropertyMeta("dram_write_data_un_correctable_crc_errors1_week", "DramWriteDataUnCorrectableCRCErrors1Week", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_un_correctable_crc_errors1_week_h": MoPropertyMeta("dram_write_data_un_correctable_crc_errors1_week_h", "DramWriteDataUnCorrectableCRCErrors1WeekH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_un_correctable_crc_errors2_weeks": MoPropertyMeta("dram_write_data_un_correctable_crc_errors2_weeks", "DramWriteDataUnCorrectableCRCErrors2Weeks", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dram_write_data_un_correctable_crc_errors2_weeks_h": MoPropertyMeta("dram_write_data_un_correctable_crc_errors2_weeks_h", "DramWriteDataUnCorrectableCRCErrors2WeeksH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "address_parity_errors": MoPropertyMeta("address_parity_errors", "addressParityErrors", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "address_parity_errors15_min": MoPropertyMeta("address_parity_errors15_min", "addressParityErrors15Min", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "address_parity_errors15_min_h": MoPropertyMeta("address_parity_errors15_min_h", "addressParityErrors15MinH", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -32,6 +54,28 @@ class MemoryErrorStats(ManagedObject):
         "address_parity_errors1_week_h": MoPropertyMeta("address_parity_errors1_week_h", "addressParityErrors1WeekH", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "address_parity_errors2_weeks": MoPropertyMeta("address_parity_errors2_weeks", "addressParityErrors2Weeks", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "address_parity_errors2_weeks_h": MoPropertyMeta("address_parity_errors2_weeks_h", "addressParityErrors2WeeksH", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_correctable": MoPropertyMeta("address_parity_errors_correctable", "addressParityErrorsCorrectable", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_correctable15_min": MoPropertyMeta("address_parity_errors_correctable15_min", "addressParityErrorsCorrectable15Min", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_correctable15_min_h": MoPropertyMeta("address_parity_errors_correctable15_min_h", "addressParityErrorsCorrectable15MinH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_correctable1_day": MoPropertyMeta("address_parity_errors_correctable1_day", "addressParityErrorsCorrectable1Day", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_correctable1_day_h": MoPropertyMeta("address_parity_errors_correctable1_day_h", "addressParityErrorsCorrectable1DayH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_correctable1_hour": MoPropertyMeta("address_parity_errors_correctable1_hour", "addressParityErrorsCorrectable1Hour", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_correctable1_hour_h": MoPropertyMeta("address_parity_errors_correctable1_hour_h", "addressParityErrorsCorrectable1HourH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_correctable1_week": MoPropertyMeta("address_parity_errors_correctable1_week", "addressParityErrorsCorrectable1Week", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_correctable1_week_h": MoPropertyMeta("address_parity_errors_correctable1_week_h", "addressParityErrorsCorrectable1WeekH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_correctable2_weeks": MoPropertyMeta("address_parity_errors_correctable2_weeks", "addressParityErrorsCorrectable2Weeks", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_correctable2_weeks_h": MoPropertyMeta("address_parity_errors_correctable2_weeks_h", "addressParityErrorsCorrectable2WeeksH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_un_correctable": MoPropertyMeta("address_parity_errors_un_correctable", "addressParityErrorsUnCorrectable", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_un_correctable15_min": MoPropertyMeta("address_parity_errors_un_correctable15_min", "addressParityErrorsUnCorrectable15Min", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_un_correctable15_min_h": MoPropertyMeta("address_parity_errors_un_correctable15_min_h", "addressParityErrorsUnCorrectable15MinH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_un_correctable1_day": MoPropertyMeta("address_parity_errors_un_correctable1_day", "addressParityErrorsUnCorrectable1Day", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_un_correctable1_day_h": MoPropertyMeta("address_parity_errors_un_correctable1_day_h", "addressParityErrorsUnCorrectable1DayH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_un_correctable1_hour": MoPropertyMeta("address_parity_errors_un_correctable1_hour", "addressParityErrorsUnCorrectable1Hour", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_un_correctable1_hour_h": MoPropertyMeta("address_parity_errors_un_correctable1_hour_h", "addressParityErrorsUnCorrectable1HourH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_un_correctable1_week": MoPropertyMeta("address_parity_errors_un_correctable1_week", "addressParityErrorsUnCorrectable1Week", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_un_correctable1_week_h": MoPropertyMeta("address_parity_errors_un_correctable1_week_h", "addressParityErrorsUnCorrectable1WeekH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_un_correctable2_weeks": MoPropertyMeta("address_parity_errors_un_correctable2_weeks", "addressParityErrorsUnCorrectable2Weeks", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "address_parity_errors_un_correctable2_weeks_h": MoPropertyMeta("address_parity_errors_un_correctable2_weeks_h", "addressParityErrorsUnCorrectable2WeeksH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "ecc_multibit_errors": MoPropertyMeta("ecc_multibit_errors", "eccMultibitErrors", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -78,6 +122,28 @@ class MemoryErrorStats(ManagedObject):
     }
 
     prop_map = {
+        "DramWriteDataCorrectableCRCErrors": "dram_write_data_correctable_crc_errors", 
+        "DramWriteDataCorrectableCRCErrors15Min": "dram_write_data_correctable_crc_errors15_min", 
+        "DramWriteDataCorrectableCRCErrors15MinH": "dram_write_data_correctable_crc_errors15_min_h", 
+        "DramWriteDataCorrectableCRCErrors1Day": "dram_write_data_correctable_crc_errors1_day", 
+        "DramWriteDataCorrectableCRCErrors1DayH": "dram_write_data_correctable_crc_errors1_day_h", 
+        "DramWriteDataCorrectableCRCErrors1Hour": "dram_write_data_correctable_crc_errors1_hour", 
+        "DramWriteDataCorrectableCRCErrors1HourH": "dram_write_data_correctable_crc_errors1_hour_h", 
+        "DramWriteDataCorrectableCRCErrors1Week": "dram_write_data_correctable_crc_errors1_week", 
+        "DramWriteDataCorrectableCRCErrors1WeekH": "dram_write_data_correctable_crc_errors1_week_h", 
+        "DramWriteDataCorrectableCRCErrors2Weeks": "dram_write_data_correctable_crc_errors2_weeks", 
+        "DramWriteDataCorrectableCRCErrors2WeeksH": "dram_write_data_correctable_crc_errors2_weeks_h", 
+        "DramWriteDataUnCorrectableCRCErrors": "dram_write_data_un_correctable_crc_errors", 
+        "DramWriteDataUnCorrectableCRCErrors15Min": "dram_write_data_un_correctable_crc_errors15_min", 
+        "DramWriteDataUnCorrectableCRCErrors15MinH": "dram_write_data_un_correctable_crc_errors15_min_h", 
+        "DramWriteDataUnCorrectableCRCErrors1Day": "dram_write_data_un_correctable_crc_errors1_day", 
+        "DramWriteDataUnCorrectableCRCErrors1DayH": "dram_write_data_un_correctable_crc_errors1_day_h", 
+        "DramWriteDataUnCorrectableCRCErrors1Hour": "dram_write_data_un_correctable_crc_errors1_hour", 
+        "DramWriteDataUnCorrectableCRCErrors1HourH": "dram_write_data_un_correctable_crc_errors1_hour_h", 
+        "DramWriteDataUnCorrectableCRCErrors1Week": "dram_write_data_un_correctable_crc_errors1_week", 
+        "DramWriteDataUnCorrectableCRCErrors1WeekH": "dram_write_data_un_correctable_crc_errors1_week_h", 
+        "DramWriteDataUnCorrectableCRCErrors2Weeks": "dram_write_data_un_correctable_crc_errors2_weeks", 
+        "DramWriteDataUnCorrectableCRCErrors2WeeksH": "dram_write_data_un_correctable_crc_errors2_weeks_h", 
         "addressParityErrors": "address_parity_errors", 
         "addressParityErrors15Min": "address_parity_errors15_min", 
         "addressParityErrors15MinH": "address_parity_errors15_min_h", 
@@ -89,6 +155,28 @@ class MemoryErrorStats(ManagedObject):
         "addressParityErrors1WeekH": "address_parity_errors1_week_h", 
         "addressParityErrors2Weeks": "address_parity_errors2_weeks", 
         "addressParityErrors2WeeksH": "address_parity_errors2_weeks_h", 
+        "addressParityErrorsCorrectable": "address_parity_errors_correctable", 
+        "addressParityErrorsCorrectable15Min": "address_parity_errors_correctable15_min", 
+        "addressParityErrorsCorrectable15MinH": "address_parity_errors_correctable15_min_h", 
+        "addressParityErrorsCorrectable1Day": "address_parity_errors_correctable1_day", 
+        "addressParityErrorsCorrectable1DayH": "address_parity_errors_correctable1_day_h", 
+        "addressParityErrorsCorrectable1Hour": "address_parity_errors_correctable1_hour", 
+        "addressParityErrorsCorrectable1HourH": "address_parity_errors_correctable1_hour_h", 
+        "addressParityErrorsCorrectable1Week": "address_parity_errors_correctable1_week", 
+        "addressParityErrorsCorrectable1WeekH": "address_parity_errors_correctable1_week_h", 
+        "addressParityErrorsCorrectable2Weeks": "address_parity_errors_correctable2_weeks", 
+        "addressParityErrorsCorrectable2WeeksH": "address_parity_errors_correctable2_weeks_h", 
+        "addressParityErrorsUnCorrectable": "address_parity_errors_un_correctable", 
+        "addressParityErrorsUnCorrectable15Min": "address_parity_errors_un_correctable15_min", 
+        "addressParityErrorsUnCorrectable15MinH": "address_parity_errors_un_correctable15_min_h", 
+        "addressParityErrorsUnCorrectable1Day": "address_parity_errors_un_correctable1_day", 
+        "addressParityErrorsUnCorrectable1DayH": "address_parity_errors_un_correctable1_day_h", 
+        "addressParityErrorsUnCorrectable1Hour": "address_parity_errors_un_correctable1_hour", 
+        "addressParityErrorsUnCorrectable1HourH": "address_parity_errors_un_correctable1_hour_h", 
+        "addressParityErrorsUnCorrectable1Week": "address_parity_errors_un_correctable1_week", 
+        "addressParityErrorsUnCorrectable1WeekH": "address_parity_errors_un_correctable1_week_h", 
+        "addressParityErrorsUnCorrectable2Weeks": "address_parity_errors_un_correctable2_weeks", 
+        "addressParityErrorsUnCorrectable2WeeksH": "address_parity_errors_un_correctable2_weeks_h", 
         "childAction": "child_action", 
         "dn": "dn", 
         "eccMultibitErrors": "ecc_multibit_errors", 
@@ -136,6 +224,28 @@ class MemoryErrorStats(ManagedObject):
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.dram_write_data_correctable_crc_errors = None
+        self.dram_write_data_correctable_crc_errors15_min = None
+        self.dram_write_data_correctable_crc_errors15_min_h = None
+        self.dram_write_data_correctable_crc_errors1_day = None
+        self.dram_write_data_correctable_crc_errors1_day_h = None
+        self.dram_write_data_correctable_crc_errors1_hour = None
+        self.dram_write_data_correctable_crc_errors1_hour_h = None
+        self.dram_write_data_correctable_crc_errors1_week = None
+        self.dram_write_data_correctable_crc_errors1_week_h = None
+        self.dram_write_data_correctable_crc_errors2_weeks = None
+        self.dram_write_data_correctable_crc_errors2_weeks_h = None
+        self.dram_write_data_un_correctable_crc_errors = None
+        self.dram_write_data_un_correctable_crc_errors15_min = None
+        self.dram_write_data_un_correctable_crc_errors15_min_h = None
+        self.dram_write_data_un_correctable_crc_errors1_day = None
+        self.dram_write_data_un_correctable_crc_errors1_day_h = None
+        self.dram_write_data_un_correctable_crc_errors1_hour = None
+        self.dram_write_data_un_correctable_crc_errors1_hour_h = None
+        self.dram_write_data_un_correctable_crc_errors1_week = None
+        self.dram_write_data_un_correctable_crc_errors1_week_h = None
+        self.dram_write_data_un_correctable_crc_errors2_weeks = None
+        self.dram_write_data_un_correctable_crc_errors2_weeks_h = None
         self.address_parity_errors = None
         self.address_parity_errors15_min = None
         self.address_parity_errors15_min_h = None
@@ -147,6 +257,28 @@ class MemoryErrorStats(ManagedObject):
         self.address_parity_errors1_week_h = None
         self.address_parity_errors2_weeks = None
         self.address_parity_errors2_weeks_h = None
+        self.address_parity_errors_correctable = None
+        self.address_parity_errors_correctable15_min = None
+        self.address_parity_errors_correctable15_min_h = None
+        self.address_parity_errors_correctable1_day = None
+        self.address_parity_errors_correctable1_day_h = None
+        self.address_parity_errors_correctable1_hour = None
+        self.address_parity_errors_correctable1_hour_h = None
+        self.address_parity_errors_correctable1_week = None
+        self.address_parity_errors_correctable1_week_h = None
+        self.address_parity_errors_correctable2_weeks = None
+        self.address_parity_errors_correctable2_weeks_h = None
+        self.address_parity_errors_un_correctable = None
+        self.address_parity_errors_un_correctable15_min = None
+        self.address_parity_errors_un_correctable15_min_h = None
+        self.address_parity_errors_un_correctable1_day = None
+        self.address_parity_errors_un_correctable1_day_h = None
+        self.address_parity_errors_un_correctable1_hour = None
+        self.address_parity_errors_un_correctable1_hour_h = None
+        self.address_parity_errors_un_correctable1_week = None
+        self.address_parity_errors_un_correctable1_week_h = None
+        self.address_parity_errors_un_correctable2_weeks = None
+        self.address_parity_errors_un_correctable2_weeks_h = None
         self.child_action = None
         self.ecc_multibit_errors = None
         self.ecc_multibit_errors15_min = None

@@ -6,10 +6,13 @@ from ...ucsmeta import VersionMeta
 
 
 class FabricEthEstcPcConsts:
+    ADMIN_SPEED_100GBPS = "100gbps"
     ADMIN_SPEED_10GBPS = "10gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
     ADMIN_SPEED_20GBPS = "20gbps"
+    ADMIN_SPEED_25GBPS = "25gbps"
     ADMIN_SPEED_40GBPS = "40gbps"
+    ADMIN_SPEED_AUTO = "auto"
     ADMIN_SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
@@ -30,10 +33,13 @@ class FabricEthEstcPcConsts:
     IF_TYPE_PHYSICAL = "physical"
     IF_TYPE_UNKNOWN = "unknown"
     IF_TYPE_VIRTUAL = "virtual"
+    OPER_SPEED_100GBPS = "100gbps"
     OPER_SPEED_10GBPS = "10gbps"
     OPER_SPEED_1GBPS = "1gbps"
     OPER_SPEED_20GBPS = "20gbps"
+    OPER_SPEED_25GBPS = "25gbps"
     OPER_SPEED_40GBPS = "40gbps"
+    OPER_SPEED_AUTO = "auto"
     OPER_SPEED_INDETERMINATE = "indeterminate"
     OPER_STATE_ADMIN_DOWN = "admin-down"
     OPER_STATE_DOWN = "down"
@@ -72,7 +78,7 @@ class FabricEthEstcPc(ManagedObject):
     mo_meta = MoMeta("FabricEthEstcPc", "fabricEthEstcPc", "pc-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ffff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEthEstc'], [u'etherErrStats', u'etherLossStats', u'etherPauseStats', u'etherRxStats', u'etherTxStats', u'fabricEthEstcPcEp', u'fabricEthMonSrcEp', u'fabricEthTargetEp', u'fabricSubGroup', u'fabricVlanEp', u'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["10gbps", "1gbps", "20gbps", "40gbps", "indeterminate"], []), 
+        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []), 
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["disabled", "enabled"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
@@ -88,7 +94,7 @@ class FabricEthEstcPc(ManagedObject):
         "nw_ctrl_policy_name": MoPropertyMeta("nw_ctrl_policy_name", "nwCtrlPolicyName", "string", VersionMeta.Version142b, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "oper_lacp_policy_name": MoPropertyMeta("oper_lacp_policy_name", "operLacpPolicyName", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "oper_nw_ctrl_policy_name": MoPropertyMeta("oper_nw_ctrl_policy_name", "operNwCtrlPolicyName", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "oper_speed": MoPropertyMeta("oper_speed", "operSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["10gbps", "1gbps", "20gbps", "40gbps", "indeterminate"], []), 
+        "oper_speed": MoPropertyMeta("oper_speed", "operSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []), 
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-down", "down", "error-disabled", "failed", "hardware-failure", "indeterminate", "link-down", "link-up", "no-license", "sfp-not-present", "software-failure", "udld-aggr-down", "up"], []), 
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "pin_group_name": MoPropertyMeta("pin_group_name", "pinGroupName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x800, 0, 510, None, [], []), 

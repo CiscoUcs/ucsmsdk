@@ -82,7 +82,7 @@ class SwVlan(ManagedObject):
     consts = SwVlanConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("SwVlan", "swVlan", "vlan-[id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["read-only"], [u'dcxVc', u'swEthEstcEp', u'swEthEstcPc', u'swEthLanBorder', u'swEthLanEp', u'swEthLanPc', u'swEthMon', u'swFcSanBorder', u'swFcoeEstcEp', u'swFcoeSanEp', u'swFcoeSanPc', u'swNetflowExporter', u'vnicInternalProfile', u'vnicRackServerDiscoveryProfile'], [u'fabricNetflowIPv4Addr', u'faultInst'], ["Get"])
+    mo_meta = MoMeta("SwVlan", "swVlan", "vlan-[id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["read-only"], [u'dcxVc', u'swEthEstcEp', u'swEthEstcPc', u'swEthLanBorder', u'swEthLanEp', u'swEthLanPc', u'swEthMon', u'swFcMon', u'swFcSanBorder', u'swFcoeEstcEp', u'swFcoeSanEp', u'swFcoeSanPc', u'swNetflowExporter', u'vnicInternalProfile', u'vnicRackServerDiscoveryProfile'], [u'fabricNetflowIPv4Addr', u'faultInst'], ["Get"])
 
     prop_meta = {
         "assoc_primary_vlan_state": MoPropertyMeta("assoc_primary_vlan_state", "assocPrimaryVlanState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["does-not-exists", "is-empty", "is-in-error-state", "is-not-primary-type", "ok"], []), 

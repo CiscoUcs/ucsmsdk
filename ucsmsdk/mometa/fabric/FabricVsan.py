@@ -6,6 +6,8 @@ from ...ucsmeta import VersionMeta
 
 
 class FabricVsanConsts:
+    CONFIG_OVERLAP_ERROR_RESERVED_CONFLICT = "error-reserved-conflict"
+    CONFIG_OVERLAP_OK = "ok"
     DEFAULT_ZONING_DISABLED = "disabled"
     DEFAULT_ZONING_ENABLED = "enabled"
     FC_ZONE_SHARING_MODE_CLEAR_UNMANAGED_ZONE_ALL = "clear-unmanaged-zone-all"
@@ -51,11 +53,12 @@ class FabricVsan(ManagedObject):
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "config_overlap": MoPropertyMeta("config_overlap", "configOverlap", "string", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["error-reserved-conflict", "ok"], []), 
         "default_zoning": MoPropertyMeta("default_zoning", "defaultZoning", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "fc_zone_sharing_mode": MoPropertyMeta("fc_zone_sharing_mode", "fcZoneSharingMode", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["clear-unmanaged-zone-all", "coalesce"], []), 
-        "fcoe_vlan": MoPropertyMeta("fcoe_vlan", "fcoeVlan", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], ["1-4029", "4048-4093"]), 
+        "fcoe_vlan": MoPropertyMeta("fcoe_vlan", "fcoeVlan", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], ["1-4042", "4048-4093"]), 
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "r_global": MoPropertyMeta("r_global", "global", "ulong", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, [], ["1-4093"]), 
@@ -78,6 +81,7 @@ class FabricVsan(ManagedObject):
 
     prop_map = {
         "childAction": "child_action", 
+        "configOverlap": "config_overlap", 
         "defaultZoning": "default_zoning", 
         "dn": "dn", 
         "epDn": "ep_dn", 
@@ -107,6 +111,7 @@ class FabricVsan(ManagedObject):
         self._dirty_mask = 0
         self.name = name
         self.child_action = None
+        self.config_overlap = None
         self.default_zoning = None
         self.ep_dn = None
         self.fc_zone_sharing_mode = None

@@ -10,6 +10,7 @@ class EquipmentBiosTokenOverrideConsts:
     BIOS_TOKEN_ID_MEMORY_MAPPED_ABOVE_4GB = "memory-mapped-above-4gb"
     BIOS_TOKEN_ID_NONE = "none"
     BIOS_TOKEN_ID_OPTION_ROM = "option-rom"
+    BIOS_TOKEN_ID_PSATA = "psata"
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -22,10 +23,10 @@ class EquipmentBiosTokenOverride(ManagedObject):
     consts = EquipmentBiosTokenOverrideConsts()
     naming_props = set([u'biosTokenId'])
 
-    mo_meta = MoMeta("EquipmentBiosTokenOverride", "equipmentBiosTokenOverride", "bios-token-override-[bios_token_id]", VersionMeta.Version321d, "InputOutput", 0x1ff, [], ["read-only"], [u'equipmentRackUnitCapProvider'], [], ["Get", "Set"])
+    mo_meta = MoMeta("EquipmentBiosTokenOverride", "equipmentBiosTokenOverride", "bios-token-override-[bios_token_id]", VersionMeta.Version321d, "InputOutput", 0x1ff, [], ["read-only"], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], ["Get", "Set"])
 
     prop_meta = {
-        "bios_token_id": MoPropertyMeta("bios_token_id", "biosTokenId", "string", VersionMeta.Version321d, MoPropertyMeta.NAMING, 0x2, None, None, None, ["bios-vftpm", "memory-mapped-above-4gb", "none", "option-rom"], []), 
+        "bios_token_id": MoPropertyMeta("bios_token_id", "biosTokenId", "string", VersionMeta.Version321d, MoPropertyMeta.NAMING, 0x2, None, None, None, ["bios-vftpm", "memory-mapped-above-4gb", "none", "option-rom", "psata"], []), 
         "bios_token_name": MoPropertyMeta("bios_token_name", "biosTokenName", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "bios_token_value": MoPropertyMeta("bios_token_value", "biosTokenValue", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

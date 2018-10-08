@@ -101,7 +101,7 @@ class StorageEnclosureDiskSlotEp(ManagedObject):
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "configuration": MoPropertyMeta("configuration", "configuration", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-supported", "supported", "unknown"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "drive_path": MoPropertyMeta("drive_path", "drivePath", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NONE", "PATH-0", "PATH-1", "PATH-BOTH", "UNKNOWN"], []), 
+        "drive_path": MoPropertyMeta("drive_path", "drivePath", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NONE", "PATH-0", "PATH-1", "PATH-BOTH", "UNKNOWN"], []), 
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []), 
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []), 
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 

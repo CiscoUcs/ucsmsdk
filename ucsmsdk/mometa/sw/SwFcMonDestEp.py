@@ -9,6 +9,7 @@ class SwFcMonDestEpConsts:
     ADMIN_SPEED_16GBPS = "16gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
     ADMIN_SPEED_2GBPS = "2gbps"
+    ADMIN_SPEED_32GBPS = "32gbps"
     ADMIN_SPEED_4GBPS = "4gbps"
     ADMIN_SPEED_8GBPS = "8gbps"
     ADMIN_SPEED_AUTO = "auto"
@@ -53,7 +54,7 @@ class SwFcMonDestEp(ManagedObject):
     mo_meta = MoMeta("SwFcMonDestEp", "swFcMonDestEp", "mon-dest-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["read-only"], [u'swFcMon'], [], ["Get"])
 
     prop_meta = {
-        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["16gbps", "1gbps", "2gbps", "4gbps", "8gbps", "auto", "indeterminate"], []), 
+        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["16gbps", "1gbps", "2gbps", "32gbps", "4gbps", "8gbps", "auto", "indeterminate"], []), 
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]), 

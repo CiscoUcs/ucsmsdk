@@ -24,7 +24,7 @@ class EquipmentHostMgmtControllerCap(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "comm_method": MoPropertyMeta("comm_method", "commMethod", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["serial", "unknown", "usb-nic"], []), 
-        "comm_type": MoPropertyMeta("comm_type", "commType", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["bridge", "ip-forward"], []), 
+        "comm_type": MoPropertyMeta("comm_type", "commType", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["bridge", "ip-forward"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 

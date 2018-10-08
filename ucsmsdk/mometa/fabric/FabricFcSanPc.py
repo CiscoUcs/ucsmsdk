@@ -9,6 +9,7 @@ class FabricFcSanPcConsts:
     ADMIN_SPEED_16GBPS = "16gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
     ADMIN_SPEED_2GBPS = "2gbps"
+    ADMIN_SPEED_32GBPS = "32gbps"
     ADMIN_SPEED_4GBPS = "4gbps"
     ADMIN_SPEED_8GBPS = "8gbps"
     ADMIN_SPEED_AUTO = "auto"
@@ -63,7 +64,7 @@ class FabricFcSanPc(ManagedObject):
     mo_meta = MoMeta("FabricFcSanPc", "fabricFcSanPc", "pc-[port_id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ext-san-config", "ext-san-policy"], [u'fabricFcSan'], [u'fabricFcMonSrcEp', u'fabricFcSanPcEp', u'fabricVsanEp', u'fabricVsanMembership', u'faultInst', u'fcErrStats', u'fcStats'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["16gbps", "1gbps", "2gbps", "4gbps", "8gbps", "auto", "indeterminate"], []), 
+        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["16gbps", "1gbps", "2gbps", "32gbps", "4gbps", "8gbps", "auto", "indeterminate"], []), 
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["disabled", "enabled"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["applied", "inconsistent"], []), 

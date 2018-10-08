@@ -8,6 +8,7 @@ from ...ucsmeta import VersionMeta
 class EquipmentPortGroupSwComplexDefConsts:
     ASIC_CARMEL = "carmel"
     ASIC_GATOS = "gatos"
+    ASIC_HOMEWOOD = "homewood"
     ASIC_TRIDENT2 = "trident2"
     ASIC_UNKNOWN = "unknown"
     INT_ID_NONE = "none"
@@ -25,7 +26,7 @@ class EquipmentPortGroupSwComplexDef(ManagedObject):
     mo_meta = MoMeta("EquipmentPortGroupSwComplexDef", "equipmentPortGroupSwComplexDef", "port-group-sw-complex-def[asic]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], [""], [u'equipmentSwitchCapProvider'], [u'equipmentPortSwComplexRef'], ["Get"])
 
     prop_meta = {
-        "asic": MoPropertyMeta("asic", "asic", "string", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x2, None, None, None, ["carmel", "gatos", "trident2", "unknown"], []), 
+        "asic": MoPropertyMeta("asic", "asic", "string", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x2, None, None, None, ["carmel", "gatos", "homewood", "trident2", "unknown"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 

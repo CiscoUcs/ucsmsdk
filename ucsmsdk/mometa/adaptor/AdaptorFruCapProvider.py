@@ -14,6 +14,9 @@ class AdaptorFruCapProviderConsts:
     DEPRECATED_NO = "no"
     DEPRECATED_TRUE = "true"
     DEPRECATED_YES = "yes"
+    FORM_ON_BOARD = "on-board"
+    FORM_PCI = "pci"
+    FORM_UNKNOWN = "unknown"
 
 
 class AdaptorFruCapProvider(ManagedObject):
@@ -31,6 +34,7 @@ class AdaptorFruCapProvider(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "element_load_failures": MoPropertyMeta("element_load_failures", "elementLoadFailures", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "elements_loaded": MoPropertyMeta("elements_loaded", "elementsLoaded", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "form": MoPropertyMeta("form", "form", "string", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["on-board", "pci", "unknown"], []), 
         "gencount": MoPropertyMeta("gencount", "gencount", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
         "load_errors": MoPropertyMeta("load_errors", "loadErrors", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_warnings": MoPropertyMeta("load_warnings", "loadWarnings", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -51,6 +55,7 @@ class AdaptorFruCapProvider(ManagedObject):
         "dn": "dn", 
         "elementLoadFailures": "element_load_failures", 
         "elementsLoaded": "elements_loaded", 
+        "form": "form", 
         "gencount": "gencount", 
         "loadErrors": "load_errors", 
         "loadWarnings": "load_warnings", 
@@ -74,6 +79,7 @@ class AdaptorFruCapProvider(ManagedObject):
         self.deprecated = None
         self.element_load_failures = None
         self.elements_loaded = None
+        self.form = None
         self.gencount = None
         self.load_errors = None
         self.load_warnings = None

@@ -32,6 +32,8 @@ class FabricFcMonConsts:
     OPER_STATE_REASON_UNKNOWN = "Unknown"
     OPER_STATE_REASON_WRONG_DESTINATION_MODE = "Wrong_Destination_Mode"
     OPER_STATE_REASON_WRONG_SOURCE_MODE = "Wrong_Source_Mode"
+    SPAN_CTRL_PKTS_DISABLED = "disabled"
+    SPAN_CTRL_PKTS_ENABLED = "enabled"
 
 
 class FabricFcMon(ManagedObject):
@@ -40,7 +42,7 @@ class FabricFcMon(ManagedObject):
     consts = FabricFcMonConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("FabricFcMon", "fabricFcMon", "fc-mon-[name]", VersionMeta.Version141i, "InputOutput", 0xff, [], ["admin", "ext-san-config", "ext-san-policy"], [u'fabricFcMonSan'], [u'fabricEthMonDestEp', u'fabricFcMonDestEp', u'fabricFcMonFiltRef', u'fabricFcMonSrcRef', u'fabricSubGroup', u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricFcMon", "fabricFcMon", "fc-mon-[name]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["admin", "ext-san-config", "ext-san-policy"], [u'fabricFcMonSan'], [u'fabricEthMonDestEp', u'fabricFcMonDestEp', u'fabricFcMonFiltRef', u'fabricFcMonSrcRef', u'fabricSubGroup', u'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
@@ -57,7 +59,8 @@ class FabricFcMon(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "session": MoPropertyMeta("session", "session", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-255"]), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "span_ctrl_pkts": MoPropertyMeta("span_ctrl_pkts", "spanCtrlPkts", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["disabled", "enabled"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []), 
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []), 
     }
@@ -77,6 +80,7 @@ class FabricFcMon(ManagedObject):
         "rn": "rn", 
         "sacl": "sacl", 
         "session": "session", 
+        "spanCtrlPkts": "span_ctrl_pkts", 
         "status": "status", 
         "transport": "transport", 
         "type": "type", 
@@ -96,6 +100,7 @@ class FabricFcMon(ManagedObject):
         self.peer_dn = None
         self.sacl = None
         self.session = None
+        self.span_ctrl_pkts = None
         self.status = None
         self.transport = None
         self.type = None

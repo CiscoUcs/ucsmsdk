@@ -21,6 +21,28 @@ class ProcessorErrorStats(ManagedObject):
     mo_meta = MoMeta("ProcessorErrorStats", "processorErrorStats", "error-stats", VersionMeta.Version131c, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'processorUnit'], [], ["Get"])
 
     prop_meta = {
+        "correctable_link_crc_errors": MoPropertyMeta("correctable_link_crc_errors", "CorrectableLinkCRCErrors", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "correctable_link_crc_errors15_min": MoPropertyMeta("correctable_link_crc_errors15_min", "CorrectableLinkCRCErrors15Min", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "correctable_link_crc_errors15_min_h": MoPropertyMeta("correctable_link_crc_errors15_min_h", "CorrectableLinkCRCErrors15MinH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "correctable_link_crc_errors1_day": MoPropertyMeta("correctable_link_crc_errors1_day", "CorrectableLinkCRCErrors1Day", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "correctable_link_crc_errors1_day_h": MoPropertyMeta("correctable_link_crc_errors1_day_h", "CorrectableLinkCRCErrors1DayH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "correctable_link_crc_errors1_hour": MoPropertyMeta("correctable_link_crc_errors1_hour", "CorrectableLinkCRCErrors1Hour", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "correctable_link_crc_errors1_hour_h": MoPropertyMeta("correctable_link_crc_errors1_hour_h", "CorrectableLinkCRCErrors1HourH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "correctable_link_crc_errors1_week": MoPropertyMeta("correctable_link_crc_errors1_week", "CorrectableLinkCRCErrors1Week", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "correctable_link_crc_errors1_week_h": MoPropertyMeta("correctable_link_crc_errors1_week_h", "CorrectableLinkCRCErrors1WeekH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "correctable_link_crc_errors2_weeks": MoPropertyMeta("correctable_link_crc_errors2_weeks", "CorrectableLinkCRCErrors2Weeks", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "correctable_link_crc_errors2_weeks_h": MoPropertyMeta("correctable_link_crc_errors2_weeks_h", "CorrectableLinkCRCErrors2WeeksH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "uncorrectable_link_crc_errors": MoPropertyMeta("uncorrectable_link_crc_errors", "UncorrectableLinkCRCErrors", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "uncorrectable_link_crc_errors15_min": MoPropertyMeta("uncorrectable_link_crc_errors15_min", "UncorrectableLinkCRCErrors15Min", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "uncorrectable_link_crc_errors15_min_h": MoPropertyMeta("uncorrectable_link_crc_errors15_min_h", "UncorrectableLinkCRCErrors15MinH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "uncorrectable_link_crc_errors1_day": MoPropertyMeta("uncorrectable_link_crc_errors1_day", "UncorrectableLinkCRCErrors1Day", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "uncorrectable_link_crc_errors1_day_h": MoPropertyMeta("uncorrectable_link_crc_errors1_day_h", "UncorrectableLinkCRCErrors1DayH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "uncorrectable_link_crc_errors1_hour": MoPropertyMeta("uncorrectable_link_crc_errors1_hour", "UncorrectableLinkCRCErrors1Hour", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "uncorrectable_link_crc_errors1_hour_h": MoPropertyMeta("uncorrectable_link_crc_errors1_hour_h", "UncorrectableLinkCRCErrors1HourH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "uncorrectable_link_crc_errors1_week": MoPropertyMeta("uncorrectable_link_crc_errors1_week", "UncorrectableLinkCRCErrors1Week", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "uncorrectable_link_crc_errors1_week_h": MoPropertyMeta("uncorrectable_link_crc_errors1_week_h", "UncorrectableLinkCRCErrors1WeekH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "uncorrectable_link_crc_errors2_weeks": MoPropertyMeta("uncorrectable_link_crc_errors2_weeks", "UncorrectableLinkCRCErrors2Weeks", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "uncorrectable_link_crc_errors2_weeks_h": MoPropertyMeta("uncorrectable_link_crc_errors2_weeks_h", "UncorrectableLinkCRCErrors2WeeksH", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
         "intervals": MoPropertyMeta("intervals", "intervals", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -89,6 +111,28 @@ class ProcessorErrorStats(ManagedObject):
     }
 
     prop_map = {
+        "CorrectableLinkCRCErrors": "correctable_link_crc_errors", 
+        "CorrectableLinkCRCErrors15Min": "correctable_link_crc_errors15_min", 
+        "CorrectableLinkCRCErrors15MinH": "correctable_link_crc_errors15_min_h", 
+        "CorrectableLinkCRCErrors1Day": "correctable_link_crc_errors1_day", 
+        "CorrectableLinkCRCErrors1DayH": "correctable_link_crc_errors1_day_h", 
+        "CorrectableLinkCRCErrors1Hour": "correctable_link_crc_errors1_hour", 
+        "CorrectableLinkCRCErrors1HourH": "correctable_link_crc_errors1_hour_h", 
+        "CorrectableLinkCRCErrors1Week": "correctable_link_crc_errors1_week", 
+        "CorrectableLinkCRCErrors1WeekH": "correctable_link_crc_errors1_week_h", 
+        "CorrectableLinkCRCErrors2Weeks": "correctable_link_crc_errors2_weeks", 
+        "CorrectableLinkCRCErrors2WeeksH": "correctable_link_crc_errors2_weeks_h", 
+        "UncorrectableLinkCRCErrors": "uncorrectable_link_crc_errors", 
+        "UncorrectableLinkCRCErrors15Min": "uncorrectable_link_crc_errors15_min", 
+        "UncorrectableLinkCRCErrors15MinH": "uncorrectable_link_crc_errors15_min_h", 
+        "UncorrectableLinkCRCErrors1Day": "uncorrectable_link_crc_errors1_day", 
+        "UncorrectableLinkCRCErrors1DayH": "uncorrectable_link_crc_errors1_day_h", 
+        "UncorrectableLinkCRCErrors1Hour": "uncorrectable_link_crc_errors1_hour", 
+        "UncorrectableLinkCRCErrors1HourH": "uncorrectable_link_crc_errors1_hour_h", 
+        "UncorrectableLinkCRCErrors1Week": "uncorrectable_link_crc_errors1_week", 
+        "UncorrectableLinkCRCErrors1WeekH": "uncorrectable_link_crc_errors1_week_h", 
+        "UncorrectableLinkCRCErrors2Weeks": "uncorrectable_link_crc_errors2_weeks", 
+        "UncorrectableLinkCRCErrors2WeeksH": "uncorrectable_link_crc_errors2_weeks_h", 
         "childAction": "child_action", 
         "dn": "dn", 
         "intervals": "intervals", 
@@ -158,6 +202,28 @@ class ProcessorErrorStats(ManagedObject):
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.correctable_link_crc_errors = None
+        self.correctable_link_crc_errors15_min = None
+        self.correctable_link_crc_errors15_min_h = None
+        self.correctable_link_crc_errors1_day = None
+        self.correctable_link_crc_errors1_day_h = None
+        self.correctable_link_crc_errors1_hour = None
+        self.correctable_link_crc_errors1_hour_h = None
+        self.correctable_link_crc_errors1_week = None
+        self.correctable_link_crc_errors1_week_h = None
+        self.correctable_link_crc_errors2_weeks = None
+        self.correctable_link_crc_errors2_weeks_h = None
+        self.uncorrectable_link_crc_errors = None
+        self.uncorrectable_link_crc_errors15_min = None
+        self.uncorrectable_link_crc_errors15_min_h = None
+        self.uncorrectable_link_crc_errors1_day = None
+        self.uncorrectable_link_crc_errors1_day_h = None
+        self.uncorrectable_link_crc_errors1_hour = None
+        self.uncorrectable_link_crc_errors1_hour_h = None
+        self.uncorrectable_link_crc_errors1_week = None
+        self.uncorrectable_link_crc_errors1_week_h = None
+        self.uncorrectable_link_crc_errors2_weeks = None
+        self.uncorrectable_link_crc_errors2_weeks_h = None
         self.child_action = None
         self.intervals = None
         self.mirroring_inter_sock_errors = None
