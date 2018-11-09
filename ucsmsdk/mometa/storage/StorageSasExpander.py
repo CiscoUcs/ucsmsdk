@@ -170,7 +170,7 @@ class StorageSasExpander(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version226c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "config_check_point": MoPropertyMeta("config_check_point", "configCheckPoint", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|firmware-inventory-reported),){0,2}(defaultValue|unknown|firmware-inventory-reported){0,1}""", [], []), 
-        "connection_management": MoPropertyMeta("connection_management", "connectionManagement", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["default", "disabled", "enabled", "unknown"], []), 
+        "connection_management": MoPropertyMeta("connection_management", "connectionManagement", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["default", "disabled", "enabled", "unknown"], []), 
         "current_epfb": MoPropertyMeta("current_epfb", "currentEPFB", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "elid": MoPropertyMeta("elid", "elid", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 

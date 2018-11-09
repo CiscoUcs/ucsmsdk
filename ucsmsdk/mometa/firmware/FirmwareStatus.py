@@ -65,8 +65,8 @@ class FirmwareStatus(ManagedObject):
     mo_meta = MoMeta("FirmwareStatus", "firmwareStatus", "fw-status", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis', u'equipmentIOCard', u'equipmentPsu', u'networkElement', u'topSystem'], [u'faultInst'], ["Get"])
 
     prop_meta = {
-        "back_up_holder_oper_state": MoPropertyMeta("back_up_holder_oper_state", "backUpHolderOperState", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["activating", "auto-activating", "auto-updating", "bad-image", "failed", "faulty-state", "pending-next-boot", "pending-power-cycle", "ready", "rebooting", "rebuilding", "scheduled", "set-startup", "throttled", "updating", "upgrading"], []), 
-        "back_up_holder_pack_version": MoPropertyMeta("back_up_holder_pack_version", "backUpHolderPackVersion", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "back_up_holder_oper_state": MoPropertyMeta("back_up_holder_oper_state", "backUpHolderOperState", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["activating", "auto-activating", "auto-updating", "bad-image", "failed", "faulty-state", "pending-next-boot", "pending-power-cycle", "ready", "rebooting", "rebuilding", "scheduled", "set-startup", "throttled", "updating", "upgrading"], []), 
+        "back_up_holder_pack_version": MoPropertyMeta("back_up_holder_pack_version", "backUpHolderPackVersion", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "cimc_version": MoPropertyMeta("cimc_version", "cimcVersion", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 

@@ -14,6 +14,8 @@ class EquipmentRackUnitCapProviderConsts:
     DEPRECATED_NO = "no"
     DEPRECATED_TRUE = "true"
     DEPRECATED_YES = "yes"
+    FORM_ENCLOSURE_MOUNT = "enclosure-mount"
+    FORM_RACK_MOUNT = "rack-mount"
 
 
 class EquipmentRackUnitCapProvider(ManagedObject):
@@ -31,6 +33,7 @@ class EquipmentRackUnitCapProvider(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "element_load_failures": MoPropertyMeta("element_load_failures", "elementLoadFailures", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "elements_loaded": MoPropertyMeta("elements_loaded", "elementsLoaded", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "form": MoPropertyMeta("form", "form", "string", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["enclosure-mount", "rack-mount"], []), 
         "gencount": MoPropertyMeta("gencount", "gencount", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
         "generation": MoPropertyMeta("generation", "generation", "ushort", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "load_errors": MoPropertyMeta("load_errors", "loadErrors", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -53,6 +56,7 @@ class EquipmentRackUnitCapProvider(ManagedObject):
         "dn": "dn", 
         "elementLoadFailures": "element_load_failures", 
         "elementsLoaded": "elements_loaded", 
+        "form": "form", 
         "gencount": "gencount", 
         "generation": "generation", 
         "loadErrors": "load_errors", 
@@ -78,6 +82,7 @@ class EquipmentRackUnitCapProvider(ManagedObject):
         self.deprecated = None
         self.element_load_failures = None
         self.elements_loaded = None
+        self.form = None
         self.gencount = None
         self.generation = None
         self.load_errors = None

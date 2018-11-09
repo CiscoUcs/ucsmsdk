@@ -23,7 +23,7 @@ class EquipmentKvmMgmtCap(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "is_supported": MoPropertyMeta("is_supported", "isSupported", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []), 
         "min_cimc_version": MoPropertyMeta("min_cimc_version", "minCimcVersion", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "min_kvm_cert_supported_cimc_ver": MoPropertyMeta("min_kvm_cert_supported_cimc_ver", "minKvmCertSupportedCimcVer", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "min_kvm_cert_supported_cimc_ver": MoPropertyMeta("min_kvm_cert_supported_cimc_ver", "minKvmCertSupportedCimcVer", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "min_web_ui_supported_cimc_ver": MoPropertyMeta("min_web_ui_supported_cimc_ver", "minWebUISupportedCimcVer", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 

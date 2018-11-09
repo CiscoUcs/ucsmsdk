@@ -15,16 +15,16 @@ class AdaptorVmmqConnDef(ManagedObject):
     consts = AdaptorVmmqConnDefConsts()
     naming_props = set([u'conPolicyName'])
 
-    mo_meta = MoMeta("AdaptorVmmqConnDef", "adaptorVmmqConnDef", "vmmq-conn-def-[con_policy_name]", None, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "read-only"], [u'adaptorHostEthIf'], [u'adaptorEthCompQueueProfile', u'adaptorEthInterruptProfile', u'adaptorEthRecvQueueProfile', u'adaptorEthRoCEProfile', u'adaptorEthWorkQueueProfile', u'adaptorRssProfile'], [None])
+    mo_meta = MoMeta("AdaptorVmmqConnDef", "adaptorVmmqConnDef", "vmmq-conn-def-[con_policy_name]", VersionMeta.Version323a, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "read-only"], [u'adaptorHostEthIf'], [u'adaptorEthCompQueueProfile', u'adaptorEthInterruptProfile', u'adaptorEthRecvQueueProfile', u'adaptorEthRoCEProfile', u'adaptorEthWorkQueueProfile', u'adaptorRssProfile'], [None])
 
     prop_meta = {
-        "vmmq_sub_vnic_count": MoPropertyMeta("vmmq_sub_vnic_count", "VmmqSubVnicCount", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", None, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "con_policy_name": MoPropertyMeta("con_policy_name", "conPolicyName", "string", None, MoPropertyMeta.NAMING, 0x4, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", None, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", None, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", None, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "vmmq_sub_vnic_count": MoPropertyMeta("vmmq_sub_vnic_count", "VmmqSubVnicCount", "uint", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version323a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "con_policy_name": MoPropertyMeta("con_policy_name", "conPolicyName", "string", VersionMeta.Version323a, MoPropertyMeta.NAMING, 0x4, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version323a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
     }
 
     prop_map = {

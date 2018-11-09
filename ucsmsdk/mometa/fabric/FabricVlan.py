@@ -16,6 +16,8 @@ class FabricVlanConsts:
     ASSOC_PRIMARY_VLAN_SWITCH_ID_NONE = "NONE"
     COMPRESSION_TYPE_EXCLUDED = "excluded"
     COMPRESSION_TYPE_INCLUDED = "included"
+    CONFIG_OVERLAP_ERROR_RESERVED_CONFLICT = "error-reserved-conflict"
+    CONFIG_OVERLAP_OK = "ok"
     DEFAULT_NET_FALSE = "false"
     DEFAULT_NET_NO = "no"
     DEFAULT_NET_TRUE = "true"
@@ -77,12 +79,13 @@ class FabricVlan(ManagedObject):
         "cloud": MoPropertyMeta("cloud", "cloud", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|fcsanmon|ethlan|ethestclan|fcestc|ethlanmon|fcsan),){0,7}(defaultValue|unknown|fcsanmon|ethlan|ethestclan|fcestc|ethlanmon|fcsan){0,1}""", [], []), 
         "compression_type": MoPropertyMeta("compression_type", "compressionType", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["excluded", "included"], []), 
         "config_issues": MoPropertyMeta("config_issues", "configIssues", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|not-applicable|conflicting-vlan-access|unsupported-multicast-policy),){0,3}(defaultValue|not-applicable|conflicting-vlan-access|unsupported-multicast-policy){0,1}""", [], []), 
+        "config_overlap": MoPropertyMeta("config_overlap", "configOverlap", "string", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["error-reserved-conflict", "ok"], []), 
         "default_net": MoPropertyMeta("default_net", "defaultNet", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["false", "no", "true", "yes"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []), 
         "r_global": MoPropertyMeta("r_global", "global", "ulong", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, [], ["1-4029", "4048-4093"]), 
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, [], ["1-4042", "4048-4093"]), 
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []), 
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []), 
         "local": MoPropertyMeta("local", "local", "ulong", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -114,6 +117,7 @@ class FabricVlan(ManagedObject):
         "cloud": "cloud", 
         "compressionType": "compression_type", 
         "configIssues": "config_issues", 
+        "configOverlap": "config_overlap", 
         "defaultNet": "default_net", 
         "dn": "dn", 
         "epDn": "ep_dn", 
@@ -153,6 +157,7 @@ class FabricVlan(ManagedObject):
         self.cloud = None
         self.compression_type = None
         self.config_issues = None
+        self.config_overlap = None
         self.default_net = None
         self.ep_dn = None
         self.flt_aggr = None

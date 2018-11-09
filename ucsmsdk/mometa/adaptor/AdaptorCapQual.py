@@ -14,10 +14,12 @@ class AdaptorCapQualConsts:
     TYPE_CDN_SUPPORT = "cdn-support"
     TYPE_ETH_FLOW_MONITORING_NETFLOW = "eth-flow-monitoring-netflow"
     TYPE_ETH_NVGRE = "eth-nvgre"
+    TYPE_ETH_NVGRE_ROCEV2 = "eth-nvgre-rocev2"
     TYPE_ETH_NVGRE_VMQ = "eth-nvgre-vmq"
     TYPE_ETH_ROCE = "eth-roce"
     TYPE_ETH_ROCE_V2 = "eth-roce-v2"
     TYPE_ETH_VXLAN = "eth-vxlan"
+    TYPE_ETH_VXLAN_ROCEV2 = "eth-vxlan-rocev2"
     TYPE_ETH_VXLAN_VMQ = "eth-vxlan-vmq"
     TYPE_FCOE = "fcoe"
     TYPE_NON_VIRTUALIZED_ETH_IF = "non-virtualized-eth-if"
@@ -62,7 +64,7 @@ class AdaptorCapQual(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80, None, None, None, ["cdn-support", "eth-flow-monitoring-netflow", "eth-nvgre", "eth-nvgre-vmq", "eth-roce", "eth-roce-v2", "eth-vxlan", "eth-vxlan-vmq", "fcoe", "non-virtualized-eth-if", "non-virtualized-fc-if", "oracle-rac-support", "path-encap-consolidated", "path-encap-virtual", "path-encap-virtual-ce", "protected-eth-if", "protected-fc-if", "protected-fcoe", "pxeboot-config-support", "uplink-aggregation", "virtualized-ce-eth-if", "virtualized-eth-if", "virtualized-eth-sriov", "virtualized-eth-sriov-usnic", "virtualized-eth-vmmq", "virtualized-eth-vmq", "virtualized-fc-if", "virtualized-fc-sriov", "virtualized-scsi-if"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80, None, None, None, ["cdn-support", "eth-flow-monitoring-netflow", "eth-nvgre", "eth-nvgre-rocev2", "eth-nvgre-vmq", "eth-roce", "eth-roce-v2", "eth-vxlan", "eth-vxlan-rocev2", "eth-vxlan-vmq", "fcoe", "non-virtualized-eth-if", "non-virtualized-fc-if", "oracle-rac-support", "path-encap-consolidated", "path-encap-virtual", "path-encap-virtual-ce", "protected-eth-if", "protected-fc-if", "protected-fcoe", "pxeboot-config-support", "uplink-aggregation", "virtualized-ce-eth-if", "virtualized-eth-if", "virtualized-eth-sriov", "virtualized-eth-sriov-usnic", "virtualized-eth-vmmq", "virtualized-eth-vmq", "virtualized-fc-if", "virtualized-fc-sriov", "virtualized-scsi-if"], []), 
     }
 
     prop_map = {

@@ -30,7 +30,7 @@ class LstorageDiskSlot(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "drive_path": MoPropertyMeta("drive_path", "drivePath", "string", None, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["NONE", "PATH-0", "PATH-1", "PATH-BOTH", "UNKNOWN"], []), 
+        "drive_path": MoPropertyMeta("drive_path", "drivePath", "string", VersionMeta.Version323a, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["NONE", "PATH-0", "PATH-1", "PATH-BOTH", "UNKNOWN"], []), 
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x10, None, None, None, [], ["1-60"]), 
         "ownership": MoPropertyMeta("ownership", "ownership", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["chassis-dedicated-spare", "chassis-global-spare", "dedicated", "shared", "unassigned", "unknown"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 

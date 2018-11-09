@@ -9,6 +9,7 @@ class StorageNvmeSwitchConsts:
     LINK_STATUS_DEGRADED = "degraded"
     LINK_STATUS_DELETED = "deleted"
     LINK_STATUS_FAILED = "failed"
+    LINK_STATUS_FLASH_FAILED = "flash-failed"
     LINK_STATUS_MODERATE_FAULT = "moderate-fault"
     LINK_STATUS_OPTIMAL = "optimal"
     LINK_STATUS_SEVERE_FAULT = "severe-fault"
@@ -17,6 +18,7 @@ class StorageNvmeSwitchConsts:
     M_STATUS_DEGRADED = "degraded"
     M_STATUS_DELETED = "deleted"
     M_STATUS_FAILED = "failed"
+    M_STATUS_FLASH_FAILED = "flash-failed"
     M_STATUS_MODERATE_FAULT = "moderate-fault"
     M_STATUS_OPTIMAL = "optimal"
     M_STATUS_SEVERE_FAULT = "severe-fault"
@@ -136,6 +138,7 @@ class StorageNvmeSwitchConsts:
     SWITCH_STATUS_DEGRADED = "degraded"
     SWITCH_STATUS_DELETED = "deleted"
     SWITCH_STATUS_FAILED = "failed"
+    SWITCH_STATUS_FLASH_FAILED = "flash-failed"
     SWITCH_STATUS_MODERATE_FAULT = "moderate-fault"
     SWITCH_STATUS_OPTIMAL = "optimal"
     SWITCH_STATUS_SEVERE_FAULT = "severe-fault"
@@ -172,39 +175,39 @@ class StorageNvmeSwitch(ManagedObject):
     consts = StorageNvmeSwitchConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("StorageNvmeSwitch", "storageNvmeSwitch", "nvme-switch-[id]", None, "InputOutput", 0x3f, [], ["read-only"], [u'computeBoard'], [u'faultInst', u'firmwareBootDefinition', u'firmwareRunning'], [None])
+    mo_meta = MoMeta("StorageNvmeSwitch", "storageNvmeSwitch", "nvme-switch-[id]", VersionMeta.Version323a, "InputOutput", 0x3f, [], ["read-only"], [u'computeBoard'], [u'faultInst', u'firmwareBootDefinition', u'firmwareRunning'], [None])
 
     prop_meta = {
-        "bus_address": MoPropertyMeta("bus_address", "busAddress", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", None, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "component_id": MoPropertyMeta("component_id", "componentId", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", None, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "drive_count": MoPropertyMeta("drive_count", "driveCount", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "id": MoPropertyMeta("id", "id", "uint", None, MoPropertyMeta.NAMING, 0x8, None, None, None, [], ["0-4294967295"]), 
-        "link_status": MoPropertyMeta("link_status", "linkStatus", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive"], []), 
-        "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
-        "m_status": MoPropertyMeta("m_status", "mStatus", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive"], []), 
-        "model": MoPropertyMeta("model", "model", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
-        "operability": MoPropertyMeta("operability", "operability", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
-        "perf": MoPropertyMeta("perf", "perf", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
-        "power": MoPropertyMeta("power", "power", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "error", "failed", "not-supported", "off", "offduty", "offline", "ok", "on", "online", "power-save", "test", "unknown"], []), 
-        "presence": MoPropertyMeta("presence", "presence", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
-        "product_id": MoPropertyMeta("product_id", "productId", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "product_revision": MoPropertyMeta("product_revision", "productRevision", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "revision": MoPropertyMeta("revision", "revision", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", None, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "serial": MoPropertyMeta("serial", "serial", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", None, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "switch_name": MoPropertyMeta("switch_name", "switchName", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "switch_status": MoPropertyMeta("switch_status", "switchStatus", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive"], []), 
-        "temperature": MoPropertyMeta("temperature", "temperature", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["not-applicable"], ["0-4294967295"]), 
-        "thermal": MoPropertyMeta("thermal", "thermal", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
-        "type": MoPropertyMeta("type", "type", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["DIRECT-ATTACHED", "HHHL", "MSWITCH", "UNKNOWN"], []), 
-        "vendor": MoPropertyMeta("vendor", "vendor", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "voltage": MoPropertyMeta("voltage", "voltage", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
+        "bus_address": MoPropertyMeta("bus_address", "busAddress", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version323a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
+        "component_id": MoPropertyMeta("component_id", "componentId", "uint", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
+        "drive_count": MoPropertyMeta("drive_count", "driveCount", "uint", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version323a, MoPropertyMeta.NAMING, 0x8, None, None, None, [], ["0-4294967295"]), 
+        "link_status": MoPropertyMeta("link_status", "linkStatus", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "flash-failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive"], []), 
+        "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "m_status": MoPropertyMeta("m_status", "mStatus", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "flash-failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive"], []), 
+        "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
+        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
+        "perf": MoPropertyMeta("perf", "perf", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
+        "power": MoPropertyMeta("power", "power", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "error", "failed", "not-supported", "off", "offduty", "offline", "ok", "on", "online", "power-save", "test", "unknown"], []), 
+        "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
+        "product_id": MoPropertyMeta("product_id", "productId", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "product_revision": MoPropertyMeta("product_revision", "productRevision", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
+        "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version323a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "switch_name": MoPropertyMeta("switch_name", "switchName", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "switch_status": MoPropertyMeta("switch_status", "switchStatus", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "flash-failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive"], []), 
+        "temperature": MoPropertyMeta("temperature", "temperature", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["not-applicable"], ["0-4294967295"]), 
+        "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["DIRECT-ATTACHED", "HHHL", "MSWITCH", "UNKNOWN"], []), 
+        "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "voltage": MoPropertyMeta("voltage", "voltage", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
     }
 
     prop_map = {

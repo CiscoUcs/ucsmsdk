@@ -53,10 +53,13 @@ class FabricFcoeSanPcConsts:
     OPER_STATE_SOFTWARE_FAILURE = "software-failure"
     OPER_STATE_UDLD_AGGR_DOWN = "udld-aggr-down"
     OPER_STATE_UP = "up"
+    SPEED_100GBPS = "100gbps"
     SPEED_10GBPS = "10gbps"
     SPEED_1GBPS = "1gbps"
     SPEED_20GBPS = "20gbps"
+    SPEED_25GBPS = "25gbps"
     SPEED_40GBPS = "40gbps"
+    SPEED_AUTO = "auto"
     SPEED_INDETERMINATE = "indeterminate"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
@@ -92,7 +95,7 @@ class FabricFcoeSanPc(ManagedObject):
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x80, None, None, None, [], ["1-256"]), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "speed": MoPropertyMeta("speed", "speed", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["10gbps", "1gbps", "20gbps", "40gbps", "indeterminate"], []), 
+        "speed": MoPropertyMeta("speed", "speed", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []), 
         "state_qual": MoPropertyMeta("state_qual", "stateQual", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 

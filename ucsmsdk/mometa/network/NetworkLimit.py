@@ -8,6 +8,8 @@ from ...ucsmeta import VersionMeta
 class NetworkLimitConsts:
     LIMIT_STATUS_ABOVE_LIMIT = "above-limit"
     LIMIT_STATUS_WITHIN_LIMIT = "within-limit"
+    TYPE_DVIF = "Dvif"
+    TYPE_IFTMC_PV = "IftmcPv"
     TYPE_IGMP_GROUP = "IgmpGroup"
     TYPE_MULTICAST_MAC = "MulticastMac"
     TYPE_PV_LIF_VLAN_MBR = "PvLifVlanMbr"
@@ -36,7 +38,7 @@ class NetworkLimit(ManagedObject):
         "slot_number": MoPropertyMeta("slot_number", "slotNumber", "uint", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
         "start_port_number": MoPropertyMeta("start_port_number", "startPortNumber", "uint", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version321d, MoPropertyMeta.NAMING, 0x40, None, None, None, ["IgmpGroup", "MulticastMac", "PvLifVlanMbr", "PvSystem", "UnicastMac"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version321d, MoPropertyMeta.NAMING, 0x40, None, None, None, ["Dvif", "IftmcPv", "IgmpGroup", "MulticastMac", "PvLifVlanMbr", "PvSystem", "UnicastMac"], []), 
         "upper_limit": MoPropertyMeta("upper_limit", "upperLimit", "uint", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
     }
 
