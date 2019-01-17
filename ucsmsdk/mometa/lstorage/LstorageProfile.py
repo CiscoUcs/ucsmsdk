@@ -20,7 +20,7 @@ class LstorageProfile(ManagedObject):
     consts = LstorageProfileConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("LstorageProfile", "lstorageProfile", "profile-[name]", VersionMeta.Version224b, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage", "ls-storage-policy"], [u'orgOrg'], [u'lstorageControllerDef', u'lstorageDasScsiLun', u'lstorageSecurity'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LstorageProfile", "lstorageProfile", "profile-[name]", VersionMeta.Version224b, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage", "ls-storage-policy"], [u'orgOrg'], [u'lstorageControllerDef', u'lstorageDasScsiLun', u'lstorageLunSetConfig', u'lstorageSecurity'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "assigned_to_dn": MoPropertyMeta("assigned_to_dn", "assignedToDn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 

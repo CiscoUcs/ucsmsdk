@@ -38,6 +38,7 @@ class GraphicsCardConsts:
     OPER_STATE_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPER_STATE_MALFORMED_FRU = "malformed-fru"
     OPER_STATE_NON_OPTIMAL = "non-optimal"
+    OPER_STATE_NON_OPTIMAL_SEVERE = "non-optimal-severe"
     OPER_STATE_NOT_SUPPORTED = "not-supported"
     OPER_STATE_OPERABLE = "operable"
     OPER_STATE_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -72,6 +73,7 @@ class GraphicsCardConsts:
     OPERABILITY_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPERABILITY_MALFORMED_FRU = "malformed-fru"
     OPERABILITY_NON_OPTIMAL = "non-optimal"
+    OPERABILITY_NON_OPTIMAL_SEVERE = "non-optimal-severe"
     OPERABILITY_NOT_SUPPORTED = "not-supported"
     OPERABILITY_OPERABLE = "operable"
     OPERABILITY_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -128,6 +130,7 @@ class GraphicsCardConsts:
     PRESENCE_NOT_SUPPORTED = "not-supported"
     PRESENCE_UNAUTHORIZED = "unauthorized"
     PRESENCE_UNKNOWN = "unknown"
+    TEMPERATURE_NOT_APPLICABLE = "not-applicable"
     THERMAL_LOWER_CRITICAL = "lower-critical"
     THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
     THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -169,11 +172,12 @@ class GraphicsCard(ManagedObject):
         "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["compute", "graphics", "na"], []), 
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
-        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
+        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
         "pci_addr": MoPropertyMeta("pci_addr", "pciAddr", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "pci_addr_list": MoPropertyMeta("pci_addr_list", "pciAddrList", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "pci_slot": MoPropertyMeta("pci_slot", "pciSlot", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "perf": MoPropertyMeta("perf", "perf", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
         "power": MoPropertyMeta("power", "power", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "error", "failed", "not-supported", "off", "offduty", "offline", "ok", "on", "online", "power-save", "test", "unknown"], []), 
         "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []), 
@@ -181,10 +185,12 @@ class GraphicsCard(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
+        "slot_name": MoPropertyMeta("slot_name", "slotName", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version213a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "stepping": MoPropertyMeta("stepping", "stepping", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "sub_device_id": MoPropertyMeta("sub_device_id", "subDeviceId", "uint", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "sub_vendor_id": MoPropertyMeta("sub_vendor_id", "subVendorId", "uint", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "temperature": MoPropertyMeta("temperature", "temperature", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["not-applicable"], ["0-4294967295"]), 
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "vendor_id": MoPropertyMeta("vendor_id", "vendorId", "uint", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -209,6 +215,7 @@ class GraphicsCard(ManagedObject):
         "pciAddr": "pci_addr", 
         "pciAddrList": "pci_addr_list", 
         "pciSlot": "pci_slot", 
+        "peerDn": "peer_dn", 
         "perf": "perf", 
         "power": "power", 
         "presence": "presence", 
@@ -216,10 +223,12 @@ class GraphicsCard(ManagedObject):
         "rn": "rn", 
         "sacl": "sacl", 
         "serial": "serial", 
+        "slotName": "slot_name", 
         "status": "status", 
         "stepping": "stepping", 
         "subDeviceId": "sub_device_id", 
         "subVendorId": "sub_vendor_id", 
+        "temperature": "temperature", 
         "thermal": "thermal", 
         "vendor": "vendor", 
         "vendorId": "vendor_id", 
@@ -244,16 +253,19 @@ class GraphicsCard(ManagedObject):
         self.pci_addr = None
         self.pci_addr_list = None
         self.pci_slot = None
+        self.peer_dn = None
         self.perf = None
         self.power = None
         self.presence = None
         self.revision = None
         self.sacl = None
         self.serial = None
+        self.slot_name = None
         self.status = None
         self.stepping = None
         self.sub_device_id = None
         self.sub_vendor_id = None
+        self.temperature = None
         self.thermal = None
         self.vendor = None
         self.vendor_id = None

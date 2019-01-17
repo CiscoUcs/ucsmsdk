@@ -53,7 +53,7 @@ class LstorageVirtualDriveDef(ManagedObject):
     consts = LstorageVirtualDriveDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LstorageVirtualDriveDef", "lstorageVirtualDriveDef", "virtual-drive-def", VersionMeta.Version224b, "InputOutput", 0xfff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageDiskGroupConfigDef', u'lstorageDiskGroupConfigPolicy'], [], ["Get", "Set"])
+    mo_meta = MoMeta("LstorageVirtualDriveDef", "lstorageVirtualDriveDef", "virtual-drive-def", VersionMeta.Version224b, "InputOutput", 0xfff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageDiskGroupConfigDef', u'lstorageDiskGroupConfigPolicy', u'lstorageLunSetConfig'], [], ["Get", "Set"])
 
     prop_meta = {
         "access_policy": MoPropertyMeta("access_policy", "accessPolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["blocked", "hidden", "platform-default", "read-only", "read-write", "transport-ready", "unknown"], []), 

@@ -89,6 +89,7 @@ class SwEthEstcPc(ManagedObject):
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []), 
         "lacp_fast_timer": MoPropertyMeta("lacp_fast_timer", "lacpFastTimer", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "lacp_suspend_individual": MoPropertyMeta("lacp_suspend_individual", "lacpSuspendIndividual", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "lldp": MoPropertyMeta("lldp", "lldp", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|transmit|receive|all),){0,4}(defaultValue|none|transmit|receive|all){0,1}""", [], []), 
         "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []), 
         "mon_traf_dir": MoPropertyMeta("mon_traf_dir", "monTrafDir", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["both", "rx", "tx"], []), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
@@ -124,6 +125,7 @@ class SwEthEstcPc(ManagedObject):
         "ifType": "if_type", 
         "lacpFastTimer": "lacp_fast_timer", 
         "lacpSuspendIndividual": "lacp_suspend_individual", 
+        "lldp": "lldp", 
         "locale": "locale", 
         "monTrafDir": "mon_traf_dir", 
         "name": "name", 
@@ -160,6 +162,7 @@ class SwEthEstcPc(ManagedObject):
         self.if_type = None
         self.lacp_fast_timer = None
         self.lacp_suspend_individual = None
+        self.lldp = None
         self.locale = None
         self.mon_traf_dir = None
         self.name = None

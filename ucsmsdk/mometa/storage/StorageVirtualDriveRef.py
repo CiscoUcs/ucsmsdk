@@ -53,8 +53,10 @@ class StorageVirtualDriveRef(ManagedObject):
         "lun_item_dn": MoPropertyMeta("lun_item_dn", "lunItemDn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "lun_item_name": MoPropertyMeta("lun_item_name", "lunItemName", "string", VersionMeta.Version224b, MoPropertyMeta.NAMING, 0x20, 1, 32, None, [], []), 
         "lun_name": MoPropertyMeta("lun_name", "lunName", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{0,15}""", [], []), 
+        "lun_set_disk_slot_id": MoPropertyMeta("lun_set_disk_slot_id", "lunSetDiskSlotId", "uint", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-60"]), 
         "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-64"]), 
         "raid_level": MoPropertyMeta("raid_level", "raidLevel", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["mirror", "mirror-stripe", "raid", "simple", "stripe", "stripe-dual-parity", "stripe-dual-parity-stripe", "stripe-parity", "stripe-parity-stripe", "unspecified"], []), 
+        "ref_lun_set": MoPropertyMeta("ref_lun_set", "refLunSet", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "size": MoPropertyMeta("size", "size", "ulong", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -76,8 +78,10 @@ class StorageVirtualDriveRef(ManagedObject):
         "lunItemDn": "lun_item_dn", 
         "lunItemName": "lun_item_name", 
         "lunName": "lun_name", 
+        "lunSetDiskSlotId": "lun_set_disk_slot_id", 
         "order": "order", 
         "raidLevel": "raid_level", 
+        "refLunSet": "ref_lun_set", 
         "rn": "rn", 
         "sacl": "sacl", 
         "size": "size", 
@@ -99,8 +103,10 @@ class StorageVirtualDriveRef(ManagedObject):
         self.lun_dn = None
         self.lun_item_dn = None
         self.lun_name = None
+        self.lun_set_disk_slot_id = None
         self.order = None
         self.raid_level = None
+        self.ref_lun_set = None
         self.sacl = None
         self.size = None
         self.status = None

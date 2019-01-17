@@ -6,6 +6,14 @@ from ...ucsmeta import VersionMeta
 
 
 class SwFcEstcEpConsts:
+    ADMIN_SPEED_16GBPS = "16gbps"
+    ADMIN_SPEED_1GBPS = "1gbps"
+    ADMIN_SPEED_2GBPS = "2gbps"
+    ADMIN_SPEED_32GBPS = "32gbps"
+    ADMIN_SPEED_4GBPS = "4gbps"
+    ADMIN_SPEED_8GBPS = "8gbps"
+    ADMIN_SPEED_AUTO = "auto"
+    ADMIN_SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     CHASSIS_ID_N_A = "N/A"
@@ -48,6 +56,7 @@ class SwFcEstcEp(ManagedObject):
     mo_meta = MoMeta("SwFcEstcEp", "swFcEstcEp", "fcestc-ep-slot-[slot_id]port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["read-only"], [u'swFcSanBorder'], [], ["Get"])
 
     prop_meta = {
+        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["16gbps", "1gbps", "2gbps", "32gbps", "4gbps", "8gbps", "auto", "indeterminate"], []), 
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []), 
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]), 
@@ -77,6 +86,7 @@ class SwFcEstcEp(ManagedObject):
     }
 
     prop_map = {
+        "adminSpeed": "admin_speed", 
         "adminState": "admin_state", 
         "aggrPortId": "aggr_port_id", 
         "chassisId": "chassis_id", 
@@ -109,6 +119,7 @@ class SwFcEstcEp(ManagedObject):
         self._dirty_mask = 0
         self.slot_id = slot_id
         self.port_id = port_id
+        self.admin_speed = None
         self.admin_state = None
         self.aggr_port_id = None
         self.chassis_id = None

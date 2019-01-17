@@ -274,6 +274,7 @@ class EquipmentIOCardConsts:
     OPER_STATE_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPER_STATE_MALFORMED_FRU = "malformed-fru"
     OPER_STATE_NON_OPTIMAL = "non-optimal"
+    OPER_STATE_NON_OPTIMAL_SEVERE = "non-optimal-severe"
     OPER_STATE_NOT_SUPPORTED = "not-supported"
     OPER_STATE_OPERABLE = "operable"
     OPER_STATE_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -308,6 +309,7 @@ class EquipmentIOCardConsts:
     OPERABILITY_LINK_ACTIVATE_BLOCKED = "link-activate-blocked"
     OPERABILITY_MALFORMED_FRU = "malformed-fru"
     OPERABILITY_NON_OPTIMAL = "non-optimal"
+    OPERABILITY_NON_OPTIMAL_SEVERE = "non-optimal-severe"
     OPERABILITY_NOT_SUPPORTED = "not-supported"
     OPERABILITY_OPERABLE = "operable"
     OPERABILITY_PEER_COMM_PROBLEM = "peer-comm-problem"
@@ -378,6 +380,11 @@ class EquipmentIOCardConsts:
     PROCESSOR_THERMAL_STATE_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     SIDE_LEFT = "left"
     SIDE_RIGHT = "right"
+    SLOW_DRAIN_ADMIN_STATE_DISABLED = "disabled"
+    SLOW_DRAIN_ADMIN_STATE_ENABLED = "enabled"
+    SLOW_DRAIN_CORRECTION_DISABLED = "disabled"
+    SLOW_DRAIN_CORRECTION_ENABLED = "enabled"
+    SLOW_DRAIN_CORRECTION_FAILED = "failed"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -407,7 +414,7 @@ class EquipmentIOCard(ManagedObject):
     consts = EquipmentIOCardConsts()
     naming_props = set([u'id'])
 
-    mo_meta = MoMeta("EquipmentIOCard", "equipmentIOCard", "slot-[id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentChassis', u'equipmentFex'], [u'equipmentBeaconLed', u'equipmentHealthLed', u'equipmentIOCardBaseFsm', u'equipmentIOCardBaseFsmTask', u'equipmentIOCardFsm', u'equipmentIOCardFsmTask', u'equipmentIOCardStats', u'equipmentIndicatorLed', u'equipmentLocatorLed', u'equipmentPOST', u'eventInst', u'faultInst', u'faultSuppressTask', u'firmwareStatus', u'mgmtController', u'portGroup'], ["Get", "Set"])
+    mo_meta = MoMeta("EquipmentIOCard", "equipmentIOCard", "slot-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentChassis', u'equipmentFex'], [u'equipmentBeaconLed', u'equipmentHealthLed', u'equipmentIOCardBaseFsm', u'equipmentIOCardBaseFsmTask', u'equipmentIOCardFsm', u'equipmentIOCardFsmTask', u'equipmentIOCardStats', u'equipmentIndicatorLed', u'equipmentLocatorLed', u'equipmentPOST', u'eventInst', u'faultInst', u'faultSuppressTask', u'firmwareStatus', u'mgmtController', u'portGroup'], ["Get", "Set"])
 
     prop_meta = {
         "admin_peer_power_state": MoPropertyMeta("admin_peer_power_state", "adminPeerPowerState", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cycle-immediate", "cycle-wait", "policy"], []), 
@@ -442,8 +449,8 @@ class EquipmentIOCard(ManagedObject):
         "oper_evac_state": MoPropertyMeta("oper_evac_state", "operEvacState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["drain", "fill", "unknown"], []), 
         "oper_qualifier": MoPropertyMeta("oper_qualifier", "operQualifier", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|not-applicable|thermal|inoperable|voltage|perf|power|removed|fabric-port-problem|post-failure|server-port-problem|fabricpc-link-auto-ack-blocked|backplane-port-problem),){0,12}(defaultValue|not-applicable|thermal|inoperable|voltage|perf|power|removed|fabric-port-problem|post-failure|server-port-problem|fabricpc-link-auto-ack-blocked|backplane-port-problem){0,1}""", [], []), 
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
-        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
+        "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []), 
         "part_number": MoPropertyMeta("part_number", "partNumber", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "peer_comm_status": MoPropertyMeta("peer_comm_status", "peerCommStatus", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["connected", "disconnected", "unknown"], []), 
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
@@ -456,11 +463,13 @@ class EquipmentIOCard(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "side": MoPropertyMeta("side", "side", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["left", "right"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "slow_drain_admin_state": MoPropertyMeta("slow_drain_admin_state", "slowDrainAdminState", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 
+        "slow_drain_correction": MoPropertyMeta("slow_drain_correction", "slowDrainCorrection", "string", VersionMeta.Version402a, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["disabled", "enabled", "failed"], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []), 
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
         "upgrade_status": MoPropertyMeta("upgrade_status", "upgradeStatus", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unasserted|hw-change-detected|fw-change-detected|hw-incompatible|fw-incompatible|unsupported-hw-version|unsupported-fw-version|hw-change-success|fw-change-success),){0,9}(defaultValue|unasserted|hw-change-detected|fw-change-detected|hw-incompatible|fw-incompatible|unsupported-hw-version|unsupported-fw-version|hw-change-success|fw-change-success){0,1}""", [], []), 
-        "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
+        "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "vid": MoPropertyMeta("vid", "vid", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
         "voltage": MoPropertyMeta("voltage", "voltage", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []), 
@@ -513,6 +522,8 @@ class EquipmentIOCard(ManagedObject):
         "sacl": "sacl", 
         "serial": "serial", 
         "side": "side", 
+        "slowDrainAdminState": "slow_drain_admin_state", 
+        "slowDrainCorrection": "slow_drain_correction", 
         "status": "status", 
         "switchId": "switch_id", 
         "thermal": "thermal", 
@@ -569,6 +580,8 @@ class EquipmentIOCard(ManagedObject):
         self.sacl = None
         self.serial = None
         self.side = None
+        self.slow_drain_admin_state = None
+        self.slow_drain_correction = None
         self.status = None
         self.switch_id = None
         self.thermal = None
