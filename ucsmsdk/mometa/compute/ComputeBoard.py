@@ -176,7 +176,11 @@ class ComputeBoard(ManagedObject):
     consts = ComputeBoardConsts()
     naming_props = set([])
 
+<<<<<<< HEAD
     mo_meta = MoMeta("ComputeBoard", "computeBoard", "board", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [u'computeIOHub', u'computeMbPowerStats', u'computeMbTempStats', u'computePCIeFatalCompletionStats', u'computePCIeFatalProtocolStats', u'computePCIeFatalReceiveStats', u'computePCIeFatalStats', u'computeRackUnitMbTempStats', u'computeRtcBattery', u'coprocessorCard', u'equipmentTpm', u'faultInst', u'graphicsCard', u'lstorageLocal', u'lstorageLocalDef', u'lstorageRemote', u'lstorageRemoteDef', u'memoryArray', u'memoryBufferUnit', u'pciSwitch', u'processorUnit', u'securityUnit', u'storageController', u'storageFlexFlashController', u'storageLocalDiskSlotEp', u'storageMiniStorage', u'storageNvmeSwitch', u'storageSasExpander'], ["Get"])
+=======
+    mo_meta = MoMeta("ComputeBoard", "computeBoard", "board", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [u'computeIOHub', u'computeMbPowerStats', u'computeMbTempStats', u'computePCIeFatalCompletionStats', u'computePCIeFatalProtocolStats', u'computePCIeFatalReceiveStats', u'computePCIeFatalStats', u'computeRackUnitMbTempStats', u'computeRtcBattery', u'coprocessorCard', u'equipmentTpm', u'faultInst', u'graphicsCard', u'lstorageLocal', u'lstorageLocalDef', u'lstorageRemote', u'lstorageRemoteDef', u'memoryArray', u'memoryBufferUnit', u'processorUnit', u'securityUnit', u'storageController', u'storageFlexFlashController', u'storageLocalDiskSlotEp', u'storageMiniStorage', u'storageNvmeSwitch', u'storageSasExpander'], ["Get"])
+>>>>>>> d1f4ceffc1b88ba0e099ffb404f144aab3a4ed03
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

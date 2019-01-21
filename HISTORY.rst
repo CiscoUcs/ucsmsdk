@@ -3,6 +3,16 @@
 History
 -------
 
+0.9.6 (2018-12-11)
+---------------------
+* Support for UCSM release 4.0(1b)
+
+
+0.9.5 (2018-10-10)
+---------------------
+* Updated requirements to include setuptools
+
+
 0.9.4 (2018-08-13)
 ---------------------
 * Fixes for python 3 compatibility

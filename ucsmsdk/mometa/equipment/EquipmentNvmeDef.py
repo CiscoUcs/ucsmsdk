@@ -30,9 +30,15 @@ class EquipmentNvmeDef(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "front_disk_slots": MoPropertyMeta("front_disk_slots", "frontDiskSlots", "ushort", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
+<<<<<<< HEAD
         "m_switch_drive_index": MoPropertyMeta("m_switch_drive_index", "mSwitchDriveIndex", "ushort", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "m_switch_sas_mixing_supported": MoPropertyMeta("m_switch_sas_mixing_supported", "mSwitchSasMixingSupported", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "max_number_of_m_switch": MoPropertyMeta("max_number_of_m_switch", "maxNumberOfMSwitch", "ushort", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+=======
+        "m_switch_drive_index": MoPropertyMeta("m_switch_drive_index", "mSwitchDriveIndex", "ushort", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-65535"]), 
+        "m_switch_sas_mixing_supported": MoPropertyMeta("m_switch_sas_mixing_supported", "mSwitchSasMixingSupported", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
+        "max_number_of_m_switch": MoPropertyMeta("max_number_of_m_switch", "maxNumberOfMSwitch", "ushort", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-65535"]), 
+>>>>>>> d1f4ceffc1b88ba0e099ffb404f144aab3a4ed03
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "pci_slots": MoPropertyMeta("pci_slots", "pciSlots", "ushort", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
