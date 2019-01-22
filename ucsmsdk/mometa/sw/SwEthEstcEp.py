@@ -88,6 +88,7 @@ class SwEthEstcEp(ManagedObject):
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []), 
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []), 
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "pending", "repurposed"], []), 
+        "lldp": MoPropertyMeta("lldp", "lldp", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|transmit|receive|all),){0,4}(defaultValue|none|transmit|receive|all){0,1}""", [], []), 
         "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "pc_id": MoPropertyMeta("pc_id", "pcId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
@@ -130,6 +131,7 @@ class SwEthEstcEp(ManagedObject):
         "ifRole": "if_role", 
         "ifType": "if_type", 
         "lc": "lc", 
+        "lldp": "lldp", 
         "locale": "locale", 
         "name": "name", 
         "pcId": "pc_id", 
@@ -174,6 +176,7 @@ class SwEthEstcEp(ManagedObject):
         self.if_role = None
         self.if_type = None
         self.lc = None
+        self.lldp = None
         self.locale = None
         self.name = None
         self.pc_id = None

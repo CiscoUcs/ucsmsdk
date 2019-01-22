@@ -34,7 +34,7 @@ class ClitestTypeTest2(ManagedObject):
         "file_dir": MoPropertyMeta("file_dir", "fileDir", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, 0, 510, None, [], []), 
         "file_host": MoPropertyMeta("file_host", "fileHost", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, 0, 510, None, [], []), 
         "file_name": MoPropertyMeta("file_name", "fileName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, 0, 510, None, [], []), 
-        "file_passwd": MoPropertyMeta("file_passwd", "filePasswd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""[!""#%&'\(\)\*\+,\-\./:;<>@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{0,80}""", [], []), 
+        "file_passwd": MoPropertyMeta("file_passwd", "filePasswd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""[!""#%&'\(\)\*\+,\-\./:;<>@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{0,127}""", [], []), 
         "file_path": MoPropertyMeta("file_path", "filePath", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, 0, 510, None, [], []), 
         "file_port": MoPropertyMeta("file_port", "filePort", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, [], []), 
         "file_proto": MoPropertyMeta("file_proto", "fileProto", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, ["ftp", "http", "nfs-copy", "none", "scp", "sftp", "tftp"], []), 

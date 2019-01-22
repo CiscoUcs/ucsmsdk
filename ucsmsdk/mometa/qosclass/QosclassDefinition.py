@@ -168,7 +168,11 @@ class QosclassDefinition(ManagedObject):
     consts = QosclassDefinitionConsts()
     naming_props = set([])
 
+<<<<<<< HEAD
+    mo_meta = MoMeta("QosclassDefinition", "qosclassDefinition", "classes", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ext-lan-qos", "ext-san-qos", "ls-network", "ls-network-policy", "ls-qos-policy"], [u'fabricLanCloud'], [u'eventInst', u'faultInst', u'firmwareAck', u'qosclassDefinitionFsm', u'qosclassDefinitionFsmTask', u'qosclassEthBE', u'qosclassEthClassified', u'qosclassFc', u'qosclassSlowDrain'], ["Get", "Set"])
+=======
     mo_meta = MoMeta("QosclassDefinition", "qosclassDefinition", "classes", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ext-lan-qos", "ext-san-qos", "ls-network", "ls-network-policy", "ls-qos-policy"], [u'fabricLanCloud'], [u'eventInst', u'faultInst', u'firmwareAck', u'qosclassDefinitionFsm', u'qosclassDefinitionFsmTask', u'qosclassEthBE', u'qosclassEthClassified', u'qosclassFc'], ["Get", "Set"])
+>>>>>>> d1f4ceffc1b88ba0e099ffb404f144aab3a4ed03
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 

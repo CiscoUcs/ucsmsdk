@@ -36,6 +36,10 @@ class StorageNvmeStatsHist(ManagedObject):
         "drive_life_used_percentage_max": MoPropertyMeta("drive_life_used_percentage_max", "driveLifeUsedPercentageMax", "uint", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
         "drive_life_used_percentage_min": MoPropertyMeta("drive_life_used_percentage_min", "driveLifeUsedPercentageMin", "uint", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]), 
         "id": MoPropertyMeta("id", "id", "ulong", VersionMeta.Version312b, MoPropertyMeta.NAMING, None, None, None, None, [], []), 
+        "life_left_in_days": MoPropertyMeta("life_left_in_days", "lifeLeftInDays", "uint", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "life_left_in_days_avg": MoPropertyMeta("life_left_in_days_avg", "lifeLeftInDaysAvg", "uint", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "life_left_in_days_max": MoPropertyMeta("life_left_in_days_max", "lifeLeftInDaysMax", "uint", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
+        "life_left_in_days_min": MoPropertyMeta("life_left_in_days_min", "lifeLeftInDaysMin", "uint", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
         "most_recent": MoPropertyMeta("most_recent", "mostRecent", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
@@ -57,6 +61,10 @@ class StorageNvmeStatsHist(ManagedObject):
         "driveLifeUsedPercentageMax": "drive_life_used_percentage_max", 
         "driveLifeUsedPercentageMin": "drive_life_used_percentage_min", 
         "id": "id", 
+        "lifeLeftInDays": "life_left_in_days", 
+        "lifeLeftInDaysAvg": "life_left_in_days_avg", 
+        "lifeLeftInDaysMax": "life_left_in_days_max", 
+        "lifeLeftInDaysMin": "life_left_in_days_min", 
         "mostRecent": "most_recent", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -78,6 +86,10 @@ class StorageNvmeStatsHist(ManagedObject):
         self.drive_life_used_percentage_avg = None
         self.drive_life_used_percentage_max = None
         self.drive_life_used_percentage_min = None
+        self.life_left_in_days = None
+        self.life_left_in_days_avg = None
+        self.life_left_in_days_max = None
+        self.life_left_in_days_min = None
         self.most_recent = None
         self.sacl = None
         self.status = None
