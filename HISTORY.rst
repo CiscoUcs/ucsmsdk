@@ -3,6 +3,11 @@
 History
 -------
 
+0.9.7 (2019-01-22)
+---------------------
+* Support for UCSM release 4.0(2a)
+
+
 0.9.6 (2018-12-11)
 ---------------------
 * Support for UCSM release 4.0(1b)
