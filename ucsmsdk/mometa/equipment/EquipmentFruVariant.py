@@ -15,7 +15,6 @@ class EquipmentFruVariant(ManagedObject):
     consts = EquipmentFruVariantConsts()
     naming_props = set([u'type'])
 
-
     mo_meta = MoMeta("EquipmentFruVariant", "equipmentFruVariant", "fruVariant-[type]", VersionMeta.Version312b, "InputOutput", 0x3f, [], [""], [u'adaptorFruCapProvider', u'diagSrvCapProvider', u'equipmentBaseBoardCapProvider', u'equipmentBladeBiosCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentCoprocessorUnitCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentFanModuleCapProvider', u'equipmentFexCapProvider', u'equipmentGemCapProvider', u'equipmentGraphicsCardCapProvider', u'equipmentHostIfCapProvider', u'equipmentIOCardCapProvider', u'equipmentIOExpanderCapProvider', u'equipmentLocalDiskCapProvider', u'equipmentLocalDiskControllerCapProvider', u'equipmentMemoryUnitCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentMiniStorageCapProvider', u'equipmentPciSwitchCapProvider', u'equipmentProcessorUnitCapProvider', u'equipmentPsuCapProvider', u'equipmentRackEnclosureCapProvider', u'equipmentRackUnitCapProvider', u'equipmentSecurityUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentSiocCapProvider', u'equipmentStorageEncCapProvider', u'equipmentStorageNvmeSwitchCapProvider', u'equipmentStorageSasExpanderCapProvider', u'equipmentSwitchCapProvider', u'equipmentSwitchIOCardCapProvider', u'equipmentTpmCapProvider'], [], ["Get"])
 
     prop_meta = {
