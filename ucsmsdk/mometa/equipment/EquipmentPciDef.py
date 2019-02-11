@@ -67,7 +67,6 @@ class EquipmentPciDef(ManagedObject):
     consts = EquipmentPciDefConsts()
     naming_props = set([u'name'])
 
-
     mo_meta = MoMeta("EquipmentPciDef", "equipmentPciDef", "pci-[name]", VersionMeta.Version141i, "InputOutput", 0xff, [], [""], [u'adaptorFruCapProvider', u'adaptorUnit', u'equipmentCoprocessorUnitCapProvider', u'equipmentGraphicsCardCapProvider', u'equipmentLocalDiskControllerCapProvider', u'equipmentPciSwitchCapProvider'], [], ["Get"])
 
     prop_meta = {
