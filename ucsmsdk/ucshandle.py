@@ -373,6 +373,9 @@ class UcsHandle(UcsSession):
         from .ucsbasetype import DnSet, Dn
         from .ucsmethodfactory import config_resolve_dns
 
+        if hierarchy:
+            child = True
+        
         if not dn:
             raise ValueError("Provide dn.")
 
@@ -450,7 +453,8 @@ class UcsHandle(UcsSession):
 
         from .ucsfilter import generate_infilter
         from .ucsmethodfactory import config_resolve_class
-
+        if hierarchy:
+            child = True
         if not class_id:
             raise ValueError("Provide Parameter class_id")
 
