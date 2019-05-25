@@ -231,7 +231,7 @@ class UcsHandle(UcsSession):
 
         return auth_token
 
-    def query_dns(self, *dns):
+    def query_dns(self, *dns, child=False):
         """
         Queries multiple obects from the server based of a comma separated list
         of their distinguised names.
@@ -273,7 +273,8 @@ class UcsHandle(UcsSession):
             dn_set.child_add(dn_obj)
 
         elem = config_resolve_dns(cookie=self.cookie,
-                                  in_dns=dn_set)
+                                  in_dns=dn_set,
+                                  in_hierarchical=child)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -283,7 +284,7 @@ class UcsHandle(UcsSession):
 
         return dn_dict
 
-    def query_classids(self, *class_ids):
+    def query_classids(self, *class_ids, child=False):
         """
         Queries multiple obects from the server based of a comma separated list
         of their class Ids.
@@ -333,7 +334,8 @@ class UcsHandle(UcsSession):
             class_id_set.child_add(class_id_obj)
 
         elem = config_resolve_classes(cookie=self.cookie,
-                                      in_ids=class_id_set)
+                                      in_ids=class_id_set,
+                                      in_hierarchical=child)
         response = self.post_elem(elem)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
