@@ -343,7 +343,7 @@ class UcsHandle(UcsSession):
 
         return class_id_dict
 
-    def query_dn(self, dn, hierarchy=False, need_response=False, timeout=None):
+    def query_dn(self, dn, hierarchy=False, need_response=False, timeout=None, child=False):
         """
         Finds an object using it's distinguished name.
 
@@ -381,7 +381,7 @@ class UcsHandle(UcsSession):
 
         elem = config_resolve_dns(cookie=self.cookie,
                                   in_dns=dn_set,
-                                  in_hierarchical=hierarchy)
+                                  in_hierarchical=child)
         response = self.post_elem(elem, timeout=timeout)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
@@ -401,7 +401,7 @@ class UcsHandle(UcsSession):
         return mo
 
     def query_classid(self, class_id=None, filter_str=None, hierarchy=False,
-                      need_response=False, timeout=None):
+                      need_response=False, timeout=None, child=False):
         """
         Finds an object using it's class id.
 
@@ -469,7 +469,7 @@ class UcsHandle(UcsSession):
         elem = config_resolve_class(cookie=self.cookie,
                                     class_id=meta_class_id,
                                     in_filter=in_filter,
-                                    in_hierarchical=hierarchy)
+                                    in_hierarchical=child)
         response = self.post_elem(elem, timeout=timeout)
         if response.error_code != 0:
             raise UcsException(response.error_code, response.error_descr)
