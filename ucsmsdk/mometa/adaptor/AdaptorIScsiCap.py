@@ -56,17 +56,17 @@ class AdaptorIScsiCap(ManagedObject):
     mo_meta = MoMeta("AdaptorIScsiCap", "adaptorIScsiCap", "iscsi", VersionMeta.Version201m, "InputOutput", 0x7ff, [], ["read-only"], [u'adaptorFruCapProvider'], [], ["Get"])
 
     prop_meta = {
-        "boot_order_type": MoPropertyMeta("boot_order_type", "bootOrderType", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["bev-order", "cd-order", "cimc-vmedia-cdd-device-order", "cimc-vmedia-fdd-device-order", "cimc-vmedia-hdd-device-order", "external-usb-device-order", "fdd-order", "hdd-order", "internal-efi-shell", "internal-usb-device-order", "iscsi-any-device-order", "iscsi-device-order", "kvm-vmedia-cdd-device-order", "kvm-vmedia-fdd-device-order", "kvm-vmedia-hdd-device-order", "lan-any-device-order", "local-storage-any-device-order", "network-device-order", "nvme-device-order", "nvme-disk-ssd-device-order", "nvme-pci-ssd-device-order", "san-any-device-order", "san-device-order", "sdcard-device-order", "system-boot-order", "uefi-shell-device-order", "uefi-target-device-order", "unknown-device-order"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "mac_offset1": MoPropertyMeta("mac_offset1", "macOffset1", "byte", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], []), 
-        "mac_offset2": MoPropertyMeta("mac_offset2", "macOffset2", "byte", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, [], []), 
-        "offload_support": MoPropertyMeta("offload_support", "offloadSupport", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["false", "no", "true", "yes"], []), 
-        "offload_type": MoPropertyMeta("offload_type", "offloadType", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["none", "physical", "virtual"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "vlan_for_boot": MoPropertyMeta("vlan_for_boot", "vlanForBoot", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["false", "no", "true", "yes"], []), 
+        "boot_order_type": MoPropertyMeta("boot_order_type", "bootOrderType", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["bev-order", "cd-order", "cimc-vmedia-cdd-device-order", "cimc-vmedia-fdd-device-order", "cimc-vmedia-hdd-device-order", "external-usb-device-order", "fdd-order", "hdd-order", "internal-efi-shell", "internal-usb-device-order", "iscsi-any-device-order", "iscsi-device-order", "kvm-vmedia-cdd-device-order", "kvm-vmedia-fdd-device-order", "kvm-vmedia-hdd-device-order", "lan-any-device-order", "local-storage-any-device-order", "network-device-order", "nvme-device-order", "nvme-disk-ssd-device-order", "nvme-pci-ssd-device-order", "san-any-device-order", "san-device-order", "sdcard-device-order", "system-boot-order", "uefi-shell-device-order", "uefi-target-device-order", "unknown-device-order"], []),
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "mac_offset1": MoPropertyMeta("mac_offset1", "macOffset1", "byte", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], []),
+        "mac_offset2": MoPropertyMeta("mac_offset2", "macOffset2", "byte", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, [], []),
+        "offload_support": MoPropertyMeta("offload_support", "offloadSupport", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["false", "no", "true", "yes"], []),
+        "offload_type": MoPropertyMeta("offload_type", "offloadType", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["none", "physical", "virtual"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "vlan_for_boot": MoPropertyMeta("vlan_for_boot", "vlanForBoot", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["false", "no", "true", "yes"], []),
     }
 
     prop_map = {

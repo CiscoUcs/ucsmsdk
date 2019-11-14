@@ -18,14 +18,14 @@ class LsbootUEFIBootParam(ManagedObject):
     mo_meta = MoMeta("LsbootUEFIBootParam", "lsbootUEFIBootParam", "uefi-boot-param", VersionMeta.Version224b, "InputOutput", 0xff, [], ["admin", "ls-config-policy", "ls-server-policy", "ls-storage-policy"], [u'lsbootDefaultLocalImage', u'lsbootEmbeddedLocalDiskImage', u'lsbootEmbeddedLocalDiskImagePath', u'lsbootEmbeddedLocalLunImage', u'lsbootIScsiImagePath', u'lsbootLanImagePath', u'lsbootLocalDiskImage', u'lsbootLocalDiskImagePath', u'lsbootLocalHddImage', u'lsbootLocalLunImagePath', u'lsbootNvme', u'lsbootSanCatSanImagePath', u'lsbootSanImagePath', u'lsbootUsbExternalImage', u'lsbootUsbFlashStorageImage', u'lsbootUsbInternalImage'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "boot_description": MoPropertyMeta("boot_description", "bootDescription", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, 0, 510, None, [], []), 
-        "boot_loader_name": MoPropertyMeta("boot_loader_name", "bootLoaderName", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, [], []), 
-        "boot_loader_path": MoPropertyMeta("boot_loader_path", "bootLoaderPath", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x10, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "boot_description": MoPropertyMeta("boot_description", "bootDescription", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, 0, 510, None, [], []),
+        "boot_loader_name": MoPropertyMeta("boot_loader_name", "bootLoaderName", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, [], []),
+        "boot_loader_path": MoPropertyMeta("boot_loader_path", "bootLoaderPath", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], []),
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x10, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 
     prop_map = {

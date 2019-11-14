@@ -25,18 +25,18 @@ class MemoryPersistentMemoryNamespace(ManagedObject):
     mo_meta = MoMeta("MemoryPersistentMemoryNamespace", "memoryPersistentMemoryNamespace", "ns-[uuid]", VersionMeta.Version404a, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'memoryPersistentMemoryRegion'], [u'faultInst'], [None])
 
     prop_meta = {
-        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["configure", "delete", "force-configure", "force-delete", "force-flag", "init", "matching", "not-matching"], []), 
-        "capacity": MoPropertyMeta("capacity", "capacity", "long", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([0-9]{1,15})$""", [], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version404a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "health_state": MoPropertyMeta("health_state", "healthState", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "label_version": MoPropertyMeta("label_version", "labelVersion", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[a-zA-Z0-9#_-][a-zA-Z0-9#_ -]{0,62}""", [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "uuid": MoPropertyMeta("uuid", "uuid", "string", VersionMeta.Version404a, MoPropertyMeta.NAMING, 0x40, 1, 510, None, [], []), 
+        "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["configure", "delete", "force-configure", "force-delete", "force-flag", "init", "matching", "not-matching"], []),
+        "capacity": MoPropertyMeta("capacity", "capacity", "long", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([0-9]{1,15})$""", [], []),
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version404a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
+        "health_state": MoPropertyMeta("health_state", "healthState", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "label_version": MoPropertyMeta("label_version", "labelVersion", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[a-zA-Z0-9#_-][a-zA-Z0-9#_ -]{0,62}""", [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "uuid": MoPropertyMeta("uuid", "uuid", "string", VersionMeta.Version404a, MoPropertyMeta.NAMING, 0x40, 1, 510, None, [], []),
     }
 
     prop_map = {

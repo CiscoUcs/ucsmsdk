@@ -37,17 +37,17 @@ class ComputeFactoryResetOperation(ManagedObject):
     mo_meta = MoMeta("ComputeFactoryResetOperation", "computeFactoryResetOperation", "factory-reset", VersionMeta.Version227b, "InputOutput", 0x3ff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "create_initial_volumes": MoPropertyMeta("create_initial_volumes", "createInitialVolumes", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["create-initial-volumes", "no-init", "unknown"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "flex_storage_scrub": MoPropertyMeta("flex_storage_scrub", "flexStorageScrub", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["no-scrub", "scrub", "unknown"], []), 
-        "oper_status": MoPropertyMeta("oper_status", "operStatus", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cimc-reset-complete", "cimc-reset-in-progress", "idle", "running", "scrub-stage-complete"], []), 
-        "persistent_memory_scrub": MoPropertyMeta("persistent_memory_scrub", "persistentMemoryScrub", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["no-scrub", "scrub", "unknown"], []), 
-        "reset_trigger": MoPropertyMeta("reset_trigger", "resetTrigger", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["canceled", "idle", "triggered"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "storage_scrub": MoPropertyMeta("storage_scrub", "storageScrub", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["no-scrub", "scrub", "unknown"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "create_initial_volumes": MoPropertyMeta("create_initial_volumes", "createInitialVolumes", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["create-initial-volumes", "no-init", "unknown"], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "flex_storage_scrub": MoPropertyMeta("flex_storage_scrub", "flexStorageScrub", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["no-scrub", "scrub", "unknown"], []),
+        "oper_status": MoPropertyMeta("oper_status", "operStatus", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cimc-reset-complete", "cimc-reset-in-progress", "idle", "running", "scrub-stage-complete"], []),
+        "persistent_memory_scrub": MoPropertyMeta("persistent_memory_scrub", "persistentMemoryScrub", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["no-scrub", "scrub", "unknown"], []),
+        "reset_trigger": MoPropertyMeta("reset_trigger", "resetTrigger", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["canceled", "idle", "triggered"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "storage_scrub": MoPropertyMeta("storage_scrub", "storageScrub", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["no-scrub", "scrub", "unknown"], []),
     }
 
     prop_map = {

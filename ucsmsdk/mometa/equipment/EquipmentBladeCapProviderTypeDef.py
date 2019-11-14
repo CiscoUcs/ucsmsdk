@@ -18,13 +18,13 @@ class EquipmentBladeCapProviderTypeDef(ManagedObject):
     mo_meta = MoMeta("EquipmentBladeCapProviderTypeDef", "equipmentBladeCapProviderTypeDef", "blade-provider-type", VersionMeta.Version224b, "InputOutput", 0x7f, [], [""], [u'equipmentBladeCapProvider'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "num_adapter_slots": MoPropertyMeta("num_adapter_slots", "numAdapterSlots", "ushort", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], []), 
-        "num_slots": MoPropertyMeta("num_slots", "numSlots", "ushort", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
+        "num_adapter_slots": MoPropertyMeta("num_adapter_slots", "numAdapterSlots", "ushort", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], []),
+        "num_slots": MoPropertyMeta("num_slots", "numSlots", "ushort", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 
     prop_map = {

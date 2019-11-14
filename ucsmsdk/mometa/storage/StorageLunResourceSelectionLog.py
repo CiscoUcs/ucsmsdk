@@ -38,16 +38,16 @@ class StorageLunResourceSelectionLog(ManagedObject):
     mo_meta = MoMeta("StorageLunResourceSelectionLog", "storageLunResourceSelectionLog", "selection-log-[order]", VersionMeta.Version224b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'storageVirtualDriveRef'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "decision_type": MoPropertyMeta("decision_type", "decisionType", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["affinity", "dedicated-hot-spare", "global-hot-spare", "normal-disk", "select-lun", "share-disk-group", "unspecified", "use-remaining-disk", "use-remaining-space", "verify-controller-config", "verify-disk-config", "verify-diskgroup-config", "verify-lun-config", "verify-raid-config", "verify-resources", "verify-strip-size-config", "verify-virtual-drive-config"], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version224b, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []), 
-        "result": MoPropertyMeta("result", "result", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["data-loss", "failed", "succeeded", "unspecified"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "time_stamp": MoPropertyMeta("time_stamp", "timeStamp", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "decision_type": MoPropertyMeta("decision_type", "decisionType", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["affinity", "dedicated-hot-spare", "global-hot-spare", "normal-disk", "select-lun", "share-disk-group", "unspecified", "use-remaining-disk", "use-remaining-space", "verify-controller-config", "verify-disk-config", "verify-diskgroup-config", "verify-lun-config", "verify-raid-config", "verify-resources", "verify-strip-size-config", "verify-virtual-drive-config"], []),
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
+        "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version224b, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []),
+        "result": MoPropertyMeta("result", "result", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["data-loss", "failed", "succeeded", "unspecified"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "time_stamp": MoPropertyMeta("time_stamp", "timeStamp", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
     }
 
     prop_map = {

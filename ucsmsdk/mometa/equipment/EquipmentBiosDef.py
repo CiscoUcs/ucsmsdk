@@ -35,21 +35,21 @@ class EquipmentBiosDef(ManagedObject):
     mo_meta = MoMeta("EquipmentBiosDef", "equipmentBiosDef", "bios-def", VersionMeta.Version202m, "InputOutput", 0xff, [], [""], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version202m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version202m, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []), 
-        "reset_on": MoPropertyMeta("reset_on", "resetOn", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Activate", "Unknown", "Update"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "secure_bios": MoPropertyMeta("secure_bios", "secureBios", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Not supported", "Supported", "Unknown"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "storage_method": MoPropertyMeta("storage_method", "storageMethod", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Dual Flash", "Single Flash", "Unknown"], []), 
-        "tpm_config_support": MoPropertyMeta("tpm_config_support", "tpmConfigSupport", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Supported", "Unsupported"], []), 
-        "update_method": MoPropertyMeta("update_method", "updateMethod", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Management Controller", "Pnuos", "Unknown"], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version202m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version202m, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []),
+        "reset_on": MoPropertyMeta("reset_on", "resetOn", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Activate", "Unknown", "Update"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "secure_bios": MoPropertyMeta("secure_bios", "secureBios", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Not supported", "Supported", "Unknown"], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "storage_method": MoPropertyMeta("storage_method", "storageMethod", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Dual Flash", "Single Flash", "Unknown"], []),
+        "tpm_config_support": MoPropertyMeta("tpm_config_support", "tpmConfigSupport", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Supported", "Unsupported"], []),
+        "update_method": MoPropertyMeta("update_method", "updateMethod", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Management Controller", "Pnuos", "Unknown"], []),
     }
 
     prop_map = {
