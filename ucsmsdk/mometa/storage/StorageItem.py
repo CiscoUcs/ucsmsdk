@@ -28,16 +28,16 @@ class StorageItem(ManagedObject):
     mo_meta = MoMeta("StorageItem", "storageItem", "stor-part-[name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'networkElement'], [u'faultInst'], ["Get"])
 
     prop_meta = {
-        "alarm_type": MoPropertyMeta("alarm_type", "alarmType", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["major", "minor"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []), 
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["clean", "mounted", "not-clean", "unknown", "unmounted"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "size": MoPropertyMeta("size", "size", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["nothing"], ["0-18446744073709551615"]), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "used": MoPropertyMeta("used", "used", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "full", "not-applicable"], ["0-101"]), 
+        "alarm_type": MoPropertyMeta("alarm_type", "alarmType", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["major", "minor"], []),
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []),
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["clean", "mounted", "not-clean", "unknown", "unmounted"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "size": MoPropertyMeta("size", "size", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["nothing"], ["0-18446744073709551615"]),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "used": MoPropertyMeta("used", "used", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "full", "not-applicable"], ["0-101"]),
     }
 
     prop_map = {

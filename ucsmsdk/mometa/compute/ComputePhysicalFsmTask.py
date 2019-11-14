@@ -25,10 +25,12 @@ class ComputePhysicalFsmTaskConsts:
     ITEM_DISASSOCIATE = "Disassociate"
     ITEM_DISK_ZONING_INVENTORY = "DiskZoningInventory"
     ITEM_ENABLE_CIMC_SECURE_BOOT = "EnableCimcSecureBoot"
+    ITEM_EXECUTE_ACTIONS = "ExecuteActions"
     ITEM_FLASH_CONTROLLER = "FlashController"
     ITEM_FW_UPGRADE = "FwUpgrade"
     ITEM_HARD_SHUTDOWN = "HardShutdown"
     ITEM_HARDRESET = "Hardreset"
+    ITEM_NVME_SWITCH_RECOVERY = "NvmeSwitchRecovery"
     ITEM_OOB_STORAGE_ADMIN_CONFIG = "OobStorageAdminConfig"
     ITEM_POWER_CAP = "PowerCap"
     ITEM_POWERCYCLE = "Powercycle"
@@ -60,15 +62,15 @@ class ComputePhysicalFsmTask(ManagedObject):
     mo_meta = MoMeta("ComputePhysicalFsmTask", "computePhysicalFsmTask", "task-[item]", VersionMeta.Version141i, "OutputOnly", 0xf, [], [""], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "completion": MoPropertyMeta("completion", "completion", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cancelled", "completed", "processing", "scheduled"], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []), 
-        "flags": MoPropertyMeta("flags", "flags", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""(defaultValue){0,1}""", [], []), 
-        "item": MoPropertyMeta("item", "item", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateAdaptor", "ActivateBIOS", "Associate", "BiosRecovery", "CimcSecurityConfig", "CimcSessionDelete", "CmosReset", "ConfigBoard", "ConfigSoL", "Decommission", "Diag", "DiagnosticInterrupt", "Disassociate", "DiskZoningInventory", "EnableCimcSecureBoot", "FlashController", "FwUpgrade", "HardShutdown", "Hardreset", "OobStorageAdminConfig", "PowerCap", "Powercycle", "ResetBmc", "ResetIpmi", "ResetKvm", "ResetMemoryErrors", "ServiceInfraDeploy", "ServiceInfraWithdraw", "SoftShutdown", "Softreset", "SwConnUpd", "Turnup", "UnconfigSoL", "UpdateAdaptor", "UpdateBIOS", "UpdateBoardController", "clearTPM", "nop", "updateExtUsers"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "seq_id": MoPropertyMeta("seq_id", "seqId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "completion": MoPropertyMeta("completion", "completion", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cancelled", "completed", "processing", "scheduled"], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []),
+        "flags": MoPropertyMeta("flags", "flags", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""(defaultValue){0,1}""", [], []),
+        "item": MoPropertyMeta("item", "item", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateAdaptor", "ActivateBIOS", "Associate", "BiosRecovery", "CimcSecurityConfig", "CimcSessionDelete", "CmosReset", "ConfigBoard", "ConfigSoL", "Decommission", "Diag", "DiagnosticInterrupt", "Disassociate", "DiskZoningInventory", "EnableCimcSecureBoot", "ExecuteActions", "FlashController", "FwUpgrade", "HardShutdown", "Hardreset", "NvmeSwitchRecovery", "OobStorageAdminConfig", "PowerCap", "Powercycle", "ResetBmc", "ResetIpmi", "ResetKvm", "ResetMemoryErrors", "ServiceInfraDeploy", "ServiceInfraWithdraw", "SoftShutdown", "Softreset", "SwConnUpd", "Turnup", "UnconfigSoL", "UpdateAdaptor", "UpdateBIOS", "UpdateBoardController", "clearTPM", "nop", "updateExtUsers"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "seq_id": MoPropertyMeta("seq_id", "seqId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 
     prop_map = {

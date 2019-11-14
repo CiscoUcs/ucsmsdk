@@ -21,15 +21,15 @@ class FabricVsanMembership(ManagedObject):
     mo_meta = MoMeta("FabricVsanMembership", "fabricVsanMembership", "vsanmember-[vsan_id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], [u'fabricFcSanEp', u'fabricFcSanPc', u'fabricFcoeEstcEp', u'fabricFcoeSanEp', u'fabricFcoeSanPc'], [u'faultInst'], [None])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "member_status": MoPropertyMeta("member_status", "memberStatus", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["down", "up"], []), 
-        "parent_admin_state": MoPropertyMeta("parent_admin_state", "parentAdminState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "state_qual": MoPropertyMeta("state_qual", "stateQual", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "vsan_id": MoPropertyMeta("vsan_id", "vsanId", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x20, None, None, None, [], ["1-4093"]), 
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
+        "member_status": MoPropertyMeta("member_status", "memberStatus", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["down", "up"], []),
+        "parent_admin_state": MoPropertyMeta("parent_admin_state", "parentAdminState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "state_qual": MoPropertyMeta("state_qual", "stateQual", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "vsan_id": MoPropertyMeta("vsan_id", "vsanId", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x20, None, None, None, [], ["1-4093"]),
     }
 
     prop_map = {

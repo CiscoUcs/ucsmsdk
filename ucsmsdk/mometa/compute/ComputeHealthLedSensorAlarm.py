@@ -19,15 +19,15 @@ class ComputeHealthLedSensorAlarm(ManagedObject):
     mo_meta = MoMeta("ComputeHealthLedSensorAlarm", "computeHealthLedSensorAlarm", "sensor-alarm-[sensor_id]", VersionMeta.Version212a, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentHealthLed'], [], ["Get"])
 
     prop_meta = {
-        "alarm_desc": MoPropertyMeta("alarm_desc", "alarmDesc", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "alarm_severity": MoPropertyMeta("alarm_severity", "alarmSeverity", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["minor", "severe"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "sensor_id": MoPropertyMeta("sensor_id", "sensorId", "ushort", VersionMeta.Version212a, MoPropertyMeta.NAMING, 0x10, None, None, None, [], []), 
-        "sensor_name": MoPropertyMeta("sensor_name", "sensorName", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "alarm_desc": MoPropertyMeta("alarm_desc", "alarmDesc", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "alarm_severity": MoPropertyMeta("alarm_severity", "alarmSeverity", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["minor", "severe"], []),
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "sensor_id": MoPropertyMeta("sensor_id", "sensorId", "ushort", VersionMeta.Version212a, MoPropertyMeta.NAMING, 0x10, None, None, None, [], []),
+        "sensor_name": MoPropertyMeta("sensor_name", "sensorName", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 
     prop_map = {

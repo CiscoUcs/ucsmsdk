@@ -56,18 +56,18 @@ class LstorageVirtualDriveDef(ManagedObject):
     mo_meta = MoMeta("LstorageVirtualDriveDef", "lstorageVirtualDriveDef", "virtual-drive-def", VersionMeta.Version224b, "InputOutput", 0xfff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageDiskGroupConfigDef', u'lstorageDiskGroupConfigPolicy', u'lstorageLunSetConfig'], [], ["Get", "Set"])
 
     prop_meta = {
-        "access_policy": MoPropertyMeta("access_policy", "accessPolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["blocked", "hidden", "platform-default", "read-only", "read-write", "transport-ready", "unknown"], []), 
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
-        "drive_cache": MoPropertyMeta("drive_cache", "driveCache", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["disable", "enable", "no-change", "platform-default", "unknown"], []), 
-        "io_policy": MoPropertyMeta("io_policy", "ioPolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["cached", "direct", "platform-default", "unknown"], []), 
-        "read_policy": MoPropertyMeta("read_policy", "readPolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["normal", "platform-default", "read-ahead", "unknown"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []), 
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "security": MoPropertyMeta("security", "security", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["false", "no", "true", "yes"], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
-        "strip_size": MoPropertyMeta("strip_size", "stripSize", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["1024KB", "128KB", "16KB", "256KB", "32KB", "512KB", "64KB", "8KB", "platform-default", "unspecified"], []), 
-        "write_cache_policy": MoPropertyMeta("write_cache_policy", "writeCachePolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["always-write-back", "platform-default", "unknown", "write-back-good-bbu", "write-through"], []), 
+        "access_policy": MoPropertyMeta("access_policy", "accessPolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["blocked", "hidden", "platform-default", "read-only", "read-write", "transport-ready", "unknown"], []),
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "drive_cache": MoPropertyMeta("drive_cache", "driveCache", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["disable", "enable", "no-change", "platform-default", "unknown"], []),
+        "io_policy": MoPropertyMeta("io_policy", "ioPolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["cached", "direct", "platform-default", "unknown"], []),
+        "read_policy": MoPropertyMeta("read_policy", "readPolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["normal", "platform-default", "read-ahead", "unknown"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "security": MoPropertyMeta("security", "security", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["false", "no", "true", "yes"], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "strip_size": MoPropertyMeta("strip_size", "stripSize", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["1024KB", "128KB", "16KB", "256KB", "32KB", "512KB", "64KB", "8KB", "platform-default", "unspecified"], []),
+        "write_cache_policy": MoPropertyMeta("write_cache_policy", "writeCachePolicy", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["always-write-back", "platform-default", "unknown", "write-back-good-bbu", "write-through"], []),
     }
 
     prop_map = {
