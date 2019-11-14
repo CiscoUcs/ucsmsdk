@@ -28,7 +28,9 @@ class EquipmentPciDefConsts:
     DEVICE_TYPE_LSI_EXTERNAL_MEGA_RAID_HBA = "LsiExternalMegaRaidHba"
     DEVICE_TYPE_LSI_MEGA_RAID_HBA = "LsiMegaRaidHba"
     DEVICE_TYPE_LSI_WALNUT_CREEK_HBA = "LsiWalnutCreekHba"
+    DEVICE_TYPE_M2_HW_RAID_MARVELL_HBA = "M2HwRaidMarvellHba"
     DEVICE_TYPE_MAX_COUNT = "MaxCount"
+    DEVICE_TYPE_MELLANOX_NIC = "MellanoxNic"
     DEVICE_TYPE_MENLO_EMULEX_HBA = "MenloEmulexHba"
     DEVICE_TYPE_MENLO_QLOGIC_FC_HBA = "MenloQlogicFcHba"
     DEVICE_TYPE_MEZZ_DUBLIN_QLOGIC_FC_HBA = "MezzDublinQlogicFcHba"
@@ -67,14 +69,13 @@ class EquipmentPciDef(ManagedObject):
     consts = EquipmentPciDefConsts()
     naming_props = set([u'name'])
 
-
     mo_meta = MoMeta("EquipmentPciDef", "equipmentPciDef", "pci-[name]", VersionMeta.Version141i, "InputOutput", 0xff, [], [""], [u'adaptorFruCapProvider', u'adaptorUnit', u'equipmentCoprocessorUnitCapProvider', u'equipmentGraphicsCardCapProvider', u'equipmentLocalDiskControllerCapProvider', u'equipmentPciSwitchCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "device": MoPropertyMeta("device", "device", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "device_type": MoPropertyMeta("device_type", "deviceType", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Broadcom57712Nic", "BroadcomNic", "EmulexFC", "EmulexNic", "FusionHba", "GpuAmd", "GpuNvidia", "IntelICH10RHba", "IntelNic", "LSIMegaRaid3008", "LagunaBeach", "LagunaBeachPlus", "LagunaRock", "LagunaRockPlus", "LewisburgPSata", "LewisburgSSataSwRaid", "LodiHba", "Lsi1064EHba", "Lsi1068EHba", "LsiExternalMegaRaidHba", "LsiMegaRaidHba", "LsiWalnutCreekHba", "MaxCount", "MenloEmulexHba", "MenloQlogicFcHba", "MezzDublinQlogicFcHba", "MezzSchulzQlogicFcHba", "MezzTigerSharkHba", "NvmeHba", "NvmeIntelHba", "NvmeMezz", "PciDublinQlogicFcHba", "PciEverestNic", "PciIntelX520Nic", "PciIntelX550Nic", "PciIntelX710Nic", "PciMPCiscoNic", "PciNianticNic", "PciPlxSwitch", "PciQlogic8362FcHba", "PciQlogicBigBear", "PciSchulzQlogicFcHba", "PciTigerSharkHba", "QlogicFC", "QlogicNic", "SataHba", "Talladega", "Unknown", "WellsburgHba"], []), 
+        "device_type": MoPropertyMeta("device_type", "deviceType", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Broadcom57712Nic", "BroadcomNic", "EmulexFC", "EmulexNic", "FusionHba", "GpuAmd", "GpuNvidia", "IntelICH10RHba", "IntelNic", "LSIMegaRaid3008", "LagunaBeach", "LagunaBeachPlus", "LagunaRock", "LagunaRockPlus", "LewisburgPSata", "LewisburgSSataSwRaid", "LodiHba", "Lsi1064EHba", "Lsi1068EHba", "LsiExternalMegaRaidHba", "LsiMegaRaidHba", "LsiWalnutCreekHba", "M2HwRaidMarvellHba", "MaxCount", "MellanoxNic", "MenloEmulexHba", "MenloQlogicFcHba", "MezzDublinQlogicFcHba", "MezzSchulzQlogicFcHba", "MezzTigerSharkHba", "NvmeHba", "NvmeIntelHba", "NvmeMezz", "PciDublinQlogicFcHba", "PciEverestNic", "PciIntelX520Nic", "PciIntelX550Nic", "PciIntelX710Nic", "PciMPCiscoNic", "PciNianticNic", "PciPlxSwitch", "PciQlogic8362FcHba", "PciQlogicBigBear", "PciSchulzQlogicFcHba", "PciTigerSharkHba", "QlogicFC", "QlogicNic", "SataHba", "Talladega", "Unknown", "WellsburgHba"], []), 
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []), 
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]), 
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x10, 1, 512, None, [], []), 

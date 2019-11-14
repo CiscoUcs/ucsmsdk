@@ -18,7 +18,7 @@ class MemoryErrorStats(ManagedObject):
     consts = MemoryErrorStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MemoryErrorStats", "memoryErrorStats", "error-stats", VersionMeta.Version131c, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'memoryUnit'], [], ["Get"])
+    mo_meta = MoMeta("MemoryErrorStats", "memoryErrorStats", "error-stats", VersionMeta.Version131c, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'memoryPersistentMemoryUnit', u'memoryUnit'], [], ["Get"])
 
     prop_meta = {
         "dram_write_data_correctable_crc_errors": MoPropertyMeta("dram_write_data_correctable_crc_errors", "DramWriteDataCorrectableCRCErrors", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 

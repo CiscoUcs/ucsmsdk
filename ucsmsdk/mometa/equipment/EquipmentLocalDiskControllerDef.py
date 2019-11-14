@@ -12,6 +12,7 @@ class EquipmentLocalDiskControllerDefConsts:
     CONFIG_PARM_MOD_SUPPORTED_YES = "yes"
     CONTROLLER_DEF_TYPE_DUAL = "dual"
     CONTROLLER_DEF_TYPE_EMBEDDED = "embedded"
+    CONTROLLER_DEF_TYPE_M2 = "m2"
     CONTROLLER_DEF_TYPE_NONE = "none"
     CONTROLLER_DEF_TYPE_NVME = "nvme"
     CONTROLLER_DEF_TYPE_NVME_HHHL = "nvme-hhhl"
@@ -72,7 +73,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "config_parm_mod_supported": MoPropertyMeta("config_parm_mod_supported", "configParmModSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "controller_def_type": MoPropertyMeta("controller_def_type", "controllerDefType", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["dual", "embedded", "none", "nvme", "nvme-hhhl", "nvme-mezz", "slot-based"], []), 
+        "controller_def_type": MoPropertyMeta("controller_def_type", "controllerDefType", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["dual", "embedded", "m2", "none", "nvme", "nvme-hhhl", "nvme-mezz", "slot-based"], []), 
         "controller_sub_type": MoPropertyMeta("controller_sub_type", "controllerSubType", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["none", "psata", "ssata"], []), 
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []), 
         "disk_sharing_supported": MoPropertyMeta("disk_sharing_supported", "diskSharingSupported", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 

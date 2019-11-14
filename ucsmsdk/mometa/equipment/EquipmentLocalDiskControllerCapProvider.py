@@ -16,6 +16,7 @@ class EquipmentLocalDiskControllerCapProviderConsts:
     CONTAINMENT_METHOD_CONTROLLER = "controller"
     CONTROLLER_MODE_AHCI = "AHCI"
     CONTROLLER_MODE_HBA = "HBA"
+    CONTROLLER_MODE_M2_HWRAID = "M2HWRAID"
     CONTROLLER_MODE_NVME = "NVME"
     CONTROLLER_MODE_PHBA = "PHBA"
     CONTROLLER_MODE_PRAID = "PRAID"
@@ -53,7 +54,7 @@ class EquipmentLocalDiskControllerCapProvider(ManagedObject):
         "card_type": MoPropertyMeta("card_type", "cardType", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FLASH", "M2", "NVME", "SAS", "SD"], []), 
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []), 
         "containment_method": MoPropertyMeta("containment_method", "containmentMethod", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["chassis-enclosure", "compute-enclosure", "controller"], []), 
-        "controller_mode": MoPropertyMeta("controller_mode", "controllerMode", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["AHCI", "HBA", "NVME", "PHBA", "PRAID", "RAID", "SWRAID", "XSDS", "unknown"], []), 
+        "controller_mode": MoPropertyMeta("controller_mode", "controllerMode", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["AHCI", "HBA", "M2HWRAID", "NVME", "PHBA", "PRAID", "RAID", "SWRAID", "XSDS", "unknown"], []), 
         "controller_type": MoPropertyMeta("controller_type", "controllerType", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["external", "internal"], []), 
         "deleted": MoPropertyMeta("deleted", "deleted", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
         "deprecated": MoPropertyMeta("deprecated", "deprecated", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 

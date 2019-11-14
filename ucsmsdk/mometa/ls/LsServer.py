@@ -283,7 +283,7 @@ class LsServer(ManagedObject):
     consts = LsServerConsts()
     naming_props = set([u'name'])
 
-    mo_meta = MoMeta("LsServer", "lsServer", "ls-[name]", VersionMeta.Version101e, "InputOutput", 0x3ffffffff, [], ["admin", "ls-compute", "ls-config", "ls-server"], [u'orgOrg'], [u'cimcvmediaMountConfigDef', u'computePowerSyncDef', u'eventInst', u'fabricVCon', u'faultInst', u'faultSuppressTask', u'identRequestEp', u'initiatorRequestorEp', u'lsBinding', u'lsFcLocale', u'lsIdentityInfo', u'lsIssues', u'lsPower', u'lsRequirement', u'lsServerAssocCtx', u'lsServerExtension', u'lsServerFsm', u'lsServerFsmTask', u'lsUuidHistory', u'lsVConAssign', u'lsVersionBeh', u'lsbootDef', u'lsmaintAck', u'lstorageProfileBinding', u'lstorageProfileDef', u'mgmtInterface', u'moKvCfgHolder', u'solConfig', u'storageIniGroup', u'storageLocalDiskConfigDef', u'storageVirtualDriveRef', u'vnicConnDef', u'vnicDefBeh', u'vnicDynamicCon', u'vnicEther', u'vnicFc', u'vnicFcNode', u'vnicIScsi', u'vnicIScsiBootParams', u'vnicIScsiLCP', u'vnicIScsiNode', u'vnicIpV4MgmtPooledAddr', u'vnicIpV4PooledAddr', u'vnicIpV4StaticAddr', u'vnicIpc', u'vnicScsi'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LsServer", "lsServer", "ls-[name]", VersionMeta.Version101e, "InputOutput", 0x7ffffffff, [], ["admin", "ls-compute", "ls-config", "ls-server"], [u'orgOrg'], [u'cimcvmediaMountConfigDef', u'computePowerSyncDef', u'eventInst', u'fabricVCon', u'faultInst', u'faultSuppressTask', u'identRequestEp', u'initiatorRequestorEp', u'lsBinding', u'lsFcLocale', u'lsIdentityInfo', u'lsIssues', u'lsPower', u'lsRequirement', u'lsServerAssocCtx', u'lsServerExtension', u'lsServerFsm', u'lsServerFsmTask', u'lsUuidHistory', u'lsVConAssign', u'lsVersionBeh', u'lsbootDef', u'lsmaintAck', u'lstorageProfileBinding', u'lstorageProfileDef', u'memoryPersistentMemoryConfiguration', u'mgmtInterface', u'moKvCfgHolder', u'solConfig', u'storageIniGroup', u'storageLocalDiskConfigDef', u'storageVirtualDriveRef', u'vnicConnDef', u'vnicDefBeh', u'vnicDynamicCon', u'vnicEther', u'vnicFc', u'vnicFcNode', u'vnicIScsi', u'vnicIScsiBootParams', u'vnicIScsiLCP', u'vnicIScsiNode', u'vnicIpV4MgmtPooledAddr', u'vnicIpV4PooledAddr', u'vnicIpV4StaticAddr', u'vnicIpc', u'vnicScsi'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "agent_policy_name": MoPropertyMeta("agent_policy_name", "agentPolicyName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
@@ -333,6 +333,7 @@ class LsServer(ManagedObject):
         "oper_maint_policy_name": MoPropertyMeta("oper_maint_policy_name", "operMaintPolicyName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "oper_mgmt_access_policy_name": MoPropertyMeta("oper_mgmt_access_policy_name", "operMgmtAccessPolicyName", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "oper_mgmt_fw_policy_name": MoPropertyMeta("oper_mgmt_fw_policy_name", "operMgmtFwPolicyName", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
+        "oper_persistent_memory_policy_name": MoPropertyMeta("oper_persistent_memory_policy_name", "operPersistentMemoryPolicyName", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "oper_power_policy_name": MoPropertyMeta("oper_power_policy_name", "operPowerPolicyName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "oper_power_sync_policy_name": MoPropertyMeta("oper_power_sync_policy_name", "operPowerSyncPolicyName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "oper_scrub_policy_name": MoPropertyMeta("oper_scrub_policy_name", "operScrubPolicyName", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
@@ -343,27 +344,28 @@ class LsServer(ManagedObject):
         "oper_vcon_profile_name": MoPropertyMeta("oper_vcon_profile_name", "operVconProfileName", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "oper_vmedia_policy_name": MoPropertyMeta("oper_vmedia_policy_name", "operVmediaPolicyName", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "owner": MoPropertyMeta("owner", "owner", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["management", "physical-default-config", "physical-inherit", "policy", "system", "tier"], []), 
+        "persistent_memory_policy_name": MoPropertyMeta("persistent_memory_policy_name", "persistentMemoryPolicyName", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x80000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "pn_dn": MoPropertyMeta("pn_dn", "pnDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []), 
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x80000, None, None, None, ["local", "pending-policy", "policy"], []), 
-        "power_policy_name": MoPropertyMeta("power_policy_name", "powerPolicyName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "power_sync_policy_name": MoPropertyMeta("power_sync_policy_name", "powerSyncPolicyName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x200000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100000, None, None, None, ["local", "pending-policy", "policy"], []), 
+        "power_policy_name": MoPropertyMeta("power_policy_name", "powerPolicyName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x200000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "power_sync_policy_name": MoPropertyMeta("power_sync_policy_name", "powerSyncPolicyName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x400000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
         "prop_acl": MoPropertyMeta("prop_acl", "propAcl", "ulong", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []), 
-        "resolve_remote": MoPropertyMeta("resolve_remote", "resolveRemote", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x400000, None, None, None, ["no", "yes"], []), 
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x800000, 0, 256, None, [], []), 
+        "resolve_remote": MoPropertyMeta("resolve_remote", "resolveRemote", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x800000, None, None, None, ["no", "yes"], []), 
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x1000000, 0, 256, None, [], []), 
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []), 
-        "scrub_policy_name": MoPropertyMeta("scrub_policy_name", "scrubPolicyName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "sol_policy_name": MoPropertyMeta("sol_policy_name", "solPolicyName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "src_templ_name": MoPropertyMeta("src_templ_name", "srcTemplName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000000, None, None, None, [], []), 
-        "stats_policy_name": MoPropertyMeta("stats_policy_name", "statsPolicyName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10000000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
+        "scrub_policy_name": MoPropertyMeta("scrub_policy_name", "scrubPolicyName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "sol_policy_name": MoPropertyMeta("sol_policy_name", "solPolicyName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "src_templ_name": MoPropertyMeta("src_templ_name", "srcTemplName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000000, None, None, None, [], []), 
+        "stats_policy_name": MoPropertyMeta("stats_policy_name", "statsPolicyName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10000000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20000000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []), 
         "svnic_config": MoPropertyMeta("svnic_config", "svnicConfig", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []), 
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x20000000, None, None, None, ["initial-template", "instance", "updating-template"], []), 
-        "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x40000000, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
-        "uuid": MoPropertyMeta("uuid", "uuid", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80000000, None, None, r"""(([0-9a-fA-F]){8}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){12})|0""", ["derived"], []), 
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x40000000, None, None, None, ["initial-template", "instance", "updating-template"], []), 
+        "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80000000, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []), 
+        "uuid": MoPropertyMeta("uuid", "uuid", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100000000, None, None, r"""(([0-9a-fA-F]){8}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){4}\-([0-9a-fA-F]){12})|0""", ["derived"], []), 
         "uuid_suffix": MoPropertyMeta("uuid_suffix", "uuidSuffix", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F]){4}\-([0-9a-fA-F]){12})|0""", [], []), 
-        "vcon_profile_name": MoPropertyMeta("vcon_profile_name", "vconProfileName", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x100000000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
-        "vmedia_policy_name": MoPropertyMeta("vmedia_policy_name", "vmediaPolicyName", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x200000000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "vcon_profile_name": MoPropertyMeta("vcon_profile_name", "vconProfileName", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x200000000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
+        "vmedia_policy_name": MoPropertyMeta("vmedia_policy_name", "vmediaPolicyName", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x400000000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []), 
     }
 
     prop_map = {
@@ -414,6 +416,7 @@ class LsServer(ManagedObject):
         "operMaintPolicyName": "oper_maint_policy_name", 
         "operMgmtAccessPolicyName": "oper_mgmt_access_policy_name", 
         "operMgmtFwPolicyName": "oper_mgmt_fw_policy_name", 
+        "operPersistentMemoryPolicyName": "oper_persistent_memory_policy_name", 
         "operPowerPolicyName": "oper_power_policy_name", 
         "operPowerSyncPolicyName": "oper_power_sync_policy_name", 
         "operScrubPolicyName": "oper_scrub_policy_name", 
@@ -424,6 +427,7 @@ class LsServer(ManagedObject):
         "operVconProfileName": "oper_vcon_profile_name", 
         "operVmediaPolicyName": "oper_vmedia_policy_name", 
         "owner": "owner", 
+        "persistentMemoryPolicyName": "persistent_memory_policy_name", 
         "pnDn": "pn_dn", 
         "policyLevel": "policy_level", 
         "policyOwner": "policy_owner", 
@@ -495,6 +499,7 @@ class LsServer(ManagedObject):
         self.oper_maint_policy_name = None
         self.oper_mgmt_access_policy_name = None
         self.oper_mgmt_fw_policy_name = None
+        self.oper_persistent_memory_policy_name = None
         self.oper_power_policy_name = None
         self.oper_power_sync_policy_name = None
         self.oper_scrub_policy_name = None
@@ -505,6 +510,7 @@ class LsServer(ManagedObject):
         self.oper_vcon_profile_name = None
         self.oper_vmedia_policy_name = None
         self.owner = None
+        self.persistent_memory_policy_name = None
         self.pn_dn = None
         self.policy_level = None
         self.policy_owner = None
