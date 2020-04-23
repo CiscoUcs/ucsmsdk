@@ -27,9 +27,9 @@ class HostimgPolicy(ManagedObject):
     """This is HostimgPolicy class."""
 
     consts = HostimgPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("HostimgPolicy", "hostimgPolicy", "img-policy-[name]", VersionMeta.Version141i, "InputOutput", 0xfff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server"], [u'orgOrg'], [u'hostimgTarget'], ["Get"])
+    mo_meta = MoMeta("HostimgPolicy", "hostimgPolicy", "img-policy-[name]", VersionMeta.Version141i, "InputOutput", 0xfff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server"], ['orgOrg'], ['hostimgTarget'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

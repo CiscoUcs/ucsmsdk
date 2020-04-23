@@ -156,7 +156,7 @@ class SwExtUtilityFsm(ManagedObject):
     consts = SwExtUtilityFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SwExtUtilityFsm", "swExtUtilityFsm", "fsm", VersionMeta.Version311e, "OutputOnly", 0xf, [], [""], [u'swExtUtility'], [u'swExtUtilityFsmStage'], [None])
+    mo_meta = MoMeta("SwExtUtilityFsm", "swExtUtilityFsm", "fsm", VersionMeta.Version311e, "OutputOnly", 0xf, [], [""], ['swExtUtility'], ['swExtUtilityFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version311e, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

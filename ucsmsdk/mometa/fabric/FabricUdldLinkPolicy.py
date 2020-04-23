@@ -23,9 +23,9 @@ class FabricUdldLinkPolicy(ManagedObject):
     """This is FabricUdldLinkPolicy class."""
 
     consts = FabricUdldLinkPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricUdldLinkPolicy", "fabricUdldLinkPolicy", "udld-link-pol-[name]", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "read-only"], [u'fabricLanCloud'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricUdldLinkPolicy", "fabricUdldLinkPolicy", "udld-link-pol-[name]", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "read-only"], ['fabricLanCloud'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

@@ -38,9 +38,9 @@ class FabricVCon(ManagedObject):
     """This is FabricVCon class."""
 
     consts = FabricVConConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("FabricVCon", "fabricVCon", "vcon-[id]", VersionMeta.Version111j, "InputOutput", 0xfff, [], ["admin", "ext-lan-policy", "ls-config-policy", "ls-network", "ls-network-policy", "ls-server-policy", "ls-storage-policy"], [u'fabricVConProfile', u'lsServer'], [], ["Add", "Get", "Set"])
+    mo_meta = MoMeta("FabricVCon", "fabricVCon", "vcon-[id]", VersionMeta.Version111j, "InputOutput", 0xfff, [], ["admin", "ext-lan-policy", "ls-config-policy", "ls-network", "ls-network-policy", "ls-server-policy", "ls-storage-policy"], ['fabricVConProfile', 'lsServer'], [], ["Add", "Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

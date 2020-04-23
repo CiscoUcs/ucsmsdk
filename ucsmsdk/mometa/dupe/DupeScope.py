@@ -2393,7 +2393,7 @@ class DupeScope(ManagedObject):
     """This is DupeScope class."""
 
     consts = DupeScopeConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
     mo_meta = MoMeta("DupeScope", "dupeScope", "scope-[id]", VersionMeta.Version302c, "InputOutput", 0xff, [], ["admin"], [], [], [None])
 

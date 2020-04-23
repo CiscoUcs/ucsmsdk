@@ -31,9 +31,9 @@ class QosclassSlowDrainFsmStage(ManagedObject):
     """This is QosclassSlowDrainFsmStage class."""
 
     consts = QosclassSlowDrainFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("QosclassSlowDrainFsmStage", "qosclassSlowDrainFsmStage", "stage-[name]", VersionMeta.Version402a, "OutputOnly", 0xf, [], [""], [u'qosclassSlowDrainFsm'], [], [None])
+    mo_meta = MoMeta("QosclassSlowDrainFsmStage", "qosclassSlowDrainFsmStage", "stage-[name]", VersionMeta.Version402a, "OutputOnly", 0xf, [], [""], ['qosclassSlowDrainFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version402a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

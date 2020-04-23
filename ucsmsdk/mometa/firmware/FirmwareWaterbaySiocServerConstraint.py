@@ -18,7 +18,7 @@ class FirmwareWaterbaySiocServerConstraint(ManagedObject):
     consts = FirmwareWaterbaySiocServerConstraintConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareWaterbaySiocServerConstraint", "firmwareWaterbaySiocServerConstraint", "waterbay-sioc-server-constraint", VersionMeta.Version401a, "InputOutput", 0x1f, [], ["read-only"], [u'firmwareConstraints'], [], [None])
+    mo_meta = MoMeta("FirmwareWaterbaySiocServerConstraint", "firmwareWaterbaySiocServerConstraint", "waterbay-sioc-server-constraint", VersionMeta.Version401a, "InputOutput", 0x1f, [], ["read-only"], ['firmwareConstraints'], [], [None])
 
     prop_meta = {
         "check_running_ver": MoPropertyMeta("check_running_ver", "checkRunningVer", "string", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

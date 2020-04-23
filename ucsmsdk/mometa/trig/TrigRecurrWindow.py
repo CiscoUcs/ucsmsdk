@@ -30,9 +30,9 @@ class TrigRecurrWindow(ManagedObject):
     """This is TrigRecurrWindow class."""
 
     consts = TrigRecurrWindowConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("TrigRecurrWindow", "trigRecurrWindow", "recurr-[name]", VersionMeta.Version141i, "InputOutput", 0x1fff, [], ["admin", "ls-compute", "ls-config", "ls-server"], [u'trigLocalSched', u'trigSched'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("TrigRecurrWindow", "trigRecurrWindow", "recurr-[name]", VersionMeta.Version141i, "InputOutput", 0x1fff, [], ["admin", "ls-compute", "ls-config", "ls-server"], ['trigLocalSched', 'trigSched'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

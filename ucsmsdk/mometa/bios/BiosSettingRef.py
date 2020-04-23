@@ -16,9 +16,9 @@ class BiosSettingRef(ManagedObject):
     """This is BiosSettingRef class."""
 
     consts = BiosSettingRefConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("BiosSettingRef", "biosSettingRef", "setting-ref-[name]", VersionMeta.Version131c, "InputOutput", 0x3f, [], [""], [u'biosParameterRef'], [], ["Get"])
+    mo_meta = MoMeta("BiosSettingRef", "biosSettingRef", "setting-ref-[name]", VersionMeta.Version131c, "InputOutput", 0x3f, [], [""], ['biosParameterRef'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

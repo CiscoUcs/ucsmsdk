@@ -34,7 +34,7 @@ class VnicScsiIf(ManagedObject):
     """This is VnicScsiIf class."""
 
     consts = VnicScsiIfConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
     mo_meta = MoMeta("VnicScsiIf", "vnicScsiIf", "if-[name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "ls-config", "ls-server", "ls-storage"], [], [], ["Get"])
 

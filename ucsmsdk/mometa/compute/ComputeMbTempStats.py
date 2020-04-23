@@ -34,7 +34,7 @@ class ComputeMbTempStats(ManagedObject):
     consts = ComputeMbTempStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeMbTempStats", "computeMbTempStats", "temp-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'computeBoard', u'computeExtBoard'], [u'computeMbTempStatsHist'], ["Get"])
+    mo_meta = MoMeta("ComputeMbTempStats", "computeMbTempStats", "temp-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['computeBoard', 'computeExtBoard'], ['computeMbTempStatsHist'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

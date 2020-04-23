@@ -34,7 +34,7 @@ class StorageHddMotherBoardTempStats(ManagedObject):
     consts = StorageHddMotherBoardTempStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("StorageHddMotherBoardTempStats", "storageHddMotherBoardTempStats", "hdd-mobo-temp-stats", VersionMeta.Version312b, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'storageEnclosure'], [u'storageHddMotherBoardTempStatsHist'], ["Get"])
+    mo_meta = MoMeta("StorageHddMotherBoardTempStats", "storageHddMotherBoardTempStats", "hdd-mobo-temp-stats", VersionMeta.Version312b, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['storageEnclosure'], ['storageHddMotherBoardTempStatsHist'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

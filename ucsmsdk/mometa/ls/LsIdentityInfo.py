@@ -18,7 +18,7 @@ class LsIdentityInfo(ManagedObject):
     consts = LsIdentityInfoConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsIdentityInfo", "lsIdentityInfo", "ls-identity-info", VersionMeta.Version224b, "InputOutput", 0x3f, [], ["admin", "ls-config", "ls-server"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'lsServer'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("LsIdentityInfo", "lsIdentityInfo", "ls-identity-info", VersionMeta.Version224b, "InputOutput", 0x3f, [], ["admin", "ls-config", "ls-server"], ['computeBlade', 'computeRackUnit', 'computeServerUnit', 'lsServer'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

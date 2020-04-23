@@ -13,9 +13,9 @@ class EquipmentStorageSasExpanderCapRef(ManagedObject):
     """This is EquipmentStorageSasExpanderCapRef class."""
 
     consts = EquipmentStorageSasExpanderCapRefConsts()
-    naming_props = set([u'vendor', u'model', u'revision'])
+    naming_props = set(['vendor', 'model', 'revision'])
 
-    mo_meta = MoMeta("EquipmentStorageSasExpanderCapRef", "equipmentStorageSasExpanderCapRef", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version226c, "InputOutput", 0xff, [], [""], [u'equipmentRackUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentStorageSasExpanderCapRef", "equipmentStorageSasExpanderCapRef", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version226c, "InputOutput", 0xff, [], [""], ['equipmentRackUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version226c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -69,9 +69,9 @@ class EquipmentRackEnclosure(ManagedObject):
     """This is EquipmentRackEnclosure class."""
 
     consts = EquipmentRackEnclosureConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentRackEnclosure", "equipmentRackEnclosure", "rack-enclosure-[id]", VersionMeta.Version401a, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'topSystem'], [u'equipmentFanModule', u'equipmentPsu', u'equipmentSlotEp'], [None])
+    mo_meta = MoMeta("EquipmentRackEnclosure", "equipmentRackEnclosure", "rack-enclosure-[id]", VersionMeta.Version401a, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['topSystem'], ['equipmentFanModule', 'equipmentPsu', 'equipmentSlotEp'], [None])
 
     prop_meta = {
         "asset_tag": MoPropertyMeta("asset_tag", "assetTag", "string", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []),

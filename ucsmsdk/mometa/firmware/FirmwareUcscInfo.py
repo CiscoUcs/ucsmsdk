@@ -17,7 +17,7 @@ class FirmwareUcscInfo(ManagedObject):
     consts = FirmwareUcscInfoConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareUcscInfo", "firmwareUcscInfo", "ucsc-info", VersionMeta.Version222c, "InputOutput", 0x1f, [], ["admin"], [u'firmwareBootDefinition', u'firmwareCatalogue', u'firmwareInstallable'], [], ["Get"])
+    mo_meta = MoMeta("FirmwareUcscInfo", "firmwareUcscInfo", "ucsc-info", VersionMeta.Version222c, "InputOutput", 0x1f, [], ["admin"], ['firmwareBootDefinition', 'firmwareCatalogue', 'firmwareInstallable'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

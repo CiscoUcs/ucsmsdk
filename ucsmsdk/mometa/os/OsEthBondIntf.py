@@ -16,9 +16,9 @@ class OsEthBondIntf(ManagedObject):
     """This is OsEthBondIntf class."""
 
     consts = OsEthBondIntfConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("OsEthBondIntf", "osEthBondIntf", "bond-intf-[name]", VersionMeta.Version302c, "InputOutput", 0x3f, [], ["read-only"], [u'osInstance'], [u'osARPLinkMonitoringPolicy', u'osEthBondModeActiveBackup', u'osEthBondModeBalancedALB', u'osEthBondModeBalancedRR', u'osEthBondModeBalancedTLB', u'osEthBondModeBalancedXOR', u'osEthBondModeBroadcast', u'osEthIntf', u'osMiiLinkMonitoringPolicy'], [None])
+    mo_meta = MoMeta("OsEthBondIntf", "osEthBondIntf", "bond-intf-[name]", VersionMeta.Version302c, "InputOutput", 0x3f, [], ["read-only"], ['osInstance'], ['osARPLinkMonitoringPolicy', 'osEthBondModeActiveBackup', 'osEthBondModeBalancedALB', 'osEthBondModeBalancedRR', 'osEthBondModeBalancedTLB', 'osEthBondModeBalancedXOR', 'osEthBondModeBroadcast', 'osEthIntf', 'osMiiLinkMonitoringPolicy'], [None])
 
     prop_meta = {
         "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []),

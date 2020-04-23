@@ -28,9 +28,9 @@ class StorageVirtualDriveEp(ManagedObject):
     """This is StorageVirtualDriveEp class."""
 
     consts = StorageVirtualDriveEpConsts()
-    naming_props = set([u'containerId', u'id'])
+    naming_props = set(['containerId', 'id'])
 
-    mo_meta = MoMeta("StorageVirtualDriveEp", "storageVirtualDriveEp", "vd-ep-[container_id]-id-[id]", VersionMeta.Version312b, "InputOutput", 0x7f, [], ["read-only"], [u'storageController'], [], ["Get"])
+    mo_meta = MoMeta("StorageVirtualDriveEp", "storageVirtualDriveEp", "vd-ep-[container_id]-id-[id]", VersionMeta.Version312b, "InputOutput", 0x7f, [], ["read-only"], ['storageController'], [], ["Get"])
 
     prop_meta = {
         "bootable": MoPropertyMeta("bootable", "bootable", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "true", "unknown"], []),

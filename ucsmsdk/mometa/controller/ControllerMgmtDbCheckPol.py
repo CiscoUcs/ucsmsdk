@@ -22,7 +22,7 @@ class ControllerMgmtDbCheckPol(ManagedObject):
     consts = ControllerMgmtDbCheckPolConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ControllerMgmtDbCheckPol", "controllerMgmtDbCheckPol", "MgmtDbCheckPol", VersionMeta.Version321d, "InputOutput", 0x1ff, [], ["admin"], [u'topSystem'], [], ["Get", "Set"])
+    mo_meta = MoMeta("ControllerMgmtDbCheckPol", "controllerMgmtDbCheckPol", "MgmtDbCheckPol", VersionMeta.Version321d, "InputOutput", 0x1ff, [], ["admin"], ['topSystem'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

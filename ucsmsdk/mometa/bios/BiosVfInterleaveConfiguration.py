@@ -36,7 +36,7 @@ class BiosVfInterleaveConfiguration(ManagedObject):
     consts = BiosVfInterleaveConfigurationConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("BiosVfInterleaveConfiguration", "biosVfInterleaveConfiguration", "Interleave-Configuration", VersionMeta.Version222c, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], [u'biosSettings', u'biosVProfile'], [], ["Get", "Set"])
+    mo_meta = MoMeta("BiosVfInterleaveConfiguration", "biosVfInterleaveConfiguration", "Interleave-Configuration", VersionMeta.Version222c, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], ['biosSettings', 'biosVProfile'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

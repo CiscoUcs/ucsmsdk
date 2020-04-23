@@ -20,7 +20,7 @@ class BiosVfBMEDMAMitigation(ManagedObject):
     consts = BiosVfBMEDMAMitigationConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("BiosVfBMEDMAMitigation", "biosVfBMEDMAMitigation", "BME-DMA-Mitigation", VersionMeta.Version401a, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], [u'biosSettings', u'biosVProfile'], [], [None])
+    mo_meta = MoMeta("BiosVfBMEDMAMitigation", "biosVfBMEDMAMitigation", "BME-DMA-Mitigation", VersionMeta.Version401a, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], ['biosSettings', 'biosVProfile'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version401a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -16,9 +16,9 @@ class EquipmentOnboardDeviceDef(ManagedObject):
     """This is EquipmentOnboardDeviceDef class."""
 
     consts = EquipmentOnboardDeviceDefConsts()
-    naming_props = set([u'device'])
+    naming_props = set(['device'])
 
-    mo_meta = MoMeta("EquipmentOnboardDeviceDef", "equipmentOnboardDeviceDef", "onboard-device-[device]", VersionMeta.Version227b, "InputOutput", 0x1ff, [], [""], [u'equipmentLocalDiskControllerCapProvider', u'equipmentStorageSasExpanderCapProvider'], [u'firmwareType'], [None])
+    mo_meta = MoMeta("EquipmentOnboardDeviceDef", "equipmentOnboardDeviceDef", "onboard-device-[device]", VersionMeta.Version227b, "InputOutput", 0x1ff, [], [""], ['equipmentLocalDiskControllerCapProvider', 'equipmentStorageSasExpanderCapProvider'], ['firmwareType'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

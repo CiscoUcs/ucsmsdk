@@ -16,9 +16,9 @@ class DomainStorageFeature(ManagedObject):
     """This is DomainStorageFeature class."""
 
     consts = DomainStorageFeatureConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("DomainStorageFeature", "domainStorageFeature", "storage-feature-[name]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["admin"], [u'domainChassisFeatureCont', u'domainEnvironmentFeatureCont', u'domainNetworkFeatureCont', u'domainServerFeatureCont', u'domainStorageFeatureCont'], [u'domainChassisParam', u'domainEnvironmentParam', u'domainNetworkParam', u'domainServerParam', u'domainStorageParam'], [None])
+    mo_meta = MoMeta("DomainStorageFeature", "domainStorageFeature", "storage-feature-[name]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["admin"], ['domainChassisFeatureCont', 'domainEnvironmentFeatureCont', 'domainNetworkFeatureCont', 'domainServerFeatureCont', 'domainStorageFeatureCont'], ['domainChassisParam', 'domainEnvironmentParam', 'domainNetworkParam', 'domainServerParam', 'domainStorageParam'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

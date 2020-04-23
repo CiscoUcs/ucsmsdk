@@ -15,7 +15,7 @@ class VnicIScsiAutoTargetIf(ManagedObject):
     consts = VnicIScsiAutoTargetIfConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicIScsiAutoTargetIf", "vnicIScsiAutoTargetIf", "auto", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["admin", "ls-config", "ls-network", "ls-server", "ls-storage"], [u'adaptorVlan', u'vnicIScsi', u'vnicIScsiBootVnic', u'vnicVlan'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicIScsiAutoTargetIf", "vnicIScsiAutoTargetIf", "auto", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["admin", "ls-config", "ls-network", "ls-server", "ls-storage"], ['adaptorVlan', 'vnicIScsi', 'vnicIScsiBootVnic', 'vnicVlan'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

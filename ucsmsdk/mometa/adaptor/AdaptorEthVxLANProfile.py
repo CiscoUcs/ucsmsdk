@@ -16,7 +16,7 @@ class AdaptorEthVxLANProfile(ManagedObject):
     consts = AdaptorEthVxLANProfileConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorEthVxLANProfile", "adaptorEthVxLANProfile", "eth-vxlan", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], [u'adaptorHostEthIf', u'adaptorHostEthIfProfile'], [], ["Get", "Set"])
+    mo_meta = MoMeta("AdaptorEthVxLANProfile", "adaptorEthVxLANProfile", "eth-vxlan", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], ['adaptorHostEthIf', 'adaptorHostEthIfProfile'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

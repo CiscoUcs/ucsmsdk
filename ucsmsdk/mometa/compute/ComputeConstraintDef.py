@@ -20,9 +20,9 @@ class ComputeConstraintDef(ManagedObject):
     """This is ComputeConstraintDef class."""
 
     consts = ComputeConstraintDefConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ComputeConstraintDef", "computeConstraintDef", "cons-def-[name]", VersionMeta.Version302c, "InputOutput", 0xff, [], [""], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], [None])
+    mo_meta = MoMeta("ComputeConstraintDef", "computeConstraintDef", "cons-def-[name]", VersionMeta.Version302c, "InputOutput", 0xff, [], [""], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

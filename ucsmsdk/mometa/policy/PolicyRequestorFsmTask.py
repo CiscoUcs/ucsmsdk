@@ -18,9 +18,9 @@ class PolicyRequestorFsmTask(ManagedObject):
     """This is PolicyRequestorFsmTask class."""
 
     consts = PolicyRequestorFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("PolicyRequestorFsmTask", "policyRequestorFsmTask", "task-[item]", VersionMeta.Version321d, "OutputOnly", 0xf, [], [""], [u'policyRequestor'], [], [None])
+    mo_meta = MoMeta("PolicyRequestorFsmTask", "policyRequestorFsmTask", "task-[item]", VersionMeta.Version321d, "OutputOnly", 0xf, [], [""], ['policyRequestor'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -32,9 +32,9 @@ class QosclassEthClassified(ManagedObject):
     """This is QosclassEthClassified class."""
 
     consts = QosclassEthClassifiedConsts()
-    naming_props = set([u'priority'])
+    naming_props = set(['priority'])
 
-    mo_meta = MoMeta("QosclassEthClassified", "qosclassEthClassified", "class-[priority]", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["admin", "ext-lan-qos", "ext-san-qos", "ls-network", "ls-network-policy", "ls-qos-policy"], [u'qosclassDefinition'], [], ["Get", "Set"])
+    mo_meta = MoMeta("QosclassEthClassified", "qosclassEthClassified", "class-[priority]", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["admin", "ext-lan-qos", "ext-san-qos", "ls-network", "ls-network-policy", "ls-qos-policy"], ['qosclassDefinition'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

@@ -25,7 +25,7 @@ class SwVlanPortNs(ManagedObject):
     consts = SwVlanPortNsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SwVlanPortNs", "swVlanPortNs", "vlan-port-ns", VersionMeta.Version131c, "InputOutput", 0x1f, [], ["read-only"], [u'networkElement'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("SwVlanPortNs", "swVlanPortNs", "vlan-port-ns", VersionMeta.Version131c, "InputOutput", 0x1f, [], ["read-only"], ['networkElement'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "access_vlan_port_count": MoPropertyMeta("access_vlan_port_count", "accessVlanPortCount", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),

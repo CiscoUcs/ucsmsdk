@@ -13,9 +13,9 @@ class SwNFExporterRef(ManagedObject):
     """This is SwNFExporterRef class."""
 
     consts = SwNFExporterRefConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("SwNFExporterRef", "swNFExporterRef", "nf-exporter-ref-[name]", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["read-only"], [u'swNetflowMonitor'], [], [None])
+    mo_meta = MoMeta("SwNFExporterRef", "swNFExporterRef", "nf-exporter-ref-[name]", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["read-only"], ['swNetflowMonitor'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

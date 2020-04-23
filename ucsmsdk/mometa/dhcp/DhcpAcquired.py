@@ -15,7 +15,7 @@ class DhcpAcquired(ManagedObject):
     consts = DhcpAcquiredConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("DhcpAcquired", "dhcpAcquired", "lease", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], [u'adaptorHostEthIf', u'mgmtIf'], [], ["Get"])
+    mo_meta = MoMeta("DhcpAcquired", "dhcpAcquired", "lease", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], ['adaptorHostEthIf', 'mgmtIf'], [], ["Get"])
 
     prop_meta = {
         "acqts": MoPropertyMeta("acqts", "acqts", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),

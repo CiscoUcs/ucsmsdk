@@ -22,7 +22,7 @@ class ComputeIOHubEnvStats(ManagedObject):
     consts = ComputeIOHubEnvStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeIOHubEnvStats", "computeIOHubEnvStats", "iohub-stats", VersionMeta.Version131c, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'computeIOHub'], [u'computeIOHubEnvStatsHist'], ["Get"])
+    mo_meta = MoMeta("ComputeIOHubEnvStats", "computeIOHubEnvStats", "iohub-stats", VersionMeta.Version131c, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['computeIOHub'], ['computeIOHubEnvStatsHist'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

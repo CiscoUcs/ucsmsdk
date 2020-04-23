@@ -67,9 +67,9 @@ class FabricEthLanPcEp(ManagedObject):
     """This is FabricEthLanPcEp class."""
 
     consts = FabricEthLanPcEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("FabricEthLanPcEp", "fabricEthLanPcEp", "ep-slot-[slot_id]-port-[port_id]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEthLanPc', u'fabricSubGroup'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricEthLanPcEp", "fabricEthLanPcEp", "ep-slot-[slot_id]-port-[port_id]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEthLanPc', 'fabricSubGroup'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

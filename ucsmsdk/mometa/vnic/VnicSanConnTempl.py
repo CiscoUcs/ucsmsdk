@@ -24,9 +24,9 @@ class VnicSanConnTempl(ManagedObject):
     """This is VnicSanConnTempl class."""
 
     consts = VnicSanConnTemplConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicSanConnTempl", "vnicSanConnTempl", "san-conn-templ-[name]", VersionMeta.Version101e, "InputOutput", 0x1ffff, [], ["admin", "ls-storage", "ls-storage-policy"], [u'orgOrg'], [u'fabricNetGroupRef', u'fabricSanGroupRef', u'faultInst', u'vnicFcIf'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicSanConnTempl", "vnicSanConnTempl", "san-conn-templ-[name]", VersionMeta.Version101e, "InputOutput", 0x1ffff, [], ["admin", "ls-storage", "ls-storage-policy"], ['orgOrg'], ['fabricNetGroupRef', 'fabricSanGroupRef', 'faultInst', 'vnicFcIf'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

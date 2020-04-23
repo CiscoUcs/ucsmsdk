@@ -23,9 +23,9 @@ class AdaptorMenloFcErrorStats(ManagedObject):
     """This is AdaptorMenloFcErrorStats class."""
 
     consts = AdaptorMenloFcErrorStatsConsts()
-    naming_props = set([u'menloFcIndex'])
+    naming_props = set(['menloFcIndex'])
 
-    mo_meta = MoMeta("AdaptorMenloFcErrorStats", "adaptorMenloFcErrorStats", "menlo-fc-error-stats-[menlo_fc_index]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'adaptorUnit'], [u'adaptorMenloFcErrorStatsHist'], ["Get"])
+    mo_meta = MoMeta("AdaptorMenloFcErrorStats", "adaptorMenloFcErrorStats", "menlo-fc-error-stats-[menlo_fc_index]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['adaptorUnit'], ['adaptorMenloFcErrorStatsHist'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -15,7 +15,7 @@ class EquipmentPhysicalQual(ManagedObject):
     consts = EquipmentPhysicalQualConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentPhysicalQual", "equipmentPhysicalQual", "physicalqual", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["admin", "pn-policy"], [u'equipmentQual'], [], [None])
+    mo_meta = MoMeta("EquipmentPhysicalQual", "equipmentPhysicalQual", "physicalqual", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["admin", "pn-policy"], ['equipmentQual'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

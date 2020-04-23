@@ -39,7 +39,7 @@ class VnicFcOEIf(ManagedObject):
     consts = VnicFcOEIfConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicFcOEIf", "vnicFcOEIf", "fcoe", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy", "ext-san-config", "ext-san-policy", "ls-config", "ls-server", "ls-storage"], [u'vnicEther', u'vnicIpc', u'vnicLanConnTempl'], [], ["Get"])
+    mo_meta = MoMeta("VnicFcOEIf", "vnicFcOEIf", "fcoe", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy", "ext-san-config", "ext-san-policy", "ls-config", "ls-server", "ls-storage"], ['vnicEther', 'vnicIpc', 'vnicLanConnTempl'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

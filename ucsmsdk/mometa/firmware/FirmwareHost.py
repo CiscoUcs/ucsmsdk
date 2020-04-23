@@ -15,7 +15,7 @@ class FirmwareHost(ManagedObject):
     consts = FirmwareHostConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareHost", "firmwareHost", "fw-host", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], [u'firmwareSystem'], [u'firmwareBlade', u'firmwareRack'], ["Get"])
+    mo_meta = MoMeta("FirmwareHost", "firmwareHost", "fw-host", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], ['firmwareSystem'], ['firmwareBlade', 'firmwareRack'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -15,7 +15,7 @@ class LldpAcquired(ManagedObject):
     consts = LldpAcquiredConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LldpAcquired", "lldpAcquired", "lldp", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], [u'etherPIo', u'etherServerIntFIo', u'fcPIo'], [], ["Get"])
+    mo_meta = MoMeta("LldpAcquired", "lldpAcquired", "lldp", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], ['etherPIo', 'etherServerIntFIo', 'fcPIo'], [], ["Get"])
 
     prop_meta = {
         "acqts": MoPropertyMeta("acqts", "acqts", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),

@@ -42,9 +42,9 @@ class VnicEtherIf(ManagedObject):
     """This is VnicEtherIf class."""
 
     consts = VnicEtherIfConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicEtherIf", "vnicEtherIf", "if-[name]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin"], [u'extvmmVMNetworkDefinition', u'fabricFlowMonExporterProfile', u'vnicEther', u'vnicIpc', u'vnicLanConnTempl', u'vnicProfile'], [u'fabricNetflowIPv4Addr', u'faultInst', u'vnicIPv4If'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicEtherIf", "vnicEtherIf", "if-[name]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin"], ['extvmmVMNetworkDefinition', 'fabricFlowMonExporterProfile', 'vnicEther', 'vnicIpc', 'vnicLanConnTempl', 'vnicProfile'], ['fabricNetflowIPv4Addr', 'faultInst', 'vnicIPv4If'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", ["derived"], []),

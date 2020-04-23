@@ -412,9 +412,9 @@ class EquipmentIOCard(ManagedObject):
     """This is EquipmentIOCard class."""
 
     consts = EquipmentIOCardConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentIOCard", "equipmentIOCard", "slot-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentChassis', u'equipmentFex'], [u'equipmentBeaconLed', u'equipmentHealthLed', u'equipmentIOCardBaseFsm', u'equipmentIOCardBaseFsmTask', u'equipmentIOCardFsm', u'equipmentIOCardFsmTask', u'equipmentIOCardStats', u'equipmentIndicatorLed', u'equipmentLocatorLed', u'equipmentPOST', u'eventInst', u'faultInst', u'faultSuppressTask', u'firmwareStatus', u'mgmtController', u'portGroup'], ["Get", "Set"])
+    mo_meta = MoMeta("EquipmentIOCard", "equipmentIOCard", "slot-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], ['equipmentChassis', 'equipmentFex'], ['equipmentBeaconLed', 'equipmentHealthLed', 'equipmentIOCardBaseFsm', 'equipmentIOCardBaseFsmTask', 'equipmentIOCardFsm', 'equipmentIOCardFsmTask', 'equipmentIOCardStats', 'equipmentIndicatorLed', 'equipmentLocatorLed', 'equipmentPOST', 'eventInst', 'faultInst', 'faultSuppressTask', 'firmwareStatus', 'mgmtController', 'portGroup'], ["Get", "Set"])
 
     prop_meta = {
         "admin_peer_power_state": MoPropertyMeta("admin_peer_power_state", "adminPeerPowerState", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cycle-immediate", "cycle-wait", "policy"], []),

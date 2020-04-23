@@ -13,9 +13,9 @@ class NetworkLldpNeighborEntry(ManagedObject):
     """This is NetworkLldpNeighborEntry class."""
 
     consts = NetworkLldpNeighborEntryConsts()
-    naming_props = set([u'localInterface'])
+    naming_props = set(['localInterface'])
 
-    mo_meta = MoMeta("NetworkLldpNeighborEntry", "networkLldpNeighborEntry", "if-[local_interface]", VersionMeta.Version224b, "InputOutput", 0x3f, [], ["read-only"], [u'networkLldpNeighbors'], [], ["Get"])
+    mo_meta = MoMeta("NetworkLldpNeighborEntry", "networkLldpNeighborEntry", "if-[local_interface]", VersionMeta.Version224b, "InputOutput", 0x3f, [], ["read-only"], ['networkLldpNeighbors'], [], ["Get"])
 
     prop_meta = {
         "capabilities": MoPropertyMeta("capabilities", "capabilities", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

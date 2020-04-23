@@ -22,9 +22,9 @@ class ExtvmmKeyRing(ManagedObject):
     """This is ExtvmmKeyRing class."""
 
     consts = ExtvmmKeyRingConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ExtvmmKeyRing", "extvmmKeyRing", "keyring-[name]", VersionMeta.Version111j, "InputOutput", 0x1ff, [], ["admin", "ls-config", "ls-config-policy", "pn-policy"], [u'extvmmKeyStore'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("ExtvmmKeyRing", "extvmmKeyRing", "keyring-[name]", VersionMeta.Version111j, "InputOutput", 0x1ff, [], ["admin", "ls-config", "ls-config-policy", "pn-policy"], ['extvmmKeyStore'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "cert_file": MoPropertyMeta("cert_file", "certFile", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2, 0, 510, None, [], []),

@@ -22,9 +22,9 @@ class FirmwareChassisComponentSpec(ManagedObject):
     """This is FirmwareChassisComponentSpec class."""
 
     consts = FirmwareChassisComponentSpecConsts()
-    naming_props = set([u'type'])
+    naming_props = set(['type'])
 
-    mo_meta = MoMeta("FirmwareChassisComponentSpec", "firmwareChassisComponentSpec", "chassis-component-spec-[type]", VersionMeta.Version312b, "InputOutput", 0x3f, [], [""], [u'firmwareBundleTypeCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("FirmwareChassisComponentSpec", "firmwareChassisComponentSpec", "chassis-component-spec-[type]", VersionMeta.Version312b, "InputOutput", 0x3f, [], [""], ['firmwareBundleTypeCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

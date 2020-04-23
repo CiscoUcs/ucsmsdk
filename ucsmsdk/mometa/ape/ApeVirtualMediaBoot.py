@@ -23,9 +23,9 @@ class ApeVirtualMediaBoot(ManagedObject):
     """This is ApeVirtualMediaBoot class."""
 
     consts = ApeVirtualMediaBootConsts()
-    naming_props = set([u'chassisId', u'slotId'])
+    naming_props = set(['chassisId', 'slotId'])
 
-    mo_meta = MoMeta("ApeVirtualMediaBoot", "apeVirtualMediaBoot", "virtualmediaboot-[chassis_id]-[slot_id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin"], [u'apeManager'], [], [None])
+    mo_meta = MoMeta("ApeVirtualMediaBoot", "apeVirtualMediaBoot", "virtualmediaboot-[chassis_id]-[slot_id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin"], ['apeManager'], [], [None])
 
     prop_meta = {
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x2, None, None, None, ["N/A"], ["0-255"]),

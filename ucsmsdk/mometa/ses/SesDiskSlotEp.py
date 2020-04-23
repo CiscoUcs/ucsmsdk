@@ -23,9 +23,9 @@ class SesDiskSlotEp(ManagedObject):
     """This is SesDiskSlotEp class."""
 
     consts = SesDiskSlotEpConsts()
-    naming_props = set([u'encId', u'id'])
+    naming_props = set(['encId', 'id'])
 
-    mo_meta = MoMeta("SesDiskSlotEp", "sesDiskSlotEp", "disk-slot-ep-[enc_id]-id-[id]", VersionMeta.Version312b, "InputOutput", 0x7f, [], ["read-only"], [u'sesEnclosure'], [], ["Get"])
+    mo_meta = MoMeta("SesDiskSlotEp", "sesDiskSlotEp", "disk-slot-ep-[enc_id]-id-[id]", VersionMeta.Version312b, "InputOutput", 0x7f, [], ["read-only"], ['sesEnclosure'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

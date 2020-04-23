@@ -20,9 +20,9 @@ class MemoryRuntimeHist(ManagedObject):
     """This is MemoryRuntimeHist class."""
 
     consts = MemoryRuntimeHistConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("MemoryRuntimeHist", "memoryRuntimeHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], [u'memoryRuntime'], [], ["Get"])
+    mo_meta = MoMeta("MemoryRuntimeHist", "memoryRuntimeHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], ['memoryRuntime'], [], ["Get"])
 
     prop_meta = {
         "available": MoPropertyMeta("available", "available", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

@@ -16,9 +16,9 @@ class SwZoneTargetMember(ManagedObject):
     """This is SwZoneTargetMember class."""
 
     consts = SwZoneTargetMemberConsts()
-    naming_props = set([u'wwpn'])
+    naming_props = set(['wwpn'])
 
-    mo_meta = MoMeta("SwZoneTargetMember", "swZoneTargetMember", "target-[wwpn]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["read-only"], [u'swFcZone'], [], [None])
+    mo_meta = MoMeta("SwZoneTargetMember", "swZoneTargetMember", "target-[wwpn]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["read-only"], ['swFcZone'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

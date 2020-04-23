@@ -21,7 +21,7 @@ class MgmtHealthStatus(ManagedObject):
     consts = MgmtHealthStatusConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtHealthStatus", "mgmtHealthStatus", "health", VersionMeta.Version311e, "InputOutput", 0x1f, [], ["read-only"], [u'mgmtController', u'networkElement'], [u'faultInst', u'mgmtHealthAttr'], ["Get"])
+    mo_meta = MoMeta("MgmtHealthStatus", "mgmtHealthStatus", "health", VersionMeta.Version311e, "InputOutput", 0x1f, [], ["read-only"], ['mgmtController', 'networkElement'], ['faultInst', 'mgmtHealthAttr'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version311e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

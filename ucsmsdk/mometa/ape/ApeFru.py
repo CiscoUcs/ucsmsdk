@@ -13,9 +13,9 @@ class ApeFru(ManagedObject):
     """This is ApeFru class."""
 
     consts = ApeFruConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("ApeFru", "apeFru", "fru-[id]", VersionMeta.Version101e, "InputOutput", 0x7fffffff, [], ["read-only"], [u'apeMcTable'], [], [None])
+    mo_meta = MoMeta("ApeFru", "apeFru", "fru-[id]", VersionMeta.Version101e, "InputOutput", 0x7fffffff, [], ["read-only"], ['apeMcTable'], [], [None])
 
     prop_meta = {
         "board_fru": MoPropertyMeta("board_fru", "boardFru", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x2, 0, 510, None, [], []),

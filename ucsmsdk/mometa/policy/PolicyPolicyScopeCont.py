@@ -159,9 +159,9 @@ class PolicyPolicyScopeCont(ManagedObject):
     """This is PolicyPolicyScopeCont class."""
 
     consts = PolicyPolicyScopeContConsts()
-    naming_props = set([u'appType'])
+    naming_props = set(['appType'])
 
-    mo_meta = MoMeta("PolicyPolicyScopeCont", "policyPolicyScopeCont", "scope-cont-[app_type]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin"], [u'extpolClient', u'extpolController', u'extpolProvider', u'extpolRegistry', u'policyPolicyEp'], [u'eventInst', u'faultInst', u'policyConfigError', u'policyPolicyScopeContFsm', u'policyPolicyScopeContFsmTask', u'policyPolicyScopeContext'], [None])
+    mo_meta = MoMeta("PolicyPolicyScopeCont", "policyPolicyScopeCont", "scope-cont-[app_type]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin"], ['extpolClient', 'extpolController', 'extpolProvider', 'extpolRegistry', 'policyPolicyEp'], ['eventInst', 'faultInst', 'policyConfigError', 'policyPolicyScopeContFsm', 'policyPolicyScopeContFsmTask', 'policyPolicyScopeContext'], [None])
 
     prop_meta = {
         "app_type": MoPropertyMeta("app_type", "appType", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x2, 1, 510, None, [], []),

@@ -26,7 +26,7 @@ class LstorageSecurity(ManagedObject):
     consts = LstorageSecurityConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LstorageSecurity", "lstorageSecurity", "security", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageProfile', u'lstorageProfileDef', u'storageLocalDiskConfigDef', u'storageLocalDiskConfigPolicy'], [u'lstorageDriveSecurity'], ["Get", "Set"])
+    mo_meta = MoMeta("LstorageSecurity", "lstorageSecurity", "security", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], ['lstorageProfile', 'lstorageProfileDef', 'storageLocalDiskConfigDef', 'storageLocalDiskConfigPolicy'], ['lstorageDriveSecurity'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["offline", "online", "undeployed"], []),

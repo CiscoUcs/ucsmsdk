@@ -19,9 +19,9 @@ class ExtpolEpFsmTask(ManagedObject):
     """This is ExtpolEpFsmTask class."""
 
     consts = ExtpolEpFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("ExtpolEpFsmTask", "extpolEpFsmTask", "task-[item]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'extpolEp'], [], [None])
+    mo_meta = MoMeta("ExtpolEpFsmTask", "extpolEpFsmTask", "task-[item]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['extpolEp'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

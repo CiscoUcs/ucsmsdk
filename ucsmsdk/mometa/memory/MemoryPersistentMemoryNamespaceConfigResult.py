@@ -23,9 +23,9 @@ class MemoryPersistentMemoryNamespaceConfigResult(ManagedObject):
     """This is MemoryPersistentMemoryNamespaceConfigResult class."""
 
     consts = MemoryPersistentMemoryNamespaceConfigResultConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("MemoryPersistentMemoryNamespaceConfigResult", "memoryPersistentMemoryNamespaceConfigResult", "nscr-[name]", VersionMeta.Version404a, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'memoryPersistentMemoryConfigResult'], [u'faultInst'], [None])
+    mo_meta = MoMeta("MemoryPersistentMemoryNamespaceConfigResult", "memoryPersistentMemoryNamespaceConfigResult", "nscr-[name]", VersionMeta.Version404a, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['memoryPersistentMemoryConfigResult'], ['faultInst'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version404a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -18,7 +18,7 @@ class MemoryPersistentMemoryLocalSecurity(ManagedObject):
     consts = MemoryPersistentMemoryLocalSecurityConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MemoryPersistentMemoryLocalSecurity", "memoryPersistentMemoryLocalSecurity", "local", VersionMeta.Version404a, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server"], [u'memoryPersistentMemorySecurity'], [], [None])
+    mo_meta = MoMeta("MemoryPersistentMemoryLocalSecurity", "memoryPersistentMemoryLocalSecurity", "local", VersionMeta.Version404a, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server"], ['memoryPersistentMemorySecurity'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version404a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

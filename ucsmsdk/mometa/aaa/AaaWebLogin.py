@@ -22,9 +22,9 @@ class AaaWebLogin(ManagedObject):
     """This is AaaWebLogin class."""
 
     consts = AaaWebLoginConsts()
-    naming_props = set([u'name', u'id'])
+    naming_props = set(['name', 'id'])
 
-    mo_meta = MoMeta("AaaWebLogin", "aaaWebLogin", "web-login-[name]-[id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], [u'aaaUserEp'], [], ["Get"])
+    mo_meta = MoMeta("AaaWebLogin", "aaaWebLogin", "web-login-[name]-[id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], ['aaaUserEp'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

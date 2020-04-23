@@ -13,9 +13,9 @@ class MorefFruRef(ManagedObject):
     """This is MorefFruRef class."""
 
     consts = MorefFruRefConsts()
-    naming_props = set([u'className', u'vendor', u'model', u'serial'])
+    naming_props = set(['className', 'vendor', 'model', 'serial'])
 
-    mo_meta = MoMeta("MorefFruRef", "morefFruRef", "[class_name]-vendor-[vendor]-model-[model]-serial-[serial]", VersionMeta.Version227b, "InputOutput", 0x1ff, [], ["admin"], [u'morefImportRoot'], [u'morefProp', u'morefRef'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("MorefFruRef", "morefFruRef", "[class_name]-vendor-[vendor]-model-[model]-serial-[serial]", VersionMeta.Version227b, "InputOutput", 0x1ff, [], ["admin"], ['morefImportRoot'], ['morefProp', 'morefRef'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -15,9 +15,9 @@ class ApeSwitchFirmwareInv(ManagedObject):
     """This is ApeSwitchFirmwareInv class."""
 
     consts = ApeSwitchFirmwareInvConsts()
-    naming_props = set([u'fabric'])
+    naming_props = set(['fabric'])
 
-    mo_meta = MoMeta("ApeSwitchFirmwareInv", "apeSwitchFirmwareInv", "SwitchFirmwareInv-[fabric]", VersionMeta.Version131c, "InputOutput", 0xfff, [], ["read-only"], [u'apeDcosAgManager'], [], [None])
+    mo_meta = MoMeta("ApeSwitchFirmwareInv", "apeSwitchFirmwareInv", "SwitchFirmwareInv-[fabric]", VersionMeta.Version131c, "InputOutput", 0xfff, [], ["read-only"], ['apeDcosAgManager'], [], [None])
 
     prop_meta = {
         "bios_version": MoPropertyMeta("bios_version", "biosVersion", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x2, 0, 510, None, [], []),

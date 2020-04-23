@@ -19,9 +19,9 @@ class AdaptorEthPortBySizeSmallStats(ManagedObject):
     """This is AdaptorEthPortBySizeSmallStats class."""
 
     consts = AdaptorEthPortBySizeSmallStatsConsts()
-    naming_props = set([u'trafficDirection'])
+    naming_props = set(['trafficDirection'])
 
-    mo_meta = MoMeta("AdaptorEthPortBySizeSmallStats", "adaptorEthPortBySizeSmallStats", "eth-port-by-size-small-stats-[traffic_direction]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'adaptorExtEthIf', u'adaptorHostEthIf', u'vmNic'], [u'adaptorEthPortBySizeSmallStatsHist'], ["Get"])
+    mo_meta = MoMeta("AdaptorEthPortBySizeSmallStats", "adaptorEthPortBySizeSmallStats", "eth-port-by-size-small-stats-[traffic_direction]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['adaptorExtEthIf', 'adaptorHostEthIf', 'vmNic'], ['adaptorEthPortBySizeSmallStatsHist'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

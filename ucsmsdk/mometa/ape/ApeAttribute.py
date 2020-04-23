@@ -13,9 +13,9 @@ class ApeAttribute(ManagedObject):
     """This is ApeAttribute class."""
 
     consts = ApeAttributeConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("ApeAttribute", "apeAttribute", "attribute-[id]", VersionMeta.Version224b, "InputOutput", 0xff, [], ["read-only"], [u'apeMcTable'], [], [None])
+    mo_meta = MoMeta("ApeAttribute", "apeAttribute", "attribute-[id]", VersionMeta.Version224b, "InputOutput", 0xff, [], ["read-only"], ['apeMcTable'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

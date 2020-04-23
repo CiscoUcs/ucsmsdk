@@ -52,9 +52,9 @@ class FabricEthTargetEp(ManagedObject):
     """This is FabricEthTargetEp class."""
 
     consts = FabricEthTargetEpConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricEthTargetEp", "fabricEthTargetEp", "eth-target-ep-[name]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEthEstcEp', u'fabricEthEstcPc'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricEthTargetEp", "fabricEthTargetEp", "eth-target-ep-[name]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEthEstcEp', 'fabricEthEstcPc'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

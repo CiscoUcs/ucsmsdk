@@ -22,9 +22,9 @@ class EquipmentBootDeviceConstraints(ManagedObject):
     """This is EquipmentBootDeviceConstraints class."""
 
     consts = EquipmentBootDeviceConstraintsConsts()
-    naming_props = set([u'bootDevType'])
+    naming_props = set(['bootDevType'])
 
-    mo_meta = MoMeta("EquipmentBootDeviceConstraints", "equipmentBootDeviceConstraints", "bootdevconstr-[boot_dev_type]", VersionMeta.Version312b, "InputOutput", 0x1ff, [], [""], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], [None])
+    mo_meta = MoMeta("EquipmentBootDeviceConstraints", "equipmentBootDeviceConstraints", "bootdevconstr-[boot_dev_type]", VersionMeta.Version312b, "InputOutput", 0x1ff, [], [""], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], [None])
 
     prop_meta = {
         "boot_dev_type": MoPropertyMeta("boot_dev_type", "bootDevType", "string", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x2, None, None, None, ["local-lun-any", "local-storage-any"], []),

@@ -158,7 +158,7 @@ class StorageFlexFlashControllerFsm(ManagedObject):
     consts = StorageFlexFlashControllerFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("StorageFlexFlashControllerFsm", "storageFlexFlashControllerFsm", "fsm", VersionMeta.Version223a, "OutputOnly", 0xf, [], [""], [u'storageFlexFlashController'], [u'storageFlexFlashControllerFsmStage'], [None])
+    mo_meta = MoMeta("StorageFlexFlashControllerFsm", "storageFlexFlashControllerFsm", "fsm", VersionMeta.Version223a, "OutputOnly", 0xf, [], [""], ['storageFlexFlashController'], ['storageFlexFlashControllerFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

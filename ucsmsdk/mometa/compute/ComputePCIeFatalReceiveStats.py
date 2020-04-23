@@ -18,7 +18,7 @@ class ComputePCIeFatalReceiveStats(ManagedObject):
     consts = ComputePCIeFatalReceiveStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputePCIeFatalReceiveStats", "computePCIeFatalReceiveStats", "pciefat-receive-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'computeBoard'], [], ["Get"])
+    mo_meta = MoMeta("ComputePCIeFatalReceiveStats", "computePCIeFatalReceiveStats", "pciefat-receive-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['computeBoard'], [], ["Get"])
 
     prop_meta = {
         "buffer_overflow_errors": MoPropertyMeta("buffer_overflow_errors", "bufferOverflowErrors", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

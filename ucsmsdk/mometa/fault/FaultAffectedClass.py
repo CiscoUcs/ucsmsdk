@@ -2387,9 +2387,9 @@ class FaultAffectedClass(ManagedObject):
     """This is FaultAffectedClass class."""
 
     consts = FaultAffectedClassConsts()
-    naming_props = set([u'moClassId'])
+    naming_props = set(['moClassId'])
 
-    mo_meta = MoMeta("FaultAffectedClass", "faultAffectedClass", "fault-[mo_class_id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "fault"], [u'faultSuppressPolicy'], [], [None])
+    mo_meta = MoMeta("FaultAffectedClass", "faultAffectedClass", "fault-[mo_class_id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "fault"], ['faultSuppressPolicy'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

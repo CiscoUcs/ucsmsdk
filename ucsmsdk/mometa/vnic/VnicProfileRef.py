@@ -13,7 +13,7 @@ class VnicProfileRef(ManagedObject):
     """This is VnicProfileRef class."""
 
     consts = VnicProfileRefConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
     mo_meta = MoMeta("VnicProfileRef", "vnicProfileRef", "vnic-profileref-[name]", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["read-only"], [], [], [None])
 

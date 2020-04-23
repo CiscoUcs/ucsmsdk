@@ -156,7 +156,7 @@ class PolicyControlEpFsm(ManagedObject):
     consts = PolicyControlEpFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PolicyControlEpFsm", "policyControlEpFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'policyControlEp'], [u'policyControlEpFsmStage'], [None])
+    mo_meta = MoMeta("PolicyControlEpFsm", "policyControlEpFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['policyControlEp'], ['policyControlEpFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

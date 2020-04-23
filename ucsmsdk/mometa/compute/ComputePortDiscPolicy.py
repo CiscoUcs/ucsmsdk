@@ -22,7 +22,7 @@ class ComputePortDiscPolicy(ManagedObject):
     consts = ComputePortDiscPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputePortDiscPolicy", "computePortDiscPolicy", "port-discovery", VersionMeta.Version321d, "InputOutput", 0x7ff, [], ["admin", "pn-policy"], [u'orgOrg'], [], ["Get", "Set"])
+    mo_meta = MoMeta("ComputePortDiscPolicy", "computePortDiscPolicy", "port-discovery", VersionMeta.Version321d, "InputOutput", 0x7ff, [], ["admin", "pn-policy"], ['orgOrg'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

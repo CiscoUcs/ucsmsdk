@@ -18,7 +18,7 @@ class CommWebSvcLimits(ManagedObject):
     consts = CommWebSvcLimitsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommWebSvcLimits", "commWebSvcLimits", "web-svc-limits", VersionMeta.Version141i, "InputOutput", 0x7ff, [], ["aaa", "admin"], [u'commSvcEp'], [], ["Get", "Set"])
+    mo_meta = MoMeta("CommWebSvcLimits", "commWebSvcLimits", "web-svc-limits", VersionMeta.Version141i, "InputOutput", 0x7ff, [], ["aaa", "admin"], ['commSvcEp'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

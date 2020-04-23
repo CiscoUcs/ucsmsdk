@@ -156,7 +156,7 @@ class GmetaHolderFsm(ManagedObject):
     consts = GmetaHolderFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("GmetaHolderFsm", "gmetaHolderFsm", "fsm", VersionMeta.Version212a, "OutputOnly", 0xf, [], [""], [u'gmetaHolder'], [u'gmetaHolderFsmStage'], [None])
+    mo_meta = MoMeta("GmetaHolderFsm", "gmetaHolderFsm", "fsm", VersionMeta.Version212a, "OutputOnly", 0xf, [], [""], ['gmetaHolder'], ['gmetaHolderFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

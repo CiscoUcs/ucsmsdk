@@ -15,7 +15,7 @@ class VnicBootTarget(ManagedObject):
     consts = VnicBootTargetConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicBootTarget", "vnicBootTarget", "boot-target", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ls-config", "ls-server", "ls-storage"], [u'vnicFc'], [], ["Get"])
+    mo_meta = MoMeta("VnicBootTarget", "vnicBootTarget", "boot-target", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ls-config", "ls-server", "ls-storage"], ['vnicFc'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

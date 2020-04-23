@@ -13,9 +13,9 @@ class AdaptorVmmqConnDef(ManagedObject):
     """This is AdaptorVmmqConnDef class."""
 
     consts = AdaptorVmmqConnDefConsts()
-    naming_props = set([u'conPolicyName'])
+    naming_props = set(['conPolicyName'])
 
-    mo_meta = MoMeta("AdaptorVmmqConnDef", "adaptorVmmqConnDef", "vmmq-conn-def-[con_policy_name]", VersionMeta.Version323a, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "read-only"], [u'adaptorHostEthIf'], [u'adaptorEthCompQueueProfile', u'adaptorEthInterruptProfile', u'adaptorEthRecvQueueProfile', u'adaptorEthRoCEProfile', u'adaptorEthWorkQueueProfile', u'adaptorRssProfile'], [None])
+    mo_meta = MoMeta("AdaptorVmmqConnDef", "adaptorVmmqConnDef", "vmmq-conn-def-[con_policy_name]", VersionMeta.Version323a, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "read-only"], ['adaptorHostEthIf'], ['adaptorEthCompQueueProfile', 'adaptorEthInterruptProfile', 'adaptorEthRecvQueueProfile', 'adaptorEthRoCEProfile', 'adaptorEthWorkQueueProfile', 'adaptorRssProfile'], [None])
 
     prop_meta = {
         "vmmq_sub_vnic_count": MoPropertyMeta("vmmq_sub_vnic_count", "VmmqSubVnicCount", "uint", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

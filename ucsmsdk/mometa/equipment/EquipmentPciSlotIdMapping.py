@@ -18,7 +18,7 @@ class EquipmentPciSlotIdMapping(ManagedObject):
     consts = EquipmentPciSlotIdMappingConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentPciSlotIdMapping", "equipmentPciSlotIdMapping", "pci-slotid-mapping", VersionMeta.Version312b, "InputOutput", 0xff, [], [""], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [u'equipmentPciSlotIdEntry'], ["Get"])
+    mo_meta = MoMeta("EquipmentPciSlotIdMapping", "equipmentPciSlotIdMapping", "pci-slotid-mapping", VersionMeta.Version312b, "InputOutput", 0xff, [], [""], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], ['equipmentPciSlotIdEntry'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

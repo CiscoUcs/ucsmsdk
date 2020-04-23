@@ -75,9 +75,9 @@ class MgmtEntity(ManagedObject):
     """This is MgmtEntity class."""
 
     consts = MgmtEntityConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("MgmtEntity", "mgmtEntity", "mgmt-entity-[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'topSystem'], [u'faultInst', u'mgmtPmonEntry'], ["Get"])
+    mo_meta = MoMeta("MgmtEntity", "mgmtEntity", "mgmt-entity-[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], ['topSystem'], ['faultInst', 'mgmtPmonEntry'], ["Get"])
 
     prop_meta = {
         "chassis1": MoPropertyMeta("chassis1", "chassis1", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

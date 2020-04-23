@@ -49,9 +49,9 @@ class BiosBootDevGrp(ManagedObject):
     """This is BiosBootDevGrp class."""
 
     consts = BiosBootDevGrpConsts()
-    naming_props = set([u'order'])
+    naming_props = set(['order'])
 
-    mo_meta = MoMeta("BiosBootDevGrp", "biosBootDevGrp", "bdg-[order]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'biosBOT'], [u'biosBootDev'], ["Get"])
+    mo_meta = MoMeta("BiosBootDevGrp", "biosBootDevGrp", "bdg-[order]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], ['biosBOT'], ['biosBootDev'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

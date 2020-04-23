@@ -18,7 +18,7 @@ class EtherNiErrStats(ManagedObject):
     consts = EtherNiErrStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EtherNiErrStats", "etherNiErrStats", "ni-err-stats", VersionMeta.Version223a, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'etherPIo', u'etherSwitchIntFIo', u'etherSwitchIntFIoPc'], [u'etherNiErrStatsHist'], ["Get"])
+    mo_meta = MoMeta("EtherNiErrStats", "etherNiErrStats", "ni-err-stats", VersionMeta.Version223a, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['etherPIo', 'etherSwitchIntFIo', 'etherSwitchIntFIoPc'], ['etherNiErrStatsHist'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

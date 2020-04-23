@@ -18,7 +18,7 @@ class MemoryBufferUnitEnvStats(ManagedObject):
     consts = MemoryBufferUnitEnvStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MemoryBufferUnitEnvStats", "memoryBufferUnitEnvStats", "buffer-unit-env-stats", VersionMeta.Version131c, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'memoryBufferUnit'], [u'memoryBufferUnitEnvStatsHist'], ["Get"])
+    mo_meta = MoMeta("MemoryBufferUnitEnvStats", "memoryBufferUnitEnvStats", "buffer-unit-env-stats", VersionMeta.Version131c, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['memoryBufferUnit'], ['memoryBufferUnitEnvStatsHist'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

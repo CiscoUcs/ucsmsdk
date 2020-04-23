@@ -40,9 +40,9 @@ class VmHv(ManagedObject):
     """This is VmHv class."""
 
     consts = VmHvConsts()
-    naming_props = set([u'uuid'])
+    naming_props = set(['uuid'])
 
-    mo_meta = MoMeta("VmHv", "vmHv", "hv-[uuid]", VersionMeta.Version111j, "InputOutput", 0xff, [], ["admin", "read-only"], [u'vmEp'], [u'vmHba', u'vmNic'], ["Get"])
+    mo_meta = MoMeta("VmHv", "vmHv", "hv-[uuid]", VersionMeta.Version111j, "InputOutput", 0xff, [], ["admin", "read-only"], ['vmEp'], ['vmHba', 'vmNic'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

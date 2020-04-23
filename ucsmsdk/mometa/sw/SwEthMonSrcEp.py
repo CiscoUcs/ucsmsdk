@@ -44,9 +44,9 @@ class SwEthMonSrcEp(ManagedObject):
     """This is SwEthMonSrcEp class."""
 
     consts = SwEthMonSrcEpConsts()
-    naming_props = set([u'chassisId', u'slotId', u'portId'])
+    naming_props = set(['chassisId', 'slotId', 'portId'])
 
-    mo_meta = MoMeta("SwEthMonSrcEp", "swEthMonSrcEp", "mon-src-[chassis_id]-[slot_id]-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["read-only"], [u'swEthMon', u'swSubGroup'], [], ["Get"])
+    mo_meta = MoMeta("SwEthMonSrcEp", "swEthMonSrcEp", "mon-src-[chassis_id]-[slot_id]-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["read-only"], ['swEthMon', 'swSubGroup'], [], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

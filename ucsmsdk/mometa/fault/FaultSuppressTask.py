@@ -42,9 +42,9 @@ class FaultSuppressTask(ManagedObject):
     """This is FaultSuppressTask class."""
 
     consts = FaultSuppressTaskConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FaultSuppressTask", "faultSuppressTask", "fault-suppress-task-[name]", VersionMeta.Version211a, "InputOutput", 0xfff, [], ["admin", "fault"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis', u'equipmentFex', u'equipmentIOCard', u'faultHolder', u'lsServer', u'orgOrg'], [u'faultInst', u'trigLocalSched'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FaultSuppressTask", "faultSuppressTask", "fault-suppress-task-[name]", VersionMeta.Version211a, "InputOutput", 0xfff, [], ["admin", "fault"], ['computeBlade', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFex', 'equipmentIOCard', 'faultHolder', 'lsServer', 'orgOrg'], ['faultInst', 'trigLocalSched'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["trigger", "trigger-immediate", "triggered", "untriggered", "user-ack", "user-discard"], []),

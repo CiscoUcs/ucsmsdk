@@ -64,9 +64,9 @@ class FabricFcEstcEp(ManagedObject):
     """This is FabricFcEstcEp class."""
 
     consts = FabricFcEstcEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("FabricFcEstcEp", "fabricFcEstcEp", "phys-fc-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x1fff, [], ["admin", "ext-san-config", "ext-san-policy"], [u'fabricFcEstc'], [u'fabricFcMonSrcEp', u'fabricVsanEp', u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricFcEstcEp", "fabricFcEstcEp", "phys-fc-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x1fff, [], ["admin", "ext-san-config", "ext-san-policy"], ['fabricFcEstc'], ['fabricFcMonSrcEp', 'fabricVsanEp', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version402a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["16gbps", "1gbps", "2gbps", "32gbps", "4gbps", "8gbps", "auto", "indeterminate"], []),

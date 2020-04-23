@@ -18,7 +18,7 @@ class OsARPLinkMonitoringPolicy(ManagedObject):
     consts = OsARPLinkMonitoringPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("OsARPLinkMonitoringPolicy", "osARPLinkMonitoringPolicy", "link-mon-pol", VersionMeta.Version302c, "InputOutput", 0x3f, [], ["read-only"], [u'osEthBondIntf'], [u'osARPTarget'], [None])
+    mo_meta = MoMeta("OsARPLinkMonitoringPolicy", "osARPLinkMonitoringPolicy", "link-mon-pol", VersionMeta.Version302c, "InputOutput", 0x3f, [], ["read-only"], ['osEthBondIntf'], ['osARPTarget'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

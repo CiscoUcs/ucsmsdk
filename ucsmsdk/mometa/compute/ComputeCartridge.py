@@ -172,9 +172,9 @@ class ComputeCartridge(ManagedObject):
     """This is ComputeCartridge class."""
 
     consts = ComputeCartridgeConsts()
-    naming_props = set([u'slotId'])
+    naming_props = set(['slotId'])
 
-    mo_meta = MoMeta("ComputeCartridge", "computeCartridge", "cartridge-[slot_id]", VersionMeta.Version251a, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentChassis'], [u'computeServerUnit'], ["Get", "Set"])
+    mo_meta = MoMeta("ComputeCartridge", "computeCartridge", "cartridge-[slot_id]", VersionMeta.Version251a, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['equipmentChassis'], ['computeServerUnit'], ["Get", "Set"])
 
     prop_meta = {
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]),

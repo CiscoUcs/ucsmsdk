@@ -17,7 +17,7 @@ class PolicyConfigBackup(ManagedObject):
     consts = PolicyConfigBackupConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PolicyConfigBackup", "policyConfigBackup", "cfg-backup-ctrl", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "operations"], [u'policyControlEp'], [u'policyControlledInstance', u'policyControlledType'], ["Add", "Get", "Set"])
+    mo_meta = MoMeta("PolicyConfigBackup", "policyConfigBackup", "cfg-backup-ctrl", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "operations"], ['policyControlEp'], ['policyControlledInstance', 'policyControlledType'], ["Add", "Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

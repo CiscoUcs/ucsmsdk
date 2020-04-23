@@ -18,7 +18,7 @@ class CommShellSvcLimits(ManagedObject):
     consts = CommShellSvcLimitsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommShellSvcLimits", "commShellSvcLimits", "shell-svc-limits", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["aaa", "admin"], [u'commSvcEp'], [], ["Get"])
+    mo_meta = MoMeta("CommShellSvcLimits", "commShellSvcLimits", "shell-svc-limits", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["aaa", "admin"], ['commSvcEp'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

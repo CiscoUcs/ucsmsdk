@@ -97,7 +97,7 @@ class PowerBudget(ManagedObject):
     consts = PowerBudgetConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PowerBudget", "powerBudget", "budget", VersionMeta.Version111j, "InputOutput", 0x7f, [], ["admin", "power-mgmt"], [u'computeBlade', u'computeExtBoard', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis', u'equipmentFex', u'networkElement'], [u'faultInst', u'powerProfiledPower'], ["Get", "Set"])
+    mo_meta = MoMeta("PowerBudget", "powerBudget", "budget", VersionMeta.Version111j, "InputOutput", 0x7f, [], ["admin", "power-mgmt"], ['computeBlade', 'computeExtBoard', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFex', 'networkElement'], ['faultInst', 'powerProfiledPower'], ["Get", "Set"])
 
     prop_meta = {
         "admin_committed": MoPropertyMeta("admin_committed", "adminCommitted", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),

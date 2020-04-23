@@ -23,9 +23,9 @@ class ExtvmmFabricNetworkDefinition(ManagedObject):
     """This is ExtvmmFabricNetworkDefinition class."""
 
     consts = ExtvmmFabricNetworkDefinitionConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ExtvmmFabricNetworkDefinition", "extvmmFabricNetworkDefinition", "fabric-network-def-[name]", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin", "ls-network", "ls-network-policy"], [u'extvmmFabricNetwork'], [u'extvmmVMNetworkDefinition'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("ExtvmmFabricNetworkDefinition", "extvmmFabricNetworkDefinition", "fabric-network-def-[name]", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin", "ls-network", "ls-network-policy"], ['extvmmFabricNetwork'], ['extvmmVMNetworkDefinition'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "allowed_vnic_type": MoPropertyMeta("allowed_vnic_type", "allowedVnicType", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["ether", "fc", "ipc", "scsi", "unknown"], []),

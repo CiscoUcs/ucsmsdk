@@ -33,9 +33,9 @@ class CommSyslogClient(ManagedObject):
     """This is CommSyslogClient class."""
 
     consts = CommSyslogClientConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("CommSyslogClient", "commSyslogClient", "client-[name]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "operations"], [u'commSyslog'], [], ["Get", "Set"])
+    mo_meta = MoMeta("CommSyslogClient", "commSyslogClient", "client-[name]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "operations"], ['commSyslog'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

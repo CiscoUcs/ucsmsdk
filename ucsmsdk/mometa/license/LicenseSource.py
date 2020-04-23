@@ -18,7 +18,7 @@ class LicenseSource(ManagedObject):
     consts = LicenseSourceConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LicenseSource", "licenseSource", "source", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], [u'licenseFile'], [], ["Get"])
+    mo_meta = MoMeta("LicenseSource", "licenseSource", "source", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], ['licenseFile'], [], ["Get"])
 
     prop_meta = {
         "always_use": MoPropertyMeta("always_use", "alwaysUse", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

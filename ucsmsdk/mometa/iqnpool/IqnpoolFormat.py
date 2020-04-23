@@ -13,9 +13,9 @@ class IqnpoolFormat(ManagedObject):
     """This is IqnpoolFormat class."""
 
     consts = IqnpoolFormatConsts()
-    naming_props = set([u'format'])
+    naming_props = set(['format'])
 
-    mo_meta = MoMeta("IqnpoolFormat", "iqnpoolFormat", "format-[format]", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["admin"], [u'iqnpoolUniverse'], [], ["Get"])
+    mo_meta = MoMeta("IqnpoolFormat", "iqnpoolFormat", "format-[format]", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["admin"], ['iqnpoolUniverse'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

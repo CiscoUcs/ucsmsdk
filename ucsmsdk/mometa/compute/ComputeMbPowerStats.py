@@ -18,7 +18,7 @@ class ComputeMbPowerStats(ManagedObject):
     consts = ComputeMbPowerStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeMbPowerStats", "computeMbPowerStats", "power-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'computeBoard', u'computeExtBoard'], [u'computeMbPowerStatsHist'], ["Get"])
+    mo_meta = MoMeta("ComputeMbPowerStats", "computeMbPowerStats", "power-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['computeBoard', 'computeExtBoard'], ['computeMbPowerStatsHist'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

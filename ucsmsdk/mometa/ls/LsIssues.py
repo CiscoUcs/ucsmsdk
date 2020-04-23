@@ -15,7 +15,7 @@ class LsIssues(ManagedObject):
     consts = LsIssuesConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsIssues", "lsIssues", "config-issue", VersionMeta.Version221b, "InputOutput", 0x1f, [], ["admin", "ls-compute", "ls-config", "ls-server"], [u'lsServer'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("LsIssues", "lsIssues", "config-issue", VersionMeta.Version221b, "InputOutput", 0x1f, [], ["admin", "ls-compute", "ls-config", "ls-server"], ['lsServer'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

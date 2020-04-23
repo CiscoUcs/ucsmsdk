@@ -176,9 +176,9 @@ class LicenseDownloader(ManagedObject):
     """This is LicenseDownloader class."""
 
     consts = LicenseDownloaderConsts()
-    naming_props = set([u'fileName'])
+    naming_props = set(['fileName'])
 
-    mo_meta = MoMeta("LicenseDownloader", "licenseDownloader", "dnld-[file_name]", VersionMeta.Version141i, "InputOutput", 0xfff, [], ["admin"], [u'licenseEp'], [u'eventInst', u'faultInst', u'licenseDownloaderFsm', u'licenseDownloaderFsmTask', u'licenseProp'], ["Get"])
+    mo_meta = MoMeta("LicenseDownloader", "licenseDownloader", "dnld-[file_name]", VersionMeta.Version141i, "InputOutput", 0xfff, [], ["admin"], ['licenseEp'], ['eventInst', 'faultInst', 'licenseDownloaderFsm', 'licenseDownloaderFsmTask', 'licenseProp'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["idle", "restart"], []),

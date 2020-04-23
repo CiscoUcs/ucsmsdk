@@ -18,9 +18,9 @@ class PkiEpFsmTask(ManagedObject):
     """This is PkiEpFsmTask class."""
 
     consts = PkiEpFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("PkiEpFsmTask", "pkiEpFsmTask", "task-[item]", VersionMeta.Version111j, "OutputOnly", 0xf, [], [""], [u'pkiEp'], [], [None])
+    mo_meta = MoMeta("PkiEpFsmTask", "pkiEpFsmTask", "task-[item]", VersionMeta.Version111j, "OutputOnly", 0xf, [], [""], ['pkiEp'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

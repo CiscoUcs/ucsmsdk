@@ -46,7 +46,7 @@ class MemoryPersistentMemoryConfiguration(ManagedObject):
     consts = MemoryPersistentMemoryConfigurationConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MemoryPersistentMemoryConfiguration", "memoryPersistentMemoryConfiguration", "pmemory-config", VersionMeta.Version404a, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'computeBoard', u'lsServer'], [u'faultInst', u'memoryPersistentMemoryConfigResult', u'memoryPersistentMemoryRegion'], [None])
+    mo_meta = MoMeta("MemoryPersistentMemoryConfiguration", "memoryPersistentMemoryConfiguration", "pmemory-config", VersionMeta.Version404a, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['computeBoard', 'lsServer'], ['faultInst', 'memoryPersistentMemoryConfigResult', 'memoryPersistentMemoryRegion'], [None])
 
     prop_meta = {
         "admin_action": MoPropertyMeta("admin_action", "adminAction", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cancel-all", "disable-security", "enable-security", "modify-passphrase", "no-op", "reset-factory-default", "secure-erase", "unlock-dimms"], []),

@@ -26,9 +26,9 @@ class EpqosDefinitionFsmStage(ManagedObject):
     """This is EpqosDefinitionFsmStage class."""
 
     consts = EpqosDefinitionFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("EpqosDefinitionFsmStage", "epqosDefinitionFsmStage", "stage-[name]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'epqosDefinitionFsm'], [], [None])
+    mo_meta = MoMeta("EpqosDefinitionFsmStage", "epqosDefinitionFsmStage", "stage-[name]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['epqosDefinitionFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

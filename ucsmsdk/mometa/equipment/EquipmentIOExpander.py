@@ -143,9 +143,9 @@ class EquipmentIOExpander(ManagedObject):
     """This is EquipmentIOExpander class."""
 
     consts = EquipmentIOExpanderConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentIOExpander", "equipmentIOExpander", "io-expander-[id]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["read-only"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentIOExpander", "equipmentIOExpander", "io-expander-[id]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["read-only"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], [], ["Get"])
 
     prop_meta = {
         "asset_tag": MoPropertyMeta("asset_tag", "assetTag", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []),

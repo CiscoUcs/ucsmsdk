@@ -145,7 +145,7 @@ class ComputeBoardController(ManagedObject):
     consts = ComputeBoardControllerConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeBoardController", "computeBoardController", "boardController", VersionMeta.Version131c, "InputOutput", 0x3f, [], ["read-only"], [u'computeBlade', u'computeExtBoard', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis', u'equipmentSystemIOController'], [u'mgmtController'], ["Get"])
+    mo_meta = MoMeta("ComputeBoardController", "computeBoardController", "boardController", VersionMeta.Version131c, "InputOutput", 0x3f, [], ["read-only"], ['computeBlade', 'computeExtBoard', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentSystemIOController'], ['mgmtController'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

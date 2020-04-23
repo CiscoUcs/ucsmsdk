@@ -6395,9 +6395,9 @@ class EventRecord(ManagedObject):
     """This is EventRecord class."""
 
     consts = EventRecordConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EventRecord", "eventRecord", "[id]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["read-only"], [u'eventLog'], [], ["Get"])
+    mo_meta = MoMeta("EventRecord", "eventRecord", "[id]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["read-only"], ['eventLog'], [], ["Get"])
 
     prop_meta = {
         "affected": MoPropertyMeta("affected", "affected", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x2, 0, 256, None, [], []),

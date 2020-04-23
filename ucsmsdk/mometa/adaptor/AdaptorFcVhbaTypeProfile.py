@@ -18,7 +18,7 @@ class AdaptorFcVhbaTypeProfile(ManagedObject):
     consts = AdaptorFcVhbaTypeProfileConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorFcVhbaTypeProfile", "adaptorFcVhbaTypeProfile", "fc-vhbatype", VersionMeta.Version402a, "InputOutput", 0x3f, [], ["admin", "ls-config-policy", "ls-server-policy", "ls-storage"], [u'adaptorHostFcIf', u'adaptorHostFcIfProfile'], [], [None])
+    mo_meta = MoMeta("AdaptorFcVhbaTypeProfile", "adaptorFcVhbaTypeProfile", "fc-vhbatype", VersionMeta.Version402a, "InputOutput", 0x3f, [], ["admin", "ls-config-policy", "ls-server-policy", "ls-storage"], ['adaptorHostFcIf', 'adaptorHostFcIfProfile'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version402a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

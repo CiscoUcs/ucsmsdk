@@ -22,9 +22,9 @@ class EquipmentMemoryUnitDiscoveryModifierDef(ManagedObject):
     """This is EquipmentMemoryUnitDiscoveryModifierDef class."""
 
     consts = EquipmentMemoryUnitDiscoveryModifierDefConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("EquipmentMemoryUnitDiscoveryModifierDef", "equipmentMemoryUnitDiscoveryModifierDef", "discmod-[name]", VersionMeta.Version102d, "InputOutput", 0xff, [], [""], [u'equipmentMemoryUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentMemoryUnitDiscoveryModifierDef", "equipmentMemoryUnitDiscoveryModifierDef", "discmod-[name]", VersionMeta.Version102d, "InputOutput", 0xff, [], [""], ['equipmentMemoryUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
         "action": MoPropertyMeta("action", "action", "string", VersionMeta.Version102d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["setRev", "setRevStrict", "setRevToOne", "unknown"], []),

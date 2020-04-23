@@ -29,9 +29,9 @@ class SysdebugMEpLog(ManagedObject):
     """This is SysdebugMEpLog class."""
 
     consts = SysdebugMEpLogConsts()
-    naming_props = set([u'type', u'id'])
+    naming_props = set(['type', 'id'])
 
-    mo_meta = MoMeta("SysdebugMEpLog", "sysdebugMEpLog", "log-[type]-[id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "operations"], [u'mgmtController'], [u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("SysdebugMEpLog", "sysdebugMEpLog", "log-[type]-[id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "operations"], ['mgmtController'], ['faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["backup", "clear", "policy"], []),

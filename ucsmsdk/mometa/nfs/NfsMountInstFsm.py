@@ -157,7 +157,7 @@ class NfsMountInstFsm(ManagedObject):
     consts = NfsMountInstFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("NfsMountInstFsm", "nfsMountInstFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'nfsMountInst'], [u'nfsMountInstFsmStage'], [None])
+    mo_meta = MoMeta("NfsMountInstFsm", "nfsMountInstFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['nfsMountInst'], ['nfsMountInstFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

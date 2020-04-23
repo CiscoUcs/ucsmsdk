@@ -52,9 +52,9 @@ class EquipmentSlotArray(ManagedObject):
     """This is EquipmentSlotArray class."""
 
     consts = EquipmentSlotArrayConsts()
-    naming_props = set([u'selector'])
+    naming_props = set(['selector'])
 
-    mo_meta = MoMeta("EquipmentSlotArray", "equipmentSlotArray", "[selector]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], [""], [u'diagSrvCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentIOExpanderCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentRackEnclosureCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentSiocCapProvider', u'equipmentStorageEncCapProvider', u'equipmentSwitchCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentSlotArray", "equipmentSlotArray", "[selector]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], [""], ['diagSrvCapProvider', 'equipmentBladeCapProvider', 'equipmentCatalogCapProvider', 'equipmentChassisCapProvider', 'equipmentDbgPluginCapProvider', 'equipmentIOExpanderCapProvider', 'equipmentMgmtCapProvider', 'equipmentMgmtExtCapProvider', 'equipmentRackEnclosureCapProvider', 'equipmentRackUnitCapProvider', 'equipmentServerUnitCapProvider', 'equipmentSiocCapProvider', 'equipmentStorageEncCapProvider', 'equipmentSwitchCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

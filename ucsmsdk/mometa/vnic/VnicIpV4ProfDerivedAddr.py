@@ -15,7 +15,7 @@ class VnicIpV4ProfDerivedAddr(ManagedObject):
     consts = VnicIpV4ProfDerivedAddrConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicIpV4ProfDerivedAddr", "vnicIpV4ProfDerivedAddr", "ipv4-prof-addr", VersionMeta.Version141i, "InputOutput", 0xff, [], ["admin"], [u'adaptorHostIscsiIf', u'adaptorVlan', u'mgmtController', u'vnicIPv4If'], [], ["Get"])
+    mo_meta = MoMeta("VnicIpV4ProfDerivedAddr", "vnicIpV4ProfDerivedAddr", "ipv4-prof-addr", VersionMeta.Version141i, "InputOutput", 0xff, [], ["admin"], ['adaptorHostIscsiIf', 'adaptorVlan', 'mgmtController', 'vnicIPv4If'], [], ["Get"])
 
     prop_meta = {
         "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),

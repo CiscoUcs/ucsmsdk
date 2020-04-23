@@ -15,7 +15,7 @@ class VnicConnDef(ManagedObject):
     consts = VnicConnDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicConnDef", "vnicConnDef", "conn-def", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server"], [u'lsServer'], [u'faultInst'], ["Add", "Get", "Set"])
+    mo_meta = MoMeta("VnicConnDef", "vnicConnDef", "conn-def", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server"], ['lsServer'], ['faultInst'], ["Add", "Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

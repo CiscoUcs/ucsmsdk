@@ -66,9 +66,9 @@ class SwEthEstcEp(ManagedObject):
     """This is SwEthEstcEp class."""
 
     consts = SwEthEstcEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("SwEthEstcEp", "swEthEstcEp", "ethestc-ep-slot-[slot_id]port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x7fff, [], ["read-only"], [u'swEthLanBorder', u'swSubGroup'], [u'swEthTargetEp', u'swVlan'], ["Get"])
+    mo_meta = MoMeta("SwEthEstcEp", "swEthEstcEp", "ethestc-ep-slot-[slot_id]port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x7fff, [], ["read-only"], ['swEthLanBorder', 'swSubGroup'], ['swEthTargetEp', 'swVlan'], ["Get"])
 
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),

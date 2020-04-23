@@ -169,9 +169,9 @@ class StorageVirtualDrive(ManagedObject):
     """This is StorageVirtualDrive class."""
 
     consts = StorageVirtualDriveConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("StorageVirtualDrive", "storageVirtualDrive", "vd-[id]", VersionMeta.Version211a, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'storageController', u'storageVirtualDriveContainer'], [u'faultInst', u'storageControllerEp', u'storageLunDisk', u'storageOperation', u'storageScsiLunRef', u'storageVDMemberEp'], [None])
+    mo_meta = MoMeta("StorageVirtualDrive", "storageVirtualDrive", "vd-[id]", VersionMeta.Version211a, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['storageController', 'storageVirtualDriveContainer'], ['faultInst', 'storageControllerEp', 'storageLunDisk', 'storageOperation', 'storageScsiLunRef', 'storageVDMemberEp'], [None])
 
     prop_meta = {
         "access_policy": MoPropertyMeta("access_policy", "accessPolicy", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["blocked", "hidden", "read-only", "read-write", "transport-ready", "unknown"], []),

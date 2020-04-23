@@ -13,9 +13,9 @@ class FirmwareServerChassisConstraint(ManagedObject):
     """This is FirmwareServerChassisConstraint class."""
 
     consts = FirmwareServerChassisConstraintConsts()
-    naming_props = set([u'serverModel'])
+    naming_props = set(['serverModel'])
 
-    mo_meta = MoMeta("FirmwareServerChassisConstraint", "firmwareServerChassisConstraint", "server-chassis-constraint-[server_model]", VersionMeta.Version323a, "InputOutput", 0x3f, [], ["read-only"], [u'firmwareConstraints'], [], [None])
+    mo_meta = MoMeta("FirmwareServerChassisConstraint", "firmwareServerChassisConstraint", "server-chassis-constraint-[server_model]", VersionMeta.Version323a, "InputOutput", 0x3f, [], ["read-only"], ['firmwareConstraints'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version323a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -18,9 +18,9 @@ class ComputeKvmMgmtPolicy(ManagedObject):
     """This is ComputeKvmMgmtPolicy class."""
 
     consts = ComputeKvmMgmtPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ComputeKvmMgmtPolicy", "computeKvmMgmtPolicy", "kvm-mgmt-policy-[name]", VersionMeta.Version222c, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-ext-access", "ls-server", "ls-server-oper", "ls-server-policy"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'orgOrg'], [u'mgmtKvmCertificate'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("ComputeKvmMgmtPolicy", "computeKvmMgmtPolicy", "kvm-mgmt-policy-[name]", VersionMeta.Version222c, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-ext-access", "ls-server", "ls-server-oper", "ls-server-policy"], ['computeBlade', 'computeRackUnit', 'computeServerUnit', 'orgOrg'], ['mgmtKvmCertificate'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

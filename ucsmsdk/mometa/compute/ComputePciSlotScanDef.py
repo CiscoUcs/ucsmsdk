@@ -16,9 +16,9 @@ class ComputePciSlotScanDef(ManagedObject):
     """This is ComputePciSlotScanDef class."""
 
     consts = ComputePciSlotScanDefConsts()
-    naming_props = set([u'slotId'])
+    naming_props = set(['slotId'])
 
-    mo_meta = MoMeta("ComputePciSlotScanDef", "computePciSlotScanDef", "slot-[slot_id]", VersionMeta.Version211a, "InputOutput", 0x3ff, [], ["read-only"], [u'computePciCap'], [], [None])
+    mo_meta = MoMeta("ComputePciSlotScanDef", "computePciSlotScanDef", "slot-[slot_id]", VersionMeta.Version211a, "InputOutput", 0x3ff, [], ["read-only"], ['computePciCap'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

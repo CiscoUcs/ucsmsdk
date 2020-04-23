@@ -26,9 +26,9 @@ class SysdebugLogExportPolicyFsmStage(ManagedObject):
     """This is SysdebugLogExportPolicyFsmStage class."""
 
     consts = SysdebugLogExportPolicyFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("SysdebugLogExportPolicyFsmStage", "sysdebugLogExportPolicyFsmStage", "stage-[name]", VersionMeta.Version222c, "OutputOnly", 0xf, [], [""], [u'sysdebugLogExportPolicyFsm'], [], [None])
+    mo_meta = MoMeta("SysdebugLogExportPolicyFsmStage", "sysdebugLogExportPolicyFsmStage", "stage-[name]", VersionMeta.Version222c, "OutputOnly", 0xf, [], [""], ['sysdebugLogExportPolicyFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

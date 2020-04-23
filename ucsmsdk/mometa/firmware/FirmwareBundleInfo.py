@@ -23,7 +23,7 @@ class FirmwareBundleInfo(ManagedObject):
     """This is FirmwareBundleInfo class."""
 
     consts = FirmwareBundleInfoConsts()
-    naming_props = set([u'type'])
+    naming_props = set(['type'])
 
     mo_meta = MoMeta("FirmwareBundleInfo", "firmwareBundleInfo", "bundle-[type]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin", "ls-config-policy", "ls-server-policy"], [], [], [None])
 

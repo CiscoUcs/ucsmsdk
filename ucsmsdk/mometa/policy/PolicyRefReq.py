@@ -15,9 +15,9 @@ class PolicyRefReq(ManagedObject):
     """This is PolicyRefReq class."""
 
     consts = PolicyRefReqConsts()
-    naming_props = set([u'refConvertedDn'])
+    naming_props = set(['refConvertedDn'])
 
-    mo_meta = MoMeta("PolicyRefReq", "policyRefReq", "refreq-[ref_converted_dn]", VersionMeta.Version212a, "InputOutput", 0x3f, [], ["admin"], [u'policyElement'], [], [None])
+    mo_meta = MoMeta("PolicyRefReq", "policyRefReq", "refreq-[ref_converted_dn]", VersionMeta.Version212a, "InputOutput", 0x3f, [], ["admin"], ['policyElement'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

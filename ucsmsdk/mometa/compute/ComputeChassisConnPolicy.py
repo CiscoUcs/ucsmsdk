@@ -25,9 +25,9 @@ class ComputeChassisConnPolicy(ManagedObject):
     """This is ComputeChassisConnPolicy class."""
 
     consts = ComputeChassisConnPolicyConsts()
-    naming_props = set([u'chassisId', u'switchId'])
+    naming_props = set(['chassisId', 'switchId'])
 
-    mo_meta = MoMeta("ComputeChassisConnPolicy", "computeChassisConnPolicy", "chassis-conn-policy-chassis-[chassis_id]-fabric-[switch_id]", VersionMeta.Version201m, "InputOutput", 0xfff, [], ["admin", "pn-policy"], [u'orgOrg'], [], ["Get", "Set"])
+    mo_meta = MoMeta("ComputeChassisConnPolicy", "computeChassisConnPolicy", "chassis-conn-policy-chassis-[chassis_id]-fabric-[switch_id]", VersionMeta.Version201m, "InputOutput", 0xfff, [], ["admin", "pn-policy"], ['orgOrg'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["global", "none", "port-channel"], []),

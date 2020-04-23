@@ -2387,9 +2387,9 @@ class GmetaClass(ManagedObject):
     """This is GmetaClass class."""
 
     consts = GmetaClassConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("GmetaClass", "gmetaClass", "class-[id]", VersionMeta.Version212a, "InputOutput", 0x7f, [], ["admin"], [u'gmetaHolder'], [u'gmetaProp'], [None])
+    mo_meta = MoMeta("GmetaClass", "gmetaClass", "class-[id]", VersionMeta.Version212a, "InputOutput", 0x7f, [], ["admin"], ['gmetaHolder'], ['gmetaProp'], [None])
 
     prop_meta = {
         "admin_prop_mask": MoPropertyMeta("admin_prop_mask", "adminPropMask", "ulong", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

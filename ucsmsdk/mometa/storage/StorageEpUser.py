@@ -20,9 +20,9 @@ class StorageEpUser(ManagedObject):
     """This is StorageEpUser class."""
 
     consts = StorageEpUserConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("StorageEpUser", "storageEpUser", "user-[name]", VersionMeta.Version211a, "InputOutput", 0x3ff, [], ["admin"], [u'initiatorFcInitiatorEp', u'initiatorIScsiInitiatorEp'], [u'aaaCimcSession'], [None])
+    mo_meta = MoMeta("StorageEpUser", "storageEpUser", "user-[name]", VersionMeta.Version211a, "InputOutput", 0x3ff, [], ["admin"], ['initiatorFcInitiatorEp', 'initiatorIScsiInitiatorEp'], ['aaaCimcSession'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

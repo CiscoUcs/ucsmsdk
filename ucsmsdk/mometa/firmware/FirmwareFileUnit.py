@@ -13,7 +13,7 @@ class FirmwareFileUnit(ManagedObject):
     """This is FirmwareFileUnit class."""
 
     consts = FirmwareFileUnitConsts()
-    naming_props = set([u'type'])
+    naming_props = set(['type'])
 
     mo_meta = MoMeta("FirmwareFileUnit", "firmwareFileUnit", "fileunit-[type]", VersionMeta.Version302c, "InputOutput", 0x3f, [], ["read-only"], [], [], [None])
 

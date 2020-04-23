@@ -13,9 +13,9 @@ class FirmwareSpec(ManagedObject):
     """This is FirmwareSpec class."""
 
     consts = FirmwareSpecConsts()
-    naming_props = set([u'bundleVersion'])
+    naming_props = set(['bundleVersion'])
 
-    mo_meta = MoMeta("FirmwareSpec", "firmwareSpec", "fw-spec-bundle-version-[bundle_version]", VersionMeta.Version141i, "InputOutput", 0x3f, [], [""], [u'adaptorFruCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("FirmwareSpec", "firmwareSpec", "fw-spec-bundle-version-[bundle_version]", VersionMeta.Version141i, "InputOutput", 0x3f, [], [""], ['adaptorFruCapProvider'], [], ["Get"])
 
     prop_meta = {
         "bundle_version": MoPropertyMeta("bundle_version", "bundleVersion", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x2, 1, 510, None, [], []),

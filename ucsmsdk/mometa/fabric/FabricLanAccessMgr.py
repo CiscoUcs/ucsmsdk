@@ -15,7 +15,7 @@ class FabricLanAccessMgr(ManagedObject):
     consts = FabricLanAccessMgrConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FabricLanAccessMgr", "fabricLanAccessMgr", "lan-access", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEp'], [], [None])
+    mo_meta = MoMeta("FabricLanAccessMgr", "fabricLanAccessMgr", "lan-access", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEp'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -15,9 +15,9 @@ class MemoryPersistentMemoryGoal(ManagedObject):
     """This is MemoryPersistentMemoryGoal class."""
 
     consts = MemoryPersistentMemoryGoalConsts()
-    naming_props = set([u'socketId'])
+    naming_props = set(['socketId'])
 
-    mo_meta = MoMeta("MemoryPersistentMemoryGoal", "memoryPersistentMemoryGoal", "goal-[socket_id]", VersionMeta.Version404a, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'memoryPersistentMemoryPolicy'], [], [None])
+    mo_meta = MoMeta("MemoryPersistentMemoryGoal", "memoryPersistentMemoryGoal", "goal-[socket_id]", VersionMeta.Version404a, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['memoryPersistentMemoryPolicy'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version404a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

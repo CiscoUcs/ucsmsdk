@@ -20,9 +20,9 @@ class TrigAbsWindow(ManagedObject):
     """This is TrigAbsWindow class."""
 
     consts = TrigAbsWindowConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("TrigAbsWindow", "trigAbsWindow", "abs-[name]", VersionMeta.Version141i, "InputOutput", 0x7ff, [], ["admin", "ls-compute", "ls-config", "ls-server"], [u'trigLocalSched', u'trigSched'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("TrigAbsWindow", "trigAbsWindow", "abs-[name]", VersionMeta.Version141i, "InputOutput", 0x7ff, [], ["admin", "ls-compute", "ls-config", "ls-server"], ['trigLocalSched', 'trigSched'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

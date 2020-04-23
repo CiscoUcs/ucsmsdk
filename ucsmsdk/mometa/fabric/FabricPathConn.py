@@ -30,9 +30,9 @@ class FabricPathConn(ManagedObject):
     """This is FabricPathConn class."""
 
     consts = FabricPathConnConsts()
-    naming_props = set([u'cType'])
+    naming_props = set(['cType'])
 
-    mo_meta = MoMeta("FabricPathConn", "fabricPathConn", "xc-[c_type]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'fabricPath'], [u'fabricPathEp'], ["Get"])
+    mo_meta = MoMeta("FabricPathConn", "fabricPathConn", "xc-[c_type]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['fabricPath'], ['fabricPathEp'], ["Get"])
 
     prop_meta = {
         "c_type": MoPropertyMeta("c_type", "cType", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x2, None, None, None, ["mux", "mux-access", "mux-fabric", "mux-fabricpc", "mux-fabricpc-to-chpc", "mux-fabricpc-to-hostpc", "mux-fabricpc-to-hostport", "mux-fabricport-to-hostpc", "mux-hostpc-to-adaptorpc", "mux-to-appliance", "mux-to-chassis", "mux-to-host", "switch-access", "switch-fabric", "switch-fabricpc", "switch-to-host", "switch-to-mux", "switchpc-to-hostpc"], ["0-255"]),

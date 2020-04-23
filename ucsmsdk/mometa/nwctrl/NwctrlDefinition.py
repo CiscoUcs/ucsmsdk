@@ -26,9 +26,9 @@ class NwctrlDefinition(ManagedObject):
     """This is NwctrlDefinition class."""
 
     consts = NwctrlDefinitionConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("NwctrlDefinition", "nwctrlDefinition", "nwctrl-[name]", VersionMeta.Version102d, "InputOutput", 0x1fff, [], ["admin", "ls-network", "ls-network-policy"], [u'fabricEthEstcCloud', u'orgOrg', u'policySystemEp'], [u'dpsecMac'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("NwctrlDefinition", "nwctrlDefinition", "nwctrl-[name]", VersionMeta.Version102d, "InputOutput", 0x1fff, [], ["admin", "ls-network", "ls-network-policy"], ['fabricEthEstcCloud', 'orgOrg', 'policySystemEp'], ['dpsecMac'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "cdp": MoPropertyMeta("cdp", "cdp", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

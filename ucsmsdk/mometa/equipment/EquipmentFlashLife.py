@@ -16,9 +16,9 @@ class EquipmentFlashLife(ManagedObject):
     """This is EquipmentFlashLife class."""
 
     consts = EquipmentFlashLifeConsts()
-    naming_props = set([u'suportType', u'cardParamType'])
+    naming_props = set(['suportType', 'cardParamType'])
 
-    mo_meta = MoMeta("EquipmentFlashLife", "equipmentFlashLife", "[suport_type][card_param_type]", VersionMeta.Version222c, "InputOutput", 0x3ff, [], [""], [u'equipmentLocalDiskControllerCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentFlashLife", "equipmentFlashLife", "[suport_type][card_param_type]", VersionMeta.Version222c, "InputOutput", 0x3ff, [], [""], ['equipmentLocalDiskControllerCapProvider'], [], ["Get"])
 
     prop_meta = {
         "card_param_type": MoPropertyMeta("card_param_type", "cardParamType", "uint", VersionMeta.Version222c, MoPropertyMeta.NAMING, 0x2, None, None, None, [], []),

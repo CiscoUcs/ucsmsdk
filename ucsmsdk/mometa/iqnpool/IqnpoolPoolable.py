@@ -13,9 +13,9 @@ class IqnpoolPoolable(ManagedObject):
     """This is IqnpoolPoolable class."""
 
     consts = IqnpoolPoolableConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("IqnpoolPoolable", "iqnpoolPoolable", "pool-[id]", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["read-only"], [u'iqnpoolAddr'], [], ["Get"])
+    mo_meta = MoMeta("IqnpoolPoolable", "iqnpoolPoolable", "pool-[id]", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["read-only"], ['iqnpoolAddr'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

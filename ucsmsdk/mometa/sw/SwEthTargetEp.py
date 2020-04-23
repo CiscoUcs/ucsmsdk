@@ -52,9 +52,9 @@ class SwEthTargetEp(ManagedObject):
     """This is SwEthTargetEp class."""
 
     consts = SwEthTargetEpConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("SwEthTargetEp", "swEthTargetEp", "eth-target-[name]", VersionMeta.Version141i, "InputOutput", 0xff, [], ["read-only"], [u'swEthEstcEp', u'swEthEstcPc'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("SwEthTargetEp", "swEthTargetEp", "eth-target-[name]", VersionMeta.Version141i, "InputOutput", 0xff, [], ["read-only"], ['swEthEstcEp', 'swEthEstcPc'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),

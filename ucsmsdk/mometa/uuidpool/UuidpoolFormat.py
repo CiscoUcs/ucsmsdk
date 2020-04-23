@@ -28,9 +28,9 @@ class UuidpoolFormat(ManagedObject):
     """This is UuidpoolFormat class."""
 
     consts = UuidpoolFormatConsts()
-    naming_props = set([u'format', u'mask'])
+    naming_props = set(['format', 'mask'])
 
-    mo_meta = MoMeta("UuidpoolFormat", "uuidpoolFormat", "format-[format]-[mask]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ls-storage", "ls-storage-policy"], [u'uuidpoolUniverse'], [], ["Get"])
+    mo_meta = MoMeta("UuidpoolFormat", "uuidpoolFormat", "format-[format]-[mask]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ls-storage", "ls-storage-policy"], ['uuidpoolUniverse'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

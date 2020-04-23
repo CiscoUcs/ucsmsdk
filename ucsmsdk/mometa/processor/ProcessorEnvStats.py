@@ -22,7 +22,7 @@ class ProcessorEnvStats(ManagedObject):
     consts = ProcessorEnvStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ProcessorEnvStats", "processorEnvStats", "env-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'processorUnit'], [u'processorEnvStatsHist'], ["Get"])
+    mo_meta = MoMeta("ProcessorEnvStats", "processorEnvStats", "env-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['processorUnit'], ['processorEnvStatsHist'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

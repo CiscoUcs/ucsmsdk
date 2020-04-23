@@ -23,7 +23,7 @@ class FirmwareAutoSyncPolicy(ManagedObject):
     consts = FirmwareAutoSyncPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareAutoSyncPolicy", "firmwareAutoSyncPolicy", "fw-auto-sync", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin"], [u'orgOrg'], [u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("FirmwareAutoSyncPolicy", "firmwareAutoSyncPolicy", "fw-auto-sync", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin"], ['orgOrg'], ['faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

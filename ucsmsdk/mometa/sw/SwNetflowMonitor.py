@@ -23,9 +23,9 @@ class SwNetflowMonitor(ManagedObject):
     """This is SwNetflowMonitor class."""
 
     consts = SwNetflowMonitorConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("SwNetflowMonitor", "swNetflowMonitor", "flowmonitor-netflow-[name]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["read-only"], [u'swEthLanFlowMon', u'swNetflowMonSession'], [u'swNFExporterRef'], [None])
+    mo_meta = MoMeta("SwNetflowMonitor", "swNetflowMonitor", "flowmonitor-netflow-[name]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["read-only"], ['swEthLanFlowMon', 'swNetflowMonSession'], ['swNFExporterRef'], [None])
 
     prop_meta = {
         "active_timeout": MoPropertyMeta("active_timeout", "activeTimeout", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

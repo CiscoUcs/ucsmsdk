@@ -21,7 +21,7 @@ class PowerGroupAdditionPolicy(ManagedObject):
     consts = PowerGroupAdditionPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PowerGroupAdditionPolicy", "powerGroupAdditionPolicy", "group-add-policy", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["admin", "power-mgmt"], [u'orgOrg'], [], ["Get"])
+    mo_meta = MoMeta("PowerGroupAdditionPolicy", "powerGroupAdditionPolicy", "group-add-policy", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["admin", "power-mgmt"], ['orgOrg'], [], ["Get"])
 
     prop_meta = {
         "action": MoPropertyMeta("action", "action", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["nothing", "stop-blade-disc", "throttle-blade-disc"], []),

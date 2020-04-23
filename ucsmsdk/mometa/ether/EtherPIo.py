@@ -386,9 +386,9 @@ class EtherPIo(ManagedObject):
     """This is EtherPIo class."""
 
     consts = EtherPIoConsts()
-    naming_props = set([u'portId'])
+    naming_props = set(['portId'])
 
-    mo_meta = MoMeta("EtherPIo", "etherPIo", "port-[port_id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["read-only"], [u'portGroup', u'portSubGroup'], [u'equipmentXcvr', u'etherErrStats', u'etherLossStats', u'etherNiErrStats', u'etherPIoEndPoint', u'etherPIoFsm', u'etherPauseStats', u'etherRxStats', u'etherTxStats', u'eventInst', u'faultInst', u'lldpAcquired', u'networkIfStats', u'portDomainEp', u'portPIoFsm', u'portPIoFsmTask'], ["Get"])
+    mo_meta = MoMeta("EtherPIo", "etherPIo", "port-[port_id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["read-only"], ['portGroup', 'portSubGroup'], ['equipmentXcvr', 'etherErrStats', 'etherLossStats', 'etherNiErrStats', 'etherPIoEndPoint', 'etherPIoFsm', 'etherPauseStats', 'etherRxStats', 'etherTxStats', 'eventInst', 'faultInst', 'lldpAcquired', 'networkIfStats', 'portDomainEp', 'portPIoFsm', 'portPIoFsmTask'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),

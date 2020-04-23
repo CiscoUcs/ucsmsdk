@@ -16,9 +16,9 @@ class EquipmentBladeConnDef(ManagedObject):
     """This is EquipmentBladeConnDef class."""
 
     consts = EquipmentBladeConnDefConsts()
-    naming_props = set([u'adaptorType', u'adaptorFamily', u'adaptorSlotNumber'])
+    naming_props = set(['adaptorType', 'adaptorFamily', 'adaptorSlotNumber'])
 
-    mo_meta = MoMeta("EquipmentBladeConnDef", "equipmentBladeConnDef", "adaptor-type-[adaptor_type]-family-[adaptor_family]-slot-[adaptor_slot_number]", VersionMeta.Version202m, "InputOutput", 0x7ff, [], [""], [u'equipmentBladeCapProvider', u'equipmentServerUnitCapProvider'], [u'equipmentBladeIOMConnDef', u'equipmentBladeSwitchConnDef'], ["Get"])
+    mo_meta = MoMeta("EquipmentBladeConnDef", "equipmentBladeConnDef", "adaptor-type-[adaptor_type]-family-[adaptor_family]-slot-[adaptor_slot_number]", VersionMeta.Version202m, "InputOutput", 0x7ff, [], [""], ['equipmentBladeCapProvider', 'equipmentServerUnitCapProvider'], ['equipmentBladeIOMConnDef', 'equipmentBladeSwitchConnDef'], ["Get"])
 
     prop_meta = {
         "adaptor_family": MoPropertyMeta("adaptor_family", "adaptorFamily", "string", VersionMeta.Version202m, MoPropertyMeta.NAMING, 0x2, 1, 510, None, [], []),

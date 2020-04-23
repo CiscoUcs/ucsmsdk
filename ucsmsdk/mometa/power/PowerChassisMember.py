@@ -18,9 +18,9 @@ class PowerChassisMember(ManagedObject):
     """This is PowerChassisMember class."""
 
     consts = PowerChassisMemberConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("PowerChassisMember", "powerChassisMember", "ch-member-[id]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["admin", "power-mgmt", "read-only"], [u'powerGroup'], [u'faultInst'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("PowerChassisMember", "powerChassisMember", "ch-member-[id]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["admin", "power-mgmt", "read-only"], ['powerGroup'], ['faultInst'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

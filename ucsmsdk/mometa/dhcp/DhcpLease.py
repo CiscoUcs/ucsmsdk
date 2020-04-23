@@ -13,9 +13,9 @@ class DhcpLease(ManagedObject):
     """This is DhcpLease class."""
 
     consts = DhcpLeaseConsts()
-    naming_props = set([u'ip'])
+    naming_props = set(['ip'])
 
-    mo_meta = MoMeta("DhcpLease", "dhcpLease", "lease-[ip]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["read-only"], [u'dhcpInst'], [], ["Get"])
+    mo_meta = MoMeta("DhcpLease", "dhcpLease", "lease-[ip]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["read-only"], ['dhcpInst'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

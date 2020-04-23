@@ -19,7 +19,7 @@ class ComputeMemoryConfiguration(ManagedObject):
     consts = ComputeMemoryConfigurationConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeMemoryConfiguration", "computeMemoryConfiguration", "memmory-config", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [], ["Get", "Set"])
+    mo_meta = MoMeta("ComputeMemoryConfiguration", "computeMemoryConfiguration", "memmory-config", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_memory_state": MoPropertyMeta("admin_memory_state", "adminMemoryState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["policy", "reset-in-progress", "reset-memory-errors"], []),

@@ -22,7 +22,7 @@ class BiosVfIOENVMe2OptionROM(ManagedObject):
     consts = BiosVfIOENVMe2OptionROMConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("BiosVfIOENVMe2OptionROM", "biosVfIOENVMe2OptionROM", "IOENVMe2-OptionROM", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], [u'biosSettings', u'biosVProfile'], [], ["Get", "Set"])
+    mo_meta = MoMeta("BiosVfIOENVMe2OptionROM", "biosVfIOENVMe2OptionROM", "IOENVMe2-OptionROM", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], ['biosSettings', 'biosVProfile'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -157,7 +157,7 @@ class StorageSystem(ManagedObject):
     consts = StorageSystemConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("StorageSystem", "storageSystem", "system", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["read-only"], [u'storageDomainEp'], [u'eventInst', u'faultInst', u'initiatorRequestorEp', u'storageSystemFsm', u'storageSystemFsmTask'], [None])
+    mo_meta = MoMeta("StorageSystem", "storageSystem", "system", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["read-only"], ['storageDomainEp'], ['eventInst', 'faultInst', 'initiatorRequestorEp', 'storageSystemFsm', 'storageSystemFsmTask'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

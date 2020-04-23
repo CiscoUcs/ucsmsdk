@@ -21,7 +21,7 @@ class BiosVfDirectCacheAccess(ManagedObject):
     consts = BiosVfDirectCacheAccessConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("BiosVfDirectCacheAccess", "biosVfDirectCacheAccess", "Direct-Cache-Access", VersionMeta.Version111j, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], [u'biosSettings', u'biosVProfile'], [], ["Get", "Set"])
+    mo_meta = MoMeta("BiosVfDirectCacheAccess", "biosVfDirectCacheAccess", "Direct-Cache-Access", VersionMeta.Version111j, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], ['biosSettings', 'biosVProfile'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

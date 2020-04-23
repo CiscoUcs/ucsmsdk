@@ -32,9 +32,9 @@ class SwSystemStatsHist(ManagedObject):
     """This is SwSystemStatsHist class."""
 
     consts = SwSystemStatsHistConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("SwSystemStatsHist", "swSystemStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], [u'swSystemStats'], [], ["Get"])
+    mo_meta = MoMeta("SwSystemStatsHist", "swSystemStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], ['swSystemStats'], [], ["Get"])
 
     prop_meta = {
         "correctable_parity_error": MoPropertyMeta("correctable_parity_error", "CorrectableParityError", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]),

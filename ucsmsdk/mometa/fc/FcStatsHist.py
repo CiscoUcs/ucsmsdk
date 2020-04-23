@@ -20,9 +20,9 @@ class FcStatsHist(ManagedObject):
     """This is FcStatsHist class."""
 
     consts = FcStatsHistConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("FcStatsHist", "fcStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], [u'fcStats'], [], ["Get"])
+    mo_meta = MoMeta("FcStatsHist", "fcStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], ['fcStats'], [], ["Get"])
 
     prop_meta = {
         "bytes_rx": MoPropertyMeta("bytes_rx", "bytesRx", "ulong", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

@@ -16,9 +16,9 @@ class IscsiAuthProfile(ManagedObject):
     """This is IscsiAuthProfile class."""
 
     consts = IscsiAuthProfileConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("IscsiAuthProfile", "iscsiAuthProfile", "iscsi-auth-profile-[name]", VersionMeta.Version201m, "InputOutput", 0x3ff, [], ["admin", "ls-config-policy", "ls-server-policy"], [u'orgOrg'], [], ["Get"])
+    mo_meta = MoMeta("IscsiAuthProfile", "iscsiAuthProfile", "iscsi-auth-profile-[name]", VersionMeta.Version201m, "InputOutput", 0x3ff, [], ["admin", "ls-config-policy", "ls-server-policy"], ['orgOrg'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

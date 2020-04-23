@@ -16,9 +16,9 @@ class ApePalo(ManagedObject):
     """This is ApePalo class."""
 
     consts = ApePaloConsts()
-    naming_props = set([u'mac1'])
+    naming_props = set(['mac1'])
 
-    mo_meta = MoMeta("ApePalo", "apePalo", "Palo-[mac1]", VersionMeta.Version101e, "InputOutput", 0xffff, [], ["read-only"], [u'apeNicAgManager'], [u'apeMenloVnic', u'apePaloVnic'], [None])
+    mo_meta = MoMeta("ApePalo", "apePalo", "Palo-[mac1]", VersionMeta.Version101e, "InputOutput", 0xffff, [], ["read-only"], ['apeNicAgManager'], ['apeMenloVnic', 'apePaloVnic'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

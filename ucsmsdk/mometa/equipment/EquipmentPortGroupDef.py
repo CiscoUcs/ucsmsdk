@@ -25,9 +25,9 @@ class EquipmentPortGroupDef(ManagedObject):
     """This is EquipmentPortGroupDef class."""
 
     consts = EquipmentPortGroupDefConsts()
-    naming_props = set([u'type'])
+    naming_props = set(['type'])
 
-    mo_meta = MoMeta("EquipmentPortGroupDef", "equipmentPortGroupDef", "port-group-def[type]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], [""], [u'adaptorFruCapProvider', u'equipmentFexCapProvider', u'equipmentIOCardCapProvider', u'equipmentSwitchIOCardCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentPortGroupDef", "equipmentPortGroupDef", "port-group-def[type]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], [""], ['adaptorFruCapProvider', 'equipmentFexCapProvider', 'equipmentIOCardCapProvider', 'equipmentSwitchIOCardCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

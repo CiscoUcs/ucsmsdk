@@ -18,9 +18,9 @@ class AdaptorHostEthIfProfile(ManagedObject):
     """This is AdaptorHostEthIfProfile class."""
 
     consts = AdaptorHostEthIfProfileConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("AdaptorHostEthIfProfile", "adaptorHostEthIfProfile", "eth-profile-[name]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], [u'orgOrg', u'policySystemEp'], [u'adaptorEthAdvFilterProfile', u'adaptorEthArfsProfile', u'adaptorEthCompQueueProfile', u'adaptorEthFailoverProfile', u'adaptorEthInterruptProfile', u'adaptorEthInterruptScalingProfile', u'adaptorEthNVGREProfile', u'adaptorEthOffloadProfile', u'adaptorEthRecvQueueProfile', u'adaptorEthRoCEProfile', u'adaptorEthVxLANProfile', u'adaptorEthWorkQueueProfile', u'adaptorExtIpV6RssHashProfile', u'adaptorIpV4RssHashProfile', u'adaptorIpV6RssHashProfile', u'adaptorRssProfile'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AdaptorHostEthIfProfile", "adaptorHostEthIfProfile", "eth-profile-[name]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], ['orgOrg', 'policySystemEp'], ['adaptorEthAdvFilterProfile', 'adaptorEthArfsProfile', 'adaptorEthCompQueueProfile', 'adaptorEthFailoverProfile', 'adaptorEthInterruptProfile', 'adaptorEthInterruptScalingProfile', 'adaptorEthNVGREProfile', 'adaptorEthOffloadProfile', 'adaptorEthRecvQueueProfile', 'adaptorEthRoCEProfile', 'adaptorEthVxLANProfile', 'adaptorEthWorkQueueProfile', 'adaptorExtIpV6RssHashProfile', 'adaptorIpV4RssHashProfile', 'adaptorIpV6RssHashProfile', 'adaptorRssProfile'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

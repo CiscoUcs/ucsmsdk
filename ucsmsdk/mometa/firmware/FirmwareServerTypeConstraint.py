@@ -18,7 +18,7 @@ class FirmwareServerTypeConstraint(ManagedObject):
     consts = FirmwareServerTypeConstraintConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareServerTypeConstraint", "firmwareServerTypeConstraint", "constraint-server-type", VersionMeta.Version311e, "InputOutput", 0x1f, [], [""], [u'firmwareConstraints'], [], ["Get"])
+    mo_meta = MoMeta("FirmwareServerTypeConstraint", "firmwareServerTypeConstraint", "constraint-server-type", VersionMeta.Version311e, "InputOutput", 0x1f, [], [""], ['firmwareConstraints'], [], ["Get"])
 
     prop_meta = {
         "check_running_ver": MoPropertyMeta("check_running_ver", "checkRunningVer", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

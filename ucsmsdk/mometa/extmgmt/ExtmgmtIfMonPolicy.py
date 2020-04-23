@@ -27,7 +27,7 @@ class ExtmgmtIfMonPolicy(ManagedObject):
     consts = ExtmgmtIfMonPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ExtmgmtIfMonPolicy", "extmgmtIfMonPolicy", "extmgmt-intf-monitor-policy", VersionMeta.Version141i, "InputOutput", 0x1fff, [], ["admin", "ext-lan-config"], [u'topSystem'], [u'extmgmtArpTargets', u'extmgmtGatewayPing', u'extmgmtMiiStatus', u'extmgmtNdiscTargets'], ["Get", "Set"])
+    mo_meta = MoMeta("ExtmgmtIfMonPolicy", "extmgmtIfMonPolicy", "extmgmt-intf-monitor-policy", VersionMeta.Version141i, "InputOutput", 0x1fff, [], ["admin", "ext-lan-config"], ['topSystem'], ['extmgmtArpTargets', 'extmgmtGatewayPing', 'extmgmtMiiStatus', 'extmgmtNdiscTargets'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

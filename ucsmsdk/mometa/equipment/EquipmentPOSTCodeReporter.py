@@ -13,9 +13,9 @@ class EquipmentPOSTCodeReporter(ManagedObject):
     """This is EquipmentPOSTCodeReporter class."""
 
     consts = EquipmentPOSTCodeReporterConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("EquipmentPOSTCodeReporter", "equipmentPOSTCodeReporter", "POST-[name]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'capabilityCatalogue'], [u'bmcSELCounter', u'equipmentPOSTCode'], ["Get"])
+    mo_meta = MoMeta("EquipmentPOSTCodeReporter", "equipmentPOSTCodeReporter", "POST-[name]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['capabilityCatalogue'], ['bmcSELCounter', 'equipmentPOSTCode'], ["Get"])
 
     prop_meta = {
         "base_container": MoPropertyMeta("base_container", "baseContainer", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),

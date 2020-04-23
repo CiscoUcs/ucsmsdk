@@ -13,9 +13,9 @@ class AdaptorUsnicConnDef(ManagedObject):
     """This is AdaptorUsnicConnDef class."""
 
     consts = AdaptorUsnicConnDefConsts()
-    naming_props = set([u'conPolicyName'])
+    naming_props = set(['conPolicyName'])
 
-    mo_meta = MoMeta("AdaptorUsnicConnDef", "adaptorUsnicConnDef", "usnic-conn-def-[con_policy_name]", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "read-only"], [u'adaptorHostEthIf'], [u'adaptorEthCompQueueProfile', u'adaptorEthFailoverProfile', u'adaptorEthInterruptProfile', u'adaptorEthInterruptScalingProfile', u'adaptorEthOffloadProfile', u'adaptorEthRecvQueueProfile', u'adaptorEthWorkQueueProfile', u'adaptorExtIpV6RssHashProfile', u'adaptorIpV4RssHashProfile', u'adaptorIpV6RssHashProfile', u'adaptorRssProfile'], [None])
+    mo_meta = MoMeta("AdaptorUsnicConnDef", "adaptorUsnicConnDef", "usnic-conn-def-[con_policy_name]", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "read-only"], ['adaptorHostEthIf'], ['adaptorEthCompQueueProfile', 'adaptorEthFailoverProfile', 'adaptorEthInterruptProfile', 'adaptorEthInterruptScalingProfile', 'adaptorEthOffloadProfile', 'adaptorEthRecvQueueProfile', 'adaptorEthWorkQueueProfile', 'adaptorExtIpV6RssHashProfile', 'adaptorIpV4RssHashProfile', 'adaptorIpV6RssHashProfile', 'adaptorRssProfile'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

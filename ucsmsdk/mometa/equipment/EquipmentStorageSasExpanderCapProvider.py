@@ -20,9 +20,9 @@ class EquipmentStorageSasExpanderCapProvider(ManagedObject):
     """This is EquipmentStorageSasExpanderCapProvider class."""
 
     consts = EquipmentStorageSasExpanderCapProviderConsts()
-    naming_props = set([u'vendor', u'model', u'revision'])
+    naming_props = set(['vendor', 'model', 'revision'])
 
-    mo_meta = MoMeta("EquipmentStorageSasExpanderCapProvider", "equipmentStorageSasExpanderCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version226c, "InputOutput", 0x1ff, [], [""], [u'capabilityCatalogue', u'equipmentHwCapDerivativeProvider'], [u'equipmentFruVariant', u'equipmentManufacturingDef', u'equipmentOnboardDeviceDef', u'equipmentPhysicalDef', u'equipmentPicture', u'equipmentServiceDef', u'equipmentSlotArrayRef', u'equipmentStorageSasExpanderDef', u'firmwareType', u'firmwareUpgradeConstraint'], ["Get"])
+    mo_meta = MoMeta("EquipmentStorageSasExpanderCapProvider", "equipmentStorageSasExpanderCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version226c, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentFruVariant', 'equipmentManufacturingDef', 'equipmentOnboardDeviceDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'equipmentStorageSasExpanderDef', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version226c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

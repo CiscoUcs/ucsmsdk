@@ -157,7 +157,7 @@ class CapabilityCatalogueFsm(ManagedObject):
     consts = CapabilityCatalogueFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CapabilityCatalogueFsm", "capabilityCatalogueFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'capabilityCatalogue'], [u'capabilityCatalogueFsmStage'], [None])
+    mo_meta = MoMeta("CapabilityCatalogueFsm", "capabilityCatalogueFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['capabilityCatalogue'], ['capabilityCatalogueFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -15,9 +15,9 @@ class LsFcLocale(ManagedObject):
     """This is LsFcLocale class."""
 
     consts = LsFcLocaleConsts()
-    naming_props = set([u'switchId'])
+    naming_props = set(['switchId'])
 
-    mo_meta = MoMeta("LsFcLocale", "lsFcLocale", "fc-local-[switch_id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "ls-storage"], [u'lsServer'], [u'lsFcZoneGroup'], [None])
+    mo_meta = MoMeta("LsFcLocale", "lsFcLocale", "fc-local-[switch_id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "ls-storage"], ['lsServer'], ['lsFcZoneGroup'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

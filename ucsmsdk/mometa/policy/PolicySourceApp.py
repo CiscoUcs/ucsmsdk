@@ -13,9 +13,9 @@ class PolicySourceApp(ManagedObject):
     """This is PolicySourceApp class."""
 
     consts = PolicySourceAppConsts()
-    naming_props = set([u'sourceDme'])
+    naming_props = set(['sourceDme'])
 
-    mo_meta = MoMeta("PolicySourceApp", "policySourceApp", "source-[source_dme]", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["read-only"], [u'policyControlEp'], [u'policyContext'], [None])
+    mo_meta = MoMeta("PolicySourceApp", "policySourceApp", "source-[source_dme]", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["read-only"], ['policyControlEp'], ['policyContext'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

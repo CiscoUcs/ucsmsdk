@@ -66,9 +66,9 @@ class MgmtUsbNicMgmtIf(ManagedObject):
     """This is MgmtUsbNicMgmtIf class."""
 
     consts = MgmtUsbNicMgmtIfConsts()
-    naming_props = set([u'usbnicConnSide', u'switchId'])
+    naming_props = set(['usbnicConnSide', 'switchId'])
 
-    mo_meta = MoMeta("MgmtUsbNicMgmtIf", "mgmtUsbNicMgmtIf", "usbnic-if-[usbnic_conn_side]-[switch_id]", VersionMeta.Version323a, "InputOutput", 0x3ff, [], ["admin"], [u'computeHostUtilityOs', u'mgmtController'], [], ["Get"])
+    mo_meta = MoMeta("MgmtUsbNicMgmtIf", "mgmtUsbNicMgmtIf", "usbnic-if-[usbnic_conn_side]-[switch_id]", VersionMeta.Version323a, "InputOutput", 0x3ff, [], ["admin"], ['computeHostUtilityOs', 'mgmtController'], [], ["Get"])
 
     prop_meta = {
         "access": MoPropertyMeta("access", "access", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["in-band", "internal", "out-of-band", "unspecified", "virtual"], []),

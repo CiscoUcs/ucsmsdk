@@ -165,9 +165,9 @@ class StorageSasExpander(ManagedObject):
     """This is StorageSasExpander class."""
 
     consts = StorageSasExpanderConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("StorageSasExpander", "storageSasExpander", "sas-expander-[id]", VersionMeta.Version226c, "InputOutput", 0x3f, [], ["read-only"], [u'computeBoard', u'equipmentChassis'], [u'faultInst', u'firmwareBootDefinition', u'firmwareRunning', u'mgmtController', u'storageOnboardDevice', u'storageSasUpLink'], [None])
+    mo_meta = MoMeta("StorageSasExpander", "storageSasExpander", "sas-expander-[id]", VersionMeta.Version226c, "InputOutput", 0x3f, [], ["read-only"], ['computeBoard', 'equipmentChassis'], ['faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'mgmtController', 'storageOnboardDevice', 'storageSasUpLink'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version226c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

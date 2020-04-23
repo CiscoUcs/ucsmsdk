@@ -20,7 +20,7 @@ class VnicIScsiNode(ManagedObject):
     consts = VnicIScsiNodeConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicIScsiNode", "vnicIScsiNode", "iscsi-node", VersionMeta.Version201m, "InputOutput", 0xff, [], ["admin", "ls-config", "ls-network", "ls-server"], [u'lsServer', u'vnicLanConnPolicy'], [u'faultInst', u'vnicIqnHistory'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicIScsiNode", "vnicIScsiNode", "iscsi-node", VersionMeta.Version201m, "InputOutput", 0xff, [], ["admin", "ls-config", "ls-network", "ls-server"], ['lsServer', 'vnicLanConnPolicy'], ['faultInst', 'vnicIqnHistory'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -23,9 +23,9 @@ class EquipmentIOCardFsmTask(ManagedObject):
     """This is EquipmentIOCardFsmTask class."""
 
     consts = EquipmentIOCardFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("EquipmentIOCardFsmTask", "equipmentIOCardFsmTask", "task-[item]", VersionMeta.Version111j, "OutputOnly", 0xf, [], [""], [u'equipmentIOCard'], [], [None])
+    mo_meta = MoMeta("EquipmentIOCardFsmTask", "equipmentIOCardFsmTask", "task-[item]", VersionMeta.Version111j, "OutputOnly", 0xf, [], [""], ['equipmentIOCard'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

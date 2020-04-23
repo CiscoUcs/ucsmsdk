@@ -26,9 +26,9 @@ class FabricCartridgeSlotEpFsmStage(ManagedObject):
     """This is FabricCartridgeSlotEpFsmStage class."""
 
     consts = FabricCartridgeSlotEpFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricCartridgeSlotEpFsmStage", "fabricCartridgeSlotEpFsmStage", "stage-[name]", VersionMeta.Version251a, "OutputOnly", 0xf, [], [""], [u'fabricCartridgeSlotEpFsm'], [], [None])
+    mo_meta = MoMeta("FabricCartridgeSlotEpFsmStage", "fabricCartridgeSlotEpFsmStage", "stage-[name]", VersionMeta.Version251a, "OutputOnly", 0xf, [], [""], ['fabricCartridgeSlotEpFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

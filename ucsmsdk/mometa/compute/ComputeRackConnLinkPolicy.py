@@ -21,9 +21,9 @@ class ComputeRackConnLinkPolicy(ManagedObject):
     """This is ComputeRackConnLinkPolicy class."""
 
     consts = ComputeRackConnLinkPolicyConsts()
-    naming_props = set([u'rackId', u'switchId'])
+    naming_props = set(['rackId', 'switchId'])
 
-    mo_meta = MoMeta("ComputeRackConnLinkPolicy", "computeRackConnLinkPolicy", "rack-conn-link-policy-rack-unit-[rack_id]-fabric-[switch_id]", VersionMeta.Version323a, "InputOutput", 0x7ff, [], ["admin", "pn-policy"], [u'orgOrg'], [], [None])
+    mo_meta = MoMeta("ComputeRackConnLinkPolicy", "computeRackConnLinkPolicy", "rack-conn-link-policy-rack-unit-[rack_id]-fabric-[switch_id]", VersionMeta.Version323a, "InputOutput", 0x7ff, [], ["admin", "pn-policy"], ['orgOrg'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version323a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

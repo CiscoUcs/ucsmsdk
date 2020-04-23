@@ -37,9 +37,9 @@ class EquipmentChassisProfileFsmStage(ManagedObject):
     """This is EquipmentChassisProfileFsmStage class."""
 
     consts = EquipmentChassisProfileFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("EquipmentChassisProfileFsmStage", "equipmentChassisProfileFsmStage", "stage-[name]", VersionMeta.Version312b, "OutputOnly", 0xf, [], [""], [u'equipmentChassisProfileFsm'], [], [None])
+    mo_meta = MoMeta("EquipmentChassisProfileFsmStage", "equipmentChassisProfileFsmStage", "stage-[name]", VersionMeta.Version312b, "OutputOnly", 0xf, [], [""], ['equipmentChassisProfileFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

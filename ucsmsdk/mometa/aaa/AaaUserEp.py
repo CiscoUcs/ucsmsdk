@@ -167,7 +167,7 @@ class AaaUserEp(ManagedObject):
     consts = AaaUserEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AaaUserEp", "aaaUserEp", "user-ext", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["aaa", "admin"], [u'topSystem'], [u'aaaEpLogin', u'aaaExtMgmtCutThruTkn', u'aaaLocale', u'aaaLoginProfile', u'aaaPreLoginBanner', u'aaaPwdProfile', u'aaaRemoteUser', u'aaaRole', u'aaaShellLogin', u'aaaUser', u'aaaUserEpFsm', u'aaaUserEpFsmTask', u'aaaWebLogin', u'eventInst', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("AaaUserEp", "aaaUserEp", "user-ext", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["aaa", "admin"], ['topSystem'], ['aaaEpLogin', 'aaaExtMgmtCutThruTkn', 'aaaLocale', 'aaaLoginProfile', 'aaaPreLoginBanner', 'aaaPwdProfile', 'aaaRemoteUser', 'aaaRole', 'aaaShellLogin', 'aaaUser', 'aaaUserEpFsm', 'aaaUserEpFsmTask', 'aaaWebLogin', 'eventInst', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

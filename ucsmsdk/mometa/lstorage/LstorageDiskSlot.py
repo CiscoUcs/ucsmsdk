@@ -23,9 +23,9 @@ class LstorageDiskSlot(ManagedObject):
     """This is LstorageDiskSlot class."""
 
     consts = LstorageDiskSlotConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("LstorageDiskSlot", "lstorageDiskSlot", "disk-slot-[id]", VersionMeta.Version312b, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'lstorageDiskZoningConfigDef', u'lstorageDiskZoningPolicy'], [u'lstorageControllerRef'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LstorageDiskSlot", "lstorageDiskSlot", "disk-slot-[id]", VersionMeta.Version312b, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['lstorageDiskZoningConfigDef', 'lstorageDiskZoningPolicy'], ['lstorageControllerRef'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -62,7 +62,7 @@ class FirmwareStatus(ManagedObject):
     consts = FirmwareStatusConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareStatus", "firmwareStatus", "fw-status", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis', u'equipmentIOCard', u'equipmentPsu', u'networkElement', u'topSystem'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("FirmwareStatus", "firmwareStatus", "fw-status", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], ['computeBlade', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentIOCard', 'equipmentPsu', 'networkElement', 'topSystem'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "back_up_holder_oper_state": MoPropertyMeta("back_up_holder_oper_state", "backUpHolderOperState", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["activating", "auto-activating", "auto-updating", "bad-image", "failed", "faulty-state", "pending-next-boot", "pending-power-cycle", "ready", "rebooting", "rebuilding", "scheduled", "set-startup", "throttled", "updating", "upgrading"], []),

@@ -165,7 +165,7 @@ class CapabilityMgmtExtension(ManagedObject):
     consts = CapabilityMgmtExtensionConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CapabilityMgmtExtension", "capabilityMgmtExtension", "mgmt-ext", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], [u'capabilityEp'], [u'capabilityMgmtExtensionFsm', u'capabilityMgmtExtensionFsmTask', u'eventInst', u'faultInst', u'firmwareBootDefinition', u'firmwareRunning'], ["Get"])
+    mo_meta = MoMeta("CapabilityMgmtExtension", "capabilityMgmtExtension", "mgmt-ext", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], ['capabilityEp'], ['capabilityMgmtExtensionFsm', 'capabilityMgmtExtensionFsmTask', 'eventInst', 'faultInst', 'firmwareBootDefinition', 'firmwareRunning'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

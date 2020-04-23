@@ -25,9 +25,9 @@ class MgmtConnection(ManagedObject):
     """This is MgmtConnection class."""
 
     consts = MgmtConnectionConsts()
-    naming_props = set([u'type'])
+    naming_props = set(['type'])
 
-    mo_meta = MoMeta("MgmtConnection", "mgmtConnection", "mgmt-connection-[type]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin"], [u'mgmtController'], [u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("MgmtConnection", "mgmtConnection", "mgmt-connection-[type]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin"], ['mgmtController'], ['faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "ack": MoPropertyMeta("ack", "ack", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["acknowledged", "un-initialized", "unsupported-connectivity"], []),

@@ -15,7 +15,7 @@ class AdaptorMgmtVnicEthConfig(ManagedObject):
     consts = AdaptorMgmtVnicEthConfigConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorMgmtVnicEthConfig", "adaptorMgmtVnicEthConfig", "mgmt-vnic", VersionMeta.Version224b, "InputOutput", 0xff, [], ["read-only"], [u'adaptorFruCapProvider'], [], [None])
+    mo_meta = MoMeta("AdaptorMgmtVnicEthConfig", "adaptorMgmtVnicEthConfig", "mgmt-vnic", VersionMeta.Version224b, "InputOutput", 0xff, [], ["read-only"], ['adaptorFruCapProvider'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -19,9 +19,9 @@ class MoInvKv(ManagedObject):
     """This is MoInvKv class."""
 
     consts = MoInvKvConsts()
-    naming_props = set([u'key'])
+    naming_props = set(['key'])
 
-    mo_meta = MoMeta("MoInvKv", "moInvKv", "kv-[key]", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["admin", "read-only"], [u'moKvInvHolder'], [], ["Get", "Set"])
+    mo_meta = MoMeta("MoInvKv", "moInvKv", "kv-[key]", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["admin", "read-only"], ['moKvInvHolder'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

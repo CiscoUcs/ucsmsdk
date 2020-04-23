@@ -22,7 +22,7 @@ class VnicVhbaBehPolicy(ManagedObject):
     consts = VnicVhbaBehPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicVhbaBehPolicy", "vnicVhbaBehPolicy", "beh-vhba", VersionMeta.Version211a, "InputOutput", 0x1ff, [], ["admin", "ls-config", "ls-server", "ls-storage"], [u'orgOrg'], [], ["Get", "Set"])
+    mo_meta = MoMeta("VnicVhbaBehPolicy", "vnicVhbaBehPolicy", "beh-vhba", VersionMeta.Version211a, "InputOutput", 0x1ff, [], ["admin", "ls-config", "ls-server", "ls-storage"], ['orgOrg'], [], ["Get", "Set"])
 
     prop_meta = {
         "action": MoPropertyMeta("action", "action", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["hw-inherit", "none"], []),

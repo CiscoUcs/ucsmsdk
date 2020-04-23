@@ -16,7 +16,7 @@ class EquipmentComputeConn(ManagedObject):
     consts = EquipmentComputeConnConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentComputeConn", "equipmentComputeConn", "compute-conn", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["read-only"], [u'equipmentChassis'], [u'faultInst'], [None])
+    mo_meta = MoMeta("EquipmentComputeConn", "equipmentComputeConn", "compute-conn", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["read-only"], ['equipmentChassis'], ['faultInst'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -15,7 +15,7 @@ class CloudMgmtSvc(ManagedObject):
     consts = CloudMgmtSvcConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CloudMgmtSvc", "cloudMgmtSvc", "cloud-mgmt", VersionMeta.Version402a, "InputOutput", 0x1f, [], ["aaa", "admin"], [u'topSystem'], [u'cloudDeviceConnectorEp'], [None])
+    mo_meta = MoMeta("CloudMgmtSvc", "cloudMgmtSvc", "cloud-mgmt", VersionMeta.Version402a, "InputOutput", 0x1f, [], ["aaa", "admin"], ['topSystem'], ['cloudDeviceConnectorEp'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version402a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -18,9 +18,9 @@ class EquipmentPortCap(ManagedObject):
     """This is EquipmentPortCap class."""
 
     consts = EquipmentPortCapConsts()
-    naming_props = set([u'startPortId', u'endPortId'])
+    naming_props = set(['startPortId', 'endPortId'])
 
-    mo_meta = MoMeta("EquipmentPortCap", "equipmentPortCap", "port-cap-start-[start_port_id]-end-[end_port_id]", VersionMeta.Version302c, "InputOutput", 0x3ff, [], [""], [u'equipmentSwitchCap', u'equipmentSwitchIOCardCapProvider'], [], [None])
+    mo_meta = MoMeta("EquipmentPortCap", "equipmentPortCap", "port-cap-start-[start_port_id]-end-[end_port_id]", VersionMeta.Version302c, "InputOutput", 0x3ff, [], [""], ['equipmentSwitchCap', 'equipmentSwitchIOCardCapProvider'], [], [None])
 
     prop_meta = {
         "breakout_port_speed_gb": MoPropertyMeta("breakout_port_speed_gb", "breakoutPortSpeedGb", "ushort", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

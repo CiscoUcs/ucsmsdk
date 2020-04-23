@@ -19,9 +19,9 @@ class AdaptorHostFcIfFsmTask(ManagedObject):
     """This is AdaptorHostFcIfFsmTask class."""
 
     consts = AdaptorHostFcIfFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("AdaptorHostFcIfFsmTask", "adaptorHostFcIfFsmTask", "task-[item]", VersionMeta.Version111j, "OutputOnly", 0xf, [], [""], [u'adaptorHostFcIf'], [], [None])
+    mo_meta = MoMeta("AdaptorHostFcIfFsmTask", "adaptorHostFcIfFsmTask", "task-[item]", VersionMeta.Version111j, "OutputOnly", 0xf, [], [""], ['adaptorHostFcIf'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

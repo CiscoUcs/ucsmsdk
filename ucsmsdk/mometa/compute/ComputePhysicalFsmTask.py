@@ -57,9 +57,9 @@ class ComputePhysicalFsmTask(ManagedObject):
     """This is ComputePhysicalFsmTask class."""
 
     consts = ComputePhysicalFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("ComputePhysicalFsmTask", "computePhysicalFsmTask", "task-[item]", VersionMeta.Version141i, "OutputOnly", 0xf, [], [""], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [], [None])
+    mo_meta = MoMeta("ComputePhysicalFsmTask", "computePhysicalFsmTask", "task-[item]", VersionMeta.Version141i, "OutputOnly", 0xf, [], [""], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

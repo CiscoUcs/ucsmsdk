@@ -16,9 +16,9 @@ class EquipmentPcieSlotOrientation(ManagedObject):
     """This is EquipmentPcieSlotOrientation class."""
 
     consts = EquipmentPcieSlotOrientationConsts()
-    naming_props = set([u'slotNumber'])
+    naming_props = set(['slotNumber'])
 
-    mo_meta = MoMeta("EquipmentPcieSlotOrientation", "equipmentPcieSlotOrientation", "pcie-slot-orientation-[slot_number]", VersionMeta.Version323a, "InputOutput", 0x7f, [], [""], [u'equipmentRackUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentPcieSlotOrientation", "equipmentPcieSlotOrientation", "pcie-slot-orientation-[slot_number]", VersionMeta.Version323a, "InputOutput", 0x7f, [], [""], ['equipmentRackUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version323a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

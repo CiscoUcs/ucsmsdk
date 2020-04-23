@@ -156,7 +156,7 @@ class SwFcMonFsm(ManagedObject):
     consts = SwFcMonFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SwFcMonFsm", "swFcMonFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'swFcMon'], [u'swFcMonFsmStage'], [None])
+    mo_meta = MoMeta("SwFcMonFsm", "swFcMonFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['swFcMon'], ['swFcMonFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

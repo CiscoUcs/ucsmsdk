@@ -19,9 +19,9 @@ class MoIpV4AddrKv(ManagedObject):
     """This is MoIpV4AddrKv class."""
 
     consts = MoIpV4AddrKvConsts()
-    naming_props = set([u'key'])
+    naming_props = set(['key'])
 
-    mo_meta = MoMeta("MoIpV4AddrKv", "moIpV4AddrKv", "kv-[key]", VersionMeta.Version321d, "InputOutput", 0x3ff, [], ["admin", "read-only"], [u'moKvCfgHolder'], [u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("MoIpV4AddrKv", "moIpV4AddrKv", "kv-[key]", VersionMeta.Version321d, "InputOutput", 0x3ff, [], ["admin", "read-only"], ['moKvCfgHolder'], ['faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),

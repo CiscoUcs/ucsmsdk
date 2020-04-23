@@ -239,9 +239,9 @@ class FabricComputeMSlotEp(ManagedObject):
     """This is FabricComputeMSlotEp class."""
 
     consts = FabricComputeMSlotEpConsts()
-    naming_props = set([u'serverInstanceId'])
+    naming_props = set(['serverInstanceId'])
 
-    mo_meta = MoMeta("FabricComputeMSlotEp", "fabricComputeMSlotEp", "ins-[server_instance_id]", VersionMeta.Version251a, "InputOutput", 0xfff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'fabricCartridgeSlotEp'], [u'eventInst', u'fabricComputeMSlotEpFsm', u'fabricComputeMSlotEpFsmTask', u'fabricIf', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("FabricComputeMSlotEp", "fabricComputeMSlotEp", "ins-[server_instance_id]", VersionMeta.Version251a, "InputOutput", 0xfff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['fabricCartridgeSlotEp'], ['eventInst', 'fabricComputeMSlotEpFsm', 'fabricComputeMSlotEpFsmTask', 'fabricIf', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

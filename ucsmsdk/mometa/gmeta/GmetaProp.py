@@ -22509,9 +22509,9 @@ class GmetaProp(ManagedObject):
     """This is GmetaProp class."""
 
     consts = GmetaPropConsts()
-    naming_props = set([u'order'])
+    naming_props = set(['order'])
 
-    mo_meta = MoMeta("GmetaProp", "gmetaProp", "prop-[order]", VersionMeta.Version212a, "InputOutput", 0x7f, [], ["admin"], [u'gmetaClass'], [], [None])
+    mo_meta = MoMeta("GmetaProp", "gmetaProp", "prop-[order]", VersionMeta.Version212a, "InputOutput", 0x7f, [], ["admin"], ['gmetaClass'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

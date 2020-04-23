@@ -18,7 +18,7 @@ class EquipmentLocalDiskControllerTypeDef(ManagedObject):
     consts = EquipmentLocalDiskControllerTypeDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentLocalDiskControllerTypeDef", "equipmentLocalDiskControllerTypeDef", "controller-type", VersionMeta.Version224b, "InputOutput", 0x3f, [], [""], [u'equipmentLocalDiskControllerCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentLocalDiskControllerTypeDef", "equipmentLocalDiskControllerTypeDef", "controller-type", VersionMeta.Version224b, "InputOutput", 0x3f, [], [""], ['equipmentLocalDiskControllerCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

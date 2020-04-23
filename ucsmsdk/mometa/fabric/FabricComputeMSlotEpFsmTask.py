@@ -18,9 +18,9 @@ class FabricComputeMSlotEpFsmTask(ManagedObject):
     """This is FabricComputeMSlotEpFsmTask class."""
 
     consts = FabricComputeMSlotEpFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("FabricComputeMSlotEpFsmTask", "fabricComputeMSlotEpFsmTask", "task-[item]", VersionMeta.Version251a, "OutputOnly", 0xf, [], [""], [u'fabricComputeMSlotEp'], [], [None])
+    mo_meta = MoMeta("FabricComputeMSlotEpFsmTask", "fabricComputeMSlotEpFsmTask", "task-[item]", VersionMeta.Version251a, "OutputOnly", 0xf, [], [""], ['fabricComputeMSlotEp'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

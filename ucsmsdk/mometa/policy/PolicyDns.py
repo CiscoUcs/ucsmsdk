@@ -17,7 +17,7 @@ class PolicyDns(ManagedObject):
     consts = PolicyDnsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PolicyDns", "policyDns", "dns-ctrl", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["aaa", "admin", "ext-lan-config"], [u'policyControlEp'], [u'policyControlledInstance', u'policyControlledType'], ["Add", "Get", "Set"])
+    mo_meta = MoMeta("PolicyDns", "policyDns", "dns-ctrl", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["aaa", "admin", "ext-lan-config"], ['policyControlEp'], ['policyControlledInstance', 'policyControlledType'], ["Add", "Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

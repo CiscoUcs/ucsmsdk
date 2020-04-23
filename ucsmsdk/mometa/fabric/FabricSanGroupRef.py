@@ -15,9 +15,9 @@ class FabricSanGroupRef(ManagedObject):
     """This is FabricSanGroupRef class."""
 
     consts = FabricSanGroupRefConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricSanGroupRef", "fabricSanGroupRef", "san-group-ref-[name]", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["admin", "ls-config", "ls-network", "ls-server"], [u'dcxVc', u'vnicFc', u'vnicLanConnTempl', u'vnicSanConnTempl'], [u'faultInst'], [None])
+    mo_meta = MoMeta("FabricSanGroupRef", "fabricSanGroupRef", "san-group-ref-[name]", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["admin", "ls-config", "ls-network", "ls-server"], ['dcxVc', 'vnicFc', 'vnicLanConnTempl', 'vnicSanConnTempl'], ['faultInst'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

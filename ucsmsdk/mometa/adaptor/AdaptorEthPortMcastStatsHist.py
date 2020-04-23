@@ -20,9 +20,9 @@ class AdaptorEthPortMcastStatsHist(ManagedObject):
     """This is AdaptorEthPortMcastStatsHist class."""
 
     consts = AdaptorEthPortMcastStatsHistConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorEthPortMcastStatsHist", "adaptorEthPortMcastStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], [u'adaptorEthPortMcastStats'], [], ["Get"])
+    mo_meta = MoMeta("AdaptorEthPortMcastStatsHist", "adaptorEthPortMcastStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], ['adaptorEthPortMcastStats'], [], ["Get"])
 
     prop_meta = {
         "broadcast_packets": MoPropertyMeta("broadcast_packets", "broadcastPackets", "ulong", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

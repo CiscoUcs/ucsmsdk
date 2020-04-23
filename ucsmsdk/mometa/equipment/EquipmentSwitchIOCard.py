@@ -375,9 +375,9 @@ class EquipmentSwitchIOCard(ManagedObject):
     """This is EquipmentSwitchIOCard class."""
 
     consts = EquipmentSwitchIOCardConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentSwitchIOCard", "equipmentSwitchIOCard", "sw-slot-[id]", VersionMeta.Version302c, "InputOutput", 0x3ff, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentChassis'], [u'equipmentIOCardBaseFsm', u'equipmentIOCardBaseFsmTask', u'equipmentIOCardStats', u'equipmentSwitchIOCardFsm', u'equipmentSwitchIOCardFsmTask', u'eventInst', u'faultInst', u'mgmtController', u'portGroup'], [None])
+    mo_meta = MoMeta("EquipmentSwitchIOCard", "equipmentSwitchIOCard", "sw-slot-[id]", VersionMeta.Version302c, "InputOutput", 0x3ff, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], ['equipmentChassis'], ['equipmentIOCardBaseFsm', 'equipmentIOCardBaseFsmTask', 'equipmentIOCardStats', 'equipmentSwitchIOCardFsm', 'equipmentSwitchIOCardFsmTask', 'eventInst', 'faultInst', 'mgmtController', 'portGroup'], [None])
 
     prop_meta = {
         "admin_peer_power_state": MoPropertyMeta("admin_peer_power_state", "adminPeerPowerState", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cycle-immediate", "cycle-wait", "policy"], []),

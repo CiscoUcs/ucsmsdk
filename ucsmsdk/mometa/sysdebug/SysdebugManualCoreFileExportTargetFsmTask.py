@@ -18,9 +18,9 @@ class SysdebugManualCoreFileExportTargetFsmTask(ManagedObject):
     """This is SysdebugManualCoreFileExportTargetFsmTask class."""
 
     consts = SysdebugManualCoreFileExportTargetFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("SysdebugManualCoreFileExportTargetFsmTask", "sysdebugManualCoreFileExportTargetFsmTask", "task-[item]", VersionMeta.Version111j, "OutputOnly", 0xf, [], [""], [u'sysdebugManualCoreFileExportTarget'], [], [None])
+    mo_meta = MoMeta("SysdebugManualCoreFileExportTargetFsmTask", "sysdebugManualCoreFileExportTargetFsmTask", "task-[item]", VersionMeta.Version111j, "OutputOnly", 0xf, [], [""], ['sysdebugManualCoreFileExportTarget'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

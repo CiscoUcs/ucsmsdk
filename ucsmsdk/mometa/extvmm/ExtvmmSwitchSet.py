@@ -15,7 +15,7 @@ class ExtvmmSwitchSet(ManagedObject):
     consts = ExtvmmSwitchSetConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ExtvmmSwitchSet", "extvmmSwitchSet", "virtual-switches", VersionMeta.Version201m, "InputOutput", 0x1f, [], ["admin", "ls-network", "ls-network-policy"], [u'extvmmEp'], [u'vmSwitch'], ["Get"])
+    mo_meta = MoMeta("ExtvmmSwitchSet", "extvmmSwitchSet", "virtual-switches", VersionMeta.Version201m, "InputOutput", 0x1f, [], ["admin", "ls-network", "ls-network-policy"], ['extvmmEp'], ['vmSwitch'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

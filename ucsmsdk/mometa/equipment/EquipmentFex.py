@@ -313,9 +313,9 @@ class EquipmentFex(ManagedObject):
     """This is EquipmentFex class."""
 
     consts = EquipmentFexConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentFex", "equipmentFex", "fex-[id]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], [u'topSystem'], [u'equipmentBeaconLed', u'equipmentFan', u'equipmentFexEnvStats', u'equipmentFexFsm', u'equipmentFexFsmTask', u'equipmentFexPowerSummary', u'equipmentFexPsuInputStats', u'equipmentFexSystemStats', u'equipmentHealthLed', u'equipmentIOCard', u'equipmentIndicatorLed', u'equipmentLocatorLed', u'equipmentPOST', u'equipmentPsu', u'eventInst', u'fabricLocale', u'faultInst', u'faultSuppressTask', u'mgmtController', u'powerBudget'], ["Get", "Set"])
+    mo_meta = MoMeta("EquipmentFex", "equipmentFex", "fex-[id]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], ['topSystem'], ['equipmentBeaconLed', 'equipmentFan', 'equipmentFexEnvStats', 'equipmentFexFsm', 'equipmentFexFsmTask', 'equipmentFexPowerSummary', 'equipmentFexPsuInputStats', 'equipmentFexSystemStats', 'equipmentHealthLed', 'equipmentIOCard', 'equipmentIndicatorLed', 'equipmentLocatorLed', 'equipmentPOST', 'equipmentPsu', 'eventInst', 'fabricLocale', 'faultInst', 'faultSuppressTask', 'mgmtController', 'powerBudget'], ["Get", "Set"])
 
     prop_meta = {
         "admin_power_state": MoPropertyMeta("admin_power_state", "adminPowerState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cycle-immediate", "cycle-wait", "policy"], []),

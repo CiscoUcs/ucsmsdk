@@ -16,9 +16,9 @@ class BiosTokenSettings(ManagedObject):
     """This is BiosTokenSettings class."""
 
     consts = BiosTokenSettingsConsts()
-    naming_props = set([u'settingsMoRn'])
+    naming_props = set(['settingsMoRn'])
 
-    mo_meta = MoMeta("BiosTokenSettings", "biosTokenSettings", "tokn-setng-[settings_mo_rn]", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], [u'biosTokenParam'], [], ["Get", "Set"])
+    mo_meta = MoMeta("BiosTokenSettings", "biosTokenSettings", "tokn-setng-[settings_mo_rn]", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], ['biosTokenParam'], [], ["Get", "Set"])
 
     prop_meta = {
         "bios_ret_setting_name": MoPropertyMeta("bios_ret_setting_name", "biosRetSettingName", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

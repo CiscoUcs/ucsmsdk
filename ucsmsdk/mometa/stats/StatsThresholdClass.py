@@ -90,9 +90,9 @@ class StatsThresholdClass(ManagedObject):
     """This is StatsThresholdClass class."""
 
     consts = StatsThresholdClassConsts()
-    naming_props = set([u'statsClassId'])
+    naming_props = set(['statsClassId'])
 
-    mo_meta = MoMeta("StatsThresholdClass", "statsThresholdClass", "[stats_class_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "operations"], [u'statsThresholdPolicy'], [u'statsThr32Definition', u'statsThr64Definition', u'statsThrFloatDefinition'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("StatsThresholdClass", "statsThresholdClass", "[stats_class_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "operations"], ['statsThresholdPolicy'], ['statsThr32Definition', 'statsThr64Definition', 'statsThrFloatDefinition'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

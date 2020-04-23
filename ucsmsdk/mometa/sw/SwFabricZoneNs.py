@@ -21,7 +21,7 @@ class SwFabricZoneNs(ManagedObject):
     consts = SwFabricZoneNsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SwFabricZoneNs", "swFabricZoneNs", "fabric-zone-ns", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["read-only"], [u'networkElement'], [], [None])
+    mo_meta = MoMeta("SwFabricZoneNs", "swFabricZoneNs", "fabric-zone-ns", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["read-only"], ['networkElement'], [], [None])
 
     prop_meta = {
         "alloc_status": MoPropertyMeta("alloc_status", "allocStatus", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["available", "full"], []),

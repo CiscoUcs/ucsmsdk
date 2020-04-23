@@ -15,7 +15,7 @@ class SyntheticFileSystem(ManagedObject):
     consts = SyntheticFileSystemConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SyntheticFileSystem", "syntheticFileSystem", "FS-", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], [u'topRoot'], [], ["Get"])
+    mo_meta = MoMeta("SyntheticFileSystem", "syntheticFileSystem", "FS-", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], ['topRoot'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

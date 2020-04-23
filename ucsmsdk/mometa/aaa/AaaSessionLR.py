@@ -6395,9 +6395,9 @@ class AaaSessionLR(ManagedObject):
     """This is AaaSessionLR class."""
 
     consts = AaaSessionLRConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("AaaSessionLR", "aaaSessionLR", "[id]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["read-only"], [u'aaaLog'], [], [None])
+    mo_meta = MoMeta("AaaSessionLR", "aaaSessionLR", "[id]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["read-only"], ['aaaLog'], [], [None])
 
     prop_meta = {
         "affected": MoPropertyMeta("affected", "affected", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x2, 0, 256, None, [], []),

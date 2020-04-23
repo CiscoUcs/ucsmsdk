@@ -15,9 +15,9 @@ class FcpoolBootTarget(ManagedObject):
     """This is FcpoolBootTarget class."""
 
     consts = FcpoolBootTargetConsts()
-    naming_props = set([u'type'])
+    naming_props = set(['type'])
 
-    mo_meta = MoMeta("FcpoolBootTarget", "fcpoolBootTarget", "target-[type]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ls-storage-policy"], [u'fcpoolBlock', u'fcpoolInitiator'], [], ["Get"])
+    mo_meta = MoMeta("FcpoolBootTarget", "fcpoolBootTarget", "target-[type]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ls-storage-policy"], ['fcpoolBlock', 'fcpoolInitiator'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

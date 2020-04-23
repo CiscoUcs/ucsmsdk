@@ -18,9 +18,9 @@ class FabricSanCloudFsmTask(ManagedObject):
     """This is FabricSanCloudFsmTask class."""
 
     consts = FabricSanCloudFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("FabricSanCloudFsmTask", "fabricSanCloudFsmTask", "task-[item]", VersionMeta.Version141i, "OutputOnly", 0xf, [], [""], [u'fabricSanCloud'], [], [None])
+    mo_meta = MoMeta("FabricSanCloudFsmTask", "fabricSanCloudFsmTask", "task-[item]", VersionMeta.Version141i, "OutputOnly", 0xf, [], [""], ['fabricSanCloud'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

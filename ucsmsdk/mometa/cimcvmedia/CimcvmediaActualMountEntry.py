@@ -70,9 +70,9 @@ class CimcvmediaActualMountEntry(ManagedObject):
     """This is CimcvmediaActualMountEntry class."""
 
     consts = CimcvmediaActualMountEntryConsts()
-    naming_props = set([u'virtualDiskId'])
+    naming_props = set(['virtualDiskId'])
 
-    mo_meta = MoMeta("CimcvmediaActualMountEntry", "cimcvmediaActualMountEntry", "actual-mount-entry-[virtual_disk_id]", VersionMeta.Version222c, "InputOutput", 0x7ffff, [], ["read-only"], [u'cimcvmediaActualMountList'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("CimcvmediaActualMountEntry", "cimcvmediaActualMountEntry", "actual-mount-entry-[virtual_disk_id]", VersionMeta.Version222c, "InputOutput", 0x7ffff, [], ["read-only"], ['cimcvmediaActualMountList'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "auth_option": MoPropertyMeta("auth_option", "authOption", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["default", "none", "ntlm", "ntlmi", "ntlmssp", "ntlmsspi", "ntlmv2", "ntlmv2i"], []),

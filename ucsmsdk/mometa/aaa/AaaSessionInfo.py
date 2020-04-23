@@ -19,9 +19,9 @@ class AaaSessionInfo(ManagedObject):
     """This is AaaSessionInfo class."""
 
     consts = AaaSessionInfoConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("AaaSessionInfo", "aaaSessionInfo", "term-[id]", VersionMeta.Version212a, "InputOutput", 0x1fff, [], ["aaa", "admin"], [u'aaaSessionInfoTable'], [], [None])
+    mo_meta = MoMeta("AaaSessionInfo", "aaaSessionInfo", "term-[id]", VersionMeta.Version212a, "InputOutput", 0x1fff, [], ["aaa", "admin"], ['aaaSessionInfoTable'], [], [None])
 
     prop_meta = {
         "address": MoPropertyMeta("address", "address", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x2, 0, 510, None, [], []),

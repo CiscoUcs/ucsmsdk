@@ -16,9 +16,9 @@ class DiagRunPolicy(ManagedObject):
     """This is DiagRunPolicy class."""
 
     consts = DiagRunPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("DiagRunPolicy", "diagRunPolicy", "diag-policy-[name]", VersionMeta.Version131c, "InputOutput", 0x3ff, [], ["admin", "pn-policy"], [u'diagSrvCtrl', u'orgOrg'], [u'diagMemoryTest'], ["Get"])
+    mo_meta = MoMeta("DiagRunPolicy", "diagRunPolicy", "diag-policy-[name]", VersionMeta.Version131c, "InputOutput", 0x3ff, [], ["admin", "pn-policy"], ['diagSrvCtrl', 'orgOrg'], ['diagMemoryTest'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

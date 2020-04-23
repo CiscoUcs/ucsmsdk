@@ -188,9 +188,9 @@ class MemoryUnit(ManagedObject):
     """This is MemoryUnit class."""
 
     consts = MemoryUnitConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("MemoryUnit", "memoryUnit", "mem-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'memoryArray'], [u'equipmentInventoryStatus', u'faultInst', u'memoryErrorStats', u'memoryUnitEnvStats'], ["Get"])
+    mo_meta = MoMeta("MemoryUnit", "memoryUnit", "mem-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['memoryArray'], ['equipmentInventoryStatus', 'faultInst', 'memoryErrorStats', 'memoryUnitEnvStats'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["policy", "reset-errors"], []),

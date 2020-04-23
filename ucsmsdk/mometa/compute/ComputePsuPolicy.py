@@ -21,7 +21,7 @@ class ComputePsuPolicy(ManagedObject):
     consts = ComputePsuPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputePsuPolicy", "computePsuPolicy", "psu-policy", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-policy"], [u'orgOrg'], [], ["Get", "Set"])
+    mo_meta = MoMeta("ComputePsuPolicy", "computePsuPolicy", "psu-policy", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-policy"], ['orgOrg'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

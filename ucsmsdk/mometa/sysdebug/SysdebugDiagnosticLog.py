@@ -18,9 +18,9 @@ class SysdebugDiagnosticLog(ManagedObject):
     """This is SysdebugDiagnosticLog class."""
 
     consts = SysdebugDiagnosticLogConsts()
-    naming_props = set([u'name', u'switchId'])
+    naming_props = set(['name', 'switchId'])
 
-    mo_meta = MoMeta("SysdebugDiagnosticLog", "sysdebugDiagnosticLog", "diag-log-[name]-[switch_id]", VersionMeta.Version321d, "InputOutput", 0xff, [], ["admin", "operations"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'sysdebugDiagnosticLogRepository'], [], ["Get", "Set"])
+    mo_meta = MoMeta("SysdebugDiagnosticLog", "sysdebugDiagnosticLog", "diag-log-[name]-[switch_id]", VersionMeta.Version321d, "InputOutput", 0xff, [], ["admin", "operations"], ['computeBlade', 'computeRackUnit', 'computeServerUnit', 'sysdebugDiagnosticLogRepository'], [], ["Get", "Set"])
 
     prop_meta = {
         "checksum": MoPropertyMeta("checksum", "checksum", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

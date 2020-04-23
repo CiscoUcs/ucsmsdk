@@ -18,9 +18,9 @@ class EquipmentChassisProfileFsmTask(ManagedObject):
     """This is EquipmentChassisProfileFsmTask class."""
 
     consts = EquipmentChassisProfileFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("EquipmentChassisProfileFsmTask", "equipmentChassisProfileFsmTask", "task-[item]", VersionMeta.Version312b, "OutputOnly", 0xf, [], [""], [u'equipmentChassisProfile'], [], [None])
+    mo_meta = MoMeta("EquipmentChassisProfileFsmTask", "equipmentChassisProfileFsmTask", "task-[item]", VersionMeta.Version312b, "OutputOnly", 0xf, [], [""], ['equipmentChassisProfile'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

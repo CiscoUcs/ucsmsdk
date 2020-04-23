@@ -31,9 +31,9 @@ class MgmtProfDerivedInterface(ManagedObject):
     """This is MgmtProfDerivedInterface class."""
 
     consts = MgmtProfDerivedInterfaceConsts()
-    naming_props = set([u'mode'])
+    naming_props = set(['mode'])
 
-    mo_meta = MoMeta("MgmtProfDerivedInterface", "mgmtProfDerivedInterface", "spiface-[mode]", VersionMeta.Version221b, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], [u'mgmtController'], [u'mgmtVnet'], ["Get"])
+    mo_meta = MoMeta("MgmtProfDerivedInterface", "mgmtProfDerivedInterface", "spiface-[mode]", VersionMeta.Version221b, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], ['mgmtController'], ['mgmtVnet'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

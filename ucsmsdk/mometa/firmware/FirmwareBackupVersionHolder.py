@@ -17,9 +17,9 @@ class FirmwareBackupVersionHolder(ManagedObject):
     """This is FirmwareBackupVersionHolder class."""
 
     consts = FirmwareBackupVersionHolderConsts()
-    naming_props = set([u'bundleType'])
+    naming_props = set(['bundleType'])
 
-    mo_meta = MoMeta("FirmwareBackupVersionHolder", "firmwareBackupVersionHolder", "update-backup-version-holder-[bundle_type]", VersionMeta.Version323a, "InputOutput", 0x7f, [], ["admin"], [u'firmwareCatalogPack', u'firmwareChassisPack', u'firmwareComputeHostPack', u'firmwareComputeMgmtPack', u'firmwareInfraPack'], [u'firmwarePackItem'], ["Get", "Set"])
+    mo_meta = MoMeta("FirmwareBackupVersionHolder", "firmwareBackupVersionHolder", "update-backup-version-holder-[bundle_type]", VersionMeta.Version323a, "InputOutput", 0x7f, [], ["admin"], ['firmwareCatalogPack', 'firmwareChassisPack', 'firmwareComputeHostPack', 'firmwareComputeMgmtPack', 'firmwareInfraPack'], ['firmwarePackItem'], ["Get", "Set"])
 
     prop_meta = {
         "bundle_name": MoPropertyMeta("bundle_name", "bundleName", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

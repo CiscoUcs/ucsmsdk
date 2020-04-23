@@ -18,9 +18,9 @@ class AaaLocale(ManagedObject):
     """This is AaaLocale class."""
 
     consts = AaaLocaleConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("AaaLocale", "aaaLocale", "locale-[name]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["aaa", "admin"], [u'aaaUserEp'], [u'aaaOrg', u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AaaLocale", "aaaLocale", "locale-[name]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["aaa", "admin"], ['aaaUserEp'], ['aaaOrg', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

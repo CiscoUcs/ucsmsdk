@@ -26,9 +26,9 @@ class MorefImportRootFsmStage(ManagedObject):
     """This is MorefImportRootFsmStage class."""
 
     consts = MorefImportRootFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("MorefImportRootFsmStage", "morefImportRootFsmStage", "stage-[name]", VersionMeta.Version227b, "OutputOnly", 0xf, [], [""], [u'morefImportRootFsm'], [], [None])
+    mo_meta = MoMeta("MorefImportRootFsmStage", "morefImportRootFsmStage", "stage-[name]", VersionMeta.Version227b, "OutputOnly", 0xf, [], [""], ['morefImportRootFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

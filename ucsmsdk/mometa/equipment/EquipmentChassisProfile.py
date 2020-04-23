@@ -231,9 +231,9 @@ class EquipmentChassisProfile(ManagedObject):
     """This is EquipmentChassisProfile class."""
 
     consts = EquipmentChassisProfileConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("EquipmentChassisProfile", "equipmentChassisProfile", "cp-[name]", VersionMeta.Version312b, "InputOutput", 0x1ffff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentTier', u'orgOrg'], [u'cpmaintAck', u'equipmentBinding', u'equipmentChassisIssues', u'equipmentChassisProfileAssocCtx', u'equipmentChassisProfileFsm', u'equipmentChassisProfileFsmTask', u'equipmentRequirement', u'eventInst', u'faultInst', u'lstorageDiskZoningConfigDef'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("EquipmentChassisProfile", "equipmentChassisProfile", "cp-[name]", VersionMeta.Version312b, "InputOutput", 0x1ffff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['equipmentTier', 'orgOrg'], ['cpmaintAck', 'equipmentBinding', 'equipmentChassisIssues', 'equipmentChassisProfileAssocCtx', 'equipmentChassisProfileFsm', 'equipmentChassisProfileFsmTask', 'equipmentRequirement', 'eventInst', 'faultInst', 'lstorageDiskZoningConfigDef'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "assign_state": MoPropertyMeta("assign_state", "assignState", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["assigned", "failed", "unassigned"], []),

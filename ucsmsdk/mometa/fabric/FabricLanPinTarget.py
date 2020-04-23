@@ -18,9 +18,9 @@ class FabricLanPinTarget(ManagedObject):
     """This is FabricLanPinTarget class."""
 
     consts = FabricLanPinTargetConsts()
-    naming_props = set([u'fabricId'])
+    naming_props = set(['fabricId'])
 
-    mo_meta = MoMeta("FabricLanPinTarget", "fabricLanPinTarget", "target-[fabric_id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricLanPinGroup'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricLanPinTarget", "fabricLanPinTarget", "target-[fabric_id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricLanPinGroup'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], ["0-54"]),

@@ -16,9 +16,9 @@ class FirmwareVnicCdnConstraint(ManagedObject):
     """This is FirmwareVnicCdnConstraint class."""
 
     consts = FirmwareVnicCdnConstraintConsts()
-    naming_props = set([u'type'])
+    naming_props = set(['type'])
 
-    mo_meta = MoMeta("FirmwareVnicCdnConstraint", "firmwareVnicCdnConstraint", "constraint-vnic-cdn-[type]", VersionMeta.Version224b, "InputOutput", 0x3f, [], [""], [u'firmwareConstraints'], [], [None])
+    mo_meta = MoMeta("FirmwareVnicCdnConstraint", "firmwareVnicCdnConstraint", "constraint-vnic-cdn-[type]", VersionMeta.Version224b, "InputOutput", 0x3f, [], [""], ['firmwareConstraints'], [], [None])
 
     prop_meta = {
         "check_running_ver": MoPropertyMeta("check_running_ver", "checkRunningVer", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

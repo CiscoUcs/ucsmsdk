@@ -23,7 +23,7 @@ class EquipmentPowerCapDef(ManagedObject):
     consts = EquipmentPowerCapDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentPowerCapDef", "equipmentPowerCapDef", "powercap", VersionMeta.Version302c, "InputOutput", 0x1f, [], [""], [u'equipmentBladeCapProvider', u'equipmentChassisCapProvider', u'equipmentRackUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentPowerCapDef", "equipmentPowerCapDef", "powercap", VersionMeta.Version302c, "InputOutput", 0x1f, [], [""], ['equipmentBladeCapProvider', 'equipmentChassisCapProvider', 'equipmentRackUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -15,7 +15,7 @@ class EventLog(ManagedObject):
     consts = EventLogConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EventLog", "eventLog", "event-log", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["admin", "fault", "operations"], [u'topRoot'], [u'eventRecord'], ["Get"])
+    mo_meta = MoMeta("EventLog", "eventLog", "event-log", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["admin", "fault", "operations"], ['topRoot'], ['eventRecord'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

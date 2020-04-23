@@ -13,9 +13,9 @@ class FirmwareImageLock(ManagedObject):
     """This is FirmwareImageLock class."""
 
     consts = FirmwareImageLockConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FirmwareImageLock", "firmwareImageLock", "fw-imagelock[name]", VersionMeta.Version222c, "InputOutput", 0x3f, [], ["admin"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis'], [], ["Get"])
+    mo_meta = MoMeta("FirmwareImageLock", "firmwareImageLock", "fw-imagelock[name]", VersionMeta.Version222c, "InputOutput", 0x3f, [], ["admin"], ['computeBlade', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis'], [], ["Get"])
 
     prop_meta = {
         "image_name_dn": MoPropertyMeta("image_name_dn", "ImageNameDn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),

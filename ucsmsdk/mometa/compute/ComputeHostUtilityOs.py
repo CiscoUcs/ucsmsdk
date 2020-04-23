@@ -16,7 +16,7 @@ class ComputeHostUtilityOs(ManagedObject):
     consts = ComputeHostUtilityOsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeHostUtilityOs", "computeHostUtilityOs", "host-util-os-", VersionMeta.Version323a, "InputOutput", 0x1f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [u'mgmtUsbNicMgmtIf'], ["Get"])
+    mo_meta = MoMeta("ComputeHostUtilityOs", "computeHostUtilityOs", "host-util-os-", VersionMeta.Version323a, "InputOutput", 0x1f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], ['mgmtUsbNicMgmtIf'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version323a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -13,9 +13,9 @@ class LstorageLunSetDiskSlot(ManagedObject):
     """This is LstorageLunSetDiskSlot class."""
 
     consts = LstorageLunSetDiskSlotConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("LstorageLunSetDiskSlot", "lstorageLunSetDiskSlot", "lun-set-disk-slot-[id]", VersionMeta.Version402a, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageLunSetConfig'], [], [None])
+    mo_meta = MoMeta("LstorageLunSetDiskSlot", "lstorageLunSetDiskSlot", "lun-set-disk-slot-[id]", VersionMeta.Version402a, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage", "ls-storage-policy"], ['lstorageLunSetConfig'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version402a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

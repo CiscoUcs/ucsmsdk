@@ -70,9 +70,9 @@ class FabricEthEstcPcEp(ManagedObject):
     """This is FabricEthEstcPcEp class."""
 
     consts = FabricEthEstcPcEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("FabricEthEstcPcEp", "fabricEthEstcPcEp", "ep-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0xfff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEthEstcPc', u'fabricSubGroup'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricEthEstcPcEp", "fabricEthEstcPcEp", "ep-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0xfff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEthEstcPc', 'fabricSubGroup'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["16gbps", "1gbps", "2gbps", "32gbps", "4gbps", "8gbps", "auto", "indeterminate"], []),

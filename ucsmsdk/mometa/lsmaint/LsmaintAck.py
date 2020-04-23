@@ -71,7 +71,7 @@ class LsmaintAck(ManagedObject):
     consts = LsmaintAckConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsmaintAck", "lsmaintAck", "ack", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-oper"], [u'lsServer'], [u'faultInst', u'trigLocalSched'], ["Get", "Set"])
+    mo_meta = MoMeta("LsmaintAck", "lsmaintAck", "ack", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-oper"], ['lsServer'], ['faultInst', 'trigLocalSched'], ["Get", "Set"])
 
     prop_meta = {
         "acked": MoPropertyMeta("acked", "acked", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),

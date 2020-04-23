@@ -24,9 +24,9 @@ class ComputeScrubPolicy(ManagedObject):
     """This is ComputeScrubPolicy class."""
 
     consts = ComputeScrubPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ComputeScrubPolicy", "computeScrubPolicy", "scrub-[name]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "pn-policy"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'orgOrg'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("ComputeScrubPolicy", "computeScrubPolicy", "scrub-[name]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "pn-policy"], ['computeBlade', 'computeRackUnit', 'computeServerUnit', 'orgOrg'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "bios_settings_scrub": MoPropertyMeta("bios_settings_scrub", "biosSettingsScrub", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["no", "yes"], []),

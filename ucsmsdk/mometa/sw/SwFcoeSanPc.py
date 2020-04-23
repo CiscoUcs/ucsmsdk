@@ -55,9 +55,9 @@ class SwFcoeSanPc(ManagedObject):
     """This is SwFcoeSanPc class."""
 
     consts = SwFcoeSanPcConsts()
-    naming_props = set([u'portId'])
+    naming_props = set(['portId'])
 
-    mo_meta = MoMeta("SwFcoeSanPc", "swFcoeSanPc", "fcoesan-pc-[port_id]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["read-only"], [u'swFcMon', u'swFcSanBorder'], [u'dcxFcoeVifEp', u'dcxVifEp', u'swVlan'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("SwFcoeSanPc", "swFcoeSanPc", "fcoesan-pc-[port_id]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["read-only"], ['swFcMon', 'swFcSanBorder'], ['dcxFcoeVifEp', 'dcxVifEp', 'swVlan'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),

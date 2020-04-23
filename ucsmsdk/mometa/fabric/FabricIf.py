@@ -15,9 +15,9 @@ class FabricIf(ManagedObject):
     """This is FabricIf class."""
 
     consts = FabricIfConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("FabricIf", "fabricIf", "mgmt-if-[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'fabricCartridgeSlotEp', u'fabricComputeMSlotEp', u'fabricComputeSlotEp'], [], ["Get"])
+    mo_meta = MoMeta("FabricIf", "fabricIf", "mgmt-if-[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], ['fabricCartridgeSlotEp', 'fabricComputeMSlotEp', 'fabricComputeSlotEp'], [], ["Get"])
 
     prop_meta = {
         "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),

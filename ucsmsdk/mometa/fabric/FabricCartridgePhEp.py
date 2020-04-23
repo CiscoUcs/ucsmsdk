@@ -56,9 +56,9 @@ class FabricCartridgePhEp(ManagedObject):
     """This is FabricCartridgePhEp class."""
 
     consts = FabricCartridgePhEpConsts()
-    naming_props = set([u'vendor', u'model', u'serial'])
+    naming_props = set(['vendor', 'model', 'serial'])
 
-    mo_meta = MoMeta("FabricCartridgePhEp", "fabricCartridgePhEp", "cart-ep-ven-[vendor]-mod-[model]-ser-[serial]", VersionMeta.Version251a, "InputOutput", 0x1fff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'fabricDceSrv'], [u'fabricLastAckedSlot', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("FabricCartridgePhEp", "fabricCartridgePhEp", "cart-ep-ven-[vendor]-mod-[model]-ser-[serial]", VersionMeta.Version251a, "InputOutput", 0x1fff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['fabricDceSrv'], ['fabricLastAckedSlot', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

@@ -20,9 +20,9 @@ class CommSnmpTrap(ManagedObject):
     """This is CommSnmpTrap class."""
 
     consts = CommSnmpTrapConsts()
-    naming_props = set([u'hostname'])
+    naming_props = set(['hostname'])
 
-    mo_meta = MoMeta("CommSnmpTrap", "commSnmpTrap", "snmp-trap[hostname]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["aaa", "admin"], [u'commSnmp'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("CommSnmpTrap", "commSnmpTrap", "snmp-trap[hostname]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["aaa", "admin"], ['commSnmp'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

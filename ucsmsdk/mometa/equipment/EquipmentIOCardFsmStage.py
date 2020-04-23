@@ -59,9 +59,9 @@ class EquipmentIOCardFsmStage(ManagedObject):
     """This is EquipmentIOCardFsmStage class."""
 
     consts = EquipmentIOCardFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("EquipmentIOCardFsmStage", "equipmentIOCardFsmStage", "stage-[name]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'equipmentIOCardFsm'], [], [None])
+    mo_meta = MoMeta("EquipmentIOCardFsmStage", "equipmentIOCardFsmStage", "stage-[name]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['equipmentIOCardFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

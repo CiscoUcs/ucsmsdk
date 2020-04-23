@@ -23,7 +23,7 @@ class LsbootNvme(ManagedObject):
     consts = LsbootNvmeConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsbootNvme", "lsbootNvme", "nvme", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], [u'lsbootLocalStorage'], [u'lsbootNvmeDiskSsd', u'lsbootNvmePciSsd', u'lsbootUEFIBootParam'], ["Get", "Set"])
+    mo_meta = MoMeta("LsbootNvme", "lsbootNvme", "nvme", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], ['lsbootLocalStorage'], ['lsbootNvmeDiskSsd', 'lsbootNvmePciSsd', 'lsbootUEFIBootParam'], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -169,7 +169,7 @@ class CallhomeEp(ManagedObject):
     consts = CallhomeEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CallhomeEp", "callhomeEp", "call-home", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "operations"], [u'topRoot'], [u'callhomeAnonymousReporting', u'callhomeEpFsm', u'callhomeEpFsmTask', u'callhomePeriodicSystemInventory', u'callhomePolicy', u'callhomeProfile', u'callhomeSmtp', u'callhomeSource', u'callhomeTestAlert', u'eventInst', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("CallhomeEp", "callhomeEp", "call-home", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "operations"], ['topRoot'], ['callhomeAnonymousReporting', 'callhomeEpFsm', 'callhomeEpFsmTask', 'callhomePeriodicSystemInventory', 'callhomePolicy', 'callhomeProfile', 'callhomeSmtp', 'callhomeSource', 'callhomeTestAlert', 'eventInst', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["off", "on"], []),

@@ -23,9 +23,9 @@ class MemoryPersistentMemoryRegion(ManagedObject):
     """This is MemoryPersistentMemoryRegion class."""
 
     consts = MemoryPersistentMemoryRegionConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("MemoryPersistentMemoryRegion", "memoryPersistentMemoryRegion", "region-[id]", VersionMeta.Version404a, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'memoryPersistentMemoryConfiguration'], [u'memoryPersistentMemoryNamespace'], [None])
+    mo_meta = MoMeta("MemoryPersistentMemoryRegion", "memoryPersistentMemoryRegion", "region-[id]", VersionMeta.Version404a, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['memoryPersistentMemoryConfiguration'], ['memoryPersistentMemoryNamespace'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version404a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

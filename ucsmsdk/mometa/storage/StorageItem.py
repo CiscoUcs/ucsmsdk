@@ -23,9 +23,9 @@ class StorageItem(ManagedObject):
     """This is StorageItem class."""
 
     consts = StorageItemConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("StorageItem", "storageItem", "stor-part-[name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'networkElement'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("StorageItem", "storageItem", "stor-part-[name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], ['networkElement'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "alarm_type": MoPropertyMeta("alarm_type", "alarmType", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["major", "minor"], []),

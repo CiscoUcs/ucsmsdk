@@ -24,9 +24,9 @@ class ApeMenloVnic(ManagedObject):
     """This is ApeMenloVnic class."""
 
     consts = ApeMenloVnicConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ApeMenloVnic", "apeMenloVnic", "AdapterVnic-[name]", VersionMeta.Version101e, "InputOutput", 0x3ffff, [], ["read-only"], [u'apeMenlo', u'apePalo'], [u'apeMenloVnicStats', u'apePaloVnicStats'], [None])
+    mo_meta = MoMeta("ApeMenloVnic", "apeMenloVnic", "AdapterVnic-[name]", VersionMeta.Version101e, "InputOutput", 0x3ffff, [], ["read-only"], ['apeMenlo', 'apePalo'], ['apeMenloVnicStats', 'apePaloVnicStats'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

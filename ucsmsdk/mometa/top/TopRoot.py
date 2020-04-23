@@ -15,7 +15,7 @@ class TopRoot(ManagedObject):
     consts = TopRootConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("TopRoot", "topRoot", "", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], [], [u'aaaLog', u'apeManager', u'callhomeEp', u'capabilityCatalogue', u'clitestTypeTest', u'clitestTypeTest2', u'computeDefaults', u'dhcpInst', u'eventHolder', u'eventLog', u'extpolEp', u'fabricEp', u'faultHolder', u'fcpoolUniverse', u'gmetaEp', u'identMetaVerse', u'ippoolUniverse', u'iqnpoolUniverse', u'macpoolUniverse', u'morefImportRoot', u'nfsEp', u'observeObservedCont', u'orgOrg', u'policyPolicyEp', u'procManager', u'statsHolder', u'storageDomainEp', u'syntheticFileSystem', u'topMetaInf', u'topSysDefaults', u'topSystem', u'uuidpoolUniverse', u'vmEp'], ["Get"])
+    mo_meta = MoMeta("TopRoot", "topRoot", "", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], [], ['aaaLog', 'apeManager', 'callhomeEp', 'capabilityCatalogue', 'clitestTypeTest', 'clitestTypeTest2', 'computeDefaults', 'dhcpInst', 'eventHolder', 'eventLog', 'extpolEp', 'fabricEp', 'faultHolder', 'fcpoolUniverse', 'gmetaEp', 'identMetaVerse', 'ippoolUniverse', 'iqnpoolUniverse', 'macpoolUniverse', 'morefImportRoot', 'nfsEp', 'observeObservedCont', 'orgOrg', 'policyPolicyEp', 'procManager', 'statsHolder', 'storageDomainEp', 'syntheticFileSystem', 'topMetaInf', 'topSysDefaults', 'topSystem', 'uuidpoolUniverse', 'vmEp'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

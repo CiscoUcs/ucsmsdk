@@ -70,9 +70,9 @@ class FabricFcoeEstcEp(ManagedObject):
     """This is FabricFcoeEstcEp class."""
 
     consts = FabricFcoeEstcEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("FabricFcoeEstcEp", "fabricFcoeEstcEp", "phys-fcoe-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0xfff, [], ["admin", "ext-san-config", "ext-san-policy"], [u'fabricFcEstc', u'fabricSubGroup'], [u'etherFcoeInterfaceStats', u'fabricEthMonSrcEp', u'fabricVsanEp', u'fabricVsanMembership', u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricFcoeEstcEp", "fabricFcoeEstcEp", "phys-fcoe-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0xfff, [], ["admin", "ext-san-config", "ext-san-policy"], ['fabricFcEstc', 'fabricSubGroup'], ['etherFcoeInterfaceStats', 'fabricEthMonSrcEp', 'fabricVsanEp', 'fabricVsanMembership', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

@@ -16,9 +16,9 @@ class LicenseSourceFile(ManagedObject):
     """This is LicenseSourceFile class."""
 
     consts = LicenseSourceFileConsts()
-    naming_props = set([u'id', u'line'])
+    naming_props = set(['id', 'line'])
 
-    mo_meta = MoMeta("LicenseSourceFile", "licenseSourceFile", "src-[id]:[line]", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["read-only"], [u'licenseInstance'], [], ["Get"])
+    mo_meta = MoMeta("LicenseSourceFile", "licenseSourceFile", "src-[id]:[line]", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["read-only"], ['licenseInstance'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

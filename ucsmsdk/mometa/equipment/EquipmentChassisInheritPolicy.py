@@ -16,9 +16,9 @@ class EquipmentChassisInheritPolicy(ManagedObject):
     """This is EquipmentChassisInheritPolicy class."""
 
     consts = EquipmentChassisInheritPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("EquipmentChassisInheritPolicy", "equipmentChassisInheritPolicy", "chassis-inherit-[name]", VersionMeta.Version312b, "InputOutput", 0x3ff, [], ["admin", "pn-policy"], [u'orgOrg'], [u'faultInst'], [None])
+    mo_meta = MoMeta("EquipmentChassisInheritPolicy", "equipmentChassisInheritPolicy", "chassis-inherit-[name]", VersionMeta.Version312b, "InputOutput", 0x3ff, [], ["admin", "pn-policy"], ['orgOrg'], ['faultInst'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

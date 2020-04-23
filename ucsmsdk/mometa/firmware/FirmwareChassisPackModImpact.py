@@ -13,7 +13,7 @@ class FirmwareChassisPackModImpact(ManagedObject):
     """This is FirmwareChassisPackModImpact class."""
 
     consts = FirmwareChassisPackModImpactConsts()
-    naming_props = set([u'keyDn'])
+    naming_props = set(['keyDn'])
 
     mo_meta = MoMeta("FirmwareChassisPackModImpact", "firmwareChassisPackModImpact", "fw-sys-ChassisPackModImpact-[key_dn]", VersionMeta.Version323a, "InputOutput", 0x3f, [], ["admin", "ls-config-policy", "ls-server-policy"], [], [], [None])
 

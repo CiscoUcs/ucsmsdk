@@ -172,9 +172,9 @@ class SysdebugCore(ManagedObject):
     """This is SysdebugCore class."""
 
     consts = SysdebugCoreConsts()
-    naming_props = set([u'name', u'switchId'])
+    naming_props = set(['name', 'switchId'])
 
-    mo_meta = MoMeta("SysdebugCore", "sysdebugCore", "file-[name]|[switch_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "operations"], [u'sysdebugCoreFileRepository'], [u'eventInst', u'faultInst', u'sysdebugCoreFsm', u'sysdebugCoreFsmTask', u'sysdebugManualCoreFileExportTarget', u'sysfileMutation'], ["Get"])
+    mo_meta = MoMeta("SysdebugCore", "sysdebugCore", "file-[name]|[switch_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "operations"], ['sysdebugCoreFileRepository'], ['eventInst', 'faultInst', 'sysdebugCoreFsm', 'sysdebugCoreFsmTask', 'sysdebugManualCoreFileExportTarget', 'sysfileMutation'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["downloaded", "init", "prepare-download"], []),

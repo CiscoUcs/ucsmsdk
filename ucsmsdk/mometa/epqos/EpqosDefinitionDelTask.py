@@ -162,9 +162,9 @@ class EpqosDefinitionDelTask(ManagedObject):
     """This is EpqosDefinitionDelTask class."""
 
     consts = EpqosDefinitionDelTaskConsts()
-    naming_props = set([u'defIntId'])
+    naming_props = set(['defIntId'])
 
-    mo_meta = MoMeta("EpqosDefinitionDelTask", "epqosDefinitionDelTask", "ep-qos-deletion-[def_int_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ls-network", "ls-network-policy", "ls-qos-policy", "read-only"], [u'orgOrg'], [u'epqosDefinitionDelTaskFsm', u'epqosDefinitionDelTaskFsmTask', u'eventInst', u'faultInst'], [None])
+    mo_meta = MoMeta("EpqosDefinitionDelTask", "epqosDefinitionDelTask", "ep-qos-deletion-[def_int_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ls-network", "ls-network-policy", "ls-qos-policy", "read-only"], ['orgOrg'], ['epqosDefinitionDelTaskFsm', 'epqosDefinitionDelTaskFsmTask', 'eventInst', 'faultInst'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

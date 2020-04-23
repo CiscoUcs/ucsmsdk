@@ -32,7 +32,7 @@ class EquipmentBiosDef(ManagedObject):
     consts = EquipmentBiosDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentBiosDef", "equipmentBiosDef", "bios-def", VersionMeta.Version202m, "InputOutput", 0xff, [], [""], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentBiosDef", "equipmentBiosDef", "bios-def", VersionMeta.Version202m, "InputOutput", 0xff, [], [""], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider', 'equipmentServerUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version202m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

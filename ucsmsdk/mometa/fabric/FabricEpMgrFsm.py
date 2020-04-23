@@ -156,7 +156,7 @@ class FabricEpMgrFsm(ManagedObject):
     consts = FabricEpMgrFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FabricEpMgrFsm", "fabricEpMgrFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'fabricEpMgr'], [u'fabricEpMgrFsmStage'], [None])
+    mo_meta = MoMeta("FabricEpMgrFsm", "fabricEpMgrFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['fabricEpMgr'], ['fabricEpMgrFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

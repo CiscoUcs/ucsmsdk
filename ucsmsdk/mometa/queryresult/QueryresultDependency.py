@@ -19,7 +19,7 @@ class QueryresultDependency(ManagedObject):
     """This is QueryresultDependency class."""
 
     consts = QueryresultDependencyConsts()
-    naming_props = set([u'refConvertedDn'])
+    naming_props = set(['refConvertedDn'])
 
     mo_meta = MoMeta("QueryresultDependency", "queryresultDependency", "dependency-[ref_converted_dn]", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["admin"], [], [], [None])
 

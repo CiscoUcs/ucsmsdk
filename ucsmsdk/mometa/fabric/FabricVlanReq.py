@@ -14,9 +14,9 @@ class FabricVlanReq(ManagedObject):
     """This is FabricVlanReq class."""
 
     consts = FabricVlanReqConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricVlanReq", "fabricVlanReq", "vlan-req-[name]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "ls-network"], [u'orgOrg'], [u'faultInst'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("FabricVlanReq", "fabricVlanReq", "vlan-req-[name]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "ls-network"], ['orgOrg'], ['faultInst'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

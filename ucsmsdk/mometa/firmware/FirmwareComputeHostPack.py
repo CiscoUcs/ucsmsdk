@@ -27,9 +27,9 @@ class FirmwareComputeHostPack(ManagedObject):
     """This is FirmwareComputeHostPack class."""
 
     consts = FirmwareComputeHostPackConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FirmwareComputeHostPack", "firmwareComputeHostPack", "fw-host-pack-[name]", VersionMeta.Version101e, "InputOutput", 0xffff, [], ["admin", "ls-compute", "ls-config-policy", "ls-server-policy"], [u'orgOrg'], [u'firmwareBackupVersionHolder', u'firmwareExcludeServerComponent', u'firmwarePackItem'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FirmwareComputeHostPack", "firmwareComputeHostPack", "fw-host-pack-[name]", VersionMeta.Version101e, "InputOutput", 0xffff, [], ["admin", "ls-compute", "ls-config-policy", "ls-server-policy"], ['orgOrg'], ['firmwareBackupVersionHolder', 'firmwareExcludeServerComponent', 'firmwarePackItem'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "blade_bundle_name": MoPropertyMeta("blade_bundle_name", "bladeBundleName", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

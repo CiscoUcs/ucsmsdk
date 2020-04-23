@@ -25,7 +25,7 @@ class SolIf(ManagedObject):
     consts = SolIfConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SolIf", "solIf", "sol-if", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "read-only"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [], ["Get"])
+    mo_meta = MoMeta("SolIf", "solIf", "sol-if", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "read-only"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], [], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disable", "enable"], []),

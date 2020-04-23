@@ -32,9 +32,9 @@ class VmNic(ManagedObject):
     """This is VmNic class."""
 
     consts = VmNicConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VmNic", "vmNic", "nic-[name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "read-only"], [u'vmComputeEp', u'vmHv', u'vmInstance'], [u'adaptorEthPortBySizeLargeStats', u'adaptorEthPortBySizeSmallStats', u'adaptorEthPortErrStats', u'adaptorEthPortMcastStats', u'adaptorEthPortOutsizedStats', u'adaptorEthPortStats', u'adaptorFcPortStats', u'adaptorVnicStats', u'fabricEthMonSrcEp', u'fabricFcMonSrcEp', u'faultInst', u'vmVif', u'vmVlan'], ["Get"])
+    mo_meta = MoMeta("VmNic", "vmNic", "nic-[name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "read-only"], ['vmComputeEp', 'vmHv', 'vmInstance'], ['adaptorEthPortBySizeLargeStats', 'adaptorEthPortBySizeSmallStats', 'adaptorEthPortErrStats', 'adaptorEthPortMcastStats', 'adaptorEthPortOutsizedStats', 'adaptorEthPortStats', 'adaptorFcPortStats', 'adaptorVnicStats', 'fabricEthMonSrcEp', 'fabricFcMonSrcEp', 'faultInst', 'vmVif', 'vmVlan'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

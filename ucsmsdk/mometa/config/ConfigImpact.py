@@ -27,9 +27,9 @@ class ConfigImpact(ManagedObject):
     """This is ConfigImpact class."""
 
     consts = ConfigImpactConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ConfigImpact", "configImpact", "impact-[name]", VersionMeta.Version212a, "InputOutput", 0x3f, [], ["read-only"], [u'configManagedEpImpactResponse'], [], [None])
+    mo_meta = MoMeta("ConfigImpact", "configImpact", "impact-[name]", VersionMeta.Version212a, "InputOutput", 0x3f, [], ["read-only"], ['configManagedEpImpactResponse'], [], [None])
 
     prop_meta = {
         "affected_chassis": MoPropertyMeta("affected_chassis", "affectedChassis", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),

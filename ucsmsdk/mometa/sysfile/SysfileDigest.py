@@ -15,7 +15,7 @@ class SysfileDigest(ManagedObject):
     """This is SysfileDigest class."""
 
     consts = SysfileDigestConsts()
-    naming_props = set([u'name', u'creationTS'])
+    naming_props = set(['name', 'creationTS'])
 
     mo_meta = MoMeta("SysfileDigest", "sysfileDigest", "filedigest-[name]-[creation_ts]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["read-only"], [], [], [None])
 

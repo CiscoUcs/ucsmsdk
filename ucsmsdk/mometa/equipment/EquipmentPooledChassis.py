@@ -20,9 +20,9 @@ class EquipmentPooledChassis(ManagedObject):
     """This is EquipmentPooledChassis class."""
 
     consts = EquipmentPooledChassisConsts()
-    naming_props = set([u'chassisId'])
+    naming_props = set(['chassisId'])
 
-    mo_meta = MoMeta("EquipmentPooledChassis", "equipmentPooledChassis", "chassis-[chassis_id]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["admin", "pn-policy"], [u'equipmentPool'], [], [None])
+    mo_meta = MoMeta("EquipmentPooledChassis", "equipmentPooledChassis", "chassis-[chassis_id]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["admin", "pn-policy"], ['equipmentPool'], [], [None])
 
     prop_meta = {
         "assigned": MoPropertyMeta("assigned", "assigned", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

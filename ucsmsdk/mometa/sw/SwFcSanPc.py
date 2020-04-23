@@ -45,9 +45,9 @@ class SwFcSanPc(ManagedObject):
     """This is SwFcSanPc class."""
 
     consts = SwFcSanPcConsts()
-    naming_props = set([u'portId'])
+    naming_props = set(['portId'])
 
-    mo_meta = MoMeta("SwFcSanPc", "swFcSanPc", "pc-[port_id]", VersionMeta.Version141i, "InputOutput", 0xff, [], ["read-only"], [u'swFcMon', u'swFcSanBorder'], [], ["Get"])
+    mo_meta = MoMeta("SwFcSanPc", "swFcSanPc", "pc-[port_id]", VersionMeta.Version141i, "InputOutput", 0xff, [], ["read-only"], ['swFcMon', 'swFcSanBorder'], [], ["Get"])
 
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["16gbps", "1gbps", "2gbps", "32gbps", "4gbps", "8gbps", "auto", "indeterminate"], []),

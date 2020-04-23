@@ -15,7 +15,7 @@ class ProcPrtCounts(ManagedObject):
     consts = ProcPrtCountsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ProcPrtCounts", "procPrtCounts", "prt", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], [u'procManager'], [], ["Get"])
+    mo_meta = MoMeta("ProcPrtCounts", "procPrtCounts", "prt", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], ['procManager'], [], ["Get"])
 
     prop_meta = {
         "cachenospc": MoPropertyMeta("cachenospc", "cachenospc", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

@@ -58,7 +58,7 @@ class ComputeAdminAck(ManagedObject):
     consts = ComputeAdminAckConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeAdminAck", "computeAdminAck", "admin-ack", VersionMeta.Version404a, "InputOutput", 0x3ff, [], ["admin"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [u'faultInst', u'trigLocalSched'], [None])
+    mo_meta = MoMeta("ComputeAdminAck", "computeAdminAck", "admin-ack", VersionMeta.Version404a, "InputOutput", 0x3ff, [], ["admin"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], ['faultInst', 'trigLocalSched'], [None])
 
     prop_meta = {
         "acked": MoPropertyMeta("acked", "acked", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),

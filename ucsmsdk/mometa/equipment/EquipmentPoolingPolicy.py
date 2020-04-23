@@ -16,9 +16,9 @@ class EquipmentPoolingPolicy(ManagedObject):
     """This is EquipmentPoolingPolicy class."""
 
     consts = EquipmentPoolingPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("EquipmentPoolingPolicy", "equipmentPoolingPolicy", "chassis-pooling-policy-[name]", VersionMeta.Version312b, "InputOutput", 0x3ff, [], ["admin", "pn-policy"], [u'orgOrg'], [], [None])
+    mo_meta = MoMeta("EquipmentPoolingPolicy", "equipmentPoolingPolicy", "chassis-pooling-policy-[name]", VersionMeta.Version312b, "InputOutput", 0x3ff, [], ["admin", "pn-policy"], ['orgOrg'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -54,9 +54,9 @@ class FirmwareRunning(ManagedObject):
     """This is FirmwareRunning class."""
 
     consts = FirmwareRunningConsts()
-    naming_props = set([u'deployment'])
+    naming_props = set(['deployment'])
 
-    mo_meta = MoMeta("FirmwareRunning", "firmwareRunning", "fw-[deployment]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'adaptorHostEthIf', u'adaptorHostFcIf', u'biosUnit', u'capabilityCatalogue', u'capabilityMgmtExtension', u'equipmentPsu', u'graphicsCard', u'memoryPersistentMemoryUnit', u'mgmtController', u'pciSwitch', u'storageController', u'storageFlexFlashController', u'storageLocalDisk', u'storageNvmeSwitch', u'storageOnboardDevice', u'storageSasExpander'], [u'firmwareServicePack'], ["Get"])
+    mo_meta = MoMeta("FirmwareRunning", "firmwareRunning", "fw-[deployment]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], ['adaptorHostEthIf', 'adaptorHostFcIf', 'biosUnit', 'capabilityCatalogue', 'capabilityMgmtExtension', 'equipmentPsu', 'graphicsCard', 'memoryPersistentMemoryUnit', 'mgmtController', 'pciSwitch', 'storageController', 'storageFlexFlashController', 'storageLocalDisk', 'storageNvmeSwitch', 'storageOnboardDevice', 'storageSasExpander'], ['firmwareServicePack'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

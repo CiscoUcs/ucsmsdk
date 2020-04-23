@@ -359,9 +359,9 @@ class EtherServerIntFIo(ManagedObject):
     """This is EtherServerIntFIo class."""
 
     consts = EtherServerIntFIoConsts()
-    naming_props = set([u'portId'])
+    naming_props = set(['portId'])
 
-    mo_meta = MoMeta("EtherServerIntFIo", "etherServerIntFIo", "port-[port_id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin"], [u'diagSrvCtrl', u'portGroup'], [u'equipmentXcvr', u'etherErrStats', u'etherLossStats', u'etherPauseStats', u'etherRxStats', u'etherServerIntFIoFsm', u'etherServerIntFIoFsmTask', u'etherTxStats', u'eventInst', u'faultInst', u'lldpAcquired', u'portDomainEp', u'portTrustMode', u'swUlan'], ["Get"])
+    mo_meta = MoMeta("EtherServerIntFIo", "etherServerIntFIo", "port-[port_id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin"], ['diagSrvCtrl', 'portGroup'], ['equipmentXcvr', 'etherErrStats', 'etherLossStats', 'etherPauseStats', 'etherRxStats', 'etherServerIntFIoFsm', 'etherServerIntFIoFsmTask', 'etherTxStats', 'eventInst', 'faultInst', 'lldpAcquired', 'portDomainEp', 'portTrustMode', 'swUlan'], ["Get"])
 
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),

@@ -15,9 +15,9 @@ class FabricNetflowIPv4Addr(ManagedObject):
     """This is FabricNetflowIPv4Addr class."""
 
     consts = FabricNetflowIPv4AddrConsts()
-    naming_props = set([u'fabricId'])
+    naming_props = set(['fabricId'])
 
-    mo_meta = MoMeta("FabricNetflowIPv4Addr", "fabricNetflowIPv4Addr", "ipv4-addr-[fabric_id]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'adaptorHostIscsiIf', u'adaptorVlan', u'swVlan', u'vnicEtherIf', u'vnicIPv4If'], [], [None])
+    mo_meta = MoMeta("FabricNetflowIPv4Addr", "fabricNetflowIPv4Addr", "ipv4-addr-[fabric_id]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['adaptorHostIscsiIf', 'adaptorVlan', 'swVlan', 'vnicEtherIf', 'vnicIPv4If'], [], [None])
 
     prop_meta = {
         "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),

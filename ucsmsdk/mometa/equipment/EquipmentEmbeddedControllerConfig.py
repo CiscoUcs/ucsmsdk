@@ -18,7 +18,7 @@ class EquipmentEmbeddedControllerConfig(ManagedObject):
     consts = EquipmentEmbeddedControllerConfigConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentEmbeddedControllerConfig", "equipmentEmbeddedControllerConfig", "embedded-ctrl-cfg", VersionMeta.Version323a, "InputOutput", 0xff, [], [""], [u'diagSrvCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentIOExpanderCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentRackEnclosureCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentSiocCapProvider', u'equipmentStorageEncCapProvider', u'equipmentSwitchCapProvider'], [], [None])
+    mo_meta = MoMeta("EquipmentEmbeddedControllerConfig", "equipmentEmbeddedControllerConfig", "embedded-ctrl-cfg", VersionMeta.Version323a, "InputOutput", 0xff, [], [""], ['diagSrvCapProvider', 'equipmentBladeCapProvider', 'equipmentCatalogCapProvider', 'equipmentChassisCapProvider', 'equipmentDbgPluginCapProvider', 'equipmentIOExpanderCapProvider', 'equipmentMgmtCapProvider', 'equipmentMgmtExtCapProvider', 'equipmentRackEnclosureCapProvider', 'equipmentRackUnitCapProvider', 'equipmentServerUnitCapProvider', 'equipmentSiocCapProvider', 'equipmentStorageEncCapProvider', 'equipmentSwitchCapProvider'], [], [None])
 
     prop_meta = {
         "ahci_setting": MoPropertyMeta("ahci_setting", "ahciSetting", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

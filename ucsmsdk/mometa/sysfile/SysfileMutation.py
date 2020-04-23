@@ -169,7 +169,7 @@ class SysfileMutation(ManagedObject):
     consts = SysfileMutationConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SysfileMutation", "sysfileMutation", "mutation", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "operations"], [u'sysdebugCore', u'sysdebugCoreFileRepository'], [u'eventInst', u'faultInst', u'sysfileMutationFsm', u'sysfileMutationFsmTask'], ["Add", "Get"])
+    mo_meta = MoMeta("SysfileMutation", "sysfileMutation", "mutation", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "operations"], ['sysdebugCore', 'sysdebugCoreFileRepository'], ['eventInst', 'faultInst', 'sysfileMutationFsm', 'sysfileMutationFsmTask'], ["Add", "Get"])
 
     prop_meta = {
         "action": MoPropertyMeta("action", "action", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["none", "remove"], []),

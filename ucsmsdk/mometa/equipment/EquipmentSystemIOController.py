@@ -329,9 +329,9 @@ class EquipmentSystemIOController(ManagedObject):
     """This is EquipmentSystemIOController class."""
 
     consts = EquipmentSystemIOControllerConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentSystemIOController", "equipmentSystemIOController", "slot-[id]", VersionMeta.Version312b, "InputOutput", 0x1ff, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentChassis'], [u'computeBoardController', u'equipmentSharedIOModule', u'equipmentSiocTempStats', u'equipmentSystemIOControllerFsm', u'equipmentSystemIOControllerFsmTask', u'eventInst', u'faultInst', u'mgmtController'], ["Get", "Set"])
+    mo_meta = MoMeta("EquipmentSystemIOController", "equipmentSystemIOController", "slot-[id]", VersionMeta.Version312b, "InputOutput", 0x1ff, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], ['equipmentChassis'], ['computeBoardController', 'equipmentSharedIOModule', 'equipmentSiocTempStats', 'equipmentSystemIOControllerFsm', 'equipmentSystemIOControllerFsmTask', 'eventInst', 'faultInst', 'mgmtController'], ["Get", "Set"])
 
     prop_meta = {
         "admin_power_state": MoPropertyMeta("admin_power_state", "adminPowerState", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cycle-immediate", "cycle-wait", "policy"], []),

@@ -15,7 +15,7 @@ class LstorageRemoteDef(ManagedObject):
     consts = LstorageRemoteDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LstorageRemoteDef", "lstorageRemoteDef", "remote-def", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'computeBoard'], [u'lstorageLogin'], ["Get"])
+    mo_meta = MoMeta("LstorageRemoteDef", "lstorageRemoteDef", "remote-def", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], ['computeBoard'], ['lstorageLogin'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

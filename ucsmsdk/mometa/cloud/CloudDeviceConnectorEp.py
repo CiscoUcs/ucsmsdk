@@ -21,7 +21,7 @@ class CloudDeviceConnectorEp(ManagedObject):
     consts = CloudDeviceConnectorEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CloudDeviceConnectorEp", "cloudDeviceConnectorEp", "device-connector", VersionMeta.Version402a, "InputOutput", 0x3ff, [], ["aaa", "admin"], [u'cloudMgmtSvc'], [u'faultInst'], [None])
+    mo_meta = MoMeta("CloudDeviceConnectorEp", "cloudDeviceConnectorEp", "device-connector", VersionMeta.Version402a, "InputOutput", 0x3ff, [], ["aaa", "admin"], ['cloudMgmtSvc'], ['faultInst'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version402a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

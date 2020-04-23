@@ -15,7 +15,7 @@ class FabricEthMonFiltRef(ManagedObject):
     consts = FabricEthMonFiltRefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FabricEthMonFiltRef", "fabricEthMonFiltRef", "", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], [u'fabricEthMon'], [], ["Get"])
+    mo_meta = MoMeta("FabricEthMonFiltRef", "fabricEthMonFiltRef", "", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], ['fabricEthMon'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

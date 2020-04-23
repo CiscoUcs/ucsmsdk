@@ -15,7 +15,7 @@ class MgmtAccessPolicy(ManagedObject):
     consts = MgmtAccessPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtAccessPolicy", "mgmtAccessPolicy", "ext-access-policy", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], [u'topSystem'], [u'mgmtAccessPolicyItem'], ["Get"])
+    mo_meta = MoMeta("MgmtAccessPolicy", "mgmtAccessPolicy", "ext-access-policy", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], ['topSystem'], ['mgmtAccessPolicyItem'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

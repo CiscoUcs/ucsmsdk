@@ -15,7 +15,7 @@ class TopSysDefaults(ManagedObject):
     consts = TopSysDefaultsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("TopSysDefaults", "topSysDefaults", "sys-defaults", VersionMeta.Version142b, "InputOutput", 0x1f, [], ["read-only"], [u'topRoot'], [u'capabilityNetworkLimits', u'capabilityStorageLimits', u'capabilitySystemLimits', u'swFabricZoneNsOverride', u'swVlanPortNsOverride'], ["Get"])
+    mo_meta = MoMeta("TopSysDefaults", "topSysDefaults", "sys-defaults", VersionMeta.Version142b, "InputOutput", 0x1f, [], ["read-only"], ['topRoot'], ['capabilityNetworkLimits', 'capabilityStorageLimits', 'capabilitySystemLimits', 'swFabricZoneNsOverride', 'swVlanPortNsOverride'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version142b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

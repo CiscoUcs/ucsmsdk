@@ -13,9 +13,9 @@ class GmetaPolicyMapElement(ManagedObject):
     """This is GmetaPolicyMapElement class."""
 
     consts = GmetaPolicyMapElementConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("GmetaPolicyMapElement", "gmetaPolicyMapElement", "policymapelem-[name]", VersionMeta.Version212a, "InputOutput", 0x3f, [], ["read-only"], [u'gmetaPolicyMapHolder'], [], [None])
+    mo_meta = MoMeta("GmetaPolicyMapElement", "gmetaPolicyMapElement", "policymapelem-[name]", VersionMeta.Version212a, "InputOutput", 0x3f, [], ["read-only"], ['gmetaPolicyMapHolder'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

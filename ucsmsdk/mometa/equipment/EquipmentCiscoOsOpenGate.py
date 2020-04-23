@@ -20,9 +20,9 @@ class EquipmentCiscoOsOpenGate(ManagedObject):
     """This is EquipmentCiscoOsOpenGate class."""
 
     consts = EquipmentCiscoOsOpenGateConsts()
-    naming_props = set([u'isSupported'])
+    naming_props = set(['isSupported'])
 
-    mo_meta = MoMeta("EquipmentCiscoOsOpenGate", "equipmentCiscoOsOpenGate", "ciscoosopengate-[is_supported]", VersionMeta.Version312b, "InputOutput", 0x1ff, [], [""], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], [None])
+    mo_meta = MoMeta("EquipmentCiscoOsOpenGate", "equipmentCiscoOsOpenGate", "ciscoosopengate-[is_supported]", VersionMeta.Version312b, "InputOutput", 0x1ff, [], [""], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

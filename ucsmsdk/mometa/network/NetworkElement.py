@@ -45,9 +45,9 @@ class NetworkElement(ManagedObject):
     """This is NetworkElement class."""
 
     consts = NetworkElementConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("NetworkElement", "networkElement", "switch-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config"], [u'topSystem'], [u'equipmentFan', u'equipmentFanModule', u'equipmentLocatorLed', u'equipmentPsu', u'equipmentSwitchCard', u'extmgmtIf', u'faultInst', u'firmwareStatus', u'mgmtController', u'mgmtDbState', u'mgmtHealthStatus', u'mgmtIPv6IfConfig', u'networkLanNeighbors', u'networkLimit', u'networkLldpNeighbors', u'networkOperLevel', u'networkSanNeighbors', u'nfsMountInst', u'powerBudget', u'storageItem', u'swAccessDomain', u'swCardEnvStats', u'swEnvStats', u'swEthLanBorder', u'swEthLanFlowMon', u'swEthLanMon', u'swExtUtility', u'swFabricZoneNs', u'swFcSanBorder', u'swFcSanMon', u'swPhys', u'swPortDiscover', u'swSystemStats', u'swUtilityDomain', u'swVlanPortNs'], ["Get", "Set"])
+    mo_meta = MoMeta("NetworkElement", "networkElement", "switch-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config"], ['topSystem'], ['equipmentFan', 'equipmentFanModule', 'equipmentLocatorLed', 'equipmentPsu', 'equipmentSwitchCard', 'extmgmtIf', 'faultInst', 'firmwareStatus', 'mgmtController', 'mgmtDbState', 'mgmtHealthStatus', 'mgmtIPv6IfConfig', 'networkLanNeighbors', 'networkLimit', 'networkLldpNeighbors', 'networkOperLevel', 'networkSanNeighbors', 'nfsMountInst', 'powerBudget', 'storageItem', 'swAccessDomain', 'swCardEnvStats', 'swEnvStats', 'swEthLanBorder', 'swEthLanFlowMon', 'swEthLanMon', 'swExtUtility', 'swFabricZoneNs', 'swFcSanBorder', 'swFcSanMon', 'swPhys', 'swPortDiscover', 'swSystemStats', 'swUtilityDomain', 'swVlanPortNs'], ["Get", "Set"])
 
     prop_meta = {
         "admin_evac_state": MoPropertyMeta("admin_evac_state", "adminEvacState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["drain", "fill", "unknown"], []),

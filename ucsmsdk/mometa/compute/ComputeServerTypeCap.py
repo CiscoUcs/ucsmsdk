@@ -17,7 +17,7 @@ class ComputeServerTypeCap(ManagedObject):
     consts = ComputeServerTypeCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeServerTypeCap", "computeServerTypeCap", "server-type", VersionMeta.Version302c, "InputOutput", 0x1f, [], ["read-only"], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], [None])
+    mo_meta = MoMeta("ComputeServerTypeCap", "computeServerTypeCap", "server-type", VersionMeta.Version302c, "InputOutput", 0x1f, [], ["read-only"], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

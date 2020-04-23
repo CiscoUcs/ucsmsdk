@@ -15,7 +15,7 @@ class PowerEp(ManagedObject):
     consts = PowerEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PowerEp", "powerEp", "power-ep", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["admin", "power-mgmt"], [u'topSystem'], [u'powerGroup', u'powerPrioWght'], ["Get"])
+    mo_meta = MoMeta("PowerEp", "powerEp", "power-ep", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["admin", "power-mgmt"], ['topSystem'], ['powerGroup', 'powerPrioWght'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

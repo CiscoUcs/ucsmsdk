@@ -59,9 +59,9 @@ class VmVlan(ManagedObject):
     """This is VmVlan class."""
 
     consts = VmVlanConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VmVlan", "vmVlan", "net-[name]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["read-only"], [u'vmNic'], [], ["Get"])
+    mo_meta = MoMeta("VmVlan", "vmVlan", "net-[name]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["read-only"], ['vmNic'], [], ["Get"])
 
     prop_meta = {
         "assoc_primary_vlan_state": MoPropertyMeta("assoc_primary_vlan_state", "assocPrimaryVlanState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["does-not-exists", "is-empty", "is-in-error-state", "is-not-primary-type", "ok"], []),

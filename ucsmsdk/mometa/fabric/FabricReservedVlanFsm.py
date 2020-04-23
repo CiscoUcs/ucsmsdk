@@ -156,7 +156,7 @@ class FabricReservedVlanFsm(ManagedObject):
     consts = FabricReservedVlanFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FabricReservedVlanFsm", "fabricReservedVlanFsm", "fsm", VersionMeta.Version401a, "OutputOnly", 0xf, [], [""], [u'fabricReservedVlan'], [u'fabricReservedVlanFsmStage'], [None])
+    mo_meta = MoMeta("FabricReservedVlanFsm", "fabricReservedVlanFsm", "fsm", VersionMeta.Version401a, "OutputOnly", 0xf, [], [""], ['fabricReservedVlan'], ['fabricReservedVlanFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version401a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

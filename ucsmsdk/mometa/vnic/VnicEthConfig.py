@@ -15,7 +15,7 @@ class VnicEthConfig(ManagedObject):
     consts = VnicEthConfigConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicEthConfig", "vnicEthConfig", "eth-vnic", VersionMeta.Version302c, "InputOutput", 0x1ff, [], ["admin", "ls-config", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], [u'vnicIScsiInitAutoConfigPolicy'], [u'faultInst'], [None])
+    mo_meta = MoMeta("VnicEthConfig", "vnicEthConfig", "eth-vnic", VersionMeta.Version302c, "InputOutput", 0x1ff, [], ["admin", "ls-config", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], ['vnicIScsiInitAutoConfigPolicy'], ['faultInst'], [None])
 
     prop_meta = {
         "adaptor_profile_name": MoPropertyMeta("adaptor_profile_name", "adaptorProfileName", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),

@@ -18,7 +18,7 @@ class EquipmentInventoryStatus(ManagedObject):
     consts = EquipmentInventoryStatusConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentInventoryStatus", "equipmentInventoryStatus", "inv-status", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["read-only"], [u'adaptorUnit', u'adaptorUnitExtn', u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'graphicsCard', u'memoryUnit', u'processorUnit', u'securityUnit', u'storageController', u'storageMiniStorage'], [u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("EquipmentInventoryStatus", "equipmentInventoryStatus", "inv-status", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["read-only"], ['adaptorUnit', 'adaptorUnitExtn', 'computeBlade', 'computeRackUnit', 'computeServerUnit', 'graphicsCard', 'memoryUnit', 'processorUnit', 'securityUnit', 'storageController', 'storageMiniStorage'], ['faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

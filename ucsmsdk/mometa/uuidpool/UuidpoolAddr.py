@@ -18,9 +18,9 @@ class UuidpoolAddr(ManagedObject):
     """This is UuidpoolAddr class."""
 
     consts = UuidpoolAddrConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("UuidpoolAddr", "uuidpoolAddr", "[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'uuidpoolUniverse'], [u'faultInst', u'uuidpoolPoolable'], ["Get"])
+    mo_meta = MoMeta("UuidpoolAddr", "uuidpoolAddr", "[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], ['uuidpoolUniverse'], ['faultInst', 'uuidpoolPoolable'], ["Get"])
 
     prop_meta = {
         "assigned": MoPropertyMeta("assigned", "assigned", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

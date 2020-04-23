@@ -27,9 +27,9 @@ class FirmwareChassisPack(ManagedObject):
     """This is FirmwareChassisPack class."""
 
     consts = FirmwareChassisPackConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FirmwareChassisPack", "firmwareChassisPack", "fw-chassis-pack-[name]", VersionMeta.Version312b, "InputOutput", 0x7fff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'orgOrg'], [u'firmwareBackupVersionHolder', u'firmwareExcludeChassisComponent', u'firmwarePackItem'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FirmwareChassisPack", "firmwareChassisPack", "fw-chassis-pack-[name]", VersionMeta.Version312b, "InputOutput", 0x7fff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['orgOrg'], ['firmwareBackupVersionHolder', 'firmwareExcludeChassisComponent', 'firmwarePackItem'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "chassis_bundle_name": MoPropertyMeta("chassis_bundle_name", "chassisBundleName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

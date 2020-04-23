@@ -52,9 +52,9 @@ class FabricDceSwSrvEp(ManagedObject):
     """This is FabricDceSwSrvEp class."""
 
     consts = FabricDceSwSrvEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("FabricDceSwSrvEp", "fabricDceSwSrvEp", "slot-[slot_id]-port-[port_id]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "ls-network", "ls-network-policy"], [u'fabricDceSwSrv', u'fabricSubGroup'], [u'fabricEthMonSrcEp', u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricDceSwSrvEp", "fabricDceSwSrvEp", "slot-[slot_id]-port-[port_id]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "ls-network", "ls-network-policy"], ['fabricDceSwSrv', 'fabricSubGroup'], ['fabricEthMonSrcEp', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

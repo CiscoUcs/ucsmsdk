@@ -15,9 +15,9 @@ class SwPortBreakout(ManagedObject):
     """This is SwPortBreakout class."""
 
     consts = SwPortBreakoutConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("SwPortBreakout", "swPortBreakout", "breakout-slot-[slot_id]-port-[port_id]", VersionMeta.Version311e, "InputOutput", 0xff, [], ["admin"], [u'swExtUtility'], [], [None])
+    mo_meta = MoMeta("SwPortBreakout", "swPortBreakout", "breakout-slot-[slot_id]-port-[port_id]", VersionMeta.Version311e, "InputOutput", 0xff, [], ["admin"], ['swExtUtility'], [], [None])
 
     prop_meta = {
         "breakout_type": MoPropertyMeta("breakout_type", "breakoutType", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["10g-4x", "25g-4x", "unknown"], []),

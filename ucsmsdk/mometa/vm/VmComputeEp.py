@@ -35,9 +35,9 @@ class VmComputeEp(ManagedObject):
     """This is VmComputeEp class."""
 
     consts = VmComputeEpConsts()
-    naming_props = set([u'uuid'])
+    naming_props = set(['uuid'])
 
-    mo_meta = MoMeta("VmComputeEp", "vmComputeEp", "computeEp-[uuid]", VersionMeta.Version201m, "InputOutput", 0xff, [], ["admin", "read-only"], [u'vmEp'], [u'vmHba', u'vmNic'], ["Get"])
+    mo_meta = MoMeta("VmComputeEp", "vmComputeEp", "computeEp-[uuid]", VersionMeta.Version201m, "InputOutput", 0xff, [], ["admin", "read-only"], ['vmEp'], ['vmHba', 'vmNic'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

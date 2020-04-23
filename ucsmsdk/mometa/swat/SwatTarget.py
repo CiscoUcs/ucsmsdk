@@ -13,9 +13,9 @@ class SwatTarget(ManagedObject):
     """This is SwatTarget class."""
 
     consts = SwatTargetConsts()
-    naming_props = set([u'varName', u'varValue'])
+    naming_props = set(['varName', 'varValue'])
 
-    mo_meta = MoMeta("SwatTarget", "swatTarget", "target-[var_name]-[var_value]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin"], [u'swatAction'], [], ["Get"])
+    mo_meta = MoMeta("SwatTarget", "swatTarget", "target-[var_name]-[var_value]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin"], ['swatAction'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

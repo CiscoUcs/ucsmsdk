@@ -85,9 +85,9 @@ class FabricFcoeSanEp(ManagedObject):
     """This is FabricFcoeSanEp class."""
 
     consts = FabricFcoeSanEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("FabricFcoeSanEp", "fabricFcoeSanEp", "phys-fcoesanep-slot-[slot_id]-port-[port_id]", VersionMeta.Version211a, "InputOutput", 0x3fff, [], ["admin", "ext-san-config", "ext-san-policy"], [u'fabricFcSan', u'fabricSubGroup'], [u'etherFcoeInterfaceStats', u'fabricEthMonSrcEp', u'fabricVsanEp', u'fabricVsanMembership', u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricFcoeSanEp", "fabricFcoeSanEp", "phys-fcoesanep-slot-[slot_id]-port-[port_id]", VersionMeta.Version211a, "InputOutput", 0x3fff, [], ["admin", "ext-san-config", "ext-san-policy"], ['fabricFcSan', 'fabricSubGroup'], ['etherFcoeInterfaceStats', 'fabricEthMonSrcEp', 'fabricVsanEp', 'fabricVsanMembership', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),

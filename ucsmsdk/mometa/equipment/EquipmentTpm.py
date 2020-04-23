@@ -54,9 +54,9 @@ class EquipmentTpm(ManagedObject):
     """This is EquipmentTpm class."""
 
     consts = EquipmentTpmConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentTpm", "equipmentTpm", "Tpm-[id]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'computeBoard'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("EquipmentTpm", "equipmentTpm", "Tpm-[id]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['computeBoard'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "active_status": MoPropertyMeta("active_status", "activeStatus", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["activated", "deactivated", "unknown"], []),

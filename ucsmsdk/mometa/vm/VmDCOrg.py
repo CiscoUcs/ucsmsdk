@@ -18,9 +18,9 @@ class VmDCOrg(ManagedObject):
     """This is VmDCOrg class."""
 
     consts = VmDCOrgConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VmDCOrg", "vmDCOrg", "dc-cont-[name]", VersionMeta.Version111j, "InputOutput", 0xff, [], ["admin", "ls-config", "ls-config-policy", "ls-network", "pn-policy"], [u'extvmmProvider'], [u'vmDC'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VmDCOrg", "vmDCOrg", "dc-cont-[name]", VersionMeta.Version111j, "InputOutput", 0xff, [], ["admin", "ls-config", "ls-config-policy", "ls-network", "pn-policy"], ['extvmmProvider'], ['vmDC'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

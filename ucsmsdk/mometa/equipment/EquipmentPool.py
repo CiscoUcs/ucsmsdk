@@ -18,9 +18,9 @@ class EquipmentPool(ManagedObject):
     """This is EquipmentPool class."""
 
     consts = EquipmentPoolConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("EquipmentPool", "equipmentPool", "equipment-pool-[name]", VersionMeta.Version312b, "InputOutput", 0xff, [], ["admin", "pn-policy"], [u'orgOrg'], [u'equipmentPooledChassis'], [None])
+    mo_meta = MoMeta("EquipmentPool", "equipmentPool", "equipment-pool-[name]", VersionMeta.Version312b, "InputOutput", 0xff, [], ["admin", "pn-policy"], ['orgOrg'], ['equipmentPooledChassis'], [None])
 
     prop_meta = {
         "assigned": MoPropertyMeta("assigned", "assigned", "uint", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

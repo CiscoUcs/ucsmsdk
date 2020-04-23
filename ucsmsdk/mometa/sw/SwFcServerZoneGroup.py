@@ -16,9 +16,9 @@ class SwFcServerZoneGroup(ManagedObject):
     """This is SwFcServerZoneGroup class."""
 
     consts = SwFcServerZoneGroupConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("SwFcServerZoneGroup", "swFcServerZoneGroup", "zone-group-[id]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["read-only"], [u'swFcZoneSet'], [u'swZoneInitiatorMember'], [None])
+    mo_meta = MoMeta("SwFcServerZoneGroup", "swFcServerZoneGroup", "zone-group-[id]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["read-only"], ['swFcZoneSet'], ['swZoneInitiatorMember'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

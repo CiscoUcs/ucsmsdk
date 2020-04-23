@@ -100,9 +100,9 @@ class StorageFlexFlashVirtualDrive(ManagedObject):
     """This is StorageFlexFlashVirtualDrive class."""
 
     consts = StorageFlexFlashVirtualDriveConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("StorageFlexFlashVirtualDrive", "storageFlexFlashVirtualDrive", "vd-[id]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["read-only"], [u'storageFlexFlashController'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("StorageFlexFlashVirtualDrive", "storageFlexFlashVirtualDrive", "vd-[id]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["read-only"], ['storageFlexFlashController'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "block_size": MoPropertyMeta("block_size", "blockSize", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["512", "unknown"], ["0-4294967295"]),

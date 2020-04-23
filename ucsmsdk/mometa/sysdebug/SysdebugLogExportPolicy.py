@@ -178,7 +178,7 @@ class SysdebugLogExportPolicy(ManagedObject):
     consts = SysdebugLogExportPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SysdebugLogExportPolicy", "sysdebugLogExportPolicy", "log-export-policy", VersionMeta.Version222c, "InputOutput", 0xffff, [], ["admin", "operations"], [u'sysdebugEp'], [u'eventInst', u'faultInst', u'sysdebugLogExportPolicyFsm', u'sysdebugLogExportPolicyFsmTask', u'sysdebugLogExportStatus'], ["Get", "Set"])
+    mo_meta = MoMeta("SysdebugLogExportPolicy", "sysdebugLogExportPolicy", "log-export-policy", VersionMeta.Version222c, "InputOutput", 0xffff, [], ["admin", "operations"], ['sysdebugEp'], ['eventInst', 'faultInst', 'sysdebugLogExportPolicyFsm', 'sysdebugLogExportPolicyFsmTask', 'sysdebugLogExportStatus'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

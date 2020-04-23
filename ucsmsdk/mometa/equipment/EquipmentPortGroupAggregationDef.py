@@ -29,9 +29,9 @@ class EquipmentPortGroupAggregationDef(ManagedObject):
     """This is EquipmentPortGroupAggregationDef class."""
 
     consts = EquipmentPortGroupAggregationDefConsts()
-    naming_props = set([u'type'])
+    naming_props = set(['type'])
 
-    mo_meta = MoMeta("EquipmentPortGroupAggregationDef", "equipmentPortGroupAggregationDef", "port-group-aggr-def-[type]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], [""], [u'adaptorFruCapProvider', u'equipmentFexCapProvider', u'equipmentIOCardCapProvider', u'equipmentSwitchCapProvider', u'equipmentSwitchIOCardCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentPortGroupAggregationDef", "equipmentPortGroupAggregationDef", "port-group-aggr-def-[type]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], [""], ['adaptorFruCapProvider', 'equipmentFexCapProvider', 'equipmentIOCardCapProvider', 'equipmentSwitchCapProvider', 'equipmentSwitchIOCardCapProvider'], [], ["Get"])
 
     prop_meta = {
         "aggregation_cap": MoPropertyMeta("aggregation_cap", "aggregationCap", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|port-channel),){0,2}(defaultValue|none|port-channel){0,1}""", [], []),

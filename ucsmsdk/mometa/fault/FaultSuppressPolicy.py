@@ -16,9 +16,9 @@ class FaultSuppressPolicy(ManagedObject):
     """This is FaultSuppressPolicy class."""
 
     consts = FaultSuppressPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FaultSuppressPolicy", "faultSuppressPolicy", "fault-suppress-policy-[name]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["read-only"], [u'faultHolder'], [u'faultAffectedClass', u'faultSuppressPolicyItem'], [None])
+    mo_meta = MoMeta("FaultSuppressPolicy", "faultSuppressPolicy", "fault-suppress-policy-[name]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["read-only"], ['faultHolder'], ['faultAffectedClass', 'faultSuppressPolicyItem'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -144,9 +144,9 @@ class AdaptorUnitExtn(ManagedObject):
     """This is AdaptorUnitExtn class."""
 
     consts = AdaptorUnitExtnConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorUnitExtn", "adaptorUnitExtn", "adaptor-extn-[id]", VersionMeta.Version202m, "InputOutput", 0x3f, [], ["read-only"], [u'adaptorUnit'], [u'equipmentInventoryStatus', u'faultInst'], ["Get"])
+    mo_meta = MoMeta("AdaptorUnitExtn", "adaptorUnitExtn", "adaptor-extn-[id]", VersionMeta.Version202m, "InputOutput", 0x3f, [], ["read-only"], ['adaptorUnit'], ['equipmentInventoryStatus', 'faultInst'], ["Get"])
 
     prop_meta = {
         "adaptor_id": MoPropertyMeta("adaptor_id", "adaptorId", "uint", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

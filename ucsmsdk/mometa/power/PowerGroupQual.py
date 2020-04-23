@@ -13,9 +13,9 @@ class PowerGroupQual(ManagedObject):
     """This is PowerGroupQual class."""
 
     consts = PowerGroupQualConsts()
-    naming_props = set([u'groupName'])
+    naming_props = set(['groupName'])
 
-    mo_meta = MoMeta("PowerGroupQual", "powerGroupQual", "power-group-[group_name]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["admin", "pn-policy"], [u'computeQual'], [], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("PowerGroupQual", "powerGroupQual", "power-group-[group_name]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["admin", "pn-policy"], ['computeQual'], [], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

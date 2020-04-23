@@ -171,9 +171,9 @@ class MgmtCfgExportPolicy(ManagedObject):
     """This is MgmtCfgExportPolicy class."""
 
     consts = MgmtCfgExportPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("MgmtCfgExportPolicy", "mgmtCfgExportPolicy", "cfg-exp-policy-[name]", VersionMeta.Version211a, "InputOutput", 0x7fff, [], ["admin"], [u'orgOrg'], [u'eventInst', u'faultInst', u'mgmtCfgExportPolicyFsm', u'mgmtExportPolicyFsm', u'mgmtExportPolicyFsmTask'], ["Get", "Set"])
+    mo_meta = MoMeta("MgmtCfgExportPolicy", "mgmtCfgExportPolicy", "cfg-exp-policy-[name]", VersionMeta.Version211a, "InputOutput", 0x7fff, [], ["admin"], ['orgOrg'], ['eventInst', 'faultInst', 'mgmtCfgExportPolicyFsm', 'mgmtExportPolicyFsm', 'mgmtExportPolicyFsmTask'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disable", "enable"], []),

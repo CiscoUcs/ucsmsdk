@@ -13,9 +13,9 @@ class ExtvmmKeyInst(ManagedObject):
     """This is ExtvmmKeyInst class."""
 
     consts = ExtvmmKeyInstConsts()
-    naming_props = set([u'inst'])
+    naming_props = set(['inst'])
 
-    mo_meta = MoMeta("ExtvmmKeyInst", "extvmmKeyInst", "key-[inst]", VersionMeta.Version111j, "InputOutput", 0x3f, [], ["read-only"], [u'extvmmProvider'], [], ["Get"])
+    mo_meta = MoMeta("ExtvmmKeyInst", "extvmmKeyInst", "key-[inst]", VersionMeta.Version111j, "InputOutput", 0x3f, [], ["read-only"], ['extvmmProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

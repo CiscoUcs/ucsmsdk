@@ -173,7 +173,7 @@ class ExtpolEp(ManagedObject):
     consts = ExtpolEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ExtpolEp", "extpolEp", "extpol", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], [u'topRoot'], [u'eventInst', u'extpolEpFsm', u'extpolEpFsmTask', u'extpolRegistry', u'faultInst'], ["Get"])
+    mo_meta = MoMeta("ExtpolEp", "extpolEp", "extpol", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], ['topRoot'], ['eventInst', 'extpolEpFsm', 'extpolEpFsmTask', 'extpolRegistry', 'faultInst'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

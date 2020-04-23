@@ -13,7 +13,7 @@ class FirmwareHostPackModImpact(ManagedObject):
     """This is FirmwareHostPackModImpact class."""
 
     consts = FirmwareHostPackModImpactConsts()
-    naming_props = set([u'keyDn'])
+    naming_props = set(['keyDn'])
 
     mo_meta = MoMeta("FirmwareHostPackModImpact", "firmwareHostPackModImpact", "fw-sys-HostPackModImpact-[key_dn]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "ls-config-policy", "ls-server-policy"], [], [], [None])
 

@@ -172,9 +172,9 @@ class SysdebugManualCoreFileExportTarget(ManagedObject):
     """This is SysdebugManualCoreFileExportTarget class."""
 
     consts = SysdebugManualCoreFileExportTargetConsts()
-    naming_props = set([u'hostname'])
+    naming_props = set(['hostname'])
 
-    mo_meta = MoMeta("SysdebugManualCoreFileExportTarget", "sysdebugManualCoreFileExportTarget", "export-to-[hostname]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "operations"], [u'sysdebugCore'], [u'eventInst', u'faultInst', u'sysdebugManualCoreFileExportTargetFsm', u'sysdebugManualCoreFileExportTargetFsmTask'], ["Get"])
+    mo_meta = MoMeta("SysdebugManualCoreFileExportTarget", "sysdebugManualCoreFileExportTarget", "export-to-[hostname]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "operations"], ['sysdebugCore'], ['eventInst', 'faultInst', 'sysdebugManualCoreFileExportTargetFsm', 'sysdebugManualCoreFileExportTargetFsmTask'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),

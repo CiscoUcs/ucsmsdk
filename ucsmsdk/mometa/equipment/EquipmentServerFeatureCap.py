@@ -22,7 +22,7 @@ class EquipmentServerFeatureCap(ManagedObject):
     consts = EquipmentServerFeatureCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentServerFeatureCap", "equipmentServerFeatureCap", "server-feature-cap", VersionMeta.Version202m, "InputOutput", 0x1f, [], ["read-only"], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentServerFeatureCap", "equipmentServerFeatureCap", "server-feature-cap", VersionMeta.Version202m, "InputOutput", 0x1f, [], ["read-only"], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider', 'equipmentServerUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
         "adaptor_model": MoPropertyMeta("adaptor_model", "adaptorModel", "string", VersionMeta.Version252a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

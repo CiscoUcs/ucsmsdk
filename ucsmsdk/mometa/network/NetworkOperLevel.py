@@ -23,7 +23,7 @@ class NetworkOperLevel(ManagedObject):
     consts = NetworkOperLevelConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("NetworkOperLevel", "networkOperLevel", "oper-level", VersionMeta.Version212a, "InputOutput", 0x1f, [], ["admin", "ext-lan-config"], [u'networkElement'], [u'faultInst'], [None])
+    mo_meta = MoMeta("NetworkOperLevel", "networkOperLevel", "oper-level", VersionMeta.Version212a, "InputOutput", 0x1f, [], ["admin", "ext-lan-config"], ['networkElement'], ['faultInst'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

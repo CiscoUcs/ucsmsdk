@@ -15,9 +15,9 @@ class ApeMc(ManagedObject):
     """This is ApeMc class."""
 
     consts = ApeMcConsts()
-    naming_props = set([u'ip'])
+    naming_props = set(['ip'])
 
-    mo_meta = MoMeta("ApeMc", "apeMc", "mc-[ip]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["read-only"], [u'apeManager'], [u'apeMcTable'], [None])
+    mo_meta = MoMeta("ApeMc", "apeMc", "mc-[ip]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["read-only"], ['apeManager'], ['apeMcTable'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

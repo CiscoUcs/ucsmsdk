@@ -24,7 +24,7 @@ class VnicIScsiBootParams(ManagedObject):
     consts = VnicIScsiBootParamsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicIScsiBootParams", "vnicIScsiBootParams", "iscsi-boot-params", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server", "ls-storage"], [u'lsServer'], [u'vnicIScsiBootVnic'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicIScsiBootParams", "vnicIScsiBootParams", "iscsi-boot-params", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server", "ls-storage"], ['lsServer'], ['vnicIScsiBootVnic'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -18,9 +18,9 @@ class EpqosDefinitionFsmTask(ManagedObject):
     """This is EpqosDefinitionFsmTask class."""
 
     consts = EpqosDefinitionFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("EpqosDefinitionFsmTask", "epqosDefinitionFsmTask", "task-[item]", VersionMeta.Version111j, "OutputOnly", 0xf, [], [""], [u'epqosDefinition'], [], [None])
+    mo_meta = MoMeta("EpqosDefinitionFsmTask", "epqosDefinitionFsmTask", "task-[item]", VersionMeta.Version111j, "OutputOnly", 0xf, [], [""], ['epqosDefinition'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

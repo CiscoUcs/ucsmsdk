@@ -38,9 +38,9 @@ class CimcvmediaConfigMountEntry(ManagedObject):
     """This is CimcvmediaConfigMountEntry class."""
 
     consts = CimcvmediaConfigMountEntryConsts()
-    naming_props = set([u'mappingName'])
+    naming_props = set(['mappingName'])
 
-    mo_meta = MoMeta("CimcvmediaConfigMountEntry", "cimcvmediaConfigMountEntry", "cfg-mnt-entry-[mapping_name]", VersionMeta.Version222c, "InputOutput", 0x7ffff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], [u'cimcvmediaMountConfigDef', u'cimcvmediaMountConfigPolicy'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("CimcvmediaConfigMountEntry", "cimcvmediaConfigMountEntry", "cfg-mnt-entry-[mapping_name]", VersionMeta.Version222c, "InputOutput", 0x7ffff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], ['cimcvmediaMountConfigDef', 'cimcvmediaMountConfigPolicy'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "auth_option": MoPropertyMeta("auth_option", "authOption", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["default", "none", "ntlm", "ntlmi", "ntlmssp", "ntlmsspi", "ntlmv2", "ntlmv2i"], []),

@@ -15,9 +15,9 @@ class EtherPIoEndPoint(ManagedObject):
     """This is EtherPIoEndPoint class."""
 
     consts = EtherPIoEndPointConsts()
-    naming_props = set([u'epCloudType'])
+    naming_props = set(['epCloudType'])
 
-    mo_meta = MoMeta("EtherPIoEndPoint", "etherPIoEndPoint", "EndPointDn-cloud-[ep_cloud_type]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["read-only"], [u'etherPIo'], [], [None])
+    mo_meta = MoMeta("EtherPIoEndPoint", "etherPIoEndPoint", "EndPointDn-cloud-[ep_cloud_type]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["read-only"], ['etherPIo'], [], [None])
 
     prop_meta = {
         "end_point_dn": MoPropertyMeta("end_point_dn", "EndPointDn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),

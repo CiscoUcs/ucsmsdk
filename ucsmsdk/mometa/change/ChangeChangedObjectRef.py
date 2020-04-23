@@ -2391,7 +2391,7 @@ class ChangeChangedObjectRef(ManagedObject):
     """This is ChangeChangedObjectRef class."""
 
     consts = ChangeChangedObjectRefConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
     mo_meta = MoMeta("ChangeChangedObjectRef", "changeChangedObjectRef", "ChangedObjectRef[id]", VersionMeta.Version212a, "InputOutput", 0x7f, [], ["read-only"], [], [], [None])
 

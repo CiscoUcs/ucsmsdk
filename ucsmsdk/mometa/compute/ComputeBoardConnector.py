@@ -16,7 +16,7 @@ class ComputeBoardConnector(ManagedObject):
     consts = ComputeBoardConnectorConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeBoardConnector", "computeBoardConnector", "board-conn", VersionMeta.Version222c, "InputOutput", 0x1f, [], ["read-only"], [u'computeBlade'], [], ["Get"])
+    mo_meta = MoMeta("ComputeBoardConnector", "computeBoardConnector", "board-conn", VersionMeta.Version222c, "InputOutput", 0x1f, [], ["read-only"], ['computeBlade'], [], ["Get"])
 
     prop_meta = {
         "board_connector_type": MoPropertyMeta("board_connector_type", "boardConnectorType", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["conn-linked", "conn-unlinked"], []),

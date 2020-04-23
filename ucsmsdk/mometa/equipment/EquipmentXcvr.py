@@ -144,7 +144,7 @@ class EquipmentXcvr(ManagedObject):
     consts = EquipmentXcvrConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentXcvr", "equipmentXcvr", "transceiver", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], [u'etherPIo', u'etherServerIntFIo', u'etherSwitchIntFIo', u'fcPIo'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentXcvr", "equipmentXcvr", "transceiver", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], ['etherPIo', 'etherServerIntFIo', 'etherSwitchIntFIo', 'fcPIo'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

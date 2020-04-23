@@ -18,7 +18,7 @@ class FirmwareRackPowerCapConstraint(ManagedObject):
     consts = FirmwareRackPowerCapConstraintConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareRackPowerCapConstraint", "firmwareRackPowerCapConstraint", "constraint-rack-powercap-config", VersionMeta.Version312b, "InputOutput", 0x1f, [], [""], [u'firmwareConstraints'], [], [None])
+    mo_meta = MoMeta("FirmwareRackPowerCapConstraint", "firmwareRackPowerCapConstraint", "constraint-rack-powercap-config", VersionMeta.Version312b, "InputOutput", 0x1f, [], [""], ['firmwareConstraints'], [], [None])
 
     prop_meta = {
         "check_running_ver": MoPropertyMeta("check_running_ver", "checkRunningVer", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

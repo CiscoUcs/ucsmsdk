@@ -13,9 +13,9 @@ class LicenseContents(ManagedObject):
     """This is LicenseContents class."""
 
     consts = LicenseContentsConsts()
-    naming_props = set([u'featureName'])
+    naming_props = set(['featureName'])
 
-    mo_meta = MoMeta("LicenseContents", "licenseContents", "contents-[feature_name]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["read-only"], [u'licenseFile'], [u'licenseFeatureLine'], ["Get"])
+    mo_meta = MoMeta("LicenseContents", "licenseContents", "contents-[feature_name]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["read-only"], ['licenseFile'], ['licenseFeatureLine'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

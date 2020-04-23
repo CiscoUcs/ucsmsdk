@@ -29,9 +29,9 @@ class EtherServerIntFIoFsmStage(ManagedObject):
     """This is EtherServerIntFIoFsmStage class."""
 
     consts = EtherServerIntFIoFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("EtherServerIntFIoFsmStage", "etherServerIntFIoFsmStage", "stage-[name]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'etherServerIntFIoFsm'], [], [None])
+    mo_meta = MoMeta("EtherServerIntFIoFsmStage", "etherServerIntFIoFsmStage", "stage-[name]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['etherServerIntFIoFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -24886,7 +24886,7 @@ class ConfigSorter(ManagedObject):
     """This is ConfigSorter class."""
 
     consts = ConfigSorterConsts()
-    naming_props = set([u'sortClass', u'sortProp'])
+    naming_props = set(['sortClass', 'sortProp'])
 
     mo_meta = MoMeta("ConfigSorter", "configSorter", "class-[sort_class]prop-[sort_prop]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["read-only"], [], [], [None])
 

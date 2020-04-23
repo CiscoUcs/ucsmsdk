@@ -66,9 +66,9 @@ class VnicScsi(ManagedObject):
     """This is VnicScsi class."""
 
     consts = VnicScsiConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicScsi", "vnicScsi", "scsi-[name]", VersionMeta.Version101e, "InputOutput", 0x7ffff, [], ["admin", "ls-config", "ls-server", "ls-storage"], [u'lsServer'], [u'fabricEthMonSrcEp', u'fabricFcMonSrcEp', u'fabricNetflowMonSrcEp', u'faultInst'], ["Get"])
+    mo_meta = MoMeta("VnicScsi", "vnicScsi", "scsi-[name]", VersionMeta.Version101e, "InputOutput", 0x7ffff, [], ["admin", "ls-config", "ls-server", "ls-storage"], ['lsServer'], ['fabricEthMonSrcEp', 'fabricFcMonSrcEp', 'fabricNetflowMonSrcEp', 'faultInst'], ["Get"])
 
     prop_meta = {
         "adaptor_profile_name": MoPropertyMeta("adaptor_profile_name", "adaptorProfileName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),

@@ -13,9 +13,9 @@ class EquipmentDimmEntry(ManagedObject):
     """This is EquipmentDimmEntry class."""
 
     consts = EquipmentDimmEntryConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentDimmEntry", "equipmentDimmEntry", "dimm-entry[id]", VersionMeta.Version202m, "InputOutput", 0x3f, [], [""], [u'equipmentDimmMapping'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentDimmEntry", "equipmentDimmEntry", "dimm-entry[id]", VersionMeta.Version202m, "InputOutput", 0x3f, [], [""], ['equipmentDimmMapping'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version202m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

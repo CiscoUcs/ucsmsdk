@@ -15,7 +15,7 @@ class LsServerExtension(ManagedObject):
     consts = LsServerExtensionConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsServerExtension", "lsServerExtension", "extension", VersionMeta.Version212a, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server"], [u'lsServer'], [], ["Get", "Set"])
+    mo_meta = MoMeta("LsServerExtension", "lsServerExtension", "extension", VersionMeta.Version212a, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server"], ['lsServer'], [], ["Get", "Set"])
 
     prop_meta = {
         "asset_tag": MoPropertyMeta("asset_tag", "assetTag", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []),

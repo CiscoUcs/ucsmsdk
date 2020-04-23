@@ -182,9 +182,9 @@ class StorageNvmeSwitch(ManagedObject):
     """This is StorageNvmeSwitch class."""
 
     consts = StorageNvmeSwitchConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("StorageNvmeSwitch", "storageNvmeSwitch", "nvme-switch-[id]", VersionMeta.Version323a, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'computeBoard'], [u'faultInst', u'firmwareBootDefinition', u'firmwareRunning'], [None])
+    mo_meta = MoMeta("StorageNvmeSwitch", "storageNvmeSwitch", "nvme-switch-[id]", VersionMeta.Version323a, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['computeBoard'], ['faultInst', 'firmwareBootDefinition', 'firmwareRunning'], [None])
 
     prop_meta = {
         "bus_address": MoPropertyMeta("bus_address", "busAddress", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

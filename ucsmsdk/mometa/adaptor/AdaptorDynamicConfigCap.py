@@ -18,7 +18,7 @@ class AdaptorDynamicConfigCap(ManagedObject):
     consts = AdaptorDynamicConfigCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorDynamicConfigCap", "adaptorDynamicConfigCap", "cap-dynamic-config", VersionMeta.Version302c, "InputOutput", 0x7f, [], ["admin", "pn-policy", "read-only"], [u'adaptorFruCapProvider'], [], [None])
+    mo_meta = MoMeta("AdaptorDynamicConfigCap", "adaptorDynamicConfigCap", "cap-dynamic-config", VersionMeta.Version302c, "InputOutput", 0x7f, [], ["admin", "pn-policy", "read-only"], ['adaptorFruCapProvider'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

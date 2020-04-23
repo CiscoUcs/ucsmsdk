@@ -156,7 +156,7 @@ class SysdebugAutoCoreFileExportTargetFsm(ManagedObject):
     consts = SysdebugAutoCoreFileExportTargetFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SysdebugAutoCoreFileExportTargetFsm", "sysdebugAutoCoreFileExportTargetFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'sysdebugAutoCoreFileExportTarget'], [u'sysdebugAutoCoreFileExportTargetFsmStage'], [None])
+    mo_meta = MoMeta("SysdebugAutoCoreFileExportTargetFsm", "sysdebugAutoCoreFileExportTargetFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['sysdebugAutoCoreFileExportTarget'], ['sysdebugAutoCoreFileExportTargetFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

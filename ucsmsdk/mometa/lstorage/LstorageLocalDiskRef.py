@@ -13,7 +13,7 @@ class LstorageLocalDiskRef(ManagedObject):
     """This is LstorageLocalDiskRef class."""
 
     consts = LstorageLocalDiskRefConsts()
-    naming_props = set([u'enclosureId', u'slotId'])
+    naming_props = set(['enclosureId', 'slotId'])
 
     mo_meta = MoMeta("LstorageLocalDiskRef", "lstorageLocalDiskRef", "diskref-[enclosure_id]-slot-[slot_id]", VersionMeta.Version251a, "InputOutput", 0x7f, [], ["read-only"], [], [], [None])
 

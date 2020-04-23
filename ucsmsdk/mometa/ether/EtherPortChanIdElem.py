@@ -16,9 +16,9 @@ class EtherPortChanIdElem(ManagedObject):
     """This is EtherPortChanIdElem class."""
 
     consts = EtherPortChanIdElemConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EtherPortChanIdElem", "etherPortChanIdElem", "pchanid-[id]", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["read-only"], [u'etherPortChanIdUniverse'], [], ["Get"])
+    mo_meta = MoMeta("EtherPortChanIdElem", "etherPortChanIdElem", "pchanid-[id]", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["read-only"], ['etherPortChanIdUniverse'], [], ["Get"])
 
     prop_meta = {
         "assigned_to_dn": MoPropertyMeta("assigned_to_dn", "assignedToDn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),

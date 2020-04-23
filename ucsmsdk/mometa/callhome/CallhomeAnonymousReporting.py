@@ -20,7 +20,7 @@ class CallhomeAnonymousReporting(ManagedObject):
     consts = CallhomeAnonymousReportingConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CallhomeAnonymousReporting", "callhomeAnonymousReporting", "anonymousreporting", VersionMeta.Version223a, "InputOutput", 0x7f, [], ["admin"], [u'callhomeEp'], [], ["Get", "Set"])
+    mo_meta = MoMeta("CallhomeAnonymousReporting", "callhomeAnonymousReporting", "anonymousreporting", VersionMeta.Version223a, "InputOutput", 0x7f, [], ["admin"], ['callhomeEp'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["off", "on"], []),

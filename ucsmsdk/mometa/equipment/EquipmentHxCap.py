@@ -18,7 +18,7 @@ class EquipmentHxCap(ManagedObject):
     consts = EquipmentHxCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentHxCap", "equipmentHxCap", "hx-cap", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["read-only"], [u'equipmentRackUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentHxCap", "equipmentHxCap", "hx-cap", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["read-only"], ['equipmentRackUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

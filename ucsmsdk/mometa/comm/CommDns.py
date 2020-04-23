@@ -24,7 +24,7 @@ class CommDns(ManagedObject):
     consts = CommDnsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommDns", "commDns", "dns-svc", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["aaa", "admin", "ext-lan-config"], [u'commLocale', u'commSvcEp', u'commSvcPolicy'], [u'commDnsProvider'], ["Get", "Set"])
+    mo_meta = MoMeta("CommDns", "commDns", "dns-svc", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["aaa", "admin", "ext-lan-config"], ['commLocale', 'commSvcEp', 'commSvcPolicy'], ['commDnsProvider'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

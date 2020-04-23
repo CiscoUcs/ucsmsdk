@@ -16,9 +16,9 @@ class IppoolIpV6Pooled(ManagedObject):
     """This is IppoolIpV6Pooled class."""
 
     consts = IppoolIpV6PooledConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("IppoolIpV6Pooled", "ippoolIpV6Pooled", "[id]", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["read-only"], [u'ippoolPool'], [], [None])
+    mo_meta = MoMeta("IppoolIpV6Pooled", "ippoolIpV6Pooled", "[id]", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["read-only"], ['ippoolPool'], [], [None])
 
     prop_meta = {
         "assigned": MoPropertyMeta("assigned", "assigned", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

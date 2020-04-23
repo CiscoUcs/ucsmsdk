@@ -15,9 +15,9 @@ class FabricBreakout(ManagedObject):
     """This is FabricBreakout class."""
 
     consts = FabricBreakoutConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("FabricBreakout", "fabricBreakout", "breakout-slot-[slot_id]-port-[port_id]", VersionMeta.Version311e, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy", "ext-san-config", "ext-san-policy"], [u'fabricCablingSw'], [], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("FabricBreakout", "fabricBreakout", "breakout-slot-[slot_id]-port-[port_id]", VersionMeta.Version311e, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy", "ext-san-config", "ext-san-policy"], ['fabricCablingSw'], [], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "breakout_type": MoPropertyMeta("breakout_type", "breakoutType", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["10g-4x", "25g-4x", "unknown"], []),

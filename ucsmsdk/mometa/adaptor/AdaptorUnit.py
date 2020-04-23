@@ -156,9 +156,9 @@ class AdaptorUnit(ManagedObject):
     """This is AdaptorUnit class."""
 
     consts = AdaptorUnitConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorUnit", "adaptorUnit", "adaptor-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-policy"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [u'adaptorExtEthIf', u'adaptorExtEthIfPc', u'adaptorHostEthIf', u'adaptorHostFcIf', u'adaptorHostIscsiIf', u'adaptorHostPort', u'adaptorHostScsiIf', u'adaptorHostServiceEthIf', u'adaptorMenloDcePortStats', u'adaptorMenloEthErrorStats', u'adaptorMenloEthStats', u'adaptorMenloFcErrorStats', u'adaptorMenloFcStats', u'adaptorMenloHostPortStats', u'adaptorMenloMcpuErrorStats', u'adaptorMenloMcpuStats', u'adaptorMenloNetEgStats', u'adaptorMenloNetInStats', u'adaptorMenloQErrorStats', u'adaptorMenloQStats', u'adaptorUnitExtn', u'dcxNs', u'equipmentInventoryStatus', u'equipmentPOST', u'equipmentPciDef', u'faultInst', u'mgmtController'], ["Get"])
+    mo_meta = MoMeta("AdaptorUnit", "adaptorUnit", "adaptor-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-policy"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], ['adaptorExtEthIf', 'adaptorExtEthIfPc', 'adaptorHostEthIf', 'adaptorHostFcIf', 'adaptorHostIscsiIf', 'adaptorHostPort', 'adaptorHostScsiIf', 'adaptorHostServiceEthIf', 'adaptorMenloDcePortStats', 'adaptorMenloEthErrorStats', 'adaptorMenloEthStats', 'adaptorMenloFcErrorStats', 'adaptorMenloFcStats', 'adaptorMenloHostPortStats', 'adaptorMenloMcpuErrorStats', 'adaptorMenloMcpuStats', 'adaptorMenloNetEgStats', 'adaptorMenloNetInStats', 'adaptorMenloQErrorStats', 'adaptorMenloQStats', 'adaptorUnitExtn', 'dcxNs', 'equipmentInventoryStatus', 'equipmentPOST', 'equipmentPciDef', 'faultInst', 'mgmtController'], ["Get"])
 
     prop_meta = {
         "admin_power_state": MoPropertyMeta("admin_power_state", "adminPowerState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["none", "reset-power"], []),

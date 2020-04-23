@@ -18,9 +18,9 @@ class AaaEpAuthProfile(ManagedObject):
     """This is AaaEpAuthProfile class."""
 
     consts = AaaEpAuthProfileConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("AaaEpAuthProfile", "aaaEpAuthProfile", "auth-profile-[name]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["aaa", "admin", "ls-security", "ls-security-policy"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'orgOrg'], [u'aaaEpUser'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AaaEpAuthProfile", "aaaEpAuthProfile", "auth-profile-[name]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["aaa", "admin", "ls-security", "ls-security-policy"], ['computeBlade', 'computeRackUnit', 'computeServerUnit', 'orgOrg'], ['aaaEpUser'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

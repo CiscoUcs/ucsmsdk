@@ -21,9 +21,9 @@ class SwSubGroup(ManagedObject):
     """This is SwSubGroup class."""
 
     consts = SwSubGroupConsts()
-    naming_props = set([u'slotId', u'aggrPortId'])
+    naming_props = set(['slotId', 'aggrPortId'])
 
-    mo_meta = MoMeta("SwSubGroup", "swSubGroup", "slot-[slot_id]-aggr-port-[aggr_port_id]", VersionMeta.Version302c, "InputOutput", 0xff, [], ["read-only"], [u'swAccessDomain', u'swEthLanBorder', u'swEthMon', u'swFcMon', u'swFcSanBorder', u'swPhys'], [u'swAccessEp', u'swEthEstcEp', u'swEthLanEp', u'swEthMonDestEp', u'swEthMonSrcEp', u'swFcoeEstcEp', u'swFcoeSanEp', u'swPhysEtherEp', u'swPhysFcEp'], [None])
+    mo_meta = MoMeta("SwSubGroup", "swSubGroup", "slot-[slot_id]-aggr-port-[aggr_port_id]", VersionMeta.Version302c, "InputOutput", 0xff, [], ["read-only"], ['swAccessDomain', 'swEthLanBorder', 'swEthMon', 'swFcMon', 'swFcSanBorder', 'swPhys'], ['swAccessEp', 'swEthEstcEp', 'swEthLanEp', 'swEthMonDestEp', 'swEthMonSrcEp', 'swFcoeEstcEp', 'swFcoeSanEp', 'swPhysEtherEp', 'swPhysFcEp'], [None])
 
     prop_meta = {
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x2, None, None, None, [], ["1-54"]),

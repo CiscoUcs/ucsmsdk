@@ -21,7 +21,7 @@ class MgmtKvmCertificate(ManagedObject):
     consts = MgmtKvmCertificateConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtKvmCertificate", "mgmtKvmCertificate", "cert", VersionMeta.Version323a, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server", "ls-server-oper"], [u'computeKvmMgmtPolicy', u'mgmtController'], [u'faultInst'], [None])
+    mo_meta = MoMeta("MgmtKvmCertificate", "mgmtKvmCertificate", "cert", VersionMeta.Version323a, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server", "ls-server-oper"], ['computeKvmMgmtPolicy', 'mgmtController'], ['faultInst'], [None])
 
     prop_meta = {
         "certificate": MoPropertyMeta("certificate", "certificate", "string", VersionMeta.Version323a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], []),

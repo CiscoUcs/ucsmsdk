@@ -13,9 +13,9 @@ class AaaLdapGroup(ManagedObject):
     """This is AaaLdapGroup class."""
 
     consts = AaaLdapGroupConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("AaaLdapGroup", "aaaLdapGroup", "ldapgroup-[name]", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["aaa", "admin"], [u'aaaLdapEp'], [u'aaaUserLocale', u'aaaUserRole'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AaaLdapGroup", "aaaLdapGroup", "ldapgroup-[name]", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["aaa", "admin"], ['aaaLdapEp'], ['aaaUserLocale', 'aaaUserRole'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

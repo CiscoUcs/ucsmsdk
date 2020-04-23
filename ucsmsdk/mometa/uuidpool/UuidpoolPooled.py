@@ -16,9 +16,9 @@ class UuidpoolPooled(ManagedObject):
     """This is UuidpoolPooled class."""
 
     consts = UuidpoolPooledConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("UuidpoolPooled", "uuidpoolPooled", "[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'uuidpoolPool'], [], ["Get"])
+    mo_meta = MoMeta("UuidpoolPooled", "uuidpoolPooled", "[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], ['uuidpoolPool'], [], ["Get"])
 
     prop_meta = {
         "assigned": MoPropertyMeta("assigned", "assigned", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

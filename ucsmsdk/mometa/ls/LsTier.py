@@ -18,9 +18,9 @@ class LsTier(ManagedObject):
     """This is LsTier class."""
 
     consts = LsTierConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("LsTier", "lsTier", "tier-[name]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy"], [u'orgOrg'], [u'lsServer'], [None])
+    mo_meta = MoMeta("LsTier", "lsTier", "tier-[name]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy"], ['orgOrg'], ['lsServer'], [None])
 
     prop_meta = {
         "apply": MoPropertyMeta("apply", "apply", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["onAssociation", "runTime"], []),

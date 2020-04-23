@@ -18,7 +18,7 @@ class EquipmentProcessorUnitDef(ManagedObject):
     consts = EquipmentProcessorUnitDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentProcessorUnitDef", "equipmentProcessorUnitDef", "cpu", VersionMeta.Version101e, "InputOutput", 0xff, [], [""], [u'equipmentProcessorUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentProcessorUnitDef", "equipmentProcessorUnitDef", "cpu", VersionMeta.Version101e, "InputOutput", 0xff, [], [""], ['equipmentProcessorUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
         "address_width": MoPropertyMeta("address_width", "addressWidth", "ushort", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

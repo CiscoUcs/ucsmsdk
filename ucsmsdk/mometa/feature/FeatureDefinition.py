@@ -13,9 +13,9 @@ class FeatureDefinition(ManagedObject):
     """This is FeatureDefinition class."""
 
     consts = FeatureDefinitionConsts()
-    naming_props = set([u'name', u'revision'])
+    naming_props = set(['name', 'revision'])
 
-    mo_meta = MoMeta("FeatureDefinition", "featureDefinition", "feature-[name]-revision-[revision]", VersionMeta.Version302c, "InputOutput", 0x7f, [], [""], [u'capabilityCatalogue'], [], [None])
+    mo_meta = MoMeta("FeatureDefinition", "featureDefinition", "feature-[name]-revision-[revision]", VersionMeta.Version302c, "InputOutput", 0x7f, [], [""], ['capabilityCatalogue'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

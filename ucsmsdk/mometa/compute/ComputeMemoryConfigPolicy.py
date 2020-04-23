@@ -18,9 +18,9 @@ class ComputeMemoryConfigPolicy(ManagedObject):
     """This is ComputeMemoryConfigPolicy class."""
 
     consts = ComputeMemoryConfigPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ComputeMemoryConfigPolicy", "computeMemoryConfigPolicy", "memory-config-[name]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["admin", "ls-server-policy", "pn-policy"], [u'orgOrg'], [], ["Get", "Set"])
+    mo_meta = MoMeta("ComputeMemoryConfigPolicy", "computeMemoryConfigPolicy", "memory-config-[name]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["admin", "ls-server-policy", "pn-policy"], ['orgOrg'], [], ["Get", "Set"])
 
     prop_meta = {
         "black_listing": MoPropertyMeta("black_listing", "blackListing", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

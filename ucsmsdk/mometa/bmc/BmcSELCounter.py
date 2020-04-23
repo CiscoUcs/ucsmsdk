@@ -66,9 +66,9 @@ class BmcSELCounter(ManagedObject):
     """This is BmcSELCounter class."""
 
     consts = BmcSELCounterConsts()
-    naming_props = set([u'localId'])
+    naming_props = set(['localId'])
 
-    mo_meta = MoMeta("BmcSELCounter", "bmcSELCounter", "Counter-[local_id]", VersionMeta.Version111j, "InputOutput", 0x3f, [], ["read-only"], [u'equipmentPOSTCodeReporter'], [], ["Get"])
+    mo_meta = MoMeta("BmcSELCounter", "bmcSELCounter", "Counter-[local_id]", VersionMeta.Version111j, "InputOutput", 0x3f, [], ["read-only"], ['equipmentPOSTCodeReporter'], [], ["Get"])
 
     prop_meta = {
         "bitmask": MoPropertyMeta("bitmask", "bitmask", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

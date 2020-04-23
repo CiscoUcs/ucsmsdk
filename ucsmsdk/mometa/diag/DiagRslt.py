@@ -28,9 +28,9 @@ class DiagRslt(ManagedObject):
     """This is DiagRslt class."""
 
     consts = DiagRsltConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("DiagRslt", "diagRslt", "rslt-[id]", VersionMeta.Version111j, "InputOutput", 0x3f, [], [""], [u'diagSrvCtrl'], [u'diagLogEp'], ["Get"])
+    mo_meta = MoMeta("DiagRslt", "diagRslt", "rslt-[id]", VersionMeta.Version111j, "InputOutput", 0x3f, [], [""], ['diagSrvCtrl'], ['diagLogEp'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

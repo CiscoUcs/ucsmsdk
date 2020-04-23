@@ -16,9 +16,9 @@ class TrigTriggered(ManagedObject):
     """This is TrigTriggered class."""
 
     consts = TrigTriggeredConsts()
-    naming_props = set([u'trId'])
+    naming_props = set(['trId'])
 
-    mo_meta = MoMeta("TrigTriggered", "trigTriggered", "trig-[tr_id]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["read-only"], [u'trigMeta'], [u'trigClientToken'], ["Get"])
+    mo_meta = MoMeta("TrigTriggered", "trigTriggered", "trig-[tr_id]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["read-only"], ['trigMeta'], ['trigClientToken'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
