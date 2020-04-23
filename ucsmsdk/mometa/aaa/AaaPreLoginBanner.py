@@ -18,7 +18,7 @@ class AaaPreLoginBanner(ManagedObject):
     consts = AaaPreLoginBannerConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AaaPreLoginBanner", "aaaPreLoginBanner", "pre-login-banner", VersionMeta.Version201m, "InputOutput", 0x1ff, [], ["aaa", "admin"], [u'aaaUserEp'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AaaPreLoginBanner", "aaaPreLoginBanner", "pre-login-banner", VersionMeta.Version201m, "InputOutput", 0x1ff, [], ["aaa", "admin"], ['aaaUserEp'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

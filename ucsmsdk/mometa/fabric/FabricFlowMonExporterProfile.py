@@ -16,9 +16,9 @@ class FabricFlowMonExporterProfile(ManagedObject):
     """This is FabricFlowMonExporterProfile class."""
 
     consts = FabricFlowMonExporterProfileConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricFlowMonExporterProfile", "fabricFlowMonExporterProfile", "flow-exporter-profile-[name]", VersionMeta.Version221b, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEthLanFlowMonitoring'], [u'vnicEtherIf'], [None])
+    mo_meta = MoMeta("FabricFlowMonExporterProfile", "fabricFlowMonExporterProfile", "flow-exporter-profile-[name]", VersionMeta.Version221b, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEthLanFlowMonitoring'], ['vnicEtherIf'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -21,9 +21,9 @@ class NetworkLimit(ManagedObject):
     """This is NetworkLimit class."""
 
     consts = NetworkLimitConsts()
-    naming_props = set([u'type', u'asicNumber'])
+    naming_props = set(['type', 'asicNumber'])
 
-    mo_meta = MoMeta("NetworkLimit", "networkLimit", "limit-type-[type]-asic-[asic_number]", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["admin"], [u'networkElement'], [u'faultInst'], [None])
+    mo_meta = MoMeta("NetworkLimit", "networkLimit", "limit-type-[type]-asic-[asic_number]", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["admin"], ['networkElement'], ['faultInst'], [None])
 
     prop_meta = {
         "actual_count": MoPropertyMeta("actual_count", "actualCount", "uint", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),

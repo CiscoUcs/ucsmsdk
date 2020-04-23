@@ -17,9 +17,9 @@ class CimcvmediaExtMgmtRuleEntry(ManagedObject):
     """This is CimcvmediaExtMgmtRuleEntry class."""
 
     consts = CimcvmediaExtMgmtRuleEntryConsts()
-    naming_props = set([u'mappingName'])
+    naming_props = set(['mappingName'])
 
-    mo_meta = MoMeta("CimcvmediaExtMgmtRuleEntry", "cimcvmediaExtMgmtRuleEntry", "ext-mgmt-rule-[mapping_name]", VersionMeta.Version222c, "InputOutput", 0x3f, [], ["read-only"], [u'cimcvmediaActualMountList'], [], ["Get"])
+    mo_meta = MoMeta("CimcvmediaExtMgmtRuleEntry", "cimcvmediaExtMgmtRuleEntry", "ext-mgmt-rule-[mapping_name]", VersionMeta.Version222c, "InputOutput", 0x3f, [], ["read-only"], ['cimcvmediaActualMountList'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

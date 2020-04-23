@@ -22,9 +22,9 @@ class ApeLANBoot(ManagedObject):
     """This is ApeLANBoot class."""
 
     consts = ApeLANBootConsts()
-    naming_props = set([u'vnicName'])
+    naming_props = set(['vnicName'])
 
-    mo_meta = MoMeta("ApeLANBoot", "apeLANBoot", "lanboot-[vnic_name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin"], [u'apeManager'], [], [None])
+    mo_meta = MoMeta("ApeLANBoot", "apeLANBoot", "lanboot-[vnic_name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin"], ['apeManager'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

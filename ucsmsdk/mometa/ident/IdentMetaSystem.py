@@ -167,7 +167,7 @@ class IdentMetaSystem(ManagedObject):
     consts = IdentMetaSystemConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("IdentMetaSystem", "identMetaSystem", "metasys", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["read-only"], [u'identMetaVerse'], [u'eventInst', u'faultInst', u'identIdentRequest', u'identMetaSystemFsm', u'identMetaSystemFsmTask'], [None])
+    mo_meta = MoMeta("IdentMetaSystem", "identMetaSystem", "metasys", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["read-only"], ['identMetaVerse'], ['eventInst', 'faultInst', 'identIdentRequest', 'identMetaSystemFsm', 'identMetaSystemFsmTask'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

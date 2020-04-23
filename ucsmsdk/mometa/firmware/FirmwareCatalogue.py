@@ -18,7 +18,7 @@ class FirmwareCatalogue(ManagedObject):
     consts = FirmwareCatalogueConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareCatalogue", "firmwareCatalogue", "fw-catalogue", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], [u'topSystem'], [u'firmwareCompSource', u'firmwareDistributable', u'firmwareDownloader', u'firmwareImage', u'firmwareUcscInfo'], [None])
+    mo_meta = MoMeta("FirmwareCatalogue", "firmwareCatalogue", "fw-catalogue", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], ['topSystem'], ['firmwareCompSource', 'firmwareDistributable', 'firmwareDownloader', 'firmwareImage', 'firmwareUcscInfo'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

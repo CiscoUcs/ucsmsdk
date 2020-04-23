@@ -40,9 +40,9 @@ class ComputeRackUnitMbTempStatsHist(ManagedObject):
     """This is ComputeRackUnitMbTempStatsHist class."""
 
     consts = ComputeRackUnitMbTempStatsHistConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("ComputeRackUnitMbTempStatsHist", "computeRackUnitMbTempStatsHist", "[id]", VersionMeta.Version141i, "OutputOnly", 0xf, [], ["read-only"], [u'computeRackUnitMbTempStats'], [], ["Get"])
+    mo_meta = MoMeta("ComputeRackUnitMbTempStatsHist", "computeRackUnitMbTempStatsHist", "[id]", VersionMeta.Version141i, "OutputOnly", 0xf, [], ["read-only"], ['computeRackUnitMbTempStats'], [], ["Get"])
 
     prop_meta = {
         "ambient_temp": MoPropertyMeta("ambient_temp", "ambientTemp", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["not-applicable"], ["0-4294967295"]),

@@ -18,7 +18,7 @@ class ProcessorErrorStats(ManagedObject):
     consts = ProcessorErrorStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ProcessorErrorStats", "processorErrorStats", "error-stats", VersionMeta.Version131c, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'processorUnit'], [], ["Get"])
+    mo_meta = MoMeta("ProcessorErrorStats", "processorErrorStats", "error-stats", VersionMeta.Version131c, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['processorUnit'], [], ["Get"])
 
     prop_meta = {
         "correctable_link_crc_errors": MoPropertyMeta("correctable_link_crc_errors", "CorrectableLinkCRCErrors", "uint", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

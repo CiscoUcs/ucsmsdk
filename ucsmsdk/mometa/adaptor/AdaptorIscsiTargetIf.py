@@ -13,9 +13,9 @@ class AdaptorIscsiTargetIf(ManagedObject):
     """This is AdaptorIscsiTargetIf class."""
 
     consts = AdaptorIscsiTargetIfConsts()
-    naming_props = set([u'priority'])
+    naming_props = set(['priority'])
 
-    mo_meta = MoMeta("AdaptorIscsiTargetIf", "adaptorIscsiTargetIf", "iscsi-target[priority]", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["read-only"], [u'adaptorHostIscsiIf'], [], [None])
+    mo_meta = MoMeta("AdaptorIscsiTargetIf", "adaptorIscsiTargetIf", "iscsi-target[priority]", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["read-only"], ['adaptorHostIscsiIf'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

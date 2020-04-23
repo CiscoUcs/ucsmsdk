@@ -26,7 +26,7 @@ class VnicEthLif(ManagedObject):
     """This is VnicEthLif class."""
 
     consts = VnicEthLifConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
     mo_meta = MoMeta("VnicEthLif", "vnicEthLif", "eth-lif-[name]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ls-storage"], [], [], ["Get"])
 

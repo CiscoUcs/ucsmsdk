@@ -26,9 +26,9 @@ class CallhomeEpFsmStage(ManagedObject):
     """This is CallhomeEpFsmStage class."""
 
     consts = CallhomeEpFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("CallhomeEpFsmStage", "callhomeEpFsmStage", "stage-[name]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'callhomeEpFsm'], [], [None])
+    mo_meta = MoMeta("CallhomeEpFsmStage", "callhomeEpFsmStage", "stage-[name]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['callhomeEpFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

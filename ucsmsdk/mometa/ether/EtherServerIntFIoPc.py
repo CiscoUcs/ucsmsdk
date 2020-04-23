@@ -54,9 +54,9 @@ class EtherServerIntFIoPc(ManagedObject):
     """This is EtherServerIntFIoPc class."""
 
     consts = EtherServerIntFIoPcConsts()
-    naming_props = set([u'portId'])
+    naming_props = set(['portId'])
 
-    mo_meta = MoMeta("EtherServerIntFIoPc", "etherServerIntFIoPc", "pc-[port_id]", VersionMeta.Version201m, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance"], [u'portGroup'], [u'etherServerIntFIoPcEp'], ["Get"])
+    mo_meta = MoMeta("EtherServerIntFIoPc", "etherServerIntFIoPc", "pc-[port_id]", VersionMeta.Version201m, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance"], ['portGroup'], ['etherServerIntFIoPcEp'], ["Get"])
 
     prop_meta = {
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]),

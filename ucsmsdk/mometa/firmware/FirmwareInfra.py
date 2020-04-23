@@ -44,7 +44,7 @@ class FirmwareInfra(ManagedObject):
     consts = FirmwareInfraConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareInfra", "firmwareInfra", "fw-infra", VersionMeta.Version211a, "InputOutput", 0x7ff, [], ["admin"], [u'firmwareSystem'], [u'faultInst', u'trigLocalSched'], ["Get"])
+    mo_meta = MoMeta("FirmwareInfra", "firmwareInfra", "fw-infra", VersionMeta.Version211a, "InputOutput", 0x7ff, [], ["admin"], ['firmwareSystem'], ['faultInst', 'trigLocalSched'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["trigger", "trigger-immediate", "triggered", "untriggered", "user-ack", "user-discard"], []),

@@ -18,9 +18,9 @@ class SwatCondition(ManagedObject):
     """This is SwatCondition class."""
 
     consts = SwatConditionConsts()
-    naming_props = set([u'varName', u'operation', u'varValue'])
+    naming_props = set(['varName', 'operation', 'varValue'])
 
-    mo_meta = MoMeta("SwatCondition", "swatCondition", "cond-[var_name]-[operation]-[var_value]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin"], [u'swatAction', u'swatTrigger'], [], ["Get"])
+    mo_meta = MoMeta("SwatCondition", "swatCondition", "cond-[var_name]-[operation]-[var_value]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin"], ['swatAction', 'swatTrigger'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

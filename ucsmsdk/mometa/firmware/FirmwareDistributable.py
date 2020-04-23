@@ -180,9 +180,9 @@ class FirmwareDistributable(ManagedObject):
     """This is FirmwareDistributable class."""
 
     consts = FirmwareDistributableConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FirmwareDistributable", "firmwareDistributable", "distrib-[name]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin"], [u'firmwareCatalogue'], [u'eventInst', u'faultInst', u'firmwareDistImage', u'firmwareDistributableFsm', u'firmwareDistributableFsmTask'], ["Get", "Set"])
+    mo_meta = MoMeta("FirmwareDistributable", "firmwareDistributable", "distrib-[name]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin"], ['firmwareCatalogue'], ['eventInst', 'faultInst', 'firmwareDistImage', 'firmwareDistributableFsm', 'firmwareDistributableFsmTask'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["active", "deleted"], []),

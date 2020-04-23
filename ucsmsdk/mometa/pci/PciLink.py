@@ -147,9 +147,9 @@ class PciLink(ManagedObject):
     """This is PciLink class."""
 
     consts = PciLinkConsts()
-    naming_props = set([u'pciSlot'])
+    naming_props = set(['pciSlot'])
 
-    mo_meta = MoMeta("PciLink", "pciLink", "pci-link-[pci_slot]", VersionMeta.Version402a, "InputOutput", 0x7f, [], ["read-only"], [u'pciSwitch'], [], [None])
+    mo_meta = MoMeta("PciLink", "pciLink", "pci-link-[pci_slot]", VersionMeta.Version402a, "InputOutput", 0x7f, [], ["read-only"], ['pciSwitch'], [], [None])
 
     prop_meta = {
         "adapter": MoPropertyMeta("adapter", "adapter", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

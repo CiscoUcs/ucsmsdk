@@ -27,9 +27,9 @@ class StorageControllerRef(ManagedObject):
     """This is StorageControllerRef class."""
 
     consts = StorageControllerRefConsts()
-    naming_props = set([u'serverId', u'controllerType', u'controllerId'])
+    naming_props = set(['serverId', 'controllerType', 'controllerId'])
 
-    mo_meta = MoMeta("StorageControllerRef", "storageControllerRef", "server-[server_id]-controller-[controller_type]-[controller_id]", VersionMeta.Version312b, "InputOutput", 0xff, [], ["read-only"], [u'storageEnclosureDiskSlotEp'], [], ["Get"])
+    mo_meta = MoMeta("StorageControllerRef", "storageControllerRef", "server-[server_id]-controller-[controller_type]-[controller_id]", VersionMeta.Version312b, "InputOutput", 0xff, [], ["read-only"], ['storageEnclosureDiskSlotEp'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

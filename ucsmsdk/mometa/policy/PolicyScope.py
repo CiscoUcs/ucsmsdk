@@ -14,9 +14,9 @@ class PolicyScope(ManagedObject):
     """This is PolicyScope class."""
 
     consts = PolicyScopeConsts()
-    naming_props = set([u'policyType', u'resolveType', u'policyName'])
+    naming_props = set(['policyType', 'resolveType', 'policyName'])
 
-    mo_meta = MoMeta("PolicyScope", "policyScope", "scope-[policy_type]-[resolve_type]-[policy_name]", VersionMeta.Version321d, "InputOutput", 0xff, [], ["read-only"], [u'policyContext'], [u'policyPolicyDestClass', u'policyRequestor'], [None])
+    mo_meta = MoMeta("PolicyScope", "policyScope", "scope-[policy_type]-[resolve_type]-[policy_name]", VersionMeta.Version321d, "InputOutput", 0xff, [], ["read-only"], ['policyContext'], ['policyPolicyDestClass', 'policyRequestor'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

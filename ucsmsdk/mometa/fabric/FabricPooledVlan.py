@@ -16,9 +16,9 @@ class FabricPooledVlan(ManagedObject):
     """This is FabricPooledVlan class."""
 
     consts = FabricPooledVlanConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricPooledVlan", "fabricPooledVlan", "net-[name]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricNetGroup'], [u'faultInst'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("FabricPooledVlan", "fabricPooledVlan", "net-[name]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricNetGroup'], ['faultInst'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "assigned": MoPropertyMeta("assigned", "assigned", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

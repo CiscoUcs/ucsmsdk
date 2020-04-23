@@ -212,7 +212,7 @@ class QosclassSlowDrain(ManagedObject):
     consts = QosclassSlowDrainConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("QosclassSlowDrain", "qosclassSlowDrain", "slow-drain", VersionMeta.Version402a, "InputOutput", 0x3ff, [], ["admin", "ext-lan-qos", "ext-san-qos"], [u'qosclassDefinition'], [u'eventInst', u'faultInst', u'qosclassSlowDrainFsm', u'qosclassSlowDrainFsmTask'], [None])
+    mo_meta = MoMeta("QosclassSlowDrain", "qosclassSlowDrain", "slow-drain", VersionMeta.Version402a, "InputOutput", 0x3ff, [], ["admin", "ext-lan-qos", "ext-san-qos"], ['qosclassDefinition'], ['eventInst', 'faultInst', 'qosclassSlowDrainFsm', 'qosclassSlowDrainFsmTask'], [None])
 
     prop_meta = {
         "backplane_port_timer": MoPropertyMeta("backplane_port_timer", "backplanePortTimer", "string", VersionMeta.Version402a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["1000", "200", "300", "400", "500", "600", "700", "800", "900"], []),

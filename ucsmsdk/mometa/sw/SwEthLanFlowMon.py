@@ -160,7 +160,7 @@ class SwEthLanFlowMon(ManagedObject):
     consts = SwEthLanFlowMonConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SwEthLanFlowMon", "swEthLanFlowMon", "ethlanflowmon", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["read-only"], [u'networkElement'], [u'dcxVc', u'eventInst', u'faultInst', u'swEthLanFlowMonFsm', u'swEthLanFlowMonFsmTask', u'swIpRoute', u'swNetflowExporter', u'swNetflowMonSession', u'swNetflowMonitor', u'swNetflowRecordDef', u'swVirtL3Intf'], [None])
+    mo_meta = MoMeta("SwEthLanFlowMon", "swEthLanFlowMon", "ethlanflowmon", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["read-only"], ['networkElement'], ['dcxVc', 'eventInst', 'faultInst', 'swEthLanFlowMonFsm', 'swEthLanFlowMonFsmTask', 'swIpRoute', 'swNetflowExporter', 'swNetflowMonSession', 'swNetflowMonitor', 'swNetflowRecordDef', 'swVirtL3Intf'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

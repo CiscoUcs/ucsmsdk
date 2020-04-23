@@ -29,7 +29,7 @@ class LsbootSan(ManagedObject):
     consts = LsbootSanConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsbootSan", "lsbootSan", "san", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], [u'lsbootDef', u'lsbootPolicy'], [u'lsbootSanCatSanImage'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LsbootSan", "lsbootSan", "san", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], ['lsbootDef', 'lsbootPolicy'], ['lsbootSanCatSanImage'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "access": MoPropertyMeta("access", "access", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["read-only", "read-only-local", "read-only-remote", "read-only-remote-cimc", "read-write", "read-write-drive", "read-write-local", "read-write-remote", "read-write-remote-cimc"], []),

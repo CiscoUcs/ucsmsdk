@@ -13,9 +13,9 @@ class SwEtherPort(ManagedObject):
     """This is SwEtherPort class."""
 
     consts = SwEtherPortConsts()
-    naming_props = set([u'slotId', u'aggrPortId', u'portId'])
+    naming_props = set(['slotId', 'aggrPortId', 'portId'])
 
-    mo_meta = MoMeta("SwEtherPort", "swEtherPort", "slot-[slot_id]-aggrport-[aggr_port_id]-port-[port_id]", VersionMeta.Version321d, "InputOutput", 0xff, [], ["admin"], [u'swPortDiscover'], [], [None])
+    mo_meta = MoMeta("SwEtherPort", "swEtherPort", "slot-[slot_id]-aggrport-[aggr_port_id]-port-[port_id]", VersionMeta.Version321d, "InputOutput", 0xff, [], ["admin"], ['swPortDiscover'], [], [None])
 
     prop_meta = {
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version321d, MoPropertyMeta.NAMING, 0x2, None, None, None, [], ["1-64"]),

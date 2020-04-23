@@ -13,9 +13,9 @@ class MoKvInvHolder(ManagedObject):
     """This is MoKvInvHolder class."""
 
     consts = MoKvInvHolderConsts()
-    naming_props = set([u'endpoint'])
+    naming_props = set(['endpoint'])
 
-    mo_meta = MoMeta("MoKvInvHolder", "moKvInvHolder", "inv-kv-[endpoint]", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["read-only"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [u'moInvKv'], [None])
+    mo_meta = MoMeta("MoKvInvHolder", "moKvInvHolder", "inv-kv-[endpoint]", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["read-only"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], ['moInvKv'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

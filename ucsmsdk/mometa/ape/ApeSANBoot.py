@@ -23,9 +23,9 @@ class ApeSANBoot(ManagedObject):
     """This is ApeSANBoot class."""
 
     consts = ApeSANBootConsts()
-    naming_props = set([u'targetWWN'])
+    naming_props = set(['targetWWN'])
 
-    mo_meta = MoMeta("ApeSANBoot", "apeSANBoot", "sanboot-[target_wwn]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin"], [u'apeManager'], [], [None])
+    mo_meta = MoMeta("ApeSANBoot", "apeSANBoot", "sanboot-[target_wwn]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin"], ['apeManager'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

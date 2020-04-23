@@ -155,9 +155,9 @@ class GraphicsCard(ManagedObject):
     """This is GraphicsCard class."""
 
     consts = GraphicsCardConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("GraphicsCard", "graphicsCard", "graphics-card-[id]", VersionMeta.Version213a, "InputOutput", 0x3f, [], ["read-only"], [u'computeBoard'], [u'equipmentInventoryStatus', u'firmwareBootDefinition', u'firmwareRunning', u'graphicsController'], ["Get"])
+    mo_meta = MoMeta("GraphicsCard", "graphicsCard", "graphics-card-[id]", VersionMeta.Version213a, "InputOutput", 0x3f, [], ["read-only"], ['computeBoard'], ['equipmentInventoryStatus', 'firmwareBootDefinition', 'firmwareRunning', 'graphicsController'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version213a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

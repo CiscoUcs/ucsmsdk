@@ -13,9 +13,9 @@ class SwVIFRef(ManagedObject):
     """This is SwVIFRef class."""
 
     consts = SwVIFRefConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("SwVIFRef", "swVIFRef", "vifref-[id]", VersionMeta.Version311e, "InputOutput", 0x3f, [], ["read-only"], [u'swVlanGroup'], [], ["Get"])
+    mo_meta = MoMeta("SwVIFRef", "swVIFRef", "vifref-[id]", VersionMeta.Version311e, "InputOutput", 0x3f, [], ["read-only"], ['swVlanGroup'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version311e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

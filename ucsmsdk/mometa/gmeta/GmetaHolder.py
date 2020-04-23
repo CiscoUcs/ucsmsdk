@@ -199,9 +199,9 @@ class GmetaHolder(ManagedObject):
     """This is GmetaHolder class."""
 
     consts = GmetaHolderConsts()
-    naming_props = set([u'category', u'provider'])
+    naming_props = set(['category', 'provider'])
 
-    mo_meta = MoMeta("GmetaHolder", "gmetaHolder", "category-[category]-provider-[provider]", VersionMeta.Version212a, "InputOutput", 0xff, [], ["admin"], [u'gmetaEp'], [u'eventInst', u'faultInst', u'gmetaClass', u'gmetaHolderFsm', u'gmetaHolderFsmTask'], [None])
+    mo_meta = MoMeta("GmetaHolder", "gmetaHolder", "category-[category]-provider-[provider]", VersionMeta.Version212a, "InputOutput", 0xff, [], ["admin"], ['gmetaEp'], ['eventInst', 'faultInst', 'gmetaClass', 'gmetaHolderFsm', 'gmetaHolderFsmTask'], [None])
 
     prop_meta = {
         "category": MoPropertyMeta("category", "category", "string", VersionMeta.Version212a, MoPropertyMeta.NAMING, 0x2, None, None, None, ["inventory", "unknown"], []),

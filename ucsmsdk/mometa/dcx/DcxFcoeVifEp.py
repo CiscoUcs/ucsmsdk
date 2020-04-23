@@ -13,9 +13,9 @@ class DcxFcoeVifEp(ManagedObject):
     """This is DcxFcoeVifEp class."""
 
     consts = DcxFcoeVifEpConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("DcxFcoeVifEp", "dcxFcoeVifEp", "fcoevif-[id]", VersionMeta.Version222c, "InputOutput", 0x3f, [], ["read-only"], [u'swFcoeEstcEp', u'swFcoeSanEp', u'swFcoeSanPc'], [u'swVsan'], ["Get"])
+    mo_meta = MoMeta("DcxFcoeVifEp", "dcxFcoeVifEp", "fcoevif-[id]", VersionMeta.Version222c, "InputOutput", 0x3f, [], ["read-only"], ['swFcoeEstcEp', 'swFcoeSanEp', 'swFcoeSanPc'], ['swVsan'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

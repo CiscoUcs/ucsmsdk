@@ -53,9 +53,9 @@ class AdaptorExtEthIfPc(ManagedObject):
     """This is AdaptorExtEthIfPc class."""
 
     consts = AdaptorExtEthIfPcConsts()
-    naming_props = set([u'portId'])
+    naming_props = set(['portId'])
 
-    mo_meta = MoMeta("AdaptorExtEthIfPc", "adaptorExtEthIfPc", "pc-[port_id]", VersionMeta.Version201m, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance"], [u'adaptorUnit', u'fabricLocale'], [u'adaptorExtEthIfPcEp', u'dcxVIf'], ["Get"])
+    mo_meta = MoMeta("AdaptorExtEthIfPc", "adaptorExtEthIfPc", "pc-[port_id]", VersionMeta.Version201m, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance"], ['adaptorUnit', 'fabricLocale'], ['adaptorExtEthIfPcEp', 'dcxVIf'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

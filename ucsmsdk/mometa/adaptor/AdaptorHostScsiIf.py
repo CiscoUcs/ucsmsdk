@@ -204,9 +204,9 @@ class AdaptorHostScsiIf(ManagedObject):
     """This is AdaptorHostScsiIf class."""
 
     consts = AdaptorHostScsiIfConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorHostScsiIf", "adaptorHostScsiIf", "host-scsi-[id]", VersionMeta.Version251a, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance", "read-only"], [u'adaptorUnit'], [u'adaptorHostScsiLunRef', u'adaptorVnicStats', u'faultInst', u'networkIfStats'], ["Get"])
+    mo_meta = MoMeta("AdaptorHostScsiIf", "adaptorHostScsiIf", "host-scsi-[id]", VersionMeta.Version251a, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance", "read-only"], ['adaptorUnit'], ['adaptorHostScsiLunRef', 'adaptorVnicStats', 'faultInst', 'networkIfStats'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "disabled-active", "disabled-passive", "enabled", "enabled-active", "enabled-passive", "reset-connectivity", "reset-connectivity-active", "reset-connectivity-passive"], []),

@@ -17,9 +17,9 @@ class AaaTacacsPlusProvider(ManagedObject):
     """This is AaaTacacsPlusProvider class."""
 
     consts = AaaTacacsPlusProviderConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("AaaTacacsPlusProvider", "aaaTacacsPlusProvider", "provider-[name]", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["aaa", "admin"], [u'aaaTacacsPlusEp'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AaaTacacsPlusProvider", "aaaTacacsPlusProvider", "provider-[name]", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["aaa", "admin"], ['aaaTacacsPlusEp'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

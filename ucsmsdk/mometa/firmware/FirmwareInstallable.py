@@ -49,9 +49,9 @@ class FirmwareInstallable(ManagedObject):
     """This is FirmwareInstallable class."""
 
     consts = FirmwareInstallableConsts()
-    naming_props = set([u'vendor', u'model', u'type', u'version'])
+    naming_props = set(['vendor', 'model', 'type', 'version'])
 
-    mo_meta = MoMeta("FirmwareInstallable", "firmwareInstallable", "installable-[vendor]|[model]|[type]|[version]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin"], [u'firmwareBootUnit', u'firmwareImage', u'firmwareUpdatable'], [u'firmwareUcscInfo'], ["Get"])
+    mo_meta = MoMeta("FirmwareInstallable", "firmwareInstallable", "installable-[vendor]|[model]|[type]|[version]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin"], ['firmwareBootUnit', 'firmwareImage', 'firmwareUpdatable'], ['firmwareUcscInfo'], ["Get"])
 
     prop_meta = {
         "checksum": MoPropertyMeta("checksum", "checksum", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

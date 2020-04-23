@@ -21,7 +21,7 @@ class MemoryQual(ManagedObject):
     consts = MemoryQualConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MemoryQual", "memoryQual", "memory", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "pn-policy"], [u'computeQual'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("MemoryQual", "memoryQual", "memory", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "pn-policy"], ['computeQual'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

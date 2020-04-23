@@ -18,7 +18,7 @@ class EtherErrStats(ManagedObject):
     consts = EtherErrStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EtherErrStats", "etherErrStats", "err-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'etherPIo', u'etherServerIntFIo', u'fabricEthEstcPc', u'fabricEthLanPc'], [u'etherErrStatsHist'], ["Get"])
+    mo_meta = MoMeta("EtherErrStats", "etherErrStats", "err-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['etherPIo', 'etherServerIntFIo', 'fabricEthEstcPc', 'fabricEthLanPc'], ['etherErrStatsHist'], ["Get"])
 
     prop_meta = {
         "align": MoPropertyMeta("align", "align", "ulong", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

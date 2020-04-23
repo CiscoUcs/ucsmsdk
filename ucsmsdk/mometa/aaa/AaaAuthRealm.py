@@ -175,7 +175,7 @@ class AaaAuthRealm(ManagedObject):
     consts = AaaAuthRealmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AaaAuthRealm", "aaaAuthRealm", "auth-realm", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["aaa", "admin"], [u'topSystem'], [u'aaaAuthRealmFsm', u'aaaConsoleAuth', u'aaaDefaultAuth', u'aaaDomain', u'aaaRealmFsm', u'aaaRealmFsmTask', u'eventInst', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("AaaAuthRealm", "aaaAuthRealm", "auth-realm", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["aaa", "admin"], ['topSystem'], ['aaaAuthRealmFsm', 'aaaConsoleAuth', 'aaaDefaultAuth', 'aaaDomain', 'aaaRealmFsm', 'aaaRealmFsmTask', 'eventInst', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

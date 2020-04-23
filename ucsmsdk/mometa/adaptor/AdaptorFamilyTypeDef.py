@@ -26,7 +26,7 @@ class AdaptorFamilyTypeDef(ManagedObject):
     consts = AdaptorFamilyTypeDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorFamilyTypeDef", "adaptorFamilyTypeDef", "family-type", VersionMeta.Version202m, "InputOutput", 0x7ff, [], ["read-only"], [u'adaptorFruCapProvider', u'equipmentLocalDiskControllerCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("AdaptorFamilyTypeDef", "adaptorFamilyTypeDef", "family-type", VersionMeta.Version202m, "InputOutput", 0x7ff, [], ["read-only"], ['adaptorFruCapProvider', 'equipmentLocalDiskControllerCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version202m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -20,9 +20,9 @@ class StatsThresholdPolicy(ManagedObject):
     """This is StatsThresholdPolicy class."""
 
     consts = StatsThresholdPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("StatsThresholdPolicy", "statsThresholdPolicy", "thr-policy-[name]", VersionMeta.Version102d, "InputOutput", 0xff, [], ["admin", "operations"], [u'fabricCabling', u'fabricDceSrv', u'fabricEthEstcCloud', u'fabricFcEstcCloud', u'fabricLanCloud', u'fabricLanMonCloud', u'fabricSanCloud', u'fabricSanMonCloud', u'orgOrg'], [u'statsThresholdClass'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("StatsThresholdPolicy", "statsThresholdPolicy", "thr-policy-[name]", VersionMeta.Version102d, "InputOutput", 0xff, [], ["admin", "operations"], ['fabricCabling', 'fabricDceSrv', 'fabricEthEstcCloud', 'fabricFcEstcCloud', 'fabricLanCloud', 'fabricLanMonCloud', 'fabricSanCloud', 'fabricSanMonCloud', 'orgOrg'], ['statsThresholdClass'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -13,9 +13,9 @@ class ControllerOperationalVersionHolder(ManagedObject):
     """This is ControllerOperationalVersionHolder class."""
 
     consts = ControllerOperationalVersionHolderConsts()
-    naming_props = set([u'serial'])
+    naming_props = set(['serial'])
 
-    mo_meta = MoMeta("ControllerOperationalVersionHolder", "controllerOperationalVersionHolder", "OpVersHolder-[serial]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["read-only"], [u'controllerHaController'], [], ["Get"])
+    mo_meta = MoMeta("ControllerOperationalVersionHolder", "controllerOperationalVersionHolder", "OpVersHolder-[serial]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["read-only"], ['controllerHaController'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -49,7 +49,7 @@ class ComputePsuControl(ManagedObject):
     consts = ComputePsuControlConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputePsuControl", "computePsuControl", "psu-contr", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'equipmentChassis'], [], ["Get"])
+    mo_meta = MoMeta("ComputePsuControl", "computePsuControl", "psu-contr", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['equipmentChassis'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

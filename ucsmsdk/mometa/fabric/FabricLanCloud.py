@@ -167,7 +167,7 @@ class FabricLanCloud(ManagedObject):
     consts = FabricLanCloudConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FabricLanCloud", "fabricLanCloud", "lan", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEp'], [u'eventInst', u'extvmmNetworkSets', u'extvmmVMNetworkSets', u'fabricEthLan', u'fabricEthLinkProfile', u'fabricLanCloudFsm', u'fabricLanCloudFsmTask', u'fabricLanPinGroup', u'fabricNetGroup', u'fabricReservedVlan', u'fabricUdldLinkPolicy', u'fabricVlan', u'faultInst', u'firmwareAck', u'flowctrlDefinition', u'mgmtInbandProfile', u'mgmtLeaderEntity', u'qosclassDefinition', u'statsThresholdPolicy', u'vnicProfileSet'], ["Get", "Set"])
+    mo_meta = MoMeta("FabricLanCloud", "fabricLanCloud", "lan", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEp'], ['eventInst', 'extvmmNetworkSets', 'extvmmVMNetworkSets', 'fabricEthLan', 'fabricEthLinkProfile', 'fabricLanCloudFsm', 'fabricLanCloudFsmTask', 'fabricLanPinGroup', 'fabricNetGroup', 'fabricReservedVlan', 'fabricUdldLinkPolicy', 'fabricVlan', 'faultInst', 'firmwareAck', 'flowctrlDefinition', 'mgmtInbandProfile', 'mgmtLeaderEntity', 'qosclassDefinition', 'statsThresholdPolicy', 'vnicProfileSet'], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

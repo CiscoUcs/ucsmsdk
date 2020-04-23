@@ -14,9 +14,9 @@ class ComputeHealthLedSensorAlarm(ManagedObject):
     """This is ComputeHealthLedSensorAlarm class."""
 
     consts = ComputeHealthLedSensorAlarmConsts()
-    naming_props = set([u'sensorId'])
+    naming_props = set(['sensorId'])
 
-    mo_meta = MoMeta("ComputeHealthLedSensorAlarm", "computeHealthLedSensorAlarm", "sensor-alarm-[sensor_id]", VersionMeta.Version212a, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentHealthLed'], [], ["Get"])
+    mo_meta = MoMeta("ComputeHealthLedSensorAlarm", "computeHealthLedSensorAlarm", "sensor-alarm-[sensor_id]", VersionMeta.Version212a, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['equipmentHealthLed'], [], ["Get"])
 
     prop_meta = {
         "alarm_desc": MoPropertyMeta("alarm_desc", "alarmDesc", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

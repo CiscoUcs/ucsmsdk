@@ -15,7 +15,7 @@ class ExtpolProviderCont(ManagedObject):
     consts = ExtpolProviderContConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ExtpolProviderCont", "extpolProviderCont", "providers", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], [u'extpolRegistry'], [u'extpolProvider'], ["Get"])
+    mo_meta = MoMeta("ExtpolProviderCont", "extpolProviderCont", "providers", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], ['extpolRegistry'], ['extpolProvider'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

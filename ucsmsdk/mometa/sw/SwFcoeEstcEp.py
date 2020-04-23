@@ -46,9 +46,9 @@ class SwFcoeEstcEp(ManagedObject):
     """This is SwFcoeEstcEp class."""
 
     consts = SwFcoeEstcEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("SwFcoeEstcEp", "swFcoeEstcEp", "fcoeestc-ep-slot-[slot_id]port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["read-only"], [u'swFcSanBorder', u'swSubGroup'], [u'dcxFcoeVifEp', u'dcxVifEp', u'swVlan'], ["Get"])
+    mo_meta = MoMeta("SwFcoeEstcEp", "swFcoeEstcEp", "fcoeestc-ep-slot-[slot_id]port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["read-only"], ['swFcSanBorder', 'swSubGroup'], ['dcxFcoeVifEp', 'dcxVifEp', 'swVlan'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

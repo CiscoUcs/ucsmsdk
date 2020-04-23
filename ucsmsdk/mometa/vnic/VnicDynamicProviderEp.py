@@ -16,9 +16,9 @@ class VnicDynamicProviderEp(ManagedObject):
     """This is VnicDynamicProviderEp class."""
 
     consts = VnicDynamicProviderEpConsts()
-    naming_props = set([u'switchId', u'chassisId', u'slotId', u'portId'])
+    naming_props = set(['switchId', 'chassisId', 'slotId', 'portId'])
 
-    mo_meta = MoMeta("VnicDynamicProviderEp", "vnicDynamicProviderEp", "ep-[switch_id]-[chassis_id]:[slot_id]:[port_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], [u'vnicDynamicProvider'], [], ["Get"])
+    mo_meta = MoMeta("VnicDynamicProviderEp", "vnicDynamicProviderEp", "ep-[switch_id]-[chassis_id]:[slot_id]:[port_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], ['vnicDynamicProvider'], [], ["Get"])
 
     prop_meta = {
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x2, None, None, None, ["N/A"], ["0-255"]),

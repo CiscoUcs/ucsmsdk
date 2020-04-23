@@ -20,9 +20,9 @@ class CapabilityFeatureLimits(ManagedObject):
     """This is CapabilityFeatureLimits class."""
 
     consts = CapabilityFeatureLimitsConsts()
-    naming_props = set([u'platform', u'name'])
+    naming_props = set(['platform', 'name'])
 
-    mo_meta = MoMeta("CapabilityFeatureLimits", "capabilityFeatureLimits", "feature-[platform]-[name]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin"], [u'capabilityNetworkLimits', u'capabilityStorageLimits', u'capabilitySystemLimits'], [], [None])
+    mo_meta = MoMeta("CapabilityFeatureLimits", "capabilityFeatureLimits", "feature-[platform]-[name]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin"], ['capabilityNetworkLimits', 'capabilityStorageLimits', 'capabilitySystemLimits'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

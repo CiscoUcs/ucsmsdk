@@ -15,7 +15,7 @@ class SwFabricZoneNsOverride(ManagedObject):
     consts = SwFabricZoneNsOverrideConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SwFabricZoneNsOverride", "swFabricZoneNsOverride", "fabric-zone-override", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin"], [u'topSysDefaults'], [], [None])
+    mo_meta = MoMeta("SwFabricZoneNsOverride", "swFabricZoneNsOverride", "fabric-zone-override", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin"], ['topSysDefaults'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

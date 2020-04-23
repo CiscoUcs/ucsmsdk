@@ -181,9 +181,9 @@ class CapabilityUpdater(ManagedObject):
     """This is CapabilityUpdater class."""
 
     consts = CapabilityUpdaterConsts()
-    naming_props = set([u'fileName'])
+    naming_props = set(['fileName'])
 
-    mo_meta = MoMeta("CapabilityUpdater", "capabilityUpdater", "updater-[file_name]", VersionMeta.Version131c, "InputOutput", 0xfff, [], ["admin"], [u'capabilityEp'], [u'capabilityUpdaterFsm', u'capabilityUpdaterFsmTask', u'eventInst', u'faultInst'], ["Get"])
+    mo_meta = MoMeta("CapabilityUpdater", "capabilityUpdater", "updater-[file_name]", VersionMeta.Version131c, "InputOutput", 0xfff, [], ["admin"], ['capabilityEp'], ['capabilityUpdaterFsm', 'capabilityUpdaterFsmTask', 'eventInst', 'faultInst'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["idle", "restart"], []),

@@ -160,7 +160,7 @@ class SwUtilityDomain(ManagedObject):
     consts = SwUtilityDomainConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SwUtilityDomain", "swUtilityDomain", "utility-eth", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'networkElement'], [u'eventInst', u'faultInst', u'swUlan', u'swUtilityDomainFsm', u'swUtilityDomainFsmTask'], ["Get"])
+    mo_meta = MoMeta("SwUtilityDomain", "swUtilityDomain", "utility-eth", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['networkElement'], ['eventInst', 'faultInst', 'swUlan', 'swUtilityDomainFsm', 'swUtilityDomainFsmTask'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

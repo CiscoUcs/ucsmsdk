@@ -15,7 +15,7 @@ class IqnpoolUniverse(ManagedObject):
     consts = IqnpoolUniverseConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("IqnpoolUniverse", "iqnpoolUniverse", "iqn", VersionMeta.Version201m, "InputOutput", 0x1f, [], ["read-only"], [u'topRoot'], [u'iqnpoolAddr', u'iqnpoolFormat'], ["Get"])
+    mo_meta = MoMeta("IqnpoolUniverse", "iqnpoolUniverse", "iqn", VersionMeta.Version201m, "InputOutput", 0x1f, [], ["read-only"], ['topRoot'], ['iqnpoolAddr', 'iqnpoolFormat'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

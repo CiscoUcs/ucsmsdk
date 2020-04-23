@@ -29,9 +29,9 @@ class PortDomainEp(ManagedObject):
     """This is PortDomainEp class."""
 
     consts = PortDomainEpConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("PortDomainEp", "portDomainEp", "domain-[name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'etherPIo', u'etherServerIntFIo', u'etherSwitchIntFIo', u'fcPIo'], [], ["Get"])
+    mo_meta = MoMeta("PortDomainEp", "portDomainEp", "domain-[name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], ['etherPIo', 'etherServerIntFIo', 'etherSwitchIntFIo', 'fcPIo'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

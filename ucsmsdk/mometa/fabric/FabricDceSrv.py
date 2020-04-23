@@ -17,7 +17,7 @@ class FabricDceSrv(ManagedObject):
     consts = FabricDceSrvConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FabricDceSrv", "fabricDceSrv", "server", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ls-network-policy"], [u'fabricEp'], [u'etherSwIfConfig', u'fabricCartridgePhEp', u'fabricChassisEp', u'fabricComputePhEp', u'fabricDceSwSrv', u'fabricSwChPhEp', u'statsThresholdPolicy'], ["Get"])
+    mo_meta = MoMeta("FabricDceSrv", "fabricDceSrv", "server", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ls-network-policy"], ['fabricEp'], ['etherSwIfConfig', 'fabricCartridgePhEp', 'fabricChassisEp', 'fabricComputePhEp', 'fabricDceSwSrv', 'fabricSwChPhEp', 'statsThresholdPolicy'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

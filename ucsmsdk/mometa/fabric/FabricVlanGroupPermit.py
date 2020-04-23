@@ -16,9 +16,9 @@ class FabricVlanGroupPermit(ManagedObject):
     """This is FabricVlanGroupPermit class."""
 
     consts = FabricVlanGroupPermitConsts()
-    naming_props = set([u'cloud', u'switchId', u'name'])
+    naming_props = set(['cloud', 'switchId', 'name'])
 
-    mo_meta = MoMeta("FabricVlanGroupPermit", "fabricVlanGroupPermit", "vgperm-[cloud]sw-[switch_id]net-[name]", VersionMeta.Version321d, "InputOutput", 0xff, [], [""], [u'orgOrg'], [], [None])
+    mo_meta = MoMeta("FabricVlanGroupPermit", "fabricVlanGroupPermit", "vgperm-[cloud]sw-[switch_id]net-[name]", VersionMeta.Version321d, "InputOutput", 0xff, [], [""], ['orgOrg'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

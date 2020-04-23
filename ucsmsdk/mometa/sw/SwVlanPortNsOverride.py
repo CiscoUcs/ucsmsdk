@@ -15,7 +15,7 @@ class SwVlanPortNsOverride(ManagedObject):
     consts = SwVlanPortNsOverrideConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SwVlanPortNsOverride", "swVlanPortNsOverride", "vlan-port-override", VersionMeta.Version142b, "InputOutput", 0x3f, [], ["admin"], [u'topSysDefaults'], [], ["Get"])
+    mo_meta = MoMeta("SwVlanPortNsOverride", "swVlanPortNsOverride", "vlan-port-override", VersionMeta.Version142b, "InputOutput", 0x3f, [], ["admin"], ['topSysDefaults'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version142b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

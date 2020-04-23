@@ -18,7 +18,7 @@ class EtherTxStats(ManagedObject):
     consts = EtherTxStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EtherTxStats", "etherTxStats", "tx-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'etherPIo', u'etherServerIntFIo', u'fabricEthEstcPc', u'fabricEthLanPc'], [u'etherTxStatsHist'], ["Get"])
+    mo_meta = MoMeta("EtherTxStats", "etherTxStats", "tx-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['etherPIo', 'etherServerIntFIo', 'fabricEthEstcPc', 'fabricEthLanPc'], ['etherTxStatsHist'], ["Get"])
 
     prop_meta = {
         "broadcast_packets": MoPropertyMeta("broadcast_packets", "broadcastPackets", "ulong", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

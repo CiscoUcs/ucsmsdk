@@ -369,9 +369,9 @@ class AdaptorHostFcIf(ManagedObject):
     """This is AdaptorHostFcIf class."""
 
     consts = AdaptorHostFcIfConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorHostFcIf", "adaptorHostFcIf", "host-fc-[id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance", "read-only"], [u'adaptorUnit'], [u'adaptorFcCdbWorkQueueProfile', u'adaptorFcErrorRecoveryProfile', u'adaptorFcFnicProfile', u'adaptorFcIfEventStats', u'adaptorFcIfFC4Stats', u'adaptorFcIfFrameStats', u'adaptorFcInterruptProfile', u'adaptorFcOEIf', u'adaptorFcPortFLogiProfile', u'adaptorFcPortPLogiProfile', u'adaptorFcPortProfile', u'adaptorFcPortStats', u'adaptorFcRecvQueueProfile', u'adaptorFcVhbaTypeProfile', u'adaptorFcWorkQueueProfile', u'adaptorHostFcIfFsm', u'adaptorHostFcIfFsmTask', u'adaptorVnicStats', u'adaptorVsan', u'dcxVIf', u'eventInst', u'faultInst', u'firmwareBootDefinition', u'firmwareRunning', u'networkIfStats'], ["Get", "Set"])
+    mo_meta = MoMeta("AdaptorHostFcIf", "adaptorHostFcIf", "host-fc-[id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance", "read-only"], ['adaptorUnit'], ['adaptorFcCdbWorkQueueProfile', 'adaptorFcErrorRecoveryProfile', 'adaptorFcFnicProfile', 'adaptorFcIfEventStats', 'adaptorFcIfFC4Stats', 'adaptorFcIfFrameStats', 'adaptorFcInterruptProfile', 'adaptorFcOEIf', 'adaptorFcPortFLogiProfile', 'adaptorFcPortPLogiProfile', 'adaptorFcPortProfile', 'adaptorFcPortStats', 'adaptorFcRecvQueueProfile', 'adaptorFcVhbaTypeProfile', 'adaptorFcWorkQueueProfile', 'adaptorHostFcIfFsm', 'adaptorHostFcIfFsmTask', 'adaptorVnicStats', 'adaptorVsan', 'dcxVIf', 'eventInst', 'faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'networkIfStats'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "disabled-active", "disabled-passive", "enabled", "enabled-active", "enabled-passive", "reset-connectivity", "reset-connectivity-active", "reset-connectivity-passive"], []),

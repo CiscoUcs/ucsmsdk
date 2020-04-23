@@ -15,7 +15,7 @@ class DomainNetworkFeatureCont(ManagedObject):
     consts = DomainNetworkFeatureContConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("DomainNetworkFeatureCont", "domainNetworkFeatureCont", "network-feature-cont", VersionMeta.Version221b, "InputOutput", 0x1f, [], ["admin"], [u'topSystem'], [u'domainChassisFeature', u'domainEnvironmentFeature', u'domainNetworkFeature', u'domainServerFeature', u'domainStorageFeature'], [None])
+    mo_meta = MoMeta("DomainNetworkFeatureCont", "domainNetworkFeatureCont", "network-feature-cont", VersionMeta.Version221b, "InputOutput", 0x1f, [], ["admin"], ['topSystem'], ['domainChassisFeature', 'domainEnvironmentFeature', 'domainNetworkFeature', 'domainServerFeature', 'domainStorageFeature'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

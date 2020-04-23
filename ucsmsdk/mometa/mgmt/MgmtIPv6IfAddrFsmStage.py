@@ -25,9 +25,9 @@ class MgmtIPv6IfAddrFsmStage(ManagedObject):
     """This is MgmtIPv6IfAddrFsmStage class."""
 
     consts = MgmtIPv6IfAddrFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("MgmtIPv6IfAddrFsmStage", "mgmtIPv6IfAddrFsmStage", "stage-[name]", VersionMeta.Version221b, "OutputOnly", 0xf, [], [""], [u'mgmtIPv6IfAddrFsm'], [], [None])
+    mo_meta = MoMeta("MgmtIPv6IfAddrFsmStage", "mgmtIPv6IfAddrFsmStage", "stage-[name]", VersionMeta.Version221b, "OutputOnly", 0xf, [], [""], ['mgmtIPv6IfAddrFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

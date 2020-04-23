@@ -18,9 +18,9 @@ class CpmaintMaintPolicy(ManagedObject):
     """This is CpmaintMaintPolicy class."""
 
     consts = CpmaintMaintPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("CpmaintMaintPolicy", "cpmaintMaintPolicy", "chassis-profile-maint-[name]", VersionMeta.Version312b, "InputOutput", 0x7ff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'orgOrg'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("CpmaintMaintPolicy", "cpmaintMaintPolicy", "chassis-profile-maint-[name]", VersionMeta.Version312b, "InputOutput", 0x7ff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['orgOrg'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

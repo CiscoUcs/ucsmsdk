@@ -46,9 +46,9 @@ class FirmwarePackItem(ManagedObject):
     """This is FirmwarePackItem class."""
 
     consts = FirmwarePackItemConsts()
-    naming_props = set([u'hwVendor', u'hwModel', u'type'])
+    naming_props = set(['hwVendor', 'hwModel', 'type'])
 
-    mo_meta = MoMeta("FirmwarePackItem", "firmwarePackItem", "pack-image-[hw_vendor]|[hw_model]|[type]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin"], [u'firmwareBackupVersionHolder', u'firmwareCatalogPack', u'firmwareChassisPack', u'firmwareComputeHostPack', u'firmwareComputeMgmtPack', u'firmwareInfraPack'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FirmwarePackItem", "firmwarePackItem", "pack-image-[hw_vendor]|[hw_model]|[type]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin"], ['firmwareBackupVersionHolder', 'firmwareCatalogPack', 'firmwareChassisPack', 'firmwareComputeHostPack', 'firmwareComputeMgmtPack', 'firmwareInfraPack'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

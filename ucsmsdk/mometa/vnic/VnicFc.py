@@ -78,9 +78,9 @@ class VnicFc(ManagedObject):
     """This is VnicFc class."""
 
     consts = VnicFcConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicFc", "vnicFc", "fc-[name]", VersionMeta.Version101e, "InputOutput", 0xffffff, [], ["admin", "ls-config", "ls-server", "ls-storage"], [u'lsServer', u'vnicSanConnPolicy'], [u'fabricEthMonSrcEp', u'fabricFcMonSrcEp', u'fabricNetflowMonSrcEp', u'fabricSanGroupRef', u'faultInst', u'vnicBootTarget', u'vnicFcIf', u'vnicWwpnHistory'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicFc", "vnicFc", "fc-[name]", VersionMeta.Version101e, "InputOutput", 0xffffff, [], ["admin", "ls-config", "ls-server", "ls-storage"], ['lsServer', 'vnicSanConnPolicy'], ['fabricEthMonSrcEp', 'fabricFcMonSrcEp', 'fabricNetflowMonSrcEp', 'fabricSanGroupRef', 'faultInst', 'vnicBootTarget', 'vnicFcIf', 'vnicWwpnHistory'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "adaptor_profile_name": MoPropertyMeta("adaptor_profile_name", "adaptorProfileName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),

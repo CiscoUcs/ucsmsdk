@@ -13,9 +13,9 @@ class IppoolIpV6Block(ManagedObject):
     """This is IppoolIpV6Block class."""
 
     consts = IppoolIpV6BlockConsts()
-    naming_props = set([u'from', u'to'])
+    naming_props = set(['from', 'to'])
 
-    mo_meta = MoMeta("IppoolIpV6Block", "ippoolIpV6Block", "v6block-[r_from]-[to]", VersionMeta.Version221b, "InputOutput", 0x7ff, [], ["admin", "ls-network-policy"], [u'ippoolPool'], [], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("IppoolIpV6Block", "ippoolIpV6Block", "v6block-[r_from]-[to]", VersionMeta.Version221b, "InputOutput", 0x7ff, [], ["admin", "ls-network-policy"], ['ippoolPool'], [], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

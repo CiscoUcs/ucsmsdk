@@ -43,9 +43,9 @@ class LstorageDasScsiLun(ManagedObject):
     """This is LstorageDasScsiLun class."""
 
     consts = LstorageDasScsiLunConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("LstorageDasScsiLun", "lstorageDasScsiLun", "das-scsi-lun-[name]", VersionMeta.Version224b, "InputOutput", 0x7fff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageProfile', u'lstorageProfileDef'], [u'faultInst', u'storageLocalDiskConfigDef'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LstorageDasScsiLun", "lstorageDasScsiLun", "das-scsi-lun-[name]", VersionMeta.Version224b, "InputOutput", 0x7fff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage", "ls-storage-policy"], ['lstorageProfile', 'lstorageProfileDef'], ['faultInst', 'storageLocalDiskConfigDef'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["offline", "online", "undeployed"], []),

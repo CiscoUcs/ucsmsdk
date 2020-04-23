@@ -18,9 +18,9 @@ class FabricVnetEpSyncEpFsmTask(ManagedObject):
     """This is FabricVnetEpSyncEpFsmTask class."""
 
     consts = FabricVnetEpSyncEpFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("FabricVnetEpSyncEpFsmTask", "fabricVnetEpSyncEpFsmTask", "task-[item]", VersionMeta.Version212a, "OutputOnly", 0xf, [], [""], [u'fabricVnetEpSyncEp'], [], [None])
+    mo_meta = MoMeta("FabricVnetEpSyncEpFsmTask", "fabricVnetEpSyncEpFsmTask", "task-[item]", VersionMeta.Version212a, "OutputOnly", 0xf, [], [""], ['fabricVnetEpSyncEp'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -18,9 +18,9 @@ class SwVlanGroup(ManagedObject):
     """This is SwVlanGroup class."""
 
     consts = SwVlanGroupConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("SwVlanGroup", "swVlanGroup", "vlan-group-[id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], [u'swEthLanBorder'], [u'swVIFRef', u'swVlanRef'], [None])
+    mo_meta = MoMeta("SwVlanGroup", "swVlanGroup", "vlan-group-[id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], ['swEthLanBorder'], ['swVIFRef', 'swVlanRef'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

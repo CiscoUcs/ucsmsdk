@@ -15,7 +15,7 @@ class ComputePnuOSImage(ManagedObject):
     consts = ComputePnuOSImageConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputePnuOSImage", "computePnuOSImage", "pnuos", VersionMeta.Version202m, "InputOutput", 0x1f, [], ["read-only"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [], ["Get"])
+    mo_meta = MoMeta("ComputePnuOSImage", "computePnuOSImage", "pnuos", VersionMeta.Version202m, "InputOutput", 0x1f, [], ["read-only"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version202m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

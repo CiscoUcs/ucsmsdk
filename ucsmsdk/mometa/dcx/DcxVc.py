@@ -79,9 +79,9 @@ class DcxVc(ManagedObject):
     """This is DcxVc class."""
 
     consts = DcxVcConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("DcxVc", "dcxVc", "vc-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'fabricLocale', u'fabricPath', u'swEthLanFlowMon', u'swEthMon', u'swFcMon'], [u'fabricNetGroupRef', u'fabricSanGroupRef', u'faultInst', u'swCmclan', u'swNetflowMonitorRef', u'swUlan', u'swVlan', u'swVsan'], ["Get"])
+    mo_meta = MoMeta("DcxVc", "dcxVc", "vc-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['fabricLocale', 'fabricPath', 'swEthLanFlowMon', 'swEthMon', 'swFcMon'], ['fabricNetGroupRef', 'fabricSanGroupRef', 'faultInst', 'swCmclan', 'swNetflowMonitorRef', 'swUlan', 'swVlan', 'swVsan'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),

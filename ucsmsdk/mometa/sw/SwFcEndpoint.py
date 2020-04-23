@@ -16,9 +16,9 @@ class SwFcEndpoint(ManagedObject):
     """This is SwFcEndpoint class."""
 
     consts = SwFcEndpointConsts()
-    naming_props = set([u'wwpn'])
+    naming_props = set(['wwpn'])
 
-    mo_meta = MoMeta("SwFcEndpoint", "swFcEndpoint", "wwpn-[wwpn]", VersionMeta.Version312b, "InputOutput", 0x7f, [], ["read-only"], [u'swFcUserZone'], [], ["Get"])
+    mo_meta = MoMeta("SwFcEndpoint", "swFcEndpoint", "wwpn-[wwpn]", VersionMeta.Version312b, "InputOutput", 0x7f, [], ["read-only"], ['swFcUserZone'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

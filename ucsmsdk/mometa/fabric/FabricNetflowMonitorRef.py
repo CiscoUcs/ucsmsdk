@@ -17,9 +17,9 @@ class FabricNetflowMonitorRef(ManagedObject):
     """This is FabricNetflowMonitorRef class."""
 
     consts = FabricNetflowMonitorRefConsts()
-    naming_props = set([u'nfMonitorName', u'direction'])
+    naming_props = set(['nfMonitorName', 'direction'])
 
-    mo_meta = MoMeta("FabricNetflowMonitorRef", "fabricNetflowMonitorRef", "flow-monitor-[nf_monitor_name]-dir-[direction]", VersionMeta.Version221b, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricNetflowMonSession'], [u'faultInst'], [None])
+    mo_meta = MoMeta("FabricNetflowMonitorRef", "fabricNetflowMonitorRef", "flow-monitor-[nf_monitor_name]-dir-[direction]", VersionMeta.Version221b, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricNetflowMonSession'], ['faultInst'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

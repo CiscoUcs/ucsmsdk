@@ -18,9 +18,9 @@ class IqnpoolPool(ManagedObject):
     """This is IqnpoolPool class."""
 
     consts = IqnpoolPoolConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("IqnpoolPool", "iqnpoolPool", "iqn-pool-[name]", VersionMeta.Version201m, "InputOutput", 0x3ff, [], ["admin", "ls-storage-policy"], [u'orgOrg'], [u'faultInst', u'iqnpoolBlock', u'iqnpoolPooled'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("IqnpoolPool", "iqnpoolPool", "iqn-pool-[name]", VersionMeta.Version201m, "InputOutput", 0x3ff, [], ["admin", "ls-storage-policy"], ['orgOrg'], ['faultInst', 'iqnpoolBlock', 'iqnpoolPooled'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "assigned": MoPropertyMeta("assigned", "assigned", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

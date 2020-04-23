@@ -16,9 +16,9 @@ class FirmwareTPMConstraint(ManagedObject):
     """This is FirmwareTPMConstraint class."""
 
     consts = FirmwareTPMConstraintConsts()
-    naming_props = set([u'tpmRevision'])
+    naming_props = set(['tpmRevision'])
 
-    mo_meta = MoMeta("FirmwareTPMConstraint", "firmwareTPMConstraint", "constraint-tpm-revision-[tpm_revision]", VersionMeta.Version227b, "InputOutput", 0x3f, [], [""], [u'firmwareConstraints'], [], [None])
+    mo_meta = MoMeta("FirmwareTPMConstraint", "firmwareTPMConstraint", "constraint-tpm-revision-[tpm_revision]", VersionMeta.Version227b, "InputOutput", 0x3f, [], [""], ['firmwareConstraints'], [], [None])
 
     prop_meta = {
         "check_running_ver": MoPropertyMeta("check_running_ver", "checkRunningVer", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

@@ -26,9 +26,9 @@ class FcpoolInitiators(ManagedObject):
     """This is FcpoolInitiators class."""
 
     consts = FcpoolInitiatorsConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FcpoolInitiators", "fcpoolInitiators", "wwn-pool-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-storage-policy"], [u'orgOrg'], [u'faultInst', u'fcpoolBlock', u'fcpoolInitiator'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FcpoolInitiators", "fcpoolInitiators", "wwn-pool-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-storage-policy"], ['orgOrg'], ['faultInst', 'fcpoolBlock', 'fcpoolInitiator'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "assigned": MoPropertyMeta("assigned", "assigned", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

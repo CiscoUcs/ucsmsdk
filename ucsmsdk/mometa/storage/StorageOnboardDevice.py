@@ -82,9 +82,9 @@ class StorageOnboardDevice(ManagedObject):
     """This is StorageOnboardDevice class."""
 
     consts = StorageOnboardDeviceConsts()
-    naming_props = set([u'deviceType', u'id'])
+    naming_props = set(['deviceType', 'id'])
 
-    mo_meta = MoMeta("StorageOnboardDevice", "storageOnboardDevice", "onboard-device-[device_type]-[id]", VersionMeta.Version227b, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'storageController', u'storageSasExpander'], [u'firmwareBootDefinition', u'firmwareRunning', u'firmwareUpdatable'], [None])
+    mo_meta = MoMeta("StorageOnboardDevice", "storageOnboardDevice", "onboard-device-[device_type]-[id]", VersionMeta.Version227b, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['storageController', 'storageSasExpander'], ['firmwareBootDefinition', 'firmwareRunning', 'firmwareUpdatable'], [None])
 
     prop_meta = {
         "block_size": MoPropertyMeta("block_size", "blockSize", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["512", "unknown"], ["0-4294967295"]),

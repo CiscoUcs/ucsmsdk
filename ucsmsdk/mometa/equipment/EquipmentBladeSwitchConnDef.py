@@ -24,9 +24,9 @@ class EquipmentBladeSwitchConnDef(ManagedObject):
     """This is EquipmentBladeSwitchConnDef class."""
 
     consts = EquipmentBladeSwitchConnDefConsts()
-    naming_props = set([u'switchType'])
+    naming_props = set(['switchType'])
 
-    mo_meta = MoMeta("EquipmentBladeSwitchConnDef", "equipmentBladeSwitchConnDef", "-switch-type-[switch_type]", VersionMeta.Version302c, "InputOutput", 0x1ff, [], [""], [u'equipmentBladeConnDef'], [u'equipmentAdaptorConnDef'], [None])
+    mo_meta = MoMeta("EquipmentBladeSwitchConnDef", "equipmentBladeSwitchConnDef", "-switch-type-[switch_type]", VersionMeta.Version302c, "InputOutput", 0x1ff, [], [""], ['equipmentBladeConnDef'], ['equipmentAdaptorConnDef'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

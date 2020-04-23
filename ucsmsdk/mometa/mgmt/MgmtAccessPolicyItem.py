@@ -28,9 +28,9 @@ class MgmtAccessPolicyItem(ManagedObject):
     """This is MgmtAccessPolicyItem class."""
 
     consts = MgmtAccessPolicyItemConsts()
-    naming_props = set([u'subject'])
+    naming_props = set(['subject'])
 
-    mo_meta = MoMeta("MgmtAccessPolicyItem", "mgmtAccessPolicyItem", "item-[subject]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], [u'mgmtAccessPolicy'], [u'mgmtAccessPort'], ["Get"])
+    mo_meta = MoMeta("MgmtAccessPolicyItem", "mgmtAccessPolicyItem", "item-[subject]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], ['mgmtAccessPolicy'], ['mgmtAccessPort'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

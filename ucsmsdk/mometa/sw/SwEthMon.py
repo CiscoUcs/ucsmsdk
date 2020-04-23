@@ -169,9 +169,9 @@ class SwEthMon(ManagedObject):
     """This is SwEthMon class."""
 
     consts = SwEthMonConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("SwEthMon", "swEthMon", "mon-[name]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["read-only"], [u'swEthLanMon'], [u'dcxVc', u'eventInst', u'faultInst', u'swEthEstcPc', u'swEthLanPc', u'swEthMonDestEp', u'swEthMonFsm', u'swEthMonFsmTask', u'swEthMonSrcEp', u'swSubGroup', u'swVlan'], ["Get"])
+    mo_meta = MoMeta("SwEthMon", "swEthMon", "mon-[name]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["read-only"], ['swEthLanMon'], ['dcxVc', 'eventInst', 'faultInst', 'swEthEstcPc', 'swEthLanPc', 'swEthMonDestEp', 'swEthMonFsm', 'swEthMonFsmTask', 'swEthMonSrcEp', 'swSubGroup', 'swVlan'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

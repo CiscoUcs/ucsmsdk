@@ -176,7 +176,7 @@ class EquipmentSharedIOModule(ManagedObject):
     consts = EquipmentSharedIOModuleConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentSharedIOModule", "equipmentSharedIOModule", "shared-io-module", VersionMeta.Version251a, "InputOutput", 0x7f, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentChassis', u'equipmentSystemIOController'], [u'faultInst', u'mgmtController', u'portGroup'], ["Get", "Set"])
+    mo_meta = MoMeta("EquipmentSharedIOModule", "equipmentSharedIOModule", "shared-io-module", VersionMeta.Version251a, "InputOutput", 0x7f, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], ['equipmentChassis', 'equipmentSystemIOController'], ['faultInst', 'mgmtController', 'portGroup'], ["Get", "Set"])
 
     prop_meta = {
         "admin_power_state": MoPropertyMeta("admin_power_state", "adminPowerState", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cycle-immediate", "cycle-wait", "policy"], []),

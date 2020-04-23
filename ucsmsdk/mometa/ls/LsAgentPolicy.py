@@ -27,9 +27,9 @@ class LsAgentPolicy(ManagedObject):
     """This is LsAgentPolicy class."""
 
     consts = LsAgentPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("LsAgentPolicy", "lsAgentPolicy", "agent-policy-[name]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ls-config-policy", "ls-server-policy"], [u'orgOrg'], [], [None])
+    mo_meta = MoMeta("LsAgentPolicy", "lsAgentPolicy", "agent-policy-[name]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ls-config-policy", "ls-server-policy"], ['orgOrg'], [], [None])
 
     prop_meta = {
         "capability": MoPropertyMeta("capability", "capability", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["host-name-config", "l2-if-config", "l3-if-config", "states", "stats"], []),

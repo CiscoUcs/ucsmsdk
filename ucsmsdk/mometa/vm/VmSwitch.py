@@ -27,9 +27,9 @@ class VmSwitch(ManagedObject):
     """This is VmSwitch class."""
 
     consts = VmSwitchConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VmSwitch", "vmSwitch", "switch-[name]", VersionMeta.Version111j, "InputOutput", 0xfff, [], ["admin", "ls-config", "ls-config-policy", "ls-network", "pn-policy"], [u'extvmmProvider', u'extvmmSwitchSet', u'vmOrg'], [u'extvmmUpLinkPP', u'vmVnicProfInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VmSwitch", "vmSwitch", "switch-[name]", VersionMeta.Version111j, "InputOutput", 0xfff, [], ["admin", "ls-config", "ls-config-policy", "ls-network", "pn-policy"], ['extvmmProvider', 'extvmmSwitchSet', 'vmOrg'], ['extvmmUpLinkPP', 'vmVnicProfInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disable", "enable"], []),

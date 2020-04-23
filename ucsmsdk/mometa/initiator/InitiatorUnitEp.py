@@ -25,9 +25,9 @@ class InitiatorUnitEp(ManagedObject):
     """This is InitiatorUnitEp class."""
 
     consts = InitiatorUnitEpConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("InitiatorUnitEp", "initiatorUnitEp", "unit-[id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], [u'initiatorRequestorGrpEp'], [], [None])
+    mo_meta = MoMeta("InitiatorUnitEp", "initiatorUnitEp", "unit-[id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], ['initiatorRequestorGrpEp'], [], [None])
 
     prop_meta = {
         "boot": MoPropertyMeta("boot", "boot", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

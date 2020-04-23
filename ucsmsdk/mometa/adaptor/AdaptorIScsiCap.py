@@ -53,7 +53,7 @@ class AdaptorIScsiCap(ManagedObject):
     consts = AdaptorIScsiCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorIScsiCap", "adaptorIScsiCap", "iscsi", VersionMeta.Version201m, "InputOutput", 0x7ff, [], ["read-only"], [u'adaptorFruCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("AdaptorIScsiCap", "adaptorIScsiCap", "iscsi", VersionMeta.Version201m, "InputOutput", 0x7ff, [], ["read-only"], ['adaptorFruCapProvider'], [], ["Get"])
 
     prop_meta = {
         "boot_order_type": MoPropertyMeta("boot_order_type", "bootOrderType", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["bev-order", "cd-order", "cimc-vmedia-cdd-device-order", "cimc-vmedia-fdd-device-order", "cimc-vmedia-hdd-device-order", "external-usb-device-order", "fdd-order", "hdd-order", "internal-efi-shell", "internal-usb-device-order", "iscsi-any-device-order", "iscsi-device-order", "kvm-vmedia-cdd-device-order", "kvm-vmedia-fdd-device-order", "kvm-vmedia-hdd-device-order", "lan-any-device-order", "local-storage-any-device-order", "network-device-order", "nvme-device-order", "nvme-disk-ssd-device-order", "nvme-pci-ssd-device-order", "san-any-device-order", "san-device-order", "sdcard-device-order", "system-boot-order", "uefi-shell-device-order", "uefi-target-device-order", "unknown-device-order"], []),

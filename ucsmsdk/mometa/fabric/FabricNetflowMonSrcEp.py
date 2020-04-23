@@ -13,9 +13,9 @@ class FabricNetflowMonSrcEp(ManagedObject):
     """This is FabricNetflowMonSrcEp class."""
 
     consts = FabricNetflowMonSrcEpConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricNetflowMonSrcEp", "fabricNetflowMonSrcEp", "flow-mon-src-[name]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'vnicEther', u'vnicFc', u'vnicIScsi', u'vnicIScsiLCP', u'vnicIpc', u'vnicProfile', u'vnicScsi'], [], [None])
+    mo_meta = MoMeta("FabricNetflowMonSrcEp", "fabricNetflowMonSrcEp", "flow-mon-src-[name]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['vnicEther', 'vnicFc', 'vnicIScsi', 'vnicIScsiLCP', 'vnicIpc', 'vnicProfile', 'vnicScsi'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -24,7 +24,7 @@ class CommWsman(ManagedObject):
     consts = CommWsmanConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommWsman", "commWsman", "wsman-svc", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["aaa", "admin"], [u'commSvcEp'], [], ["Get"])
+    mo_meta = MoMeta("CommWsman", "commWsman", "wsman-svc", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["aaa", "admin"], ['commSvcEp'], [], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

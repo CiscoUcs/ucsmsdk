@@ -15,7 +15,7 @@ class VmEp(ManagedObject):
     consts = VmEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VmEp", "vmEp", "vmm", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], [u'topRoot'], [u'vmComputeEp', u'vmHv', u'vmInstance'], ["Get"])
+    mo_meta = MoMeta("VmEp", "vmEp", "vmm", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], ['topRoot'], ['vmComputeEp', 'vmHv', 'vmInstance'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

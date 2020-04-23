@@ -15,7 +15,7 @@ class ApeDcosAgManager(ManagedObject):
     consts = ApeDcosAgManagerConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ApeDcosAgManager", "apeDcosAgManager", "DcosAgManager", VersionMeta.Version131c, "InputOutput", 0x1f, [], ["read-only"], [u'apeManager'], [u'apeSwitchFirmwareInv'], [None])
+    mo_meta = MoMeta("ApeDcosAgManager", "apeDcosAgManager", "DcosAgManager", VersionMeta.Version131c, "InputOutput", 0x1f, [], ["read-only"], ['apeManager'], ['apeSwitchFirmwareInv'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

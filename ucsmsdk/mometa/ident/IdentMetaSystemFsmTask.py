@@ -19,9 +19,9 @@ class IdentMetaSystemFsmTask(ManagedObject):
     """This is IdentMetaSystemFsmTask class."""
 
     consts = IdentMetaSystemFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("IdentMetaSystemFsmTask", "identMetaSystemFsmTask", "task-[item]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'identMetaSystem'], [], [None])
+    mo_meta = MoMeta("IdentMetaSystemFsmTask", "identMetaSystemFsmTask", "task-[item]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['identMetaSystem'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

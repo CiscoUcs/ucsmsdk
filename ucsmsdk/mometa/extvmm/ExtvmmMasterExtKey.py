@@ -159,7 +159,7 @@ class ExtvmmMasterExtKey(ManagedObject):
     consts = ExtvmmMasterExtKeyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ExtvmmMasterExtKey", "extvmmMasterExtKey", "ext-key", VersionMeta.Version111j, "InputOutput", 0x3f, [], ["admin", "ls-config", "ls-config-policy", "pn-policy"], [u'extvmmEp'], [u'eventInst', u'extvmmMasterExtKeyFsm', u'extvmmMasterExtKeyFsmTask', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("ExtvmmMasterExtKey", "extvmmMasterExtKey", "ext-key", VersionMeta.Version111j, "InputOutput", 0x3f, [], ["admin", "ls-config", "ls-config-policy", "pn-policy"], ['extvmmEp'], ['eventInst', 'extvmmMasterExtKeyFsm', 'extvmmMasterExtKeyFsmTask', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

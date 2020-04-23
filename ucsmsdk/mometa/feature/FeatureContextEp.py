@@ -15,7 +15,7 @@ class FeatureContextEp(ManagedObject):
     consts = FeatureContextEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FeatureContextEp", "featureContextEp", "contexts", VersionMeta.Version302c, "InputOutput", 0x1f, [], [""], [u'topSystem'], [u'featureDefinitionInstance', u'featureFruCapProviderInstance', u'featureProviderInstance'], [None])
+    mo_meta = MoMeta("FeatureContextEp", "featureContextEp", "contexts", VersionMeta.Version302c, "InputOutput", 0x1f, [], [""], ['topSystem'], ['featureDefinitionInstance', 'featureFruCapProviderInstance', 'featureProviderInstance'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

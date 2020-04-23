@@ -75,9 +75,9 @@ class CallhomePolicy(ManagedObject):
     """This is CallhomePolicy class."""
 
     consts = CallhomePolicyConsts()
-    naming_props = set([u'cause'])
+    naming_props = set(['cause'])
 
-    mo_meta = MoMeta("CallhomePolicy", "callhomePolicy", "policy-[cause]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "fault"], [u'callhomeEp'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("CallhomePolicy", "callhomePolicy", "policy-[cause]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "fault"], ['callhomeEp'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

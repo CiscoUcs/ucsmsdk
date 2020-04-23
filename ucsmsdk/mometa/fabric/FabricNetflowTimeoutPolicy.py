@@ -16,9 +16,9 @@ class FabricNetflowTimeoutPolicy(ManagedObject):
     """This is FabricNetflowTimeoutPolicy class."""
 
     consts = FabricNetflowTimeoutPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricNetflowTimeoutPolicy", "fabricNetflowTimeoutPolicy", "flow-timeout-[name]", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEthLanFlowMonitoring'], [], [None])
+    mo_meta = MoMeta("FabricNetflowTimeoutPolicy", "fabricNetflowTimeoutPolicy", "flow-timeout-[name]", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEthLanFlowMonitoring'], [], [None])
 
     prop_meta = {
         "active_timeout": MoPropertyMeta("active_timeout", "activeTimeout", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], ["60-4092"]),

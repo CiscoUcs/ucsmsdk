@@ -15,9 +15,9 @@ class FeatureFruCapProviderRef(ManagedObject):
     """This is FeatureFruCapProviderRef class."""
 
     consts = FeatureFruCapProviderRefConsts()
-    naming_props = set([u'vendor', u'model', u'revision'])
+    naming_props = set(['vendor', 'model', 'revision'])
 
-    mo_meta = MoMeta("FeatureFruCapProviderRef", "featureFruCapProviderRef", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version302c, "InputOutput", 0xff, [], [""], [u'featureProvider'], [], [None])
+    mo_meta = MoMeta("FeatureFruCapProviderRef", "featureFruCapProviderRef", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version302c, "InputOutput", 0xff, [], [""], ['featureProvider'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

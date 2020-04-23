@@ -47,7 +47,7 @@ class AdaptorFcOEIf(ManagedObject):
     consts = AdaptorFcOEIfConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorFcOEIf", "adaptorFcOEIf", "fcoe", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], [u'adaptorHostEthIf', u'adaptorHostFcIf'], [u'dcxVIf'], ["Get"])
+    mo_meta = MoMeta("AdaptorFcOEIf", "adaptorFcOEIf", "fcoe", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], ['adaptorHostEthIf', 'adaptorHostFcIf'], ['dcxVIf'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

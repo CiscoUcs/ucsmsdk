@@ -20,9 +20,9 @@ class DcxNs(ManagedObject):
     """This is DcxNs class."""
 
     consts = DcxNsConsts()
-    naming_props = set([u'switchId'])
+    naming_props = set(['switchId'])
 
-    mo_meta = MoMeta("DcxNs", "dcxNs", "dcxns-[switch_id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'adaptorUnit'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("DcxNs", "dcxNs", "dcxns-[switch_id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], ['adaptorUnit'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "alloc_status": MoPropertyMeta("alloc_status", "allocStatus", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["available", "exceeded", "full"], []),

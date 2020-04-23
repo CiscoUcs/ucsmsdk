@@ -156,7 +156,7 @@ class MgmtCfgExportPolicyFsm(ManagedObject):
     consts = MgmtCfgExportPolicyFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtCfgExportPolicyFsm", "mgmtCfgExportPolicyFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'mgmtCfgExportPolicy'], [u'mgmtCfgExportPolicyFsmStage'], [None])
+    mo_meta = MoMeta("MgmtCfgExportPolicyFsm", "mgmtCfgExportPolicyFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['mgmtCfgExportPolicy'], ['mgmtCfgExportPolicyFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

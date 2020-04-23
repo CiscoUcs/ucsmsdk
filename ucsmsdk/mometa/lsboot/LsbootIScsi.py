@@ -29,7 +29,7 @@ class LsbootIScsi(ManagedObject):
     consts = LsbootIScsiConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsbootIScsi", "lsbootIScsi", "iscsi", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], [u'lsbootDef', u'lsbootPolicy'], [u'lsbootIScsiImagePath'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LsbootIScsi", "lsbootIScsi", "iscsi", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], ['lsbootDef', 'lsbootPolicy'], ['lsbootIScsiImagePath'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "access": MoPropertyMeta("access", "access", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["read-only", "read-only-local", "read-only-remote", "read-only-remote-cimc", "read-write", "read-write-drive", "read-write-local", "read-write-remote", "read-write-remote-cimc"], []),

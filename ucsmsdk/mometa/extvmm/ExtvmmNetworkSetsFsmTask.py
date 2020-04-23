@@ -18,9 +18,9 @@ class ExtvmmNetworkSetsFsmTask(ManagedObject):
     """This is ExtvmmNetworkSetsFsmTask class."""
 
     consts = ExtvmmNetworkSetsFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("ExtvmmNetworkSetsFsmTask", "extvmmNetworkSetsFsmTask", "task-[item]", VersionMeta.Version221b, "OutputOnly", 0xf, [], [""], [u'extvmmNetworkSets'], [], [None])
+    mo_meta = MoMeta("ExtvmmNetworkSetsFsmTask", "extvmmNetworkSetsFsmTask", "task-[item]", VersionMeta.Version221b, "OutputOnly", 0xf, [], [""], ['extvmmNetworkSets'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

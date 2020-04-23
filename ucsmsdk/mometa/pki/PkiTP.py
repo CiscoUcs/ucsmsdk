@@ -26,9 +26,9 @@ class PkiTP(ManagedObject):
     """This is PkiTP class."""
 
     consts = PkiTPConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("PkiTP", "pkiTP", "tp-[name]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["aaa", "admin"], [u'pkiEp'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("PkiTP", "pkiTP", "tp-[name]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["aaa", "admin"], ['pkiEp'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "cert_chain": MoPropertyMeta("cert_chain", "certChain", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], []),

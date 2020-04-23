@@ -15,9 +15,9 @@ class FabricEthFlowMonLan(ManagedObject):
     """This is FabricEthFlowMonLan class."""
 
     consts = FabricEthFlowMonLanConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("FabricEthFlowMonLan", "fabricEthFlowMonLan", "[id]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEthLanFlowMonitoring'], [], [None])
+    mo_meta = MoMeta("FabricEthFlowMonLan", "fabricEthFlowMonLan", "[id]", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEthLanFlowMonitoring'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

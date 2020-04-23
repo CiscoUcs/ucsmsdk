@@ -15,7 +15,7 @@ class IpIpV4StaticTargetAddr(ManagedObject):
     consts = IpIpV4StaticTargetAddrConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("IpIpV4StaticTargetAddr", "ipIpV4StaticTargetAddr", "ipv4-addr", VersionMeta.Version221b, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricNetflowCollector'], [], [None])
+    mo_meta = MoMeta("IpIpV4StaticTargetAddr", "ipIpV4StaticTargetAddr", "ipv4-addr", VersionMeta.Version221b, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricNetflowCollector'], [], [None])
 
     prop_meta = {
         "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),

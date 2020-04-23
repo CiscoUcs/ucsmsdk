@@ -77,9 +77,9 @@ class FabricEthEstcEp(ManagedObject):
     """This is FabricEthEstcEp class."""
 
     consts = FabricEthEstcEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("FabricEthEstcEp", "fabricEthEstcEp", "phys-eth-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ffff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEthEstc', u'fabricSubGroup'], [u'fabricEthMonSrcEp', u'fabricEthTargetEp', u'fabricVlanEp', u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricEthEstcEp", "fabricEthEstcEp", "phys-eth-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ffff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEthEstc', 'fabricSubGroup'], ['fabricEthMonSrcEp', 'fabricEthTargetEp', 'fabricVlanEp', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
@@ -111,7 +111,7 @@ class FabricEthEstcEp(ManagedObject):
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "pin_group_name": MoPropertyMeta("pin_group_name", "pinGroupName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400, 0, 510, None, [], []),
-        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x800, None, None, None, [], ["1-54"]),
+        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x800, None, None, None, [], ["1-108"]),
         "port_mode": MoPropertyMeta("port_mode", "portMode", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, ["access", "trunk"], []),
         "prio": MoPropertyMeta("prio", "prio", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, ["best-effort", "bronze", "fc", "gold", "platinum", "silver"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4000, 0, 256, None, [], []),

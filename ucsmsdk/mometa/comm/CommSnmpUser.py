@@ -28,9 +28,9 @@ class CommSnmpUser(ManagedObject):
     """This is CommSnmpUser class."""
 
     consts = CommSnmpUserConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("CommSnmpUser", "commSnmpUser", "snmpv3-user-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["aaa", "admin"], [u'commSnmp'], [u'aaaCimcSession', u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("CommSnmpUser", "commSnmpUser", "snmpv3-user-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["aaa", "admin"], ['commSnmp'], ['aaaCimcSession', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "auth": MoPropertyMeta("auth", "auth", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["md5", "sha"], []),

@@ -22,7 +22,7 @@ class AaaLdapGroupRule(ManagedObject):
     consts = AaaLdapGroupRuleConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AaaLdapGroupRule", "aaaLdapGroupRule", "ldapgroup-rule", VersionMeta.Version141i, "InputOutput", 0x7ff, [], ["aaa", "admin"], [u'aaaLdapEp', u'aaaLdapProvider'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AaaLdapGroupRule", "aaaLdapGroupRule", "ldapgroup-rule", VersionMeta.Version141i, "InputOutput", 0x7ff, [], ["aaa", "admin"], ['aaaLdapEp', 'aaaLdapProvider'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "authorization": MoPropertyMeta("authorization", "authorization", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disable", "enable"], []),

@@ -27,9 +27,9 @@ class FabricReservedVlanFsmStage(ManagedObject):
     """This is FabricReservedVlanFsmStage class."""
 
     consts = FabricReservedVlanFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricReservedVlanFsmStage", "fabricReservedVlanFsmStage", "stage-[name]", VersionMeta.Version401a, "OutputOnly", 0xf, [], [""], [u'fabricReservedVlanFsm'], [], [None])
+    mo_meta = MoMeta("FabricReservedVlanFsmStage", "fabricReservedVlanFsmStage", "stage-[name]", VersionMeta.Version401a, "OutputOnly", 0xf, [], [""], ['fabricReservedVlanFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version401a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

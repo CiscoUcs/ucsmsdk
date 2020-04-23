@@ -24,9 +24,9 @@ class EquipmentGemPortCap(ManagedObject):
     """This is EquipmentGemPortCap class."""
 
     consts = EquipmentGemPortCapConsts()
-    naming_props = set([u'portNumber'])
+    naming_props = set(['portNumber'])
 
-    mo_meta = MoMeta("EquipmentGemPortCap", "equipmentGemPortCap", "gem-port-cap-[port_number]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], [""], [u'equipmentGemCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentGemPortCap", "equipmentGemPortCap", "gem-port-cap-[port_number]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], [""], ['equipmentGemCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

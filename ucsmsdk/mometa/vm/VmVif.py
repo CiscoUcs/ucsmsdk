@@ -32,9 +32,9 @@ class VmVif(ManagedObject):
     """This is VmVif class."""
 
     consts = VmVifConsts()
-    naming_props = set([u'phSwitchId', u'vifId'])
+    naming_props = set(['phSwitchId', 'vifId'])
 
-    mo_meta = MoMeta("VmVif", "vmVif", "sw-[ph_switch_id]vif-[vif_id]", VersionMeta.Version111j, "InputOutput", 0x7f, [], ["admin"], [u'vmNic'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("VmVif", "vmVif", "sw-[ph_switch_id]vif-[vif_id]", VersionMeta.Version111j, "InputOutput", 0x7f, [], ["admin"], ['vmNic'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "adp_vif_id": MoPropertyMeta("adp_vif_id", "adpVifId", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

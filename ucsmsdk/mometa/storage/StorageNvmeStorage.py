@@ -15,7 +15,7 @@ class StorageNvmeStorage(ManagedObject):
     consts = StorageNvmeStorageConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("StorageNvmeStorage", "storageNvmeStorage", "nvme-storage", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'storageController'], [], ["Get"])
+    mo_meta = MoMeta("StorageNvmeStorage", "storageNvmeStorage", "nvme-storage", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['storageController'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

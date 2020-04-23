@@ -21,9 +21,9 @@ class EquipmentStorageControllerConfig(ManagedObject):
     """This is EquipmentStorageControllerConfig class."""
 
     consts = EquipmentStorageControllerConfigConsts()
-    naming_props = set([u'vendor', u'device', u'subvendor', u'subdevice'])
+    naming_props = set(['vendor', 'device', 'subvendor', 'subdevice'])
 
-    mo_meta = MoMeta("EquipmentStorageControllerConfig", "equipmentStorageControllerConfig", "ven-[vendor]-dev-[device]-subven-[subvendor]-subdev-[subdevice]", VersionMeta.Version225a, "InputOutput", 0xfff, [], [""], [u'diagSrvCapProvider', u'equipmentBladeCapProvider', u'equipmentCatalogCapProvider', u'equipmentChassisCapProvider', u'equipmentDbgPluginCapProvider', u'equipmentIOExpanderCapProvider', u'equipmentMgmtCapProvider', u'equipmentMgmtExtCapProvider', u'equipmentRackEnclosureCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider', u'equipmentSiocCapProvider', u'equipmentStorageEncCapProvider', u'equipmentSwitchCapProvider'], [u'equipmentPciSlotSubOEMIdEntry'], ["Get"])
+    mo_meta = MoMeta("EquipmentStorageControllerConfig", "equipmentStorageControllerConfig", "ven-[vendor]-dev-[device]-subven-[subvendor]-subdev-[subdevice]", VersionMeta.Version225a, "InputOutput", 0xfff, [], [""], ['diagSrvCapProvider', 'equipmentBladeCapProvider', 'equipmentCatalogCapProvider', 'equipmentChassisCapProvider', 'equipmentDbgPluginCapProvider', 'equipmentIOExpanderCapProvider', 'equipmentMgmtCapProvider', 'equipmentMgmtExtCapProvider', 'equipmentRackEnclosureCapProvider', 'equipmentRackUnitCapProvider', 'equipmentServerUnitCapProvider', 'equipmentSiocCapProvider', 'equipmentStorageEncCapProvider', 'equipmentSwitchCapProvider'], ['equipmentPciSlotSubOEMIdEntry'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version225a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

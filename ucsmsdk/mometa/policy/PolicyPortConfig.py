@@ -17,7 +17,7 @@ class PolicyPortConfig(ManagedObject):
     consts = PolicyPortConfigConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PolicyPortConfig", "policyPortConfig", "portconfig-ctrl", VersionMeta.Version227b, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-policy"], [u'policyControlEp'], [u'policyControlledInstance', u'policyControlledType'], ["Get", "Set"])
+    mo_meta = MoMeta("PolicyPortConfig", "policyPortConfig", "portconfig-ctrl", VersionMeta.Version227b, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-policy"], ['policyControlEp'], ['policyControlledInstance', 'policyControlledType'], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

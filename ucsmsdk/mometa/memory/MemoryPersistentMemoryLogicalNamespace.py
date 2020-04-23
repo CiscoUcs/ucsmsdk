@@ -25,9 +25,9 @@ class MemoryPersistentMemoryLogicalNamespace(ManagedObject):
     """This is MemoryPersistentMemoryLogicalNamespace class."""
 
     consts = MemoryPersistentMemoryLogicalNamespaceConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("MemoryPersistentMemoryLogicalNamespace", "memoryPersistentMemoryLogicalNamespace", "lns-[name]", VersionMeta.Version404a, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'memoryPersistentMemoryPolicy'], [], [None])
+    mo_meta = MoMeta("MemoryPersistentMemoryLogicalNamespace", "memoryPersistentMemoryLogicalNamespace", "lns-[name]", VersionMeta.Version404a, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['memoryPersistentMemoryPolicy'], [], [None])
 
     prop_meta = {
         "capacity": MoPropertyMeta("capacity", "capacity", "long", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], ["1-9223372036854775807"]),

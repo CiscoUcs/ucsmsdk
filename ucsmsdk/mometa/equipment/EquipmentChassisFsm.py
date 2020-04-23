@@ -11,6 +11,7 @@ class EquipmentChassisFsmConsts:
     CURRENT_FSM_CHASSIS_UPGRADE = "ChassisUpgrade"
     CURRENT_FSM_DISASSOCIATE = "Disassociate"
     CURRENT_FSM_DYNAMIC_REALLOCATION = "DynamicReallocation"
+    CURRENT_FSM_FAN_POLICY_CONFIG = "FanPolicyConfig"
     CURRENT_FSM_FW_UPGRADE = "FwUpgrade"
     CURRENT_FSM_OOB_STORAGE_ADMIN_CFG = "OobStorageAdminCfg"
     CURRENT_FSM_POWER_CAP = "PowerCap"
@@ -164,12 +165,12 @@ class EquipmentChassisFsm(ManagedObject):
     consts = EquipmentChassisFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentChassisFsm", "equipmentChassisFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'equipmentChassis'], [u'equipmentChassisFsmStage'], [None])
+    mo_meta = MoMeta("EquipmentChassisFsm", "equipmentChassisFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['equipmentChassis'], ['equipmentChassisFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "completion_time": MoPropertyMeta("completion_time", "completionTime", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []),
-        "current_fsm": MoPropertyMeta("current_fsm", "currentFsm", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Associate", "ChassisUpgrade", "Disassociate", "DynamicReallocation", "FwUpgrade", "OobStorageAdminCfg", "PowerCap", "PsuPolicyConfig", "RemoveChassis", "nop"], []),
+        "current_fsm": MoPropertyMeta("current_fsm", "currentFsm", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Associate", "ChassisUpgrade", "Disassociate", "DynamicReallocation", "FanPolicyConfig", "FwUpgrade", "OobStorageAdminCfg", "PowerCap", "PsuPolicyConfig", "RemoveChassis", "nop"], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []),
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["fail", "inProgress", "nop", "pending", "skip", "success", "throttled"], []),

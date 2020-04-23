@@ -81,9 +81,9 @@ class VnicEther(ManagedObject):
     """This is VnicEther class."""
 
     consts = VnicEtherConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicEther", "vnicEther", "ether-[name]", VersionMeta.Version101e, "InputOutput", 0x3fffff, [], ["admin", "ls-config", "ls-network", "ls-server"], [u'lsServer', u'vnicLanConnPolicy'], [u'fabricEthMonSrcEp', u'fabricFcMonSrcEp', u'fabricNetGroupRef', u'fabricNetflowMonSrcEp', u'faultInst', u'vnicDynamicConPolicyRef', u'vnicEtherIf', u'vnicFcOEIf', u'vnicLifVlan', u'vnicMacHistory', u'vnicUsnicConPolicyRef', u'vnicVmqConPolicyRef'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicEther", "vnicEther", "ether-[name]", VersionMeta.Version101e, "InputOutput", 0x3fffff, [], ["admin", "ls-config", "ls-network", "ls-server"], ['lsServer', 'vnicLanConnPolicy'], ['fabricEthMonSrcEp', 'fabricFcMonSrcEp', 'fabricNetGroupRef', 'fabricNetflowMonSrcEp', 'faultInst', 'vnicDynamicConPolicyRef', 'vnicEtherIf', 'vnicFcOEIf', 'vnicLifVlan', 'vnicMacHistory', 'vnicUsnicConPolicyRef', 'vnicVmqConPolicyRef'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "adaptor_profile_name": MoPropertyMeta("adaptor_profile_name", "adaptorProfileName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),

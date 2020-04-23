@@ -20,9 +20,9 @@ class AdaptorFwCapProvider(ManagedObject):
     """This is AdaptorFwCapProvider class."""
 
     consts = AdaptorFwCapProviderConsts()
-    naming_props = set([u'vendor', u'model', u'version'])
+    naming_props = set(['vendor', 'model', 'version'])
 
-    mo_meta = MoMeta("AdaptorFwCapProvider", "adaptorFwCapProvider", "fw-vendor-[vendor]-model-[model]-version-[version]", VersionMeta.Version101e, "InputOutput", 0xff, [], [""], [u'adaptorFruCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("AdaptorFwCapProvider", "adaptorFwCapProvider", "fw-vendor-[vendor]-model-[model]-version-[version]", VersionMeta.Version101e, "InputOutput", 0xff, [], [""], ['adaptorFruCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

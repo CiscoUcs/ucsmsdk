@@ -20,9 +20,9 @@ class NetworkIfStats(ManagedObject):
     """This is NetworkIfStats class."""
 
     consts = NetworkIfStatsConsts()
-    naming_props = set([u'type', u'units'])
+    naming_props = set(['type', 'units'])
 
-    mo_meta = MoMeta("NetworkIfStats", "networkIfStats", "if-stat-[type]-[units]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'adaptorHostEthIf', u'adaptorHostFcIf', u'adaptorHostIscsiIf', u'adaptorHostScsiIf', u'adaptorHostServiceEthIf', u'etherPIo', u'fcPIo'], [], ["Get"])
+    mo_meta = MoMeta("NetworkIfStats", "networkIfStats", "if-stat-[type]-[units]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['adaptorHostEthIf', 'adaptorHostFcIf', 'adaptorHostIscsiIf', 'adaptorHostScsiIf', 'adaptorHostServiceEthIf', 'etherPIo', 'fcPIo'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

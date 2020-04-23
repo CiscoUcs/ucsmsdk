@@ -171,7 +171,7 @@ class VnicProfileSet(ManagedObject):
     consts = VnicProfileSetConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicProfileSet", "vnicProfileSet", "profiles", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["admin", "ls-network", "ls-network-policy"], [u'fabricLanCloud'], [u'eventInst', u'faultInst', u'vnicDynamicProvider', u'vnicInternalProfile', u'vnicProfile', u'vnicProfileSetFsm', u'vnicProfileSetFsmTask', u'vnicRackServerDiscoveryProfile'], ["Get"])
+    mo_meta = MoMeta("VnicProfileSet", "vnicProfileSet", "profiles", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["admin", "ls-network", "ls-network-policy"], ['fabricLanCloud'], ['eventInst', 'faultInst', 'vnicDynamicProvider', 'vnicInternalProfile', 'vnicProfile', 'vnicProfileSetFsm', 'vnicProfileSetFsmTask', 'vnicRackServerDiscoveryProfile'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

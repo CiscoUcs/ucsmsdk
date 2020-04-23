@@ -104,9 +104,9 @@ class StorageEnclosureLocalDiskConfig(ManagedObject):
     """This is StorageEnclosureLocalDiskConfig class."""
 
     consts = StorageEnclosureLocalDiskConfigConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("StorageEnclosureLocalDiskConfig", "storageEnclosureLocalDiskConfig", "enc-disk-config-[id]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["read-only"], [], [u'storageSasPort'], [None])
+    mo_meta = MoMeta("StorageEnclosureLocalDiskConfig", "storageEnclosureLocalDiskConfig", "enc-disk-config-[id]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["read-only"], [], ['storageSasPort'], [None])
 
     prop_meta = {
         "block_size": MoPropertyMeta("block_size", "blockSize", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["512", "unknown"], ["0-4294967295"]),

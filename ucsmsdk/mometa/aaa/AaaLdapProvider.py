@@ -23,9 +23,9 @@ class AaaLdapProvider(ManagedObject):
     """This is AaaLdapProvider class."""
 
     consts = AaaLdapProviderConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("AaaLdapProvider", "aaaLdapProvider", "provider-[name]", VersionMeta.Version101e, "InputOutput", 0x7ffff, [], ["aaa", "admin"], [u'aaaLdapEp'], [u'aaaLdapGroupRule'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AaaLdapProvider", "aaaLdapProvider", "provider-[name]", VersionMeta.Version101e, "InputOutput", 0x7ffff, [], ["aaa", "admin"], ['aaaLdapEp'], ['aaaLdapGroupRule'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "attribute": MoPropertyMeta("attribute", "attribute", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, 0, 63, None, [], []),

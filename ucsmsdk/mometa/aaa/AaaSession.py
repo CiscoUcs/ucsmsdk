@@ -26,9 +26,9 @@ class AaaSession(ManagedObject):
     """This is AaaSession class."""
 
     consts = AaaSessionConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("AaaSession", "aaaSession", "term-[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["aaa", "admin"], [u'aaaRemoteUser', u'aaaUser'], [], ["Get", "Remove"])
+    mo_meta = MoMeta("AaaSession", "aaaSession", "term-[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["aaa", "admin"], ['aaaRemoteUser', 'aaaUser'], [], ["Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

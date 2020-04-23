@@ -13,9 +13,9 @@ class CallhomeDest(ManagedObject):
     """This is CallhomeDest class."""
 
     consts = CallhomeDestConsts()
-    naming_props = set([u'email'])
+    naming_props = set(['email'])
 
-    mo_meta = MoMeta("CallhomeDest", "callhomeDest", "email-[email]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "operations"], [u'callhomeProfile'], [], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("CallhomeDest", "callhomeDest", "email-[email]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "operations"], ['callhomeProfile'], [], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

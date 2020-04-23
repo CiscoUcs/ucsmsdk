@@ -21,9 +21,9 @@ class VnicFcGroupTempl(ManagedObject):
     """This is VnicFcGroupTempl class."""
 
     consts = VnicFcGroupTemplConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicFcGroupTempl", "vnicFcGroupTempl", "fc-group-templ-[name]", VersionMeta.Version211a, "InputOutput", 0xfff, [], ["admin", "ls-config", "ls-server", "ls-storage", "ls-storage-policy"], [u'orgOrg'], [u'faultInst'], [None])
+    mo_meta = MoMeta("VnicFcGroupTempl", "vnicFcGroupTempl", "fc-group-templ-[name]", VersionMeta.Version211a, "InputOutput", 0xfff, [], ["admin", "ls-config", "ls-server", "ls-storage", "ls-storage-policy"], ['orgOrg'], ['faultInst'], [None])
 
     prop_meta = {
         "adaptor_profile_name": MoPropertyMeta("adaptor_profile_name", "adaptorProfileName", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),

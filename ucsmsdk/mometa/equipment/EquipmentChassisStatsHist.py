@@ -20,9 +20,9 @@ class EquipmentChassisStatsHist(ManagedObject):
     """This is EquipmentChassisStatsHist class."""
 
     consts = EquipmentChassisStatsHistConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentChassisStatsHist", "equipmentChassisStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], [u'equipmentChassisStats'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentChassisStatsHist", "equipmentChassisStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], ['equipmentChassisStats'], [], ["Get"])
 
     prop_meta = {
         "chassis_i2_c_errors": MoPropertyMeta("chassis_i2_c_errors", "ChassisI2CErrors", "ulong", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

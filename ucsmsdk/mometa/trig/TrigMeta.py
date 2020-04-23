@@ -27,9 +27,9 @@ class TrigMeta(ManagedObject):
     """This is TrigMeta class."""
 
     consts = TrigMetaConsts()
-    naming_props = set([u'schedName'])
+    naming_props = set(['schedName'])
 
-    mo_meta = MoMeta("TrigMeta", "trigMeta", "meta-trig-[sched_name]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["read-only"], [u'topSystem'], [u'trigTriggered'], ["Get"])
+    mo_meta = MoMeta("TrigMeta", "trigMeta", "meta-trig-[sched_name]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["read-only"], ['topSystem'], ['trigTriggered'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["trigger", "trigger-immediate", "triggered", "untriggered", "user-ack", "user-discard"], []),

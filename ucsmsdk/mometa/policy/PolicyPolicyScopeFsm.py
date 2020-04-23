@@ -170,7 +170,7 @@ class PolicyPolicyScopeFsm(ManagedObject):
     consts = PolicyPolicyScopeFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PolicyPolicyScopeFsm", "policyPolicyScopeFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'policyPolicyScope'], [u'policyPolicyScopeFsmStage'], [None])
+    mo_meta = MoMeta("PolicyPolicyScopeFsm", "policyPolicyScopeFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['policyPolicyScope'], ['policyPolicyScopeFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

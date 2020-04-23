@@ -63,9 +63,9 @@ class FabricVlanEp(ManagedObject):
     """This is FabricVlanEp class."""
 
     consts = FabricVlanEpConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("FabricVlanEp", "fabricVlanEp", "vlan-[id]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["read-only"], [u'fabricEthEstcEp', u'fabricEthEstcPc', u'fabricEthLanEp'], [], ["Get"])
+    mo_meta = MoMeta("FabricVlanEp", "fabricVlanEp", "vlan-[id]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["read-only"], ['fabricEthEstcEp', 'fabricEthEstcPc', 'fabricEthLanEp'], [], ["Get"])
 
     prop_meta = {
         "assoc_primary_vlan_state": MoPropertyMeta("assoc_primary_vlan_state", "assocPrimaryVlanState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["does-not-exists", "is-empty", "is-in-error-state", "is-not-primary-type", "ok"], []),

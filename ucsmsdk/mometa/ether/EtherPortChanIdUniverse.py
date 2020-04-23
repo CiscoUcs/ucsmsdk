@@ -15,7 +15,7 @@ class EtherPortChanIdUniverse(ManagedObject):
     consts = EtherPortChanIdUniverseConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EtherPortChanIdUniverse", "etherPortChanIdUniverse", "pchanid-universe", VersionMeta.Version201m, "InputOutput", 0x1f, [], ["read-only"], [u'fabricEp'], [u'etherPortChanIdElem'], ["Get"])
+    mo_meta = MoMeta("EtherPortChanIdUniverse", "etherPortChanIdUniverse", "pchanid-universe", VersionMeta.Version201m, "InputOutput", 0x1f, [], ["read-only"], ['fabricEp'], ['etherPortChanIdElem'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

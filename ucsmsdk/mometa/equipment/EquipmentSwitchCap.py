@@ -38,7 +38,7 @@ class EquipmentSwitchCap(ManagedObject):
     consts = EquipmentSwitchCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentSwitchCap", "equipmentSwitchCap", "switch-cap", VersionMeta.Version111j, "InputOutput", 0xff, [], [""], [u'equipmentSwitchCapProvider', u'equipmentSwitchIOCardCapProvider'], [u'equipmentPortCap'], ["Get"])
+    mo_meta = MoMeta("EquipmentSwitchCap", "equipmentSwitchCap", "switch-cap", VersionMeta.Version111j, "InputOutput", 0xff, [], [""], ['equipmentSwitchCapProvider', 'equipmentSwitchIOCardCapProvider'], ['equipmentPortCap'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

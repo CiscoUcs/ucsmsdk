@@ -39,9 +39,9 @@ class FabricLocale(ManagedObject):
     """This is FabricLocale class."""
 
     consts = FabricLocaleConsts()
-    naming_props = set([u'switchId'])
+    naming_props = set(['switchId'])
 
-    mo_meta = MoMeta("FabricLocale", "fabricLocale", "fabric-[switch_id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis', u'equipmentFex', u'mgmtController'], [u'adaptorExtEthIfPc', u'dcxVc', u'fabricPath'], ["Get"])
+    mo_meta = MoMeta("FabricLocale", "fabricLocale", "fabric-[switch_id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['computeBlade', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFex', 'mgmtController'], ['adaptorExtEthIfPc', 'dcxVc', 'fabricPath'], ["Get"])
 
     prop_meta = {
         "c_type": MoPropertyMeta("c_type", "cType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["mux", "mux-access", "mux-fabric", "mux-fabricpc", "mux-fabricpc-to-chpc", "mux-fabricpc-to-hostpc", "mux-fabricpc-to-hostport", "mux-fabricport-to-hostpc", "mux-hostpc-to-adaptorpc", "mux-to-appliance", "mux-to-chassis", "mux-to-host", "switch-access", "switch-fabric", "switch-fabricpc", "switch-to-host", "switch-to-mux", "switchpc-to-hostpc"], ["0-255"]),

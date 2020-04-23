@@ -28,9 +28,9 @@ class LstorageLunSetConfig(ManagedObject):
     """This is LstorageLunSetConfig class."""
 
     consts = LstorageLunSetConfigConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("LstorageLunSetConfig", "lstorageLunSetConfig", "lun-set-config-[name]", VersionMeta.Version402a, "InputOutput", 0x1ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageProfile', u'lstorageProfileDef'], [u'lstorageLunSetDiskSlot', u'lstorageVirtualDriveDef'], [None])
+    mo_meta = MoMeta("LstorageLunSetConfig", "lstorageLunSetConfig", "lun-set-config-[name]", VersionMeta.Version402a, "InputOutput", 0x1ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage", "ls-storage-policy"], ['lstorageProfile', 'lstorageProfileDef'], ['lstorageLunSetDiskSlot', 'lstorageVirtualDriveDef'], [None])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version402a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["offline", "online", "undeployed"], []),

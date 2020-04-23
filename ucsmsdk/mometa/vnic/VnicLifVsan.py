@@ -37,9 +37,9 @@ class VnicLifVsan(ManagedObject):
     """This is VnicLifVsan class."""
 
     consts = VnicLifVsanConsts()
-    naming_props = set([u'vnet'])
+    naming_props = set(['vnet'])
 
-    mo_meta = MoMeta("VnicLifVsan", "vnicLifVsan", "vsan-[vnet]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'vnicFcLif'], [], ["Get"])
+    mo_meta = MoMeta("VnicLifVsan", "vnicLifVsan", "vsan-[vnet]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['vnicFcLif'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

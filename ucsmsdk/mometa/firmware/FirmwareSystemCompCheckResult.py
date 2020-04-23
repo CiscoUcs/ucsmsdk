@@ -28,9 +28,9 @@ class FirmwareSystemCompCheckResult(ManagedObject):
     """This is FirmwareSystemCompCheckResult class."""
 
     consts = FirmwareSystemCompCheckResultConsts()
-    naming_props = set([u'keyDn'])
+    naming_props = set(['keyDn'])
 
-    mo_meta = MoMeta("FirmwareSystemCompCheckResult", "firmwareSystemCompCheckResult", "fw-sys-CompCheckRes-[key_dn]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin"], [u'firmwareSystem'], [], ["Get"])
+    mo_meta = MoMeta("FirmwareSystemCompCheckResult", "firmwareSystemCompCheckResult", "fw-sys-CompCheckRes-[key_dn]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin"], ['firmwareSystem'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

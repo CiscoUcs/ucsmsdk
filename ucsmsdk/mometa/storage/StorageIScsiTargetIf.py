@@ -15,9 +15,9 @@ class StorageIScsiTargetIf(ManagedObject):
     """This is StorageIScsiTargetIf class."""
 
     consts = StorageIScsiTargetIfConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("StorageIScsiTargetIf", "storageIScsiTargetIf", "iscsi-tgt-[name]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin"], [u'storageNodeEp'], [u'initiatorLunEp', u'storageAuthKey', u'storageEtherIf'], [None])
+    mo_meta = MoMeta("StorageIScsiTargetIf", "storageIScsiTargetIf", "iscsi-tgt-[name]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin"], ['storageNodeEp'], ['initiatorLunEp', 'storageAuthKey', 'storageEtherIf'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

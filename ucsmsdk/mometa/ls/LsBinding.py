@@ -25,7 +25,7 @@ class LsBinding(ManagedObject):
     consts = LsBindingConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsBinding", "lsBinding", "pn", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "read-only"], [u'lsServer'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LsBinding", "lsBinding", "pn", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "read-only"], ['lsServer'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_action": MoPropertyMeta("admin_action", "adminAction", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["reapply-config", "unspecified"], []),

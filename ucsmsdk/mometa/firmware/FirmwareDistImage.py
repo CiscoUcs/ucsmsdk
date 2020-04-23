@@ -49,9 +49,9 @@ class FirmwareDistImage(ManagedObject):
     """This is FirmwareDistImage class."""
 
     consts = FirmwareDistImageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FirmwareDistImage", "firmwareDistImage", "distimage-[name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'firmwareDistributable'], [], ["Get"])
+    mo_meta = MoMeta("FirmwareDistImage", "firmwareDistImage", "distimage-[name]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], ['firmwareDistributable'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

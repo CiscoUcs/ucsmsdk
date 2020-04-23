@@ -48,9 +48,9 @@ class AdaptorCapSpec(ManagedObject):
     """This is AdaptorCapSpec class."""
 
     consts = AdaptorCapSpecConsts()
-    naming_props = set([u'type'])
+    naming_props = set(['type'])
 
-    mo_meta = MoMeta("AdaptorCapSpec", "adaptorCapSpec", "cap-[type]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "pn-policy"], [u'adaptorFruCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("AdaptorCapSpec", "adaptorCapSpec", "cap-[type]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "pn-policy"], ['adaptorFruCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -19,7 +19,7 @@ class ComputePciCap(ManagedObject):
     consts = ComputePciCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputePciCap", "computePciCap", "pci", VersionMeta.Version111j, "InputOutput", 0x1ff, [], ["read-only"], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider'], [u'computePciSlotScanDef'], ["Get"])
+    mo_meta = MoMeta("ComputePciCap", "computePciCap", "pci", VersionMeta.Version111j, "InputOutput", 0x1ff, [], ["read-only"], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider', 'equipmentServerUnitCapProvider'], ['computePciSlotScanDef'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

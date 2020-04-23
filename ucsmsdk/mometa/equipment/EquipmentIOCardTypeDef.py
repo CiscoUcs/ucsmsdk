@@ -18,7 +18,7 @@ class EquipmentIOCardTypeDef(ManagedObject):
     consts = EquipmentIOCardTypeDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentIOCardTypeDef", "equipmentIOCardTypeDef", "type", VersionMeta.Version202m, "InputOutput", 0xff, [], [""], [u'equipmentIOCardCapProvider', u'equipmentSwitchIOCardCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentIOCardTypeDef", "equipmentIOCardTypeDef", "type", VersionMeta.Version202m, "InputOutput", 0xff, [], [""], ['equipmentIOCardCapProvider', 'equipmentSwitchIOCardCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version202m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

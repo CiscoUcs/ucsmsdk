@@ -46,9 +46,9 @@ class EquipmentLocalDiskControllerCapProvider(ManagedObject):
     """This is EquipmentLocalDiskControllerCapProvider class."""
 
     consts = EquipmentLocalDiskControllerCapProviderConsts()
-    naming_props = set([u'vendor', u'model', u'revision'])
+    naming_props = set(['vendor', 'model', 'revision'])
 
-    mo_meta = MoMeta("EquipmentLocalDiskControllerCapProvider", "equipmentLocalDiskControllerCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], [""], [u'capabilityCatalogue', u'equipmentHwCapDerivativeProvider'], [u'adaptorFamilyTypeDef', u'equipmentDriveSecCap', u'equipmentEmbeddedStorageDef', u'equipmentFlashLife', u'equipmentFruVariant', u'equipmentLocalDiskControllerDef', u'equipmentLocalDiskControllerTypeDef', u'equipmentManufacturingDef', u'equipmentOnboardDeviceDef', u'equipmentPciDef', u'equipmentPhysicalDef', u'equipmentPicture', u'equipmentRaidDef', u'equipmentServiceDef', u'equipmentSlotArrayRef', u'equipmentStorageLimitCap', u'firmwareType', u'firmwareUpgradeConstraint'], ["Get"])
+    mo_meta = MoMeta("EquipmentLocalDiskControllerCapProvider", "equipmentLocalDiskControllerCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['adaptorFamilyTypeDef', 'equipmentDriveSecCap', 'equipmentEmbeddedStorageDef', 'equipmentFlashLife', 'equipmentFruVariant', 'equipmentLocalDiskControllerDef', 'equipmentLocalDiskControllerTypeDef', 'equipmentManufacturingDef', 'equipmentOnboardDeviceDef', 'equipmentPciDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentRaidDef', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'equipmentStorageLimitCap', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get"])
 
     prop_meta = {
         "card_type": MoPropertyMeta("card_type", "cardType", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FLASH", "M2", "NVME", "SAS", "SD"], []),

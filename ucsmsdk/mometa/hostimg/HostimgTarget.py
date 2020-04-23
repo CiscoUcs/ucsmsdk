@@ -18,9 +18,9 @@ class HostimgTarget(ManagedObject):
     """This is HostimgTarget class."""
 
     consts = HostimgTargetConsts()
-    naming_props = set([u'type', u'name'])
+    naming_props = set(['type', 'name'])
 
-    mo_meta = MoMeta("HostimgTarget", "hostimgTarget", "target-[type]-comp-[name]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server"], [u'hostimgPolicy'], [], ["Get"])
+    mo_meta = MoMeta("HostimgTarget", "hostimgTarget", "target-[type]-comp-[name]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server"], ['hostimgPolicy'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -172,7 +172,7 @@ class SwExtUtility(ManagedObject):
     consts = SwExtUtilityConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SwExtUtility", "swExtUtility", "ext", VersionMeta.Version311e, "InputOutput", 0x3f, [], ["read-only"], [u'networkElement'], [u'eventInst', u'faultInst', u'swExtUtilityFsm', u'swExtUtilityFsmTask', u'swPortBreakout'], [None])
+    mo_meta = MoMeta("SwExtUtility", "swExtUtility", "ext", VersionMeta.Version311e, "InputOutput", 0x3f, [], ["read-only"], ['networkElement'], ['eventInst', 'faultInst', 'swExtUtilityFsm', 'swExtUtilityFsmTask', 'swPortBreakout'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version311e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

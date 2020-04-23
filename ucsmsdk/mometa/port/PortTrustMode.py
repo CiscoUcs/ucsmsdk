@@ -16,7 +16,7 @@ class PortTrustMode(ManagedObject):
     consts = PortTrustModeConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PortTrustMode", "portTrustMode", "trust-mode", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], [u'etherServerIntFIo', u'fabricPathEp', u'swAccessEp'], [], ["Get"])
+    mo_meta = MoMeta("PortTrustMode", "portTrustMode", "trust-mode", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], ['etherServerIntFIo', 'fabricPathEp', 'swAccessEp'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

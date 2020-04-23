@@ -53,9 +53,9 @@ class SwAccessEp(ManagedObject):
     """This is SwAccessEp class."""
 
     consts = SwAccessEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("SwAccessEp", "swAccessEp", "ep-slot-[slot_id]port-[port_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], [u'swAccessDomain', u'swSubGroup'], [u'portTrustMode', u'swUlan'], ["Get"])
+    mo_meta = MoMeta("SwAccessEp", "swAccessEp", "ep-slot-[slot_id]port-[port_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], ['swAccessDomain', 'swSubGroup'], ['portTrustMode', 'swUlan'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

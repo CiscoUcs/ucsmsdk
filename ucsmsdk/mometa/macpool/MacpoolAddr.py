@@ -18,9 +18,9 @@ class MacpoolAddr(ManagedObject):
     """This is MacpoolAddr class."""
 
     consts = MacpoolAddrConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("MacpoolAddr", "macpoolAddr", "[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'macpoolUniverse'], [u'faultInst', u'macpoolPoolable'], ["Get"])
+    mo_meta = MoMeta("MacpoolAddr", "macpoolAddr", "[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], ['macpoolUniverse'], ['faultInst', 'macpoolPoolable'], ["Get"])
 
     prop_meta = {
         "assigned": MoPropertyMeta("assigned", "assigned", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

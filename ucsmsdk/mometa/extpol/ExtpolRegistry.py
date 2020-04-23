@@ -194,7 +194,7 @@ class ExtpolRegistry(ManagedObject):
     consts = ExtpolRegistryConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ExtpolRegistry", "extpolRegistry", "reg", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], [u'extpolEp'], [u'eventInst', u'extpolClientCont', u'extpolControllerCont', u'extpolProviderCont', u'extpolRegistryFsm', u'extpolRegistryFsmTask', u'faultInst', u'observeObserved', u'policyPolicyScopeCont'], ["Get"])
+    mo_meta = MoMeta("ExtpolRegistry", "extpolRegistry", "reg", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], ['extpolEp'], ['eventInst', 'extpolClientCont', 'extpolControllerCont', 'extpolProviderCont', 'extpolRegistryFsm', 'extpolRegistryFsmTask', 'faultInst', 'observeObserved', 'policyPolicyScopeCont'], ["Get"])
 
     prop_meta = {
         "capability": MoPropertyMeta("capability", "capability", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unspecified|vmm|infra-waf|vm-mgr|pcm|infra-fw|org-mgr|virtual-switching-mgr|service-reg|vm-vasw|infra-pasw|vm-admin|infra-aggr|identifier-mgr|infra-slb|policy-mgr|stats-mgr|vm-fw|infra-pdsw|operation-mgr|infra-crypto-offloa|infra-was|boot-mgr|ipam|central-mgr|vm-slb|storage-broker|resource-mgr),){0,28}(defaultValue|unspecified|vmm|infra-waf|vm-mgr|pcm|infra-fw|org-mgr|virtual-switching-mgr|service-reg|vm-vasw|infra-pasw|vm-admin|infra-aggr|identifier-mgr|infra-slb|policy-mgr|stats-mgr|vm-fw|infra-pdsw|operation-mgr|infra-crypto-offloa|infra-was|boot-mgr|ipam|central-mgr|vm-slb|storage-broker|resource-mgr){0,1}""", [], []),

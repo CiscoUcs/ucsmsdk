@@ -19,9 +19,9 @@ class SysdebugMEpLogPolicy(ManagedObject):
     """This is SysdebugMEpLogPolicy class."""
 
     consts = SysdebugMEpLogPolicyConsts()
-    naming_props = set([u'type'])
+    naming_props = set(['type'])
 
-    mo_meta = MoMeta("SysdebugMEpLogPolicy", "sysdebugMEpLogPolicy", "log-[type]", VersionMeta.Version111j, "InputOutput", 0xff, [], ["admin", "operations"], [u'orgOrg'], [u'sysdebugBackupBehavior'], ["Get"])
+    mo_meta = MoMeta("SysdebugMEpLogPolicy", "sysdebugMEpLogPolicy", "log-[type]", VersionMeta.Version111j, "InputOutput", 0xff, [], ["admin", "operations"], ['orgOrg'], ['sysdebugBackupBehavior'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

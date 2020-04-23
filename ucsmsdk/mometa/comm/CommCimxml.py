@@ -24,7 +24,7 @@ class CommCimxml(ManagedObject):
     consts = CommCimxmlConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommCimxml", "commCimxml", "cimxml-svc", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["aaa", "admin"], [u'commSvcEp'], [], ["Get", "Set"])
+    mo_meta = MoMeta("CommCimxml", "commCimxml", "cimxml-svc", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["aaa", "admin"], ['commSvcEp'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

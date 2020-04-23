@@ -17,7 +17,7 @@ class ProcTxCounts(ManagedObject):
     consts = ProcTxCountsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ProcTxCounts", "procTxCounts", "tx", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "read-only"], [u'procManager', u'procSvc'], [], ["Get"])
+    mo_meta = MoMeta("ProcTxCounts", "procTxCounts", "tx", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "read-only"], ['procManager', 'procSvc'], [], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["clear-stats", "log-stats", "on"], []),

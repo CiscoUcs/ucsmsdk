@@ -36,9 +36,9 @@ class EquipmentIOCardStatsHist(ManagedObject):
     """This is EquipmentIOCardStatsHist class."""
 
     consts = EquipmentIOCardStatsHistConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentIOCardStatsHist", "equipmentIOCardStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], [u'equipmentIOCardStats'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentIOCardStatsHist", "equipmentIOCardStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], ['equipmentIOCardStats'], [], ["Get"])
 
     prop_meta = {
         "iom_i2_c_errors": MoPropertyMeta("iom_i2_c_errors", "IomI2CErrors", "ulong", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

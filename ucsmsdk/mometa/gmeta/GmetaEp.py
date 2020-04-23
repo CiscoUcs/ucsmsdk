@@ -15,7 +15,7 @@ class GmetaEp(ManagedObject):
     consts = GmetaEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("GmetaEp", "gmetaEp", "gmeta", VersionMeta.Version212a, "InputOutput", 0x1f, [], ["admin"], [u'topRoot'], [u'gmetaHolder', u'gmetaPolicyMapHolder'], [None])
+    mo_meta = MoMeta("GmetaEp", "gmetaEp", "gmeta", VersionMeta.Version212a, "InputOutput", 0x1f, [], ["admin"], ['topRoot'], ['gmetaHolder', 'gmetaPolicyMapHolder'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

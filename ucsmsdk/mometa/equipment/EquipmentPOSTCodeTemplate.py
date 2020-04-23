@@ -13,9 +13,9 @@ class EquipmentPOSTCodeTemplate(ManagedObject):
     """This is EquipmentPOSTCodeTemplate class."""
 
     consts = EquipmentPOSTCodeTemplateConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("EquipmentPOSTCodeTemplate", "equipmentPOSTCodeTemplate", "POST-[name]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["read-only"], [u'capabilityCatalogue'], [u'equipmentPOSTCode'], ["Get"])
+    mo_meta = MoMeta("EquipmentPOSTCodeTemplate", "equipmentPOSTCodeTemplate", "POST-[name]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["read-only"], ['capabilityCatalogue'], ['equipmentPOSTCode'], ["Get"])
 
     prop_meta = {
         "base_container": MoPropertyMeta("base_container", "baseContainer", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),

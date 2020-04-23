@@ -23,9 +23,9 @@ class StorageControllerReference(ManagedObject):
     """This is StorageControllerReference class."""
 
     consts = StorageControllerReferenceConsts()
-    naming_props = set([u'referencedRn'])
+    naming_props = set(['referencedRn'])
 
-    mo_meta = MoMeta("StorageControllerReference", "storageControllerReference", "controller-ref-[referenced_rn]", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["read-only"], [u'storageMiniStorage'], [], [None])
+    mo_meta = MoMeta("StorageControllerReference", "storageControllerReference", "controller-ref-[referenced_rn]", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["read-only"], ['storageMiniStorage'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -164,7 +164,7 @@ class ComputeServerDiscPolicy(ManagedObject):
     consts = ComputeServerDiscPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeServerDiscPolicy", "computeServerDiscPolicy", "server-discovery", VersionMeta.Version141i, "InputOutput", 0x7ff, [], ["admin", "pn-policy"], [u'orgOrg'], [u'computeServerDiscPolicyFsm', u'computeServerDiscPolicyFsmTask', u'eventInst', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("ComputeServerDiscPolicy", "computeServerDiscPolicy", "server-discovery", VersionMeta.Version141i, "InputOutput", 0x7ff, [], ["admin", "pn-policy"], ['orgOrg'], ['computeServerDiscPolicyFsm', 'computeServerDiscPolicyFsmTask', 'eventInst', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "action": MoPropertyMeta("action", "action", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["diag", "immediate", "user-acknowledged"], []),

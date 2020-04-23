@@ -196,7 +196,7 @@ class ComputeServerUnitFsm(ManagedObject):
     consts = ComputeServerUnitFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeServerUnitFsm", "computeServerUnitFsm", "fsm", VersionMeta.Version251a, "OutputOnly", 0xf, [], [""], [u'computeServerUnit'], [u'computeServerUnitFsmStage'], [None])
+    mo_meta = MoMeta("ComputeServerUnitFsm", "computeServerUnitFsm", "fsm", VersionMeta.Version251a, "OutputOnly", 0xf, [], [""], ['computeServerUnit'], ['computeServerUnitFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

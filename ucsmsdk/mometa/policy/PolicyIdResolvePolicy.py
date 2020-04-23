@@ -17,7 +17,7 @@ class PolicyIdResolvePolicy(ManagedObject):
     consts = PolicyIdResolvePolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PolicyIdResolvePolicy", "policyIdResolvePolicy", "id-policy", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["admin", "operations"], [u'policyControlEp'], [], ["Get", "Set"])
+    mo_meta = MoMeta("PolicyIdResolvePolicy", "policyIdResolvePolicy", "id-policy", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["admin", "operations"], ['policyControlEp'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -26,7 +26,7 @@ class CommDateTime(ManagedObject):
     consts = CommDateTimeConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommDateTime", "commDateTime", "datetime-svc", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config", "ext-lan-security", "operations"], [u'commLocale', u'commSvcEp', u'commSvcPolicy'], [u'commNtpProvider', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("CommDateTime", "commDateTime", "datetime-svc", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config", "ext-lan-security", "operations"], ['commLocale', 'commSvcEp', 'commSvcPolicy'], ['commNtpProvider', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

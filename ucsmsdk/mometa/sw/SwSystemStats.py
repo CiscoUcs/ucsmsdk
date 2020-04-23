@@ -30,7 +30,7 @@ class SwSystemStats(ManagedObject):
     consts = SwSystemStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SwSystemStats", "swSystemStats", "sysstats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'networkElement'], [u'faultInst', u'swSystemStatsHist'], ["Get"])
+    mo_meta = MoMeta("SwSystemStats", "swSystemStats", "sysstats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['networkElement'], ['faultInst', 'swSystemStatsHist'], ["Get"])
 
     prop_meta = {
         "correctable_parity_error": MoPropertyMeta("correctable_parity_error", "CorrectableParityError", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-4294967295"]),

@@ -51,7 +51,7 @@ class FirmwareBootDefinition(ManagedObject):
     consts = FirmwareBootDefinitionConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareBootDefinition", "firmwareBootDefinition", "fw-boot-def", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["admin"], [u'adaptorHostEthIf', u'adaptorHostFcIf', u'biosUnit', u'capabilityCatalogue', u'capabilityMgmtExtension', u'equipmentPsu', u'graphicsCard', u'memoryPersistentMemoryUnit', u'mgmtController', u'pciSwitch', u'storageController', u'storageLocalDisk', u'storageNvmeSwitch', u'storageOnboardDevice', u'storageSasExpander'], [u'firmwareBootUnit', u'firmwareUcscInfo'], ["Get"])
+    mo_meta = MoMeta("FirmwareBootDefinition", "firmwareBootDefinition", "fw-boot-def", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["admin"], ['adaptorHostEthIf', 'adaptorHostFcIf', 'biosUnit', 'capabilityCatalogue', 'capabilityMgmtExtension', 'equipmentPsu', 'graphicsCard', 'memoryPersistentMemoryUnit', 'mgmtController', 'pciSwitch', 'storageController', 'storageLocalDisk', 'storageNvmeSwitch', 'storageOnboardDevice', 'storageSasExpander'], ['firmwareBootUnit', 'firmwareUcscInfo'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

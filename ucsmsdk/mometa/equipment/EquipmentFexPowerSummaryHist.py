@@ -20,9 +20,9 @@ class EquipmentFexPowerSummaryHist(ManagedObject):
     """This is EquipmentFexPowerSummaryHist class."""
 
     consts = EquipmentFexPowerSummaryHistConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentFexPowerSummaryHist", "equipmentFexPowerSummaryHist", "[id]", VersionMeta.Version141i, "OutputOnly", 0xf, [], ["read-only"], [u'equipmentFexPowerSummary'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentFexPowerSummaryHist", "equipmentFexPowerSummaryHist", "[id]", VersionMeta.Version141i, "OutputOnly", 0xf, [], ["read-only"], ['equipmentFexPowerSummary'], [], ["Get"])
 
     prop_meta = {
         "module_power": MoPropertyMeta("module_power", "ModulePower", "float", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

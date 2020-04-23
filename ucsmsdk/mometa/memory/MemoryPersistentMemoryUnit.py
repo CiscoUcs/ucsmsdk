@@ -203,9 +203,9 @@ class MemoryPersistentMemoryUnit(ManagedObject):
     """This is MemoryPersistentMemoryUnit class."""
 
     consts = MemoryPersistentMemoryUnitConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("MemoryPersistentMemoryUnit", "memoryPersistentMemoryUnit", "pmemory-[id]", VersionMeta.Version404a, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'memoryArray'], [u'faultInst', u'firmwareBootDefinition', u'firmwareRunning', u'memoryErrorStats', u'memoryUnitEnvStats'], [None])
+    mo_meta = MoMeta("MemoryPersistentMemoryUnit", "memoryPersistentMemoryUnit", "pmemory-[id]", VersionMeta.Version404a, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['memoryArray'], ['faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'memoryErrorStats', 'memoryUnitEnvStats'], [None])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["policy", "reset-errors"], []),

@@ -42,7 +42,7 @@ class VnicIpcIf(ManagedObject):
     """This is VnicIpcIf class."""
 
     consts = VnicIpcIfConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
     mo_meta = MoMeta("VnicIpcIf", "vnicIpcIf", "if-[name]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ls-config", "ls-network", "ls-server"], [], [], ["Get"])
 

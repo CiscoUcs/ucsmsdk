@@ -16,7 +16,7 @@ class TopInfoPolicy(ManagedObject):
     consts = TopInfoPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("TopInfoPolicy", "topInfoPolicy", "info-policy", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["admin", "ext-lan-config", "ext-san-config"], [u'topSystem'], [], ["Get", "Set"])
+    mo_meta = MoMeta("TopInfoPolicy", "topInfoPolicy", "info-policy", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["admin", "ext-lan-config", "ext-san-config"], ['topSystem'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

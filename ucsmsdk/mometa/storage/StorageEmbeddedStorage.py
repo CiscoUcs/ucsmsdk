@@ -80,7 +80,7 @@ class StorageEmbeddedStorage(ManagedObject):
     consts = StorageEmbeddedStorageConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("StorageEmbeddedStorage", "storageEmbeddedStorage", "embedded-storage", VersionMeta.Version312b, "InputOutput", 0x1f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'storageController'], [], ["Get"])
+    mo_meta = MoMeta("StorageEmbeddedStorage", "storageEmbeddedStorage", "embedded-storage", VersionMeta.Version312b, "InputOutput", 0x1f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['storageController'], [], ["Get"])
 
     prop_meta = {
         "block_size": MoPropertyMeta("block_size", "blockSize", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["512", "unknown"], ["0-4294967295"]),

@@ -13,7 +13,7 @@ class SyntheticTime(ManagedObject):
     """This is SyntheticTime class."""
 
     consts = SyntheticTimeConsts()
-    naming_props = set([u'ts'])
+    naming_props = set(['ts'])
 
     mo_meta = MoMeta("SyntheticTime", "syntheticTime", "time-[ts]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin"], [], [], ["Get"])
 

@@ -24,9 +24,9 @@ class AaaCimcSession(ManagedObject):
     """This is AaaCimcSession class."""
 
     consts = AaaCimcSessionConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("AaaCimcSession", "aaaCimcSession", "cimc-term-[id]", VersionMeta.Version212a, "InputOutput", 0x7f, [], ["admin"], [u'aaaEpUser', u'aaaRemoteUser', u'aaaUser', u'commSnmpUser', u'storageEpUser'], [], ["Get", "Set"])
+    mo_meta = MoMeta("AaaCimcSession", "aaaCimcSession", "cimc-term-[id]", VersionMeta.Version212a, "InputOutput", 0x7f, [], ["admin"], ['aaaEpUser', 'aaaRemoteUser', 'aaaUser', 'commSnmpUser', 'storageEpUser'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "inactive"], []),

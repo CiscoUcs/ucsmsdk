@@ -143,9 +143,9 @@ class AdaptorHostPort(ManagedObject):
     """This is AdaptorHostPort class."""
 
     consts = AdaptorHostPortConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorHostPort", "adaptorHostPort", "host-port-[id]", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["read-only"], [u'adaptorUnit'], [], ["Get"])
+    mo_meta = MoMeta("AdaptorHostPort", "adaptorHostPort", "host-port-[id]", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["read-only"], ['adaptorUnit'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

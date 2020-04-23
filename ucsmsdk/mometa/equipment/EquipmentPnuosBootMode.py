@@ -20,7 +20,7 @@ class EquipmentPnuosBootMode(ManagedObject):
     consts = EquipmentPnuosBootModeConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentPnuosBootMode", "equipmentPnuosBootMode", "pnuosBootMode", VersionMeta.Version323a, "InputOutput", 0xff, [], [""], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentPnuosBootMode", "equipmentPnuosBootMode", "pnuosBootMode", VersionMeta.Version323a, "InputOutput", 0xff, [], [""], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
         "boot_mode": MoPropertyMeta("boot_mode", "bootMode", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["legacy", "uefi"], []),

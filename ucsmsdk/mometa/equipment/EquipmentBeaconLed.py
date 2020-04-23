@@ -176,7 +176,7 @@ class EquipmentBeaconLed(ManagedObject):
     consts = EquipmentBeaconLedConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentBeaconLed", "equipmentBeaconLed", "beacon", VersionMeta.Version201m, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis', u'equipmentFanModule', u'equipmentFex', u'equipmentIOCard', u'equipmentPsu', u'equipmentSwitchCard'], [u'equipmentBeaconLedFsm', u'equipmentBeaconLedFsmTask', u'eventInst', u'faultInst'], ["Get"])
+    mo_meta = MoMeta("EquipmentBeaconLed", "equipmentBeaconLed", "beacon", VersionMeta.Version201m, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['computeBlade', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFanModule', 'equipmentFex', 'equipmentIOCard', 'equipmentPsu', 'equipmentSwitchCard'], ['equipmentBeaconLedFsm', 'equipmentBeaconLedFsmTask', 'eventInst', 'faultInst'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["blinking", "eth", "fc", "off", "on"], []),

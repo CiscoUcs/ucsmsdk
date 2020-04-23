@@ -28,12 +28,6 @@ class MgmtControllerFsmStageConsts:
     NAME_ACTIVATE_CMCPOLL_ACTIVATION = "ActivateCMCPollActivation"
     NAME_ACTIVATE_CMCRESET = "ActivateCMCReset"
     NAME_ACTIVATE_CMCSUCCESS = "ActivateCMCSuccess"
-    NAME_ACTIVATE_COLUSA_CMCACTIVATE = "ActivateColusaCMCActivate"
-    NAME_ACTIVATE_COLUSA_CMCBEGIN = "ActivateColusaCMCBegin"
-    NAME_ACTIVATE_COLUSA_CMCFAIL = "ActivateColusaCMCFail"
-    NAME_ACTIVATE_COLUSA_CMCPOLL_ACTIVATION = "ActivateColusaCMCPollActivation"
-    NAME_ACTIVATE_COLUSA_CMCRESET = "ActivateColusaCMCReset"
-    NAME_ACTIVATE_COLUSA_CMCSUCCESS = "ActivateColusaCMCSuccess"
     NAME_ACTIVATE_IOMACTIVATE = "ActivateIOMActivate"
     NAME_ACTIVATE_IOMBEGIN = "ActivateIOMBegin"
     NAME_ACTIVATE_IOMFAIL = "ActivateIOMFail"
@@ -50,6 +44,12 @@ class MgmtControllerFsmStageConsts:
     NAME_ACTIVATE_SAS_EXPANDER_POLL_ACTIVATE_STATUS = "ActivateSasExpanderPollActivateStatus"
     NAME_ACTIVATE_SAS_EXPANDER_SUCCESS = "ActivateSasExpanderSuccess"
     NAME_ACTIVATE_SAS_EXPANDER_WAIT_FOR_ACTIVATION = "ActivateSasExpanderWaitForActivation"
+    NAME_ACTIVATE_STORAGE_SERVER_CMCACTIVATE = "ActivateStorageServerCMCActivate"
+    NAME_ACTIVATE_STORAGE_SERVER_CMCBEGIN = "ActivateStorageServerCMCBegin"
+    NAME_ACTIVATE_STORAGE_SERVER_CMCFAIL = "ActivateStorageServerCMCFail"
+    NAME_ACTIVATE_STORAGE_SERVER_CMCPOLL_ACTIVATION = "ActivateStorageServerCMCPollActivation"
+    NAME_ACTIVATE_STORAGE_SERVER_CMCRESET = "ActivateStorageServerCMCReset"
+    NAME_ACTIVATE_STORAGE_SERVER_CMCSUCCESS = "ActivateStorageServerCMCSuccess"
     NAME_ENABLE_SECURE_BOOT_BEGIN = "EnableSecureBootBegin"
     NAME_ENABLE_SECURE_BOOT_FAIL = "EnableSecureBootFail"
     NAME_ENABLE_SECURE_BOOT_POLL_SECURE_BOOT_STATUS = "EnableSecureBootPollSecureBootStatus"
@@ -131,20 +131,6 @@ class MgmtControllerFsmStageConsts:
     NAME_UPDATE_CMCPOLL_UPDATE_STATUS = "UpdateCMCPollUpdateStatus"
     NAME_UPDATE_CMCSUCCESS = "UpdateCMCSuccess"
     NAME_UPDATE_CMCUPDATE_REQUEST = "UpdateCMCUpdateRequest"
-    NAME_UPDATE_COLUSA_BOARD_CONTROLLER_BEGIN = "UpdateColusaBoardControllerBegin"
-    NAME_UPDATE_COLUSA_BOARD_CONTROLLER_FAIL = "UpdateColusaBoardControllerFail"
-    NAME_UPDATE_COLUSA_BOARD_CONTROLLER_POLL_UPDATE_STATUS = "UpdateColusaBoardControllerPollUpdateStatus"
-    NAME_UPDATE_COLUSA_BOARD_CONTROLLER_POWER_OFF_SERVERS = "UpdateColusaBoardControllerPowerOffServers"
-    NAME_UPDATE_COLUSA_BOARD_CONTROLLER_POWER_ON_SERVERS = "UpdateColusaBoardControllerPowerOnServers"
-    NAME_UPDATE_COLUSA_BOARD_CONTROLLER_PREPARE_FOR_UPDATE = "UpdateColusaBoardControllerPrepareForUpdate"
-    NAME_UPDATE_COLUSA_BOARD_CONTROLLER_SERVERS_POWER_OFF_COMPLETION = "UpdateColusaBoardControllerServersPowerOffCompletion"
-    NAME_UPDATE_COLUSA_BOARD_CONTROLLER_SUCCESS = "UpdateColusaBoardControllerSuccess"
-    NAME_UPDATE_COLUSA_BOARD_CONTROLLER_UPDATE_REQUEST = "UpdateColusaBoardControllerUpdateRequest"
-    NAME_UPDATE_COLUSA_CMCBEGIN = "UpdateColusaCMCBegin"
-    NAME_UPDATE_COLUSA_CMCFAIL = "UpdateColusaCMCFail"
-    NAME_UPDATE_COLUSA_CMCPOLL_UPDATE_STATUS = "UpdateColusaCMCPollUpdateStatus"
-    NAME_UPDATE_COLUSA_CMCSUCCESS = "UpdateColusaCMCSuccess"
-    NAME_UPDATE_COLUSA_CMCUPDATE_REQUEST = "UpdateColusaCMCUpdateRequest"
     NAME_UPDATE_IOMBEGIN = "UpdateIOMBegin"
     NAME_UPDATE_IOMCOPY_IOMIMG_TO_SUB = "UpdateIOMCopyIOMImgToSub"
     NAME_UPDATE_IOMCOPY_IMG_FROM_REP = "UpdateIOMCopyImgFromRep"
@@ -167,6 +153,11 @@ class MgmtControllerFsmStageConsts:
     NAME_UPDATE_SAS_EXPANDER_POLL_UPDATE_STATUS = "UpdateSasExpanderPollUpdateStatus"
     NAME_UPDATE_SAS_EXPANDER_SUCCESS = "UpdateSasExpanderSuccess"
     NAME_UPDATE_SAS_EXPANDER_UPDATE_REQUEST = "UpdateSasExpanderUpdateRequest"
+    NAME_UPDATE_STORAGE_SERVER_CMCBEGIN = "UpdateStorageServerCMCBegin"
+    NAME_UPDATE_STORAGE_SERVER_CMCFAIL = "UpdateStorageServerCMCFail"
+    NAME_UPDATE_STORAGE_SERVER_CMCPOLL_UPDATE_STATUS = "UpdateStorageServerCMCPollUpdateStatus"
+    NAME_UPDATE_STORAGE_SERVER_CMCSUCCESS = "UpdateStorageServerCMCSuccess"
+    NAME_UPDATE_STORAGE_SERVER_CMCUPDATE_REQUEST = "UpdateStorageServerCMCUpdateRequest"
     NAME_UPDATE_SWITCH_BEGIN = "UpdateSwitchBegin"
     NAME_UPDATE_SWITCH_FAIL = "UpdateSwitchFail"
     NAME_UPDATE_SWITCH_RESET_LOCAL = "UpdateSwitchResetLocal"
@@ -188,6 +179,15 @@ class MgmtControllerFsmStageConsts:
     NAME_UPDATE_UCSMANAGER_SPSUCCESS = "UpdateUCSManagerSPSuccess"
     NAME_UPDATE_UCSMANAGER_START = "UpdateUCSManagerStart"
     NAME_UPDATE_UCSMANAGER_SUCCESS = "UpdateUCSManagerSuccess"
+    NAME_UPGRADE_BOARD_CONTROLLER_BEGIN = "UpgradeBoardControllerBegin"
+    NAME_UPGRADE_BOARD_CONTROLLER_FAIL = "UpgradeBoardControllerFail"
+    NAME_UPGRADE_BOARD_CONTROLLER_POLL_UPDATE_STATUS = "UpgradeBoardControllerPollUpdateStatus"
+    NAME_UPGRADE_BOARD_CONTROLLER_POWER_OFF_SERVERS = "UpgradeBoardControllerPowerOffServers"
+    NAME_UPGRADE_BOARD_CONTROLLER_POWER_ON_SERVERS = "UpgradeBoardControllerPowerOnServers"
+    NAME_UPGRADE_BOARD_CONTROLLER_PREPARE_FOR_UPDATE = "UpgradeBoardControllerPrepareForUpdate"
+    NAME_UPGRADE_BOARD_CONTROLLER_SERVERS_POWER_OFF_COMPLETION = "UpgradeBoardControllerServersPowerOffCompletion"
+    NAME_UPGRADE_BOARD_CONTROLLER_SUCCESS = "UpgradeBoardControllerSuccess"
+    NAME_UPGRADE_BOARD_CONTROLLER_UPDATE_REQUEST = "UpgradeBoardControllerUpdateRequest"
     NAME_NOP = "nop"
     STAGE_STATUS_FAIL = "fail"
     STAGE_STATUS_IN_PROGRESS = "inProgress"
@@ -202,16 +202,16 @@ class MgmtControllerFsmStage(ManagedObject):
     """This is MgmtControllerFsmStage class."""
 
     consts = MgmtControllerFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("MgmtControllerFsmStage", "mgmtControllerFsmStage", "stage-[name]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'mgmtControllerFsm'], [], [None])
+    mo_meta = MoMeta("MgmtControllerFsmStage", "mgmtControllerFsmStage", "stage-[name]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['mgmtControllerFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []),
         "last_update_time": MoPropertyMeta("last_update_time", "lastUpdateTime", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateAdaptorActivate", "ActivateAdaptorActivatePeer", "ActivateAdaptorBegin", "ActivateAdaptorFail", "ActivateAdaptorPollActivateStatus", "ActivateAdaptorPowerOffServers", "ActivateAdaptorPowerOnServers", "ActivateAdaptorReset", "ActivateAdaptorServersPowerOffCompletion", "ActivateAdaptorSuccess", "ActivateBMCActivate", "ActivateBMCBegin", "ActivateBMCFail", "ActivateBMCReset", "ActivateBMCSuccess", "ActivateCMCActivate", "ActivateCMCBegin", "ActivateCMCFail", "ActivateCMCPollActivation", "ActivateCMCReset", "ActivateCMCSuccess", "ActivateColusaCMCActivate", "ActivateColusaCMCBegin", "ActivateColusaCMCFail", "ActivateColusaCMCPollActivation", "ActivateColusaCMCReset", "ActivateColusaCMCSuccess", "ActivateIOMActivate", "ActivateIOMBegin", "ActivateIOMFail", "ActivateIOMReset", "ActivateIOMSuccess", "ActivateLocalDiskActivate", "ActivateLocalDiskBegin", "ActivateLocalDiskFail", "ActivateLocalDiskPollActivateStatus", "ActivateLocalDiskSuccess", "ActivateSasExpanderActivate", "ActivateSasExpanderBegin", "ActivateSasExpanderFail", "ActivateSasExpanderPollActivateStatus", "ActivateSasExpanderSuccess", "ActivateSasExpanderWaitForActivation", "EnableSecureBootBegin", "EnableSecureBootFail", "EnableSecureBootPollSecureBootStatus", "EnableSecureBootPollUpdateStatus", "EnableSecureBootReset", "EnableSecureBootSuccess", "EnableSecureBootUpdateRequest", "ExtMgmtIfConfigBegin", "ExtMgmtIfConfigFail", "ExtMgmtIfConfigPrimary", "ExtMgmtIfConfigSecondary", "ExtMgmtIfConfigSuccess", "ExtMgmtInterfaceConfigActive", "ExtMgmtInterfaceConfigBegin", "ExtMgmtInterfaceConfigCIMCVlanCfgLocal", "ExtMgmtInterfaceConfigCIMCVlanCfgPeer", "ExtMgmtInterfaceConfigCMCVlanCfg", "ExtMgmtInterfaceConfigCMCVlanCfgPeer", "ExtMgmtInterfaceConfigFail", "ExtMgmtInterfaceConfigStandbyCMCVlanCfg", "ExtMgmtInterfaceConfigSuccess", "KvmCertBegin", "KvmCertConfig", "KvmCertFail", "KvmCertResetCimc", "KvmCertSuccess", "LockConfigBegin", "LockConfigFail", "LockConfigPowerButtonLockConfig", "LockConfigSuccess", "OnlineBegin", "OnlineBmcConfigureConnLocal", "OnlineBmcConfigureConnPeer", "OnlineFail", "OnlineSuccess", "OnlineSwConfigureConnLocal", "OnlineSwConfigureConnPeer", "PowerBudgetReclaimConfigBegin", "PowerBudgetReclaimConfigFail", "PowerBudgetReclaimConfigPowerOffReclaim", "PowerBudgetReclaimConfigPowerOffWait", "PowerBudgetReclaimConfigSuccess", "PowerCapBegin", "PowerCapConfig", "PowerCapFail", "PowerCapSuccess", "RegistryConfigBegin", "RegistryConfigFail", "RegistryConfigRemove", "RegistryConfigRemovePeer", "RegistryConfigSuccess", "SysConfigBegin", "SysConfigFail", "SysConfigPrimary", "SysConfigSecondary", "SysConfigSuccess", "UpdateAdaptorBegin", "UpdateAdaptorFail", "UpdateAdaptorPollUpdateStatus", "UpdateAdaptorSuccess", "UpdateAdaptorUpdateRequest", "UpdateAdaptorUpdateRequestPeer", "UpdateBMCBegin", "UpdateBMCFail", "UpdateBMCPollUpdateStatus", "UpdateBMCSuccess", "UpdateBMCUpdateRequest", "UpdateBoardControllerBegin", "UpdateBoardControllerFail", "UpdateBoardControllerPollUpdateStatus", "UpdateBoardControllerPowerOffServers", "UpdateBoardControllerPowerOnServers", "UpdateBoardControllerPrepareForUpdate", "UpdateBoardControllerServersPowerOffCompletion", "UpdateBoardControllerSuccess", "UpdateBoardControllerUpdateRequest", "UpdateCMCBegin", "UpdateCMCFail", "UpdateCMCPollUpdateStatus", "UpdateCMCSuccess", "UpdateCMCUpdateRequest", "UpdateColusaBoardControllerBegin", "UpdateColusaBoardControllerFail", "UpdateColusaBoardControllerPollUpdateStatus", "UpdateColusaBoardControllerPowerOffServers", "UpdateColusaBoardControllerPowerOnServers", "UpdateColusaBoardControllerPrepareForUpdate", "UpdateColusaBoardControllerServersPowerOffCompletion", "UpdateColusaBoardControllerSuccess", "UpdateColusaBoardControllerUpdateRequest", "UpdateColusaCMCBegin", "UpdateColusaCMCFail", "UpdateColusaCMCPollUpdateStatus", "UpdateColusaCMCSuccess", "UpdateColusaCMCUpdateRequest", "UpdateIOMBegin", "UpdateIOMCopyIOMImgToSub", "UpdateIOMCopyImgFromRep", "UpdateIOMFail", "UpdateIOMPollUpdateStatus", "UpdateIOMSuccess", "UpdateIOMUpdateRequest", "UpdateRaidControllerActivate", "UpdateRaidControllerBegin", "UpdateRaidControllerFail", "UpdateRaidControllerPollActivation", "UpdateRaidControllerPollUpdateStatus", "UpdateRaidControllerPowerOffServers", "UpdateRaidControllerPowerOnServers", "UpdateRaidControllerServersPowerOffCompletion", "UpdateRaidControllerSuccess", "UpdateRaidControllerUpdateRequest", "UpdateSasExpanderBegin", "UpdateSasExpanderFail", "UpdateSasExpanderPollUpdateStatus", "UpdateSasExpanderSuccess", "UpdateSasExpanderUpdateRequest", "UpdateSwitchBegin", "UpdateSwitchFail", "UpdateSwitchResetLocal", "UpdateSwitchResetRemote", "UpdateSwitchSuccess", "UpdateSwitchUpdateLocal", "UpdateSwitchUpdateRemote", "UpdateSwitchUpdateSpLocal", "UpdateSwitchUpdateSpRemote", "UpdateSwitchVerifyLocal", "UpdateSwitchVerifyRemote", "UpdateUCSManagerBegin", "UpdateUCSManagerExecute", "UpdateUCSManagerFail", "UpdateUCSManagerSPBegin", "UpdateUCSManagerSPExecute", "UpdateUCSManagerSPFail", "UpdateUCSManagerSPStart", "UpdateUCSManagerSPSuccess", "UpdateUCSManagerStart", "UpdateUCSManagerSuccess", "nop"], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateAdaptorActivate", "ActivateAdaptorActivatePeer", "ActivateAdaptorBegin", "ActivateAdaptorFail", "ActivateAdaptorPollActivateStatus", "ActivateAdaptorPowerOffServers", "ActivateAdaptorPowerOnServers", "ActivateAdaptorReset", "ActivateAdaptorServersPowerOffCompletion", "ActivateAdaptorSuccess", "ActivateBMCActivate", "ActivateBMCBegin", "ActivateBMCFail", "ActivateBMCReset", "ActivateBMCSuccess", "ActivateCMCActivate", "ActivateCMCBegin", "ActivateCMCFail", "ActivateCMCPollActivation", "ActivateCMCReset", "ActivateCMCSuccess", "ActivateIOMActivate", "ActivateIOMBegin", "ActivateIOMFail", "ActivateIOMReset", "ActivateIOMSuccess", "ActivateLocalDiskActivate", "ActivateLocalDiskBegin", "ActivateLocalDiskFail", "ActivateLocalDiskPollActivateStatus", "ActivateLocalDiskSuccess", "ActivateSasExpanderActivate", "ActivateSasExpanderBegin", "ActivateSasExpanderFail", "ActivateSasExpanderPollActivateStatus", "ActivateSasExpanderSuccess", "ActivateSasExpanderWaitForActivation", "ActivateStorageServerCMCActivate", "ActivateStorageServerCMCBegin", "ActivateStorageServerCMCFail", "ActivateStorageServerCMCPollActivation", "ActivateStorageServerCMCReset", "ActivateStorageServerCMCSuccess", "EnableSecureBootBegin", "EnableSecureBootFail", "EnableSecureBootPollSecureBootStatus", "EnableSecureBootPollUpdateStatus", "EnableSecureBootReset", "EnableSecureBootSuccess", "EnableSecureBootUpdateRequest", "ExtMgmtIfConfigBegin", "ExtMgmtIfConfigFail", "ExtMgmtIfConfigPrimary", "ExtMgmtIfConfigSecondary", "ExtMgmtIfConfigSuccess", "ExtMgmtInterfaceConfigActive", "ExtMgmtInterfaceConfigBegin", "ExtMgmtInterfaceConfigCIMCVlanCfgLocal", "ExtMgmtInterfaceConfigCIMCVlanCfgPeer", "ExtMgmtInterfaceConfigCMCVlanCfg", "ExtMgmtInterfaceConfigCMCVlanCfgPeer", "ExtMgmtInterfaceConfigFail", "ExtMgmtInterfaceConfigStandbyCMCVlanCfg", "ExtMgmtInterfaceConfigSuccess", "KvmCertBegin", "KvmCertConfig", "KvmCertFail", "KvmCertResetCimc", "KvmCertSuccess", "LockConfigBegin", "LockConfigFail", "LockConfigPowerButtonLockConfig", "LockConfigSuccess", "OnlineBegin", "OnlineBmcConfigureConnLocal", "OnlineBmcConfigureConnPeer", "OnlineFail", "OnlineSuccess", "OnlineSwConfigureConnLocal", "OnlineSwConfigureConnPeer", "PowerBudgetReclaimConfigBegin", "PowerBudgetReclaimConfigFail", "PowerBudgetReclaimConfigPowerOffReclaim", "PowerBudgetReclaimConfigPowerOffWait", "PowerBudgetReclaimConfigSuccess", "PowerCapBegin", "PowerCapConfig", "PowerCapFail", "PowerCapSuccess", "RegistryConfigBegin", "RegistryConfigFail", "RegistryConfigRemove", "RegistryConfigRemovePeer", "RegistryConfigSuccess", "SysConfigBegin", "SysConfigFail", "SysConfigPrimary", "SysConfigSecondary", "SysConfigSuccess", "UpdateAdaptorBegin", "UpdateAdaptorFail", "UpdateAdaptorPollUpdateStatus", "UpdateAdaptorSuccess", "UpdateAdaptorUpdateRequest", "UpdateAdaptorUpdateRequestPeer", "UpdateBMCBegin", "UpdateBMCFail", "UpdateBMCPollUpdateStatus", "UpdateBMCSuccess", "UpdateBMCUpdateRequest", "UpdateBoardControllerBegin", "UpdateBoardControllerFail", "UpdateBoardControllerPollUpdateStatus", "UpdateBoardControllerPowerOffServers", "UpdateBoardControllerPowerOnServers", "UpdateBoardControllerPrepareForUpdate", "UpdateBoardControllerServersPowerOffCompletion", "UpdateBoardControllerSuccess", "UpdateBoardControllerUpdateRequest", "UpdateCMCBegin", "UpdateCMCFail", "UpdateCMCPollUpdateStatus", "UpdateCMCSuccess", "UpdateCMCUpdateRequest", "UpdateIOMBegin", "UpdateIOMCopyIOMImgToSub", "UpdateIOMCopyImgFromRep", "UpdateIOMFail", "UpdateIOMPollUpdateStatus", "UpdateIOMSuccess", "UpdateIOMUpdateRequest", "UpdateRaidControllerActivate", "UpdateRaidControllerBegin", "UpdateRaidControllerFail", "UpdateRaidControllerPollActivation", "UpdateRaidControllerPollUpdateStatus", "UpdateRaidControllerPowerOffServers", "UpdateRaidControllerPowerOnServers", "UpdateRaidControllerServersPowerOffCompletion", "UpdateRaidControllerSuccess", "UpdateRaidControllerUpdateRequest", "UpdateSasExpanderBegin", "UpdateSasExpanderFail", "UpdateSasExpanderPollUpdateStatus", "UpdateSasExpanderSuccess", "UpdateSasExpanderUpdateRequest", "UpdateStorageServerCMCBegin", "UpdateStorageServerCMCFail", "UpdateStorageServerCMCPollUpdateStatus", "UpdateStorageServerCMCSuccess", "UpdateStorageServerCMCUpdateRequest", "UpdateSwitchBegin", "UpdateSwitchFail", "UpdateSwitchResetLocal", "UpdateSwitchResetRemote", "UpdateSwitchSuccess", "UpdateSwitchUpdateLocal", "UpdateSwitchUpdateRemote", "UpdateSwitchUpdateSpLocal", "UpdateSwitchUpdateSpRemote", "UpdateSwitchVerifyLocal", "UpdateSwitchVerifyRemote", "UpdateUCSManagerBegin", "UpdateUCSManagerExecute", "UpdateUCSManagerFail", "UpdateUCSManagerSPBegin", "UpdateUCSManagerSPExecute", "UpdateUCSManagerSPFail", "UpdateUCSManagerSPStart", "UpdateUCSManagerSPSuccess", "UpdateUCSManagerStart", "UpdateUCSManagerSuccess", "UpgradeBoardControllerBegin", "UpgradeBoardControllerFail", "UpgradeBoardControllerPollUpdateStatus", "UpgradeBoardControllerPowerOffServers", "UpgradeBoardControllerPowerOnServers", "UpgradeBoardControllerPrepareForUpdate", "UpgradeBoardControllerServersPowerOffCompletion", "UpgradeBoardControllerSuccess", "UpgradeBoardControllerUpdateRequest", "nop"], []),
         "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "retry": MoPropertyMeta("retry", "retry", "byte", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),

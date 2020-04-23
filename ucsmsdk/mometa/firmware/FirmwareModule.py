@@ -13,9 +13,9 @@ class FirmwareModule(ManagedObject):
     """This is FirmwareModule class."""
 
     consts = FirmwareModuleConsts()
-    naming_props = set([u'name', u'type'])
+    naming_props = set(['name', 'type'])
 
-    mo_meta = MoMeta("FirmwareModule", "firmwareModule", "module-[name]|[type]", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["admin"], [u'firmwareImage'], [], [None])
+    mo_meta = MoMeta("FirmwareModule", "firmwareModule", "module-[name]|[type]", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["admin"], ['firmwareImage'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

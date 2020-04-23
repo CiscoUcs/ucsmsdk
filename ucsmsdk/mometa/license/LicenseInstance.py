@@ -176,9 +176,9 @@ class LicenseInstance(ManagedObject):
     """This is LicenseInstance class."""
 
     consts = LicenseInstanceConsts()
-    naming_props = set([u'scope'])
+    naming_props = set(['scope'])
 
-    mo_meta = MoMeta("LicenseInstance", "licenseInstance", "inst-[scope]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["admin"], [u'licenseFeature'], [u'eventInst', u'faultInst', u'licenseInstanceFsm', u'licenseInstanceFsmTask', u'licenseProp', u'licenseSourceFile', u'licenseTarget'], ["Get"])
+    mo_meta = MoMeta("LicenseInstance", "licenseInstance", "inst-[scope]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["admin"], ['licenseFeature'], ['eventInst', 'faultInst', 'licenseInstanceFsm', 'licenseInstanceFsmTask', 'licenseProp', 'licenseSourceFile', 'licenseTarget'], ["Get"])
 
     prop_meta = {
         "abs_quant": MoPropertyMeta("abs_quant", "absQuant", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),

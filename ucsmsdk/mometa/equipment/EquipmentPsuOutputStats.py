@@ -18,7 +18,7 @@ class EquipmentPsuOutputStats(ManagedObject):
     consts = EquipmentPsuOutputStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentPsuOutputStats", "equipmentPsuOutputStats", "output-stats", VersionMeta.Version201m, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'equipmentPsu'], [u'equipmentPsuOutputStatsHist'], ["Get"])
+    mo_meta = MoMeta("EquipmentPsuOutputStats", "equipmentPsuOutputStats", "output-stats", VersionMeta.Version201m, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['equipmentPsu'], ['equipmentPsuOutputStatsHist'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

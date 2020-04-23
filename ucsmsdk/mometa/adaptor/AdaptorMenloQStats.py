@@ -28,9 +28,9 @@ class AdaptorMenloQStats(ManagedObject):
     """This is AdaptorMenloQStats class."""
 
     consts = AdaptorMenloQStatsConsts()
-    naming_props = set([u'menloQueueComponent', u'menloQueueIndex'])
+    naming_props = set(['menloQueueComponent', 'menloQueueIndex'])
 
-    mo_meta = MoMeta("AdaptorMenloQStats", "adaptorMenloQStats", "menlo-q-stats-comp-[menlo_queue_component]index-[menlo_queue_index]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'adaptorUnit'], [u'adaptorMenloQStatsHist'], ["Get"])
+    mo_meta = MoMeta("AdaptorMenloQStats", "adaptorMenloQStats", "menlo-q-stats-comp-[menlo_queue_component]index-[menlo_queue_index]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['adaptorUnit'], ['adaptorMenloQStatsHist'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

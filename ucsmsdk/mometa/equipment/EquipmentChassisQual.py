@@ -13,9 +13,9 @@ class EquipmentChassisQual(ManagedObject):
     """This is EquipmentChassisQual class."""
 
     consts = EquipmentChassisQualConsts()
-    naming_props = set([u'minId', u'maxId'])
+    naming_props = set(['minId', 'maxId'])
 
-    mo_meta = MoMeta("EquipmentChassisQual", "equipmentChassisQual", "chassis-from-[min_id]-to-[max_id]", VersionMeta.Version312b, "InputOutput", 0x7f, [], ["admin", "pn-policy"], [u'equipmentQual'], [], [None])
+    mo_meta = MoMeta("EquipmentChassisQual", "equipmentChassisQual", "chassis-from-[min_id]-to-[max_id]", VersionMeta.Version312b, "InputOutput", 0x7f, [], ["admin", "pn-policy"], ['equipmentQual'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

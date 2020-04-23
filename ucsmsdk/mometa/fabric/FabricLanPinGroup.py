@@ -16,9 +16,9 @@ class FabricLanPinGroup(ManagedObject):
     """This is FabricLanPinGroup class."""
 
     consts = FabricLanPinGroupConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricLanPinGroup", "fabricLanPinGroup", "lan-pin-group-[name]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricLanCloud'], [u'fabricLanPinTarget', u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricLanPinGroup", "fabricLanPinGroup", "lan-pin-group-[name]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricLanCloud'], ['fabricLanPinTarget', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

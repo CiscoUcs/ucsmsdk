@@ -15,7 +15,7 @@ class ApePaloVnicStats(ManagedObject):
     consts = ApePaloVnicStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ApePaloVnicStats", "apePaloVnicStats", "palostats", VersionMeta.Version211a, "InputOutput", 0x1fff, [], ["read-only"], [u'apeMenloVnic', u'apePaloVnic'], [], [None])
+    mo_meta = MoMeta("ApePaloVnicStats", "apePaloVnicStats", "palostats", VersionMeta.Version211a, "InputOutput", 0x1fff, [], ["read-only"], ['apeMenloVnic', 'apePaloVnic'], [], [None])
 
     prop_meta = {
         "bytes_eg": MoPropertyMeta("bytes_eg", "bytes_eg", "ulong", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], []),

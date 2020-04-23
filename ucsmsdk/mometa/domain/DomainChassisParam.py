@@ -13,9 +13,9 @@ class DomainChassisParam(ManagedObject):
     """This is DomainChassisParam class."""
 
     consts = DomainChassisParamConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("DomainChassisParam", "domainChassisParam", "chassis-param-[name]", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["admin"], [u'domainChassisFeature', u'domainEnvironmentFeature', u'domainNetworkFeature', u'domainServerFeature', u'domainStorageFeature'], [], ["Get", "Set"])
+    mo_meta = MoMeta("DomainChassisParam", "domainChassisParam", "chassis-param-[name]", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["admin"], ['domainChassisFeature', 'domainEnvironmentFeature', 'domainNetworkFeature', 'domainServerFeature', 'domainStorageFeature'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

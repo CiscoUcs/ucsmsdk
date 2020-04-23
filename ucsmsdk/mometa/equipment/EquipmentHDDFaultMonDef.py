@@ -16,9 +16,9 @@ class EquipmentHDDFaultMonDef(ManagedObject):
     """This is EquipmentHDDFaultMonDef class."""
 
     consts = EquipmentHDDFaultMonDefConsts()
-    naming_props = set([u'ControllerFwVersion', u'HDDMonSupport'])
+    naming_props = set(['ControllerFwVersion', 'HDDMonSupport'])
 
-    mo_meta = MoMeta("EquipmentHDDFaultMonDef", "equipmentHDDFaultMonDef", "[controller_fw_version][hdd_mon_support]", VersionMeta.Version201m, "InputOutput", 0x3ff, [], [""], [u'equipmentBladeCapProvider', u'equipmentServerUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentHDDFaultMonDef", "equipmentHDDFaultMonDef", "[controller_fw_version][hdd_mon_support]", VersionMeta.Version201m, "InputOutput", 0x3ff, [], [""], ['equipmentBladeCapProvider', 'equipmentServerUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
         "controller_fw_version": MoPropertyMeta("controller_fw_version", "ControllerFwVersion", "string", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x2, 1, 510, None, [], []),

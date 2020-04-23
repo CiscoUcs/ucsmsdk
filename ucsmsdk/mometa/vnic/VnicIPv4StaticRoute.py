@@ -13,9 +13,9 @@ class VnicIPv4StaticRoute(ManagedObject):
     """This is VnicIPv4StaticRoute class."""
 
     consts = VnicIPv4StaticRouteConsts()
-    naming_props = set([u'addr'])
+    naming_props = set(['addr'])
 
-    mo_meta = MoMeta("VnicIPv4StaticRoute", "vnicIPv4StaticRoute", "ipv4-route-[addr]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], [u'adaptorHostIscsiIf', u'adaptorVlan', u'vnicIPv4If'], [], ["Get"])
+    mo_meta = MoMeta("VnicIPv4StaticRoute", "vnicIPv4StaticRoute", "ipv4-route-[addr]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], ['adaptorHostIscsiIf', 'adaptorVlan', 'vnicIPv4If'], [], ["Get"])
 
     prop_meta = {
         "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x2, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),

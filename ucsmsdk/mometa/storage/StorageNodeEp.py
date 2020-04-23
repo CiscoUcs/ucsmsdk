@@ -13,9 +13,9 @@ class StorageNodeEp(ManagedObject):
     """This is StorageNodeEp class."""
 
     consts = StorageNodeEpConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("StorageNodeEp", "storageNodeEp", "node-[id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], [u'initiatorGroupEp'], [u'storageIScsiTargetIf'], [None])
+    mo_meta = MoMeta("StorageNodeEp", "storageNodeEp", "node-[id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], ['initiatorGroupEp'], ['storageIScsiTargetIf'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

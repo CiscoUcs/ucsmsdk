@@ -26,9 +26,9 @@ class StorageSasPort(ManagedObject):
     """This is StorageSasPort class."""
 
     consts = StorageSasPortConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("StorageSasPort", "storageSasPort", "sas-port-[id]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["read-only"], [u'storageEnclosureLocalDiskConfig', u'storageLocalDisk'], [], ["Get"])
+    mo_meta = MoMeta("StorageSasPort", "storageSasPort", "sas-port-[id]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["read-only"], ['storageEnclosureLocalDiskConfig', 'storageLocalDisk'], [], ["Get"])
 
     prop_meta = {
         "address": MoPropertyMeta("address", "address", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

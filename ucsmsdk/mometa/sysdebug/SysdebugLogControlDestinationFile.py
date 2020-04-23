@@ -34,7 +34,7 @@ class SysdebugLogControlDestinationFile(ManagedObject):
     consts = SysdebugLogControlDestinationFileConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SysdebugLogControlDestinationFile", "sysdebugLogControlDestinationFile", "file", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "operations"], [u'sysdebugLogControlDomain'], [], ["Get"])
+    mo_meta = MoMeta("SysdebugLogControlDestinationFile", "sysdebugLogControlDestinationFile", "file", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "operations"], ['sysdebugLogControlDomain'], [], ["Get"])
 
     prop_meta = {
         "backup_count": MoPropertyMeta("backup_count", "backupCount", "ushort", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], ["1-9"]),

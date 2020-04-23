@@ -18,7 +18,7 @@ class EquipmentSpeedCompatibility(ManagedObject):
     consts = EquipmentSpeedCompatibilityConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentSpeedCompatibility", "equipmentSpeedCompatibility", "speed-cap", VersionMeta.Version401a, "InputOutput", 0xff, [], [""], [u'equipmentSwitchCapProvider'], [], [None])
+    mo_meta = MoMeta("EquipmentSpeedCompatibility", "equipmentSpeedCompatibility", "speed-cap", VersionMeta.Version401a, "InputOutput", 0xff, [], [""], ['equipmentSwitchCapProvider'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version401a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -16,9 +16,9 @@ class ComputeQual(ManagedObject):
     """This is ComputeQual class."""
 
     consts = ComputeQualConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ComputeQual", "computeQual", "blade-qualifier-[name]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "pn-policy"], [u'orgOrg'], [u'adaptorQual', u'computeChassisQual', u'computePhysicalQual', u'computeRackQual', u'memoryQual', u'powerGroupQual', u'processorQual', u'storageQual'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("ComputeQual", "computeQual", "blade-qualifier-[name]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "pn-policy"], ['orgOrg'], ['adaptorQual', 'computeChassisQual', 'computePhysicalQual', 'computeRackQual', 'memoryQual', 'powerGroupQual', 'processorQual', 'storageQual'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

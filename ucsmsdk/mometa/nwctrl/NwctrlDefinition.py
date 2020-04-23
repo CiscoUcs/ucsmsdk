@@ -26,9 +26,9 @@ class NwctrlDefinition(ManagedObject):
     """This is NwctrlDefinition class."""
 
     consts = NwctrlDefinitionConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("NwctrlDefinition", "nwctrlDefinition", "nwctrl-[name]", VersionMeta.Version102d, "InputOutput", 0x1fff, [], ["admin", "ls-network", "ls-network-policy"], [u'fabricEthEstcCloud', u'orgOrg', u'policySystemEp'], [u'dpsecMac'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("NwctrlDefinition", "nwctrlDefinition", "nwctrl-[name]", VersionMeta.Version102d, "InputOutput", 0x1fff, [], ["admin", "ls-network", "ls-network-policy"], ['fabricEthEstcCloud', 'orgOrg', 'policySystemEp'], ['dpsecMac'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "cdp": MoPropertyMeta("cdp", "cdp", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
@@ -36,6 +36,7 @@ class NwctrlDefinition(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version102d, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version102d, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
+        "lldp_init": MoPropertyMeta("lldp_init", "lldpInit", "byte", VersionMeta.Version411a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "lldp_receive": MoPropertyMeta("lldp_receive", "lldpReceive", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["disabled", "enabled"], []),
         "lldp_transmit": MoPropertyMeta("lldp_transmit", "lldpTransmit", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["disabled", "enabled"], []),
         "mac_register_mode": MoPropertyMeta("mac_register_mode", "macRegisterMode", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["all-host-vlans", "only-native-vlan"], []),
@@ -55,6 +56,7 @@ class NwctrlDefinition(ManagedObject):
         "descr": "descr", 
         "dn": "dn", 
         "intId": "int_id", 
+        "lldpInit": "lldp_init", 
         "lldpReceive": "lldp_receive", 
         "lldpTransmit": "lldp_transmit", 
         "macRegisterMode": "mac_register_mode", 
@@ -75,6 +77,7 @@ class NwctrlDefinition(ManagedObject):
         self.child_action = None
         self.descr = None
         self.int_id = None
+        self.lldp_init = None
         self.lldp_receive = None
         self.lldp_transmit = None
         self.mac_register_mode = None

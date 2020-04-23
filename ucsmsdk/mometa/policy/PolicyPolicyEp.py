@@ -15,7 +15,7 @@ class PolicyPolicyEp(ManagedObject):
     consts = PolicyPolicyEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PolicyPolicyEp", "policyPolicyEp", "policy-ep", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], [u'topRoot'], [u'policyLocalMap', u'policyPolicyScopeCont', u'policySystemEp'], [None])
+    mo_meta = MoMeta("PolicyPolicyEp", "policyPolicyEp", "policy-ep", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["admin"], ['topRoot'], ['policyLocalMap', 'policyPolicyScopeCont', 'policySystemEp'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

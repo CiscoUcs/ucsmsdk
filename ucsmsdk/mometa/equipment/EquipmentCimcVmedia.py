@@ -20,9 +20,9 @@ class EquipmentCimcVmedia(ManagedObject):
     """This is EquipmentCimcVmedia class."""
 
     consts = EquipmentCimcVmediaConsts()
-    naming_props = set([u'isSupported'])
+    naming_props = set(['isSupported'])
 
-    mo_meta = MoMeta("EquipmentCimcVmedia", "equipmentCimcVmedia", "cimcvmediasupp-[is_supported]", VersionMeta.Version222c, "InputOutput", 0x1ff, [], [""], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentCimcVmedia", "equipmentCimcVmedia", "cimcvmediasupp-[is_supported]", VersionMeta.Version222c, "InputOutput", 0x1ff, [], [""], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -13,9 +13,9 @@ class LsZoneTargetMember(ManagedObject):
     """This is LsZoneTargetMember class."""
 
     consts = LsZoneTargetMemberConsts()
-    naming_props = set([u'wwpn'])
+    naming_props = set(['wwpn'])
 
-    mo_meta = MoMeta("LsZoneTargetMember", "lsZoneTargetMember", "target-[wwpn]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["admin", "ls-storage"], [u'lsFcZone'], [], [None])
+    mo_meta = MoMeta("LsZoneTargetMember", "lsZoneTargetMember", "target-[wwpn]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["admin", "ls-storage"], ['lsFcZone'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

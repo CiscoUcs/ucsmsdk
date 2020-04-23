@@ -315,9 +315,9 @@ class EquipmentPsu(ManagedObject):
     """This is EquipmentPsu class."""
 
     consts = EquipmentPsuConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentPsu", "equipmentPsu", "psu-[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], [u'computeRackUnit', u'equipmentChassis', u'equipmentFex', u'equipmentRackEnclosure', u'networkElement'], [u'equipmentBeaconLed', u'equipmentFexPsuInputStats', u'equipmentHealthLed', u'equipmentIndicatorLed', u'equipmentLocatorLed', u'equipmentPsuFsm', u'equipmentPsuFsmTask', u'equipmentPsuInputStats', u'equipmentPsuOutputStats', u'equipmentPsuStats', u'equipmentRackUnitPsuStats', u'eventInst', u'faultInst', u'firmwareBootDefinition', u'firmwareRunning', u'firmwareStatus', u'firmwareUpdatable'], ["Get"])
+    mo_meta = MoMeta("EquipmentPsu", "equipmentPsu", "psu-[id]", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["read-only"], ['computeRackUnit', 'equipmentChassis', 'equipmentFex', 'equipmentRackEnclosure', 'networkElement'], ['equipmentBeaconLed', 'equipmentFexPsuInputStats', 'equipmentHealthLed', 'equipmentIndicatorLed', 'equipmentLocatorLed', 'equipmentPsuFsm', 'equipmentPsuFsmTask', 'equipmentPsuInputStats', 'equipmentPsuOutputStats', 'equipmentPsuStats', 'equipmentRackUnitPsuStats', 'eventInst', 'faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'firmwareStatus', 'firmwareUpdatable'], ["Get"])
 
     prop_meta = {
         "type": MoPropertyMeta("type", "Type", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ac", "dc"], []),

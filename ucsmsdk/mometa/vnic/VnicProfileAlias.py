@@ -13,9 +13,9 @@ class VnicProfileAlias(ManagedObject):
     """This is VnicProfileAlias class."""
 
     consts = VnicProfileAliasConsts()
-    naming_props = set([u'swUuid', u'alias'])
+    naming_props = set(['swUuid', 'alias'])
 
-    mo_meta = MoMeta("VnicProfileAlias", "vnicProfileAlias", "uuid-[sw_uuid]alias-[alias]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'vmVnicProfInst', u'vnicProfile'], [], ["Get"])
+    mo_meta = MoMeta("VnicProfileAlias", "vnicProfileAlias", "uuid-[sw_uuid]alias-[alias]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['vmVnicProfInst', 'vnicProfile'], [], ["Get"])
 
     prop_meta = {
         "alias": MoPropertyMeta("alias", "alias", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x2, 1, 510, None, [], []),

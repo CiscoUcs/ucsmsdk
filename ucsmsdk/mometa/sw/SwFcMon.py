@@ -169,9 +169,9 @@ class SwFcMon(ManagedObject):
     """This is SwFcMon class."""
 
     consts = SwFcMonConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("SwFcMon", "swFcMon", "mon-[name]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["read-only"], [u'swFcSanMon'], [u'dcxVc', u'eventInst', u'faultInst', u'swEthMonDestEp', u'swFcMonDestEp', u'swFcMonFsm', u'swFcMonFsmTask', u'swFcMonSrcEp', u'swFcSanPc', u'swFcoeSanPc', u'swSubGroup', u'swVlan', u'swVsan'], ["Get"])
+    mo_meta = MoMeta("SwFcMon", "swFcMon", "mon-[name]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["read-only"], ['swFcSanMon'], ['dcxVc', 'eventInst', 'faultInst', 'swEthMonDestEp', 'swFcMonDestEp', 'swFcMonFsm', 'swFcMonFsmTask', 'swFcMonSrcEp', 'swFcSanPc', 'swFcoeSanPc', 'swSubGroup', 'swVlan', 'swVsan'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

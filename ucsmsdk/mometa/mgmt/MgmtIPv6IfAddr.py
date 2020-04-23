@@ -157,7 +157,7 @@ class MgmtIPv6IfAddr(ManagedObject):
     consts = MgmtIPv6IfAddrConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtIPv6IfAddr", "mgmtIPv6IfAddr", "if-ipv6", VersionMeta.Version221b, "InputOutput", 0xff, [], ["admin", "ext-lan-config"], [u'mgmtIPv6IfConfig'], [u'eventInst', u'faultInst', u'mgmtIPv6IfAddrFsm', u'mgmtIPv6IfAddrFsmTask'], ["Get", "Set"])
+    mo_meta = MoMeta("MgmtIPv6IfAddr", "mgmtIPv6IfAddr", "if-ipv6", VersionMeta.Version221b, "InputOutput", 0xff, [], ["admin", "ext-lan-config"], ['mgmtIPv6IfConfig'], ['eventInst', 'faultInst', 'mgmtIPv6IfAddrFsm', 'mgmtIPv6IfAddrFsmTask'], ["Get", "Set"])
 
     prop_meta = {
         "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, 0, 256, None, [], []),

@@ -192,9 +192,9 @@ class SysdebugTechSupport(ManagedObject):
     """This is SysdebugTechSupport class."""
 
     consts = SysdebugTechSupportConsts()
-    naming_props = set([u'creationTS'])
+    naming_props = set(['creationTS'])
 
-    mo_meta = MoMeta("SysdebugTechSupport", "sysdebugTechSupport", "tech-support-[creation_ts]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["admin", "operations"], [u'sysdebugTechSupFileRepository'], [u'eventInst', u'faultInst', u'sysdebugTechSupportCmdOpt', u'sysdebugTechSupportFsm', u'sysdebugTechSupportFsmTask'], ["Add", "Get", "Set"])
+    mo_meta = MoMeta("SysdebugTechSupport", "sysdebugTechSupport", "tech-support-[creation_ts]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["admin", "operations"], ['sysdebugTechSupFileRepository'], ['eventInst', 'faultInst', 'sysdebugTechSupportCmdOpt', 'sysdebugTechSupportFsm', 'sysdebugTechSupportFsmTask'], ["Add", "Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["created", "delete", "init", "prepare-download", "start"], []),

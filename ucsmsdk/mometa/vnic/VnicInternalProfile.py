@@ -16,9 +16,9 @@ class VnicInternalProfile(ManagedObject):
     """This is VnicInternalProfile class."""
 
     consts = VnicInternalProfileConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicInternalProfile", "vnicInternalProfile", "vnic-[name]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], ["read-only"], [u'vnicProfileSet'], [u'swVlan'], ["Get"])
+    mo_meta = MoMeta("VnicInternalProfile", "vnicInternalProfile", "vnic-[name]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], ["read-only"], ['vnicProfileSet'], ['swVlan'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

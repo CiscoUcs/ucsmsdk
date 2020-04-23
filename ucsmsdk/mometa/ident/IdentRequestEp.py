@@ -15,7 +15,7 @@ class IdentRequestEp(ManagedObject):
     consts = IdentRequestEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("IdentRequestEp", "identRequestEp", "IdentQ", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["read-only"], [u'lsServer'], [], [None])
+    mo_meta = MoMeta("IdentRequestEp", "identRequestEp", "IdentQ", VersionMeta.Version211a, "InputOutput", 0x1f, [], ["read-only"], ['lsServer'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

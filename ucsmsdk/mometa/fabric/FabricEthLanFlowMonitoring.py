@@ -19,7 +19,7 @@ class FabricEthLanFlowMonitoring(ManagedObject):
     consts = FabricEthLanFlowMonitoringConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FabricEthLanFlowMonitoring", "fabricEthLanFlowMonitoring", "eth-flow-monitoring", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricLanMonCloud'], [u'fabricEthFlowMonLan', u'fabricFlowMonDefinition', u'fabricFlowMonExporterProfile', u'fabricNetflowCollector', u'fabricNetflowMonExporter', u'fabricNetflowMonSession', u'fabricNetflowMonitor', u'fabricNetflowTimeoutPolicy'], [None])
+    mo_meta = MoMeta("FabricEthLanFlowMonitoring", "fabricEthLanFlowMonitoring", "eth-flow-monitoring", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricLanMonCloud'], ['fabricEthFlowMonLan', 'fabricFlowMonDefinition', 'fabricFlowMonExporterProfile', 'fabricNetflowCollector', 'fabricNetflowMonExporter', 'fabricNetflowMonSession', 'fabricNetflowMonitor', 'fabricNetflowTimeoutPolicy'], [None])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

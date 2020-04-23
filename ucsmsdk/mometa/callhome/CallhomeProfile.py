@@ -24,9 +24,9 @@ class CallhomeProfile(ManagedObject):
     """This is CallhomeProfile class."""
 
     consts = CallhomeProfileConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("CallhomeProfile", "callhomeProfile", "profile-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "operations"], [u'callhomeEp'], [u'callhomeDest'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("CallhomeProfile", "callhomeProfile", "profile-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "operations"], ['callhomeEp'], ['callhomeDest'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "alert_groups": MoPropertyMeta("alert_groups", "alertGroups", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""((diagnostic|all|syslogPort|inventory|system|license|environmental|test|linecard|lifeCycle|ciscoTac|supervisor),){0,11}(diagnostic|all|syslogPort|inventory|system|license|environmental|test|linecard|lifeCycle|ciscoTac|supervisor){0,1}""", [], []),

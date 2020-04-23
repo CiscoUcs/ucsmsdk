@@ -46,7 +46,7 @@ class MgmtBackupPolicyConfig(ManagedObject):
     consts = MgmtBackupPolicyConfigConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtBackupPolicyConfig", "mgmtBackupPolicyConfig", "bkup-policy-cfg", VersionMeta.Version222c, "InputOutput", 0x1fff, [], ["admin"], [u'topSystem'], [u'faultInst', u'trigLocalSched'], ["Get"])
+    mo_meta = MoMeta("MgmtBackupPolicyConfig", "mgmtBackupPolicyConfig", "bkup-policy-cfg", VersionMeta.Version222c, "InputOutput", 0x1fff, [], ["admin"], ['topSystem'], ['faultInst', 'trigLocalSched'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["trigger", "trigger-immediate", "triggered", "untriggered", "user-ack", "user-discard"], []),

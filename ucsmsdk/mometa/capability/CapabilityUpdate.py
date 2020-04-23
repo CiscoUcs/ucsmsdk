@@ -13,9 +13,9 @@ class CapabilityUpdate(ManagedObject):
     """This is CapabilityUpdate class."""
 
     consts = CapabilityUpdateConsts()
-    naming_props = set([u'version'])
+    naming_props = set(['version'])
 
-    mo_meta = MoMeta("CapabilityUpdate", "capabilityUpdate", "update-[version]", VersionMeta.Version131c, "InputOutput", 0x3f, [], ["admin"], [u'capabilityEp'], [], ["Get"])
+    mo_meta = MoMeta("CapabilityUpdate", "capabilityUpdate", "update-[version]", VersionMeta.Version131c, "InputOutput", 0x3f, [], ["admin"], ['capabilityEp'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

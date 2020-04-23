@@ -23,9 +23,9 @@ class InitiatorRequestorGrpEp(ManagedObject):
     """This is InitiatorRequestorGrpEp class."""
 
     consts = InitiatorRequestorGrpEpConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("InitiatorRequestorGrpEp", "initiatorRequestorGrpEp", "req-grp-[id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], [u'topSystem'], [u'initiatorMemberEp', u'initiatorUnitEp'], [None])
+    mo_meta = MoMeta("InitiatorRequestorGrpEp", "initiatorRequestorGrpEp", "req-grp-[id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], ['topSystem'], ['initiatorMemberEp', 'initiatorUnitEp'], [None])
 
     prop_meta = {
         "alloc_state": MoPropertyMeta("alloc_state", "allocState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "allocating", "failed", "none"], []),

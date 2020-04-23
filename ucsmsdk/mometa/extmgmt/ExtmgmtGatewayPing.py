@@ -15,7 +15,7 @@ class ExtmgmtGatewayPing(ManagedObject):
     consts = ExtmgmtGatewayPingConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ExtmgmtGatewayPing", "extmgmtGatewayPing", "gw-ping-policy", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["admin", "ext-lan-config"], [u'extmgmtIfMonPolicy'], [], ["Get"])
+    mo_meta = MoMeta("ExtmgmtGatewayPing", "extmgmtGatewayPing", "gw-ping-policy", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["admin", "ext-lan-config"], ['extmgmtIfMonPolicy'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

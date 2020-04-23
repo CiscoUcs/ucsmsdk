@@ -13,9 +13,9 @@ class VnicIScsiStaticTargetIf(ManagedObject):
     """This is VnicIScsiStaticTargetIf class."""
 
     consts = VnicIScsiStaticTargetIfConsts()
-    naming_props = set([u'priority'])
+    naming_props = set(['priority'])
 
-    mo_meta = MoMeta("VnicIScsiStaticTargetIf", "vnicIScsiStaticTargetIf", "[priority]", VersionMeta.Version201m, "InputOutput", 0x3ff, [], ["admin", "ls-config", "ls-network", "ls-server", "ls-storage"], [u'adaptorVlan', u'vnicIScsi', u'vnicIScsiBootVnic', u'vnicVlan'], [u'faultInst', u'vnicLun'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicIScsiStaticTargetIf", "vnicIScsiStaticTargetIf", "[priority]", VersionMeta.Version201m, "InputOutput", 0x3ff, [], ["admin", "ls-config", "ls-network", "ls-server", "ls-storage"], ['adaptorVlan', 'vnicIScsi', 'vnicIScsiBootVnic', 'vnicVlan'], ['faultInst', 'vnicLun'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "auth_profile_name": MoPropertyMeta("auth_profile_name", "authProfileName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], []),

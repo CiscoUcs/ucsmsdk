@@ -42,9 +42,9 @@ class TrigTest(ManagedObject):
     """This is TrigTest class."""
 
     consts = TrigTestConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("TrigTest", "trigTest", "test-[name]", VersionMeta.Version141i, "InputOutput", 0x7ff, [], ["read-only"], [u'orgOrg'], [u'faultInst', u'trigLocalSched'], ["Get"])
+    mo_meta = MoMeta("TrigTest", "trigTest", "test-[name]", VersionMeta.Version141i, "InputOutput", 0x7ff, [], ["read-only"], ['orgOrg'], ['faultInst', 'trigLocalSched'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["trigger", "trigger-immediate", "triggered", "untriggered", "user-ack", "user-discard"], []),

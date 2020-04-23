@@ -16,9 +16,9 @@ class AdaptorHostIscsiIfProfile(ManagedObject):
     """This is AdaptorHostIscsiIfProfile class."""
 
     consts = AdaptorHostIscsiIfProfileConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("AdaptorHostIscsiIfProfile", "adaptorHostIscsiIfProfile", "iscsi-profile-[name]", VersionMeta.Version201m, "InputOutput", 0xff, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], [u'orgOrg'], [u'adaptorProtocolProfile'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AdaptorHostIscsiIfProfile", "adaptorHostIscsiIfProfile", "iscsi-profile-[name]", VersionMeta.Version201m, "InputOutput", 0xff, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], ['orgOrg'], ['adaptorProtocolProfile'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

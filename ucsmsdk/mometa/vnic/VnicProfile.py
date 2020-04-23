@@ -32,9 +32,9 @@ class VnicProfile(ManagedObject):
     """This is VnicProfile class."""
 
     consts = VnicProfileConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicProfile", "vnicProfile", "vnic-[name]", VersionMeta.Version101e, "InputOutput", 0x7fff, [], ["admin", "ls-network", "ls-network-policy"], [u'vnicProfileSet'], [u'fabricNetGroupRef', u'fabricNetflowMonSrcEp', u'faultInst', u'swNetflowMonitorRef', u'vmVnicProfCl', u'vnicEtherIf', u'vnicOProfileAlias', u'vnicProfileAlias'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicProfile", "vnicProfile", "vnic-[name]", VersionMeta.Version101e, "InputOutput", 0x7fff, [], ["admin", "ls-network", "ls-network-policy"], ['vnicProfileSet'], ['fabricNetGroupRef', 'fabricNetflowMonSrcEp', 'faultInst', 'swNetflowMonitorRef', 'vmVnicProfCl', 'vnicEtherIf', 'vnicOProfileAlias', 'vnicProfileAlias'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "cdp": MoPropertyMeta("cdp", "cdp", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),

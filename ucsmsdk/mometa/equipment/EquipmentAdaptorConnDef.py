@@ -16,9 +16,9 @@ class EquipmentAdaptorConnDef(ManagedObject):
     """This is EquipmentAdaptorConnDef class."""
 
     consts = EquipmentAdaptorConnDefConsts()
-    naming_props = set([u'adaptorEp', u'iomEp'])
+    naming_props = set(['adaptorEp', 'iomEp'])
 
-    mo_meta = MoMeta("EquipmentAdaptorConnDef", "equipmentAdaptorConnDef", "adaptor-port-[adaptor_ep]-iom-port-[iom_ep]", VersionMeta.Version202m, "InputOutput", 0x3ff, [], [""], [u'equipmentBladeIOMConnDef', u'equipmentBladeSwitchConnDef'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentAdaptorConnDef", "equipmentAdaptorConnDef", "adaptor-port-[adaptor_ep]-iom-port-[iom_ep]", VersionMeta.Version202m, "InputOutput", 0x3ff, [], [""], ['equipmentBladeIOMConnDef', 'equipmentBladeSwitchConnDef'], [], ["Get"])
 
     prop_meta = {
         "adaptor_ep": MoPropertyMeta("adaptor_ep", "adaptorEp", "ushort", VersionMeta.Version202m, MoPropertyMeta.NAMING, 0x2, None, None, None, [], []),

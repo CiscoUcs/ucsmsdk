@@ -27,9 +27,9 @@ class ExtvmmProviderFsmStage(ManagedObject):
     """This is ExtvmmProviderFsmStage class."""
 
     consts = ExtvmmProviderFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ExtvmmProviderFsmStage", "extvmmProviderFsmStage", "stage-[name]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'extvmmProviderFsm'], [], [None])
+    mo_meta = MoMeta("ExtvmmProviderFsmStage", "extvmmProviderFsmStage", "stage-[name]", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['extvmmProviderFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

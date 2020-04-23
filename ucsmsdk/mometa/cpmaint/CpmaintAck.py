@@ -69,7 +69,7 @@ class CpmaintAck(ManagedObject):
     consts = CpmaintAckConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CpmaintAck", "cpmaintAck", "ack", VersionMeta.Version312b, "InputOutput", 0x3ff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'equipmentChassisProfile'], [u'faultInst', u'trigLocalSched'], ["Get", "Set"])
+    mo_meta = MoMeta("CpmaintAck", "cpmaintAck", "ack", VersionMeta.Version312b, "InputOutput", 0x3ff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['equipmentChassisProfile'], ['faultInst', 'trigLocalSched'], ["Get", "Set"])
 
     prop_meta = {
         "acked": MoPropertyMeta("acked", "acked", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),

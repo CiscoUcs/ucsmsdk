@@ -18,9 +18,9 @@ class MemoryRuntime(ManagedObject):
     """This is MemoryRuntime class."""
 
     consts = MemoryRuntimeConsts()
-    naming_props = set([u'type'])
+    naming_props = set(['type'])
 
-    mo_meta = MoMeta("MemoryRuntime", "memoryRuntime", "[type]-mem-rt", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'computeBlade'], [u'memoryRuntimeHist'], ["Get"])
+    mo_meta = MoMeta("MemoryRuntime", "memoryRuntime", "[type]-mem-rt", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['computeBlade'], ['memoryRuntimeHist'], ["Get"])
 
     prop_meta = {
         "available": MoPropertyMeta("available", "available", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

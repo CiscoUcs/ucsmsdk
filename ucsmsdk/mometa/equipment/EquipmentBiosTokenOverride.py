@@ -21,9 +21,9 @@ class EquipmentBiosTokenOverride(ManagedObject):
     """This is EquipmentBiosTokenOverride class."""
 
     consts = EquipmentBiosTokenOverrideConsts()
-    naming_props = set([u'biosTokenId'])
+    naming_props = set(['biosTokenId'])
 
-    mo_meta = MoMeta("EquipmentBiosTokenOverride", "equipmentBiosTokenOverride", "bios-token-override-[bios_token_id]", VersionMeta.Version321d, "InputOutput", 0x1ff, [], ["read-only"], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], ["Get", "Set"])
+    mo_meta = MoMeta("EquipmentBiosTokenOverride", "equipmentBiosTokenOverride", "bios-token-override-[bios_token_id]", VersionMeta.Version321d, "InputOutput", 0x1ff, [], ["read-only"], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], ["Get", "Set"])
 
     prop_meta = {
         "bios_token_id": MoPropertyMeta("bios_token_id", "biosTokenId", "string", VersionMeta.Version321d, MoPropertyMeta.NAMING, 0x2, None, None, None, ["bios-vftpm", "memory-mapped-above-4gb", "none", "option-rom", "psata"], []),

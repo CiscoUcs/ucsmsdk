@@ -15,7 +15,7 @@ class EquipmentBladeCapProviderTypeDef(ManagedObject):
     consts = EquipmentBladeCapProviderTypeDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentBladeCapProviderTypeDef", "equipmentBladeCapProviderTypeDef", "blade-provider-type", VersionMeta.Version224b, "InputOutput", 0x7f, [], [""], [u'equipmentBladeCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentBladeCapProviderTypeDef", "equipmentBladeCapProviderTypeDef", "blade-provider-type", VersionMeta.Version224b, "InputOutput", 0x7f, [], [""], ['equipmentBladeCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

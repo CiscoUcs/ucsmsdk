@@ -18,7 +18,7 @@ class FabricSanGroup(ManagedObject):
     """This is FabricSanGroup class."""
 
     consts = FabricSanGroupConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
     mo_meta = MoMeta("FabricSanGroup", "fabricSanGroup", "san-group-[name]", VersionMeta.Version321d, "InputOutput", 0xff, [], ["read-only"], [], [], ["Get", "Set"])
 

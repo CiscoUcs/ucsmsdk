@@ -27,7 +27,7 @@ class LstorageDiskGroupQualifier(ManagedObject):
     consts = LstorageDiskGroupQualifierConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LstorageDiskGroupQualifier", "lstorageDiskGroupQualifier", "disk-group-qual", VersionMeta.Version224b, "InputOutput", 0xfff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'lstorageDiskGroupConfigDef', u'lstorageDiskGroupConfigPolicy'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LstorageDiskGroupQualifier", "lstorageDiskGroupQualifier", "disk-group-qual", VersionMeta.Version224b, "InputOutput", 0xfff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], ['lstorageDiskGroupConfigDef', 'lstorageDiskGroupConfigPolicy'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -16,9 +16,9 @@ class VnicLanConnPolicy(ManagedObject):
     """This is VnicLanConnPolicy class."""
 
     consts = VnicLanConnPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicLanConnPolicy", "vnicLanConnPolicy", "lan-conn-pol-[name]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["admin", "ls-config", "ls-network", "ls-server"], [u'orgOrg'], [u'vnicEther', u'vnicIScsiLCP', u'vnicIScsiNode'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("VnicLanConnPolicy", "vnicLanConnPolicy", "lan-conn-pol-[name]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["admin", "ls-config", "ls-network", "ls-server"], ['orgOrg'], ['vnicEther', 'vnicIScsiLCP', 'vnicIScsiNode'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

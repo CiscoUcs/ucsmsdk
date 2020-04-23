@@ -13,9 +13,9 @@ class NetworkSanNeighborEntry(ManagedObject):
     """This is NetworkSanNeighborEntry class."""
 
     consts = NetworkSanNeighborEntryConsts()
-    naming_props = set([u'localInterface'])
+    naming_props = set(['localInterface'])
 
-    mo_meta = MoMeta("NetworkSanNeighborEntry", "networkSanNeighborEntry", "if-[local_interface]", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["read-only"], [u'networkSanNeighbors'], [], ["Get"])
+    mo_meta = MoMeta("NetworkSanNeighborEntry", "networkSanNeighborEntry", "if-[local_interface]", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["read-only"], ['networkSanNeighbors'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

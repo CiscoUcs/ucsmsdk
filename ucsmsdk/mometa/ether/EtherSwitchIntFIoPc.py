@@ -58,9 +58,9 @@ class EtherSwitchIntFIoPc(ManagedObject):
     """This is EtherSwitchIntFIoPc class."""
 
     consts = EtherSwitchIntFIoPcConsts()
-    naming_props = set([u'portId'])
+    naming_props = set(['portId'])
 
-    mo_meta = MoMeta("EtherSwitchIntFIoPc", "etherSwitchIntFIoPc", "pc-[port_id]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance"], [u'portGroup'], [u'etherNiErrStats', u'etherSwitchIntFIoPcEp', u'faultInst'], ["Get"])
+    mo_meta = MoMeta("EtherSwitchIntFIoPc", "etherSwitchIntFIoPc", "pc-[port_id]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance"], ['portGroup'], ['etherNiErrStats', 'etherSwitchIntFIoPcEp', 'faultInst'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

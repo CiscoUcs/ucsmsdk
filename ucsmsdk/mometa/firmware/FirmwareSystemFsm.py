@@ -157,7 +157,7 @@ class FirmwareSystemFsm(ManagedObject):
     consts = FirmwareSystemFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareSystemFsm", "firmwareSystemFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'firmwareSystem'], [u'firmwareSystemFsmStage'], [None])
+    mo_meta = MoMeta("FirmwareSystemFsm", "firmwareSystemFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['firmwareSystem'], ['firmwareSystemFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

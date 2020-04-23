@@ -160,9 +160,9 @@ class StorageMiniStorage(ManagedObject):
     """This is StorageMiniStorage class."""
 
     consts = StorageMiniStorageConsts()
-    naming_props = set([u'type', u'id'])
+    naming_props = set(['type', 'id'])
 
-    mo_meta = MoMeta("StorageMiniStorage", "storageMiniStorage", "mini-storage-[type]-[id]", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["read-only"], [u'computeBoard'], [u'equipmentInventoryStatus', u'storageControllerReference'], ["Get"])
+    mo_meta = MoMeta("StorageMiniStorage", "storageMiniStorage", "mini-storage-[type]-[id]", VersionMeta.Version321d, "InputOutput", 0x7f, [], ["read-only"], ['computeBoard'], ['equipmentInventoryStatus', 'storageControllerReference'], ["Get"])
 
     prop_meta = {
         "asset_tag": MoPropertyMeta("asset_tag", "assetTag", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []),

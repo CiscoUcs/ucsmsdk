@@ -43,9 +43,9 @@ class IdentIdentCtx(ManagedObject):
     """This is IdentIdentCtx class."""
 
     consts = IdentIdentCtxConsts()
-    naming_props = set([u'seqNum'])
+    naming_props = set(['seqNum'])
 
-    mo_meta = MoMeta("IdentIdentCtx", "identIdentCtx", "IdCtx-[seq_num]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], [u'identIdentRequest'], [], [None])
+    mo_meta = MoMeta("IdentIdentCtx", "identIdentCtx", "IdCtx-[seq_num]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], ['identIdentRequest'], [], [None])
 
     prop_meta = {
         "assigned": MoPropertyMeta("assigned", "assigned", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

@@ -27,9 +27,9 @@ class SwNetflowMonSession(ManagedObject):
     """This is SwNetflowMonSession class."""
 
     consts = SwNetflowMonSessionConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("SwNetflowMonSession", "swNetflowMonSession", "flowmonsession-netflow-[name]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["read-only"], [u'swEthLanFlowMon'], [u'swNetflowMonitor', u'swNetflowMonitorRef'], [None])
+    mo_meta = MoMeta("SwNetflowMonSession", "swNetflowMonSession", "flowmonsession-netflow-[name]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["read-only"], ['swEthLanFlowMon'], ['swNetflowMonitor', 'swNetflowMonitorRef'], [None])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

@@ -58,7 +58,7 @@ class ComputeFwSyncAck(ManagedObject):
     consts = ComputeFwSyncAckConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ComputeFwSyncAck", "computeFwSyncAck", "fwsyncack", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit'], [u'faultInst', u'trigLocalSched'], ["Get", "Set"])
+    mo_meta = MoMeta("ComputeFwSyncAck", "computeFwSyncAck", "fwsyncack", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], ['faultInst', 'trigLocalSched'], ["Get", "Set"])
 
     prop_meta = {
         "acked": MoPropertyMeta("acked", "acked", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),

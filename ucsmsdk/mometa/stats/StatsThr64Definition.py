@@ -1210,9 +1210,9 @@ class StatsThr64Definition(ManagedObject):
     """This is StatsThr64Definition class."""
 
     consts = StatsThr64DefinitionConsts()
-    naming_props = set([u'propId'])
+    naming_props = set(['propId'])
 
-    mo_meta = MoMeta("StatsThr64Definition", "statsThr64Definition", "[prop_id]", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["admin", "operations"], [u'statsThresholdClass'], [u'statsThr32Value', u'statsThr64Value', u'statsThrFloatValue'], ["Add", "Get", "Set"])
+    mo_meta = MoMeta("StatsThr64Definition", "statsThr64Definition", "[prop_id]", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["admin", "operations"], ['statsThresholdClass'], ['statsThr32Value', 'statsThr64Value', 'statsThrFloatValue'], ["Add", "Get", "Set"])
 
     prop_meta = {
         "auto_recovery": MoPropertyMeta("auto_recovery", "autoRecovery", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

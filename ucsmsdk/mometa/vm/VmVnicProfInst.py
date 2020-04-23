@@ -18,9 +18,9 @@ class VmVnicProfInst(ManagedObject):
     """This is VmVnicProfInst class."""
 
     consts = VmVnicProfInstConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VmVnicProfInst", "vmVnicProfInst", "vnic-prof-[name]", VersionMeta.Version111j, "InputOutput", 0x1ff, [], ["read-only"], [u'vmSwitch'], [u'vnicOProfileAlias', u'vnicProfileAlias'], ["Get"])
+    mo_meta = MoMeta("VmVnicProfInst", "vmVnicProfInst", "vnic-prof-[name]", VersionMeta.Version111j, "InputOutput", 0x1ff, [], ["read-only"], ['vmSwitch'], ['vnicOProfileAlias', 'vnicProfileAlias'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -18,9 +18,9 @@ class StorageInitiator(ManagedObject):
     """This is StorageInitiator class."""
 
     consts = StorageInitiatorConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("StorageInitiator", "storageInitiator", "ini-[name]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'storageIniGroup'], [u'faultInst'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("StorageInitiator", "storageInitiator", "ini-[name]", VersionMeta.Version211a, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['storageIniGroup'], ['faultInst'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

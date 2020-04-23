@@ -18,7 +18,7 @@ class EquipmentBoardControllerDef(ManagedObject):
     consts = EquipmentBoardControllerDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentBoardControllerDef", "equipmentBoardControllerDef", "board-controller", VersionMeta.Version131c, "InputOutput", 0xff, [], [""], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider', u'equipmentServerUnitCapProvider'], [u'equipmentDowngradeConstraint', u'equipmentFirmwareConstraint', u'equipmentVersionConstraint'], ["Get"])
+    mo_meta = MoMeta("EquipmentBoardControllerDef", "equipmentBoardControllerDef", "board-controller", VersionMeta.Version131c, "InputOutput", 0xff, [], [""], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider', 'equipmentServerUnitCapProvider'], ['equipmentDowngradeConstraint', 'equipmentFirmwareConstraint', 'equipmentVersionConstraint'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

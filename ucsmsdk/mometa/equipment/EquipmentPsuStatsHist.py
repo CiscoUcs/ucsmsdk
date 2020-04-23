@@ -24,9 +24,9 @@ class EquipmentPsuStatsHist(ManagedObject):
     """This is EquipmentPsuStatsHist class."""
 
     consts = EquipmentPsuStatsHistConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentPsuStatsHist", "equipmentPsuStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], [u'equipmentPsuStats'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentPsuStatsHist", "equipmentPsuStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], ['equipmentPsuStats'], [], ["Get"])
 
     prop_meta = {
         "psu_i2_c_errors": MoPropertyMeta("psu_i2_c_errors", "PsuI2CErrors", "ulong", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

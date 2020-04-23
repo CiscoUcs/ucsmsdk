@@ -19,9 +19,9 @@ class AdaptorEthPortMcastStats(ManagedObject):
     """This is AdaptorEthPortMcastStats class."""
 
     consts = AdaptorEthPortMcastStatsConsts()
-    naming_props = set([u'trafficDirection'])
+    naming_props = set(['trafficDirection'])
 
-    mo_meta = MoMeta("AdaptorEthPortMcastStats", "adaptorEthPortMcastStats", "eth-port-mcast-stats-[traffic_direction]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'adaptorExtEthIf', u'adaptorHostEthIf', u'vmNic'], [u'adaptorEthPortMcastStatsHist'], ["Get"])
+    mo_meta = MoMeta("AdaptorEthPortMcastStats", "adaptorEthPortMcastStats", "eth-port-mcast-stats-[traffic_direction]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['adaptorExtEthIf', 'adaptorHostEthIf', 'vmNic'], ['adaptorEthPortMcastStatsHist'], ["Get"])
 
     prop_meta = {
         "broadcast_packets": MoPropertyMeta("broadcast_packets", "broadcastPackets", "ulong", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

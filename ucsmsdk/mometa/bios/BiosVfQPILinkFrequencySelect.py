@@ -23,7 +23,7 @@ class BiosVfQPILinkFrequencySelect(ManagedObject):
     consts = BiosVfQPILinkFrequencySelectConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("BiosVfQPILinkFrequencySelect", "biosVfQPILinkFrequencySelect", "QPI-Link-Frequency-Select", VersionMeta.Version222c, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], [u'biosSettings', u'biosVProfile'], [], ["Get", "Set"])
+    mo_meta = MoMeta("BiosVfQPILinkFrequencySelect", "biosVfQPILinkFrequencySelect", "QPI-Link-Frequency-Select", VersionMeta.Version222c, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-server-policy", "pn-policy"], ['biosSettings', 'biosVProfile'], [], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

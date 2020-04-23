@@ -16,9 +16,9 @@ class VnicRackServerDiscoveryProfile(ManagedObject):
     """This is VnicRackServerDiscoveryProfile class."""
 
     consts = VnicRackServerDiscoveryProfileConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicRackServerDiscoveryProfile", "vnicRackServerDiscoveryProfile", "vnic-[name]", VersionMeta.Version211a, "InputOutput", 0x1ff, [], ["read-only"], [u'equipmentChassis', u'vnicProfileSet'], [u'swVlan'], [None])
+    mo_meta = MoMeta("VnicRackServerDiscoveryProfile", "vnicRackServerDiscoveryProfile", "vnic-[name]", VersionMeta.Version211a, "InputOutput", 0x1ff, [], ["read-only"], ['equipmentChassis', 'vnicProfileSet'], ['swVlan'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

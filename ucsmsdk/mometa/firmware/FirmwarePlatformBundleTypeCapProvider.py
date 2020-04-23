@@ -24,9 +24,9 @@ class FirmwarePlatformBundleTypeCapProvider(ManagedObject):
     """This is FirmwarePlatformBundleTypeCapProvider class."""
 
     consts = FirmwarePlatformBundleTypeCapProviderConsts()
-    naming_props = set([u'platformType'])
+    naming_props = set(['platformType'])
 
-    mo_meta = MoMeta("FirmwarePlatformBundleTypeCapProvider", "firmwarePlatformBundleTypeCapProvider", "plat-bundle-type-cap-[platform_type]", VersionMeta.Version302c, "InputOutput", 0x3f, [], [""], [u'capabilityCatalogue'], [u'firmwareBundleType'], [None])
+    mo_meta = MoMeta("FirmwarePlatformBundleTypeCapProvider", "firmwarePlatformBundleTypeCapProvider", "plat-bundle-type-cap-[platform_type]", VersionMeta.Version302c, "InputOutput", 0x3f, [], [""], ['capabilityCatalogue'], ['firmwareBundleType'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

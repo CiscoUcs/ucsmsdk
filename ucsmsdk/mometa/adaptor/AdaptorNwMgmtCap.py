@@ -27,7 +27,7 @@ class AdaptorNwMgmtCap(ManagedObject):
     consts = AdaptorNwMgmtCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorNwMgmtCap", "adaptorNwMgmtCap", "nw-mgmt", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["read-only"], [u'adaptorFruCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("AdaptorNwMgmtCap", "adaptorNwMgmtCap", "nw-mgmt", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["read-only"], ['adaptorFruCapProvider'], [], ["Get"])
 
     prop_meta = {
         "api": MoPropertyMeta("api", "api", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["menlo", "none", "palo"], []),

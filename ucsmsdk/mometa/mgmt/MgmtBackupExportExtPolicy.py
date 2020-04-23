@@ -20,7 +20,7 @@ class MgmtBackupExportExtPolicy(ManagedObject):
     consts = MgmtBackupExportExtPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtBackupExportExtPolicy", "mgmtBackupExportExtPolicy", "backup-exp-policy", VersionMeta.Version222c, "InputOutput", 0x3ff, [], ["admin"], [u'orgOrg'], [], ["Get", "Set"])
+    mo_meta = MoMeta("MgmtBackupExportExtPolicy", "mgmtBackupExportExtPolicy", "backup-exp-policy", VersionMeta.Version222c, "InputOutput", 0x3ff, [], ["admin"], ['orgOrg'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disable", "enable"], []),

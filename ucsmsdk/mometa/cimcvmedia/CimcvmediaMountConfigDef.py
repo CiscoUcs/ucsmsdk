@@ -20,7 +20,7 @@ class CimcvmediaMountConfigDef(ManagedObject):
     consts = CimcvmediaMountConfigDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CimcvmediaMountConfigDef", "cimcvmediaMountConfigDef", "mnt-cfg-def", VersionMeta.Version222c, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], [u'computeBlade', u'computeRackUnit', u'computeServerUnit', u'lsServer'], [u'cimcvmediaConfigMountEntry'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("CimcvmediaMountConfigDef", "cimcvmediaMountConfigDef", "mnt-cfg-def", VersionMeta.Version222c, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], ['computeBlade', 'computeRackUnit', 'computeServerUnit', 'lsServer'], ['cimcvmediaConfigMountEntry'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

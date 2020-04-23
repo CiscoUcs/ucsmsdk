@@ -61,9 +61,9 @@ class FabricPathEp(ManagedObject):
     """This is FabricPathEp class."""
 
     consts = FabricPathEpConsts()
-    naming_props = set([u'cType'])
+    naming_props = set(['cType'])
 
-    mo_meta = MoMeta("FabricPathEp", "fabricPathEp", "ep-[c_type]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'fabricPath', u'fabricPathConn'], [u'portTrustMode'], ["Get"])
+    mo_meta = MoMeta("FabricPathEp", "fabricPathEp", "ep-[c_type]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['fabricPath', 'fabricPathConn'], ['portTrustMode'], ["Get"])
 
     prop_meta = {
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

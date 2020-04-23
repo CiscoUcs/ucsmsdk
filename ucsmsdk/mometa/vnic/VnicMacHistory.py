@@ -15,7 +15,7 @@ class VnicMacHistory(ManagedObject):
     consts = VnicMacHistoryConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicMacHistory", "vnicMacHistory", "mac-history", VersionMeta.Version212a, "InputOutput", 0x1f, [], ["read-only"], [u'vnicEther', u'vnicIScsi'], [], [None])
+    mo_meta = MoMeta("VnicMacHistory", "vnicMacHistory", "mac-history", VersionMeta.Version212a, "InputOutput", 0x1f, [], ["read-only"], ['vnicEther', 'vnicIScsi'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

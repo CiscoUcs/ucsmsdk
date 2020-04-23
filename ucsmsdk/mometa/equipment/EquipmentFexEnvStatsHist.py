@@ -40,9 +40,9 @@ class EquipmentFexEnvStatsHist(ManagedObject):
     """This is EquipmentFexEnvStatsHist class."""
 
     consts = EquipmentFexEnvStatsHistConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EquipmentFexEnvStatsHist", "equipmentFexEnvStatsHist", "[id]", VersionMeta.Version141i, "OutputOnly", 0xf, [], ["read-only"], [u'equipmentFexEnvStats'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentFexEnvStatsHist", "equipmentFexEnvStatsHist", "[id]", VersionMeta.Version141i, "OutputOnly", 0xf, [], ["read-only"], ['equipmentFexEnvStats'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

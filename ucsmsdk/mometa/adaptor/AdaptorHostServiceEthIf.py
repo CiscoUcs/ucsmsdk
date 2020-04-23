@@ -204,9 +204,9 @@ class AdaptorHostServiceEthIf(ManagedObject):
     """This is AdaptorHostServiceEthIf class."""
 
     consts = AdaptorHostServiceEthIfConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorHostServiceEthIf", "adaptorHostServiceEthIf", "host-service-eth-[id]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance", "read-only"], [u'adaptorUnit'], [u'adaptorVlan', u'adaptorVnicStats', u'dcxVIf', u'faultInst', u'networkIfStats'], ["Get", "Set"])
+    mo_meta = MoMeta("AdaptorHostServiceEthIf", "adaptorHostServiceEthIf", "host-service-eth-[id]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance", "read-only"], ['adaptorUnit'], ['adaptorVlan', 'adaptorVnicStats', 'dcxVIf', 'faultInst', 'networkIfStats'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "disabled-active", "disabled-passive", "enabled", "enabled-active", "enabled-passive", "reset-connectivity", "reset-connectivity-active", "reset-connectivity-passive"], []),

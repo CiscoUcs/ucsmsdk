@@ -16,9 +16,9 @@ class LicenseTarget(ManagedObject):
     """This is LicenseTarget class."""
 
     consts = LicenseTargetConsts()
-    naming_props = set([u'slotId', u'aggrPortId', u'portId'])
+    naming_props = set(['slotId', 'aggrPortId', 'portId'])
 
-    mo_meta = MoMeta("LicenseTarget", "licenseTarget", "slot-[slot_id]-aggr-port-[aggr_port_id]-port-[port_id]", VersionMeta.Version223a, "InputOutput", 0xff, [], ["admin"], [u'licenseInstance'], [], [None])
+    mo_meta = MoMeta("LicenseTarget", "licenseTarget", "slot-[slot_id]-aggr-port-[aggr_port_id]-port-[port_id]", VersionMeta.Version223a, "InputOutput", 0xff, [], ["admin"], ['licenseInstance'], [], [None])
 
     prop_meta = {
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version311e, MoPropertyMeta.NAMING, 0x2, None, None, None, [], []),

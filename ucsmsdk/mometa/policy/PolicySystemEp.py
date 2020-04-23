@@ -15,7 +15,7 @@ class PolicySystemEp(ManagedObject):
     consts = PolicySystemEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PolicySystemEp", "policySystemEp", "system-policies", VersionMeta.Version302c, "InputOutput", 0x1f, [], ["read-only"], [u'policyPolicyEp'], [u'adaptorHostEthIfProfile', u'lsbootPolicy', u'nwctrlDefinition', u'powerPolicy', u'solPolicy'], [None])
+    mo_meta = MoMeta("PolicySystemEp", "policySystemEp", "system-policies", VersionMeta.Version302c, "InputOutput", 0x1f, [], ["read-only"], ['policyPolicyEp'], ['adaptorHostEthIfProfile', 'lsbootPolicy', 'nwctrlDefinition', 'powerPolicy', 'solPolicy'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -15,9 +15,9 @@ class DiagLogEp(ManagedObject):
     """This is DiagLogEp class."""
 
     consts = DiagLogEpConsts()
-    naming_props = set([u'switchId'])
+    naming_props = set(['switchId'])
 
-    mo_meta = MoMeta("DiagLogEp", "diagLogEp", "logep-[switch_id]", VersionMeta.Version321d, "InputOutput", 0x3f, [], [""], [u'diagRslt'], [], [None])
+    mo_meta = MoMeta("DiagLogEp", "diagLogEp", "logep-[switch_id]", VersionMeta.Version321d, "InputOutput", 0x3f, [], [""], ['diagRslt'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -16,9 +16,9 @@ class FirmwareVicSlotConstraint(ManagedObject):
     """This is FirmwareVicSlotConstraint class."""
 
     consts = FirmwareVicSlotConstraintConsts()
-    naming_props = set([u'vicSlot'])
+    naming_props = set(['vicSlot'])
 
-    mo_meta = MoMeta("FirmwareVicSlotConstraint", "firmwareVicSlotConstraint", "constraint-vic-slot-[vic_slot]", VersionMeta.Version227b, "InputOutput", 0x3f, [], [""], [u'firmwareConstraints'], [], [None])
+    mo_meta = MoMeta("FirmwareVicSlotConstraint", "firmwareVicSlotConstraint", "constraint-vic-slot-[vic_slot]", VersionMeta.Version227b, "InputOutput", 0x3f, [], [""], ['firmwareConstraints'], [], [None])
 
     prop_meta = {
         "check_running_ver": MoPropertyMeta("check_running_ver", "checkRunningVer", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

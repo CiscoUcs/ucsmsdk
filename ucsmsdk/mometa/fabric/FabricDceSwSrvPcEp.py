@@ -60,9 +60,9 @@ class FabricDceSwSrvPcEp(ManagedObject):
     """This is FabricDceSwSrvPcEp class."""
 
     consts = FabricDceSwSrvPcEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("FabricDceSwSrvPcEp", "fabricDceSwSrvPcEp", "ep-slot-[slot_id]-port-[port_id]", VersionMeta.Version201m, "InputOutput", 0x7ff, [], ["admin", "ls-network", "ls-network-policy"], [u'fabricDceSwSrvPc', u'fabricSubGroup'], [u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("FabricDceSwSrvPcEp", "fabricDceSwSrvPcEp", "ep-slot-[slot_id]-port-[port_id]", VersionMeta.Version201m, "InputOutput", 0x7ff, [], ["admin", "ls-network", "ls-network-policy"], ['fabricDceSwSrvPc', 'fabricSubGroup'], ['faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
@@ -87,7 +87,7 @@ class FabricDceSwSrvPcEp(ManagedObject):
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x40, None, None, None, [], ["1-54"]),
+        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x40, None, None, None, [], ["1-108"]),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x100, None, None, None, [], ["1-4"]),

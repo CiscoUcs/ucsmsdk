@@ -30,7 +30,7 @@ class CommHttps(ManagedObject):
     consts = CommHttpsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommHttps", "commHttps", "https-svc", VersionMeta.Version101e, "InputOutput", 0x3fff, [], ["aaa", "admin"], [u'commSvcEp'], [], ["Get", "Set"])
+    mo_meta = MoMeta("CommHttps", "commHttps", "https-svc", VersionMeta.Version101e, "InputOutput", 0x3fff, [], ["aaa", "admin"], ['commSvcEp'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

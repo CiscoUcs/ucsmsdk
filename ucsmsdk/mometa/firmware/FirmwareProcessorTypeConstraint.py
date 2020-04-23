@@ -16,9 +16,9 @@ class FirmwareProcessorTypeConstraint(ManagedObject):
     """This is FirmwareProcessorTypeConstraint class."""
 
     consts = FirmwareProcessorTypeConstraintConsts()
-    naming_props = set([u'type'])
+    naming_props = set(['type'])
 
-    mo_meta = MoMeta("FirmwareProcessorTypeConstraint", "firmwareProcessorTypeConstraint", "constraint-processor-type-[type]", VersionMeta.Version224b, "InputOutput", 0x3f, [], [""], [u'firmwareConstraints'], [], [None])
+    mo_meta = MoMeta("FirmwareProcessorTypeConstraint", "firmwareProcessorTypeConstraint", "constraint-processor-type-[type]", VersionMeta.Version224b, "InputOutput", 0x3f, [], [""], ['firmwareConstraints'], [], [None])
 
     prop_meta = {
         "check_running_ver": MoPropertyMeta("check_running_ver", "checkRunningVer", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

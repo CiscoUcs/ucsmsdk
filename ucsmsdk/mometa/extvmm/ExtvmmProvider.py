@@ -170,9 +170,9 @@ class ExtvmmProvider(ManagedObject):
     """This is ExtvmmProvider class."""
 
     consts = ExtvmmProviderConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ExtvmmProvider", "extvmmProvider", "vm-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-config", "ls-config-policy", "ls-network", "pn-policy"], [u'extvmmEp'], [u'eventInst', u'extvmmKeyInst', u'extvmmProviderFsm', u'extvmmProviderFsmTask', u'faultInst', u'vmDC', u'vmDCOrg', u'vmSwitch'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("ExtvmmProvider", "extvmmProvider", "vm-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-config", "ls-config-policy", "ls-network", "pn-policy"], ['extvmmEp'], ['eventInst', 'extvmmKeyInst', 'extvmmProviderFsm', 'extvmmProviderFsmTask', 'faultInst', 'vmDC', 'vmDCOrg', 'vmSwitch'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "cert": MoPropertyMeta("cert", "cert", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

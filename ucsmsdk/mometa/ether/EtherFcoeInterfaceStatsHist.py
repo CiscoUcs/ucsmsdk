@@ -20,9 +20,9 @@ class EtherFcoeInterfaceStatsHist(ManagedObject):
     """This is EtherFcoeInterfaceStatsHist class."""
 
     consts = EtherFcoeInterfaceStatsHistConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("EtherFcoeInterfaceStatsHist", "etherFcoeInterfaceStatsHist", "[id]", VersionMeta.Version211a, "OutputOnly", 0xf, [], ["read-only"], [u'etherFcoeInterfaceStats'], [], ["Get"])
+    mo_meta = MoMeta("EtherFcoeInterfaceStatsHist", "etherFcoeInterfaceStatsHist", "[id]", VersionMeta.Version211a, "OutputOnly", 0xf, [], ["read-only"], ['etherFcoeInterfaceStats'], [], ["Get"])
 
     prop_meta = {
         "bytes_rx": MoPropertyMeta("bytes_rx", "bytesRx", "ulong", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

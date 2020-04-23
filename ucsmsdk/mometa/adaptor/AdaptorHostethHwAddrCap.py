@@ -15,7 +15,7 @@ class AdaptorHostethHwAddrCap(ManagedObject):
     consts = AdaptorHostethHwAddrCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorHostethHwAddrCap", "adaptorHostethHwAddrCap", "hwaddr-hosteth", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["read-only"], [u'adaptorFruCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("AdaptorHostethHwAddrCap", "adaptorHostethHwAddrCap", "hwaddr-hosteth", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["read-only"], ['adaptorFruCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

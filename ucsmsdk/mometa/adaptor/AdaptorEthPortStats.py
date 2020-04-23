@@ -19,9 +19,9 @@ class AdaptorEthPortStats(ManagedObject):
     """This is AdaptorEthPortStats class."""
 
     consts = AdaptorEthPortStatsConsts()
-    naming_props = set([u'trafficDirection'])
+    naming_props = set(['trafficDirection'])
 
-    mo_meta = MoMeta("AdaptorEthPortStats", "adaptorEthPortStats", "eth-port-stats-[traffic_direction]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'adaptorExtEthIf', u'adaptorHostEthIf', u'vmNic'], [u'adaptorEthPortStatsHist'], ["Get"])
+    mo_meta = MoMeta("AdaptorEthPortStats", "adaptorEthPortStats", "eth-port-stats-[traffic_direction]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['adaptorExtEthIf', 'adaptorHostEthIf', 'vmNic'], ['adaptorEthPortStatsHist'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

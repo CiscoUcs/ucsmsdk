@@ -18,7 +18,7 @@ class EtherLossStats(ManagedObject):
     consts = EtherLossStatsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EtherLossStats", "etherLossStats", "loss-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], [u'etherPIo', u'etherServerIntFIo', u'fabricEthEstcPc', u'fabricEthLanPc'], [u'etherLossStatsHist'], ["Get"])
+    mo_meta = MoMeta("EtherLossStats", "etherLossStats", "loss-stats", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["admin", "operations", "read-only"], ['etherPIo', 'etherServerIntFIo', 'fabricEthEstcPc', 'fabricEthLanPc'], ['etherLossStatsHist'], ["Get"])
 
     prop_meta = {
         "sqe_test": MoPropertyMeta("sqe_test", "SQETest", "ulong", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

@@ -28,9 +28,9 @@ class StatsThrFloatValue(ManagedObject):
     """This is StatsThrFloatValue class."""
 
     consts = StatsThrFloatValueConsts()
-    naming_props = set([u'direction', u'severity'])
+    naming_props = set(['direction', 'severity'])
 
-    mo_meta = MoMeta("StatsThrFloatValue", "statsThrFloatValue", "[direction]-[severity]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "operations"], [u'statsThr32Definition', u'statsThr64Definition', u'statsThrFloatDefinition'], [], ["Get"])
+    mo_meta = MoMeta("StatsThrFloatValue", "statsThrFloatValue", "[direction]-[severity]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin", "operations"], ['statsThr32Definition', 'statsThr64Definition', 'statsThrFloatDefinition'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

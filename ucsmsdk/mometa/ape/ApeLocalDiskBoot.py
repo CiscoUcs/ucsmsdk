@@ -24,9 +24,9 @@ class ApeLocalDiskBoot(ManagedObject):
     """This is ApeLocalDiskBoot class."""
 
     consts = ApeLocalDiskBootConsts()
-    naming_props = set([u'chassisId', u'slotId'])
+    naming_props = set(['chassisId', 'slotId'])
 
-    mo_meta = MoMeta("ApeLocalDiskBoot", "apeLocalDiskBoot", "localdiskboot-[chassis_id]-[slot_id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin"], [u'apeManager'], [], [None])
+    mo_meta = MoMeta("ApeLocalDiskBoot", "apeLocalDiskBoot", "localdiskboot-[chassis_id]-[slot_id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin"], ['apeManager'], [], [None])
 
     prop_meta = {
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x2, None, None, None, ["N/A"], ["0-255"]),

@@ -241,9 +241,9 @@ class FabricComputeSlotEp(ManagedObject):
     """This is FabricComputeSlotEp class."""
 
     consts = FabricComputeSlotEpConsts()
-    naming_props = set([u'slotId'])
+    naming_props = set(['slotId'])
 
-    mo_meta = MoMeta("FabricComputeSlotEp", "fabricComputeSlotEp", "slot-[slot_id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'fabricChassisEp'], [u'eventInst', u'fabricComputeSlotEpFsm', u'fabricComputeSlotEpFsmTask', u'fabricIf', u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("FabricComputeSlotEp", "fabricComputeSlotEp", "slot-[slot_id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['fabricChassisEp'], ['eventInst', 'fabricComputeSlotEpFsm', 'fabricComputeSlotEpFsmTask', 'fabricIf', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["acknowledged", "reacknowledge"], []),
@@ -287,7 +287,7 @@ class FabricComputeSlotEp(ManagedObject):
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_slot_ep_dn": MoPropertyMeta("peer_slot_ep_dn", "peerSlotEpDn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-54"]),
+        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-108"]),
         "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "unauthorized", "unknown"], []),
         "presence_path": MoPropertyMeta("presence_path", "presencePath", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|A|B),){0,3}(defaultValue|unknown|A|B){0,1}""", [], []),
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

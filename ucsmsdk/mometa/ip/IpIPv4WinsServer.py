@@ -13,9 +13,9 @@ class IpIPv4WinsServer(ManagedObject):
     """This is IpIPv4WinsServer class."""
 
     consts = IpIPv4WinsServerConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("IpIPv4WinsServer", "ipIPv4WinsServer", "wins-server-[name]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["admin", "ls-network-policy"], [u'ippoolPool'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("IpIPv4WinsServer", "ipIPv4WinsServer", "wins-server-[name]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["admin", "ls-network-policy"], ['ippoolPool'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "i_pv4_address": MoPropertyMeta("i_pv4_address", "IPv4Address", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),

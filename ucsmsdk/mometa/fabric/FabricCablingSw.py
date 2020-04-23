@@ -15,9 +15,9 @@ class FabricCablingSw(ManagedObject):
     """This is FabricCablingSw class."""
 
     consts = FabricCablingSwConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("FabricCablingSw", "fabricCablingSw", "[id]", VersionMeta.Version311e, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy", "ext-san-config", "ext-san-policy"], [u'fabricCabling'], [u'fabricBreakout'], ["Get"])
+    mo_meta = MoMeta("FabricCablingSw", "fabricCablingSw", "[id]", VersionMeta.Version311e, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy", "ext-san-config", "ext-san-policy"], ['fabricCabling'], ['fabricBreakout'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version311e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

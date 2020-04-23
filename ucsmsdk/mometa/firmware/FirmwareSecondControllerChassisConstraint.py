@@ -15,7 +15,7 @@ class FirmwareSecondControllerChassisConstraint(ManagedObject):
     consts = FirmwareSecondControllerChassisConstraintConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareSecondControllerChassisConstraint", "firmwareSecondControllerChassisConstraint", "second-controller-chassis-constraint", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["read-only"], [u'firmwareConstraints'], [], [None])
+    mo_meta = MoMeta("FirmwareSecondControllerChassisConstraint", "firmwareSecondControllerChassisConstraint", "second-controller-chassis-constraint", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["read-only"], ['firmwareConstraints'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -15,7 +15,7 @@ class ApeManager(ManagedObject):
     consts = ApeManagerConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ApeManager", "apeManager", "ape", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], [u'topRoot'], [u'apeControllerManager', u'apeDcosAgManager', u'apeHostAgent', u'apeLANBoot', u'apeLocalDiskBoot', u'apeMc', u'apeNicAgManager', u'apeSANBoot', u'apeVirtualMediaBoot'], [None])
+    mo_meta = MoMeta("ApeManager", "apeManager", "ape", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["read-only"], ['topRoot'], ['apeControllerManager', 'apeDcosAgManager', 'apeHostAgent', 'apeLANBoot', 'apeLocalDiskBoot', 'apeMc', 'apeNicAgManager', 'apeSANBoot', 'apeVirtualMediaBoot'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

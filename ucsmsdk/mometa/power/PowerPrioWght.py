@@ -14,9 +14,9 @@ class PowerPrioWght(ManagedObject):
     """This is PowerPrioWght class."""
 
     consts = PowerPrioWghtConsts()
-    naming_props = set([u'prio'])
+    naming_props = set(['prio'])
 
-    mo_meta = MoMeta("PowerPrioWght", "powerPrioWght", "weight-[prio]", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["admin", "power-mgmt"], [u'powerEp'], [], ["Get"])
+    mo_meta = MoMeta("PowerPrioWght", "powerPrioWght", "weight-[prio]", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["admin", "power-mgmt"], ['powerEp'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

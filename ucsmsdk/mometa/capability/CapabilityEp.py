@@ -15,7 +15,7 @@ class CapabilityEp(ManagedObject):
     consts = CapabilityEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CapabilityEp", "capabilityEp", "ep", VersionMeta.Version131c, "InputOutput", 0x1f, [], ["read-only"], [u'capabilityCatalogue'], [u'capabilityMgmtExtension', u'capabilityUpdate', u'capabilityUpdater'], ["Get"])
+    mo_meta = MoMeta("CapabilityEp", "capabilityEp", "ep", VersionMeta.Version131c, "InputOutput", 0x1f, [], ["read-only"], ['capabilityCatalogue'], ['capabilityMgmtExtension', 'capabilityUpdate', 'capabilityUpdater'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

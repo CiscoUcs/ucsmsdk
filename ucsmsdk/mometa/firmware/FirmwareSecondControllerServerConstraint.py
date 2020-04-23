@@ -18,7 +18,7 @@ class FirmwareSecondControllerServerConstraint(ManagedObject):
     consts = FirmwareSecondControllerServerConstraintConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareSecondControllerServerConstraint", "firmwareSecondControllerServerConstraint", "second-controller-server-constraint", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["read-only"], [u'firmwareConstraints'], [], [None])
+    mo_meta = MoMeta("FirmwareSecondControllerServerConstraint", "firmwareSecondControllerServerConstraint", "second-controller-server-constraint", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["read-only"], ['firmwareConstraints'], [], [None])
 
     prop_meta = {
         "check_running_ver": MoPropertyMeta("check_running_ver", "checkRunningVer", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

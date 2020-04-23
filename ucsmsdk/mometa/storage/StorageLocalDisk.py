@@ -318,9 +318,9 @@ class StorageLocalDisk(ManagedObject):
     """This is StorageLocalDisk class."""
 
     consts = StorageLocalDiskConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("StorageLocalDisk", "storageLocalDisk", "disk-[id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'storageController', u'storageEnclosure'], [u'equipmentLocatorLed', u'eventInst', u'faultInst', u'firmwareBootDefinition', u'firmwareRunning', u'mgmtController', u'storageControllerEp', u'storageDiskEnvStats', u'storageLocalDiskFsm', u'storageLocalDiskFsmTask', u'storageLocalDiskPartition', u'storageOperation', u'storageSasPort', u'storageSsdHealthStats'], ["Get", "Set"])
+    mo_meta = MoMeta("StorageLocalDisk", "storageLocalDisk", "disk-[id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['storageController', 'storageEnclosure'], ['equipmentLocatorLed', 'eventInst', 'faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'mgmtController', 'storageControllerEp', 'storageDiskEnvStats', 'storageLocalDiskFsm', 'storageLocalDiskFsmTask', 'storageLocalDiskPartition', 'storageOperation', 'storageSasPort', 'storageSsdHealthStats'], ["Get", "Set"])
 
     prop_meta = {
         "admin_action": MoPropertyMeta("admin_action", "adminAction", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["clear-secure-drive", "clear-secure-foreign-config-drive", "dedicated-hot-spare", "enable-security", "global-hot-spare", "jbod", "led-off", "led-on", "prepare-for-removal", "remove-hot-spare", "unconfigured-good", "undo-prepare-for-removal", "unlock-foreign-drive", "unspecified"], []),

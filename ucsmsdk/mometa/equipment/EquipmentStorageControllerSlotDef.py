@@ -13,9 +13,9 @@ class EquipmentStorageControllerSlotDef(ManagedObject):
     """This is EquipmentStorageControllerSlotDef class."""
 
     consts = EquipmentStorageControllerSlotDefConsts()
-    naming_props = set([u'slotNum'])
+    naming_props = set(['slotNum'])
 
-    mo_meta = MoMeta("EquipmentStorageControllerSlotDef", "equipmentStorageControllerSlotDef", "controller-slot-def-[slot_num]", VersionMeta.Version224b, "InputOutput", 0x3f, [], ["read-only"], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], [None])
+    mo_meta = MoMeta("EquipmentStorageControllerSlotDef", "equipmentStorageControllerSlotDef", "controller-slot-def-[slot_num]", VersionMeta.Version224b, "InputOutput", 0x3f, [], ["read-only"], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

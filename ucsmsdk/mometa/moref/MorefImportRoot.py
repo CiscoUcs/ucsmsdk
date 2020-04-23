@@ -159,7 +159,7 @@ class MorefImportRoot(ManagedObject):
     consts = MorefImportRootConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MorefImportRoot", "morefImportRoot", "import-ref-root", VersionMeta.Version227b, "InputOutput", 0x1f, [], ["admin"], [u'topRoot'], [u'eventInst', u'faultInst', u'morefFruRef', u'morefImportRootFsm', u'morefImportRootFsmTask', u'morefRef'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("MorefImportRoot", "morefImportRoot", "import-ref-root", VersionMeta.Version227b, "InputOutput", 0x1f, [], ["admin"], ['topRoot'], ['eventInst', 'faultInst', 'morefFruRef', 'morefImportRootFsm', 'morefImportRootFsmTask', 'morefRef'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

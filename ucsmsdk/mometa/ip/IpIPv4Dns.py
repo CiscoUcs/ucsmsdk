@@ -14,7 +14,7 @@ class IpIPv4Dns(ManagedObject):
     """This is IpIPv4Dns class."""
 
     consts = IpIPv4DnsConsts()
-    naming_props = set([u'pref'])
+    naming_props = set(['pref'])
 
     mo_meta = MoMeta("IpIPv4Dns", "ipIPv4Dns", "ipv4-dns-[pref]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["read-only"], [], [], [None])
 

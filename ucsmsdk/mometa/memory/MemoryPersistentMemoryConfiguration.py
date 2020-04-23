@@ -46,7 +46,7 @@ class MemoryPersistentMemoryConfiguration(ManagedObject):
     consts = MemoryPersistentMemoryConfigurationConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MemoryPersistentMemoryConfiguration", "memoryPersistentMemoryConfiguration", "pmemory-config", VersionMeta.Version404a, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'computeBoard', u'lsServer'], [u'faultInst', u'memoryPersistentMemoryConfigResult', u'memoryPersistentMemoryRegion'], [None])
+    mo_meta = MoMeta("MemoryPersistentMemoryConfiguration", "memoryPersistentMemoryConfiguration", "pmemory-config", VersionMeta.Version404a, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['computeBoard', 'lsServer'], ['faultInst', 'memoryPersistentMemoryConfigResult', 'memoryPersistentMemoryRegion'], [None])
 
     prop_meta = {
         "admin_action": MoPropertyMeta("admin_action", "adminAction", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cancel-all", "disable-security", "enable-security", "modify-passphrase", "no-op", "reset-factory-default", "secure-erase", "unlock-dimms"], []),
@@ -55,6 +55,7 @@ class MemoryPersistentMemoryConfiguration(ManagedObject):
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version404a, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "deployed_secure_passphrase": MoPropertyMeta("deployed_secure_passphrase", "deployedSecurePassphrase", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, 0, 32, None, [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "inaccessible_capacity": MoPropertyMeta("inaccessible_capacity", "inaccessibleCapacity", "long", VersionMeta.Version411a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([0-9]{1,15})$""", [], []),
         "memory_capacity": MoPropertyMeta("memory_capacity", "memoryCapacity", "long", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([0-9]{1,15})$""", [], []),
         "ns_admin_state": MoPropertyMeta("ns_admin_state", "nsAdminState", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["configure", "delete", "force-configure", "force-delete", "force-flag", "init", "matching", "not-matching"], []),
         "num_of_dimms": MoPropertyMeta("num_of_dimms", "numOfDimms", "uint", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
@@ -68,6 +69,7 @@ class MemoryPersistentMemoryConfiguration(ManagedObject):
         "security_state": MoPropertyMeta("security_state", "securityState", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "total_capacity": MoPropertyMeta("total_capacity", "totalCapacity", "long", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([0-9]{1,15})$""", [], []),
+        "unconfigured_capacity": MoPropertyMeta("unconfigured_capacity", "unconfiguredCapacity", "long", VersionMeta.Version411a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([0-9]{1,15})$""", [], []),
     }
 
     prop_map = {
@@ -77,6 +79,7 @@ class MemoryPersistentMemoryConfiguration(ManagedObject):
         "childAction": "child_action", 
         "deployedSecurePassphrase": "deployed_secure_passphrase", 
         "dn": "dn", 
+        "inaccessibleCapacity": "inaccessible_capacity", 
         "memoryCapacity": "memory_capacity", 
         "nsAdminState": "ns_admin_state", 
         "numOfDimms": "num_of_dimms", 
@@ -90,6 +93,7 @@ class MemoryPersistentMemoryConfiguration(ManagedObject):
         "securityState": "security_state", 
         "status": "status", 
         "totalCapacity": "total_capacity", 
+        "unconfiguredCapacity": "unconfigured_capacity", 
     }
 
     def __init__(self, parent_mo_or_dn, **kwargs):
@@ -99,6 +103,7 @@ class MemoryPersistentMemoryConfiguration(ManagedObject):
         self.cfgd_memory_percentage = None
         self.child_action = None
         self.deployed_secure_passphrase = None
+        self.inaccessible_capacity = None
         self.memory_capacity = None
         self.ns_admin_state = None
         self.num_of_dimms = None
@@ -111,5 +116,6 @@ class MemoryPersistentMemoryConfiguration(ManagedObject):
         self.security_state = None
         self.status = None
         self.total_capacity = None
+        self.unconfigured_capacity = None
 
         ManagedObject.__init__(self, "MemoryPersistentMemoryConfiguration", parent_mo_or_dn, **kwargs)

@@ -18,9 +18,9 @@ class CapabilityUpdaterFsmTask(ManagedObject):
     """This is CapabilityUpdaterFsmTask class."""
 
     consts = CapabilityUpdaterFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("CapabilityUpdaterFsmTask", "capabilityUpdaterFsmTask", "task-[item]", VersionMeta.Version131c, "OutputOnly", 0xf, [], [""], [u'capabilityUpdater'], [], [None])
+    mo_meta = MoMeta("CapabilityUpdaterFsmTask", "capabilityUpdaterFsmTask", "task-[item]", VersionMeta.Version131c, "OutputOnly", 0xf, [], [""], ['capabilityUpdater'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

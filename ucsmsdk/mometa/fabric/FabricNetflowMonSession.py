@@ -22,9 +22,9 @@ class FabricNetflowMonSession(ManagedObject):
     """This is FabricNetflowMonSession class."""
 
     consts = FabricNetflowMonSessionConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricNetflowMonSession", "fabricNetflowMonSession", "netflow-mon-[name]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricEthLanFlowMonitoring'], [u'fabricNetflowMonSrcRef', u'fabricNetflowMonitorRef', u'faultInst'], [None])
+    mo_meta = MoMeta("FabricNetflowMonSession", "fabricNetflowMonSession", "netflow-mon-[name]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEthLanFlowMonitoring'], ['fabricNetflowMonSrcRef', 'fabricNetflowMonitorRef', 'faultInst'], [None])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

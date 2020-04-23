@@ -38,9 +38,9 @@ class LsFcZone(ManagedObject):
     """This is LsFcZone class."""
 
     consts = LsFcZoneConsts()
-    naming_props = set([u'identity'])
+    naming_props = set(['identity'])
 
-    mo_meta = MoMeta("LsFcZone", "lsFcZone", "zone-[identity]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin", "ls-storage"], [u'lsZoneInitiatorMember'], [u'lsZoneTargetMember'], [None])
+    mo_meta = MoMeta("LsFcZone", "lsFcZone", "zone-[identity]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin", "ls-storage"], ['lsZoneInitiatorMember'], ['lsZoneTargetMember'], [None])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "applied", "apply-pending", "applying", "create-failed", "created", "deleted", "not-active", "not-applied", "zone-merge-failure"], []),

@@ -16,9 +16,9 @@ class FabricVsanMembership(ManagedObject):
     """This is FabricVsanMembership class."""
 
     consts = FabricVsanMembershipConsts()
-    naming_props = set([u'vsanId'])
+    naming_props = set(['vsanId'])
 
-    mo_meta = MoMeta("FabricVsanMembership", "fabricVsanMembership", "vsanmember-[vsan_id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], [u'fabricFcSanEp', u'fabricFcSanPc', u'fabricFcoeEstcEp', u'fabricFcoeSanEp', u'fabricFcoeSanPc'], [u'faultInst'], [None])
+    mo_meta = MoMeta("FabricVsanMembership", "fabricVsanMembership", "vsanmember-[vsan_id]", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["read-only"], ['fabricFcSanEp', 'fabricFcSanPc', 'fabricFcoeEstcEp', 'fabricFcoeSanEp', 'fabricFcoeSanPc'], ['faultInst'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

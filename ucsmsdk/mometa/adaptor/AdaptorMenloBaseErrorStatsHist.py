@@ -20,9 +20,9 @@ class AdaptorMenloBaseErrorStatsHist(ManagedObject):
     """This is AdaptorMenloBaseErrorStatsHist class."""
 
     consts = AdaptorMenloBaseErrorStatsHistConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorMenloBaseErrorStatsHist", "adaptorMenloBaseErrorStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], [u'adaptorMenloBaseErrorStats'], [], ["Get"])
+    mo_meta = MoMeta("AdaptorMenloBaseErrorStatsHist", "adaptorMenloBaseErrorStatsHist", "[id]", VersionMeta.Version111j, "OutputOnly", 0xf, [], ["read-only"], ['adaptorMenloBaseErrorStats'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

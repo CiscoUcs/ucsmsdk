@@ -163,7 +163,7 @@ class FabricSanCloud(ManagedObject):
     consts = FabricSanCloudConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FabricSanCloud", "fabricSanCloud", "san", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "ext-san-config", "ext-san-policy"], [u'fabricEp'], [u'eventInst', u'fabricFcSan', u'fabricSanCloudFsm', u'fabricSanCloudFsmTask', u'fabricSanPinGroup', u'fabricVsan', u'faultInst', u'firmwareAck', u'mgmtLeaderEntity', u'statsThresholdPolicy'], ["Get", "Set"])
+    mo_meta = MoMeta("FabricSanCloud", "fabricSanCloud", "san", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "ext-san-config", "ext-san-policy"], ['fabricEp'], ['eventInst', 'fabricFcSan', 'fabricSanCloudFsm', 'fabricSanCloudFsmTask', 'fabricSanPinGroup', 'fabricVsan', 'faultInst', 'firmwareAck', 'mgmtLeaderEntity', 'statsThresholdPolicy'], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

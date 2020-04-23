@@ -14,9 +14,9 @@ class CommNtpProvider(ManagedObject):
     """This is CommNtpProvider class."""
 
     consts = CommNtpProviderConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("CommNtpProvider", "commNtpProvider", "ntp-[name]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-security", "operations"], [u'commDateTime'], [], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("CommNtpProvider", "commNtpProvider", "ntp-[name]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-security", "operations"], ['commDateTime'], [], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),

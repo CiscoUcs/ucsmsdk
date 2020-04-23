@@ -13,9 +13,9 @@ class ProcSvc(ManagedObject):
     """This is ProcSvc class."""
 
     consts = ProcSvcConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ProcSvc", "procSvc", "svc-[name]", VersionMeta.Version131c, "InputOutput", 0x3f, [], ["read-only"], [u'procManager'], [u'procStimulusCounts', u'procTxCounts'], ["Get"])
+    mo_meta = MoMeta("ProcSvc", "procSvc", "svc-[name]", VersionMeta.Version131c, "InputOutput", 0x3f, [], ["read-only"], ['procManager'], ['procStimulusCounts', 'procTxCounts'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

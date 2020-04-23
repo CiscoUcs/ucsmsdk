@@ -18,7 +18,7 @@ class FirmwareActivity(ManagedObject):
     consts = FirmwareActivityConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareActivity", "firmwareActivity", "fw-activity", VersionMeta.Version251a, "InputOutput", 0x1f, [], ["admin"], [u'equipmentChassis'], [], [None])
+    mo_meta = MoMeta("FirmwareActivity", "firmwareActivity", "fw-activity", VersionMeta.Version251a, "InputOutput", 0x1f, [], ["admin"], ['equipmentChassis'], [], [None])
 
     prop_meta = {
         "activity_trigger_time": MoPropertyMeta("activity_trigger_time", "activityTriggerTime", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),

@@ -16,7 +16,7 @@ class EquipmentInbandMgmtCap(ManagedObject):
     consts = EquipmentInbandMgmtCapConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentInbandMgmtCap", "equipmentInbandMgmtCap", "ib-mgmt-cap", VersionMeta.Version221b, "InputOutput", 0x1f, [], ["read-only"], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], [None])
+    mo_meta = MoMeta("EquipmentInbandMgmtCap", "equipmentInbandMgmtCap", "ib-mgmt-cap", VersionMeta.Version221b, "InputOutput", 0x1f, [], ["read-only"], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

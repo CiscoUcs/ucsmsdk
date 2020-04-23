@@ -18,9 +18,9 @@ class GmetaHolderFsmTask(ManagedObject):
     """This is GmetaHolderFsmTask class."""
 
     consts = GmetaHolderFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("GmetaHolderFsmTask", "gmetaHolderFsmTask", "task-[item]", VersionMeta.Version212a, "OutputOnly", 0xf, [], [""], [u'gmetaHolder'], [], [None])
+    mo_meta = MoMeta("GmetaHolderFsmTask", "gmetaHolderFsmTask", "task-[item]", VersionMeta.Version212a, "OutputOnly", 0xf, [], [""], ['gmetaHolder'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

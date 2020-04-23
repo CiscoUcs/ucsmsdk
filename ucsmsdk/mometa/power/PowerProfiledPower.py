@@ -28,7 +28,7 @@ class PowerProfiledPower(ManagedObject):
     consts = PowerProfiledPowerConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PowerProfiledPower", "powerProfiledPower", "prof-power", VersionMeta.Version302c, "InputOutput", 0x1f, [], ["admin", "power-mgmt"], [u'powerBudget'], [], ["Get"])
+    mo_meta = MoMeta("PowerProfiledPower", "powerProfiledPower", "prof-power", VersionMeta.Version302c, "InputOutput", 0x1f, [], ["admin", "power-mgmt"], ['powerBudget'], [], ["Get"])
 
     prop_meta = {
         "abs_min_post_power": MoPropertyMeta("abs_min_post_power", "absMinPostPower", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),

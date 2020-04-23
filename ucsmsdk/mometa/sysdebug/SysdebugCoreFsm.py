@@ -156,7 +156,7 @@ class SysdebugCoreFsm(ManagedObject):
     consts = SysdebugCoreFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SysdebugCoreFsm", "sysdebugCoreFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'sysdebugCore'], [u'sysdebugCoreFsmStage'], [None])
+    mo_meta = MoMeta("SysdebugCoreFsm", "sysdebugCoreFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['sysdebugCore'], ['sysdebugCoreFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

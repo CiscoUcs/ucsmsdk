@@ -16,7 +16,7 @@ class VnicDynamicIdUniverse(ManagedObject):
     """This is VnicDynamicIdUniverse class."""
 
     consts = VnicDynamicIdUniverseConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
     mo_meta = MoMeta("VnicDynamicIdUniverse", "vnicDynamicIdUniverse", "dynamic-id-universe-[name]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ls-network", "ls-network-policy"], [], [], ["Get"])
 

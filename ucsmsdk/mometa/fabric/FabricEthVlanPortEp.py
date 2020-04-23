@@ -56,9 +56,9 @@ class FabricEthVlanPortEp(ManagedObject):
     """This is FabricEthVlanPortEp class."""
 
     consts = FabricEthVlanPortEpConsts()
-    naming_props = set([u'switchId', u'slotId', u'portId'])
+    naming_props = set(['switchId', 'slotId', 'portId'])
 
-    mo_meta = MoMeta("FabricEthVlanPortEp", "fabricEthVlanPortEp", "phys-switch-[switch_id]-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x1fff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'fabricNetGroup', u'fabricSwSubGroup', u'fabricVlan'], [u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricEthVlanPortEp", "fabricEthVlanPortEp", "phys-switch-[switch_id]-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x1fff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricNetGroup', 'fabricSwSubGroup', 'fabricVlan'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
@@ -83,7 +83,7 @@ class FabricEthVlanPortEp(ManagedObject):
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x80, None, None, None, [], ["1-54"]),
+        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x80, None, None, None, [], ["1-108"]),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x200, None, None, None, [], ["1-5"]),

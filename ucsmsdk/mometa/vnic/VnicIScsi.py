@@ -74,9 +74,9 @@ class VnicIScsi(ManagedObject):
     """This is VnicIScsi class."""
 
     consts = VnicIScsiConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicIScsi", "vnicIScsi", "iscsi-[name]", VersionMeta.Version201m, "InputOutput", 0x1ffffff, [], ["admin", "ls-config", "ls-network", "ls-server", "ls-storage"], [u'lsServer'], [u'fabricEthMonSrcEp', u'fabricFcMonSrcEp', u'fabricNetflowMonSrcEp', u'faultInst', u'vnicIPv4IscsiAddr', u'vnicIScsiAutoTargetIf', u'vnicIScsiStaticTargetIf', u'vnicIqnHistory', u'vnicMacHistory', u'vnicVlan'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicIScsi", "vnicIScsi", "iscsi-[name]", VersionMeta.Version201m, "InputOutput", 0x1ffffff, [], ["admin", "ls-config", "ls-network", "ls-server", "ls-storage"], ['lsServer'], ['fabricEthMonSrcEp', 'fabricFcMonSrcEp', 'fabricNetflowMonSrcEp', 'faultInst', 'vnicIPv4IscsiAddr', 'vnicIScsiAutoTargetIf', 'vnicIScsiStaticTargetIf', 'vnicIqnHistory', 'vnicMacHistory', 'vnicVlan'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "adaptor_profile_name": MoPropertyMeta("adaptor_profile_name", "adaptorProfileName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),

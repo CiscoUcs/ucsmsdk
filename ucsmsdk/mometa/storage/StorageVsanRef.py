@@ -20,7 +20,7 @@ class StorageVsanRef(ManagedObject):
     consts = StorageVsanRefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("StorageVsanRef", "storageVsanRef", "vsan-ref", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "ext-san-config", "ext-san-policy", "ls-storage", "ls-storage-policy"], [u'fabricFcUserZone', u'storageFcTargetEp'], [u'faultInst'], ["Add", "Get", "Set"])
+    mo_meta = MoMeta("StorageVsanRef", "storageVsanRef", "vsan-ref", VersionMeta.Version211a, "InputOutput", 0x3f, [], ["admin", "ext-san-config", "ext-san-policy", "ls-storage", "ls-storage-policy"], ['fabricFcUserZone', 'storageFcTargetEp'], ['faultInst'], ["Add", "Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

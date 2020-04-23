@@ -15,7 +15,7 @@ class FirmwareConnectionManagementChassisConstraint(ManagedObject):
     consts = FirmwareConnectionManagementChassisConstraintConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FirmwareConnectionManagementChassisConstraint", "firmwareConnectionManagementChassisConstraint", "connection-management-chassis-constraint", VersionMeta.Version323a, "InputOutput", 0x1f, [], ["read-only"], [u'firmwareConstraints'], [], [None])
+    mo_meta = MoMeta("FirmwareConnectionManagementChassisConstraint", "firmwareConnectionManagementChassisConstraint", "connection-management-chassis-constraint", VersionMeta.Version323a, "InputOutput", 0x1f, [], ["read-only"], ['firmwareConstraints'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version323a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

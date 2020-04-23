@@ -25,7 +25,7 @@ class SysdebugTechSupportCmdOpt(ManagedObject):
     consts = SysdebugTechSupportCmdOptConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SysdebugTechSupportCmdOpt", "sysdebugTechSupportCmdOpt", "tech-support-cmd-opt", VersionMeta.Version141i, "InputOutput", 0x1ffff, [], ["admin", "operations"], [u'sysdebugTechSupport'], [], ["Add", "Get", "Set"])
+    mo_meta = MoMeta("SysdebugTechSupportCmdOpt", "sysdebugTechSupportCmdOpt", "tech-support-cmd-opt", VersionMeta.Version141i, "InputOutput", 0x1ffff, [], ["admin", "operations"], ['sysdebugTechSupport'], [], ["Add", "Get", "Set"])
 
     prop_meta = {
         "cartridge_cimc_id": MoPropertyMeta("cartridge_cimc_id", "cartridgeCIMCId", "ushort", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], ["1-2"]),

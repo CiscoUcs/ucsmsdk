@@ -20,9 +20,9 @@ class MemoryPersistentMemoryPolicy(ManagedObject):
     """This is MemoryPersistentMemoryPolicy class."""
 
     consts = MemoryPersistentMemoryPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("MemoryPersistentMemoryPolicy", "memoryPersistentMemoryPolicy", "pmemory-policy-[name]", VersionMeta.Version404a, "InputOutput", 0x1ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'orgOrg'], [u'memoryPersistentMemoryGoal', u'memoryPersistentMemoryLogicalNamespace', u'memoryPersistentMemorySecurity'], [None])
+    mo_meta = MoMeta("MemoryPersistentMemoryPolicy", "memoryPersistentMemoryPolicy", "pmemory-policy-[name]", VersionMeta.Version404a, "InputOutput", 0x1ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['orgOrg'], ['memoryPersistentMemoryGoal', 'memoryPersistentMemoryLogicalNamespace', 'memoryPersistentMemorySecurity'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version404a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

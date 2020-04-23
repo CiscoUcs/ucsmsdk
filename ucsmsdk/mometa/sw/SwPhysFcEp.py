@@ -41,9 +41,9 @@ class SwPhysFcEp(ManagedObject):
     """This is SwPhysFcEp class."""
 
     consts = SwPhysFcEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("SwPhysFcEp", "swPhysFcEp", "phys-fc-slot-[slot_id]port-[port_id]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], ["read-only"], [u'swPhys', u'swSubGroup'], [], ["Get"])
+    mo_meta = MoMeta("SwPhysFcEp", "swPhysFcEp", "phys-fc-slot-[slot_id]port-[port_id]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], ["read-only"], ['swPhys', 'swSubGroup'], [], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

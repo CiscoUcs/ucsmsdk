@@ -15,7 +15,7 @@ class LsServerAssocCtx(ManagedObject):
     consts = LsServerAssocCtxConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsServerAssocCtx", "lsServerAssocCtx", "ls-assoc-ctx", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], [u'lsServer'], [u'adaptorUnitAssocCtx', u'computePhysicalAssocCtx', u'processorUnitAssocCtx'], ["Get"])
+    mo_meta = MoMeta("LsServerAssocCtx", "lsServerAssocCtx", "ls-assoc-ctx", VersionMeta.Version141i, "InputOutput", 0x1f, [], ["read-only"], ['lsServer'], ['adaptorUnitAssocCtx', 'computePhysicalAssocCtx', 'processorUnitAssocCtx'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

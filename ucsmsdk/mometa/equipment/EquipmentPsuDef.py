@@ -16,9 +16,9 @@ class EquipmentPsuDef(ManagedObject):
     """This is EquipmentPsuDef class."""
 
     consts = EquipmentPsuDefConsts()
-    naming_props = set([u'PsuType'])
+    naming_props = set(['PsuType'])
 
-    mo_meta = MoMeta("EquipmentPsuDef", "equipmentPsuDef", "[psu_type]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], [""], [u'equipmentPsuCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentPsuDef", "equipmentPsuDef", "[psu_type]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], [""], ['equipmentPsuCapProvider'], [], ["Get"])
 
     prop_meta = {
         "psu_type": MoPropertyMeta("psu_type", "PsuType", "string", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x2, 1, 510, None, [], []),

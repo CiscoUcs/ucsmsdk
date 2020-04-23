@@ -16,9 +16,9 @@ class LicenseFeatureLine(ManagedObject):
     """This is LicenseFeatureLine class."""
 
     consts = LicenseFeatureLineConsts()
-    naming_props = set([u'id', u'type'])
+    naming_props = set(['id', 'type'])
 
-    mo_meta = MoMeta("LicenseFeatureLine", "licenseFeatureLine", "FeatureLine-[id]:[type]", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["read-only"], [u'licenseContents'], [], ["Get"])
+    mo_meta = MoMeta("LicenseFeatureLine", "licenseFeatureLine", "FeatureLine-[id]:[type]", VersionMeta.Version141i, "InputOutput", 0x7f, [], ["read-only"], ['licenseContents'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -30,9 +30,9 @@ class StorageIniGroup(ManagedObject):
     """This is StorageIniGroup class."""
 
     consts = StorageIniGroupConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("StorageIniGroup", "storageIniGroup", "grp-[name]", VersionMeta.Version211a, "InputOutput", 0xfff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], [u'lsServer', u'vnicSanConnPolicy'], [u'faultInst', u'storageInitiator', u'vnicFcGroupDef'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("StorageIniGroup", "storageIniGroup", "grp-[name]", VersionMeta.Version211a, "InputOutput", 0xfff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['lsServer', 'vnicSanConnPolicy'], ['faultInst', 'storageInitiator', 'vnicFcGroupDef'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

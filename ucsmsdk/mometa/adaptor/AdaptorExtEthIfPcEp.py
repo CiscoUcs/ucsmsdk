@@ -42,9 +42,9 @@ class AdaptorExtEthIfPcEp(ManagedObject):
     """This is AdaptorExtEthIfPcEp class."""
 
     consts = AdaptorExtEthIfPcEpConsts()
-    naming_props = set([u'slotId', u'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("AdaptorExtEthIfPcEp", "adaptorExtEthIfPcEp", "ep-slot-[slot_id]-port-[port_id]", VersionMeta.Version201m, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance"], [u'adaptorExtEthIfPc'], [], ["Get"])
+    mo_meta = MoMeta("AdaptorExtEthIfPcEp", "adaptorExtEthIfPcEp", "ep-slot-[slot_id]-port-[port_id]", VersionMeta.Version201m, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance"], ['adaptorExtEthIfPc'], [], ["Get"])
 
     prop_meta = {
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

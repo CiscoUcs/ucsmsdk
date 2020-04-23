@@ -162,9 +162,9 @@ class ExtvmmSwitchDelTask(ManagedObject):
     """This is ExtvmmSwitchDelTask class."""
 
     consts = ExtvmmSwitchDelTaskConsts()
-    naming_props = set([u'swIntId'])
+    naming_props = set(['swIntId'])
 
-    mo_meta = MoMeta("ExtvmmSwitchDelTask", "extvmmSwitchDelTask", "vsw-deltask-[sw_int_id]", VersionMeta.Version111j, "InputOutput", 0xffff, [], ["admin", "ls-config", "ls-config-policy", "ls-network", "pn-policy"], [u'extvmmEp'], [u'eventInst', u'extvmmSwitchDelTaskFsm', u'extvmmSwitchDelTaskFsmTask', u'faultInst'], ["Get", "Remove"])
+    mo_meta = MoMeta("ExtvmmSwitchDelTask", "extvmmSwitchDelTask", "vsw-deltask-[sw_int_id]", VersionMeta.Version111j, "InputOutput", 0xffff, [], ["admin", "ls-config", "ls-config-policy", "ls-network", "pn-policy"], ['extvmmEp'], ['eventInst', 'extvmmSwitchDelTaskFsm', 'extvmmSwitchDelTaskFsmTask', 'faultInst'], ["Get", "Remove"])
 
     prop_meta = {
         "cert_file": MoPropertyMeta("cert_file", "certFile", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2, 0, 510, None, [], []),

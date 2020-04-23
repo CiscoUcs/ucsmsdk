@@ -15,7 +15,7 @@ class EquipmentFirmwareConstraint(ManagedObject):
     consts = EquipmentFirmwareConstraintConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentFirmwareConstraint", "equipmentFirmwareConstraint", "fw-constr", VersionMeta.Version212a, "InputOutput", 0x1f, [], [""], [u'equipmentBoardControllerDef'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentFirmwareConstraint", "equipmentFirmwareConstraint", "fw-constr", VersionMeta.Version212a, "InputOutput", 0x1f, [], [""], ['equipmentBoardControllerDef'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

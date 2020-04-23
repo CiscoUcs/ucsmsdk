@@ -18,7 +18,7 @@ class EquipmentSecureBoot(ManagedObject):
     consts = EquipmentSecureBootConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentSecureBoot", "equipmentSecureBoot", "secBoot", VersionMeta.Version221b, "InputOutput", 0xff, [], [""], [u'equipmentBladeCapProvider', u'equipmentRackUnitCapProvider'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentSecureBoot", "equipmentSecureBoot", "secBoot", VersionMeta.Version221b, "InputOutput", 0xff, [], [""], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

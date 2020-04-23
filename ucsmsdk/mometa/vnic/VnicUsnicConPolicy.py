@@ -16,9 +16,9 @@ class VnicUsnicConPolicy(ManagedObject):
     """This is VnicUsnicConPolicy class."""
 
     consts = VnicUsnicConPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicUsnicConPolicy", "vnicUsnicConPolicy", "usnic-con-[name]", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin", "ls-network", "ls-network-policy", "ls-server"], [u'orgOrg'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicUsnicConPolicy", "vnicUsnicConPolicy", "usnic-con-[name]", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["admin", "ls-network", "ls-network-policy", "ls-server"], ['orgOrg'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "adaptor_profile_name": MoPropertyMeta("adaptor_profile_name", "adaptorProfileName", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),

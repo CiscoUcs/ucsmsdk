@@ -47,9 +47,9 @@ class FabricVsan(ManagedObject):
     """This is FabricVsan class."""
 
     consts = FabricVsanConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricVsan", "fabricVsan", "net-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-san-config", "ext-san-policy"], [u'fabricFcEstc', u'fabricFcEstcCloud', u'fabricFcSan', u'fabricSanCloud'], [u'fabricFcMonFiltEp', u'fabricFcMonSrcEp', u'fabricFcVsanPc', u'fabricFcVsanPortEp', u'fabricFcoeVsanPc', u'fabricFcoeVsanPortEp', u'fabricSwSubGroup', u'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricVsan", "fabricVsan", "net-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-san-config", "ext-san-policy"], ['fabricFcEstc', 'fabricFcEstcCloud', 'fabricFcSan', 'fabricSanCloud'], ['fabricFcMonFiltEp', 'fabricFcMonSrcEp', 'fabricFcVsanPc', 'fabricFcVsanPortEp', 'fabricFcoeVsanPc', 'fabricFcoeVsanPortEp', 'fabricSwSubGroup', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -20,9 +20,9 @@ class EquipmentSwitchIOCardCapProvider(ManagedObject):
     """This is EquipmentSwitchIOCardCapProvider class."""
 
     consts = EquipmentSwitchIOCardCapProviderConsts()
-    naming_props = set([u'vendor', u'model', u'revision'])
+    naming_props = set(['vendor', 'model', 'revision'])
 
-    mo_meta = MoMeta("EquipmentSwitchIOCardCapProvider", "equipmentSwitchIOCardCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version302c, "InputOutput", 0x1ff, [], [""], [u'capabilityCatalogue', u'equipmentHwCapDerivativeProvider'], [u'equipmentBeaconCapProvider', u'equipmentFruVariant', u'equipmentIOCardTypeDef', u'equipmentManufacturingDef', u'equipmentPhysicalDef', u'equipmentPicture', u'equipmentPortCap', u'equipmentPortGroupAggregationDef', u'equipmentPortGroupDef', u'equipmentServerPortCapProvider', u'equipmentServiceDef', u'equipmentSlotArrayRef', u'equipmentSwitchCap', u'equipmentUnifiedPortCapProvider', u'firmwareType', u'firmwareUpgradeConstraint'], [None])
+    mo_meta = MoMeta("EquipmentSwitchIOCardCapProvider", "equipmentSwitchIOCardCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version302c, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentBeaconCapProvider', 'equipmentFruVariant', 'equipmentIOCardTypeDef', 'equipmentManufacturingDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentPortCap', 'equipmentPortGroupAggregationDef', 'equipmentPortGroupDef', 'equipmentServerPortCapProvider', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'equipmentSwitchCap', 'equipmentUnifiedPortCapProvider', 'firmwareType', 'firmwareUpgradeConstraint'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

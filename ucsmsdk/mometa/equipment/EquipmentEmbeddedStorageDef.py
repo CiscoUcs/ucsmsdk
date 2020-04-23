@@ -28,7 +28,7 @@ class EquipmentEmbeddedStorageDef(ManagedObject):
     consts = EquipmentEmbeddedStorageDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentEmbeddedStorageDef", "equipmentEmbeddedStorageDef", "embedded-storage", VersionMeta.Version312b, "InputOutput", 0xff, [], [""], [u'equipmentLocalDiskControllerCapProvider'], [], [None])
+    mo_meta = MoMeta("EquipmentEmbeddedStorageDef", "equipmentEmbeddedStorageDef", "embedded-storage", VersionMeta.Version312b, "InputOutput", 0xff, [], [""], ['equipmentLocalDiskControllerCapProvider'], [], [None])
 
     prop_meta = {
         "block_size": MoPropertyMeta("block_size", "blockSize", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["512", "unknown"], ["0-4294967295"]),

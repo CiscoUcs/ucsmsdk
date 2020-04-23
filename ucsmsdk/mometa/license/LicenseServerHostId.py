@@ -16,9 +16,9 @@ class LicenseServerHostId(ManagedObject):
     """This is LicenseServerHostId class."""
 
     consts = LicenseServerHostIdConsts()
-    naming_props = set([u'scope'])
+    naming_props = set(['scope'])
 
-    mo_meta = MoMeta("LicenseServerHostId", "licenseServerHostId", "server-host-id-[scope]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["read-only"], [u'licenseEp'], [], ["Get"])
+    mo_meta = MoMeta("LicenseServerHostId", "licenseServerHostId", "server-host-id-[scope]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["read-only"], ['licenseEp'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

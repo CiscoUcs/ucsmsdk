@@ -178,7 +178,7 @@ class SysdebugLogExportPolicy(ManagedObject):
     consts = SysdebugLogExportPolicyConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SysdebugLogExportPolicy", "sysdebugLogExportPolicy", "log-export-policy", VersionMeta.Version222c, "InputOutput", 0xffff, [], ["admin", "operations"], [u'sysdebugEp'], [u'eventInst', u'faultInst', u'sysdebugLogExportPolicyFsm', u'sysdebugLogExportPolicyFsmTask', u'sysdebugLogExportStatus'], ["Get", "Set"])
+    mo_meta = MoMeta("SysdebugLogExportPolicy", "sysdebugLogExportPolicy", "log-export-policy", VersionMeta.Version222c, "InputOutput", 0xffff, [], ["admin", "operations"], ['sysdebugEp'], ['eventInst', 'faultInst', 'sysdebugLogExportPolicyFsm', 'sysdebugLogExportPolicyFsmTask', 'sysdebugLogExportStatus'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
@@ -199,7 +199,7 @@ class SysdebugLogExportPolicy(ManagedObject):
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version222c, MoPropertyMeta.CREATE_ONLY, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "passwordless_ssh": MoPropertyMeta("passwordless_ssh", "passwordlessSsh", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["false", "no", "true", "yes"], []),
-        "path": MoPropertyMeta("path", "path", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x100, 1, 128, None, [], []),
+        "path": MoPropertyMeta("path", "path", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[a-zA-Z0-9_.:/-]{1,128}""", [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["local", "pending-policy", "policy"], []),
         "post_action": MoPropertyMeta("post_action", "postAction", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["none", "remove"], []),
@@ -208,7 +208,7 @@ class SysdebugLogExportPolicy(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x2000, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "user": MoPropertyMeta("user", "user", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x8000, 0, 510, None, [], []),
+        "user": MoPropertyMeta("user", "user", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x8000, None, None, r"""[a-zA-Z][a-zA-Z0-9_.-]{0,31}""", [], []),
     }
 
     prop_map = {

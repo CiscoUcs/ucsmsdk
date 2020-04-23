@@ -20,9 +20,9 @@ class EquipmentServerUnitCapProvider(ManagedObject):
     """This is EquipmentServerUnitCapProvider class."""
 
     consts = EquipmentServerUnitCapProviderConsts()
-    naming_props = set([u'vendor', u'model', u'revision'])
+    naming_props = set(['vendor', 'model', 'revision'])
 
-    mo_meta = MoMeta("EquipmentServerUnitCapProvider", "equipmentServerUnitCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version251a, "InputOutput", 0x1ff, [], [""], [u'capabilityCatalogue', u'equipmentHwCapDerivativeProvider'], [u'computePciCap', u'equipmentBiosDef', u'equipmentBladeAGLibrary', u'equipmentBladeConnDef', u'equipmentBoardControllerDef', u'equipmentDimmMapping', u'equipmentEmbeddedControllerConfig', u'equipmentFruVariant', u'equipmentHDDFaultMonDef', u'equipmentManufacturingDef', u'equipmentPhysicalDef', u'equipmentPicture', u'equipmentServerFeatureCap', u'equipmentServiceDef', u'equipmentSlotArray', u'equipmentSlotArrayRef', u'equipmentStorageControllerConfig', u'firmwareConstraints', u'firmwareType', u'firmwareUpgradeConstraint'], ["Get"])
+    mo_meta = MoMeta("EquipmentServerUnitCapProvider", "equipmentServerUnitCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version251a, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['computePciCap', 'equipmentBiosDef', 'equipmentBladeAGLibrary', 'equipmentBladeConnDef', 'equipmentBoardControllerDef', 'equipmentDimmMapping', 'equipmentEmbeddedControllerConfig', 'equipmentFruVariant', 'equipmentHDDFaultMonDef', 'equipmentManufacturingDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServerFeatureCap', 'equipmentServiceDef', 'equipmentSlotArray', 'equipmentSlotArrayRef', 'equipmentStorageControllerConfig', 'firmwareConstraints', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

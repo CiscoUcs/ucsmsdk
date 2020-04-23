@@ -35,7 +35,7 @@ class SysdebugBackupBehavior(ManagedObject):
     consts = SysdebugBackupBehaviorConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SysdebugBackupBehavior", "sysdebugBackupBehavior", "backup", VersionMeta.Version111j, "InputOutput", 0x3fff, [], ["admin", "operations"], [u'sysdebugMEpLogPolicy'], [], ["Get", "Set"])
+    mo_meta = MoMeta("SysdebugBackupBehavior", "sysdebugBackupBehavior", "backup", VersionMeta.Version111j, "InputOutput", 0x3fff, [], ["admin", "operations"], ['sysdebugMEpLogPolicy'], [], ["Get", "Set"])
 
     prop_meta = {
         "action": MoPropertyMeta("action", "action", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""((defaultValue|none|log-full|on-clear|timer|on-assoc-change),){0,5}(defaultValue|none|log-full|on-clear|timer|on-assoc-change){0,1}""", [], []),

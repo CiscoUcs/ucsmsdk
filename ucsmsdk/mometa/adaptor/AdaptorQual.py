@@ -15,7 +15,7 @@ class AdaptorQual(ManagedObject):
     consts = AdaptorQualConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AdaptorQual", "adaptorQual", "adaptor", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["admin", "pn-policy"], [u'computeQual'], [u'adaptorCapQual'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("AdaptorQual", "adaptorQual", "adaptor", VersionMeta.Version101e, "InputOutput", 0x1f, [], ["admin", "pn-policy"], ['computeQual'], ['adaptorCapQual'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -22,9 +22,9 @@ class LsVConAssign(ManagedObject):
     """This is LsVConAssign class."""
 
     consts = LsVConAssignConsts()
-    naming_props = set([u'transport', u'vnicName'])
+    naming_props = set(['transport', 'vnicName'])
 
-    mo_meta = MoMeta("LsVConAssign", "lsVConAssign", "assign-[transport]-vnic-[vnic_name]", VersionMeta.Version211a, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-server"], [u'lsServer'], [], ["Get", "Set"])
+    mo_meta = MoMeta("LsVConAssign", "lsVConAssign", "assign-[transport]-vnic-[vnic_name]", VersionMeta.Version211a, "InputOutput", 0x3ff, [], ["admin", "ls-compute", "ls-config", "ls-server"], ['lsServer'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_host_port": MoPropertyMeta("admin_host_port", "adminHostPort", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["1", "2", "ANY", "NONE"], []),

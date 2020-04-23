@@ -13,9 +13,9 @@ class NetworkLanNeighborEntry(ManagedObject):
     """This is NetworkLanNeighborEntry class."""
 
     consts = NetworkLanNeighborEntryConsts()
-    naming_props = set([u'localInterface'])
+    naming_props = set(['localInterface'])
 
-    mo_meta = MoMeta("NetworkLanNeighborEntry", "networkLanNeighborEntry", "if-[local_interface]", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["read-only"], [u'networkLanNeighbors'], [], ["Get"])
+    mo_meta = MoMeta("NetworkLanNeighborEntry", "networkLanNeighborEntry", "if-[local_interface]", VersionMeta.Version223a, "InputOutput", 0x3f, [], ["read-only"], ['networkLanNeighbors'], [], ["Get"])
 
     prop_meta = {
         "capabilities": MoPropertyMeta("capabilities", "capabilities", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

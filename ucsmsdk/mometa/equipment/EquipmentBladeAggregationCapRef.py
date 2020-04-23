@@ -18,7 +18,7 @@ class EquipmentBladeAggregationCapRef(ManagedObject):
     consts = EquipmentBladeAggregationCapRefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentBladeAggregationCapRef", "equipmentBladeAggregationCapRef", "blade-aggr", VersionMeta.Version222c, "InputOutput", 0x1f, [], [""], [u'equipmentBladeCapProvider'], [u'equipmentPhysDevicesPerBoard'], ["Get"])
+    mo_meta = MoMeta("EquipmentBladeAggregationCapRef", "equipmentBladeAggregationCapRef", "blade-aggr", VersionMeta.Version222c, "InputOutput", 0x1f, [], [""], ['equipmentBladeCapProvider'], ['equipmentPhysDevicesPerBoard'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

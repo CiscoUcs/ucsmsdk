@@ -21,7 +21,7 @@ class MgmtVnet(ManagedObject):
     consts = MgmtVnetConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtVnet", "mgmtVnet", "network", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], [u'mgmtInterface', u'mgmtProfDerivedInterface'], [u'vnicIpV4MgmtPooledAddr', u'vnicIpV4PooledAddr', u'vnicIpV4StaticAddr', u'vnicIpV6MgmtPooledAddr', u'vnicIpV6StaticAddr'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("MgmtVnet", "mgmtVnet", "network", VersionMeta.Version221b, "InputOutput", 0x7f, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], ['mgmtInterface', 'mgmtProfDerivedInterface'], ['vnicIpV4MgmtPooledAddr', 'vnicIpV4PooledAddr', 'vnicIpV4StaticAddr', 'vnicIpV6MgmtPooledAddr', 'vnicIpV6StaticAddr'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

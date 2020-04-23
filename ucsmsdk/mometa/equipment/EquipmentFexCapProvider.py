@@ -23,9 +23,9 @@ class EquipmentFexCapProvider(ManagedObject):
     """This is EquipmentFexCapProvider class."""
 
     consts = EquipmentFexCapProviderConsts()
-    naming_props = set([u'vendor', u'model', u'revision'])
+    naming_props = set(['vendor', 'model', 'revision'])
 
-    mo_meta = MoMeta("EquipmentFexCapProvider", "equipmentFexCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], [""], [u'capabilityCatalogue', u'equipmentHwCapDerivativeProvider'], [u'equipmentFruVariant', u'equipmentManufacturingDef', u'equipmentPhysicalDef', u'equipmentPicture', u'equipmentPortGroupAggregationDef', u'equipmentPortGroupDef', u'equipmentServiceDef', u'equipmentSlotArrayRef', u'firmwareType', u'firmwareUpgradeConstraint'], ["Get"])
+    mo_meta = MoMeta("EquipmentFexCapProvider", "equipmentFexCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentFruVariant', 'equipmentManufacturingDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentPortGroupAggregationDef', 'equipmentPortGroupDef', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

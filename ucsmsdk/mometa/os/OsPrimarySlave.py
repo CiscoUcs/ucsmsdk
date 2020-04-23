@@ -15,9 +15,9 @@ class OsPrimarySlave(ManagedObject):
     """This is OsPrimarySlave class."""
 
     consts = OsPrimarySlaveConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("OsPrimarySlave", "osPrimarySlave", "slave-intf-[name]", VersionMeta.Version302c, "InputOutput", 0x3f, [], ["read-only"], [u'osEthBondModeActiveBackup', u'osEthBondModeBalancedALB', u'osEthBondModeBalancedRR', u'osEthBondModeBalancedTLB', u'osEthBondModeBalancedXOR', u'osEthBondModeBroadcast'], [], [None])
+    mo_meta = MoMeta("OsPrimarySlave", "osPrimarySlave", "slave-intf-[name]", VersionMeta.Version302c, "InputOutput", 0x3f, [], ["read-only"], ['osEthBondModeActiveBackup', 'osEthBondModeBalancedALB', 'osEthBondModeBalancedRR', 'osEthBondModeBalancedTLB', 'osEthBondModeBalancedXOR', 'osEthBondModeBroadcast'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

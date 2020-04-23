@@ -25,9 +25,9 @@ class SwEthLanFlowMonFsmStage(ManagedObject):
     """This is SwEthLanFlowMonFsmStage class."""
 
     consts = SwEthLanFlowMonFsmStageConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("SwEthLanFlowMonFsmStage", "swEthLanFlowMonFsmStage", "stage-[name]", VersionMeta.Version221b, "OutputOnly", 0xf, [], [""], [u'swEthLanFlowMonFsm'], [], [None])
+    mo_meta = MoMeta("SwEthLanFlowMonFsmStage", "swEthLanFlowMonFsmStage", "stage-[name]", VersionMeta.Version221b, "OutputOnly", 0xf, [], [""], ['swEthLanFlowMonFsm'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

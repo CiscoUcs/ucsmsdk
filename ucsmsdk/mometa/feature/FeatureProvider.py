@@ -13,9 +13,9 @@ class FeatureProvider(ManagedObject):
     """This is FeatureProvider class."""
 
     consts = FeatureProviderConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FeatureProvider", "featureProvider", "prov-[name]", VersionMeta.Version302c, "InputOutput", 0x3f, [], [""], [u'capabilityCatalogue'], [u'featureDefinitionRef', u'featureFruCapProviderRef'], [None])
+    mo_meta = MoMeta("FeatureProvider", "featureProvider", "prov-[name]", VersionMeta.Version302c, "InputOutput", 0x3f, [], [""], ['capabilityCatalogue'], ['featureDefinitionRef', 'featureFruCapProviderRef'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

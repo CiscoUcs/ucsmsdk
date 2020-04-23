@@ -17,9 +17,9 @@ class SysdebugLogExportStatus(ManagedObject):
     """This is SysdebugLogExportStatus class."""
 
     consts = SysdebugLogExportStatusConsts()
-    naming_props = set([u'switchId'])
+    naming_props = set(['switchId'])
 
-    mo_meta = MoMeta("SysdebugLogExportStatus", "sysdebugLogExportStatus", "log-export-status-[switch_id]", VersionMeta.Version222c, "InputOutput", 0x3f, [], ["read-only"], [u'sysdebugLogExportPolicy'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("SysdebugLogExportStatus", "sysdebugLogExportStatus", "log-export-status-[switch_id]", VersionMeta.Version222c, "InputOutput", 0x3f, [], ["read-only"], ['sysdebugLogExportPolicy'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

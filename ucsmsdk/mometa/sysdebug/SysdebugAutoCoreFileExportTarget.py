@@ -176,7 +176,7 @@ class SysdebugAutoCoreFileExportTarget(ManagedObject):
     consts = SysdebugAutoCoreFileExportTargetConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SysdebugAutoCoreFileExportTarget", "sysdebugAutoCoreFileExportTarget", "file-export", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["admin", "operations"], [u'sysdebugEp'], [u'eventInst', u'faultInst', u'sysdebugAutoCoreFileExportTargetFsm', u'sysdebugAutoCoreFileExportTargetFsmTask'], ["Get", "Set"])
+    mo_meta = MoMeta("SysdebugAutoCoreFileExportTarget", "sysdebugAutoCoreFileExportTarget", "file-export", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["admin", "operations"], ['sysdebugEp'], ['eventInst', 'faultInst', 'sysdebugAutoCoreFileExportTargetFsm', 'sysdebugAutoCoreFileExportTargetFsmTask'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

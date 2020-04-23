@@ -93,9 +93,9 @@ class StorageEnclosureDiskSlotEp(ManagedObject):
     """This is StorageEnclosureDiskSlotEp class."""
 
     consts = StorageEnclosureDiskSlotEpConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("StorageEnclosureDiskSlotEp", "storageEnclosureDiskSlotEp", "disk-slot-[id]", VersionMeta.Version302c, "InputOutput", 0x3f, [], ["read-only"], [u'storageEnclosure'], [u'faultInst', u'storageControllerRef'], ["Get"])
+    mo_meta = MoMeta("StorageEnclosureDiskSlotEp", "storageEnclosureDiskSlotEp", "disk-slot-[id]", VersionMeta.Version302c, "InputOutput", 0x3f, [], ["read-only"], ['storageEnclosure'], ['faultInst', 'storageControllerRef'], ["Get"])
 
     prop_meta = {
         "auto_zone_cause": MoPropertyMeta("auto_zone_cause", "autoZoneCause", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["hdd-tray-in-lieu-of-server2", "hddslot-unassigned", "hotspare-unsupported", "mezz-controller-in-ioexpander", "none", "second-controller-absent", "sharing-unsupported"], []),

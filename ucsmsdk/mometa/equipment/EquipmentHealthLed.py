@@ -29,7 +29,7 @@ class EquipmentHealthLed(ManagedObject):
     consts = EquipmentHealthLedConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentHealthLed", "equipmentHealthLed", "health-led", VersionMeta.Version212a, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'computeBlade', u'computeExtBoard', u'computeRackUnit', u'computeServerUnit', u'equipmentChassis', u'equipmentFanModule', u'equipmentFex', u'equipmentIOCard', u'equipmentPsu'], [u'computeHealthLedSensorAlarm', u'faultInst'], ["Get"])
+    mo_meta = MoMeta("EquipmentHealthLed", "equipmentHealthLed", "health-led", VersionMeta.Version212a, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['computeBlade', 'computeExtBoard', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFanModule', 'equipmentFex', 'equipmentIOCard', 'equipmentPsu'], ['computeHealthLedSensorAlarm', 'faultInst'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

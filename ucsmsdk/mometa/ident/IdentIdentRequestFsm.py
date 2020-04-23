@@ -156,7 +156,7 @@ class IdentIdentRequestFsm(ManagedObject):
     consts = IdentIdentRequestFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("IdentIdentRequestFsm", "identIdentRequestFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], [u'identIdentRequest'], [u'identIdentRequestFsmStage'], [None])
+    mo_meta = MoMeta("IdentIdentRequestFsm", "identIdentRequestFsm", "fsm", VersionMeta.Version211a, "OutputOnly", 0xf, [], [""], ['identIdentRequest'], ['identIdentRequestFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

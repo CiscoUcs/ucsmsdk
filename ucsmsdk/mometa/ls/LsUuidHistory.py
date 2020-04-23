@@ -15,7 +15,7 @@ class LsUuidHistory(ManagedObject):
     consts = LsUuidHistoryConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsUuidHistory", "lsUuidHistory", "uuid-history", VersionMeta.Version212a, "InputOutput", 0x1f, [], ["read-only"], [u'lsServer'], [], [None])
+    mo_meta = MoMeta("LsUuidHistory", "lsUuidHistory", "uuid-history", VersionMeta.Version212a, "InputOutput", 0x1f, [], ["read-only"], ['lsServer'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version212a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

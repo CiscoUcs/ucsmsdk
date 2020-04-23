@@ -156,7 +156,7 @@ class PolicyRequestorFsm(ManagedObject):
     consts = PolicyRequestorFsmConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PolicyRequestorFsm", "policyRequestorFsm", "fsm", VersionMeta.Version321d, "OutputOnly", 0xf, [], [""], [u'policyRequestor'], [u'policyRequestorFsmStage'], [None])
+    mo_meta = MoMeta("PolicyRequestorFsm", "policyRequestorFsm", "fsm", VersionMeta.Version321d, "OutputOnly", 0xf, [], [""], ['policyRequestor'], ['policyRequestorFsmStage'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

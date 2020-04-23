@@ -18,9 +18,9 @@ class PowerRackUnitMember(ManagedObject):
     """This is PowerRackUnitMember class."""
 
     consts = PowerRackUnitMemberConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("PowerRackUnitMember", "powerRackUnitMember", "ru-member-[id]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["admin", "power-mgmt", "read-only"], [u'powerGroup'], [], ["Get"])
+    mo_meta = MoMeta("PowerRackUnitMember", "powerRackUnitMember", "ru-member-[id]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["admin", "power-mgmt", "read-only"], ['powerGroup'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

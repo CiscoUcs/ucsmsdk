@@ -23,7 +23,7 @@ class VnicDynamicCon(ManagedObject):
     consts = VnicDynamicConConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicDynamicCon", "vnicDynamicCon", "dynamic-con", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-network-policy", "ls-server"], [u'lsServer'], [], ["Get", "Set"])
+    mo_meta = MoMeta("VnicDynamicCon", "vnicDynamicCon", "dynamic-con", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-network-policy", "ls-server"], ['lsServer'], [], ["Get", "Set"])
 
     prop_meta = {
         "adaptor_profile_name": MoPropertyMeta("adaptor_profile_name", "adaptorProfileName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),

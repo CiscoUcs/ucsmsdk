@@ -159,7 +159,7 @@ class ExtvmmNetworkSets(ManagedObject):
     consts = ExtvmmNetworkSetsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("ExtvmmNetworkSets", "extvmmNetworkSets", "network-sets", VersionMeta.Version221b, "InputOutput", 0x1f, [], ["admin", "ls-network", "ls-network-policy"], [u'fabricLanCloud'], [u'eventInst', u'extvmmFabricNetwork', u'extvmmNetworkSetsFsm', u'extvmmNetworkSetsFsmTask', u'faultInst', u'ippoolPool'], ["Get"])
+    mo_meta = MoMeta("ExtvmmNetworkSets", "extvmmNetworkSets", "network-sets", VersionMeta.Version221b, "InputOutput", 0x1f, [], ["admin", "ls-network", "ls-network-policy"], ['fabricLanCloud'], ['eventInst', 'extvmmFabricNetwork', 'extvmmNetworkSetsFsm', 'extvmmNetworkSetsFsmTask', 'faultInst', 'ippoolPool'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

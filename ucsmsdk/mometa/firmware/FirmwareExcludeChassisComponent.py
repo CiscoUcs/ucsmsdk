@@ -18,9 +18,9 @@ class FirmwareExcludeChassisComponent(ManagedObject):
     """This is FirmwareExcludeChassisComponent class."""
 
     consts = FirmwareExcludeChassisComponentConsts()
-    naming_props = set([u'chassisComponent'])
+    naming_props = set(['chassisComponent'])
 
-    mo_meta = MoMeta("FirmwareExcludeChassisComponent", "firmwareExcludeChassisComponent", "exclude-chassis-component-[chassis_component]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'firmwareChassisPack'], [], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("FirmwareExcludeChassisComponent", "firmwareExcludeChassisComponent", "exclude-chassis-component-[chassis_component]", VersionMeta.Version312b, "InputOutput", 0x3f, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['firmwareChassisPack'], [], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "chassis_component": MoPropertyMeta("chassis_component", "chassisComponent", "string", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x2, None, None, None, ["chassis-board-controller", "cmc", "iocard", "local-disk", "sas-expander", "unspecified"], []),

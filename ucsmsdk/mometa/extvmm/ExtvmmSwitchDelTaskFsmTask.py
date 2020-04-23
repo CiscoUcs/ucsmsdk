@@ -18,9 +18,9 @@ class ExtvmmSwitchDelTaskFsmTask(ManagedObject):
     """This is ExtvmmSwitchDelTaskFsmTask class."""
 
     consts = ExtvmmSwitchDelTaskFsmTaskConsts()
-    naming_props = set([u'item'])
+    naming_props = set(['item'])
 
-    mo_meta = MoMeta("ExtvmmSwitchDelTaskFsmTask", "extvmmSwitchDelTaskFsmTask", "task-[item]", VersionMeta.Version111j, "OutputOnly", 0xf, [], [""], [u'extvmmSwitchDelTask'], [], ["Get"])
+    mo_meta = MoMeta("ExtvmmSwitchDelTaskFsmTask", "extvmmSwitchDelTaskFsmTask", "task-[item]", VersionMeta.Version111j, "OutputOnly", 0xf, [], [""], ['extvmmSwitchDelTask'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

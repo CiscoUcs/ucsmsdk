@@ -24,7 +24,7 @@ class CommSyslogFile(ManagedObject):
     consts = CommSyslogFileConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommSyslogFile", "commSyslogFile", "file", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "operations"], [u'commSyslog'], [], ["Get", "Set"])
+    mo_meta = MoMeta("CommSyslogFile", "commSyslogFile", "file", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "operations"], ['commSyslog'], [], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

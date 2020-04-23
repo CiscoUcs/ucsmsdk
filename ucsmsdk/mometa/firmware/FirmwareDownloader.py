@@ -174,9 +174,9 @@ class FirmwareDownloader(ManagedObject):
     """This is FirmwareDownloader class."""
 
     consts = FirmwareDownloaderConsts()
-    naming_props = set([u'fileName'])
+    naming_props = set(['fileName'])
 
-    mo_meta = MoMeta("FirmwareDownloader", "firmwareDownloader", "dnld-[file_name]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin"], [u'firmwareCatalogue'], [u'eventInst', u'faultInst', u'firmwareDownloaderFsm', u'firmwareDownloaderFsmTask'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("FirmwareDownloader", "firmwareDownloader", "dnld-[file_name]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["admin"], ['firmwareCatalogue'], ['eventInst', 'faultInst', 'firmwareDownloaderFsm', 'firmwareDownloaderFsmTask'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["idle", "restart"], []),

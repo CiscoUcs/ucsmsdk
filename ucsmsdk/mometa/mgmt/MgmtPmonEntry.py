@@ -24,9 +24,9 @@ class MgmtPmonEntry(ManagedObject):
     """This is MgmtPmonEntry class."""
 
     consts = MgmtPmonEntryConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("MgmtPmonEntry", "mgmtPmonEntry", "[name]", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["read-only"], [u'mgmtEntity'], [u'faultInst'], ["Get"])
+    mo_meta = MoMeta("MgmtPmonEntry", "mgmtPmonEntry", "[name]", VersionMeta.Version201m, "InputOutput", 0x3f, [], ["read-only"], ['mgmtEntity'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

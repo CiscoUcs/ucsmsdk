@@ -15,7 +15,7 @@ class LstorageLocalDef(ManagedObject):
     consts = LstorageLocalDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LstorageLocalDef", "lstorageLocalDef", "local-def", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], [u'computeBoard'], [], ["Get"])
+    mo_meta = MoMeta("LstorageLocalDef", "lstorageLocalDef", "local-def", VersionMeta.Version321d, "InputOutput", 0x1f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], ['computeBoard'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

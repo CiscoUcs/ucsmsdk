@@ -163,9 +163,9 @@ class MemoryArray(ManagedObject):
     """This is MemoryArray class."""
 
     consts = MemoryArrayConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("MemoryArray", "memoryArray", "memarray-[id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'computeBoard'], [u'faultInst', u'memoryArrayEnvStats', u'memoryPersistentMemoryUnit', u'memoryUnit'], ["Get"])
+    mo_meta = MoMeta("MemoryArray", "memoryArray", "memarray-[id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['computeBoard'], ['faultInst', 'memoryArrayEnvStats', 'memoryPersistentMemoryUnit', 'memoryUnit'], ["Get"])
 
     prop_meta = {
         "admin_action": MoPropertyMeta("admin_action", "adminAction", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cancel-all", "disable-security", "enable-security", "modify-passphrase", "no-op", "reset-factory-default", "secure-erase", "unlock-dimms"], []),

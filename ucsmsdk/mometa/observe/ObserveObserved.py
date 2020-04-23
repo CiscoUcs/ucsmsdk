@@ -187,9 +187,9 @@ class ObserveObserved(ManagedObject):
     """This is ObserveObserved class."""
 
     consts = ObserveObservedConsts()
-    naming_props = set([u'dataSrcSysId', u'id'])
+    naming_props = set(['dataSrcSysId', 'id'])
 
-    mo_meta = MoMeta("ObserveObserved", "observeObserved", "observed-[data_src_sys_id]-[id]", VersionMeta.Version211a, "InputOutput", 0x3ff, [], ["admin"], [u'extpolClient', u'extpolController', u'extpolProvider', u'extpolRegistry', u'observeObservedCont'], [u'eventInst', u'faultInst', u'observeFilter', u'observeObservedFsm', u'observeObservedFsmTask'], [None])
+    mo_meta = MoMeta("ObserveObserved", "observeObserved", "observed-[data_src_sys_id]-[id]", VersionMeta.Version211a, "InputOutput", 0x3ff, [], ["admin"], ['extpolClient', 'extpolController', 'extpolProvider', 'extpolRegistry', 'observeObservedCont'], ['eventInst', 'faultInst', 'observeFilter', 'observeObservedFsm', 'observeObservedFsmTask'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

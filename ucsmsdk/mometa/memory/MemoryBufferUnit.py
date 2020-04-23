@@ -143,9 +143,9 @@ class MemoryBufferUnit(ManagedObject):
     """This is MemoryBufferUnit class."""
 
     consts = MemoryBufferUnitConsts()
-    naming_props = set([u'id'])
+    naming_props = set(['id'])
 
-    mo_meta = MoMeta("MemoryBufferUnit", "memoryBufferUnit", "sensor-unit-[id]", VersionMeta.Version131c, "InputOutput", 0x3f, [], ["read-only"], [u'computeBoard'], [u'faultInst', u'memoryBufferUnitEnvStats'], ["Get"])
+    mo_meta = MoMeta("MemoryBufferUnit", "memoryBufferUnit", "sensor-unit-[id]", VersionMeta.Version131c, "InputOutput", 0x3f, [], ["read-only"], ['computeBoard'], ['faultInst', 'memoryBufferUnitEnvStats'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -65,9 +65,9 @@ class FabricSwChPhEp(ManagedObject):
     """This is FabricSwChPhEp class."""
 
     consts = FabricSwChPhEpConsts()
-    naming_props = set([u'vendor', u'model', u'serial'])
+    naming_props = set(['vendor', 'model', 'serial'])
 
-    mo_meta = MoMeta("FabricSwChPhEp", "fabricSwChPhEp", "chassis-ep-ven-[vendor]-mod[model]-ser-[serial]", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], [u'fabricDceSrv'], [u'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("FabricSwChPhEp", "fabricSwChPhEp", "chassis-ep-ven-[vendor]-mod[model]-ser-[serial]", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy"], ['fabricDceSrv'], ['faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled", "remove"], []),
@@ -95,7 +95,7 @@ class FabricSwChPhEp(ManagedObject):
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-54"]),
+        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-108"]),
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),

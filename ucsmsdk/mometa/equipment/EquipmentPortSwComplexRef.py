@@ -16,9 +16,9 @@ class EquipmentPortSwComplexRef(ManagedObject):
     """This is EquipmentPortSwComplexRef class."""
 
     consts = EquipmentPortSwComplexRefConsts()
-    naming_props = set([u'swComplexId'])
+    naming_props = set(['swComplexId'])
 
-    mo_meta = MoMeta("EquipmentPortSwComplexRef", "equipmentPortSwComplexRef", "port-sw-complex-ref-[sw_complex_id]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], [""], [u'equipmentPortGroupSwComplexDef'], [], ["Get"])
+    mo_meta = MoMeta("EquipmentPortSwComplexRef", "equipmentPortSwComplexRef", "port-sw-complex-ref-[sw_complex_id]", VersionMeta.Version201m, "InputOutput", 0x1ff, [], [""], ['equipmentPortGroupSwComplexDef'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

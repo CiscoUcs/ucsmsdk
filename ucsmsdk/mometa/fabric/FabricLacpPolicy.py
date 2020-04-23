@@ -20,9 +20,9 @@ class FabricLacpPolicy(ManagedObject):
     """This is FabricLacpPolicy class."""
 
     consts = FabricLacpPolicyConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricLacpPolicy", "fabricLacpPolicy", "lacp-[name]", VersionMeta.Version222c, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], [u'orgOrg'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricLacpPolicy", "fabricLacpPolicy", "lacp-[name]", VersionMeta.Version222c, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['orgOrg'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

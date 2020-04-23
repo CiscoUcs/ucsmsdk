@@ -15,7 +15,7 @@ class NetworkLldpNeighbors(ManagedObject):
     consts = NetworkLldpNeighborsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("NetworkLldpNeighbors", "networkLldpNeighbors", "lldp-neighbors", VersionMeta.Version224b, "InputOutput", 0x1f, [], ["read-only"], [u'networkElement'], [u'networkLldpNeighborEntry'], ["Get"])
+    mo_meta = MoMeta("NetworkLldpNeighbors", "networkLldpNeighbors", "lldp-neighbors", VersionMeta.Version224b, "InputOutput", 0x1f, [], ["read-only"], ['networkElement'], ['networkLldpNeighborEntry'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

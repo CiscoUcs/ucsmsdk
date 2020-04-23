@@ -13,7 +13,7 @@ class IqnpoolTransportBlock(ManagedObject):
     """This is IqnpoolTransportBlock class."""
 
     consts = IqnpoolTransportBlockConsts()
-    naming_props = set([u'suffix', u'from', u'to'])
+    naming_props = set(['suffix', 'from', 'to'])
 
     mo_meta = MoMeta("IqnpoolTransportBlock", "iqnpoolTransportBlock", "block-[suffix]-from-[r_from]-to-[to]", VersionMeta.Version222c, "InputOutput", 0xff, [], ["admin", "ls-storage-policy"], [], [], [None])
 

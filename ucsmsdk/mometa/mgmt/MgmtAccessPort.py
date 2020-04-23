@@ -15,9 +15,9 @@ class MgmtAccessPort(ManagedObject):
     """This is MgmtAccessPort class."""
 
     consts = MgmtAccessPortConsts()
-    naming_props = set([u'protocol', u'port'])
+    naming_props = set(['protocol', 'port'])
 
-    mo_meta = MoMeta("MgmtAccessPort", "mgmtAccessPort", "[protocol]-port-[port]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], [u'mgmtAccessPolicyItem'], [], ["Get"])
+    mo_meta = MoMeta("MgmtAccessPort", "mgmtAccessPort", "[protocol]-port-[port]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['mgmtAccessPolicyItem'], [], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

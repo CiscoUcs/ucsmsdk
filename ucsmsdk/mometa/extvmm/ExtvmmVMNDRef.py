@@ -18,9 +18,9 @@ class ExtvmmVMNDRef(ManagedObject):
     """This is ExtvmmVMNDRef class."""
 
     consts = ExtvmmVMNDRefConsts()
-    naming_props = set([u'name'])
+    naming_props = set(['name'])
 
-    mo_meta = MoMeta("ExtvmmVMNDRef", "extvmmVMNDRef", "vm-network-def-ref[name]", VersionMeta.Version221b, "InputOutput", 0x7ff, [], ["admin", "ls-network", "ls-network-policy"], [u'extvmmVMNetwork'], [u'faultInst'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("ExtvmmVMNDRef", "extvmmVMNDRef", "vm-network-def-ref[name]", VersionMeta.Version221b, "InputOutput", 0x7ff, [], ["admin", "ls-network", "ls-network-policy"], ['extvmmVMNetwork'], ['faultInst'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

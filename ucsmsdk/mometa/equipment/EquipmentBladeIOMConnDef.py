@@ -24,9 +24,9 @@ class EquipmentBladeIOMConnDef(ManagedObject):
     """This is EquipmentBladeIOMConnDef class."""
 
     consts = EquipmentBladeIOMConnDefConsts()
-    naming_props = set([u'iocardType'])
+    naming_props = set(['iocardType'])
 
-    mo_meta = MoMeta("EquipmentBladeIOMConnDef", "equipmentBladeIOMConnDef", "-iom-type-[iocard_type]", VersionMeta.Version203a, "InputOutput", 0x1ff, [], [""], [u'equipmentBladeConnDef'], [u'equipmentAdaptorConnDef'], ["Get"])
+    mo_meta = MoMeta("EquipmentBladeIOMConnDef", "equipmentBladeIOMConnDef", "-iom-type-[iocard_type]", VersionMeta.Version203a, "InputOutput", 0x1ff, [], [""], ['equipmentBladeConnDef'], ['equipmentAdaptorConnDef'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version203a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
