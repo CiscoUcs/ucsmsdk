@@ -64,6 +64,10 @@ class CimcvmediaActualMountEntryConsts:
     REMAP_ON_EJECT_NO = "no"
     REMAP_ON_EJECT_TRUE = "true"
     REMAP_ON_EJECT_YES = "yes"
+    WRITABLE_FALSE = "false"
+    WRITABLE_NO = "no"
+    WRITABLE_TRUE = "true"
+    WRITABLE_YES = "yes"
 
 
 class CimcvmediaActualMountEntry(ManagedObject):
@@ -72,7 +76,7 @@ class CimcvmediaActualMountEntry(ManagedObject):
     consts = CimcvmediaActualMountEntryConsts()
     naming_props = set(['virtualDiskId'])
 
-    mo_meta = MoMeta("CimcvmediaActualMountEntry", "cimcvmediaActualMountEntry", "actual-mount-entry-[virtual_disk_id]", VersionMeta.Version222c, "InputOutput", 0x7ffff, [], ["read-only"], ['cimcvmediaActualMountList'], ['faultInst'], ["Get"])
+    mo_meta = MoMeta("CimcvmediaActualMountEntry", "cimcvmediaActualMountEntry", "actual-mount-entry-[virtual_disk_id]", VersionMeta.Version222c, "InputOutput", 0xfffff, [], ["read-only"], ['cimcvmediaActualMountList'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "auth_option": MoPropertyMeta("auth_option", "authOption", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["default", "none", "ntlm", "ntlmi", "ntlmssp", "ntlmsspi", "ntlmv2", "ntlmv2i"], []),
@@ -98,6 +102,7 @@ class CimcvmediaActualMountEntry(ManagedObject):
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x10000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "user_id": MoPropertyMeta("user_id", "userId", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x20000, 0, 63, None, [], []),
         "virtual_disk_id": MoPropertyMeta("virtual_disk_id", "virtualDiskId", "byte", VersionMeta.Version222c, MoPropertyMeta.NAMING, 0x40000, None, None, None, [], ["0-8"]),
+        "writable": MoPropertyMeta("writable", "writable", "string", VersionMeta.Version411a, MoPropertyMeta.READ_WRITE, 0x80000, None, None, None, ["false", "no", "true", "yes"], []),
     }
 
     prop_map = {
@@ -124,6 +129,7 @@ class CimcvmediaActualMountEntry(ManagedObject):
         "status": "status", 
         "userId": "user_id", 
         "virtualDiskId": "virtual_disk_id", 
+        "writable": "writable", 
     }
 
     def __init__(self, parent_mo_or_dn, virtual_disk_id, **kwargs):
@@ -149,5 +155,6 @@ class CimcvmediaActualMountEntry(ManagedObject):
         self.sacl = None
         self.status = None
         self.user_id = None
+        self.writable = None
 
         ManagedObject.__init__(self, "CimcvmediaActualMountEntry", parent_mo_or_dn, **kwargs)

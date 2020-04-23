@@ -28,7 +28,7 @@ class FabricSubGroup(ManagedObject):
     mo_meta = MoMeta("FabricSubGroup", "fabricSubGroup", "slot-[slot_id]-aggr-port-[aggr_port_id]", VersionMeta.Version302c, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy", "ext-san-config", "ext-san-policy", "ls-network", "ls-network-policy"], ['fabricDceSwSrv', 'fabricDceSwSrvPc', 'fabricEthEstc', 'fabricEthEstcPc', 'fabricEthLan', 'fabricEthLanPc', 'fabricEthMon', 'fabricFcEstc', 'fabricFcMon', 'fabricFcSan', 'fabricFcoeSanPc'], ['fabricDceSwSrvEp', 'fabricDceSwSrvPcEp', 'fabricEthEstcEp', 'fabricEthEstcPcEp', 'fabricEthLanEp', 'fabricEthLanPcEp', 'fabricEthMonDestEp', 'fabricFcoeEstcEp', 'fabricFcoeSanEp', 'fabricFcoeSanPcEp'], ["Add", "Get"])
 
     prop_meta = {
-        "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x2, None, None, None, [], ["1-54"]),
+        "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x2, None, None, None, [], ["1-108"]),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),

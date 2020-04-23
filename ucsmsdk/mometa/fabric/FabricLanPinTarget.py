@@ -23,7 +23,7 @@ class FabricLanPinTarget(ManagedObject):
     mo_meta = MoMeta("FabricLanPinTarget", "fabricLanPinTarget", "target-[fabric_id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricLanPinGroup'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], ["0-54"]),
+        "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], ["0-108"]),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, 0, 256, None, [], []),

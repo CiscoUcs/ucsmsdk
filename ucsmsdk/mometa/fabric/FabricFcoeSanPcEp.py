@@ -96,7 +96,7 @@ class FabricFcoeSanPcEp(ManagedObject):
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x80, None, None, None, [], ["1-54"]),
+        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x80, None, None, None, [], ["1-108"]),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x200, None, None, None, [], ["1-5"]),

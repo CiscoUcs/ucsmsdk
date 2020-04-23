@@ -10,10 +10,10 @@ class MgmtControllerFsmConsts:
     CURRENT_FSM_ACTIVATE_ADAPTOR = "ActivateAdaptor"
     CURRENT_FSM_ACTIVATE_BMC = "ActivateBMC"
     CURRENT_FSM_ACTIVATE_CMC = "ActivateCMC"
-    CURRENT_FSM_ACTIVATE_COLUSA_CMC = "ActivateColusaCMC"
     CURRENT_FSM_ACTIVATE_IOM = "ActivateIOM"
     CURRENT_FSM_ACTIVATE_LOCAL_DISK = "ActivateLocalDisk"
     CURRENT_FSM_ACTIVATE_SAS_EXPANDER = "ActivateSasExpander"
+    CURRENT_FSM_ACTIVATE_STORAGE_SERVER_CMC = "ActivateStorageServerCMC"
     CURRENT_FSM_ENABLE_SECURE_BOOT = "EnableSecureBoot"
     CURRENT_FSM_EXT_MGMT_IF_CONFIG = "ExtMgmtIfConfig"
     CURRENT_FSM_EXT_MGMT_INTERFACE_CONFIG = "ExtMgmtInterfaceConfig"
@@ -28,14 +28,14 @@ class MgmtControllerFsmConsts:
     CURRENT_FSM_UPDATE_BMC = "UpdateBMC"
     CURRENT_FSM_UPDATE_BOARD_CONTROLLER = "UpdateBoardController"
     CURRENT_FSM_UPDATE_CMC = "UpdateCMC"
-    CURRENT_FSM_UPDATE_COLUSA_BOARD_CONTROLLER = "UpdateColusaBoardController"
-    CURRENT_FSM_UPDATE_COLUSA_CMC = "UpdateColusaCMC"
     CURRENT_FSM_UPDATE_IOM = "UpdateIOM"
     CURRENT_FSM_UPDATE_RAID_CONTROLLER = "UpdateRaidController"
     CURRENT_FSM_UPDATE_SAS_EXPANDER = "UpdateSasExpander"
+    CURRENT_FSM_UPDATE_STORAGE_SERVER_CMC = "UpdateStorageServerCMC"
     CURRENT_FSM_UPDATE_SWITCH = "UpdateSwitch"
     CURRENT_FSM_UPDATE_UCSMANAGER = "UpdateUCSManager"
     CURRENT_FSM_UPDATE_UCSMANAGER_SP = "UpdateUCSManagerSP"
+    CURRENT_FSM_UPGRADE_BOARD_CONTROLLER = "UpgradeBoardController"
     CURRENT_FSM_NOP = "nop"
     FSM_STATUS_FAIL = "fail"
     FSM_STATUS_IN_PROGRESS = "inProgress"
@@ -189,7 +189,7 @@ class MgmtControllerFsm(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "completion_time": MoPropertyMeta("completion_time", "completionTime", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []),
-        "current_fsm": MoPropertyMeta("current_fsm", "currentFsm", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ActivateAdaptor", "ActivateBMC", "ActivateCMC", "ActivateColusaCMC", "ActivateIOM", "ActivateLocalDisk", "ActivateSasExpander", "EnableSecureBoot", "ExtMgmtIfConfig", "ExtMgmtInterfaceConfig", "KvmCert", "LockConfig", "Online", "PowerBudgetReclaimConfig", "PowerCap", "RegistryConfig", "SysConfig", "UpdateAdaptor", "UpdateBMC", "UpdateBoardController", "UpdateCMC", "UpdateColusaBoardController", "UpdateColusaCMC", "UpdateIOM", "UpdateRaidController", "UpdateSasExpander", "UpdateSwitch", "UpdateUCSManager", "UpdateUCSManagerSP", "nop"], []),
+        "current_fsm": MoPropertyMeta("current_fsm", "currentFsm", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ActivateAdaptor", "ActivateBMC", "ActivateCMC", "ActivateIOM", "ActivateLocalDisk", "ActivateSasExpander", "ActivateStorageServerCMC", "EnableSecureBoot", "ExtMgmtIfConfig", "ExtMgmtInterfaceConfig", "KvmCert", "LockConfig", "Online", "PowerBudgetReclaimConfig", "PowerCap", "RegistryConfig", "SysConfig", "UpdateAdaptor", "UpdateBMC", "UpdateBoardController", "UpdateCMC", "UpdateIOM", "UpdateRaidController", "UpdateSasExpander", "UpdateStorageServerCMC", "UpdateSwitch", "UpdateUCSManager", "UpdateUCSManagerSP", "UpgradeBoardController", "nop"], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []),
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["fail", "inProgress", "nop", "pending", "skip", "success", "throttled"], []),

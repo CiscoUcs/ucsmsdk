@@ -32,6 +32,10 @@ class CimcvmediaConfigMountEntryConsts:
     REMAP_ON_EJECT_NO = "no"
     REMAP_ON_EJECT_TRUE = "true"
     REMAP_ON_EJECT_YES = "yes"
+    WRITABLE_FALSE = "false"
+    WRITABLE_NO = "no"
+    WRITABLE_TRUE = "true"
+    WRITABLE_YES = "yes"
 
 
 class CimcvmediaConfigMountEntry(ManagedObject):
@@ -40,7 +44,7 @@ class CimcvmediaConfigMountEntry(ManagedObject):
     consts = CimcvmediaConfigMountEntryConsts()
     naming_props = set(['mappingName'])
 
-    mo_meta = MoMeta("CimcvmediaConfigMountEntry", "cimcvmediaConfigMountEntry", "cfg-mnt-entry-[mapping_name]", VersionMeta.Version222c, "InputOutput", 0x7ffff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], ['cimcvmediaMountConfigDef', 'cimcvmediaMountConfigPolicy'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("CimcvmediaConfigMountEntry", "cimcvmediaConfigMountEntry", "cfg-mnt-entry-[mapping_name]", VersionMeta.Version222c, "InputOutput", 0xfffff, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], ['cimcvmediaMountConfigDef', 'cimcvmediaMountConfigPolicy'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "auth_option": MoPropertyMeta("auth_option", "authOption", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["default", "none", "ntlm", "ntlmi", "ntlmssp", "ntlmsspi", "ntlmv2", "ntlmv2i"], []),
@@ -64,6 +68,7 @@ class CimcvmediaConfigMountEntry(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x20000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "user_id": MoPropertyMeta("user_id", "userId", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x40000, 0, 63, None, [], []),
+        "writable": MoPropertyMeta("writable", "writable", "string", VersionMeta.Version411a, MoPropertyMeta.READ_WRITE, 0x80000, None, None, None, ["false", "no", "true", "yes"], []),
     }
 
     prop_map = {
@@ -88,6 +93,7 @@ class CimcvmediaConfigMountEntry(ManagedObject):
         "sacl": "sacl", 
         "status": "status", 
         "userId": "user_id", 
+        "writable": "writable", 
     }
 
     def __init__(self, parent_mo_or_dn, mapping_name, **kwargs):
@@ -111,5 +117,6 @@ class CimcvmediaConfigMountEntry(ManagedObject):
         self.sacl = None
         self.status = None
         self.user_id = None
+        self.writable = None
 
         ManagedObject.__init__(self, "CimcvmediaConfigMountEntry", parent_mo_or_dn, **kwargs)

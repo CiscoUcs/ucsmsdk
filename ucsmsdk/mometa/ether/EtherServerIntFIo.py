@@ -17,6 +17,9 @@ class EtherServerIntFIoConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     CHASSIS_ID_N_A = "N/A"
+    CONNECTED_ADAPTOR_TYPE_BODEGA = "bodega"
+    CONNECTED_ADAPTOR_TYPE_CRUZ = "cruz"
+    CONNECTED_ADAPTOR_TYPE_WINDSOR = "windsor"
     ENCAP_DOT1Q = "dot1q"
     ENCAP_ISL = "isl"
     ENCAP_NEGOTIATE = "negotiate"
@@ -235,7 +238,9 @@ class EtherServerIntFIoConsts:
     XCVR_TYPE_10GBASEER = "10gbaseer"
     XCVR_TYPE_10GBASELR = "10gbaselr"
     XCVR_TYPE_10GBASELRM = "10gbaselrm"
+    XCVR_TYPE_10GBASELRS = "10gbaselrs"
     XCVR_TYPE_10GBASESR = "10gbasesr"
+    XCVR_TYPE_10GBASESRS = "10gbasesrs"
     XCVR_TYPE_10GBASEZR = "10gbasezr"
     XCVR_TYPE_10GBASEZRS = "10gbasezrs"
     XCVR_TYPE_10GBX40DI = "10gbx40di"
@@ -300,9 +305,13 @@ class EtherServerIntFIoConsts:
     XCVR_TYPE_QSFP100GCU1M = "qsfp100gcu1m"
     XCVR_TYPE_QSFP100GCU2M = "qsfp100gcu2m"
     XCVR_TYPE_QSFP100GCU3M = "qsfp100gcu3m"
+    XCVR_TYPE_QSFP100GLR4S = "qsfp100glr4s"
     XCVR_TYPE_QSFP100GSMSR = "qsfp100gsmsr"
+    XCVR_TYPE_QSFP100GSR4 = "qsfp100gsr4"
+    XCVR_TYPE_QSFP100GSR4S = "qsfp100gsr4s"
     XCVR_TYPE_QSFP40GCR4 = "qsfp40gcr4"
     XCVR_TYPE_QSFP40GCSR4 = "qsfp40gcsr4"
+    XCVR_TYPE_QSFP40GER4 = "qsfp40ger4"
     XCVR_TYPE_QSFP40GFET = "qsfp40gfet"
     XCVR_TYPE_QSFP40GLR4 = "qsfp40glr4"
     XCVR_TYPE_QSFP40GSR4 = "qsfp40gsr4"
@@ -361,7 +370,7 @@ class EtherServerIntFIo(ManagedObject):
     consts = EtherServerIntFIoConsts()
     naming_props = set(['portId'])
 
-    mo_meta = MoMeta("EtherServerIntFIo", "etherServerIntFIo", "port-[port_id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin"], ['diagSrvCtrl', 'portGroup'], ['equipmentXcvr', 'etherErrStats', 'etherLossStats', 'etherPauseStats', 'etherRxStats', 'etherServerIntFIoFsm', 'etherServerIntFIoFsmTask', 'etherTxStats', 'eventInst', 'faultInst', 'lldpAcquired', 'portDomainEp', 'portTrustMode', 'swUlan'], ["Get"])
+    mo_meta = MoMeta("EtherServerIntFIo", "etherServerIntFIo", "port-[port_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin"], ['diagSrvCtrl', 'portGroup'], ['equipmentXcvr', 'etherErrStats', 'etherLossStats', 'etherPauseStats', 'etherRxStats', 'etherServerIntFIoFsm', 'etherServerIntFIoFsmTask', 'etherTxStats', 'eventInst', 'faultInst', 'lldpAcquired', 'portDomainEp', 'portTrustMode', 'swUlan'], ["Get"])
 
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
@@ -369,7 +378,8 @@ class EtherServerIntFIo(ManagedObject):
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
+        "connected_adaptor_type": MoPropertyMeta("connected_adaptor_type", "connectedAdaptorType", "string", VersionMeta.Version411a, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["bodega", "cruz", "windsor"], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "encap": MoPropertyMeta("encap", "encap", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["dot1q", "isl", "negotiate", "proprietary", "unknown"], []),
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
@@ -390,7 +400,7 @@ class EtherServerIntFIo(ManagedObject):
         "mac_addr": MoPropertyMeta("mac_addr", "macAddr", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []),
         "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["E", "F", "SD", "access", "fabric", "n_proxy", "promiscuousAccess", "promiscuousTrunk", "trunk", "unknown", "vntag"], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "ns_size": MoPropertyMeta("ns_size", "nsSize", "ushort", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "oper_border_aggr_port_id": MoPropertyMeta("oper_border_aggr_port_id", "operBorderAggrPortId", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "oper_border_port_id": MoPropertyMeta("oper_border_port_id", "operBorderPortId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
@@ -402,21 +412,21 @@ class EtherServerIntFIo(ManagedObject):
         "peer_encap": MoPropertyMeta("peer_encap", "peerEncap", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["consolidated", "virtual", "virtual-ce"], ["0-255"]),
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, None, None, None, [], []),
+        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []),
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "state_qual": MoPropertyMeta("state_qual", "stateQual", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []),
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []),
         "ts": MoPropertyMeta("ts", "ts", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []),
-        "user_recovery_operation": MoPropertyMeta("user_recovery_operation", "userRecoveryOperation", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["none", "reset"], []),
+        "user_recovery_operation": MoPropertyMeta("user_recovery_operation", "userRecoveryOperation", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["none", "reset"], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
-        "xcvr_type": MoPropertyMeta("xcvr_type", "xcvrType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["1000basecx", "1000baselh", "1000baselx", "1000basesx", "1000baset", "1000baseunknown", "1000basevx", "1000basex", "1000basezx", "10gbaseer", "10gbaselr", "10gbaselrm", "10gbasesr", "10gbasezr", "10gbasezrs", "10gbx40di", "10gbx40ui", "10gbxdi", "10gbxui", "cwdm1471", "cwdm1531", "cwdm1551", "dwdmsfp", "fet", "h10gacu10m", "h10gacu15m", "h10gacu1m", "h10gacu3m", "h10gacu5m", "h10gacu7m", "h10gacuaoc10m", "h10gacuaoc15m", "h10gacuaoc1m", "h10gacuaoc2m", "h10gacuaoc3m", "h10gacuaoc5m", "h10gacuaoc7m", "h10gaoc10m", "h10gaoc1m", "h10gaoc2m", "h10gaoc3m", "h10gaoc5m", "h10gaoc7m", "h10gcu10m", "h10gcu1m", "h10gcu2m", "h10gcu3m", "h10gcu5m", "h10gcu7m", "h10glrmsm", "h10gusr", "h25gaoc10m", "h25gaoc1m", "h25gaoc2m", "h25gaoc3m", "h25gaoc5m", "h25gaoc7m", "h25gcu1m", "h25gcu2m", "h25gcu3m", "h25gcu5m", "h25gsrs", "qsfp100g40gbidi", "qsfp100gaoc10m", "qsfp100gaoc15m", "qsfp100gaoc1m", "qsfp100gaoc20m", "qsfp100gaoc25m", "qsfp100gaoc2m", "qsfp100gaoc30m", "qsfp100gaoc3m", "qsfp100gaoc5m", "qsfp100gaoc7m", "qsfp100gcr4", "qsfp100gcu1m", "qsfp100gcu2m", "qsfp100gcu3m", "qsfp100gsmsr", "qsfp40gcr4", "qsfp40gcsr4", "qsfp40gfet", "qsfp40glr4", "qsfp40gsr4", "qsfp40gsrbd", "qsfp4sfp10gcu1m", "qsfp4sfp10gcu2m", "qsfp4sfp10gcu3m", "qsfp4sfp10gcu5m", "qsfp4sfp25gcu1m", "qsfp4sfp25gcu2m", "qsfp4sfp25gcu3m", "qsfp4sfp25gcu5m", "qsfp4sfp25gunknown", "qsfp4x10ga0c10m", "qsfp4x10ga0c1m", "qsfp4x10ga0c2m", "qsfp4x10ga0c3m", "qsfp4x10ga0c5m", "qsfp4x10ga0c7m", "qsfp4x10ga0cunknown", "qsfp4x10gac10m", "qsfp4x10gac1m", "qsfp4x10gac3m", "qsfp4x10gac5m", "qsfp4x10gac7m", "qsfp4x10glr", "qsfp4x10glrs", "qsfph40gacu10m", "qsfph40gacu1m", "qsfph40gacu3m", "qsfph40gacu5m", "qsfph40gacu7m", "qsfph40gaoc10m", "qsfph40gaoc15m", "qsfph40gaoc1m", "qsfph40gaoc2m", "qsfph40gaoc3m", "qsfph40gaoc5m", "qsfph40gaoc7m", "qsfph40gaocunknown", "qsfph40gcu1m", "qsfph40gcu2m", "qsfph40gcu3m", "qsfph40gcu5m", "qsfploop", "qsfpqsa", "qsfpunknown", "sfp", "unknown", "x2"], []),
+        "xcvr_type": MoPropertyMeta("xcvr_type", "xcvrType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["1000basecx", "1000baselh", "1000baselx", "1000basesx", "1000baset", "1000baseunknown", "1000basevx", "1000basex", "1000basezx", "10gbaseer", "10gbaselr", "10gbaselrm", "10gbaselrs", "10gbasesr", "10gbasesrs", "10gbasezr", "10gbasezrs", "10gbx40di", "10gbx40ui", "10gbxdi", "10gbxui", "cwdm1471", "cwdm1531", "cwdm1551", "dwdmsfp", "fet", "h10gacu10m", "h10gacu15m", "h10gacu1m", "h10gacu3m", "h10gacu5m", "h10gacu7m", "h10gacuaoc10m", "h10gacuaoc15m", "h10gacuaoc1m", "h10gacuaoc2m", "h10gacuaoc3m", "h10gacuaoc5m", "h10gacuaoc7m", "h10gaoc10m", "h10gaoc1m", "h10gaoc2m", "h10gaoc3m", "h10gaoc5m", "h10gaoc7m", "h10gcu10m", "h10gcu1m", "h10gcu2m", "h10gcu3m", "h10gcu5m", "h10gcu7m", "h10glrmsm", "h10gusr", "h25gaoc10m", "h25gaoc1m", "h25gaoc2m", "h25gaoc3m", "h25gaoc5m", "h25gaoc7m", "h25gcu1m", "h25gcu2m", "h25gcu3m", "h25gcu5m", "h25gsrs", "qsfp100g40gbidi", "qsfp100gaoc10m", "qsfp100gaoc15m", "qsfp100gaoc1m", "qsfp100gaoc20m", "qsfp100gaoc25m", "qsfp100gaoc2m", "qsfp100gaoc30m", "qsfp100gaoc3m", "qsfp100gaoc5m", "qsfp100gaoc7m", "qsfp100gcr4", "qsfp100gcu1m", "qsfp100gcu2m", "qsfp100gcu3m", "qsfp100glr4s", "qsfp100gsmsr", "qsfp100gsr4", "qsfp100gsr4s", "qsfp40gcr4", "qsfp40gcsr4", "qsfp40ger4", "qsfp40gfet", "qsfp40glr4", "qsfp40gsr4", "qsfp40gsrbd", "qsfp4sfp10gcu1m", "qsfp4sfp10gcu2m", "qsfp4sfp10gcu3m", "qsfp4sfp10gcu5m", "qsfp4sfp25gcu1m", "qsfp4sfp25gcu2m", "qsfp4sfp25gcu3m", "qsfp4sfp25gcu5m", "qsfp4sfp25gunknown", "qsfp4x10ga0c10m", "qsfp4x10ga0c1m", "qsfp4x10ga0c2m", "qsfp4x10ga0c3m", "qsfp4x10ga0c5m", "qsfp4x10ga0c7m", "qsfp4x10ga0cunknown", "qsfp4x10gac10m", "qsfp4x10gac1m", "qsfp4x10gac3m", "qsfp4x10gac5m", "qsfp4x10gac7m", "qsfp4x10glr", "qsfp4x10glrs", "qsfph40gacu10m", "qsfph40gacu1m", "qsfph40gacu3m", "qsfph40gacu5m", "qsfph40gacu7m", "qsfph40gaoc10m", "qsfph40gaoc15m", "qsfph40gaoc1m", "qsfph40gaoc2m", "qsfph40gaoc3m", "qsfph40gaoc5m", "qsfph40gaoc7m", "qsfph40gaocunknown", "qsfph40gcu1m", "qsfph40gcu2m", "qsfph40gcu3m", "qsfph40gcu5m", "qsfploop", "qsfpqsa", "qsfpunknown", "sfp", "unknown", "x2"], []),
     }
 
     prop_map = {
@@ -425,6 +435,7 @@ class EtherServerIntFIo(ManagedObject):
         "aggrPortId": "aggr_port_id", 
         "chassisId": "chassis_id", 
         "childAction": "child_action", 
+        "connectedAdaptorType": "connected_adaptor_type", 
         "dn": "dn", 
         "encap": "encap", 
         "epDn": "ep_dn", 
@@ -483,6 +494,7 @@ class EtherServerIntFIo(ManagedObject):
         self.aggr_port_id = None
         self.chassis_id = None
         self.child_action = None
+        self.connected_adaptor_type = None
         self.encap = None
         self.ep_dn = None
         self.flt_aggr = None

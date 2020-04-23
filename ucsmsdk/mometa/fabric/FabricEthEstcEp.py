@@ -111,7 +111,7 @@ class FabricEthEstcEp(ManagedObject):
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "pin_group_name": MoPropertyMeta("pin_group_name", "pinGroupName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400, 0, 510, None, [], []),
-        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x800, None, None, None, [], ["1-54"]),
+        "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x800, None, None, None, [], ["1-108"]),
         "port_mode": MoPropertyMeta("port_mode", "portMode", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, ["access", "trunk"], []),
         "prio": MoPropertyMeta("prio", "prio", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, ["best-effort", "bronze", "fc", "gold", "platinum", "silver"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4000, 0, 256, None, [], []),
