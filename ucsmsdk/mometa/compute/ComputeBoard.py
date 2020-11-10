@@ -184,6 +184,7 @@ class ComputeBoard(ManagedObject):
         "cpu_type_description": MoPropertyMeta("cpu_type_description", "cpuTypeDescription", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "fault_qualifier": MoPropertyMeta("fault_qualifier", "faultQualifier", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "generation": MoPropertyMeta("generation", "generation", "ushort", VersionMeta.Version412b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -211,6 +212,7 @@ class ComputeBoard(ManagedObject):
         "cpuTypeDescription": "cpu_type_description", 
         "dn": "dn", 
         "faultQualifier": "fault_qualifier", 
+        "generation": "generation", 
         "id": "id", 
         "locationDn": "location_dn", 
         "model": "model", 
@@ -238,6 +240,7 @@ class ComputeBoard(ManagedObject):
         self.cmos_voltage = None
         self.cpu_type_description = None
         self.fault_qualifier = None
+        self.generation = None
         self.id = None
         self.location_dn = None
         self.model = None

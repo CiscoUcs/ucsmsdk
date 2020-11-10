@@ -12,6 +12,7 @@ class PciEquipSlotConsts:
     DISCOVERY_STATE_ONLINE = "online"
     DISCOVERY_STATE_PINGLOST = "pinglost"
     DISCOVERY_STATE_UNKNOWN = "unknown"
+    DISCOVERY_STATE_UNSECURE = "unsecure"
     DISCOVERY_STATE_UNSUPPORTED_CONNECTIVITY = "unsupported-connectivity"
 
 
@@ -21,12 +22,12 @@ class PciEquipSlot(ManagedObject):
     consts = PciEquipSlotConsts()
     naming_props = set(['id'])
 
-    mo_meta = MoMeta("PciEquipSlot", "pciEquipSlot", "equipped-slot-[id]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["read-only"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], [], ["Get"])
+    mo_meta = MoMeta("PciEquipSlot", "pciEquipSlot", "equipped-slot-[id]", VersionMeta.Version141i, "InputOutput", 0x3f, [], ["read-only"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], ['faultInst'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "controller_reported": MoPropertyMeta("controller_reported", "controllerReported", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
-        "discovery_state": MoPropertyMeta("discovery_state", "discoveryState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto-upgrading", "discovered", "offline", "online", "pinglost", "unknown", "unsupported-connectivity"], []),
+        "discovery_state": MoPropertyMeta("discovery_state", "discoveryState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto-upgrading", "discovered", "offline", "online", "pinglost", "unknown", "unsecure", "unsupported-connectivity"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "host_reported": MoPropertyMeta("host_reported", "hostReported", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

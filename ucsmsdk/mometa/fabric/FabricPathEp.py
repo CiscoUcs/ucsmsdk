@@ -48,6 +48,7 @@ class FabricPathEpConsts:
     IF_TYPE_VIRTUAL = "virtual"
     PEER_CHASSIS_ID_N_A = "N/A"
     PORT_GROUP_ROLE_MASTER = "master"
+    PORT_GROUP_ROLE_MASTER_PC = "master-pc"
     PORT_GROUP_ROLE_MEMBER = "member"
     PORT_GROUP_ROLE_NONE = "none"
     SIDE_LEFT = "left"
@@ -83,7 +84,7 @@ class FabricPathEp(ManagedObject):
         "peer_mac": MoPropertyMeta("peer_mac", "peerMac", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []),
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "port_group_role": MoPropertyMeta("port_group_role", "portGroupRole", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["master", "member", "none"], ["0-255"]),
+        "port_group_role": MoPropertyMeta("port_group_role", "portGroupRole", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["master", "master-pc", "member", "none"], ["0-255"]),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),

@@ -30,6 +30,7 @@ class EquipmentSharedIOModuleConsts:
     DISCOVERY_ONLINE = "online"
     DISCOVERY_PINGLOST = "pinglost"
     DISCOVERY_UNKNOWN = "unknown"
+    DISCOVERY_UNSECURE = "unsecure"
     DISCOVERY_UNSUPPORTED_CONNECTIVITY = "unsupported-connectivity"
     FE_OFFLINE_TS_NEVER = "never"
     FE_READY_TS_NEVER = "never"
@@ -186,7 +187,7 @@ class EquipmentSharedIOModule(ManagedObject):
         "check_point": MoPropertyMeta("check_point", "checkPoint", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["deep-checkpoint", "discovered", "removing", "shallow-checkpoint", "unknown"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ack-in-progress", "acknowledged", "auto-ack", "evaluation", "ok", "removing", "un-acknowledged", "un-initialized", "unsupported-connectivity"], []),
-        "discovery": MoPropertyMeta("discovery", "discovery", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto-upgrading", "discovered", "offline", "online", "pinglost", "unknown", "unsupported-connectivity"], []),
+        "discovery": MoPropertyMeta("discovery", "discovery", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto-upgrading", "discovered", "offline", "online", "pinglost", "unknown", "unsecure", "unsupported-connectivity"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "fe_offline_ts": MoPropertyMeta("fe_offline_ts", "feOfflineTs", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["never"], ["0-18446744073709551615"]),
         "fe_ready_ts": MoPropertyMeta("fe_ready_ts", "feReadyTs", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["never"], ["0-18446744073709551615"]),
