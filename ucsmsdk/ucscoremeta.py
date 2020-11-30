@@ -42,17 +42,18 @@ class UcsVersion(object):
             return None
 
         self.__version = version
+        self.__major = None
+        self.__minor = None
+        self.__mr = None
+        self.__patch = None
+        self.__spin = None
 
         match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
                                    "(?P<minor>(([0-9])|([1-9][0-9]{0,1})))\("
                                    "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))\."
                                    "(?P<patch>(([0-9])|([1-9][0-9]{0,4})))\)$")
         match_obj = re.match(match_pattern, version)
-        if match_obj:
-            self.__major = match_obj.group("major")
-            self.__minor = match_obj.group("minor")
-            self.__mr = match_obj.group("mr")
-            self.__patch = match_obj.group("patch")
+        if self._set_versions(match_obj):
             return
 
         match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
@@ -60,22 +61,68 @@ class UcsVersion(object):
                                    "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))"
                                    "(?P<patch>[a-z])\)$")
         match_obj = re.match(match_pattern, version)
-        if match_obj:
-            self.__major = match_obj.group("major")
-            self.__minor = match_obj.group("minor")
-            self.__mr = match_obj.group("mr")
-            self.__patch = match_obj.group("patch")
+        if self._set_versions(match_obj):
             return
 
         match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
                                    "(?P<minor>(([0-9])|([1-9][0-9]{0,1})))\("
                                    "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))\)$")
         match_obj = re.match(match_pattern, version)
-        if match_obj:
-            self.__major = match_obj.group("major")
-            self.__minor = match_obj.group("minor")
-            self.__mr = match_obj.group("mr")
+        if self._set_versions(match_obj):
             return
+
+        # handle spin builds "2.0(13aS1))"
+        match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
+                                   "(?P<minor>(([0-9])|([1-9][0-9]{0,1})))\("
+                                   "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))"
+                                   "(?P<patch>[a-z])"
+                                   "(?P<spin>S[1-9][0-9]{0,2})\)$")
+        match_obj = re.match(match_pattern, version)
+        if self._set_versions(match_obj):
+            return
+
+        # handle spin builds "3.0(1S10))"
+        match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
+                                   "(?P<minor>(([0-9])|([1-9][0-9]{0,1})))\("
+                                   "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))"
+                                   "(?P<spin>S[1-9][0-9]{0,2})\)$")
+        match_obj = re.match(match_pattern, version)
+        if self._set_versions(match_obj):
+            return
+
+        # handle de special builds "66.77(67.1582251418)"
+        match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
+                                   "(?P<minor>(([0-9])|([1-9][0-9]{0,2})))\("
+                                   "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))\."
+                                   "(?P<patch>(([0-9])|([1-9][0-9]{0,})))\)$")
+        match_obj = re.match(match_pattern, version)
+        if self._set_versions(match_obj):
+            return
+
+    def _set_versions(self, match_obj):
+        if not match_obj:
+            return False
+
+        match_dict = match_obj.groupdict()
+        self.__major = match_dict.get("major")
+        self.__minor = match_dict.get("minor")
+        self.__mr = match_dict.get("mr")
+        self.__patch = match_dict.get("patch")
+        self.__spin = match_dict.get("spin")
+
+        # for spin builds 4.0(1S52), the patch version will be None
+        # In this scenario assume the version to be highest patch z
+        if self.__spin is not None and self.__patch is None:
+            self.__patch = 'z'
+        elif self.__patch is not None and self.__mr is not None and self.__patch.isdigit() and self.__mr.isdigit():
+            log.debug("Interim version encountered: %s. MR version has been bumped up." % self.version)
+            self.__mr = str(int(self.__mr) + 1)
+            self.__patch = 'a'
+        elif self.__patch is not None and self.__patch.isalpha() and self.__spin:
+            log.debug("Interim version encountered: %s. patch version has been bumped up." % self.version)
+            self.__patch = str(chr(ord(self.__patch) + 1))
+
+        return True
 
     @property
     def major(self):
@@ -101,6 +148,17 @@ class UcsVersion(object):
     def version(self):
         """Getter Method of UcsVersion Class"""
         return self.__version
+
+    def _compare(self, version1, version2):
+        if version1 == version2:
+            return 0
+        if not version1:
+            return -1
+        if not version2:
+            return 1
+
+        func = (ord, int)[version1.isdigit() and version2.isdigit()]
+        return func(version1) - func(version2)
 
     def compare_to(self, version):
         """Method to compare UcsVersion."""
@@ -129,6 +187,9 @@ class UcsVersion(object):
 
     def __eq__(self, version):
         return self.compare_to(version) == 0
+
+    def __ne__(self, version):
+        return self.compare_to(version) != 0
 
     def __str__(self):
         return self.__version
