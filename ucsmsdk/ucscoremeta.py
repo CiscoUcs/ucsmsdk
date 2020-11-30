@@ -145,6 +145,11 @@ class UcsVersion(object):
         return self.__patch
 
     @property
+    def spin(self):
+        """Getter Method of UcsVersion Class"""
+        return self.__spin
+
+    @property
     def version(self):
         """Getter Method of UcsVersion Class"""
         return self.__version
@@ -165,13 +170,17 @@ class UcsVersion(object):
         if version is None or not isinstance(version, UcsVersion):
             return 1
 
-        if self.__major != version.major:
-            return ord(self.__major) - ord(version.major)
-        if self.__minor != version.minor:
-            return ord(self.__minor) - ord(version.minor)
-        if self.__mr != version.mr:
-            return ord(self.__mr) - ord(version.mr)
-        return ord(self.__patch) - ord(version.patch)
+        ret = 0
+        versions = [(self.__major, version.major),
+                    (self.__minor, version.minor),
+                    (self.__mr, version.mr),
+                    (self.__patch, version.patch),
+                    (self.__spin, version.spin)]
+        for item in versions:
+            ret = self._compare(item[0], item[1])
+            if ret:
+                return ret
+        return ret
 
     def __gt__(self, version):
         return self.compare_to(version) > 0
