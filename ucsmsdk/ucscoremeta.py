@@ -47,6 +47,7 @@ class UcsVersion(object):
         self.__mr = None
         self.__patch = None
         self.__spin = None
+        self.__build = None
 
         match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
                                    "(?P<minor>(([0-9])|([1-9][0-9]{0,1})))\("
@@ -99,6 +100,16 @@ class UcsVersion(object):
         if self._set_versions(match_obj):
             return
 
+        # handle engineering builds "4.2(0.175a)"
+        match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
+                                   "(?P<minor>(([0-9])|([1-9][0-9]{0,2})))\("
+                                   "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))\."
+                                   "(?P<build>(([0-9])|([1-9][0-9]{0,})))"
+                                   "(?P<patch>[a-z])\)$")
+        match_obj = re.match(match_pattern, version)
+        if self._set_versions(match_obj):
+            return
+
     def _set_versions(self, match_obj):
         if not match_obj:
             return False
@@ -109,6 +120,7 @@ class UcsVersion(object):
         self.__mr = match_dict.get("mr")
         self.__patch = match_dict.get("patch")
         self.__spin = match_dict.get("spin")
+        self.__build = match_dict.get("build")
 
         # for spin builds 4.0(1S52), the patch version will be None
         # In this scenario assume the version to be highest patch z
@@ -150,6 +162,11 @@ class UcsVersion(object):
         return self.__spin
 
     @property
+    def build(self):
+        """Getter Method of UcsVersion Class"""
+        return self.__build
+
+    @property
     def version(self):
         """Getter Method of UcsVersion Class"""
         return self.__version
@@ -174,6 +191,7 @@ class UcsVersion(object):
         versions = [(self.__major, version.major),
                     (self.__minor, version.minor),
                     (self.__mr, version.mr),
+                    (self.__build, version.build),
                     (self.__patch, version.patch),
                     (self.__spin, version.spin)]
         for item in versions:
