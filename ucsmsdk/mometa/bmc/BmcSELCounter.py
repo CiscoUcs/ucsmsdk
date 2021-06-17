@@ -29,7 +29,14 @@ class BmcSELCounterConsts:
     STATS_CLASS_ID_COMPUTE_PCIE_FATAL_RECEIVE_STATS = "compute:PCIeFatalReceiveStats"
     STATS_CLASS_ID_COMPUTE_PCIE_FATAL_STATS = "compute:PCIeFatalStats"
     STATS_CLASS_ID_MEMORY_ERROR_STATS = "memory:ErrorStats"
+    STATS_CLASS_ID_PROCESSOR_CACHE_MEM_STATS = "processor:CacheMemStats"
     STATS_CLASS_ID_PROCESSOR_ERROR_STATS = "processor:ErrorStats"
+    STATS_CLASS_ID_PROCESSOR_EXEC_STATS = "processor:ExecStats"
+    STATS_CLASS_ID_PROCESSOR_IOSTATS = "processor:IOStats"
+    STATS_CLASS_ID_PROCESSOR_MISC_STATS = "processor:MiscStats"
+    STATS_CLASS_ID_PROCESSOR_PCIBUS_STATS = "processor:PCIBusStats"
+    STATS_CLASS_ID_PROCESSOR_PMUSTATS = "processor:PMUStats"
+    STATS_CLASS_ID_PROCESSOR_SECURITY_STATS = "processor:SecurityStats"
     STATS_CLASS_ID_UNSPECIFIED = "unspecified"
     STATS_PROP_ID_COMPUTE_PCIE_FATAL_COMPLETION_STATS_ABORT_ERRORS = "compute:PCIeFatalCompletionStats:AbortErrors"
     STATS_PROP_ID_COMPUTE_PCIE_FATAL_COMPLETION_STATS_TIMEOUT_ERRORS = "compute:PCIeFatalCompletionStats:TimeoutErrors"
@@ -52,6 +59,11 @@ class BmcSELCounterConsts:
     STATS_PROP_ID_MEMORY_ERROR_STATS_ECC_MULTIBIT_ERRORS = "memory:ErrorStats:eccMultibitErrors"
     STATS_PROP_ID_MEMORY_ERROR_STATS_ECC_SINGLEBIT_ERRORS = "memory:ErrorStats:eccSinglebitErrors"
     STATS_PROP_ID_MEMORY_ERROR_STATS_MISMATCH_ERRORS = "memory:ErrorStats:mismatchErrors"
+    STATS_PROP_ID_PROCESSOR_CACHE_MEM_STATS_L2_CACHE_UNIT_CORRECTABLE_ERRORS = "processor:CacheMemStats:L2CacheUnitCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_CACHE_MEM_STATS_L2_CACHE_UNIT_UNCORRECTABLE_ERRORS = "processor:CacheMemStats:L2CacheUnitUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_CACHE_MEM_STATS_L3_CACHE_UNIT_CORRECTABLE_ERRORS = "processor:CacheMemStats:L3CacheUnitCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_CACHE_MEM_STATS_L3_CACHE_UNIT_UNCORRECTABLE_ERRORS = "processor:CacheMemStats:L3CacheUnitUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_CACHE_MEM_STATS_MEM_TESTCORRECTABLE_ERRORS = "processor:CacheMemStats:MemTestcorrectableErrors"
     STATS_PROP_ID_PROCESSOR_ERROR_STATS_CORRECTABLE_LINK_CRCERRORS = "processor:ErrorStats:CorrectableLinkCRCErrors"
     STATS_PROP_ID_PROCESSOR_ERROR_STATS_UNCORRECTABLE_LINK_CRCERRORS = "processor:ErrorStats:UncorrectableLinkCRCErrors"
     STATS_PROP_ID_PROCESSOR_ERROR_STATS_MIRRORING_INTER_SOCK_ERRORS = "processor:ErrorStats:mirroringInterSockErrors"
@@ -59,6 +71,38 @@ class BmcSELCounterConsts:
     STATS_PROP_ID_PROCESSOR_ERROR_STATS_SMI_LINK_CORR_ERRORS = "processor:ErrorStats:smiLinkCorrErrors"
     STATS_PROP_ID_PROCESSOR_ERROR_STATS_SMI_LINK_UNCORR_ERRORS = "processor:ErrorStats:smiLinkUncorrErrors"
     STATS_PROP_ID_PROCESSOR_ERROR_STATS_SPARING_ERRORS = "processor:ErrorStats:sparingErrors"
+    STATS_PROP_ID_PROCESSOR_EXEC_STATS_DECODE_UNIT_CORRECTABLE_ERRORS = "processor:ExecStats:DecodeUnitCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_EXEC_STATS_DECODE_UNIT_UNCORRECTABLE_ERRORS = "processor:ExecStats:DecodeUnitUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_EXEC_STATS_EXECUTION_UNIT_CORRECTABLE_ERRORS = "processor:ExecStats:ExecutionUnitCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_EXEC_STATS_EXECUTION_UNIT_UNCORRECTABLE_ERRORS = "processor:ExecStats:ExecutionUnitUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_EXEC_STATS_INSTRUCTION_FETCH_UNIT_CORRECTABLE_ERRORS = "processor:ExecStats:InstructionFetchUnitCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_EXEC_STATS_INSTRUCTION_FETCH_UNIT_UNCORRECTABLE_ERRORS = "processor:ExecStats:InstructionFetchUnitUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_EXEC_STATS_LOAD_STORE_UNIT_CORRECTABLE_ERRORS = "processor:ExecStats:LoadStoreUnitCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_EXEC_STATS_LOAD_STORE_UNIT_UNCORRECTABLE_ERRORS = "processor:ExecStats:LoadStoreUnitUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_IOSTATS_PCIE_BANK_CORRECTABLE_ERRORS = "processor:IOStats:PCIeBankCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_IOSTATS_PCIE_BANK_UNCORRECTABLE_ERRORS = "processor:IOStats:PCIeBankUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_IOSTATS_SATAUNCORRECTABLE_ERRORS = "processor:IOStats:SATAUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_IOSTATS_SATACORRECTABLE_ERRORS = "processor:IOStats:SATAcorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_IOSTATS_SMNUNCORRECTABLE_ERRORS = "processor:IOStats:SMNUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_IOSTATS_SMNCORRECTABLE_ERRORS = "processor:IOStats:SMNcorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_IOSTATS_USBUNCORRECTABLE_ERRORS = "processor:IOStats:USBUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_IOSTATS_USBCORRECTABLE_ERRORS = "processor:IOStats:USBcorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_MISC_STATS_COHERENT_SLAVE_CORRECTABLE_ERRORS = "processor:MiscStats:CoherentSlaveCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_MISC_STATS_COHERENT_SLAVE_UNCORRECTABLE_ERRORS = "processor:MiscStats:CoherentSlaveUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_MISC_STATS_FLOATING_POINT_UNIT_CORRECTABLE_ERRORS = "processor:MiscStats:FloatingPointUnitCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_MISC_STATS_FLOATING_POINT_UNIT_UNCORRECTABLE_ERRORS = "processor:MiscStats:FloatingPointUnitUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_MISC_STATS_MPMGMNT_CONTROLLER_CORRECTABLE_ERRORS = "processor:MiscStats:MPMgmntControllerCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_MISC_STATS_MPMGMNT_CONTROLLER_UNCORRECTABLE_ERRORS = "processor:MiscStats:MPMgmntControllerUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_MISC_STATS_PARAMETER_BLOCK_CORRECTABLE_ERRORS = "processor:MiscStats:ParameterBlockCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_MISC_STATS_PARAMETER_BLOCK_UNCORRECTABLE_ERRORS = "processor:MiscStats:ParameterBlockUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_PCIBUS_STATS_FCHUNCORRECTABLE_ERRORS = "processor:PCIBusStats:FCHUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_PCIBUS_STATS_FCHCORRECTABLE_ERRORS = "processor:PCIBusStats:FCHcorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_PCIBUS_STATS_NORTH_BRIDGE_IOCORRECTABLE_ERRORS = "processor:PCIBusStats:NorthBridgeIOCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_PCIBUS_STATS_NORTH_BRIDGE_IOUNCORRECTABLE_ERRORS = "processor:PCIBusStats:NorthBridgeIOUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_PMUSTATS_SYSTEM_MANAGEMENT_UNIT_CORRECTABLE_ERRORS = "processor:PMUStats:SystemManagementUnitCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_PMUSTATS_SYSTEM_MANAGEMENT_UNIT_UNCORRECTABLE_ERRORS = "processor:PMUStats:SystemManagementUnitUncorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_SECURITY_STATS_PSPCORRECTABLE_ERRORS = "processor:SecurityStats:PSPCorrectableErrors"
+    STATS_PROP_ID_PROCESSOR_SECURITY_STATS_PSPUNCORRECTABLE_ERRORS = "processor:SecurityStats:PSPUncorrectableErrors"
     STATS_PROP_ID_UNSPECIFIED = "unspecified"
 
 
@@ -87,8 +131,8 @@ class BmcSELCounter(ManagedObject):
         "pc_local_id": MoPropertyMeta("pc_local_id", "pcLocalId", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["No Errors"], ["0-4294967295"]),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "stats_class_id": MoPropertyMeta("stats_class_id", "statsClassId", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["compute:PCIeFatalCompletionStats", "compute:PCIeFatalProtocolStats", "compute:PCIeFatalReceiveStats", "compute:PCIeFatalStats", "memory:ErrorStats", "processor:ErrorStats", "unspecified"], []),
-        "stats_prop_id": MoPropertyMeta("stats_prop_id", "statsPropId", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["compute:PCIeFatalCompletionStats:AbortErrors", "compute:PCIeFatalCompletionStats:TimeoutErrors", "compute:PCIeFatalCompletionStats:unexpectedErrors", "compute:PCIeFatalProtocolStats:dllpErrors", "compute:PCIeFatalProtocolStats:flowControlErrors", "compute:PCIeFatalReceiveStats:bufferOverflowErrors", "compute:PCIeFatalReceiveStats:errFatalErrors", "compute:PCIeFatalReceiveStats:errNonFatalErrors", "compute:PCIeFatalReceiveStats:unsupportedRequestErrors", "compute:PCIeFatalStats:acsViolationErrors", "compute:PCIeFatalStats:malformedTLPErrors", "compute:PCIeFatalStats:poisonedTLPErrors", "compute:PCIeFatalStats:surpriseLinkDownErrors", "memory:ErrorStats:DramWriteDataCorrectableCRCErrors", "memory:ErrorStats:DramWriteDataUnCorrectableCRCErrors", "memory:ErrorStats:addressParityErrors", "memory:ErrorStats:addressParityErrorsCorrectable", "memory:ErrorStats:addressParityErrorsUnCorrectable", "memory:ErrorStats:eccMultibitErrors", "memory:ErrorStats:eccSinglebitErrors", "memory:ErrorStats:mismatchErrors", "processor:ErrorStats:CorrectableLinkCRCErrors", "processor:ErrorStats:UncorrectableLinkCRCErrors", "processor:ErrorStats:mirroringInterSockErrors", "processor:ErrorStats:mirroringIntraSockErrors", "processor:ErrorStats:smiLinkCorrErrors", "processor:ErrorStats:smiLinkUncorrErrors", "processor:ErrorStats:sparingErrors", "unspecified"], []),
+        "stats_class_id": MoPropertyMeta("stats_class_id", "statsClassId", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["compute:PCIeFatalCompletionStats", "compute:PCIeFatalProtocolStats", "compute:PCIeFatalReceiveStats", "compute:PCIeFatalStats", "memory:ErrorStats", "processor:CacheMemStats", "processor:ErrorStats", "processor:ExecStats", "processor:IOStats", "processor:MiscStats", "processor:PCIBusStats", "processor:PMUStats", "processor:SecurityStats", "unspecified"], []),
+        "stats_prop_id": MoPropertyMeta("stats_prop_id", "statsPropId", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["compute:PCIeFatalCompletionStats:AbortErrors", "compute:PCIeFatalCompletionStats:TimeoutErrors", "compute:PCIeFatalCompletionStats:unexpectedErrors", "compute:PCIeFatalProtocolStats:dllpErrors", "compute:PCIeFatalProtocolStats:flowControlErrors", "compute:PCIeFatalReceiveStats:bufferOverflowErrors", "compute:PCIeFatalReceiveStats:errFatalErrors", "compute:PCIeFatalReceiveStats:errNonFatalErrors", "compute:PCIeFatalReceiveStats:unsupportedRequestErrors", "compute:PCIeFatalStats:acsViolationErrors", "compute:PCIeFatalStats:malformedTLPErrors", "compute:PCIeFatalStats:poisonedTLPErrors", "compute:PCIeFatalStats:surpriseLinkDownErrors", "memory:ErrorStats:DramWriteDataCorrectableCRCErrors", "memory:ErrorStats:DramWriteDataUnCorrectableCRCErrors", "memory:ErrorStats:addressParityErrors", "memory:ErrorStats:addressParityErrorsCorrectable", "memory:ErrorStats:addressParityErrorsUnCorrectable", "memory:ErrorStats:eccMultibitErrors", "memory:ErrorStats:eccSinglebitErrors", "memory:ErrorStats:mismatchErrors", "processor:CacheMemStats:L2CacheUnitCorrectableErrors", "processor:CacheMemStats:L2CacheUnitUncorrectableErrors", "processor:CacheMemStats:L3CacheUnitCorrectableErrors", "processor:CacheMemStats:L3CacheUnitUncorrectableErrors", "processor:CacheMemStats:MemTestcorrectableErrors", "processor:ErrorStats:CorrectableLinkCRCErrors", "processor:ErrorStats:UncorrectableLinkCRCErrors", "processor:ErrorStats:mirroringInterSockErrors", "processor:ErrorStats:mirroringIntraSockErrors", "processor:ErrorStats:smiLinkCorrErrors", "processor:ErrorStats:smiLinkUncorrErrors", "processor:ErrorStats:sparingErrors", "processor:ExecStats:DecodeUnitCorrectableErrors", "processor:ExecStats:DecodeUnitUncorrectableErrors", "processor:ExecStats:ExecutionUnitCorrectableErrors", "processor:ExecStats:ExecutionUnitUncorrectableErrors", "processor:ExecStats:InstructionFetchUnitCorrectableErrors", "processor:ExecStats:InstructionFetchUnitUncorrectableErrors", "processor:ExecStats:LoadStoreUnitCorrectableErrors", "processor:ExecStats:LoadStoreUnitUncorrectableErrors", "processor:IOStats:PCIeBankCorrectableErrors", "processor:IOStats:PCIeBankUncorrectableErrors", "processor:IOStats:SATAUncorrectableErrors", "processor:IOStats:SATAcorrectableErrors", "processor:IOStats:SMNUncorrectableErrors", "processor:IOStats:SMNcorrectableErrors", "processor:IOStats:USBUncorrectableErrors", "processor:IOStats:USBcorrectableErrors", "processor:MiscStats:CoherentSlaveCorrectableErrors", "processor:MiscStats:CoherentSlaveUncorrectableErrors", "processor:MiscStats:FloatingPointUnitCorrectableErrors", "processor:MiscStats:FloatingPointUnitUncorrectableErrors", "processor:MiscStats:MPMgmntControllerCorrectableErrors", "processor:MiscStats:MPMgmntControllerUncorrectableErrors", "processor:MiscStats:ParameterBlockCorrectableErrors", "processor:MiscStats:ParameterBlockUncorrectableErrors", "processor:PCIBusStats:FCHUncorrectableErrors", "processor:PCIBusStats:FCHcorrectableErrors", "processor:PCIBusStats:NorthBridgeIOCorrectableErrors", "processor:PCIBusStats:NorthBridgeIOUncorrectableErrors", "processor:PMUStats:SystemManagementUnitCorrectableErrors", "processor:PMUStats:SystemManagementUnitUncorrectableErrors", "processor:SecurityStats:PSPCorrectableErrors", "processor:SecurityStats:PSPUncorrectableErrors", "unspecified"], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "threshold": MoPropertyMeta("threshold", "threshold", "ushort", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "value": MoPropertyMeta("value", "value", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

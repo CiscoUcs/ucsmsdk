@@ -6,6 +6,7 @@ from ...ucsmeta import VersionMeta
 
 
 class PowerPolicyConsts:
+    FAN_SPEED_ACOUSTIC = "acoustic"
     FAN_SPEED_ANY = "any"
     FAN_SPEED_BALANCED = "balanced"
     FAN_SPEED_ERR = "err"
@@ -38,7 +39,7 @@ class PowerPolicy(ManagedObject):
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
-        "fan_speed": MoPropertyMeta("fan_speed", "fanSpeed", "string", VersionMeta.Version226c, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["any", "balanced", "err", "high-power", "low-power", "max-power", "na", "no-update", "not-supported", "performance"], []),
+        "fan_speed": MoPropertyMeta("fan_speed", "fanSpeed", "string", VersionMeta.Version226c, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["acoustic", "any", "balanced", "err", "high-power", "low-power", "max-power", "na", "no-update", "not-supported", "performance"], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x20, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []),
         "oper_prio": MoPropertyMeta("oper_prio", "operPrio", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no-cap", "utility"], ["1-10"]),

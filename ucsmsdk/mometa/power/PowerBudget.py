@@ -21,6 +21,7 @@ class PowerBudgetConsts:
     CURRENT_POWER_UNBOUNDED = "unbounded"
     DYN_REALLOC_CHASSIS = "chassis"
     DYN_REALLOC_NONE = "none"
+    FAN_SPEED_ACOUSTIC = "acoustic"
     FAN_SPEED_ANY = "any"
     FAN_SPEED_BALANCED = "balanced"
     FAN_SPEED_ERR = "err"
@@ -112,7 +113,7 @@ class PowerBudget(ManagedObject):
         "current_power": MoPropertyMeta("current_power", "currentPower", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "dyn_realloc": MoPropertyMeta("dyn_realloc", "dynRealloc", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["chassis", "none"], []),
-        "fan_speed": MoPropertyMeta("fan_speed", "fanSpeed", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["any", "balanced", "err", "high-power", "low-power", "max-power", "na", "no-update", "not-supported", "performance"], []),
+        "fan_speed": MoPropertyMeta("fan_speed", "fanSpeed", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["acoustic", "any", "balanced", "err", "high-power", "low-power", "max-power", "na", "no-update", "not-supported", "performance"], []),
         "group_name": MoPropertyMeta("group_name", "groupName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "idle_power": MoPropertyMeta("idle_power", "idlePower", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),
         "max_power": MoPropertyMeta("max_power", "maxPower", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),
