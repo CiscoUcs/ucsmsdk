@@ -110,6 +110,25 @@ class UcsVersion(object):
         if self._set_versions(match_obj):
             return
 
+        # handle spin builds "4.2(1.2021052301)"
+        match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
+                                   "(?P<minor>(([0-9])|([1-9][0-9]{0,1})))\("
+                                   "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))\."
+                                   "(?P<spin>\d{0,4}\d{0,2}\d{0,2}\d{0,2})\)$")
+        match_obj = re.match(match_pattern, version)
+        if self._set_versions(match_obj):
+            return
+
+        # handle patch spin builds "4.2(1a.2021052301)"
+        match_pattern = re.compile("^(?P<major>[1-9][0-9]{0,2})\."
+                                   "(?P<minor>(([0-9])|([1-9][0-9]{0,1})))\("
+                                   "(?P<mr>(([0-9])|([1-9][0-9]{0,2})))"
+                                   "(?P<patch>[a-z])\."
+                                   "(?P<spin>\d{0,4}\d{0,2}\d{0,2}\d{0,2})\)$")
+        match_obj = re.match(match_pattern, version)
+        if self._set_versions(match_obj):
+            return
+
     def _set_versions(self, match_obj):
         if not match_obj:
             return False

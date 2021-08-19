@@ -89,6 +89,20 @@ def test_build_version2():
     assert_equal((version1 < version2), True)
 
 
+def test_spin_version5():
+    # version interpreted as 4.2(2a)
+    version1 = UcsVersion("4.2(1.2021052301)")
+    version2 = UcsVersion("4.2(2a)")
+    assert_equal((version1 == version2), True)
+
+
+def test_spin_version6():
+    # version interpreted as 4.2(1b)
+    version1 = UcsVersion("4.2(1a.2021052301)")
+    version2 = UcsVersion("4.2(1b)")
+    assert_equal((version1 == version2), True)
+
+
 def test_gt_same_major_version():
     version1 = VersionMeta.Version211a
     version2 = VersionMeta.Version211e
