@@ -14,6 +14,8 @@ prop_meta = {
     "out_domains": MethodPropertyMeta("OutDomains", "outDomains", "Xs:string", "Version142b", "Output", False),
     "out_evt_channel": MethodPropertyMeta("OutEvtChannel", "outEvtChannel", "Xs:string", "Version142b", "Output", False),
     "out_name": MethodPropertyMeta("OutName", "outName", "Xs:string", "Version142b", "Output", False),
+    "out_passwd_expiry_duration": MethodPropertyMeta("OutPasswdExpiryDuration", "outPasswdExpiryDuration", "Xs:unsignedInt", "Version142b", "Output", False),
+    "out_passwd_expiry_status": MethodPropertyMeta("OutPasswdExpiryStatus", "outPasswdExpiryStatus", "Xs:string", "Version142b", "Output", False),
     "out_priv": MethodPropertyMeta("OutPriv", "outPriv", "Xs:string", "Version142b", "Output", False),
     "out_refresh_period": MethodPropertyMeta("OutRefreshPeriod", "outRefreshPeriod", "Xs:unsignedInt", "Version142b", "Output", False),
 }
@@ -28,6 +30,8 @@ prop_map = {
     "outDomains": "out_domains",
     "outEvtChannel": "out_evt_channel",
     "outName": "out_name",
+    "outPasswdExpiryDuration": "out_passwd_expiry_duration",
+    "outPasswdExpiryStatus": "out_passwd_expiry_status",
     "outPriv": "out_priv",
     "outRefreshPeriod": "out_refresh_period",
 }
