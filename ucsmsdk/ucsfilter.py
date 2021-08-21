@@ -89,6 +89,8 @@ class ParseFilter(object):
         method to support logical 'and' operator expression
         """
 
+        # print  str, loc, toks
+        # print toks[0][0::2]
         and_filter = AndFilter()
         for op_filter in toks[0][0::2]:
             and_filter.child_add(op_filter)
@@ -100,6 +102,8 @@ class ParseFilter(object):
         method to support logical 'or' operator expression
         """
 
+        # print  str, loc, toks
+        # print toks[0][0::2]
         or_filter = OrFilter()
         for op_filter in toks[0][0::2]:
             or_filter.child_add(op_filter)

@@ -49,9 +49,9 @@ class UcsHandle(UcsSession):
     """
 
     def __init__(self, ip, username, password, port=None, secure=None,
-                 proxy=None, timeout=None):
+                 proxy=None, timeout=None, retry_count=None):
         UcsSession.__init__(self, ip, username, password, port, secure, proxy,
-                timeout)
+                timeout, retry_count)
         self.__commit_buf = {}
         self.__commit_buf_tagged = {}
 
@@ -69,19 +69,26 @@ class UcsHandle(UcsSession):
 
         self._unset_dump_xml()
 
-    def set_timeout(self, timeout=None):
+    def set_skip_txn_commit(self):
         """
-        Sets timeout (in seconds) for the request
-        """
-
-        self._set_timeout(timeout)
-
-    def unset_timeout(self):
-        """
-        Disable timeout for the request
+        Enables the skipping of transaction commit
         """
 
-        self._unset_timeout()
+        self._set_skip_txn_commit()
+
+    def unset_skip_txn_commit(self):
+        """
+        Disables the skipping of transaction commit
+        """
+
+        self._unset_skip_txn_commit()
+
+    def get_skip_txn_commit(self):
+        """
+        Gets flag which does skipping of transaction commit
+        """
+
+        self._get_skip_txn_commit()
 
     def set_mode_threading(self):
         """
@@ -244,8 +251,8 @@ class UcsHandle(UcsSession):
             Dictionary {dn1: object, dn2: object2}
 
         Example:
-            obj = handle.query_dns("fabric/lan/net-100", "fabric/lan/net-101")
-            obj = handle.query_dns(["fabric/lan/net-100", "fabric/lan/net-101"])
+            obj = handle.lookup_by_dns("fabric/lan/net-100", "fabric/lan/net-101")
+            obj = handle.lookup_by_dns(["fabric/lan/net-100", "fabric/lan/net-101"])
         """
 
         from .ucsbasetype import DnSet, Dn
@@ -296,8 +303,8 @@ class UcsHandle(UcsSession):
         Dictionary {class_id1: [objects], class_id2: [objects]}
 
         Example:
-            obj = handle.query_classids("OrgOrg", "LsServer")
-            obj = handle.query_classids(["OrgOrg", "LsServer"])
+            obj = handle.lookup_by_dns("OrgOrg", "LsServer")
+            obj = handle.lookup_by_dns(["OrgOrg", "LsServer"])
         """
 
         # ToDo - How to handle unknown class_id
@@ -362,10 +369,10 @@ class UcsHandle(UcsSession):
             externalmethod object   if need_response=True\n
 
         Example:
-            obj = handle.query_dn("fabric/lan/net-100")\n
-            obj = handle.query_dn("fabric/lan/net-100", hierarchy=True)\n
-            obj = handle.query_dn("fabric/lan/net-100", need_response=True)\n
-            obj = handle.query_dn("fabric/lan/net-100", hierarchy=True, need_response=True)\n
+            obj = handle.lookup_by_dn("fabric/lan/net-100")\n
+            obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True)\n
+            obj = handle.lookup_by_dn("fabric/lan/net-100", need_response=True)\n
+            obj = handle.lookup_by_dn("fabric/lan/net-100", hierarchy=True, need_response=True)\n
         """
 
         from .ucsbasetype import DnSet, Dn
@@ -910,6 +917,9 @@ class UcsHandle(UcsSession):
         from .ucsmethodfactory import config_resolve_dns
         from .ucsmethodfactory import config_conf_mos
 
+        if self.skip_txn_commit:
+            log.debug("Skipping txn commit")
+            return None
         tag = self._auto_set_tag_context(tag)
 
         refresh_dict = {}
@@ -1017,7 +1027,7 @@ class UcsHandle(UcsSession):
 
         Example:
             def cb(mce):
-                print(mce.mo)
+                print mce.mo
 
             sp_mo = handle.query_dn("org-root/ls-demoSP")
             wait_for_event(sp_mo, 'descr', 'demo_description', cb)
