@@ -16,6 +16,7 @@ class StorageEnclosureCapConsts:
     TYPE_IOE_NVME_ENCLOSURE = "ioe-nvme-enclosure"
     TYPE_SB_NVME_ENCLOSURE = "sb-nvme-enclosure"
     TYPE_SERVER_FRONT_LOAD = "server-front-load"
+    TYPE_SERVER_MID = "server-mid"
     TYPE_SERVER_NVME = "server-nvme"
     TYPE_SERVER_PCH = "server-pch"
     TYPE_SERVER_REAR = "server-rear"
@@ -43,7 +44,7 @@ class StorageEnclosureCap(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version312b, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x20, None, None, None, ["dedicated-rear-ssd-enclosure", "hdd-expansion-tray", "hdd-mother-board", "ioe-nvme-enclosure", "sb-nvme-enclosure", "server-front-load", "server-nvme", "server-pch", "server-rear", "sioc-nvme-enclosure", "unknown"], []),
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x20, None, None, None, ["dedicated-rear-ssd-enclosure", "hdd-expansion-tray", "hdd-mother-board", "ioe-nvme-enclosure", "sb-nvme-enclosure", "server-front-load", "server-mid", "server-nvme", "server-pch", "server-rear", "sioc-nvme-enclosure", "unknown"], []),
     }
 
     prop_map = {

@@ -6,6 +6,10 @@ from ...ucsmeta import VersionMeta
 
 
 class EquipmentLocalDiskControllerDefConsts:
+    AUTO_CONFIG_MODE_SUPPORTED_FALSE = "false"
+    AUTO_CONFIG_MODE_SUPPORTED_NO = "no"
+    AUTO_CONFIG_MODE_SUPPORTED_TRUE = "true"
+    AUTO_CONFIG_MODE_SUPPORTED_YES = "yes"
     CONFIG_PARM_MOD_SUPPORTED_FALSE = "false"
     CONFIG_PARM_MOD_SUPPORTED_NO = "no"
     CONFIG_PARM_MOD_SUPPORTED_TRUE = "true"
@@ -71,6 +75,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
     mo_meta = MoMeta("EquipmentLocalDiskControllerDef", "equipmentLocalDiskControllerDef", "disk-controller", VersionMeta.Version131c, "InputOutput", 0xff, [], [""], ['equipmentLocalDiskControllerCapProvider'], [], ["Get"])
 
     prop_meta = {
+        "auto_config_mode_supported": MoPropertyMeta("auto_config_mode_supported", "autoConfigModeSupported", "string", VersionMeta.Version421a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "config_parm_mod_supported": MoPropertyMeta("config_parm_mod_supported", "configParmModSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "controller_def_type": MoPropertyMeta("controller_def_type", "controllerDefType", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["dual", "embedded", "m2", "none", "nvme", "nvme-hhhl", "nvme-mezz", "slot-based"], []),
@@ -96,6 +101,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
     }
 
     prop_map = {
+        "autoConfigModeSupported": "auto_config_mode_supported", 
         "childAction": "child_action", 
         "configParmModSupported": "config_parm_mod_supported", 
         "controllerDefType": "controller_def_type", 
@@ -122,6 +128,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.auto_config_mode_supported = None
         self.child_action = None
         self.config_parm_mod_supported = None
         self.controller_def_type = None

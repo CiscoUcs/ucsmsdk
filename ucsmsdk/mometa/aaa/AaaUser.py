@@ -21,7 +21,10 @@ class AaaUserConsts:
     EXPIRES_NO = "no"
     EXPIRES_TRUE = "true"
     EXPIRES_YES = "yes"
-    PWD_LIFE_TIME_NO_PASSWORD_EXPIRE = "no-password-expire"
+    PASSWDEXPIRATION_NEVER = "never"
+    PASSWDEXPIRYSTATUS_EXPIRED = "expired"
+    PASSWDEXPIRYSTATUS_NO = "no"
+    PASSWDEXPIRYSTATUS_WARNING = "warning"
     PWD_SET_FALSE = "false"
     PWD_SET_NO = "no"
     PWD_SET_TRUE = "true"
@@ -34,7 +37,7 @@ class AaaUser(ManagedObject):
     consts = AaaUserConsts()
     naming_props = set(['name'])
 
-    mo_meta = MoMeta("AaaUser", "aaaUser", "user-[name]", VersionMeta.Version101e, "InputOutput", 0x7ffff, [], ["aaa", "admin"], ['aaaUserEp'], ['aaaCimcSession', 'aaaSession', 'aaaSshAuth', 'aaaUserData', 'aaaUserLocale', 'aaaUserRole', 'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AaaUser", "aaaUser", "user-[name]", VersionMeta.Version101e, "InputOutput", 0x3ffff, [], ["aaa", "admin"], ['aaaUserEp'], ['aaaCimcSession', 'aaaSession', 'aaaSshAuth', 'aaaUserData', 'aaaUserLocale', 'aaaUserRole', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "account_status": MoPropertyMeta("account_status", "accountStatus", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["active", "inactive"], []),
@@ -52,14 +55,15 @@ class AaaUser(ManagedObject):
         "first_name": MoPropertyMeta("first_name", "firstName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800, 0, 32, None, [], []),
         "last_name": MoPropertyMeta("last_name", "lastName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000, 0, 32, None, [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x2000, None, None, r"""[a-zA-Z][a-zA-Z0-9_.-]{0,31}""", [], []),
+        "passwdexpiration": MoPropertyMeta("passwdexpiration", "passwdexpiration", "string", VersionMeta.Version413a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []),
+        "passwdexpirystatus": MoPropertyMeta("passwdexpirystatus", "passwdexpirystatus", "string", VersionMeta.Version413a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["expired", "no", "warning"], []),
         "phone": MoPropertyMeta("phone", "phone", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000, 0, 510, None, [], []),
         "priv": MoPropertyMeta("priv", "priv", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((ext-lan-policy|pn-maintenance|ls-security-policy|pod-security|pn-equipment|ls-config-policy|ls-compute|ext-san-policy|ls-security|aaa|power-mgmt|read-only|ext-lan-security|ls-config|ls-server-policy|pod-qos|pn-policy|ls-storage-policy|org-management|admin|ext-san-security|pod-config|ls-server|ext-lan-qos|ls-storage|ls-qos-policy|operations|ext-lan-config|pn-security|ls-network-policy|pod-policy|ext-san-qos|ls-qos|ls-server-oper|ext-san-config|ls-network|ls-ext-access|fault),){0,37}(ext-lan-policy|pn-maintenance|ls-security-policy|pod-security|pn-equipment|ls-config-policy|ls-compute|ext-san-policy|ls-security|aaa|power-mgmt|read-only|ext-lan-security|ls-config|ls-server-policy|pod-qos|pn-policy|ls-storage-policy|org-management|admin|ext-san-security|pod-config|ls-server|ext-lan-qos|ls-storage|ls-qos-policy|operations|ext-lan-config|pn-security|ls-network-policy|pod-policy|ext-san-qos|ls-qos|ls-server-oper|ext-san-config|ls-network|ls-ext-access|fault){0,1}""", [], []),
         "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000, None, None, r"""[!""#%&'\(\)\*\+,\-\./:;<>@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{0,127}""", [], []),
-        "pwd_life_time": MoPropertyMeta("pwd_life_time", "pwdLifeTime", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x10000, None, None, None, ["no-password-expire"], ["0-3650"]),
         "pwd_set": MoPropertyMeta("pwd_set", "pwdSet", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20000, 0, 256, None, [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10000, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 
     prop_map = {
@@ -78,10 +82,11 @@ class AaaUser(ManagedObject):
         "firstName": "first_name", 
         "lastName": "last_name", 
         "name": "name", 
+        "passwdexpiration": "passwdexpiration", 
+        "passwdexpirystatus": "passwdexpirystatus", 
         "phone": "phone", 
         "priv": "priv", 
         "pwd": "pwd", 
-        "pwdLifeTime": "pwd_life_time", 
         "pwdSet": "pwd_set", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -104,10 +109,11 @@ class AaaUser(ManagedObject):
         self.expires = None
         self.first_name = None
         self.last_name = None
+        self.passwdexpiration = None
+        self.passwdexpirystatus = None
         self.phone = None
         self.priv = None
         self.pwd = None
-        self.pwd_life_time = None
         self.pwd_set = None
         self.sacl = None
         self.status = None

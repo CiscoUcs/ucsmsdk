@@ -11,10 +11,16 @@ class MemoryPersistentMemoryNamespaceConfigResultConsts:
     SOCKET_ID_SOCKET_3 = "socket-3"
     SOCKET_ID_SOCKET_4 = "socket-4"
     SOCKET_LOCAL_DIMM_NUMBER_10 = "10"
+    SOCKET_LOCAL_DIMM_NUMBER_11 = "11"
     SOCKET_LOCAL_DIMM_NUMBER_12 = "12"
+    SOCKET_LOCAL_DIMM_NUMBER_14 = "14"
+    SOCKET_LOCAL_DIMM_NUMBER_15 = "15"
+    SOCKET_LOCAL_DIMM_NUMBER_16 = "16"
     SOCKET_LOCAL_DIMM_NUMBER_2 = "2"
+    SOCKET_LOCAL_DIMM_NUMBER_3 = "3"
     SOCKET_LOCAL_DIMM_NUMBER_4 = "4"
     SOCKET_LOCAL_DIMM_NUMBER_6 = "6"
+    SOCKET_LOCAL_DIMM_NUMBER_7 = "7"
     SOCKET_LOCAL_DIMM_NUMBER_8 = "8"
     SOCKET_LOCAL_DIMM_NUMBER_NOT_APPLICABLE = "not-applicable"
 
@@ -35,7 +41,7 @@ class MemoryPersistentMemoryNamespaceConfigResult(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "socket_id": MoPropertyMeta("socket_id", "socketId", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["socket-1", "socket-2", "socket-3", "socket-4"], []),
-        "socket_local_dimm_number": MoPropertyMeta("socket_local_dimm_number", "socketLocalDimmNumber", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["10", "12", "2", "4", "6", "8", "not-applicable"], []),
+        "socket_local_dimm_number": MoPropertyMeta("socket_local_dimm_number", "socketLocalDimmNumber", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["10", "11", "12", "14", "15", "16", "2", "3", "4", "6", "7", "8", "not-applicable"], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 
