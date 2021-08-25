@@ -14,6 +14,10 @@ class PciEquipSlotConsts:
     DISCOVERY_STATE_UNKNOWN = "unknown"
     DISCOVERY_STATE_UNSECURE = "unsecure"
     DISCOVERY_STATE_UNSUPPORTED_CONNECTIVITY = "unsupported-connectivity"
+    SPDM_FAULT_FALSE = "false"
+    SPDM_FAULT_NO = "no"
+    SPDM_FAULT_TRUE = "true"
+    SPDM_FAULT_YES = "yes"
 
 
 class PciEquipSlot(ManagedObject):
@@ -40,6 +44,8 @@ class PciEquipSlot(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "smbios_id": MoPropertyMeta("smbios_id", "smbiosId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
+        "spdm_fault": MoPropertyMeta("spdm_fault", "spdmFault", "string", VersionMeta.Version421a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "spdm_fault_desc": MoPropertyMeta("spdm_fault_desc", "spdmFaultDesc", "string", VersionMeta.Version421a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
     }
@@ -60,6 +66,8 @@ class PciEquipSlot(ManagedObject):
         "sacl": "sacl", 
         "serial": "serial", 
         "smbiosId": "smbios_id", 
+        "spdmFault": "spdm_fault", 
+        "spdmFaultDesc": "spdm_fault_desc", 
         "status": "status", 
         "vendor": "vendor", 
     }
@@ -79,6 +87,8 @@ class PciEquipSlot(ManagedObject):
         self.sacl = None
         self.serial = None
         self.smbios_id = None
+        self.spdm_fault = None
+        self.spdm_fault_desc = None
         self.status = None
         self.vendor = None
 

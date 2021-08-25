@@ -21,6 +21,8 @@ class ComputePsuControlConsts:
     INPUT_POWER_STATE_UPPER_NON_CRITICAL = "upper-non-critical"
     INPUT_POWER_STATE_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     INT_ID_NONE = "none"
+    MODE_DISABLE = "Disable"
+    MODE_ENABLE = "Enable"
     OPER_STATE_DEGRADED = "degraded"
     OPER_STATE_FAILED = "failed"
     OPER_STATE_OK = "ok"
@@ -58,6 +60,7 @@ class ComputePsuControl(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "input_power_state": MoPropertyMeta("input_power_state", "inputPowerState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
+        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version413a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Disable", "Enable"], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "oper_qualifier": MoPropertyMeta("oper_qualifier", "operQualifier", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|ok|redundancy-lost|redundancy-degraded|non-redundant-sufficient-resources|non-redundant-insufficient-resources),){0,5}(defaultValue|ok|redundancy-lost|redundancy-degraded|non-redundant-sufficient-resources|non-redundant-insufficient-resources){0,1}""", [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "failed", "ok", "unknown"], []),
@@ -77,6 +80,7 @@ class ComputePsuControl(ManagedObject):
         "dn": "dn", 
         "inputPowerState": "input_power_state", 
         "intId": "int_id", 
+        "mode": "mode", 
         "name": "name", 
         "operQualifier": "oper_qualifier", 
         "operState": "oper_state", 
@@ -96,6 +100,7 @@ class ComputePsuControl(ManagedObject):
         self.descr = None
         self.input_power_state = None
         self.int_id = None
+        self.mode = None
         self.name = None
         self.oper_qualifier = None
         self.oper_state = None

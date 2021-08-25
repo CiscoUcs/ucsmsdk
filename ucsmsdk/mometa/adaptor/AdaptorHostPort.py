@@ -6,6 +6,9 @@ from ...ucsmeta import VersionMeta
 
 
 class AdaptorHostPortConsts:
+    HOST_PORT_ID_ANY = "any"
+    HOST_PORT_ID_HOSTPORT1 = "hostport1"
+    HOST_PORT_ID_HOSTPORT2 = "hostport2"
     OPER_STATE_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     OPER_STATE_AUTO_UPGRADE = "auto-upgrade"
     OPER_STATE_BACKPLANE_PORT_PROBLEM = "backplane-port-problem"
@@ -151,6 +154,7 @@ class AdaptorHostPort(ManagedObject):
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
+        "host_port_id": MoPropertyMeta("host_port_id", "hostPortId", "string", VersionMeta.Version421a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["any", "hostport1", "hostport2"], ["0-255"]),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version223a, MoPropertyMeta.NAMING, 0x8, None, None, None, [], ["1-5000"]),
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -174,6 +178,7 @@ class AdaptorHostPort(ManagedObject):
         "childAction": "child_action", 
         "dn": "dn", 
         "fltAggr": "flt_aggr", 
+        "hostPortId": "host_port_id", 
         "id": "id", 
         "locationDn": "location_dn", 
         "model": "model", 
@@ -198,6 +203,7 @@ class AdaptorHostPort(ManagedObject):
         self.id = id
         self.child_action = None
         self.flt_aggr = None
+        self.host_port_id = None
         self.location_dn = None
         self.model = None
         self.oper_qualifier_reason = None

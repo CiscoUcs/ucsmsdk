@@ -23,7 +23,6 @@ import os
 from . import ucsgenutils
 from . import ucscoreutils
 from . import ucscoremeta
-import six
 
 try:
     import xml.etree.cElementTree as ET
@@ -55,7 +54,7 @@ class ManagedObject(UcsBase):
     This class structures/represents all the managed objects.
     """
 
-    DUMMY_DIRTY = "0x1"
+    DUMMY_DIRTY = "0x1L"
     __internal_prop = frozenset(
         ["_dirty_mask", "_class_id", "_child", "_handle", ''])
 
@@ -88,7 +87,7 @@ class ManagedObject(UcsBase):
         if isinstance(parent_mo_or_dn, ManagedObject):
             self.__parent_mo = parent_mo_or_dn
             self.__parent_dn = parent_mo_or_dn.dn
-        elif isinstance(parent_mo_or_dn, str) or isinstance(parent_mo_or_dn, six.text_type):
+        elif isinstance(parent_mo_or_dn, str) or isinstance(parent_mo_or_dn, unicode):
             self.__parent_dn = str(parent_mo_or_dn)
         else:
             raise ValueError('parent mo or dn must be specified')
@@ -258,7 +257,7 @@ class ManagedObject(UcsBase):
             out_str += str(prop).ljust(ts * 4) + ':' + str(
                 prop_value) + "\n"
         # print unknown properties
-        # for prop, prop_value in six.iteritems(self.__xtra_props):
+        # for prop, prop_value in self.__xtra_props.iteritems():
         #     prop = "[X]" + str(prop)
         #     out_str += str(prop).ljust(ts * 4) + ':' + str(
         #         prop_value) + "\n"

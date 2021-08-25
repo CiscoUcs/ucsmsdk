@@ -12,6 +12,8 @@ class PowerBudgetConsts:
     ADMIN_FPLOCK_STATE_UNLOCKED = "unlocked"
     ADMIN_PEAK_UNBOUNDED = "unbounded"
     ADMIN_PEAK_NEW_UNBOUNDED = "unbounded"
+    AGGRESSIVE_COOLING_DISABLE = "Disable"
+    AGGRESSIVE_COOLING_ENABLE = "Enable"
     BOOT_POWER_UNBOUNDED = "unbounded"
     CAP_ACTION_CLOCK_DOWN = "clock-down"
     CAP_ACTION_NOTHING = "nothing"
@@ -105,6 +107,7 @@ class PowerBudget(ManagedObject):
         "admin_fp_lock_state": MoPropertyMeta("admin_fp_lock_state", "adminFPLockState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["locked", "unknown", "unlocked"], []),
         "admin_peak": MoPropertyMeta("admin_peak", "adminPeak", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),
         "admin_peak_new": MoPropertyMeta("admin_peak_new", "adminPeakNew", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),
+        "aggressive_cooling": MoPropertyMeta("aggressive_cooling", "aggressiveCooling", "string", VersionMeta.Version421a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Disable", "Enable"], []),
         "boot_power": MoPropertyMeta("boot_power", "bootPower", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),
         "cap_action": MoPropertyMeta("cap_action", "capAction", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["clock-down", "nothing", "throttled"], []),
         "catalog_power": MoPropertyMeta("catalog_power", "catalogPower", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),
@@ -148,6 +151,7 @@ class PowerBudget(ManagedObject):
         "adminFPLockState": "admin_fp_lock_state", 
         "adminPeak": "admin_peak", 
         "adminPeakNew": "admin_peak_new", 
+        "aggressiveCooling": "aggressive_cooling", 
         "bootPower": "boot_power", 
         "capAction": "cap_action", 
         "catalogPower": "catalog_power", 
@@ -192,6 +196,7 @@ class PowerBudget(ManagedObject):
         self.admin_fp_lock_state = None
         self.admin_peak = None
         self.admin_peak_new = None
+        self.aggressive_cooling = None
         self.boot_power = None
         self.cap_action = None
         self.catalog_power = None
