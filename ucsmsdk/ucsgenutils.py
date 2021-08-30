@@ -26,6 +26,8 @@ import re
 import subprocess
 
 import logging
+import six
+from six.moves import range
 
 log = logging.getLogger('ucs')
 
@@ -413,18 +415,13 @@ def expand_key(key, clen):
     """
     Internal method supporting encryption and decryption functionality.
     """
-    try:
-        xrange
-    except:
-        xrange = range
-
     import hashlib
     from array import array
 
     blocks = (clen + 19) / 20
     x_key = []
     seed = key
-    for i_cnt in xrange(blocks):
+    for i_cnt in range(blocks):
         seed = hashlib.md5(key + seed).digest()
         x_key.append(seed)
     j_str = ''.join(x_key)
@@ -445,11 +442,6 @@ def encrypt_password(password, key):
     import hmac
     import base64
 
-    try:
-        xrange
-    except:
-        xrange = range
-
     h_hash = get_sha_hash
     uhash = h_hash(','.join(str(x) for x in
                             [repr(time()), repr(os.getpid()),
@@ -460,7 +452,7 @@ def encrypt_password(password, key):
     password_stream = array('L', password + '0000'[pwd_len & 3:])
     x_key = expand_key(k_enc, pwd_len + 4)
 
-    for i_cnt in xrange(len(password_stream)):
+    for i_cnt in range(len(password_stream)):
         password_stream[i_cnt] = password_stream[i_cnt] ^ x_key[i_cnt]
 
     cipher_t = uhash + password_stream.tostring()[:pwd_len]
@@ -480,11 +472,6 @@ def decrypt_password(cipher, key):
     import base64
     from array import array
 
-    try:
-        xrange
-    except:
-        xrange = range
-
     h_hash = get_sha_hash
 
     cipher += "\n"
@@ -502,7 +489,7 @@ def decrypt_password(cipher, key):
     password_stream = array('L', password_stream)
     x_key = expand_key(k_enc, cipher_len + 4)
 
-    for i in xrange(len(password_stream)):
+    for i in range(len(password_stream)):
         password_stream[i] = password_stream[i] ^ x_key[i]
 
     decrypted_password = password_stream.tostring()[:cipher_len]
@@ -515,7 +502,7 @@ def iteritems(d):
     """
 
     try:
-        return d.iteritems()
+        return six.iteritems(d)
     except AttributeError:
         return d.items()
 
