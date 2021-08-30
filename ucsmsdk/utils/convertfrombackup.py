@@ -197,7 +197,7 @@ class Node(object):
 
 def _process_child_elem(elem, tag, node, iter_count):
     call_count = iter_count
-    for child in elem.getchildren():
+    for child in list(elem):
         if _ignore_elem(child):
             continue
 
@@ -235,14 +235,14 @@ def _generate_outer_nodes(elem):
     if elem.tag != "topRoot":
         return top_nodes
 
-    for child in elem.getchildren():
+    for child in list(elem):
         class_id = ucsgenutils.word_u(child.tag)
         if not ucscoreutils.is_valid_class_id(class_id) \
                 or class_id not in classid_dn_map:
             continue
 
         parent_nodes = []
-        for sub_child in child.getchildren():
+        for sub_child in list(child):
             if _ignore_elem(sub_child):
                 continue
 
