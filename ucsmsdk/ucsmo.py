@@ -408,7 +408,7 @@ class ManagedObject(UcsBase):
             self.__set_prop("rn", os.path.basename(self.dn), forced=True)
         self.mark_clean()
 
-        child_elems = elem.getchildren()
+        child_elems = list(elem)
         if child_elems:
             for child_elem in child_elems:
                 if not ET.iselement(child_elem):
@@ -624,7 +624,7 @@ class GenericMo(UcsBase):
         # else:
         #     raise ValueError("Both rn and dn does not present.")
 
-        children = elem.getchildren()
+        children = list(elem)
         if children:
             for child in children:
                 if not ET.iselement(child):
