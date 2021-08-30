@@ -21,11 +21,6 @@ from threading import Timer
 from .ucsexception import UcsException, UcsLoginError
 from .ucsdriver import UcsDriver
 from .ucsgenutils import Progress
-from ssl import SSLError
-try:
-    from urllib2 import URLError, HTTPError
-except:
-    from urllib.error import URLError, HTTPError
 
 log = logging.getLogger('ucs')
 tx_lock = threading.Lock()
@@ -38,7 +33,7 @@ class UcsSession(object):
     """
 
     def __init__(self, ip, username, password, port=None, secure=None,
-                 proxy=None, timeout=None, retry_count=None):
+                 proxy=None, timeout=None):
         self.__ip = ip
         self.__username = username
         self.__password = password
@@ -61,12 +56,10 @@ class UcsSession(object):
         self.__force = False
         self.__auto_refresh = False
         self.__timeout = timeout
-        self.__retry_count = retry_count
 
         self.__dump_xml = False
         self.__redirect = False
         self.__threaded = False
-        self.__skip_txn_commit = False
         self.__driver = UcsDriver(proxy=self.__proxy)
 
     @property
@@ -135,16 +128,8 @@ class UcsSession(object):
         return self.__threaded
 
     @property
-    def skip_txn_commit(self):
-        return self.__skip_txn_commit
-
-    @property
     def timeout(self):
         return self.__timeout
-
-    @property
-    def retry_count(self):
-        return self.__retry_count
 
     def _freeze(self):
         save = {
@@ -169,9 +154,7 @@ class UcsSession(object):
             "dump_xml": self.__dump_xml,
             "redirect": self.__redirect,
             "threaded": self.__threaded,
-            "skip_txn_commit": self.__skip_txn_commit,
-            "timeout": self.__timeout,
-            "retry_count": self.__retry_count
+            "timeout": self.__timeout
         }
         return json.dumps(save)
 
@@ -240,7 +223,7 @@ class UcsSession(object):
         self.__evt_channel = response.out_evt_channel
         self.__last_update_time = str(time.asctime())
 
-    def post(self, uri, data=None, read=True, timeout=None, retry_count=None):
+    def post(self, uri, data=None, read=True, timeout=None):
         """
         sends the request and receives the response from ucsm server
 
@@ -257,28 +240,8 @@ class UcsSession(object):
         """
 
         timeout = self.__timeout if timeout is None else timeout
-        retry_count = self.__retry_count if retry_count is None else retry_count
-        try:
-            response = self.__driver.post(uri=uri, data=data, read=read,
+        response = self.__driver.post(uri=uri, data=data, read=read,
                                            timeout=timeout)
-        except (URLError, SSLError, HTTPError) as e:
-            if retry_count is not None:
-                no_response = True
-                for i in range (0, retry_count):
-                    try:
-                        response = self.__driver.post(uri=uri, data=data,
-                                                      read=read,
-                                                      timeout=timeout)
-                        no_response = False
-                        break
-                    except (URLError, SSLError, HTTPError) as e:
-                        log.debug("URL/SSL/HTTP Error [%s], retry #%d in 10 sec",
-                                   str(e), i+1)
-                        time.sleep(10)
-                if no_response:
-                    raise
-            else:
-                raise
         return response
 
     def post_xml(self, xml_str, read=True, timeout=None):
@@ -698,23 +661,22 @@ class UcsSession(object):
         """
         self.__dump_xml = False
 
-    def _set_skip_txn_commit(self):
+    def _set_timeout(self, timeout):
         """
-        Internal method to set skipping of transaction commit
+        Internal method to set timeout for the request
         """
-        self.__skip_txn_commit = True
+        timeout = None if type(timeout) != int else timeout
+        self.__timeout = timeout
 
-    def _unset_skip_txn_commit(self):
+    def _unset_timeout(self):
         """
-        Internal method to unset skipping of transaction commit
+        Internal method to unset timeout for the request
         """
-        self.__skip_txn_commit = False
+        self.__timeout = None
 
     def _set_mode_threading(self, enable=False):
         self.__threaded = enable
 
-    def add_header(self, header_prop, header_value):
-        self.__driver.add_header(header_prop, header_value)
 
 def _get_port(port, secure):
     if port is not None:
@@ -727,7 +689,7 @@ def _get_port(port, secure):
 
 def _get_proto(port, secure):
     if secure is None:
-        if port == "80":
+        if port == 80:
             return "http"
     elif secure is False:
         return "http"

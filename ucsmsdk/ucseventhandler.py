@@ -18,10 +18,8 @@ UCSM server.
 
 from __future__ import print_function
 
-try:
-    from Queue import Queue
-except:
-    from queue import Queue
+from six.moves import queue
+
 
 from threading import Condition, Lock, Thread
 import datetime
@@ -64,7 +62,7 @@ class WatchBlock(object):
         self.params = params
         self.overflow = False
         self.error_code = 0
-        self.event_q = Queue()  # infinite size Queue
+        self.event_q = queue.Queue()  # infinite size Queue
 
     def dequeue(self, miliseconds_timeout):
         """Internal method to dequeue the events."""
