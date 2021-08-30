@@ -3,6 +3,11 @@
 History
 -------
 
+0.9.12 (2021-08-30)
+---------------------
+* Fixes for python 3.9 compatibility
+* Fixes issue in earlier release
+
 0.9.11 (2021-08-25)
 ---------------------
 * Support for UCSM release 4.2(1a)
