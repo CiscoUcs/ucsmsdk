@@ -146,7 +146,7 @@ class ParseFilter(object):
             self.parse_filter_obj).setResultsName("semi_expression")
 
         expr = pp.Forward()
-        expr << pp.operatorPrecedence(semi_expression, [
+        expr << pp.infix_notation(semi_expression, [
             ("not", 1, pp.opAssoc.RIGHT, self.not_operator),
             ("and", 2, pp.opAssoc.LEFT, self.and_operator),
             ("or", 2, pp.opAssoc.LEFT, self.or_operator)
