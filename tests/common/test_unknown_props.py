@@ -11,40 +11,39 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import print_function
+import unittest
 
-from nose.tools import assert_equal 
 import ucsmsdk.ucsxmlcodec as xc
 from ucsmsdk.ucscoremeta import WriteXmlOption
 
 
-def test_001_knownmo_unknownprop():
-    xml_str = '''
-    <lsServer agentPolicyName=""
-    name="ra11"
-    type="instance"
-    usrLbl="b"
-    rn = "ls-ra11"
-    unknownProps="unknown"/>'''
+class TestUnknownProps(unittest.TestCase):
+    def test_001_knownmo_unknownprop(self):
+        xml_str = '''
+        <lsServer agentPolicyName=""
+        name="ra11"
+        type="instance"
+        usrLbl="b"
+        rn = "ls-ra11"
+        unknownProps="unknown"/>'''
 
-    obj = xc.from_xml_str(xml_str)
-    obj.unknownProps = "known"
-    xml_element = obj.to_xml()
-    expected = b'<lsServer agentPolicyName="" dn="ls-ra11" name="ra11" type="instance" unknownProps="known" usrLbl="b" />'
-    result_str = xc.to_xml_str(xml_element)
-    assert_equal(result_str, expected)
+        obj = xc.from_xml_str(xml_str)
+        obj.unknownProps = "known"
+        xml_element = obj.to_xml()
+        expected = b'<lsServer agentPolicyName="" dn="ls-ra11" name="ra11" type="instance" unknownProps="known" usrLbl="b" />'
+        result_str = xc.to_xml_str(xml_element)
+        self.assertEqual(result_str, expected)
 
-
-def test_002_knownmo_unknownprop():
-    xml_str = '''
-    <lsServer agentPolicyName=""
-    name="ra11"
-    type="instance"
-    usrLbl="b"
-    rn = "ls-ra11"
-    unknownProps="unknown"/>'''
-
-    obj = xc.from_xml_str(xml_str)
-    obj.unknownProps = "known"
-    xml_element = obj.to_xml(option=WriteXmlOption.DIRTY)
-    print(xc.to_xml_str(xml_element))
+    def test_002_knownmo_unknownprop(self):
+        xml_str = '''
+        <lsServer agentPolicyName=""
+        name="ra11"
+        type="instance"
+        usrLbl="b"
+        rn = "ls-ra11"
+        unknownProps="unknown"/>'''
+    
+        obj = xc.from_xml_str(xml_str)
+        obj.unknownProps = "known"
+        xml_element = obj.to_xml(option=WriteXmlOption.DIRTY)
+        print(xc.to_xml_str(xml_element))

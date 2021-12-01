@@ -11,71 +11,62 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from nose.tools import *
-from ..connection.info import custom_setup, custom_teardown
-
-handle = None
-sp_list = []
+from tests.base import BaseTest
 
 
-def setup_module():
-    from ucsmsdk.mometa.ls.LsServer import LsServer
+class TestQueryChildren(BaseTest):
+    def setUp(self):
+        super().setUp()
+        self.sp_list = []
+        from ucsmsdk.mometa.ls.LsServer import LsServer
+        org = handle.query_dn("org-root")
 
-    global handle
-    handle = custom_setup()
-    org = handle.query_dn("org-root")
+        sp_TEST = LsServer(org, name="TEST", usr_lbl="TEST")
+        self.handle.add_mo(sp_TEST, True)
+        self.sp_list.append(sp_TEST)
 
-    sp_TEST = LsServer(org, name="TEST", usr_lbl="TEST")
-    handle.add_mo(sp_TEST, True)
-    sp_list.append(sp_TEST)
+        sp_test = LsServer(org, name="test", usr_lbl="test", descr="test")
+        self.handle.add_mo(sp_test, True)
+        self.sp_list.append(sp_test)
 
-    sp_test = LsServer(org, name="test", usr_lbl="test", descr="test")
-    handle.add_mo(sp_test, True)
-    sp_list.append(sp_test)
+        sp_test11 = LsServer(org, name="test11", usr_lbl="test11")
+        self.handle.add_mo(sp_test11, True)
+        self.sp_list.append(sp_test11)
 
-    sp_test11 = LsServer(org, name="test11", usr_lbl="test11")
-    handle.add_mo(sp_test11, True)
-    sp_list.append(sp_test11)
+        sp_test12 = LsServer(org, name="test12", usr_lbl="test12")
+        self.handle.add_mo(sp_test12, True)
+        self.sp_list.append(sp_test12)
 
-    sp_test12 = LsServer(org, name="test12", usr_lbl="test12")
-    handle.add_mo(sp_test12, True)
-    sp_list.append(sp_test12)
+        self.handle.commit()
 
-    handle.commit()
+    def tearDown(self):
+        for sp in self.sp_list:
+            self.handle.remove_mo(sp)
+        self.handle.commit()
+        super().tearDown()
 
+    def test_default_filter(self):
+        mos = handle.query_children(in_dn="org-root", class_id="LsServer",
+                                    filter_str="(usr_lbl, 'test')")
+        self.assertEqual(len(mos), 3)
 
-def teardown_module():
-    for sp in sp_list:
-        handle.remove_mo(sp)
-    handle.commit()
-    custom_teardown(handle)
+    def test_default_case_insensitive(self):
+        mos = handle.query_children(in_dn="org-root", class_id="LsServer",
+                                    filter_str="(usr_lbl, 'test', flag='I')")
+        self.assertEqual(len(mos), 4)
 
+    def test_type_eq(self):
+        mos = handle.query_children(in_dn="org-root", class_id="LsServer",
+                                    filter_str="(usr_lbl, 'test', type='eq')")
+        self.assertEqual(len(mos), 1)
 
-def test_default_filter():
-    mos = handle.query_children(in_dn="org-root", class_id="LsServer",
-                                filter_str="(usr_lbl, 'test')")
-    assert_equal(len(mos), 3)
+    def test_type_eq_prop_without_underscore(self):
+        mos = handle.query_children(in_dn="org-root", class_id="LsServer",
+                                    filter_str="(descr, 'test', type='eq')")
+        self.assertEqual(len(mos), 1)
 
-
-def test_default_case_insensitive():
-    mos = handle.query_children(in_dn="org-root", class_id="LsServer",
-                                filter_str="(usr_lbl, 'test', flag='I')")
-    assert_equal(len(mos), 4)
-
-
-def test_type_eq():
-    mos = handle.query_children(in_dn="org-root", class_id="LsServer",
-                                filter_str="(usr_lbl, 'test', type='eq')")
-    assert_equal(len(mos), 1)
-
-
-def test_type_eq_prop_without_underscore():
-    mos = handle.query_children(in_dn="org-root", class_id="LsServer",
-                                filter_str="(descr, 'test', type='eq')")
-    assert_equal(len(mos), 1)
-
-
-def test_type_re():
-    mos = handle.query_children(in_dn="org-root", class_id="LsServer",
-                                filter_str="(usr_lbl, 'test.*1.*', type='re')")
-    assert_equal(len(mos), 2)
+    def test_type_re(self):
+        filter_ = "(usr_lbl, 'test.*1.*', type='re')"
+        mos = handle.query_children(in_dn="org-root", class_id="LsServer",
+                                    filter_str=filter_)
+        self.assertEqual(len(mos), 2)

@@ -11,34 +11,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from nose.tools import *
+import unittest
+
 from ucsmsdk.ucscoreutils import get_meta_info
 
 
-def test_known_class():
-    meta = get_meta_info(class_id="OrGoRg")
-    xml_attribute = meta.xml_attribute
-    assert_equal(xml_attribute, "orgOrg")
+class TestGetMetaInfo(unittest.TestCase):
+    def test_known_class(self):
+        meta = get_meta_info(class_id="OrGoRg")
+        xml_attribute = meta.xml_attribute
+        self.assertEqual(xml_attribute, "orgOrg")
 
+    def test_unknown_class(self):
+        meta = get_meta_info(class_id="unknown")
+        self.assertIsNone(meta)
 
-def test_unknown_class():
-    meta = get_meta_info(class_id="unknown")
-    assert_equal(meta, None)
+    def test_known_class_props(self):
+        meta = get_meta_info(class_id="OrGoRg")
+        properties = len(meta.props)
+        self.assertNotEqual(properties, 0)
 
+    def test_known_class_props_meta(self):
+        meta = get_meta_info(class_id="OrGoRg")
+        xml_attribute = meta.props['name'].xml_attribute
+        self.assertEqual(xml_attribute, 'name')
 
-def test_known_class_props():
-    meta = get_meta_info(class_id="OrGoRg")
-    properties = len(meta.props)
-    assert_not_equal(properties, 0)
+    def test_include_prop_false(self):
+        meta = get_meta_info(class_id="OrGoRg", include_prop=False)
+        properties = len(meta.props)
+        self.assertEqual(properties, 0)
 
-
-def test_known_class_props_meta():
-    meta = get_meta_info(class_id="OrGoRg")
-    xml_attribute = meta.props['name'].xml_attribute
-    assert_equal(xml_attribute, 'name')
-
-
-def test_include_prop_false():
-    meta = get_meta_info(class_id="OrGoRg", include_prop=False)
-    properties = len(meta.props)
-    assert_equal(properties, 0)

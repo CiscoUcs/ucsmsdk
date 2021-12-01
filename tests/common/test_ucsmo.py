@@ -11,23 +11,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from nose.tools import *
+import unittest
+
 from ucsmsdk.ucsmo import ManagedObject
 
 
-@raises(Exception)
-def test_001_create_mo_directly():
-    # Create a Managed Object by specifying the classId and parent dn
-    # this should raise an exception as the associated Meta's will not
-    # be initialised.
-    ManagedObject("LsServer", "org-root")
+class TestUCSMo(unittest.TestCase):
+    def test_001_create_mo_directly(self):
+        # Create a Managed Object by specifying the classId and parent dn
+        # this should raise an exception as the associated Meta's will not
+        # be initialised.
+        with self.assertRaises(Exception):
+            ManagedObject("LsServer", "org-root")
 
-
-def test_002_create_specific_obj():
-    # Create an object of type LsServer with parent dn specified
-    # check if the object has the right values populated
-    from ucsmsdk.mometa.ls.LsServer import LsServer
-    obj = LsServer("org-root", "temp_sp")
-    assert_equal(obj.name, "temp_sp")
-    assert_equal(obj.rn, "ls-temp_sp")
-    assert_equal(obj.dn, "org-root/ls-temp_sp")
+    def test_002_create_specific_obj(self):
+        # Create an object of type LsServer with parent dn specified
+        # check if the object has the right values populated
+        from ucsmsdk.mometa.ls.LsServer import LsServer
+        obj = LsServer("org-root", "temp_sp")
+        self.assertEqual(obj.name, "temp_sp")
+        self.assertEqual(obj.rn, "ls-temp_sp")
+        self.assertEqual(obj.dn, "org-root/ls-temp_sp")

@@ -11,151 +11,128 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import print_function
-
-from nose import SkipTest
-from nose.tools import *
-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
-
-handle = None
+from tests.base import BaseTest
 
 
-def setup():
-    global handle
-    handle = custom_setup()
-    if not handle:
-        msg = get_skip_msg()
-        raise SkipTest(msg)
+class TestRequestXML(BaseTest):
+    def setUp(self):
+        super().setUp()
+        self.to_commit = {}
 
+    def commit(self):
+        from ucsmsdk.ucsbasetype import ConfigMap, Dn, DnSet, Pair
+        import ucsmsdk.ucsmethodfactory as mf
+        import ucsmsdk.ucsxmlcodec as xc
 
-def teardown():
-    custom_teardown(handle)
+        refresh_dict = {}
+        mo_dict = self.to_commit
+        if not mo_dict:
+            print("No Mo to be Committed")
+            return None
 
-to_commit = {}
+        config_map = ConfigMap()
+        for mo_dn in mo_dict:
+            mo = mo_dict[mo_dn]
+            child_list = mo.child
+            while len(child_list) > 0:
+                current_child_list = child_list
+                child_list = []
+                for child_mo in current_child_list:
+                    if child_mo.is_dirty():
+                        refresh_dict[child_mo.dn] = child_mo
+                    child_list.extend(child_mo.child)
 
-def commit():
-    from ucsmsdk.ucsbasetype import ConfigMap, Dn, DnSet, Pair
-    import ucsmsdk.ucsmethodfactory as mf
-    import ucsmsdk.ucsxmlcodec as xc
+            pair = Pair()
+            pair.key = mo_dn
+            pair.child_add(mo_dict[mo_dn])
+            config_map.child_add(pair)
 
-    global to_commit
+        xml_element = mf.config_conf_mos("cookie", config_map, False)
+        xml_str = xc.to_xml_str(xml_element)
+        self.to_commit = {}
+        return xml_str
 
-    refresh_dict = {}
-    mo_dict = to_commit
-    if not mo_dict:
-        print("No Mo to be Committed")
-        return None
+    def add_mo(self, mo, modify_present=False):
+        import ucsmsdk.ucsgenutils as ucsgenutils
 
-    config_map = ConfigMap()
-    for mo_dn in mo_dict:
-        mo = mo_dict[mo_dn]
-        child_list = mo.child
-        while len(child_list) > 0:
-            current_child_list = child_list
-            child_list = []
-            for child_mo in current_child_list:
-                if child_mo.is_dirty():
-                    refresh_dict[child_mo.dn] = child_mo
-                child_list.extend(child_mo.child)
+        if modify_present in ucsgenutils.AFFIRMATIVE_LIST:
+            mo.status = "created,modified"
+        else:
+            mo.status = "created"
 
-        pair = Pair()
-        pair.key = mo_dn
-        pair.child_add(mo_dict[mo_dn])
-        config_map.child_add(pair)
+        self.to_commit[mo.dn] = mo
 
-    xml_element = mf.config_conf_mos("cookie", config_map, False)
-    xml_str = xc.to_xml_str(xml_element)
-    to_commit = {}
-    return xml_str
+    def set_mo(self, mo):
+        if mo.is_dirty():
+            mo.status = "modified"
+            self.to_commit[mo.dn] = mo
+        else:
+            print("Nothing Modified")
 
-def add_mo(mo, modify_present=False):
-    import ucsmsdk.ucsgenutils as ucsgenutils
-    global to_commit
+    def test_001_add_sp(self):
+        from ucsmsdk.mometa.ls.LsServer import LsServer
+        sp = LsServer(parent_mo_or_dn="org-root", name="test_sp")
+        self.add_mo(mo=sp)
+        xml_str = self.commit()
+        print(xml_str)
 
-    if modify_present in ucsgenutils.AFFIRMATIVE_LIST:
-        mo.status = "created,modified"
-    else:
-        mo.status = "created"
+        expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer dn="org-root/ls-test_sp" name="test_sp" status="created" /></pair></inConfigs></configConfMos>'''
+        self.assertEqual(xml_str, expected)
 
-    to_commit[mo.dn] = mo
+    def test_002_add_hierarchy(self):
+        from ucsmsdk.mometa.org.OrgOrg import OrgOrg
+        from ucsmsdk.mometa.ls.LsServer import LsServer
 
-def set_mo(mo):
-    global to_commit
+        org = OrgOrg(parent_mo_or_dn="org-root", name="test_org")
+        sp = LsServer(parent_mo_or_dn=org, name="test_sp")
+        self.add_mo(mo=org)
+        xml_str = self.commit()
+        print(xml_str)
 
-    if mo.is_dirty():
-        mo.status = "modified"
-        to_commit[mo.dn] = mo
-    else:
-        print("Nothing Modified")
+        expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/org-test_org"><orgOrg dn="org-root/org-test_org" name="test_org" status="created"><lsServer dn="org-root/org-test_org/ls-test_sp" name="test_sp" /></orgOrg></pair></inConfigs></configConfMos>'''
+        self.assertEqual(xml_str, expected)
 
+    def test_003_get_then_set_sp(self):
+        from ucsmsdk.mometa.ls.LsServer import LsServer
 
-def test_001_add_sp():
-    from ucsmsdk.mometa.ls.LsServer import LsServer
-    sp = LsServer(parent_mo_or_dn="org-root", name="test_sp")
-    add_mo(mo=sp)
-    xml_str = commit()
-    print(xml_str)
+        sp = LsServer(parent_mo_or_dn="org-root", name="test_sp")
+        self.handle.add_mo(sp)
+        self.handle.commit()
 
-    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer dn="org-root/ls-test_sp" name="test_sp" status="created" /></pair></inConfigs></configConfMos>'''
-    assert_equal(xml_str, expected)
+        test_sp = self.handle.query_dn("org-root/ls-test_sp")
+        test_sp.descr = "change"
+        self.set_mo(test_sp)
+        xml_str = self.commit()
+        print(xml_str)
 
-def test_002_add_hierarchy():
-    from ucsmsdk.mometa.org.OrgOrg import OrgOrg
-    from ucsmsdk.mometa.ls.LsServer import LsServer
+        self.handle.remove_mo(sp)
+        self.handle.commit()
 
-    org = OrgOrg(parent_mo_or_dn="org-root", name="test_org")
-    sp = LsServer(parent_mo_or_dn=org, name="test_sp")
-    add_mo(mo=org)
-    xml_str = commit()
-    print(xml_str)
+        expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer descr="change" dn="org-root/ls-test_sp" status="modified" /></pair></inConfigs></configConfMos>'''
+        self.assertEqual(xml_str, expected)
 
-    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/org-test_org"><orgOrg dn="org-root/org-test_org" name="test_org" status="created"><lsServer dn="org-root/org-test_org/ls-test_sp" name="test_sp" /></orgOrg></pair></inConfigs></configConfMos>'''
-    assert_equal(xml_str, expected)
+    def test_004_get_org_and_add_sp_add_mo_sp(self):
+        from ucsmsdk.mometa.ls.LsServer import LsServer
 
-@with_setup(setup, teardown)
-def test_003_get_then_set_sp():
-    from ucsmsdk.mometa.ls.LsServer import LsServer
+        org = self.handle.query_dn("org-root")
+        sp = LsServer(parent_mo_or_dn=org, name="test_sp")
 
-    sp = LsServer(parent_mo_or_dn="org-root", name="test_sp")
-    handle.add_mo(sp)
-    handle.commit()
+        self.add_mo(sp)
+        xml_str = self.commit()
+        print(xml_str)
 
-    test_sp = handle.query_dn("org-root/ls-test_sp")
-    test_sp.descr = "change"
-    set_mo(test_sp)
-    xml_str = commit()
-    print(xml_str)
+        expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer dn="org-root/ls-test_sp" name="test_sp" status="created" /></pair></inConfigs></configConfMos>'''
+        self.assertEqual(xml_str, expected)
 
-    handle.remove_mo(sp)
-    handle.commit()
+    def test_005_get_org_and_add_sp_set_mo_org(self):
+        from ucsmsdk.mometa.ls.LsServer import LsServer
 
-    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer descr="change" dn="org-root/ls-test_sp" status="modified" /></pair></inConfigs></configConfMos>'''
-    assert_equal(xml_str, expected)
+        org = self.handle.query_dn("org-root")
+        sp = LsServer(parent_mo_or_dn=org, name="test_sp")
 
-@with_setup(setup, teardown)
-def test_004_get_org_and_add_sp_add_mo_sp():
-    from ucsmsdk.mometa.ls.LsServer import LsServer
+        self.set_mo(org)
+        xml_str = self.commit()
+        print(xml_str)
 
-    org = handle.query_dn("org-root")
-    sp = LsServer(parent_mo_or_dn=org, name="test_sp")
-
-    add_mo(sp)
-    xml_str = commit()
-    print(xml_str)
-
-    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root/ls-test_sp"><lsServer dn="org-root/ls-test_sp" name="test_sp" status="created" /></pair></inConfigs></configConfMos>'''
-    assert_equal(xml_str, expected)
-
-@with_setup(setup, teardown)
-def test_005_get_org_and_add_sp_set_mo_org():
-    from ucsmsdk.mometa.ls.LsServer import LsServer
-
-    org = handle.query_dn("org-root")
-    sp = LsServer(parent_mo_or_dn=org, name="test_sp")
-
-    set_mo(org)
-    xml_str = commit()
-    print(xml_str)
-
-    expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root"><orgOrg dn="org-root" status="modified"><lsServer dn="org-root/ls-test_sp" name="test_sp" /></orgOrg></pair></inConfigs></configConfMos>'''
-    assert_equal(xml_str, expected)
+        expected = b'''<configConfMos cookie="cookie" inHierarchical="false"><inConfigs><pair key="org-root"><orgOrg dn="org-root" status="modified"><lsServer dn="org-root/ls-test_sp" name="test_sp" /></orgOrg></pair></inConfigs></configConfMos>'''
+        self.assertEqual(xml_str, expected)

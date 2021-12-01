@@ -11,49 +11,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from nose import SkipTest
-from nose.tools import with_setup
-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
-
-handle = None
+from tests.base import BaseTest
 
 
-def setup():
-    global handle
-    handle = custom_setup()
-    if not handle:
-        msg = get_skip_msg()
-        raise SkipTest(msg)
+class TestVLan(BaseTest):
+    def create_vlan_global(self, vlan_id):
+        from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
 
+        mo = FabricVlan(parent_mo_or_dn="fabric/lan", sharing="none",
+                        name=vlan_id, id=vlan_id, mcast_policy_name="",
+                        policy_owner="local", default_net="no",
+                        pub_nw_name="", compression_type="included")
+        self.handle.add_mo(mo)
+        self.handle.commit()
 
-def teardown():
-    custom_teardown(handle)
+    def delete_vlan_global(self, vlan_id):
+        obj = self.handle.query_dn("fabric/lan/net-" + vlan_id)
+        self.handle.remove_mo(obj)
+        self.handle.commit()
 
+    def test_001_create_modify_vlan(self):
+        self.create_vlan_global("100")
 
-def create_vlan_global(vlan_id):
-    from ucsmsdk.mometa.fabric.FabricVlan import FabricVlan
+        obj = self.handle.query_dn("fabric/lan/net-100")
+        obj.id = "101"
+        self.handle.set_mo(obj)
+        self.handle.commit()
 
-    mo = FabricVlan(parent_mo_or_dn="fabric/lan", sharing="none", name=vlan_id,
-                    id=vlan_id, mcast_policy_name="", policy_owner="local",
-                    default_net="no", pub_nw_name="",
-                    compression_type="included")
-    handle.add_mo(mo)
-    handle.commit()
-
-
-def delete_vlan_global(vlan_id):
-    obj = handle.query_dn("fabric/lan/net-" + vlan_id)
-    handle.remove_mo(obj)
-    handle.commit()
-
-
-@with_setup(setup, teardown)
-def test_001_create_modify_vlan():
-    create_vlan_global("100")
-
-    obj = handle.query_dn("fabric/lan/net-100")
-    obj.id = "101"
-    handle.set_mo(obj)
-    handle.commit()
-
-    delete_vlan_global("100")
+        self.delete_vlan_global("100")

@@ -11,41 +11,43 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from nose.tools import assert_equal
+import unittest
+
 from ucsmsdk.ucshandle import UcsHandle
 
 
-def test_001_create_uri():
-    # Create an object of type LsServer with parent dn specified
-    # check if the object has the right values populated
-    handle = UcsHandle("192.168.1.1", "admin", "password")
+class TestSession(unittest.TestCase):
+    def test_001_create_uri(self):
+        # Create an object of type LsServer with parent dn specified
+        # check if the object has the right values populated
+        handle = UcsHandle("192.168.1.1", "admin", "password")
 
-    assert_equal(
-        handle._UcsSession__create_uri(
-            port=None,
-            secure=None),
-        'https://192.168.1.1:443')
+        self.assertEqual(
+            handle._UcsSession__create_uri(
+                port=None,
+                secure=None),
+            'https://192.168.1.1:443')
 
-    assert_equal(
-        handle._UcsSession__create_uri(
-            port=8080,
-            secure=None),
-        'https://192.168.1.1:8080')
+        self.assertEqual(
+            handle._UcsSession__create_uri(
+                port=8080,
+                secure=None),
+            'https://192.168.1.1:8080')
 
-    assert_equal(
-        handle._UcsSession__create_uri(
-            port=None,
-            secure=True),
-        'https://192.168.1.1:443')
+        self.assertEqual(
+            handle._UcsSession__create_uri(
+                port=None,
+                secure=True),
+            'https://192.168.1.1:443')
 
-    assert_equal(
-        handle._UcsSession__create_uri(
-            port=None,
-            secure=False),
-        'http://192.168.1.1:80')
+        self.assertEqual(
+            handle._UcsSession__create_uri(
+                port=None,
+                secure=False),
+            'http://192.168.1.1:80')
 
-    assert_equal(
-        handle._UcsSession__create_uri(
-            port=444,
-            secure=False),
-        'http://192.168.1.1:444')
+        self.assertEqual(
+            handle._UcsSession__create_uri(
+                port=444,
+                secure=False),
+            'http://192.168.1.1:444')

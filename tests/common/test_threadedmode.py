@@ -11,61 +11,44 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from nose import SkipTest
-from nose.tools import with_setup, assert_equal
 import threading
-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
 
-handle = None
-
-
-def setup_module():
-    global handle
-    handle = custom_setup()
-    if not handle:
-        msg = get_skip_msg()
-        raise SkipTest(msg)
+from tests.base import BaseTest
 
 
-def teardown_module():
-    custom_teardown(handle)
+class TestThreading(BaseTest):
+    def t1_func(self):
+        from ucsmsdk.mometa.ls.LsServer import LsServer
+        obj = LsServer("org-root", "temp_sp1")
+        self.handle.add_mo(obj)
 
+    def t2_func(self):
+        from ucsmsdk.mometa.ls.LsServer import LsServer
+        obj1 = LsServer("org-root", "temp_sp2")
+        obj2 = LsServer("org-root", "temp_sp3")
+        self.handle.add_mo(obj1)
+        self.handle.add_mo(obj2)
 
-def t1_func():
-    from ucsmsdk.mometa.ls.LsServer import LsServer
-    obj = LsServer("org-root", "temp_sp1")
-    handle.add_mo(obj)
+    def test_test_threading_mode():
+        self.handle.set_mode_threading()
 
+        t1 = threading.Thread(name="t1", target=self.t1_func)
+        t2 = threading.Thread(name="t2", target=self.t2_func)
 
-def t2_func():
-    from ucsmsdk.mometa.ls.LsServer import LsServer
-    obj1 = LsServer("org-root", "temp_sp2")
-    obj2 = LsServer("org-root", "temp_sp3")
-    handle.add_mo(obj1)
-    handle.add_mo(obj2)
+        t1.start()
+        t2.start()
 
+        t1.join()
+        t2.join()
 
-@with_setup(setup_module, teardown_module)
-def test_test_threading_mode():
-    handle.set_mode_threading()
+        # commit buffers should be in different contexts
+        buf1 = self.handle._get_commit_buf(tag="t1")
+        buf2 = self.handle._get_commit_buf(tag="t2")
 
-    t1 = threading.Thread(name="t1", target=t1_func)
-    t2 = threading.Thread(name="t2", target=t2_func)
+        assert_equal(len(buf1), 1)
+        assert_equal(len(buf2), 2)
 
-    t1.start()
-    t2.start()
+        self.handle.commit_buffer_discard(tag="t1")
+        self.handle.commit_buffer_discard(tag="t2")
 
-    t1.join()
-    t2.join()
-
-    # commit buffers should be in different contexts
-    buf1 = handle._get_commit_buf(tag="t1")
-    buf2 = handle._get_commit_buf(tag="t2")
-
-    assert_equal(len(buf1), 1)
-    assert_equal(len(buf2), 2)
-
-    handle.commit_buffer_discard(tag="t1")
-    handle.commit_buffer_discard(tag="t2")
-
-    handle.unset_mode_threading()
+        self.handle.unset_mode_threading()

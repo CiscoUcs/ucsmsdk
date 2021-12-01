@@ -1,4 +1,4 @@
-# Copyright 2015 Cisco Systems, Inc.
+# Copyright 2021 SUSE LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,12 +13,18 @@
 
 import unittest
 
-from ucsmsdk.ucshandle import UcsHandle
+from tests.connection.info import custom_setup, custom_teardown, get_skip_msg
 
 
-class TestUCSHandle(unittest.TestCase):
-    def test_001_create_handle(self):
-        handle = UcsHandle("192.168.1.1", "admin", "my_extra_secure_password")
-        self.assertEqual(handle.username, "admin")
-        self.assertEqual(handle.ip, "192.168.1.1")
+class BaseTest(unittest.TestCase):
+    def setUp(self):
+        super().setUp()
+        self.handle = custom_setup()
+        if not self.handle:
+            msg = get_skip_msg()
+            raise unittest.SkipTest(msg)
+
+    def tearDown(self):
+        super().tearDown()
+        custom_teardown(handle)
 

@@ -11,11 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from nose.tools import *
+import unittest
+
 import ucsmsdk.ucscoreutils
 
 
-def test_001_rn_pattern():
-    rn_pattern = "compute-ep-ven-[vendor]-mod-[model]-ser-[serial]"
-    rn_str = "compute-ep-ven-Cisco Systems Inc-mod-UCSB-B200-M4-ser-3403"
-    ucsmsdk.ucscoreutils.get_naming_props(rn_str, rn_pattern)
+class TestNamingPattern(unittest.TestCase):
+    def test_001_rn_pattern(self):
+        rn_pattern = "compute-ep-ven-[vendor]-mod-[model]-ser-[serial]"
+        rn_str = "compute-ep-ven-Cisco Systems Inc-mod-UCSB-B200-M4-ser-3403"
+        ucsmsdk.ucscoreutils.get_naming_props(rn_str, rn_pattern)
