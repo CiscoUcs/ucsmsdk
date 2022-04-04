@@ -304,14 +304,14 @@ class UcsSession(object):
 
         from . import ucsxmlcodec as xc
 
-        self._tx_lock_acquire_conditional(elem)
-        if self._is_stale_cookie(elem):
-            elem.attrib['cookie'] = self.cookie
-
-        self.dump_xml_request(elem)
-        xml_str = xc.to_xml_str(elem)
-
         try:
+            self._tx_lock_acquire_conditional(elem)
+            if self._is_stale_cookie(elem):
+                elem.attrib['cookie'] = self.cookie
+
+            self.dump_xml_request(elem)
+            xml_str = xc.to_xml_str(elem)
+            
             response_str = self.post_xml(xml_str, timeout=timeout)
             self.dump_xml_response(response_str)
             if response_str:
