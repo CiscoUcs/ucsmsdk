@@ -122,34 +122,41 @@ class ParseFilter(object):
         method to parse filter string
         """
 
-        prop = pp.WordStart(pp.alphas) + pp.Word(pp.alphanums +
-                                                 "_").setResultsName("prop")
-        value = (pp.QuotedString("'") | pp.QuotedString('"') | pp.Word(
-            pp.printables, excludeChars=",")).setResultsName("value")
+        prop = pp.Word(pp.alphanums + "_", asKeyword=True).setResultsName("prop")
+        value = (pp.QuotedString("'")
+                 | pp.QuotedString('"')
+                 | pp.Word(pp.printables, excludeChars=",")
+                 ).setResultsName("value")
         types_ = pp.oneOf("re eq ne gt ge lt le").setResultsName("types")
-        flags = pp.oneOf("C I").setResultsName("flags")
+        flags = pp.Char("CI").setResultsName("flags")
         comma = pp.Literal(',')
-        quote = (pp.Literal("'") | pp.Literal('"')).setResultsName("quote")
 
-        type_exp = pp.Group(pp.Literal("type") + pp.Literal(
-            "=") + quote + types_ + quote).setResultsName("type_exp")
-        flag_exp = pp.Group(pp.Literal("flag") + pp.Literal(
-            "=") + quote + flags + quote).setResultsName("flag_exp")
+        def in_quotes(exp):
+            # ensure matching opening and closing quotes
+            return ('"' + exp + '"'
+                    | "'" + exp + "'")
 
-        semi_expression = pp.Forward()
-        semi_expression << pp.Group(pp.Literal("(") +
-                                    prop + comma + value +
-                                    pp.Optional(comma + type_exp) +
-                                    pp.Optional(comma + flag_exp) +
-                                    pp.Literal(")")
-                                    ).setParseAction(
-            self.parse_filter_obj).setResultsName("semi_expression")
+        type_exp = pp.Group(pp.Keyword("type")
+                            + pp.Literal("=")
+                            + in_quotes(types_)).setResultsName("type_exp")
+        flag_exp = pp.Group(pp.Keyword("flag")
+                            + pp.Literal("=")
+                            + in_quotes(flags)).setResultsName("flag_exp")
 
-        expr = pp.Forward()
-        expr << pp.operatorPrecedence(semi_expression, [
-            ("not", 1, pp.opAssoc.RIGHT, self.not_operator),
-            ("and", 2, pp.opAssoc.LEFT, self.and_operator),
-            ("or", 2, pp.opAssoc.LEFT, self.or_operator)
+        semi_expression = pp.Group(pp.Literal("(") +
+                                   prop + comma + value +
+                                   pp.Optional(comma + type_exp) +
+                                   pp.Optional(comma + flag_exp) +
+                                   pp.Literal(")")
+                                   ).setParseAction(
+                                        self.parse_filter_obj
+                                   ).setResultsName("semi_expression")
+
+        NOT, AND, OR = map(pp.Keyword, "not and or".split())
+        expr = pp.infixNotation(semi_expression, [
+            (NOT, 1, pp.opAssoc.RIGHT, self.not_operator),
+            (AND, 2, pp.opAssoc.LEFT, self.and_operator),
+            (OR, 2, pp.opAssoc.LEFT, self.or_operator)
         ])
 
         result = expr.parseString(filter_str)
