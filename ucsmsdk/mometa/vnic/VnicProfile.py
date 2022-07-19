@@ -53,6 +53,7 @@ class VnicProfile(ManagedObject):
         "nw_ctrl_policy_name": MoPropertyMeta("nw_ctrl_policy_name", "nwCtrlPolicyName", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "oper_nw_ctrl_policy_name": MoPropertyMeta("oper_nw_ctrl_policy_name", "operNwCtrlPolicyName", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "oper_qos_policy_name": MoPropertyMeta("oper_qos_policy_name", "operQosPolicyName", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
+        "org_dn": MoPropertyMeta("org_dn", "orgDn", "string", None, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "pin_to_group_name": MoPropertyMeta("pin_to_group_name", "pinToGroupName", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["local", "pending-policy", "policy"], []),
@@ -91,6 +92,7 @@ class VnicProfile(ManagedObject):
         "nwCtrlPolicyName": "nw_ctrl_policy_name", 
         "operNwCtrlPolicyName": "oper_nw_ctrl_policy_name", 
         "operQosPolicyName": "oper_qos_policy_name", 
+        "orgDn": "org_dn", 
         "pinToGroupName": "pin_to_group_name", 
         "policyLevel": "policy_level", 
         "policyOwner": "policy_owner", 
@@ -129,6 +131,7 @@ class VnicProfile(ManagedObject):
         self.nw_ctrl_policy_name = None
         self.oper_nw_ctrl_policy_name = None
         self.oper_qos_policy_name = None
+        self.org_dn = None
         self.pin_to_group_name = None
         self.policy_level = None
         self.policy_owner = None

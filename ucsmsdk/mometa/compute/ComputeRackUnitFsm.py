@@ -11,8 +11,10 @@ class ComputeRackUnitFsmConsts:
     CURRENT_FSM_ACTIVATE_BIOS = "ActivateBIOS"
     CURRENT_FSM_ADAPTER_RESET = "AdapterReset"
     CURRENT_FSM_ASSOCIATE = "Associate"
+    CURRENT_FSM_BIOS_PASSWORD_RESET = "BiosPasswordReset"
     CURRENT_FSM_BIOS_RECOVERY = "BiosRecovery"
     CURRENT_FSM_CIMC_SECURITY_CONFIG = "CimcSecurityConfig"
+    CURRENT_FSM_CIMC_SECURITY_UNCONFIG = "CimcSecurityUnconfig"
     CURRENT_FSM_CIMC_SESSION_DELETE = "CimcSessionDelete"
     CURRENT_FSM_CMOS_RESET = "CmosReset"
     CURRENT_FSM_CONFIG_BOARD = "ConfigBoard"
@@ -207,7 +209,7 @@ class ComputeRackUnitFsm(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "completion_time": MoPropertyMeta("completion_time", "completionTime", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []),
-        "current_fsm": MoPropertyMeta("current_fsm", "currentFsm", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ActivateAdaptor", "ActivateBIOS", "AdapterReset", "Associate", "BiosRecovery", "CimcSecurityConfig", "CimcSessionDelete", "CmosReset", "ConfigBoard", "ConfigSoL", "ConfigureServerPersonality", "CreateDhcpEntry", "Decommission", "Diag", "DiagnosticInterrupt", "Disassociate", "Discover", "DiskZoningInventory", "EnableCimcSecureBoot", "ExecuteActions", "FlashController", "FwUpgrade", "HardShutdown", "Hardreset", "NvmeSwitchRecovery", "Offline", "OobStorageAdminConfig", "PowerCap", "Powercycle", "ReinitializeVirtualDrive", "ResetBmc", "ResetIpmi", "ResetKvm", "ResetMemoryErrors", "ServiceInfraDeploy", "ServiceInfraWithdraw", "SoftShutdown", "Softreset", "SwConnUpd", "Turnup", "UnconfigSoL", "UpdateAdaptor", "UpdateBIOS", "UpdateBoardController", "clearTPM", "nop", "updateExtUsers"], []),
+        "current_fsm": MoPropertyMeta("current_fsm", "currentFsm", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ActivateAdaptor", "ActivateBIOS", "AdapterReset", "Associate", "BiosPasswordReset", "BiosRecovery", "CimcSecurityConfig", "CimcSecurityUnconfig", "CimcSessionDelete", "CmosReset", "ConfigBoard", "ConfigSoL", "ConfigureServerPersonality", "CreateDhcpEntry", "Decommission", "Diag", "DiagnosticInterrupt", "Disassociate", "Discover", "DiskZoningInventory", "EnableCimcSecureBoot", "ExecuteActions", "FlashController", "FwUpgrade", "HardShutdown", "Hardreset", "NvmeSwitchRecovery", "Offline", "OobStorageAdminConfig", "PowerCap", "Powercycle", "ReinitializeVirtualDrive", "ResetBmc", "ResetIpmi", "ResetKvm", "ResetMemoryErrors", "ServiceInfraDeploy", "ServiceInfraWithdraw", "SoftShutdown", "Softreset", "SwConnUpd", "Turnup", "UnconfigSoL", "UpdateAdaptor", "UpdateBIOS", "UpdateBoardController", "clearTPM", "nop", "updateExtUsers"], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []),
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["fail", "inProgress", "nop", "pending", "skip", "success", "throttled"], []),

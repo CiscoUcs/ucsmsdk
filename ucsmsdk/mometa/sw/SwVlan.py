@@ -67,6 +67,10 @@ class SwVlanConsts:
     SNOOPING_ENABLED_NO = "no"
     SNOOPING_ENABLED_TRUE = "true"
     SNOOPING_ENABLED_YES = "yes"
+    SOURCE_IP_PROXY_ENABLED_FALSE = "false"
+    SOURCE_IP_PROXY_ENABLED_NO = "no"
+    SOURCE_IP_PROXY_ENABLED_TRUE = "true"
+    SOURCE_IP_PROXY_ENABLED_YES = "yes"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -113,6 +117,7 @@ class SwVlan(ManagedObject):
         "sec_vlan_per_primary_vlan_count_status": MoPropertyMeta("sec_vlan_per_primary_vlan_count_status", "secVlanPerPrimaryVlanCountStatus", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "within-limit"], []),
         "sharing": MoPropertyMeta("sharing", "sharing", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["community", "isolated", "none", "primary"], []),
         "snooping_enabled": MoPropertyMeta("snooping_enabled", "snoopingEnabled", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "source_ip_proxy_enabled": MoPropertyMeta("source_ip_proxy_enabled", "sourceIpProxyEnabled", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []),
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []),
@@ -149,6 +154,7 @@ class SwVlan(ManagedObject):
         "secVlanPerPrimaryVlanCountStatus": "sec_vlan_per_primary_vlan_count_status", 
         "sharing": "sharing", 
         "snoopingEnabled": "snooping_enabled", 
+        "sourceIpProxyEnabled": "source_ip_proxy_enabled", 
         "status": "status", 
         "switchId": "switch_id", 
         "transport": "transport", 
@@ -184,6 +190,7 @@ class SwVlan(ManagedObject):
         self.sec_vlan_per_primary_vlan_count_status = None
         self.sharing = None
         self.snooping_enabled = None
+        self.source_ip_proxy_enabled = None
         self.status = None
         self.switch_id = None
         self.transport = None

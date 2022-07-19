@@ -43,6 +43,7 @@ class EquipmentPciDefConsts:
     DEVICE_TYPE_NVME_WD_HBA = "NvmeWdHba"
     DEVICE_TYPE_PCI_DUBLIN_QLOGIC_FC_HBA = "PciDublinQlogicFcHba"
     DEVICE_TYPE_PCI_EVEREST_NIC = "PciEverestNic"
+    DEVICE_TYPE_PCI_INTEL_E810_NIC = "PciIntelE810Nic"
     DEVICE_TYPE_PCI_INTEL_X520_NIC = "PciIntelX520Nic"
     DEVICE_TYPE_PCI_INTEL_X550_NIC = "PciIntelX550Nic"
     DEVICE_TYPE_PCI_INTEL_X710_NIC = "PciIntelX710Nic"
@@ -64,6 +65,10 @@ class EquipmentPciDefConsts:
     DEVICE_TYPE_ZUMA_BEACH = "ZumaBeach"
     DEVICE_TYPE_ZUMA_ROCK = "ZumaRock"
     INT_ID_NONE = "none"
+    MODEL_CHECK_FALSE = "false"
+    MODEL_CHECK_NO = "no"
+    MODEL_CHECK_TRUE = "true"
+    MODEL_CHECK_YES = "yes"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
@@ -81,9 +86,10 @@ class EquipmentPciDef(ManagedObject):
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "device": MoPropertyMeta("device", "device", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "device_type": MoPropertyMeta("device_type", "deviceType", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Broadcom57712Nic", "BroadcomNic", "EmulexFC", "EmulexNic", "FusionHba", "GpuAmd", "GpuNvidia", "IntelICH10RHba", "IntelNic", "LSIMegaRaid3008", "LagunaBeach", "LagunaBeachPlus", "LagunaRock", "LagunaRockPlus", "LewisburgPSata", "LewisburgPSataAhci", "LewisburgSSataSwRaid", "LodiHba", "Lsi1064EHba", "Lsi1068EHba", "LsiExternalMegaRaidHba", "LsiMegaRaidHba", "LsiWalnutCreekHba", "M2HwRaidMarvellHba", "MaxCount", "MellanoxNic", "MenloEmulexHba", "MenloQlogicFcHba", "MezzDublinQlogicFcHba", "MezzSchulzQlogicFcHba", "MezzTigerSharkHba", "NvmeHba", "NvmeIntelHba", "NvmeMezz", "NvmeWdHba", "PciDublinQlogicFcHba", "PciEverestNic", "PciIntelX520Nic", "PciIntelX550Nic", "PciIntelX710Nic", "PciMPCiscoNic", "PciNianticNic", "PciPlxSwitch", "PciQlogic8362FcHba", "PciQlogicBigBear", "PciSchulzQlogicFcHba", "PciTigerSharkHba", "PismoBeach", "PismoRock", "QlogicFC", "QlogicNic", "SataHba", "Talladega", "Unknown", "WellsburgHba", "ZumaBeach", "ZumaRock"], []),
+        "device_type": MoPropertyMeta("device_type", "deviceType", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Broadcom57712Nic", "BroadcomNic", "EmulexFC", "EmulexNic", "FusionHba", "GpuAmd", "GpuNvidia", "IntelICH10RHba", "IntelNic", "LSIMegaRaid3008", "LagunaBeach", "LagunaBeachPlus", "LagunaRock", "LagunaRockPlus", "LewisburgPSata", "LewisburgPSataAhci", "LewisburgSSataSwRaid", "LodiHba", "Lsi1064EHba", "Lsi1068EHba", "LsiExternalMegaRaidHba", "LsiMegaRaidHba", "LsiWalnutCreekHba", "M2HwRaidMarvellHba", "MaxCount", "MellanoxNic", "MenloEmulexHba", "MenloQlogicFcHba", "MezzDublinQlogicFcHba", "MezzSchulzQlogicFcHba", "MezzTigerSharkHba", "NvmeHba", "NvmeIntelHba", "NvmeMezz", "NvmeWdHba", "PciDublinQlogicFcHba", "PciEverestNic", "PciIntelE810Nic", "PciIntelX520Nic", "PciIntelX550Nic", "PciIntelX710Nic", "PciMPCiscoNic", "PciNianticNic", "PciPlxSwitch", "PciQlogic8362FcHba", "PciQlogicBigBear", "PciSchulzQlogicFcHba", "PciTigerSharkHba", "PismoBeach", "PismoRock", "QlogicFC", "QlogicNic", "SataHba", "Talladega", "Unknown", "WellsburgHba", "ZumaBeach", "ZumaRock"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
+        "model_check": MoPropertyMeta("model_check", "modelCheck", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x10, 1, 512, None, [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []),
@@ -102,6 +108,7 @@ class EquipmentPciDef(ManagedObject):
         "deviceType": "device_type", 
         "dn": "dn", 
         "intId": "int_id", 
+        "modelCheck": "model_check", 
         "name": "name", 
         "policyLevel": "policy_level", 
         "policyOwner": "policy_owner", 
@@ -121,6 +128,7 @@ class EquipmentPciDef(ManagedObject):
         self.device = None
         self.device_type = None
         self.int_id = None
+        self.model_check = None
         self.policy_level = None
         self.policy_owner = None
         self.sacl = None

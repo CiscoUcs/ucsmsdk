@@ -16,6 +16,7 @@ class LstorageControllerModeConfigConsts:
     RAID_MODE_BEST_EFFORT_STRIPED = "best-effort-striped"
     RAID_MODE_BEST_EFFORT_STRIPED_DUAL_PARITY = "best-effort-striped-dual-parity"
     RAID_MODE_BEST_EFFORT_STRIPED_PARITY = "best-effort-striped-parity"
+    RAID_MODE_DISABLE_LOCAL_STORAGE = "disable-local-storage"
     RAID_MODE_DUAL_DISK = "dual-disk"
     RAID_MODE_NO_LOCAL_STORAGE = "no-local-storage"
     RAID_MODE_NO_RAID = "no-raid"
@@ -41,7 +42,7 @@ class LstorageControllerModeConfig(ManagedObject):
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "protect_config": MoPropertyMeta("protect_config", "protectConfig", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["false", "no", "true", "yes"], []),
-        "raid_mode": MoPropertyMeta("raid_mode", "raidMode", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["any-configuration", "best-effort-mirrored", "best-effort-mirrored-striped", "best-effort-striped", "best-effort-striped-dual-parity", "best-effort-striped-parity", "dual-disk", "no-local-storage", "no-raid", "raid-mirrored", "raid-mirrored-striped", "raid-striped", "raid-striped-dual-parity", "raid-striped-dual-parity-striped", "raid-striped-parity", "raid-striped-parity-striped", "single-disk"], []),
+        "raid_mode": MoPropertyMeta("raid_mode", "raidMode", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["any-configuration", "best-effort-mirrored", "best-effort-mirrored-striped", "best-effort-striped", "best-effort-striped-dual-parity", "best-effort-striped-parity", "disable-local-storage", "dual-disk", "no-local-storage", "no-raid", "raid-mirrored", "raid-mirrored-striped", "raid-striped", "raid-striped-dual-parity", "raid-striped-dual-parity-striped", "raid-striped-parity", "raid-striped-parity-striped", "single-disk"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),

@@ -21,6 +21,7 @@ class EquipmentLocalDiskControllerDefConsts:
     CONTROLLER_DEF_TYPE_NVME = "nvme"
     CONTROLLER_DEF_TYPE_NVME_HHHL = "nvme-hhhl"
     CONTROLLER_DEF_TYPE_NVME_MEZZ = "nvme-mezz"
+    CONTROLLER_DEF_TYPE_PT = "pt"
     CONTROLLER_DEF_TYPE_SLOT_BASED = "slot-based"
     CONTROLLER_SUB_TYPE_NONE = "none"
     CONTROLLER_SUB_TYPE_PSATA = "psata"
@@ -46,6 +47,7 @@ class EquipmentLocalDiskControllerDefConsts:
     ON_BOARD_MEMORY_CHECK_NEEDED_NO = "no"
     ON_BOARD_MEMORY_CHECK_NEEDED_TRUE = "true"
     ON_BOARD_MEMORY_CHECK_NEEDED_YES = "yes"
+    OOB_CONTROLLER_CLASS_IDENTIFIER_AERO_MR = "aero-mr"
     OOB_CONTROLLER_CLASS_IDENTIFIER_AVILA_ROCK = "avila-rock"
     OOB_CONTROLLER_CLASS_IDENTIFIER_NONE = "none"
     OOB_CONTROLLER_CLASS_IDENTIFIER_NVME = "nvme"
@@ -78,7 +80,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         "auto_config_mode_supported": MoPropertyMeta("auto_config_mode_supported", "autoConfigModeSupported", "string", VersionMeta.Version421a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "config_parm_mod_supported": MoPropertyMeta("config_parm_mod_supported", "configParmModSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
-        "controller_def_type": MoPropertyMeta("controller_def_type", "controllerDefType", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["dual", "embedded", "m2", "none", "nvme", "nvme-hhhl", "nvme-mezz", "slot-based"], []),
+        "controller_def_type": MoPropertyMeta("controller_def_type", "controllerDefType", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["dual", "embedded", "m2", "none", "nvme", "nvme-hhhl", "nvme-mezz", "pt", "slot-based"], []),
         "controller_sub_type": MoPropertyMeta("controller_sub_type", "controllerSubType", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["none", "psata", "ssata"], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "disk_sharing_supported": MoPropertyMeta("disk_sharing_supported", "diskSharingSupported", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
@@ -89,7 +91,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         "jbod_sharing_supported": MoPropertyMeta("jbod_sharing_supported", "jbodSharingSupported", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "on_board_memory_check_needed": MoPropertyMeta("on_board_memory_check_needed", "onBoardMemoryCheckNeeded", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
-        "oob_controller_class_identifier": MoPropertyMeta("oob_controller_class_identifier", "oobControllerClassIdentifier", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["avila-rock", "none", "nvme"], []),
+        "oob_controller_class_identifier": MoPropertyMeta("oob_controller_class_identifier", "oobControllerClassIdentifier", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aero-mr", "avila-rock", "none", "nvme"], []),
         "oob_interface_supported": MoPropertyMeta("oob_interface_supported", "oobInterfaceSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []),
