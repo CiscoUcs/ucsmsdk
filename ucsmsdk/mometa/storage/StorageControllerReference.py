@@ -6,6 +6,7 @@ from ...ucsmeta import VersionMeta
 
 
 class StorageControllerReferenceConsts:
+    CONTROLLER_TYPE_FCH = "FCH"
     CONTROLLER_TYPE_FLASH = "FLASH"
     CONTROLLER_TYPE_HBA = "HBA"
     CONTROLLER_TYPE_M2 = "M2"
@@ -30,7 +31,7 @@ class StorageControllerReference(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "controller_id": MoPropertyMeta("controller_id", "controllerId", "ushort", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "controller_type": MoPropertyMeta("controller_type", "controllerType", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FLASH", "HBA", "M2", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []),
+        "controller_type": MoPropertyMeta("controller_type", "controllerType", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FCH", "FLASH", "HBA", "M2", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "referenced_rn": MoPropertyMeta("referenced_rn", "referencedRn", "string", VersionMeta.Version321d, MoPropertyMeta.NAMING, 0x8, 1, 510, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),

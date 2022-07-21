@@ -10,6 +10,7 @@ class AdaptorExtEthIfConsts:
     ADMIN_STATE_RESET_CONNECTIVITY = "reset-connectivity"
     CHASSIS_ID_N_A = "N/A"
     DISCOVERY_ABSENT = "absent"
+    DISCOVERY_INIT = "init"
     DISCOVERY_MIS_CONNECT = "mis-connect"
     DISCOVERY_MISSING = "missing"
     DISCOVERY_NEW = "new"
@@ -231,7 +232,7 @@ class AdaptorExtEthIf(ManagedObject):
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
-        "discovery": MoPropertyMeta("discovery", "discovery", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["absent", "mis-connect", "missing", "new", "present", "un-initialized", "un-supported"], []),
+        "discovery": MoPropertyMeta("discovery", "discovery", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["absent", "init", "mis-connect", "missing", "new", "present", "un-initialized", "un-supported"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),

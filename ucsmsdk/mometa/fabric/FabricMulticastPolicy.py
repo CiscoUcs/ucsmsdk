@@ -14,6 +14,8 @@ class FabricMulticastPolicyConsts:
     QUERIER_STATE_ENABLED = "enabled"
     SNOOPING_STATE_DISABLED = "disabled"
     SNOOPING_STATE_ENABLED = "enabled"
+    SOURCE_IP_PROXY_STATE_DISABLED = "disabled"
+    SOURCE_IP_PROXY_STATE_ENABLED = "enabled"
 
 
 class FabricMulticastPolicy(ManagedObject):
@@ -22,7 +24,7 @@ class FabricMulticastPolicy(ManagedObject):
     consts = FabricMulticastPolicyConsts()
     naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricMulticastPolicy", "fabricMulticastPolicy", "mc-policy-[name]", VersionMeta.Version211a, "InputOutput", 0xfff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['orgOrg'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricMulticastPolicy", "fabricMulticastPolicy", "mc-policy-[name]", VersionMeta.Version211a, "InputOutput", 0x1fff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['orgOrg'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
@@ -39,7 +41,8 @@ class FabricMulticastPolicy(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x200, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "snooping_state": MoPropertyMeta("snooping_state", "snoopingState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["disabled", "enabled"], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "source_ip_proxy_state": MoPropertyMeta("source_ip_proxy_state", "sourceIpProxyState", "string", None, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["disabled", "enabled"], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x1000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 
     prop_map = {
@@ -57,6 +60,7 @@ class FabricMulticastPolicy(ManagedObject):
         "rn": "rn", 
         "sacl": "sacl", 
         "snoopingState": "snooping_state", 
+        "sourceIpProxyState": "source_ip_proxy_state", 
         "status": "status", 
     }
 
@@ -74,6 +78,7 @@ class FabricMulticastPolicy(ManagedObject):
         self.querier_state = None
         self.sacl = None
         self.snooping_state = None
+        self.source_ip_proxy_state = None
         self.status = None
 
         ManagedObject.__init__(self, "FabricMulticastPolicy", parent_mo_or_dn, **kwargs)
