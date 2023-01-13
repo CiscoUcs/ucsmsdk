@@ -116,6 +116,7 @@ class VersionMeta:
     Version413c = UcsVersion("4.1(3c)")
     Version413d = UcsVersion("4.1(3d)")
     Version421a = UcsVersion("4.2(1a)")
+    Version422d = UcsVersion("4.2(2d)")
     Version423b = UcsVersion("4.2(3b)")
 
 MO_CLASS_ID = frozenset([
@@ -2268,7 +2269,7 @@ MO_CLASS_META = {
     "AdaptorMgmtVnicEthConfig": MoMeta("AdaptorMgmtVnicEthConfig", "adaptorMgmtVnicEthConfig", "mgmt-vnic", VersionMeta.Version224b, "InputOutput", 0x1, [], ["read-only"], ['adaptorFruCapProvider'], [], [None]),
     "AdaptorNwMgmtCap": MoMeta("AdaptorNwMgmtCap", "adaptorNwMgmtCap", "nw-mgmt", VersionMeta.Version101e, "InputOutput", 0x1, [], ["read-only"], ['adaptorFruCapProvider'], [], ["Get"]),
     "AdaptorNwStatsMgmtCap": MoMeta("AdaptorNwStatsMgmtCap", "adaptorNwStatsMgmtCap", "nw-stats-mgmt", VersionMeta.Version302c, "InputOutput", 0x1, [], ["read-only"], ['adaptorFruCapProvider'], [], [None]),
-    "AdaptorPTP": MoMeta("AdaptorPTP", "adaptorPTP", "ptp-flag", VersionMeta.Version423b, "InputOutput", 0x1, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], ['adaptorHostEthIf', 'adaptorHostEthIfProfile'], [], [None]),
+    "AdaptorPTP": MoMeta("AdaptorPTP", "adaptorPTP", "ptp-flag", VersionMeta.Version422d, "InputOutput", 0x1, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], ['adaptorHostEthIf', 'adaptorHostEthIfProfile'], [], [None]),
     "AdaptorProtocolProfile": MoMeta("AdaptorProtocolProfile", "adaptorProtocolProfile", "iscsi-prot-profile", VersionMeta.Version201m, "InputOutput", 0x1, [], ["admin", "ls-config-policy", "ls-network", "ls-server-policy"], ['adaptorHostIscsiIf', 'adaptorHostIscsiIfProfile'], [], ["Add", "Get", "Set"]),
     "AdaptorQual": MoMeta("AdaptorQual", "adaptorQual", "adaptor", VersionMeta.Version101e, "InputOutput", 0x1, [], ["admin", "pn-policy"], ['computeQual'], ['adaptorCapQual'], ["Add", "Get", "Remove"]),
     "AdaptorRnicCapSpec": MoMeta("AdaptorRnicCapSpec", "adaptorRnicCapSpec", "cap-[type]", VersionMeta.Version224b, "InputOutput", 0x1, [], ["admin", "pn-policy"], ['adaptorFruCapProvider'], [], ["Get"]),
@@ -2652,7 +2653,7 @@ MO_CLASS_META = {
     "EquipmentBeaconLedFsmTask": MoMeta("EquipmentBeaconLedFsmTask", "equipmentBeaconLedFsmTask", "task-[item]", VersionMeta.Version201m, "OutputOnly", 0x1, [], [""], ['equipmentBeaconLed'], [], [None]),
     "EquipmentBinding": MoMeta("EquipmentBinding", "equipmentBinding", "chassis", VersionMeta.Version312b, "InputOutput", 0x1, [], ["admin", "pn-equipment", "pn-maintenance", "pn-policy", "read-only"], ['equipmentChassisProfile'], [], ["Get", "Set"]),
     "EquipmentBiosDef": MoMeta("EquipmentBiosDef", "equipmentBiosDef", "bios-def", VersionMeta.Version202m, "InputOutput", 0x1, [], [""], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider', 'equipmentServerUnitCapProvider'], [], ["Get"]),
-    "EquipmentBiosPasswordReset": MoMeta("EquipmentBiosPasswordReset", "equipmentBiosPasswordReset", "biospasswordreset", VersionMeta.Version423b, "InputOutput", 0x1, [], ["read-only"], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], [None]),
+    "EquipmentBiosPasswordReset": MoMeta("EquipmentBiosPasswordReset", "equipmentBiosPasswordReset", "biospasswordreset", VersionMeta.Version422d, "InputOutput", 0x1, [], ["read-only"], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], [None]),
     "EquipmentBiosTokenOverride": MoMeta("EquipmentBiosTokenOverride", "equipmentBiosTokenOverride", "bios-token-override-[bios_token_id]", VersionMeta.Version321d, "InputOutput", 0x1, [], ["read-only"], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], ["Get", "Set"]),
     "EquipmentBladeAGLibrary": MoMeta("EquipmentBladeAGLibrary", "equipmentBladeAGLibrary", "library-[name]", VersionMeta.Version141i, "InputOutput", 0x1, [], [""], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider', 'equipmentServerUnitCapProvider'], [], ["Get"]),
     "EquipmentBladeAggregationCapRef": MoMeta("EquipmentBladeAggregationCapRef", "equipmentBladeAggregationCapRef", "blade-aggr", VersionMeta.Version222c, "InputOutput", 0x1, [], [""], ['equipmentBladeCapProvider'], ['equipmentPhysDevicesPerBoard'], ["Get"]),

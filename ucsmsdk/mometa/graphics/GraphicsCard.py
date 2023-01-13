@@ -176,7 +176,7 @@ class GraphicsCard(ManagedObject):
     mo_meta = MoMeta("GraphicsCard", "graphicsCard", "graphics-card-[id]", VersionMeta.Version213a, "InputOutput", 0x3f, [], ["read-only"], ['computeBoard'], ['equipmentInventoryStatus', 'firmwareBootDefinition', 'firmwareRunning', 'graphicsController'], ["Get"])
 
     prop_meta = {
-        "cec_present": MoPropertyMeta("cec_present", "cecPresent", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA", "No", "Yes"], []),
+        "cec_present": MoPropertyMeta("cec_present", "cecPresent", "string", VersionMeta.Version422d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA", "No", "Yes"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version213a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "device_id": MoPropertyMeta("device_id", "deviceId", "uint", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
