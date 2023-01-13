@@ -197,6 +197,15 @@ class AdaptorHostEthIfConsts:
     IF_TYPE_PHYSICAL = "physical"
     IF_TYPE_UNKNOWN = "unknown"
     IF_TYPE_VIRTUAL = "virtual"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     IS_RING_SIZE_CAPPED_FALSE = "false"
     IS_RING_SIZE_CAPPED_NO = "no"
     IS_RING_SIZE_CAPPED_TRUE = "true"
@@ -401,7 +410,8 @@ class AdaptorHostEthIf(ManagedObject):
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []),
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []),
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []),
-        "is_ring_size_capped": MoPropertyMeta("is_ring_size_capped", "isRingSizeCapped", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
+        "is_ring_size_capped": MoPropertyMeta("is_ring_size_capped", "isRingSizeCapped", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []),
         "link_state": MoPropertyMeta("link_state", "linkState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-down", "down", "error", "offline", "unallocated", "unavailable", "unknown", "up"], []),
         "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []),
@@ -468,6 +478,7 @@ class AdaptorHostEthIf(ManagedObject):
         "id": "id", 
         "ifRole": "if_role", 
         "ifType": "if_type", 
+        "inlet2Thermal": "inlet2_thermal", 
         "isRingSizeCapped": "is_ring_size_capped", 
         "lc": "lc", 
         "linkState": "link_state", 
@@ -535,6 +546,7 @@ class AdaptorHostEthIf(ManagedObject):
         self.host_port = None
         self.if_role = None
         self.if_type = None
+        self.inlet2_thermal = None
         self.is_ring_size_capped = None
         self.lc = None
         self.link_state = None

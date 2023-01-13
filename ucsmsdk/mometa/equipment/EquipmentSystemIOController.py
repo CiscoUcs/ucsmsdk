@@ -183,6 +183,15 @@ class EquipmentSystemIOControllerConsts:
     FSM_STATUS_RESET_CMC_FAIL = "ResetCmcFail"
     FSM_STATUS_RESET_CMC_SUCCESS = "ResetCmcSuccess"
     FSM_STATUS_NOP = "nop"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     MANAGING_INSTANCE_A = "A"
     MANAGING_INSTANCE_B = "B"
     MANAGING_INSTANCE_NONE = "NONE"
@@ -363,6 +372,7 @@ class EquipmentSystemIOController(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, None, ["ResetCmcBegin", "ResetCmcExecute", "ResetCmcFail", "ResetCmcSuccess", "nop"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x20, None, None, None, [], ["1-2"]),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "lc_name": MoPropertyMeta("lc_name", "lcName", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "lc_ts": MoPropertyMeta("lc_ts", "lcTs", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
         "managing_instance": MoPropertyMeta("managing_instance", "managingInstance", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []),
@@ -415,6 +425,7 @@ class EquipmentSystemIOController(ManagedObject):
         "fsmStatus": "fsm_status", 
         "fsmTry": "fsm_try", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "lcName": "lc_name", 
         "lcTs": "lc_ts", 
         "managingInstance": "managing_instance", 
@@ -467,6 +478,7 @@ class EquipmentSystemIOController(ManagedObject):
         self.fsm_stamp = None
         self.fsm_status = None
         self.fsm_try = None
+        self.inlet2_thermal = None
         self.lc_name = None
         self.lc_ts = None
         self.managing_instance = None

@@ -251,6 +251,15 @@ class EquipmentIOCardConsts:
     FSM_STATUS_MUX_OFFLINE_FAIL = "muxOfflineFail"
     FSM_STATUS_MUX_OFFLINE_SUCCESS = "muxOfflineSuccess"
     FSM_STATUS_NOP = "nop"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     MFG_TIME_NOT_APPLICABLE = "not-applicable"
     OPER_EVAC_STATE_DRAIN = "drain"
     OPER_EVAC_STATE_FILL = "fill"
@@ -452,11 +461,14 @@ class EquipmentIOCard(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["EvacuateBegin", "EvacuateExecute", "EvacuateFail", "EvacuateSuccess", "FeConnBegin", "FeConnConfigureEndPoint", "FeConnConfigureSwMgmtEndPoint", "FeConnConfigureVifNs", "FeConnDiscoverChassis", "FeConnEnableChassis", "FeConnFail", "FeConnSuccess", "FePresenceBegin", "FePresenceCheckLicense", "FePresenceConfigChassisId", "FePresenceFail", "FePresenceIdentify", "FePresenceSuccess", "ResetCmcBegin", "ResetCmcExecute", "ResetCmcFail", "ResetCmcSuccess", "ResetEvacuateBegin", "ResetEvacuateExecute", "ResetEvacuateFail", "ResetEvacuateSuccess", "ResetIomBegin", "ResetIomExecute", "ResetIomFail", "ResetIomSuccess", "ResetPeerCmcBegin", "ResetPeerCmcExecute", "ResetPeerCmcFail", "ResetPeerCmcSuccess", "muxOfflineBegin", "muxOfflineCleanupEntries", "muxOfflineFail", "muxOfflineSuccess", "nop"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x40, None, None, None, [], ["1-2"]),
+        "inlet1_sensor": MoPropertyMeta("inlet1_sensor", "inlet1Sensor", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "inlet2_sensor": MoPropertyMeta("inlet2_sensor", "inlet2Sensor", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "lc_name": MoPropertyMeta("lc_name", "lcName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "lc_ts": MoPropertyMeta("lc_ts", "lcTs", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
         "mfg_time": MoPropertyMeta("mfg_time", "mfgTime", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["not-applicable"], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
-        "num_of_active_fabric_ports": MoPropertyMeta("num_of_active_fabric_ports", "numOfActiveFabricPorts", "uint", None, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
+        "num_of_active_fabric_ports": MoPropertyMeta("num_of_active_fabric_ports", "numOfActiveFabricPorts", "uint", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
         "oper_evac_state": MoPropertyMeta("oper_evac_state", "operEvacState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["drain", "fill", "unknown"], []),
         "oper_qualifier": MoPropertyMeta("oper_qualifier", "operQualifier", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|not-applicable|thermal|inoperable|voltage|perf|power|removed|fabric-port-problem|post-failure|server-port-problem|fabricpc-link-auto-ack-blocked|backplane-port-problem),){0,12}(defaultValue|not-applicable|thermal|inoperable|voltage|perf|power|removed|fabric-port-problem|post-failure|server-port-problem|fabricpc-link-auto-ack-blocked|backplane-port-problem){0,1}""", [], []),
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
@@ -469,7 +481,7 @@ class EquipmentIOCard(ManagedObject):
         "power": MoPropertyMeta("power", "power", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "error", "failed", "not-supported", "off", "offduty", "offline", "ok", "on", "online", "power-save", "test", "unknown"], []),
         "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []),
         "processor_thermal_state": MoPropertyMeta("processor_thermal_state", "processorThermalState", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
-        "reset_required": MoPropertyMeta("reset_required", "resetRequired", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "reset_required": MoPropertyMeta("reset_required", "resetRequired", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
@@ -513,6 +525,9 @@ class EquipmentIOCard(ManagedObject):
         "fsmStatus": "fsm_status", 
         "fsmTry": "fsm_try", 
         "id": "id", 
+        "inlet1Sensor": "inlet1_sensor", 
+        "inlet2Sensor": "inlet2_sensor", 
+        "inlet2Thermal": "inlet2_thermal", 
         "lcName": "lc_name", 
         "lcTs": "lc_ts", 
         "mfgTime": "mfg_time", 
@@ -574,6 +589,9 @@ class EquipmentIOCard(ManagedObject):
         self.fsm_stamp = None
         self.fsm_status = None
         self.fsm_try = None
+        self.inlet1_sensor = None
+        self.inlet2_sensor = None
+        self.inlet2_thermal = None
         self.lc_name = None
         self.lc_ts = None
         self.mfg_time = None

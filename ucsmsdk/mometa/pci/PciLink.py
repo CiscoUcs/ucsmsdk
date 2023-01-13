@@ -6,6 +6,15 @@ from ...ucsmeta import VersionMeta
 
 
 class PciLinkConsts:
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     LC_ALLOCATED = "allocated"
     LC_AVAILABLE = "available"
     LC_DEALLOCATED = "deallocated"
@@ -160,6 +169,7 @@ class PciLink(ManagedObject):
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version402a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version402a, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], []),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []),
         "link_speed": MoPropertyMeta("link_speed", "linkSpeed", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "link_status": MoPropertyMeta("link_status", "linkStatus", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -190,6 +200,7 @@ class PciLink(ManagedObject):
         "childAction": "child_action", 
         "dn": "dn", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "lc": "lc", 
         "linkSpeed": "link_speed", 
         "linkStatus": "link_status", 
@@ -221,6 +232,7 @@ class PciLink(ManagedObject):
         self.adapter = None
         self.child_action = None
         self.id = None
+        self.inlet2_thermal = None
         self.lc = None
         self.link_speed = None
         self.link_status = None

@@ -46,7 +46,7 @@ class SwFcMonSrcEp(ManagedObject):
     consts = SwFcMonSrcEpConsts()
     naming_props = set(['chassisId', 'slotId', 'portId'])
 
-    mo_meta = MoMeta("SwFcMonSrcEp", "swFcMonSrcEp", "mon-src-[chassis_id]-[slot_id]-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["read-only"], ['swFcMon'], [], ["Get"])
+    mo_meta = MoMeta("SwFcMonSrcEp", "swFcMonSrcEp", "mon-src-[chassis_id]-[slot_id]-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["read-only"], ['swFcMon', 'swSubGroup'], [], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

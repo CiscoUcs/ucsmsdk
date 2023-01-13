@@ -23,7 +23,7 @@ class EquipmentDriveSecCap(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
-        "is_hx_sec_cap": MoPropertyMeta("is_hx_sec_cap", "isHxSecCap", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []),
+        "is_hx_sec_cap": MoPropertyMeta("is_hx_sec_cap", "isHxSecCap", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []),
         "is_supported": MoPropertyMeta("is_supported", "isSupported", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []),
         "min_version": MoPropertyMeta("min_version", "minVersion", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),

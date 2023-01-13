@@ -37,6 +37,10 @@ class FabricEthLanPcConsts:
     IF_TYPE_PHYSICAL = "physical"
     IF_TYPE_UNKNOWN = "unknown"
     IF_TYPE_VIRTUAL = "virtual"
+    IS_UPLINK_PEER_PORT_STP_FALSE = "false"
+    IS_UPLINK_PEER_PORT_STP_NO = "no"
+    IS_UPLINK_PEER_PORT_STP_TRUE = "true"
+    IS_UPLINK_PEER_PORT_STP_YES = "yes"
     OPER_SPEED_100GBPS = "100gbps"
     OPER_SPEED_10GBPS = "10gbps"
     OPER_SPEED_1GBPS = "1gbps"
@@ -86,6 +90,7 @@ class FabricEthLanPc(ManagedObject):
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []),
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []),
+        "is_uplink_peer_port_stp": MoPropertyMeta("is_uplink_peer_port_stp", "isUplinkPeerPortStp", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "lacp_policy_name": MoPropertyMeta("lacp_policy_name", "lacpPolicyName", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
@@ -119,6 +124,7 @@ class FabricEthLanPc(ManagedObject):
         "fltAggr": "flt_aggr", 
         "ifRole": "if_role", 
         "ifType": "if_type", 
+        "isUplinkPeerPortStp": "is_uplink_peer_port_stp", 
         "lacpPolicyName": "lacp_policy_name", 
         "locale": "locale", 
         "name": "name", 
@@ -153,6 +159,7 @@ class FabricEthLanPc(ManagedObject):
         self.flt_aggr = None
         self.if_role = None
         self.if_type = None
+        self.is_uplink_peer_port_stp = None
         self.lacp_policy_name = None
         self.locale = None
         self.name = None

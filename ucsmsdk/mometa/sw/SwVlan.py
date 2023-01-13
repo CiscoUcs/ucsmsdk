@@ -117,7 +117,7 @@ class SwVlan(ManagedObject):
         "sec_vlan_per_primary_vlan_count_status": MoPropertyMeta("sec_vlan_per_primary_vlan_count_status", "secVlanPerPrimaryVlanCountStatus", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "within-limit"], []),
         "sharing": MoPropertyMeta("sharing", "sharing", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["community", "isolated", "none", "primary"], []),
         "snooping_enabled": MoPropertyMeta("snooping_enabled", "snoopingEnabled", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
-        "source_ip_proxy_enabled": MoPropertyMeta("source_ip_proxy_enabled", "sourceIpProxyEnabled", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "source_ip_proxy_enabled": MoPropertyMeta("source_ip_proxy_enabled", "sourceIpProxyEnabled", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []),
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []),

@@ -25,6 +25,7 @@ class EquipmentAdaptorDef(ManagedObject):
     mo_meta = MoMeta("EquipmentAdaptorDef", "equipmentAdaptorDef", "adaptor", VersionMeta.Version101e, "InputOutput", 0xff, [], [""], ['adaptorFruCapProvider'], [], ["Get"])
 
     prop_meta = {
+        "adaptor_port_speed": MoPropertyMeta("adaptor_port_speed", "adaptorPortSpeed", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
@@ -41,6 +42,7 @@ class EquipmentAdaptorDef(ManagedObject):
     }
 
     prop_map = {
+        "adaptorPortSpeed": "adaptor_port_speed", 
         "childAction": "child_action", 
         "descr": "descr", 
         "dn": "dn", 
@@ -58,6 +60,7 @@ class EquipmentAdaptorDef(ManagedObject):
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.adaptor_port_speed = None
         self.child_action = None
         self.descr = None
         self.ethernet_port_speed = None

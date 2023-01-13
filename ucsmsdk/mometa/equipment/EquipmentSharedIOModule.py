@@ -34,6 +34,15 @@ class EquipmentSharedIOModuleConsts:
     DISCOVERY_UNSUPPORTED_CONNECTIVITY = "unsupported-connectivity"
     FE_OFFLINE_TS_NEVER = "never"
     FE_READY_TS_NEVER = "never"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     MANAGING_INSTANCE_A = "A"
     MANAGING_INSTANCE_B = "B"
     MANAGING_INSTANCE_NONE = "NONE"
@@ -197,6 +206,7 @@ class EquipmentSharedIOModule(ManagedObject):
         "fe_ready_ts": MoPropertyMeta("fe_ready_ts", "feReadyTs", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["never"], ["0-18446744073709551615"]),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-2"]),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "lc_name": MoPropertyMeta("lc_name", "lcName", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "lc_ts": MoPropertyMeta("lc_ts", "lcTs", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
         "mac_of_shared_ioma": MoPropertyMeta("mac_of_shared_ioma", "macOfSharedIOMA", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []),
@@ -241,6 +251,7 @@ class EquipmentSharedIOModule(ManagedObject):
         "feReadyTs": "fe_ready_ts", 
         "fltAggr": "flt_aggr", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "lcName": "lc_name", 
         "lcTs": "lc_ts", 
         "macOfSharedIOMA": "mac_of_shared_ioma", 
@@ -285,6 +296,7 @@ class EquipmentSharedIOModule(ManagedObject):
         self.fe_ready_ts = None
         self.flt_aggr = None
         self.id = None
+        self.inlet2_thermal = None
         self.lc_name = None
         self.lc_ts = None
         self.mac_of_shared_ioma = None

@@ -25,7 +25,7 @@ class FabricSubGroup(ManagedObject):
     consts = FabricSubGroupConsts()
     naming_props = set(['slotId', 'aggrPortId'])
 
-    mo_meta = MoMeta("FabricSubGroup", "fabricSubGroup", "slot-[slot_id]-aggr-port-[aggr_port_id]", VersionMeta.Version302c, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy", "ext-san-config", "ext-san-policy", "ls-network", "ls-network-policy"], ['fabricDceSwSrv', 'fabricDceSwSrvPc', 'fabricEthEstc', 'fabricEthEstcPc', 'fabricEthLan', 'fabricEthLanPc', 'fabricEthMon', 'fabricFcEstc', 'fabricFcMon', 'fabricFcSan', 'fabricFcoeSanPc'], ['fabricDceSwSrvEp', 'fabricDceSwSrvPcEp', 'fabricEthEstcEp', 'fabricEthEstcPcEp', 'fabricEthLanEp', 'fabricEthLanPcEp', 'fabricEthMonDestEp', 'fabricFcoeEstcEp', 'fabricFcoeSanEp', 'fabricFcoeSanPcEp'], ["Add", "Get"])
+    mo_meta = MoMeta("FabricSubGroup", "fabricSubGroup", "slot-[slot_id]-aggr-port-[aggr_port_id]", VersionMeta.Version302c, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy", "ext-san-config", "ext-san-policy", "ls-network", "ls-network-policy"], ['fabricDceSwSrv', 'fabricDceSwSrvPc', 'fabricEthEstc', 'fabricEthEstcPc', 'fabricEthLan', 'fabricEthLanPc', 'fabricEthMon', 'fabricFcEstc', 'fabricFcMon', 'fabricFcSan', 'fabricFcSanPc', 'fabricFcoeSanPc'], ['fabricDceSwSrvEp', 'fabricDceSwSrvPcEp', 'fabricEthEstcEp', 'fabricEthEstcPcEp', 'fabricEthLanEp', 'fabricEthLanPcEp', 'fabricEthMonDestEp', 'fabricFcEstcEp', 'fabricFcMonDestEp', 'fabricFcSanEp', 'fabricFcSanPcEp', 'fabricFcoeEstcEp', 'fabricFcoeSanEp', 'fabricFcoeSanPcEp'], ["Add", "Get"])
 
     prop_meta = {
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x2, None, None, None, [], ["1-108"]),

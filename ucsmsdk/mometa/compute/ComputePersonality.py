@@ -21,7 +21,7 @@ class ComputePersonality(ManagedObject):
     prop_meta = {
         "additional_info": MoPropertyMeta("additional_info", "additionalInfo", "string", VersionMeta.Version421a, MoPropertyMeta.READ_WRITE, 0x2, 0, 2000, None, [], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version421a, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
-        "clear_personality": MoPropertyMeta("clear_personality", "clearPersonality", "string", None, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["no", "yes"], []),
+        "clear_personality": MoPropertyMeta("clear_personality", "clearPersonality", "string", VersionMeta.Version423b, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["no", "yes"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version421a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version421a, MoPropertyMeta.NAMING, 0x20, None, None, None, [], ["1-1"]),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version421a, MoPropertyMeta.READ_WRITE, 0x40, 0, 100, None, [], []),

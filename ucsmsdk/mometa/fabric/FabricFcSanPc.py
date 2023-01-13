@@ -61,7 +61,7 @@ class FabricFcSanPc(ManagedObject):
     consts = FabricFcSanPcConsts()
     naming_props = set(['portId'])
 
-    mo_meta = MoMeta("FabricFcSanPc", "fabricFcSanPc", "pc-[port_id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ext-san-config", "ext-san-policy"], ['fabricFcSan'], ['fabricFcMonSrcEp', 'fabricFcSanPcEp', 'fabricVsanEp', 'fabricVsanMembership', 'faultInst', 'fcErrStats', 'fcStats'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricFcSanPc", "fabricFcSanPc", "pc-[port_id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ext-san-config", "ext-san-policy"], ['fabricFcSan'], ['fabricFcMonSrcEp', 'fabricFcSanPcEp', 'fabricSubGroup', 'fabricVsanEp', 'fabricVsanMembership', 'faultInst', 'fcErrStats', 'fcStats'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["16gbps", "1gbps", "2gbps", "32gbps", "4gbps", "8gbps", "auto", "indeterminate"], []),

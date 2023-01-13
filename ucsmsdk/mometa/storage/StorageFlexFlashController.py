@@ -213,6 +213,15 @@ class StorageFlexFlashControllerConsts:
     FSM_STATUS_NOP = "nop"
     HAS_ERROR_ERROR = "error"
     HAS_ERROR_NO_ERROR = "no_error"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     IS_CARD_MISMATCH_MATCH = "MATCH"
     IS_CARD_MISMATCH_MISMATCH = "MISMATCH"
     IS_CARD_MISMATCH_NA = "NA"
@@ -413,6 +422,7 @@ class StorageFlexFlashController(ManagedObject):
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "has_error": MoPropertyMeta("has_error", "hasError", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["error", "no_error"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version221b, MoPropertyMeta.NAMING, 0x10, None, None, None, [], ["1-64"]),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "is_card_mismatch": MoPropertyMeta("is_card_mismatch", "isCardMismatch", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["MATCH", "MISMATCH", "NA"], []),
         "is_format_fsm_running": MoPropertyMeta("is_format_fsm_running", "isFormatFSMRunning", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA", "NO", "YES"], []),
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
@@ -466,6 +476,7 @@ class StorageFlexFlashController(ManagedObject):
         "fsmTry": "fsm_try", 
         "hasError": "has_error", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "isCardMismatch": "is_card_mismatch", 
         "isFormatFSMRunning": "is_format_fsm_running", 
         "locationDn": "location_dn", 
@@ -519,6 +530,7 @@ class StorageFlexFlashController(ManagedObject):
         self.fsm_status = None
         self.fsm_try = None
         self.has_error = None
+        self.inlet2_thermal = None
         self.is_card_mismatch = None
         self.is_format_fsm_running = None
         self.location_dn = None
