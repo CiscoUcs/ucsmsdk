@@ -6,6 +6,18 @@ from ...ucsmeta import VersionMeta
 
 
 class GraphicsCardConsts:
+    CEC_PRESENT_NA = "NA"
+    CEC_PRESENT_NO = "No"
+    CEC_PRESENT_YES = "Yes"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     IS_SUPPORTED_FALSE = "false"
     IS_SUPPORTED_NO = "no"
     IS_SUPPORTED_TRUE = "true"
@@ -164,12 +176,14 @@ class GraphicsCard(ManagedObject):
     mo_meta = MoMeta("GraphicsCard", "graphicsCard", "graphics-card-[id]", VersionMeta.Version213a, "InputOutput", 0x3f, [], ["read-only"], ['computeBoard'], ['equipmentInventoryStatus', 'firmwareBootDefinition', 'firmwareRunning', 'graphicsController'], ["Get"])
 
     prop_meta = {
+        "cec_present": MoPropertyMeta("cec_present", "cecPresent", "string", VersionMeta.Version422d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA", "No", "Yes"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version213a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "device_id": MoPropertyMeta("device_id", "deviceId", "uint", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "expander_slot": MoPropertyMeta("expander_slot", "expanderSlot", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "firmware_version": MoPropertyMeta("firmware_version", "firmwareVersion", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version213a, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "is_supported": MoPropertyMeta("is_supported", "isSupported", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []),
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
@@ -202,12 +216,14 @@ class GraphicsCard(ManagedObject):
     }
 
     prop_map = {
+        "cecPresent": "cec_present", 
         "childAction": "child_action", 
         "deviceId": "device_id", 
         "dn": "dn", 
         "expanderSlot": "expander_slot", 
         "firmwareVersion": "firmware_version", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "isSupported": "is_supported", 
         "lc": "lc", 
         "locationDn": "location_dn", 
@@ -242,10 +258,12 @@ class GraphicsCard(ManagedObject):
     def __init__(self, parent_mo_or_dn, id, **kwargs):
         self._dirty_mask = 0
         self.id = id
+        self.cec_present = None
         self.child_action = None
         self.device_id = None
         self.expander_slot = None
         self.firmware_version = None
+        self.inlet2_thermal = None
         self.is_supported = None
         self.lc = None
         self.location_dn = None

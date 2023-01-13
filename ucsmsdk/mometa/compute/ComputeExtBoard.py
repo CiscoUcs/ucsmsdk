@@ -19,6 +19,15 @@ class ComputeExtBoardConsts:
     CMOS_VOLTAGE_UPPER_CRITICAL = "upper-critical"
     CMOS_VOLTAGE_UPPER_NON_CRITICAL = "upper-non-critical"
     CMOS_VOLTAGE_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     MANAGING_INST_A = "A"
     MANAGING_INST_B = "B"
     MANAGING_INST_NONE = "NONE"
@@ -200,6 +209,7 @@ class ComputeExtBoard(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "fault_qualifier": MoPropertyMeta("fault_qualifier", "faultQualifier", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version222c, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "managing_inst": MoPropertyMeta("managing_inst", "managingInst", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -233,6 +243,7 @@ class ComputeExtBoard(ManagedObject):
         "dn": "dn", 
         "faultQualifier": "fault_qualifier", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "locationDn": "location_dn", 
         "managingInst": "managing_inst", 
         "model": "model", 
@@ -266,6 +277,7 @@ class ComputeExtBoard(ManagedObject):
         self.conn_status = None
         self.discovery_status = None
         self.fault_qualifier = None
+        self.inlet2_thermal = None
         self.location_dn = None
         self.managing_inst = None
         self.model = None

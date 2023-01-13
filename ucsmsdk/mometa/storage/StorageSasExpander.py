@@ -19,6 +19,15 @@ class StorageSasExpanderConsts:
     EXPANDER_STATE_RESOURCE_UNAVAILABLE = "resource-unavailable"
     EXPANDER_STATE_UNKNOWN = "unknown"
     EXPANDER_STATE_UNREACHABLE = "unreachable"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     LC_ALLOCATED = "allocated"
     LC_AVAILABLE = "available"
     LC_DEALLOCATED = "deallocated"
@@ -185,6 +194,7 @@ class StorageSasExpander(ManagedObject):
         "fw_region_two": MoPropertyMeta("fw_region_two", "fwRegionTwo", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "fw_running_region": MoPropertyMeta("fw_running_region", "fwRunningRegion", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version226c, MoPropertyMeta.NAMING, 0x8, None, None, None, [], ["0-4294967295"]),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []),
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "mfg_major_rev": MoPropertyMeta("mfg_major_rev", "mfgMajorRev", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -226,6 +236,7 @@ class StorageSasExpander(ManagedObject):
         "fwRegionTwo": "fw_region_two", 
         "fwRunningRegion": "fw_running_region", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "lc": "lc", 
         "locationDn": "location_dn", 
         "mfgMajorRev": "mfg_major_rev", 
@@ -267,6 +278,7 @@ class StorageSasExpander(ManagedObject):
         self.fw_region_one = None
         self.fw_region_two = None
         self.fw_running_region = None
+        self.inlet2_thermal = None
         self.lc = None
         self.location_dn = None
         self.mfg_major_rev = None

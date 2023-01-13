@@ -9,6 +9,15 @@ class AdaptorUnitConsts:
     ADMIN_POWER_STATE_NONE = "none"
     ADMIN_POWER_STATE_RESET_POWER = "reset-power"
     CHASSIS_ID_N_A = "N/A"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     INTEGRATED_FALSE = "false"
     INTEGRATED_NO = "no"
     INTEGRATED_TRUE = "true"
@@ -178,6 +187,7 @@ class AdaptorUnit(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, None, None, None, [], ["1-5000"]),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "integrated": MoPropertyMeta("integrated", "integrated", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "managing_inst": MoPropertyMeta("managing_inst", "managingInst", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []),
@@ -220,6 +230,7 @@ class AdaptorUnit(ManagedObject):
         "dn": "dn", 
         "fltAggr": "flt_aggr", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "integrated": "integrated", 
         "locationDn": "location_dn", 
         "managingInst": "managing_inst", 
@@ -262,6 +273,7 @@ class AdaptorUnit(ManagedObject):
         self.conn_status = None
         self.discovery_status = None
         self.flt_aggr = None
+        self.inlet2_thermal = None
         self.integrated = None
         self.location_dn = None
         self.managing_inst = None

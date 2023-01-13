@@ -219,6 +219,15 @@ class EquipmentSwitchIOCardConsts:
     FSM_STATUS_RESET_EVACUATE_FAIL = "ResetEvacuateFail"
     FSM_STATUS_RESET_EVACUATE_SUCCESS = "ResetEvacuateSuccess"
     FSM_STATUS_NOP = "nop"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     MFG_TIME_NOT_APPLICABLE = "not-applicable"
     OPER_EVAC_STATE_DRAIN = "drain"
     OPER_EVAC_STATE_FILL = "fill"
@@ -411,6 +420,9 @@ class EquipmentSwitchIOCard(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, None, None, None, None, ["EvacuateBegin", "EvacuateExecute", "EvacuateFail", "EvacuateSuccess", "FeConnBegin", "FeConnConfigureEndPoint", "FeConnConfigureSwMgmtEndPoint", "FeConnConfigureVifNs", "FeConnDiscoverChassis", "FeConnEnableChassis", "FeConnFail", "FeConnSuccess", "FePresenceBegin", "FePresenceCheckLicense", "FePresenceConfigChassisId", "FePresenceFail", "FePresenceIdentify", "FePresenceSuccess", "ResetEvacuateBegin", "ResetEvacuateExecute", "ResetEvacuateFail", "ResetEvacuateSuccess", "nop"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version302c, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x40, None, None, None, [], ["1-2"]),
+        "inlet1_sensor": MoPropertyMeta("inlet1_sensor", "inlet1Sensor", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "inlet2_sensor": MoPropertyMeta("inlet2_sensor", "inlet2Sensor", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "lc_name": MoPropertyMeta("lc_name", "lcName", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "lc_ts": MoPropertyMeta("lc_ts", "lcTs", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
         "mfg_time": MoPropertyMeta("mfg_time", "mfgTime", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["not-applicable"], []),
@@ -468,6 +480,9 @@ class EquipmentSwitchIOCard(ManagedObject):
         "fsmStatus": "fsm_status", 
         "fsmTry": "fsm_try", 
         "id": "id", 
+        "inlet1Sensor": "inlet1_sensor", 
+        "inlet2Sensor": "inlet2_sensor", 
+        "inlet2Thermal": "inlet2_thermal", 
         "lcName": "lc_name", 
         "lcTs": "lc_ts", 
         "mfgTime": "mfg_time", 
@@ -525,6 +540,9 @@ class EquipmentSwitchIOCard(ManagedObject):
         self.fsm_stamp = None
         self.fsm_status = None
         self.fsm_try = None
+        self.inlet1_sensor = None
+        self.inlet2_sensor = None
+        self.inlet2_thermal = None
         self.lc_name = None
         self.lc_ts = None
         self.mfg_time = None

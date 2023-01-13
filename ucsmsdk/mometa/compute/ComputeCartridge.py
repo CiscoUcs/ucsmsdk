@@ -27,6 +27,15 @@ class ComputeCartridgeConsts:
     DISCOVERY_USER_ACKNOWLEDGED = "user-acknowledged"
     DISCOVERY_WAITING_FOR_MGMT_ACK = "waiting-for-mgmt-ack"
     DISCOVERY_WAITING_FOR_USER_ACK = "waiting-for-user-ack"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     LC_DECOMMISSION = "decommission"
     LC_DISCOVERED = "discovered"
     LC_MIGRATE = "migrate"
@@ -187,6 +196,7 @@ class ComputeCartridge(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], []),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["decommission", "discovered", "migrate", "rediscover", "remove", "resetToFactory", "undiscovered", "upgrade-firmware"], []),
         "lc_ts": MoPropertyMeta("lc_ts", "lcTs", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -214,6 +224,7 @@ class ComputeCartridge(ManagedObject):
         "dn": "dn", 
         "fltAggr": "flt_aggr", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "lc": "lc", 
         "lcTs": "lc_ts", 
         "model": "model", 
@@ -242,6 +253,7 @@ class ComputeCartridge(ManagedObject):
         self.discovery = None
         self.flt_aggr = None
         self.id = None
+        self.inlet2_thermal = None
         self.lc = None
         self.lc_ts = None
         self.model = None

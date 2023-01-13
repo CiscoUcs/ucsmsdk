@@ -13,6 +13,15 @@ class StorageNvmeSwitchConsts:
     DISASTER_RECOVERY_READY = "ready"
     DISASTER_RECOVERY_TRIGGERED = "triggered"
     DISASTER_RECOVERY_UNKNOWN = "unknown"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     LINK_STATUS_DEGRADED = "degraded"
     LINK_STATUS_DELETED = "deleted"
     LINK_STATUS_FAILED = "failed"
@@ -198,6 +207,7 @@ class StorageNvmeSwitch(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "drive_count": MoPropertyMeta("drive_count", "driveCount", "uint", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version323a, MoPropertyMeta.NAMING, 0x10, None, None, None, [], ["0-4294967295"]),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "link_status": MoPropertyMeta("link_status", "linkStatus", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "flash-failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive"], []),
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "m_status": MoPropertyMeta("m_status", "mStatus", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "flash-failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive"], []),
@@ -232,6 +242,7 @@ class StorageNvmeSwitch(ManagedObject):
         "dn": "dn", 
         "driveCount": "drive_count", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "linkStatus": "link_status", 
         "locationDn": "location_dn", 
         "mStatus": "m_status", 
@@ -266,6 +277,7 @@ class StorageNvmeSwitch(ManagedObject):
         self.component_id = None
         self.disaster_recovery = None
         self.drive_count = None
+        self.inlet2_thermal = None
         self.link_status = None
         self.location_dn = None
         self.m_status = None

@@ -160,6 +160,15 @@ class StorageEnclosureConsts:
     FSM_STATUS_REMOVE_ENCLOSURE_UPDATE_STORAGE_INV_CMC = "RemoveEnclosureUpdateStorageInvCMC"
     FSM_STATUS_REMOVE_ENCLOSURE_VALIDATE_REMOVAL = "RemoveEnclosureValidateRemoval"
     FSM_STATUS_NOP = "nop"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     LC_ALLOCATED = "allocated"
     LC_AVAILABLE = "available"
     LC_DEALLOCATED = "deallocated"
@@ -338,6 +347,7 @@ class StorageEnclosure(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, None, ["RemoveEnclosureBegin", "RemoveEnclosureFail", "RemoveEnclosurePollUpdateStorageInvCIMC", "RemoveEnclosureSuccess", "RemoveEnclosureUpdateStorageInvCIMC", "RemoveEnclosureUpdateStorageInvCMC", "RemoveEnclosureValidateRemoval", "nop"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "num_slots": MoPropertyMeta("num_slots", "numSlots", "ushort", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
@@ -376,6 +386,7 @@ class StorageEnclosure(ManagedObject):
         "fsmStatus": "fsm_status", 
         "fsmTry": "fsm_try", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "lc": "lc", 
         "model": "model", 
         "numSlots": "num_slots", 
@@ -414,6 +425,7 @@ class StorageEnclosure(ManagedObject):
         self.fsm_stamp = None
         self.fsm_status = None
         self.fsm_try = None
+        self.inlet2_thermal = None
         self.lc = None
         self.model = None
         self.num_slots = None

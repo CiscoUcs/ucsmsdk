@@ -28,6 +28,15 @@ class EquipmentFanConsts:
     FAN_SPEED_POLICY_OPER_STATE_NO_UPDATE = "no-update"
     FAN_SPEED_POLICY_OPER_STATE_NOT_SUPPORTED = "not-supported"
     FAN_SPEED_POLICY_OPER_STATE_PERFORMANCE = "performance"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     INT_TYPE_CHASSIS = "chassis"
     INT_TYPE_FEX = "fex"
     INT_TYPE_SWITCH = "switch"
@@ -183,6 +192,7 @@ class EquipmentFan(ManagedObject):
         "fan_speed_policy_oper_state": MoPropertyMeta("fan_speed_policy_oper_state", "fanSpeedPolicyOperState", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["acoustic", "any", "balanced", "err", "high-power", "low-power", "max-power", "na", "no-update", "not-supported", "performance"], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, None, None, None, [], ["1-8"]),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "int_type": MoPropertyMeta("int_type", "intType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["chassis", "fex", "switch"], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "module": MoPropertyMeta("module", "module", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-8"]),
@@ -210,6 +220,7 @@ class EquipmentFan(ManagedObject):
         "fanSpeedPolicyOperState": "fan_speed_policy_oper_state", 
         "fltAggr": "flt_aggr", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "intType": "int_type", 
         "model": "model", 
         "module": "module", 
@@ -237,6 +248,7 @@ class EquipmentFan(ManagedObject):
         self.fan_speed_policy_admin_state = None
         self.fan_speed_policy_oper_state = None
         self.flt_aggr = None
+        self.inlet2_thermal = None
         self.int_type = None
         self.model = None
         self.module = None

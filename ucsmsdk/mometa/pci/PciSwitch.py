@@ -6,6 +6,15 @@ from ...ucsmeta import VersionMeta
 
 
 class PciSwitchConsts:
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     LC_ALLOCATED = "allocated"
     LC_AVAILABLE = "available"
     LC_DEALLOCATED = "deallocated"
@@ -162,6 +171,7 @@ class PciSwitch(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "health": MoPropertyMeta("health", "health", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version402a, MoPropertyMeta.NAMING, 0x8, None, None, None, [], ["0-4294967295"]),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []),
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -197,6 +207,7 @@ class PciSwitch(ManagedObject):
         "dn": "dn", 
         "health": "health", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "lc": "lc", 
         "locationDn": "location_dn", 
         "model": "model", 
@@ -232,6 +243,7 @@ class PciSwitch(ManagedObject):
         self.child_action = None
         self.device_id = None
         self.health = None
+        self.inlet2_thermal = None
         self.lc = None
         self.location_dn = None
         self.model = None

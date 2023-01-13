@@ -62,6 +62,15 @@ class StorageControllerConsts:
     FAULT_MONITORING_SUPPORTED = "supported"
     ID_COUNT_MIN = "min"
     ID_COUNT_UNKNOWN = "unknown"
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     JBOD_MODE_DISABLED = "disabled"
     JBOD_MODE_ENABLED = "enabled"
     JBOD_MODE_UNKNOWN = "unknown"
@@ -213,10 +222,6 @@ class StorageControllerConsts:
     PRESENCE_UNKNOWN = "unknown"
     REBUILD_RATE_NOT_APPLICABLE = "not-applicable"
     REBUILD_RATE_UNKNOWN = "unknown"
-    SEND_ADMIN_ACTION_TO_CIMC_FALSE = "false"
-    SEND_ADMIN_ACTION_TO_CIMC_NO = "no"
-    SEND_ADMIN_ACTION_TO_CIMC_TRUE = "true"
-    SEND_ADMIN_ACTION_TO_CIMC_YES = "yes"
     SPDM_FAULT_FALSE = "false"
     SPDM_FAULT_NO = "no"
     SPDM_FAULT_TRUE = "true"
@@ -283,13 +288,14 @@ class StorageController(ManagedObject):
         "default_strip_size": MoPropertyMeta("default_strip_size", "defaultStripSize", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|not-applicable|8KB|16KB|32KB|64KB|128KB|256KB|512KB|1MB|2MB|4MB|8MB|16MB|32MB|64MB|128MB|256MB|512MB),){0,19}(defaultValue|unknown|not-applicable|8KB|16KB|32KB|64KB|128KB|256KB|512KB|1MB|2MB|4MB|8MB|16MB|32MB|64MB|128MB|256MB|512MB){0,1}""", [], []),
         "device_raid_support": MoPropertyMeta("device_raid_support", "deviceRaidSupport", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "disk_ops": MoPropertyMeta("disk_ops", "diskOps", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|clear-secure-foreign-config-drive|set-rebuild-status|clear-foreign-configuration|cancel-rebuild|make-offline|make-ghsp|no-ops-supported|get-phy-errors|set-copyback-status|set-state|get-pd-progress|prepare-to-remove|make-dhsp|remove|smart-ssd-support|enable-security-on-jbod|set-boot-drive|get-foreign-configuration|undo-prepare-to-remove|remove-hsp|locate-start|clear-secure-drive|update-lrop-status|import-foreign-configuration|start-rebuild|make-online|locate-stop),){0,28}(defaultValue|unknown|clear-secure-foreign-config-drive|set-rebuild-status|clear-foreign-configuration|cancel-rebuild|make-offline|make-ghsp|no-ops-supported|get-phy-errors|set-copyback-status|set-state|get-pd-progress|prepare-to-remove|make-dhsp|remove|smart-ssd-support|enable-security-on-jbod|set-boot-drive|get-foreign-configuration|undo-prepare-to-remove|remove-hsp|locate-start|clear-secure-drive|update-lrop-status|import-foreign-configuration|start-rebuild|make-online|locate-stop){0,1}""", [], []),
-        "display_type": MoPropertyMeta("display_type", "displayType", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FCH", "FLASH", "HBA", "M2", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []),
+        "display_type": MoPropertyMeta("display_type", "displayType", "string", VersionMeta.Version422d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FCH", "FLASH", "HBA", "M2", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
         "err_description": MoPropertyMeta("err_description", "errDescription", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 64, None, [], []),
         "fault_monitoring": MoPropertyMeta("fault_monitoring", "faultMonitoring", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["notSupported", "supported"], []),
         "hw_revision": MoPropertyMeta("hw_revision", "hwRevision", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80, None, None, None, [], ["1-64"]),
         "id_count": MoPropertyMeta("id_count", "idCount", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["min", "unknown"], ["0-4294967295"]),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "jbod_mode": MoPropertyMeta("jbod_mode", "jbodMode", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled", "unknown"], []),
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []),
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
@@ -318,7 +324,6 @@ class StorageController(ManagedObject):
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "send_admin_action_to_cimc": MoPropertyMeta("send_admin_action_to_cimc", "sendAdminActionToCimc", "string", None, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "server_id": MoPropertyMeta("server_id", "serverId", "uint", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "sioc_id": MoPropertyMeta("sioc_id", "siocId", "uint", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
@@ -359,6 +364,7 @@ class StorageController(ManagedObject):
         "hwRevision": "hw_revision", 
         "id": "id", 
         "idCount": "id_count", 
+        "inlet2Thermal": "inlet2_thermal", 
         "jbodMode": "jbod_mode", 
         "lc": "lc", 
         "locationDn": "location_dn", 
@@ -387,7 +393,6 @@ class StorageController(ManagedObject):
         "revision": "revision", 
         "rn": "rn", 
         "sacl": "sacl", 
-        "sendAdminActionToCimc": "send_admin_action_to_cimc", 
         "serial": "serial", 
         "serverId": "server_id", 
         "siocId": "sioc_id", 
@@ -429,6 +434,7 @@ class StorageController(ManagedObject):
         self.fault_monitoring = None
         self.hw_revision = None
         self.id_count = None
+        self.inlet2_thermal = None
         self.jbod_mode = None
         self.lc = None
         self.location_dn = None
@@ -456,7 +462,6 @@ class StorageController(ManagedObject):
         self.rebuild_rate = None
         self.revision = None
         self.sacl = None
-        self.send_admin_action_to_cimc = None
         self.serial = None
         self.server_id = None
         self.sioc_id = None

@@ -6,6 +6,8 @@ from ...ucsmeta import VersionMeta
 
 
 class FabricLanCloudConsts:
+    QIN_QFORWARDING_DISABLED = "disabled"
+    QIN_QFORWARDING_ENABLED = "enabled"
     FABRIC_PC_VHBA_RESET_DISABLED = "disabled"
     FABRIC_PC_VHBA_RESET_ENABLED = "enabled"
     FSM_PREV_SWITCH_MODE_BEGIN = "SwitchModeBegin"
@@ -172,12 +174,13 @@ class FabricLanCloud(ManagedObject):
     consts = FabricLanCloudConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FabricLanCloud", "fabricLanCloud", "lan", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEp'], ['eventInst', 'extvmmNetworkSets', 'extvmmVMNetworkSets', 'fabricEthLan', 'fabricEthLinkProfile', 'fabricLanCloudFsm', 'fabricLanCloudFsmTask', 'fabricLanPinGroup', 'fabricNetGroup', 'fabricReservedVlan', 'fabricUdldLinkPolicy', 'fabricVlan', 'faultInst', 'firmwareAck', 'flowctrlDefinition', 'mgmtInbandProfile', 'mgmtLeaderEntity', 'pfcWatchDog', 'qosclassDefinition', 'statsThresholdPolicy', 'vnicProfileSet'], ["Get", "Set"])
+    mo_meta = MoMeta("FabricLanCloud", "fabricLanCloud", "lan", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEp'], ['eventInst', 'extvmmNetworkSets', 'extvmmVMNetworkSets', 'fabricEthLan', 'fabricEthLinkProfile', 'fabricLanCloudFsm', 'fabricLanCloudFsmTask', 'fabricLanPinGroup', 'fabricNetGroup', 'fabricReservedVlan', 'fabricUdldLinkPolicy', 'fabricVlan', 'faultInst', 'firmwareAck', 'flowctrlDefinition', 'mgmtInbandProfile', 'mgmtLeaderEntity', 'pfcWatchDog', 'qosclassDefinition', 'statsThresholdPolicy', 'vnicProfileSet'], ["Get", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
-        "fabric_pc_vhba_reset": MoPropertyMeta("fabric_pc_vhba_reset", "fabricPcVhbaReset", "string", None, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["disabled", "enabled"], []),
+        "qin_q_forwarding": MoPropertyMeta("qin_q_forwarding", "QinQForwarding", "string", VersionMeta.Version423b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "fabric_pc_vhba_reset": MoPropertyMeta("fabric_pc_vhba_reset", "fabricPcVhbaReset", "string", VersionMeta.Version422d, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["disabled", "enabled"], []),
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["SwitchModeBegin", "SwitchModeFail", "SwitchModeSuccess", "SwitchModeSwConfigLocal", "SwitchModeSwConfigPeer", "SwitchModeWaitForUserAck", "nop"], []),
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]),
@@ -188,16 +191,17 @@ class FabricLanCloud(ManagedObject):
         "fsm_stamp": MoPropertyMeta("fsm_stamp", "fsmStamp", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []),
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["SwitchModeBegin", "SwitchModeFail", "SwitchModeSuccess", "SwitchModeSwConfigLocal", "SwitchModeSwConfigPeer", "SwitchModeWaitForUserAck", "nop"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
-        "mac_aging": MoPropertyMeta("mac_aging", "macAging", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[0-9]{1,7}|(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["mode-default", "never"], ["0-4294967295"]),
-        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["end-host", "switch"], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
+        "mac_aging": MoPropertyMeta("mac_aging", "macAging", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[0-9]{1,7}|(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["mode-default", "never"], ["0-4294967295"]),
+        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["end-host", "switch"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "service_unsupported_transceiver": MoPropertyMeta("service_unsupported_transceiver", "serviceUnsupportedTransceiver", "string", None, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["disabled", "enabled"], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "vlan_compression": MoPropertyMeta("vlan_compression", "vlanCompression", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["disabled", "enabled"], []),
+        "service_unsupported_transceiver": MoPropertyMeta("service_unsupported_transceiver", "serviceUnsupportedTransceiver", "string", VersionMeta.Version422d, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["disabled", "enabled"], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "vlan_compression": MoPropertyMeta("vlan_compression", "vlanCompression", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["disabled", "enabled"], []),
     }
 
     prop_map = {
+        "QinQForwarding": "qin_q_forwarding", 
         "childAction": "child_action", 
         "dn": "dn", 
         "fabricPcVhbaReset": "fabric_pc_vhba_reset", 
@@ -222,6 +226,7 @@ class FabricLanCloud(ManagedObject):
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.qin_q_forwarding = None
         self.child_action = None
         self.fabric_pc_vhba_reset = None
         self.fsm_descr = None

@@ -53,7 +53,7 @@ class SwFcSanEp(ManagedObject):
     consts = SwFcSanEpConsts()
     naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("SwFcSanEp", "swFcSanEp", "ep-slot-[slot_id]port-[port_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], ['swFcSanBorder'], [], ["Get"])
+    mo_meta = MoMeta("SwFcSanEp", "swFcSanEp", "ep-slot-[slot_id]port-[port_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], ['swFcSanBorder', 'swSubGroup'], [], ["Get"])
 
     prop_meta = {
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["16gbps", "1gbps", "2gbps", "32gbps", "4gbps", "8gbps", "auto", "indeterminate"], []),

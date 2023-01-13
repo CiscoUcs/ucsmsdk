@@ -6,6 +6,15 @@ from ...ucsmeta import VersionMeta
 
 
 class EquipmentFanModuleConsts:
+    INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
+    INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    INLET2_THERMAL_NOT_SUPPORTED = "not-supported"
+    INLET2_THERMAL_OK = "ok"
+    INLET2_THERMAL_UNKNOWN = "unknown"
+    INLET2_THERMAL_UPPER_CRITICAL = "upper-critical"
+    INLET2_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    INLET2_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     MFG_TIME_NOT_APPLICABLE = "not-applicable"
     OPER_STATE_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     OPER_STATE_AUTO_UPGRADE = "auto-upgrade"
@@ -158,6 +167,7 @@ class EquipmentFanModule(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, None, None, None, [], ["1-8"]),
+        "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "mfg_time": MoPropertyMeta("mfg_time", "mfgTime", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["not-applicable"], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
@@ -185,6 +195,7 @@ class EquipmentFanModule(ManagedObject):
         "dn": "dn", 
         "fltAggr": "flt_aggr", 
         "id": "id", 
+        "inlet2Thermal": "inlet2_thermal", 
         "mfgTime": "mfg_time", 
         "model": "model", 
         "operQualifierReason": "oper_qualifier_reason", 
@@ -213,6 +224,7 @@ class EquipmentFanModule(ManagedObject):
         self.asset_tag = None
         self.child_action = None
         self.flt_aggr = None
+        self.inlet2_thermal = None
         self.mfg_time = None
         self.model = None
         self.oper_qualifier_reason = None
