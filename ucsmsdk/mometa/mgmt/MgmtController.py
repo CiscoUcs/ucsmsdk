@@ -591,7 +591,7 @@ class MgmtController(ManagedObject):
     consts = MgmtControllerConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtController", "mgmtController", "mgmt", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], ['adaptorUnit', 'computeBlade', 'computeBoardController', 'computeExtBoard', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFex', 'equipmentIOCard', 'equipmentSharedIOModule', 'equipmentSwitchIOCard', 'equipmentSystemIOController', 'networkElement', 'storageController', 'storageLocalDisk', 'storageSasExpander', 'topSystem'], ['cimcvmediaActualMountList', 'eventInst', 'fabricLocale', 'faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'firmwareUpdatable', 'mgmtCimcSecureBoot', 'mgmtCmcSecureBoot', 'mgmtConnection', 'mgmtControllerFsm', 'mgmtControllerFsmTask', 'mgmtHealthStatus', 'mgmtIf', 'mgmtInterface', 'mgmtKvmCertificate', 'mgmtProfDerivedInterface', 'mgmtSpdmCertificateInventory', 'mgmtSwPersonalities', 'mgmtSwPersonalitiesInventory', 'mgmtUsbNicMgmtIf', 'sysdebugMEpLog', 'vnicIpV4PooledAddr', 'vnicIpV4ProfDerivedAddr', 'vnicIpV4StaticAddr'], ["Get"])
+    mo_meta = MoMeta("MgmtController", "mgmtController", "mgmt", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], ['adaptorUnit', 'computeBlade', 'computeBoardController', 'computeExtBoard', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFex', 'equipmentIOCard', 'equipmentSharedIOModule', 'equipmentSwitchIOCard', 'equipmentSystemIOController', 'networkElement', 'storageController', 'storageLocalDisk', 'storageSasExpander', 'topSystem'], ['cimcvmediaActualMountList', 'eventInst', 'fabricLocale', 'faultInst', 'firmwareBootDefinition', 'firmwareImage', 'firmwareRunning', 'firmwareUpdatable', 'mgmtCimcSecureBoot', 'mgmtCmcSecureBoot', 'mgmtConnection', 'mgmtControllerFsm', 'mgmtControllerFsmTask', 'mgmtHealthStatus', 'mgmtIf', 'mgmtInterface', 'mgmtKvmCertificate', 'mgmtProfDerivedInterface', 'mgmtSpdmCertificateInventory', 'mgmtSwPersonalities', 'mgmtSwPersonalitiesInventory', 'mgmtUsbNicMgmtIf', 'sysdebugMEpLog', 'vnicIpV4PooledAddr', 'vnicIpV4ProfDerivedAddr', 'vnicIpV4StaticAddr'], ["Get"])
 
     prop_meta = {
         "admin_operation": MoPropertyMeta("admin_operation", "adminOperation", "string", VersionMeta.Version323a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cancel-all", "clear-kvm-cert", "none"], []),
@@ -620,6 +620,7 @@ class MgmtController(ManagedObject):
         "isc_kvm_supported": MoPropertyMeta("isc_kvm_supported", "iscKVMSupported", "string", VersionMeta.Version421a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "last_reboot_reason": MoPropertyMeta("last_reboot_reason", "lastRebootReason", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "old_version": MoPropertyMeta("old_version", "oldVersion", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "oper_conn": MoPropertyMeta("oper_conn", "operConn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "power_fan_speed_policy_supported": MoPropertyMeta("power_fan_speed_policy_supported", "powerFanSpeedPolicySupported", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -663,6 +664,7 @@ class MgmtController(ManagedObject):
         "iscKVMSupported": "isc_kvm_supported", 
         "lastRebootReason": "last_reboot_reason", 
         "model": "model", 
+        "oldVersion": "old_version", 
         "operConn": "oper_conn", 
         "powerFanSpeedPolicySupported": "power_fan_speed_policy_supported", 
         "revision": "revision", 
@@ -706,6 +708,7 @@ class MgmtController(ManagedObject):
         self.isc_kvm_supported = None
         self.last_reboot_reason = None
         self.model = None
+        self.old_version = None
         self.oper_conn = None
         self.power_fan_speed_policy_supported = None
         self.revision = None

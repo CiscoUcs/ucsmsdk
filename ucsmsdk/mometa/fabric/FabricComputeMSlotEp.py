@@ -8,10 +8,8 @@ from ...ucsmeta import VersionMeta
 class FabricComputeMSlotEpConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
-    AUTO_NEGOTIATE_FALSE = "false"
-    AUTO_NEGOTIATE_NO = "no"
-    AUTO_NEGOTIATE_TRUE = "true"
-    AUTO_NEGOTIATE_YES = "yes"
+    AUTO_NEGOTIATE_DISABLED = "disabled"
+    AUTO_NEGOTIATE_ENABLED = "enabled"
     CHASSIS_ID_N_A = "N/A"
     DISCOVERY_COMPLETE = "complete"
     DISCOVERY_DIAGNOSTICS_COMPLETE = "diagnostics-complete"
@@ -247,8 +245,8 @@ class FabricComputeMSlotEp(ManagedObject):
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "auto_negotiate": MoPropertyMeta("auto_negotiate", "autoNegotiate", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["false", "no", "true", "yes"], []),
-        "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["N/A"], ["1-255"]),
+        "auto_negotiate": MoPropertyMeta("auto_negotiate", "autoNegotiate", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["disabled", "enabled"], []),
+        "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["N/A"], ["1-254"]),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, 0x10, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "conn_path": MoPropertyMeta("conn_path", "connPath", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|A|B),){0,3}(defaultValue|unknown|A|B){0,1}""", [], []),
         "conn_status": MoPropertyMeta("conn_status", "connStatus", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|A|B),){0,3}(defaultValue|unknown|A|B){0,1}""", [], []),

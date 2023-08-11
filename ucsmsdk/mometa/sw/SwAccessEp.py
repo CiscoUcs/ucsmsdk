@@ -6,8 +6,18 @@ from ...ucsmeta import VersionMeta
 
 
 class SwAccessEpConsts:
+    SPEED_100GBPS = "100gbps"
+    SPEED_10GBPS = "10gbps"
+    SPEED_1GBPS = "1gbps"
+    SPEED_20GBPS = "20gbps"
+    SPEED_25GBPS = "25gbps"
+    SPEED_40GBPS = "40gbps"
+    SPEED_AUTO = "auto"
+    SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
+    AUTO_NEG_DISABLED = "disabled"
+    AUTO_NEG_ENABLED = "enabled"
     CHASSIS_ID_N_A = "N/A"
     ENCAP_CONSOLIDATED = "consolidated"
     ENCAP_VIRTUAL = "virtual"
@@ -58,8 +68,10 @@ class SwAccessEp(ManagedObject):
     mo_meta = MoMeta("SwAccessEp", "swAccessEp", "ep-slot-[slot_id]port-[port_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["read-only"], ['swAccessDomain', 'swSubGroup'], ['portTrustMode', 'swUlan'], ["Get"])
 
     prop_meta = {
+        "speed": MoPropertyMeta("speed", "Speed", "string", VersionMeta.Version422d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
+        "auto_neg": MoPropertyMeta("auto_neg", "autoNeg", "string", VersionMeta.Version422d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
@@ -91,8 +103,10 @@ class SwAccessEp(ManagedObject):
     }
 
     prop_map = {
+        "Speed": "speed", 
         "adminState": "admin_state", 
         "aggrPortId": "aggr_port_id", 
+        "autoNeg": "auto_neg", 
         "chassisId": "chassis_id", 
         "childAction": "child_action", 
         "dn": "dn", 
@@ -127,8 +141,10 @@ class SwAccessEp(ManagedObject):
         self._dirty_mask = 0
         self.slot_id = slot_id
         self.port_id = port_id
+        self.speed = None
         self.admin_state = None
         self.aggr_port_id = None
+        self.auto_neg = None
         self.chassis_id = None
         self.child_action = None
         self.encap = None

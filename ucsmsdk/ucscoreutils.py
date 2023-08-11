@@ -20,6 +20,7 @@ from __future__ import print_function
 import os
 import re
 import logging
+import sys
 
 from . import ucsgenutils
 from . import mometa
@@ -54,7 +55,12 @@ def get_ucs_obj(class_id, elem, mo_obj=None):
         return ucsmethod.ExternalMethod(class_id)
     elif class_id in MO_CLASS_ID:
         mo_class = load_class(class_id)
-        mo_class_params = inspect.getargspec(mo_class.__init__)[0][2:]
+        if sys.version_info > (3, 0):
+            # Python 3 code in this block
+            mo_class_params = inspect.getfullargspec(mo_class.__init__)[0][2:]
+        else:
+            # Python 2 code in this block
+            mo_class_params = inspect.getargspec(mo_class.__init__)[0][2:]
         mo_class_param_dict = {}
         for param in mo_class_params:
             mo_class_param_dict[param] = None

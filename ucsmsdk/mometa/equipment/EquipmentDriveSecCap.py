@@ -6,6 +6,8 @@ from ...ucsmeta import VersionMeta
 
 
 class EquipmentDriveSecCapConsts:
+    IS_HX_SEC_CAP_NO = "no"
+    IS_HX_SEC_CAP_YES = "yes"
     IS_SUPPORTED_NO = "no"
     IS_SUPPORTED_YES = "yes"
 
@@ -21,6 +23,7 @@ class EquipmentDriveSecCap(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
+        "is_hx_sec_cap": MoPropertyMeta("is_hx_sec_cap", "isHxSecCap", "string", VersionMeta.Version422d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []),
         "is_supported": MoPropertyMeta("is_supported", "isSupported", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []),
         "min_version": MoPropertyMeta("min_version", "minVersion", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
@@ -31,6 +34,7 @@ class EquipmentDriveSecCap(ManagedObject):
     prop_map = {
         "childAction": "child_action", 
         "dn": "dn", 
+        "isHxSecCap": "is_hx_sec_cap", 
         "isSupported": "is_supported", 
         "minVersion": "min_version", 
         "rn": "rn", 
@@ -41,6 +45,7 @@ class EquipmentDriveSecCap(ManagedObject):
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
         self.child_action = None
+        self.is_hx_sec_cap = None
         self.is_supported = None
         self.min_version = None
         self.sacl = None

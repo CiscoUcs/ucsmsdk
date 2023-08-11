@@ -167,12 +167,12 @@ class AaaLdapEp(ManagedObject):
     mo_meta = MoMeta("AaaLdapEp", "aaaLdapEp", "ldap-ext", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["aaa", "admin"], ['topSystem'], ['aaaEpFsm', 'aaaEpFsmTask', 'aaaLdapEpFsm', 'aaaLdapGroup', 'aaaLdapGroupRule', 'aaaLdapProvider', 'aaaProviderGroup', 'eventInst', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
-        "attribute": MoPropertyMeta("attribute", "attribute", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, 0, 63, None, [], []),
-        "basedn": MoPropertyMeta("basedn", "basedn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, 0, 255, None, [], []),
+        "attribute": MoPropertyMeta("attribute", "attribute", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,63}""", [], []),
+        "basedn": MoPropertyMeta("basedn", "basedn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,255}""", [], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
-        "filter": MoPropertyMeta("filter", "filter", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, 0, 127, None, [], []),
+        "filter": MoPropertyMeta("filter", "filter", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,127}""", [], []),
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "updateEpBegin", "updateEpFail", "updateEpSetEpLocal", "updateEpSetEpPeer", "updateEpSuccess"], []),
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]),

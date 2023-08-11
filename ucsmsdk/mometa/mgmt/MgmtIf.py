@@ -15,6 +15,7 @@ class MgmtIfConsts:
     ADMIN_STATE_ENABLE = "enable"
     CHASSIS_ID_N_A = "N/A"
     DISCOVERY_ABSENT = "absent"
+    DISCOVERY_INIT = "init"
     DISCOVERY_MIS_CONNECT = "mis-connect"
     DISCOVERY_MISSING = "missing"
     DISCOVERY_NEW = "new"
@@ -277,7 +278,7 @@ class MgmtIf(ManagedObject):
     consts = MgmtIfConsts()
     naming_props = set(['id'])
 
-    mo_meta = MoMeta("MgmtIf", "mgmtIf", "if-[id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin"], ['adaptorHostEthIf', 'mgmtController'], ['dhcpAcquired', 'eventInst', 'faultInst', 'mgmtIPv6IfConfig', 'mgmtIfFsm', 'mgmtIfFsmTask'], ["Get"])
+    mo_meta = MoMeta("MgmtIf", "mgmtIf", "if-[id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin"], ['adaptorHostEthIf', 'mgmtController'], ['dhcpAcquired', 'eventInst', 'faultInst', 'mgmtIPv6IfConfig', 'mgmtIfFsm', 'mgmtIfFsmTask'], ["Get"])
 
     prop_meta = {
         "access": MoPropertyMeta("access", "access", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["in-band", "internal", "out-of-band", "unspecified", "virtual"], []),
@@ -285,7 +286,7 @@ class MgmtIf(ManagedObject):
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
-        "discovery": MoPropertyMeta("discovery", "discovery", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["absent", "mis-connect", "missing", "new", "present", "un-initialized", "un-supported"], []),
+        "discovery": MoPropertyMeta("discovery", "discovery", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["absent", "init", "mis-connect", "missing", "new", "present", "un-initialized", "un-supported"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "ext_broadcast": MoPropertyMeta("ext_broadcast", "extBroadcast", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),
@@ -307,21 +308,23 @@ class MgmtIf(ManagedObject):
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []),
         "instance_id": MoPropertyMeta("instance_id", "instanceId", "uint", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, [], ["0-4294967295"]),
         "ip": MoPropertyMeta("ip", "ip", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),
+        "last_oper_gw": MoPropertyMeta("last_oper_gw", "lastOperGw", "string", VersionMeta.Version422d, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
+        "last_oper_prefix": MoPropertyMeta("last_oper_prefix", "lastOperPrefix", "byte", VersionMeta.Version422d, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, [], ["1-127"]),
         "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []),
         "mac": MoPropertyMeta("mac", "mac", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []),
         "mask": MoPropertyMeta("mask", "mask", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "peer_aggr_port_id": MoPropertyMeta("peer_aggr_port_id", "peerAggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_chassis_id": MoPropertyMeta("peer_chassis_id", "peerChassisId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]),
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "state_qual": MoPropertyMeta("state_qual", "stateQual", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["misconnected", "unspecified", "valid"], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "subject": MoPropertyMeta("subject", "subject", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["adaptor", "blade", "board-controller", "chassis", "cmc", "iocard", "local-disk", "sas-expander", "server-unit", "switch", "system", "unknown"], []),
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []),
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []),
@@ -357,6 +360,8 @@ class MgmtIf(ManagedObject):
         "ifType": "if_type", 
         "instanceId": "instance_id", 
         "ip": "ip", 
+        "lastOperGw": "last_oper_gw", 
+        "lastOperPrefix": "last_oper_prefix", 
         "locale": "locale", 
         "mac": "mac", 
         "mask": "mask", 
@@ -407,6 +412,8 @@ class MgmtIf(ManagedObject):
         self.if_type = None
         self.instance_id = None
         self.ip = None
+        self.last_oper_gw = None
+        self.last_oper_prefix = None
         self.locale = None
         self.mac = None
         self.mask = None

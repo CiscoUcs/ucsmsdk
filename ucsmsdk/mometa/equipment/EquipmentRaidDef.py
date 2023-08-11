@@ -13,6 +13,7 @@ class EquipmentRaidDefConsts:
     LEVEL_BEST_EFFORT_STRIPED = "best-effort-striped"
     LEVEL_BEST_EFFORT_STRIPED_DUAL_PARITY = "best-effort-striped-dual-parity"
     LEVEL_BEST_EFFORT_STRIPED_PARITY = "best-effort-striped-parity"
+    LEVEL_DISABLE_LOCAL_STORAGE = "disable-local-storage"
     LEVEL_DUAL_DISK = "dual-disk"
     LEVEL_NO_LOCAL_STORAGE = "no-local-storage"
     LEVEL_NO_RAID = "no-raid"
@@ -42,7 +43,7 @@ class EquipmentRaidDef(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
-        "level": MoPropertyMeta("level", "level", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x10, None, None, None, ["any-configuration", "best-effort-mirrored", "best-effort-mirrored-striped", "best-effort-striped", "best-effort-striped-dual-parity", "best-effort-striped-parity", "dual-disk", "no-local-storage", "no-raid", "raid-mirrored", "raid-mirrored-striped", "raid-striped", "raid-striped-dual-parity", "raid-striped-dual-parity-striped", "raid-striped-parity", "raid-striped-parity-striped", "single-disk"], []),
+        "level": MoPropertyMeta("level", "level", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x10, None, None, None, ["any-configuration", "best-effort-mirrored", "best-effort-mirrored-striped", "best-effort-striped", "best-effort-striped-dual-parity", "best-effort-striped-parity", "disable-local-storage", "dual-disk", "no-local-storage", "no-raid", "raid-mirrored", "raid-mirrored-striped", "raid-striped", "raid-striped-dual-parity", "raid-striped-dual-parity-striped", "raid-striped-parity", "raid-striped-parity-striped", "single-disk"], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["local", "pending-policy", "policy"], []),

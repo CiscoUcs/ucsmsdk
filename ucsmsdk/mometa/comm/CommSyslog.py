@@ -16,6 +16,8 @@ class CommSyslogConsts:
     PROTO_NONE = "none"
     PROTO_TCP = "tcp"
     PROTO_UDP = "udp"
+    RFC5424_COMPLIANCE_DISABLED = "disabled"
+    RFC5424_COMPLIANCE_ENABLED = "enabled"
     SEVERITY_ALERTS = "alerts"
     SEVERITY_CRITICAL = "critical"
     SEVERITY_DEBUGGING = "debugging"
@@ -32,7 +34,7 @@ class CommSyslog(ManagedObject):
     consts = CommSyslogConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommSyslog", "commSyslog", "syslog", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "operations"], ['commLocale', 'commSvcEp', 'commSvcPolicy'], ['commSyslogClient', 'commSyslogConsole', 'commSyslogFile', 'commSyslogMonitor', 'commSyslogSource'], ["Get", "Set"])
+    mo_meta = MoMeta("CommSyslog", "commSyslog", "syslog", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["admin", "operations"], ['commLocale', 'commSvcEp', 'commSvcPolicy'], ['commSyslogClient', 'commSyslogConsole', 'commSyslogFile', 'commSyslogMonitor', 'commSyslogSource'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),
@@ -46,10 +48,11 @@ class CommSyslog(ManagedObject):
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []),
         "port": MoPropertyMeta("port", "port", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-65535"]),
         "proto": MoPropertyMeta("proto", "proto", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["all", "none", "tcp", "udp"], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
+        "rfc5424_compliance": MoPropertyMeta("rfc5424_compliance", "rfc5424Compliance", "string", VersionMeta.Version422d, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["disabled", "enabled"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "severity": MoPropertyMeta("severity", "severity", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["alerts", "critical", "debugging", "emergencies", "errors", "information", "notifications", "warnings"], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "severity": MoPropertyMeta("severity", "severity", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["alerts", "critical", "debugging", "emergencies", "errors", "information", "notifications", "warnings"], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 
     prop_map = {
@@ -64,6 +67,7 @@ class CommSyslog(ManagedObject):
         "policyOwner": "policy_owner", 
         "port": "port", 
         "proto": "proto", 
+        "rfc5424Compliance": "rfc5424_compliance", 
         "rn": "rn", 
         "sacl": "sacl", 
         "severity": "severity", 
@@ -82,6 +86,7 @@ class CommSyslog(ManagedObject):
         self.policy_owner = None
         self.port = None
         self.proto = None
+        self.rfc5424_compliance = None
         self.sacl = None
         self.severity = None
         self.status = None

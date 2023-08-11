@@ -12,6 +12,7 @@ class ComputeRebootLogConsts:
     PWR_CHANGE_SRC_UCS_ACTIVATE_ADAPTOR_FW = "UCS_ACTIVATE_ADAPTOR_FW"
     PWR_CHANGE_SRC_UCS_ACTIVATE_BIOS_FW = "UCS_ACTIVATE_BIOS_FW"
     PWR_CHANGE_SRC_UCS_ASSOCIATE = "UCS_ASSOCIATE"
+    PWR_CHANGE_SRC_UCS_BIOS_PASSWORD_RESET = "UCS_BIOS_PASSWORD_RESET"
     PWR_CHANGE_SRC_UCS_BIOS_RECOVERY = "UCS_BIOS_RECOVERY"
     PWR_CHANGE_SRC_UCS_BLADE_SHUTDOWN = "UCS_BLADE_SHUTDOWN"
     PWR_CHANGE_SRC_UCS_CLEAR_TPM = "UCS_CLEAR_TPM"
@@ -52,7 +53,7 @@ class ComputeRebootLog(ManagedObject):
         "count": MoPropertyMeta("count", "count", "uint", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version321d, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []),
-        "pwr_change_src": MoPropertyMeta("pwr_change_src", "pwrChangeSrc", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["HOST_PWR_TRANSITION", "NONE", "SOFTWARE", "UCS_ACTIVATE_ADAPTOR_FW", "UCS_ACTIVATE_BIOS_FW", "UCS_ASSOCIATE", "UCS_BIOS_RECOVERY", "UCS_BLADE_SHUTDOWN", "UCS_CLEAR_TPM", "UCS_CMOS_RESET", "UCS_DIAG", "UCS_DIAGNOSTIC_INTERRUPT", "UCS_DISASSOCIATE", "UCS_DISK_ZONING_INVENTORY", "UCS_FW_UPGRADE", "UCS_HARDRESET", "UCS_HARD_SHUTDOWN", "UCS_OOB_ADMIN_CONFIG", "UCS_POWERCYCLE", "UCS_RACKUNIT_DISCOVER", "UCS_RACK_UNIT_ADAPTER_RESET", "UCS_SERVERUNIT_DISCOVER", "UCS_SERVER_DISCOVER", "UCS_SOFTRESET", "UCS_SOFT_SHUTDOWN", "UCS_TURNUP", "UCS_UPDATE_ADAPTOR_FW", "UCS_UPDATE_BOARDCTRL_FW", "UNKNOWN", "USER_FRONT_PANEL"], []),
+        "pwr_change_src": MoPropertyMeta("pwr_change_src", "pwrChangeSrc", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["HOST_PWR_TRANSITION", "NONE", "SOFTWARE", "UCS_ACTIVATE_ADAPTOR_FW", "UCS_ACTIVATE_BIOS_FW", "UCS_ASSOCIATE", "UCS_BIOS_PASSWORD_RESET", "UCS_BIOS_RECOVERY", "UCS_BLADE_SHUTDOWN", "UCS_CLEAR_TPM", "UCS_CMOS_RESET", "UCS_DIAG", "UCS_DIAGNOSTIC_INTERRUPT", "UCS_DISASSOCIATE", "UCS_DISK_ZONING_INVENTORY", "UCS_FW_UPGRADE", "UCS_HARDRESET", "UCS_HARD_SHUTDOWN", "UCS_OOB_ADMIN_CONFIG", "UCS_POWERCYCLE", "UCS_RACKUNIT_DISCOVER", "UCS_RACK_UNIT_ADAPTER_RESET", "UCS_SERVERUNIT_DISCOVER", "UCS_SERVER_DISCOVER", "UCS_SOFTRESET", "UCS_SOFT_SHUTDOWN", "UCS_TURNUP", "UCS_UPDATE_ADAPTOR_FW", "UCS_UPDATE_BOARDCTRL_FW", "UNKNOWN", "USER_FRONT_PANEL"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),

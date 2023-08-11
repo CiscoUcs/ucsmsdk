@@ -6,6 +6,10 @@ from ...ucsmeta import VersionMeta
 
 
 class QosclassDefinitionConsts:
+    CHECK_FOR_REBOOT_FALSE = "false"
+    CHECK_FOR_REBOOT_NO = "no"
+    CHECK_FOR_REBOOT_TRUE = "true"
+    CHECK_FOR_REBOOT_YES = "yes"
     FSM_PREV_CONFIG_GLOBAL_QO_SBEGIN = "configGlobalQoSBegin"
     FSM_PREV_CONFIG_GLOBAL_QO_SFAIL = "configGlobalQoSFail"
     FSM_PREV_CONFIG_GLOBAL_QO_SSET_LOCAL = "configGlobalQoSSetLocal"
@@ -172,6 +176,7 @@ class QosclassDefinition(ManagedObject):
     mo_meta = MoMeta("QosclassDefinition", "qosclassDefinition", "classes", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ext-lan-qos", "ext-san-qos", "ls-network", "ls-network-policy", "ls-qos-policy"], ['fabricLanCloud'], ['eventInst', 'faultInst', 'firmwareAck', 'qosclassDefinitionFsm', 'qosclassDefinitionFsmTask', 'qosclassEthBE', 'qosclassEthClassified', 'qosclassFc', 'qosclassSlowDrain'], ["Get", "Set"])
 
     prop_meta = {
+        "check_for_reboot": MoPropertyMeta("check_for_reboot", "checkForReboot", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
@@ -199,6 +204,7 @@ class QosclassDefinition(ManagedObject):
     }
 
     prop_map = {
+        "checkForReboot": "check_for_reboot", 
         "childAction": "child_action", 
         "descr": "descr", 
         "dn": "dn", 
@@ -227,6 +233,7 @@ class QosclassDefinition(ManagedObject):
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.check_for_reboot = None
         self.child_action = None
         self.descr = None
         self.ecn_threshold = None
