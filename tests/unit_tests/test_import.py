@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from nose.tools import *
-
 
 def test_import_ucsmsdk():
     import ucsmsdk

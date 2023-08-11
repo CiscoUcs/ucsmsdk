@@ -50,16 +50,16 @@ lint:
 	flake8 ucsmsdk tests
 
 test:
-	python setup.py nosetests
+	pytest
 
 test-standalone:
-	nosetests tests/convert_to_ucs/
+	pytest tests/convert_to_ucs/test_convert_to_from_xml.py
 
 test-all:
 	tox
 
 coverage:
-	coverage run --source ucsmsdk setup.py test
+	pytest --cov
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html

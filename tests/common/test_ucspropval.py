@@ -11,77 +11,57 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from nose import SkipTest
-from nose.tools import *
-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
-
-handle = None
-obj = None
+from tests.base import BaseTest
 
 
-def setup_module():
-    from ucsmsdk.mometa.ls.LsServer import LsServer
-    global obj
-    global handle
+class TestUCSProposal(BaseTest):
+    def setUp(self):
+        super().setUp()
+        from ucsmsdk.mometa.ls.LsServer import LsServer
+        self.obj = LsServer("org-root", "test", usr_lbl="sample")
 
-    handle = custom_setup()
-    if not handle:
-        msg = get_skip_msg()
-        raise SkipTest(msg)
+        self.handle.add_mo(obj, True)
+        self.handle.commit()
 
-    obj = LsServer("org-root", "test", usr_lbl="sample")
+    def tearDown(self):
+        if self.handle:
+            self.handle.remove_mo(self.obj)
+            self.handle.commit()
+        super().tearDown()
 
-    handle.add_mo(obj, True)
-    handle.commit()
+    def test_001_set_ro_property(self):
+        # This is a read only property
+        # Should fail with an exception
+        with self.assertRaises(Exception):
+            self.obj.oper_state = "up"
 
+    def test_002_set_rw_property(self):
+        # This is a read write property.
+        # Should happen without any issues
+        self.obj.descr = "test_description"
 
-def teardown_module():
-    if handle:
-        handle.remove_mo(obj)
-        handle.commit()
-    custom_teardown(handle)
+    def test_003_set_naming_property(self):
+        # This is a naming property. so, it is create only
+        # Should fail with an exception
+        with self.assertRaises(Exception):
+            self.obj.name = "test1"
 
+    def test_004_check_existing_prop_match(self):
+        # Checking property aginst existing property
+        self.assertTrue(self.obj.check_prop_match(usr_lbl="sample"))
 
-@raises(Exception)
-def test_001_set_ro_property():
-    # This is a read only property
-    # Should fail with an exception
-    obj.oper_state = "up"
+    def test_005_check_nonexisting_prop_match(self):
+        # Checking property aginst non-existing property
+        with self.assertRaises(Exception):
+            self.assertTrue(self.obj.check_prop_match(usr_lbl="new_label"))
 
+    def test_006_set_prop_multiple(self):
+        # Setting multiple property of object
+        self.obj.set_prop_multiple(usr_lbl="new_label",
+                              vmedia_policy_name="test_vmedia_pol")
+        self.handle.set_mo(obj)
+        self.handle.commit()
 
-def test_002_set_rw_property():
-    # This is a read write property.
-    # Should happen without any issues
-    obj.descr = "test_description"
-
-
-@raises(Exception)
-def test_003_set_naming_property():
-    # This is a naming property. so, it is create only
-    # Should fail with an exception
-    obj.name = "test1"
-
-
-def test_004_check_existing_prop_match():
-    # Checking property aginst existing property
-    bool_var = obj.check_prop_match(usr_lbl="sample")
-    assert_equal(bool_var, True)
-
-
-@raises(Exception)
-def test_005_check_nonexisting_prop_match():
-    # Checking property aginst non-existing property
-    bool_var = obj.check_prop_match(usr_lbl="new_label")
-    assert_equal(bool_var, True)
-
-
-def test_006_set_prop_multiple():
-    # Setting multiple property of object
-    obj.set_prop_multiple(usr_lbl="new_label",
-                          vmedia_policy_name="test_vmedia_pol")
-    handle.set_mo(obj)
-    handle.commit()
-
-    new_obj = handle.query_dn(obj.dn)
-    assert_equal(new_obj.usr_lbl, "new_label")
-    assert_equal(new_obj.vmedia_policy_name, "test_vmedia_pol")
+        new_obj = self.handle.query_dn(obj.dn)
+        self.assertEqual(new_obj.usr_lbl, "new_label")
+        self.assertEqual(new_obj.vmedia_policy_name, "test_vmedia_pol")

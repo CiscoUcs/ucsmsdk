@@ -12,216 +12,184 @@
 # limitations under the License.
 
 import time
-
-from nose import SkipTest
-from nose.tools import *
-from ..connection.info import custom_setup, custom_teardown, get_skip_msg
 import threading
 
-handle = None
-sp = None
-dn = "org-root/ls-eventhandle-test"
-finished = False
+from tests.base import BaseTest
 
 
-def setup_module():
-    from ucsmsdk.ucseventhandler import UcsEventHandle
-    from ucsmsdk.mometa.ls.LsServer import LsServer
+class TestEventHandler(BaseTest):
+    def setUp(self):
+        super().setUp()
+        from ucsmsdk.ucseventhandler import UcsEventHandle
+        from ucsmsdk.mometa.ls.LsServer import LsServer
 
-    global handle, sp, ueh
-    handle = custom_setup()
-    if not handle:
-        msg = get_skip_msg()
-        raise SkipTest(msg)
-    ueh = UcsEventHandle(handle)
-    org = handle.query_dn("org-root")
+        self.ueh = UcsEventHandle(self.handle)
+        self.org = self.handle.query_dn("org-root")
 
-    sp = LsServer(org, name="eventhandle-test", descr="")
-    handle.add_mo(sp, True)
-    handle.commit()
+        self.sp = LsServer(org, name="eventhandle-test", descr="")
+        self.handle.add_mo(sp, True)
+        self.handle.commit()
+        self.finished = False
 
+    def tearDown(self):
+        if self.sp is not None:
+            self.handle.remove_mo(self.sp)
+            self.handle.commit()
+        super().tearDown()
 
-def teardown_module():
-    if sp is not None:
-        handle.remove_mo(sp)
-        handle.commit()
-    custom_teardown(handle)
+    def user_callback(self, mce):
+        self.finished = True
 
+    def wait_method(self, poll_sec=None):
+        # Always clear the label
+        self.sp.usr_lbl = ""
+        self.handle.add_mo(self.sp, modify_present=True)
+        self.handle.commit()
 
-def user_callback(mce):
-    global finished
-    finished = True
+        self.handle.wait_for_event(
+            mo=self.sp,
+            prop="usr_lbl",
+            value="trigger",
+            cb=self.user_callback,
+            timeout=20,
+            poll_sec=poll_sec
+        )
 
+    def wait_method_for_multiple_values(self, poll_sec=None):
+        self.handle.wait_for_event(
+            mo=self.sp,
+            prop="usr_lbl",
+            value=["trigger", "another_trigger"],
+            cb=self.user_callback,
+            timeout=20,
+            poll_sec=poll_sec
+        )
 
-def wait_method(poll_sec=None):
-    # Always clear the label
-    sp.usr_lbl = ""
-    handle.add_mo(sp, modify_present=True)
-    handle.commit()
+    def trigger_method(self, label=None):
+        self.sp.usr_lbl = label
+        self.handle.set_mo(self.sp)
+        self.handle.commit()
 
-    handle.wait_for_event(
-        mo=sp,
-        prop="usr_lbl",
-        value="trigger",
-        cb=user_callback,
-        timeout=20,
-        poll_sec=poll_sec
-    )
+    def test_wait_for_event_mo(self):
+        self.finished = False
 
+        t1 = threading.Thread(name="wait", target=self.wait_method)
+        t2 = threading.Thread(name="trigger", target=self.trigger_method, args=("trigger",))
 
-def wait_method_for_multiple_values(poll_sec=None):
-    handle.wait_for_event(
-        mo=sp,
-        prop="usr_lbl",
-        value=["trigger", "another_trigger"],
-        cb=user_callback,
-        timeout=20,
-        poll_sec=poll_sec
-    )
+        t1.start()
+        time.sleep(1)
+        t2.start()
 
+        t1.join()
+        t2.join()
 
-def trigger_method(label=None):
-    sp.usr_lbl = label
-    handle.set_mo(sp)
-    handle.commit()
+        self.assertTrue(self.finished)
 
+    def test_wait_for_poll_mo(self):
+        self.finished = False
 
-def test_wait_for_event_mo():
-    global finished
-    finished = False
+        t1 = threading.Thread(name="wait", target=self.wait_method, args=(5,))
+        t2 = threading.Thread(name="trigger", target=self.trigger_method, args=("trigger",))
 
-    t1 = threading.Thread(name="wait", target=wait_method)
-    t2 = threading.Thread(name="trigger", target=trigger_method, args=("trigger",))
+        t1.start()
+        time.sleep(1)
+        t2.start()
 
-    t1.start()
-    time.sleep(1)
-    t2.start()
+        t1.join()
+        t2.join()
 
-    t1.join()
-    t2.join()
+        self.assertTrue(self.finished)
 
-    assert_equal(finished, True)
+    def test_wait_for_event_timeout(self):
+        self.finished = False
 
+        t1 = threading.Thread(name="wait", target=self.wait_method)
+        t2 = threading.Thread(name="trigger", target=self.trigger_method, args=("invalid_trigger",))
 
-def test_wait_for_poll_mo():
-    global finished
-    finished = False
+        t1.start()
+        time.sleep(1)
+        t2.start()
 
-    t1 = threading.Thread(name="wait", target=wait_method, args=(5,))
-    t2 = threading.Thread(name="trigger", target=trigger_method, args=("trigger",))
+        t1.join()
+        t2.join()
 
-    t1.start()
-    time.sleep(1)
-    t2.start()
+        self.assertFalse(self.finished)
 
-    t1.join()
-    t2.join()
+    def test_wait_for_poll_timeout(self):
+        self.finished = False
 
-    assert_equal(finished, True)
+        t1 = threading.Thread(name="wait", target=self.wait_method, args=(2,))
+        t2 = threading.Thread(name="trigger", target=self.trigger_method, args=("invalid_trigger",))
 
+        t1.start()
+        time.sleep(1)
+        t2.start()
 
-def test_wait_for_event_timeout():
-    global finished
-    finished = False
+        t1.join()
+        t2.join()
 
-    t1 = threading.Thread(name="wait", target=wait_method)
-    t2 = threading.Thread(name="trigger", target=trigger_method, args=("invalid_trigger",))
+        self.assertFalse(self.finished)
 
-    t1.start()
-    time.sleep(1)
-    t2.start()
+    def test_wait_for_event_invalid_mo(self):
+        other_mo = self.handle.query_dn("capabilities")
+        with self.assertRaises(Exception):
+            self.handle.wait_for_event(
+                mo=other_mo,
+                prop="usr_lbl",
+                value="trigger",
+                cb=self.user_callback,
+                timeout=20
+            )
 
-    t1.join()
-    t2.join()
+    def test_wait_for_poll_invalid_mo(self):
+        other_mo = self.handle.query_dn("capabilities")
 
-    assert_equal(finished, False)
+        with self.assertRaises(Exception):
+            handle.wait_for_event(
+                mo=other_mo,
+                prop="usr_lbl",
+                value="trigger",
+                cb=self.user_callback,
+                timeout=20,
+                poll_sec=5
+            )
 
+    def test_wait_for_event_multiple(self):
+        self.finished = False
 
-def test_wait_for_poll_timeout():
-    global finished
-    finished = False
+        t1 = threading.Thread(name="wait", target=self.wait_method_for_multiple_values)
+        t2 = threading.Thread(name="trigger", target=self.trigger_method, args=("trigger",))
 
-    t1 = threading.Thread(name="wait", target=wait_method, args=(2,))
-    t2 = threading.Thread(name="trigger", target=trigger_method, args=("invalid_trigger",))
+        t1.start()
+        time.sleep(1)
+        t2.start()
 
-    t1.start()
-    time.sleep(1)
-    t2.start()
+        t1.join()
+        t2.join()
 
-    t1.join()
-    t2.join()
+        self.assertTrue(self.finished)
 
-    assert_equal(finished, False)
+    def test_wait_for_poll_multiple(self):
+        self.finished = False
 
+        t1 = threading.Thread(name="wait", target=self.wait_method_for_multiple_values, args=(2,))
+        t3 = threading.Thread(name="another_trigger", target=self.trigger_method, args=("another_trigger",))
 
-@raises(Exception)
-def test_wait_for_event_invalid_mo():
+        t1.start()
+        time.sleep(1)
+        t3.start()
 
-    other_mo = handle.query_dn("capabilities")
+        t1.join()
+        t3.join()
 
-    handle.wait_for_event(
-        mo=other_mo,
-        prop="usr_lbl",
-        value="trigger",
-        cb=user_callback,
-        timeout=20
-    )
+        self.assertTrue(self.finished)
 
-
-@raises(Exception)
-def test_wait_for_poll_invalid_mo():
-    other_mo = handle.query_dn("capabilities")
-
-    handle.wait_for_event(
-        mo=other_mo,
-        prop="usr_lbl",
-        value="trigger",
-        cb=user_callback,
-        timeout=20,
-        poll_sec=5
-    )
-
-
-def test_wait_for_event_multiple():
-    global finished
-    finished = False
-
-    t1 = threading.Thread(name="wait", target=wait_method_for_multiple_values)
-    t2 = threading.Thread(name="trigger", target=trigger_method, args=("trigger",))
-
-    t1.start()
-    time.sleep(1)
-    t2.start()
-
-    t1.join()
-    t2.join()
-
-    assert_equal(finished, True)
-
-
-def test_wait_for_poll_multiple():
-    global finished
-    finished = False
-
-    t1 = threading.Thread(name="wait", target=wait_method_for_multiple_values, args=(2,))
-    t3 = threading.Thread(name="another_trigger", target=trigger_method, args=("another_trigger",))
-
-    t1.start()
-    time.sleep(1)
-    t3.start()
-
-    t1.join()
-    t3.join()
-
-    assert_equal(finished, True)
-
-def test_wait_for_event_timeout_noenqueue():
-
-    handle.wait_for_event(
-        mo=sp,
-        prop="usr_lbl",
-        value="trigger",
-        cb=user_callback,
-        timeout=5
-    )
+    def test_wait_for_event_timeout_noenqueue(self):
+        self.handle.wait_for_event(
+            mo=sp,
+            prop="usr_lbl",
+            value="trigger",
+            cb=self.user_callback,
+            timeout=5
+        )
 

@@ -47,8 +47,6 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
     ],
-    tests_require=test_requirements,
-    test_suite='nose.collector',
     extras_require={
         'ssl': ['pyOpenSSL'],
         'docs': ['sphinx<1.3', 'sphinxcontrib-napoleon', 'sphinx_rtd_theme'],
