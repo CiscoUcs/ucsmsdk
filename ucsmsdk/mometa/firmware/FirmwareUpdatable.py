@@ -15,8 +15,11 @@ class FirmwareUpdatableConsts:
     OPER_STATE_AUTO_ACTIVATING = "auto-activating"
     OPER_STATE_AUTO_UPDATING = "auto-updating"
     OPER_STATE_BAD_IMAGE = "bad-image"
+    OPER_STATE_DOWNGRADE_NOT_SUPPORTED = "downgrade-not-supported"
+    OPER_STATE_DOWNLOAD_ERROR = "download-error"
     OPER_STATE_FAILED = "failed"
     OPER_STATE_FAULTY_STATE = "faulty-state"
+    OPER_STATE_OPERATION_NOT_SUPPORTED = "operation-not-supported"
     OPER_STATE_PENDING_NEXT_BOOT = "pending-next-boot"
     OPER_STATE_PENDING_POWER_CYCLE = "pending-power-cycle"
     OPER_STATE_READY = "ready"
@@ -27,6 +30,9 @@ class FirmwareUpdatableConsts:
     OPER_STATE_THROTTLED = "throttled"
     OPER_STATE_UPDATING = "updating"
     OPER_STATE_UPGRADING = "upgrading"
+    OPER_STATE_VESSEL_NOT_FOUND = "vessel-not-found"
+    OPER_STATE_VESSEL_VALIDATE_ERROR = "vessel-validate-error"
+    OPER_STATE_WAITING = "waiting"
     OPER_STATE_QUAL_BOOT_CONF_MISSING = "boot-conf-missing"
     OPER_STATE_QUAL_CHECKSUM_FAILURE = "checksum-failure"
     OPER_STATE_QUAL_CRC_FAILURE = "crc-failure"
@@ -50,7 +56,7 @@ class FirmwareUpdatable(ManagedObject):
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "deployment": MoPropertyMeta("deployment", "deployment", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["backup", "unspecified"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["activating", "auto-activating", "auto-updating", "bad-image", "failed", "faulty-state", "pending-next-boot", "pending-power-cycle", "ready", "rebooting", "rebuilding", "scheduled", "set-startup", "throttled", "updating", "upgrading"], []),
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["activating", "auto-activating", "auto-updating", "bad-image", "downgrade-not-supported", "download-error", "failed", "faulty-state", "operation-not-supported", "pending-next-boot", "pending-power-cycle", "ready", "rebooting", "rebuilding", "scheduled", "set-startup", "throttled", "updating", "upgrading", "vessel-not-found", "vessel-validate-error", "waiting"], []),
         "oper_state_qual": MoPropertyMeta("oper_state_qual", "operStateQual", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["boot-conf-missing", "checksum-failure", "crc-failure", "filesystem-error", "mgmt-connect-error", "none", "rebuilding", "unknown-error"], []),
         "prev_version": MoPropertyMeta("prev_version", "prevVersion", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),

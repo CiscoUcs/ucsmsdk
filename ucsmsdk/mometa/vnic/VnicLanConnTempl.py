@@ -12,6 +12,8 @@ class VnicLanConnTemplConsts:
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
+    Q_IN_Q_DISABLED = "disabled"
+    Q_IN_Q_ENABLED = "enabled"
     REDUNDANCY_PAIR_TYPE_NONE = "none"
     REDUNDANCY_PAIR_TYPE_PRIMARY = "primary"
     REDUNDANCY_PAIR_TYPE_SECONDARY = "secondary"
@@ -30,7 +32,7 @@ class VnicLanConnTempl(ManagedObject):
     consts = VnicLanConnTemplConsts()
     naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicLanConnTempl", "vnicLanConnTempl", "lan-conn-templ-[name]", VersionMeta.Version101e, "InputOutput", 0x1fffff, [], ["admin", "ls-network", "ls-network-policy"], ['orgOrg'], ['fabricNetGroupRef', 'fabricSanGroupRef', 'faultInst', 'vnicDynamicConPolicyRef', 'vnicEtherIf', 'vnicFcOEIf', 'vnicUsnicConPolicyRef', 'vnicVmqConPolicyRef'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicLanConnTempl", "vnicLanConnTempl", "lan-conn-templ-[name]", VersionMeta.Version101e, "InputOutput", 0x3fffff, [], ["admin", "ls-network", "ls-network-policy"], ['orgOrg'], ['fabricNetGroupRef', 'fabricSanGroupRef', 'faultInst', 'vnicDynamicConPolicyRef', 'vnicEtherIf', 'vnicFcOEIf', 'vnicSriovHpnConPolicyRef', 'vnicUsnicConPolicyRef', 'vnicVmqConPolicyRef'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_cdn_name": MoPropertyMeta("admin_cdn_name", "adminCdnName", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
@@ -52,15 +54,16 @@ class VnicLanConnTempl(ManagedObject):
         "pin_to_group_name": MoPropertyMeta("pin_to_group_name", "pinToGroupName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, ["local", "pending-policy", "policy"], []),
-        "qos_policy_name": MoPropertyMeta("qos_policy_name", "qosPolicyName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
-        "redundancy_pair_type": MoPropertyMeta("redundancy_pair_type", "redundancyPairType", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x4000, None, None, None, ["none", "primary", "secondary"], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8000, 0, 256, None, [], []),
+        "q_in_q": MoPropertyMeta("q_in_q", "qInQ", "string", VersionMeta.Version432b, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, ["disabled", "enabled"], []),
+        "qos_policy_name": MoPropertyMeta("qos_policy_name", "qosPolicyName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "redundancy_pair_type": MoPropertyMeta("redundancy_pair_type", "redundancyPairType", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x8000, None, None, None, ["none", "primary", "secondary"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10000, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "stats_policy_name": MoPropertyMeta("stats_policy_name", "statsPolicyName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000, None, None, None, ["A", "A-B", "B", "B-A", "NONE"], []),
-        "target": MoPropertyMeta("target", "target", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x80000, None, None, r"""((vm|adaptor|defaultValue),){0,2}(vm|adaptor|defaultValue){0,1}""", [], []),
-        "templ_type": MoPropertyMeta("templ_type", "templType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100000, None, None, None, ["initial-template", "updating-template"], []),
+        "stats_policy_name": MoPropertyMeta("stats_policy_name", "statsPolicyName", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80000, None, None, None, ["A", "A-B", "B", "B-A", "NONE"], []),
+        "target": MoPropertyMeta("target", "target", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x100000, None, None, r"""((vm|adaptor|defaultValue),){0,2}(vm|adaptor|defaultValue){0,1}""", [], []),
+        "templ_type": MoPropertyMeta("templ_type", "templType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200000, None, None, None, ["initial-template", "updating-template"], []),
     }
 
     prop_map = {
@@ -83,6 +86,7 @@ class VnicLanConnTempl(ManagedObject):
         "pinToGroupName": "pin_to_group_name", 
         "policyLevel": "policy_level", 
         "policyOwner": "policy_owner", 
+        "qInQ": "q_in_q", 
         "qosPolicyName": "qos_policy_name", 
         "redundancyPairType": "redundancy_pair_type", 
         "rn": "rn", 
@@ -114,6 +118,7 @@ class VnicLanConnTempl(ManagedObject):
         self.pin_to_group_name = None
         self.policy_level = None
         self.policy_owner = None
+        self.q_in_q = None
         self.qos_policy_name = None
         self.redundancy_pair_type = None
         self.sacl = None

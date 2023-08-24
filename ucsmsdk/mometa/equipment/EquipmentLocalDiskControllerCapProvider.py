@@ -9,6 +9,7 @@ class EquipmentLocalDiskControllerCapProviderConsts:
     CARD_TYPE_FLASH = "FLASH"
     CARD_TYPE_M2 = "M2"
     CARD_TYPE_NVME = "NVME"
+    CARD_TYPE_PT = "PT"
     CARD_TYPE_SAS = "SAS"
     CARD_TYPE_SD = "SD"
     CONTAINMENT_METHOD_CHASSIS_ENCLOSURE = "chassis-enclosure"
@@ -21,6 +22,7 @@ class EquipmentLocalDiskControllerCapProviderConsts:
     CONTROLLER_MODE_PHBA = "PHBA"
     CONTROLLER_MODE_PRAID = "PRAID"
     CONTROLLER_MODE_RAID = "RAID"
+    CONTROLLER_MODE_SAS4 = "SAS4"
     CONTROLLER_MODE_SWRAID = "SWRAID"
     CONTROLLER_MODE_XSDS = "XSDS"
     CONTROLLER_MODE_UNKNOWN = "unknown"
@@ -51,10 +53,10 @@ class EquipmentLocalDiskControllerCapProvider(ManagedObject):
     mo_meta = MoMeta("EquipmentLocalDiskControllerCapProvider", "equipmentLocalDiskControllerCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['adaptorFamilyTypeDef', 'equipmentDriveSecCap', 'equipmentEmbeddedStorageDef', 'equipmentFlashLife', 'equipmentFruVariant', 'equipmentLocalDiskControllerDef', 'equipmentLocalDiskControllerTypeDef', 'equipmentManufacturingDef', 'equipmentOnboardDeviceDef', 'equipmentPciDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentRaidDef', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'equipmentStorageLimitCap', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get"])
 
     prop_meta = {
-        "card_type": MoPropertyMeta("card_type", "cardType", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FLASH", "M2", "NVME", "SAS", "SD"], []),
+        "card_type": MoPropertyMeta("card_type", "cardType", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FLASH", "M2", "NVME", "PT", "SAS", "SD"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "containment_method": MoPropertyMeta("containment_method", "containmentMethod", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["chassis-enclosure", "compute-enclosure", "controller"], []),
-        "controller_mode": MoPropertyMeta("controller_mode", "controllerMode", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["AHCI", "HBA", "M2HWRAID", "NVME", "PHBA", "PRAID", "RAID", "SWRAID", "XSDS", "unknown"], []),
+        "controller_mode": MoPropertyMeta("controller_mode", "controllerMode", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["AHCI", "HBA", "M2HWRAID", "NVME", "PHBA", "PRAID", "RAID", "SAS4", "SWRAID", "XSDS", "unknown"], []),
         "controller_type": MoPropertyMeta("controller_type", "controllerType", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["external", "internal"], []),
         "deleted": MoPropertyMeta("deleted", "deleted", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "deprecated": MoPropertyMeta("deprecated", "deprecated", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

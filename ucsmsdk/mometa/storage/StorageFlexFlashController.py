@@ -213,6 +213,15 @@ class StorageFlexFlashControllerConsts:
     FSM_STATUS_NOP = "nop"
     HAS_ERROR_ERROR = "error"
     HAS_ERROR_NO_ERROR = "no_error"
+    HOTSWAP_THERMAL_LOWER_CRITICAL = "lower-critical"
+    HOTSWAP_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    HOTSWAP_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    HOTSWAP_THERMAL_NOT_SUPPORTED = "not-supported"
+    HOTSWAP_THERMAL_OK = "ok"
+    HOTSWAP_THERMAL_UNKNOWN = "unknown"
+    HOTSWAP_THERMAL_UPPER_CRITICAL = "upper-critical"
+    HOTSWAP_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    HOTSWAP_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
     INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
     INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -310,6 +319,15 @@ class StorageFlexFlashControllerConsts:
     OPERATION_REQUEST_RESET = "reset"
     OPERATION_REQUEST_UNKNOWN = "unknown"
     OPERATION_REQUEST_UNPAIR = "unpair"
+    OUTLET_THERMAL_LOWER_CRITICAL = "lower-critical"
+    OUTLET_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    OUTLET_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    OUTLET_THERMAL_NOT_SUPPORTED = "not-supported"
+    OUTLET_THERMAL_OK = "ok"
+    OUTLET_THERMAL_UNKNOWN = "unknown"
+    OUTLET_THERMAL_UPPER_CRITICAL = "upper-critical"
+    OUTLET_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    OUTLET_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     PERF_LOWER_CRITICAL = "lower-critical"
     PERF_LOWER_NON_CRITICAL = "lower-non-critical"
     PERF_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -421,6 +439,7 @@ class StorageFlexFlashController(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, None, None, None, None, ["MOpsFormatBegin", "MOpsFormatFail", "MOpsFormatFormat", "MOpsFormatSuccess", "MOpsPairBegin", "MOpsPairFail", "MOpsPairPair", "MOpsPairSuccess", "MOpsResetBegin", "MOpsResetFail", "MOpsResetReset", "MOpsResetSuccess", "nop"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version223a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "has_error": MoPropertyMeta("has_error", "hasError", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["error", "no_error"], []),
+        "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version221b, MoPropertyMeta.NAMING, 0x10, None, None, None, [], ["1-64"]),
         "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "is_card_mismatch": MoPropertyMeta("is_card_mismatch", "isCardMismatch", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["MATCH", "MISMATCH", "NA"], []),
@@ -432,6 +451,7 @@ class StorageFlexFlashController(ManagedObject):
         "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
         "operating_mode": MoPropertyMeta("operating_mode", "operatingMode", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["independent-drives", "mirror", "unknown"], []),
         "operation_request": MoPropertyMeta("operation_request", "operationRequest", "string", VersionMeta.Version223a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["format", "pair", "reset", "unknown", "unpair"], []),
+        "outlet_thermal": MoPropertyMeta("outlet_thermal", "outletThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "pci_addr": MoPropertyMeta("pci_addr", "pciAddr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "pci_slot": MoPropertyMeta("pci_slot", "pciSlot", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "perf": MoPropertyMeta("perf", "perf", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
@@ -475,6 +495,7 @@ class StorageFlexFlashController(ManagedObject):
         "fsmStatus": "fsm_status", 
         "fsmTry": "fsm_try", 
         "hasError": "has_error", 
+        "hotswapThermal": "hotswap_thermal", 
         "id": "id", 
         "inlet2Thermal": "inlet2_thermal", 
         "isCardMismatch": "is_card_mismatch", 
@@ -486,6 +507,7 @@ class StorageFlexFlashController(ManagedObject):
         "operability": "operability", 
         "operatingMode": "operating_mode", 
         "operationRequest": "operation_request", 
+        "outletThermal": "outlet_thermal", 
         "pciAddr": "pci_addr", 
         "pciSlot": "pci_slot", 
         "perf": "perf", 
@@ -530,6 +552,7 @@ class StorageFlexFlashController(ManagedObject):
         self.fsm_status = None
         self.fsm_try = None
         self.has_error = None
+        self.hotswap_thermal = None
         self.inlet2_thermal = None
         self.is_card_mismatch = None
         self.is_format_fsm_running = None
@@ -540,6 +563,7 @@ class StorageFlexFlashController(ManagedObject):
         self.operability = None
         self.operating_mode = None
         self.operation_request = None
+        self.outlet_thermal = None
         self.pci_addr = None
         self.pci_slot = None
         self.perf = None

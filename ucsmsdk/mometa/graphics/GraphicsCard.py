@@ -9,6 +9,15 @@ class GraphicsCardConsts:
     CEC_PRESENT_NA = "NA"
     CEC_PRESENT_NO = "No"
     CEC_PRESENT_YES = "Yes"
+    HOTSWAP_THERMAL_LOWER_CRITICAL = "lower-critical"
+    HOTSWAP_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    HOTSWAP_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    HOTSWAP_THERMAL_NOT_SUPPORTED = "not-supported"
+    HOTSWAP_THERMAL_OK = "ok"
+    HOTSWAP_THERMAL_UNKNOWN = "unknown"
+    HOTSWAP_THERMAL_UPPER_CRITICAL = "upper-critical"
+    HOTSWAP_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    HOTSWAP_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
     INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
     INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -103,6 +112,15 @@ class GraphicsCardConsts:
     OPERABILITY_UNSUPPORTED_CONFIG = "unsupported-config"
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
+    OUTLET_THERMAL_LOWER_CRITICAL = "lower-critical"
+    OUTLET_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    OUTLET_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    OUTLET_THERMAL_NOT_SUPPORTED = "not-supported"
+    OUTLET_THERMAL_OK = "ok"
+    OUTLET_THERMAL_UNKNOWN = "unknown"
+    OUTLET_THERMAL_UPPER_CRITICAL = "upper-critical"
+    OUTLET_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    OUTLET_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     PERF_LOWER_CRITICAL = "lower-critical"
     PERF_LOWER_NON_CRITICAL = "lower-non-critical"
     PERF_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -182,6 +200,7 @@ class GraphicsCard(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "expander_slot": MoPropertyMeta("expander_slot", "expanderSlot", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "firmware_version": MoPropertyMeta("firmware_version", "firmwareVersion", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version213a, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []),
         "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "is_supported": MoPropertyMeta("is_supported", "isSupported", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
@@ -192,9 +211,11 @@ class GraphicsCard(ManagedObject):
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
         "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
+        "outlet_thermal": MoPropertyMeta("outlet_thermal", "outletThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "pci_addr": MoPropertyMeta("pci_addr", "pciAddr", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "pci_addr_list": MoPropertyMeta("pci_addr_list", "pciAddrList", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "pci_slot": MoPropertyMeta("pci_slot", "pciSlot", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "pci_switch_addr": MoPropertyMeta("pci_switch_addr", "pciSwitchAddr", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version402a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "perf": MoPropertyMeta("perf", "perf", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "power": MoPropertyMeta("power", "power", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "error", "failed", "not-supported", "off", "offduty", "offline", "ok", "on", "online", "power-save", "test", "unknown"], []),
@@ -222,6 +243,7 @@ class GraphicsCard(ManagedObject):
         "dn": "dn", 
         "expanderSlot": "expander_slot", 
         "firmwareVersion": "firmware_version", 
+        "hotswapThermal": "hotswap_thermal", 
         "id": "id", 
         "inlet2Thermal": "inlet2_thermal", 
         "isSupported": "is_supported", 
@@ -232,9 +254,11 @@ class GraphicsCard(ManagedObject):
         "operQualifierReason": "oper_qualifier_reason", 
         "operState": "oper_state", 
         "operability": "operability", 
+        "outletThermal": "outlet_thermal", 
         "pciAddr": "pci_addr", 
         "pciAddrList": "pci_addr_list", 
         "pciSlot": "pci_slot", 
+        "pciSwitchAddr": "pci_switch_addr", 
         "peerDn": "peer_dn", 
         "perf": "perf", 
         "power": "power", 
@@ -263,6 +287,7 @@ class GraphicsCard(ManagedObject):
         self.device_id = None
         self.expander_slot = None
         self.firmware_version = None
+        self.hotswap_thermal = None
         self.inlet2_thermal = None
         self.is_supported = None
         self.lc = None
@@ -272,9 +297,11 @@ class GraphicsCard(ManagedObject):
         self.oper_qualifier_reason = None
         self.oper_state = None
         self.operability = None
+        self.outlet_thermal = None
         self.pci_addr = None
         self.pci_addr_list = None
         self.pci_slot = None
+        self.pci_switch_addr = None
         self.peer_dn = None
         self.perf = None
         self.power = None

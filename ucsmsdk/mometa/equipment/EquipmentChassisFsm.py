@@ -15,6 +15,7 @@ class EquipmentChassisFsmConsts:
     CURRENT_FSM_FW_UPGRADE = "FwUpgrade"
     CURRENT_FSM_OOB_STORAGE_ADMIN_CFG = "OobStorageAdminCfg"
     CURRENT_FSM_POWER_CAP = "PowerCap"
+    CURRENT_FSM_POWER_EXTENDED_POLICY_CONFIG = "PowerExtendedPolicyConfig"
     CURRENT_FSM_POWER_SAVE_POLICY_CONFIG = "PowerSavePolicyConfig"
     CURRENT_FSM_PSU_POLICY_CONFIG = "PsuPolicyConfig"
     CURRENT_FSM_REMOVE_CHASSIS = "RemoveChassis"
@@ -172,7 +173,7 @@ class EquipmentChassisFsm(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "completion_time": MoPropertyMeta("completion_time", "completionTime", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []),
-        "current_fsm": MoPropertyMeta("current_fsm", "currentFsm", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Associate", "ChassisUpgrade", "Disassociate", "DynamicReallocation", "FanPolicyConfig", "FwUpgrade", "OobStorageAdminCfg", "PowerCap", "PowerSavePolicyConfig", "PsuPolicyConfig", "RemoveChassis", "nop"], []),
+        "current_fsm": MoPropertyMeta("current_fsm", "currentFsm", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Associate", "ChassisUpgrade", "Disassociate", "DynamicReallocation", "FanPolicyConfig", "FwUpgrade", "OobStorageAdminCfg", "PowerCap", "PowerExtendedPolicyConfig", "PowerSavePolicyConfig", "PsuPolicyConfig", "RemoveChassis", "nop"], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []),
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["fail", "inProgress", "nop", "pending", "skip", "success", "throttled"], []),

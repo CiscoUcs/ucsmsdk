@@ -6,6 +6,15 @@ from ...ucsmeta import VersionMeta
 
 
 class EquipmentFanModuleConsts:
+    HOTSWAP_THERMAL_LOWER_CRITICAL = "lower-critical"
+    HOTSWAP_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    HOTSWAP_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    HOTSWAP_THERMAL_NOT_SUPPORTED = "not-supported"
+    HOTSWAP_THERMAL_OK = "ok"
+    HOTSWAP_THERMAL_UNKNOWN = "unknown"
+    HOTSWAP_THERMAL_UPPER_CRITICAL = "upper-critical"
+    HOTSWAP_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    HOTSWAP_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
     INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
     INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -90,6 +99,15 @@ class EquipmentFanModuleConsts:
     OPERABILITY_UNSUPPORTED_CONFIG = "unsupported-config"
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
+    OUTLET_THERMAL_LOWER_CRITICAL = "lower-critical"
+    OUTLET_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    OUTLET_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    OUTLET_THERMAL_NOT_SUPPORTED = "not-supported"
+    OUTLET_THERMAL_OK = "ok"
+    OUTLET_THERMAL_UNKNOWN = "unknown"
+    OUTLET_THERMAL_UPPER_CRITICAL = "upper-critical"
+    OUTLET_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    OUTLET_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     PERF_LOWER_CRITICAL = "lower-critical"
     PERF_LOWER_NON_CRITICAL = "lower-non-critical"
     PERF_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -159,13 +177,14 @@ class EquipmentFanModule(ManagedObject):
     consts = EquipmentFanModuleConsts()
     naming_props = set(['tray', 'id'])
 
-    mo_meta = MoMeta("EquipmentFanModule", "equipmentFanModule", "fan-module-[tray]-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['computeRackUnit', 'equipmentChassis', 'equipmentRackEnclosure', 'networkElement'], ['equipmentBeaconLed', 'equipmentFan', 'equipmentFanModuleStats', 'equipmentHealthLed', 'equipmentIndicatorLed', 'equipmentLocatorLed', 'faultInst'], ["Get"])
+    mo_meta = MoMeta("EquipmentFanModule", "equipmentFanModule", "fan-module-[tray]-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['computeRackUnit', 'equipmentChassis', 'equipmentCrossFabricModule', 'equipmentIOCard', 'equipmentRackEnclosure', 'networkElement'], ['equipmentBeaconLed', 'equipmentFan', 'equipmentFanModuleStats', 'equipmentHealthLed', 'equipmentIOCardFanModuleStats', 'equipmentIndicatorLed', 'equipmentLocatorLed', 'faultInst'], ["Get"])
 
     prop_meta = {
         "asset_tag": MoPropertyMeta("asset_tag", "assetTag", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
+        "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, None, None, None, [], ["1-8"]),
         "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "mfg_time": MoPropertyMeta("mfg_time", "mfgTime", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["not-applicable"], []),
@@ -173,6 +192,7 @@ class EquipmentFanModule(ManagedObject):
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
         "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
+        "outlet_thermal": MoPropertyMeta("outlet_thermal", "outletThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "part_number": MoPropertyMeta("part_number", "partNumber", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "perf": MoPropertyMeta("perf", "perf", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "power": MoPropertyMeta("power", "power", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "error", "failed", "not-supported", "off", "offduty", "offline", "ok", "on", "online", "power-save", "test", "unknown"], []),
@@ -194,6 +214,7 @@ class EquipmentFanModule(ManagedObject):
         "childAction": "child_action", 
         "dn": "dn", 
         "fltAggr": "flt_aggr", 
+        "hotswapThermal": "hotswap_thermal", 
         "id": "id", 
         "inlet2Thermal": "inlet2_thermal", 
         "mfgTime": "mfg_time", 
@@ -201,6 +222,7 @@ class EquipmentFanModule(ManagedObject):
         "operQualifierReason": "oper_qualifier_reason", 
         "operState": "oper_state", 
         "operability": "operability", 
+        "outletThermal": "outlet_thermal", 
         "partNumber": "part_number", 
         "perf": "perf", 
         "power": "power", 
@@ -224,12 +246,14 @@ class EquipmentFanModule(ManagedObject):
         self.asset_tag = None
         self.child_action = None
         self.flt_aggr = None
+        self.hotswap_thermal = None
         self.inlet2_thermal = None
         self.mfg_time = None
         self.model = None
         self.oper_qualifier_reason = None
         self.oper_state = None
         self.operability = None
+        self.outlet_thermal = None
         self.part_number = None
         self.perf = None
         self.power = None

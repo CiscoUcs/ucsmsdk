@@ -9,6 +9,19 @@ class AdaptorUnitConsts:
     ADMIN_POWER_STATE_NONE = "none"
     ADMIN_POWER_STATE_RESET_POWER = "reset-power"
     CHASSIS_ID_N_A = "N/A"
+    ERROR_CODE_ASIC_FATAL_ERROR = "asic-fatal-error"
+    ERROR_CODE_FCPU_ERROR = "fcpu-error"
+    ERROR_CODE_NO_ERROR = "no-error"
+    ERROR_CODE_PCIE_UNSTABLE_LINK = "pcie-unstable-link"
+    HOTSWAP_THERMAL_LOWER_CRITICAL = "lower-critical"
+    HOTSWAP_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    HOTSWAP_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    HOTSWAP_THERMAL_NOT_SUPPORTED = "not-supported"
+    HOTSWAP_THERMAL_OK = "ok"
+    HOTSWAP_THERMAL_UNKNOWN = "unknown"
+    HOTSWAP_THERMAL_UPPER_CRITICAL = "upper-critical"
+    HOTSWAP_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    HOTSWAP_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
     INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
     INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -100,6 +113,15 @@ class AdaptorUnitConsts:
     OPERABILITY_UNSUPPORTED_CONFIG = "unsupported-config"
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
+    OUTLET_THERMAL_LOWER_CRITICAL = "lower-critical"
+    OUTLET_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    OUTLET_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    OUTLET_THERMAL_NOT_SUPPORTED = "not-supported"
+    OUTLET_THERMAL_OK = "ok"
+    OUTLET_THERMAL_UNKNOWN = "unknown"
+    OUTLET_THERMAL_UPPER_CRITICAL = "upper-critical"
+    OUTLET_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    OUTLET_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     PERF_LOWER_CRITICAL = "lower-critical"
     PERF_LOWER_NON_CRITICAL = "lower-non-critical"
     PERF_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -143,6 +165,10 @@ class AdaptorUnitConsts:
     PRESENCE_NOT_SUPPORTED = "not-supported"
     PRESENCE_UNAUTHORIZED = "unauthorized"
     PRESENCE_UNKNOWN = "unknown"
+    SWM_MODE_FALSE = "false"
+    SWM_MODE_NO = "no"
+    SWM_MODE_TRUE = "true"
+    SWM_MODE_YES = "yes"
     THERMAL_LOWER_CRITICAL = "lower-critical"
     THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
     THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -152,6 +178,8 @@ class AdaptorUnitConsts:
     THERMAL_UPPER_CRITICAL = "upper-critical"
     THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
     THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
+    UP_LINK_CONNECTIVITY_CROSS_CONNECTED = "cross-connected"
+    UP_LINK_CONNECTIVITY_INLINE = "inline"
     VISIBILITY_NOT_VISIBLE = "not-visible"
     VISIBILITY_VISIBLE = "visible"
     VOLTAGE_LOWER_CRITICAL = "lower-critical"
@@ -171,7 +199,7 @@ class AdaptorUnit(ManagedObject):
     consts = AdaptorUnitConsts()
     naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorUnit", "adaptorUnit", "adaptor-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-policy"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], ['adaptorExtEthIf', 'adaptorExtEthIfPc', 'adaptorHostEthIf', 'adaptorHostFcIf', 'adaptorHostIscsiIf', 'adaptorHostPort', 'adaptorHostScsiIf', 'adaptorHostServiceEthIf', 'adaptorMenloDcePortStats', 'adaptorMenloEthErrorStats', 'adaptorMenloEthStats', 'adaptorMenloFcErrorStats', 'adaptorMenloFcStats', 'adaptorMenloHostPortStats', 'adaptorMenloMcpuErrorStats', 'adaptorMenloMcpuStats', 'adaptorMenloNetEgStats', 'adaptorMenloNetInStats', 'adaptorMenloQErrorStats', 'adaptorMenloQStats', 'adaptorUnitExtn', 'dcxNs', 'equipmentInventoryStatus', 'equipmentPOST', 'equipmentPciDef', 'faultInst', 'mgmtController'], ["Get"])
+    mo_meta = MoMeta("AdaptorUnit", "adaptorUnit", "adaptor-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-policy"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], ['adaptorExtEthIf', 'adaptorExtEthIfPc', 'adaptorHostEthIf', 'adaptorHostFcIf', 'adaptorHostIscsiIf', 'adaptorHostPort', 'adaptorHostScsiIf', 'adaptorHostServiceEthIf', 'adaptorMenloDcePortStats', 'adaptorMenloEthErrorStats', 'adaptorMenloEthStats', 'adaptorMenloFcErrorStats', 'adaptorMenloFcStats', 'adaptorMenloHostPortStats', 'adaptorMenloMcpuErrorStats', 'adaptorMenloMcpuStats', 'adaptorMenloNetEgStats', 'adaptorMenloNetInStats', 'adaptorMenloQErrorStats', 'adaptorMenloQStats', 'adaptorUnitExtn', 'dcxNs', 'equipmentFruComponent', 'equipmentInventoryStatus', 'equipmentPOST', 'equipmentPciDef', 'faultInst', 'mgmtController'], ["Get"])
 
     prop_meta = {
         "admin_power_state": MoPropertyMeta("admin_power_state", "adminPowerState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["none", "reset-power"], []),
@@ -185,7 +213,9 @@ class AdaptorUnit(ManagedObject):
         "conn_status": MoPropertyMeta("conn_status", "connStatus", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|A|B),){0,3}(defaultValue|unknown|A|B){0,1}""", [], []),
         "discovery_status": MoPropertyMeta("discovery_status", "discoveryStatus", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|A|B),){0,3}(defaultValue|unknown|A|B){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "error_code": MoPropertyMeta("error_code", "errorCode", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["asic-fatal-error", "fcpu-error", "no-error", "pcie-unstable-link"], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
+        "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, None, None, None, [], ["1-5000"]),
         "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "integrated": MoPropertyMeta("integrated", "integrated", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
@@ -197,6 +227,7 @@ class AdaptorUnit(ManagedObject):
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
         "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
+        "outlet_thermal": MoPropertyMeta("outlet_thermal", "outletThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "part_number": MoPropertyMeta("part_number", "partNumber", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "pci_addr": MoPropertyMeta("pci_addr", "pciAddr", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "pci_slot": MoPropertyMeta("pci_slot", "pciSlot", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -209,7 +240,9 @@ class AdaptorUnit(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "swm_mode": MoPropertyMeta("swm_mode", "swmMode", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
+        "up_link_connectivity": MoPropertyMeta("up_link_connectivity", "upLinkConnectivity", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cross-connected", "inline"], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "vid": MoPropertyMeta("vid", "vid", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "visibility": MoPropertyMeta("visibility", "visibility", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-visible", "visible"], []),
@@ -228,7 +261,9 @@ class AdaptorUnit(ManagedObject):
         "connStatus": "conn_status", 
         "discoveryStatus": "discovery_status", 
         "dn": "dn", 
+        "errorCode": "error_code", 
         "fltAggr": "flt_aggr", 
+        "hotswapThermal": "hotswap_thermal", 
         "id": "id", 
         "inlet2Thermal": "inlet2_thermal", 
         "integrated": "integrated", 
@@ -240,6 +275,7 @@ class AdaptorUnit(ManagedObject):
         "operQualifierReason": "oper_qualifier_reason", 
         "operState": "oper_state", 
         "operability": "operability", 
+        "outletThermal": "outlet_thermal", 
         "partNumber": "part_number", 
         "pciAddr": "pci_addr", 
         "pciSlot": "pci_slot", 
@@ -252,7 +288,9 @@ class AdaptorUnit(ManagedObject):
         "sacl": "sacl", 
         "serial": "serial", 
         "status": "status", 
+        "swmMode": "swm_mode", 
         "thermal": "thermal", 
+        "upLinkConnectivity": "up_link_connectivity", 
         "vendor": "vendor", 
         "vid": "vid", 
         "visibility": "visibility", 
@@ -272,7 +310,9 @@ class AdaptorUnit(ManagedObject):
         self.conn_path = None
         self.conn_status = None
         self.discovery_status = None
+        self.error_code = None
         self.flt_aggr = None
+        self.hotswap_thermal = None
         self.inlet2_thermal = None
         self.integrated = None
         self.location_dn = None
@@ -283,6 +323,7 @@ class AdaptorUnit(ManagedObject):
         self.oper_qualifier_reason = None
         self.oper_state = None
         self.operability = None
+        self.outlet_thermal = None
         self.part_number = None
         self.pci_addr = None
         self.pci_slot = None
@@ -294,7 +335,9 @@ class AdaptorUnit(ManagedObject):
         self.sacl = None
         self.serial = None
         self.status = None
+        self.swm_mode = None
         self.thermal = None
+        self.up_link_connectivity = None
         self.vendor = None
         self.vid = None
         self.visibility = None

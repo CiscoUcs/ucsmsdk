@@ -6,6 +6,15 @@ from ...ucsmeta import VersionMeta
 
 
 class EquipmentSwitchCardConsts:
+    HOTSWAP_THERMAL_LOWER_CRITICAL = "lower-critical"
+    HOTSWAP_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    HOTSWAP_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    HOTSWAP_THERMAL_NOT_SUPPORTED = "not-supported"
+    HOTSWAP_THERMAL_OK = "ok"
+    HOTSWAP_THERMAL_UNKNOWN = "unknown"
+    HOTSWAP_THERMAL_UPPER_CRITICAL = "upper-critical"
+    HOTSWAP_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    HOTSWAP_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
     INLET2_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
     INLET2_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -89,6 +98,15 @@ class EquipmentSwitchCardConsts:
     OPERABILITY_UNSUPPORTED_CONFIG = "unsupported-config"
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
+    OUTLET_THERMAL_LOWER_CRITICAL = "lower-critical"
+    OUTLET_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    OUTLET_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    OUTLET_THERMAL_NOT_SUPPORTED = "not-supported"
+    OUTLET_THERMAL_OK = "ok"
+    OUTLET_THERMAL_UNKNOWN = "unknown"
+    OUTLET_THERMAL_UPPER_CRITICAL = "upper-critical"
+    OUTLET_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    OUTLET_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     PERF_LOWER_CRITICAL = "lower-critical"
     PERF_LOWER_NON_CRITICAL = "lower-non-critical"
     PERF_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -178,6 +196,7 @@ class EquipmentSwitchCard(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
+        "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []),
         "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -185,6 +204,7 @@ class EquipmentSwitchCard(ManagedObject):
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
         "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
+        "outlet_thermal": MoPropertyMeta("outlet_thermal", "outletThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "perf": MoPropertyMeta("perf", "perf", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "power": MoPropertyMeta("power", "power", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "error", "failed", "not-supported", "off", "offduty", "offline", "ok", "on", "online", "power-save", "test", "unknown"], []),
         "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []),
@@ -205,6 +225,7 @@ class EquipmentSwitchCard(ManagedObject):
         "descr": "descr", 
         "dn": "dn", 
         "fltAggr": "flt_aggr", 
+        "hotswapThermal": "hotswap_thermal", 
         "id": "id", 
         "inlet2Thermal": "inlet2_thermal", 
         "model": "model", 
@@ -212,6 +233,7 @@ class EquipmentSwitchCard(ManagedObject):
         "operQualifierReason": "oper_qualifier_reason", 
         "operState": "oper_state", 
         "operability": "operability", 
+        "outletThermal": "outlet_thermal", 
         "perf": "perf", 
         "power": "power", 
         "presence": "presence", 
@@ -233,12 +255,14 @@ class EquipmentSwitchCard(ManagedObject):
         self.child_action = None
         self.descr = None
         self.flt_aggr = None
+        self.hotswap_thermal = None
         self.inlet2_thermal = None
         self.model = None
         self.num_ports = None
         self.oper_qualifier_reason = None
         self.oper_state = None
         self.operability = None
+        self.outlet_thermal = None
         self.perf = None
         self.power = None
         self.presence = None

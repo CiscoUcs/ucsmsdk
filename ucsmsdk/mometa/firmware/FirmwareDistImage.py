@@ -13,6 +13,7 @@ class FirmwareDistImageConsts:
     TYPE_CATALOG = "catalog"
     TYPE_CHASSIS_BOARD_CONTROLLER = "chassis-board-controller"
     TYPE_CMC = "cmc"
+    TYPE_CPLD = "cpld"
     TYPE_DEBUG_PLUG_IN = "debug-plug-in"
     TYPE_DIAG = "diag"
     TYPE_FEX = "fex"
@@ -31,6 +32,7 @@ class FirmwareDistImageConsts:
     TYPE_PERSISTENT_MEMORY_DIMM = "persistent-memory-dimm"
     TYPE_PLX_SWITCH = "plx-switch"
     TYPE_PSU = "psu"
+    TYPE_RETIMER = "retimer"
     TYPE_SAS_EXP_REG_FW = "sas-exp-reg-fw"
     TYPE_SAS_EXPANDER = "sas-expander"
     TYPE_STORAGE_CONTROLLER = "storage-controller"
@@ -42,6 +44,7 @@ class FirmwareDistImageConsts:
     TYPE_SWITCH_KERNEL = "switch-kernel"
     TYPE_SWITCH_SOFTWARE = "switch-software"
     TYPE_SYSTEM = "system"
+    TYPE_UBM = "ubm"
     TYPE_UNSPECIFIED = "unspecified"
 
 
@@ -61,7 +64,7 @@ class FirmwareDistImage(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "catalog", "chassis-board-controller", "cmc", "debug-plug-in", "diag", "fex", "fi-service-pack", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "iocard", "local-disk", "mgmt-ext", "mgmt-service-pack", "nvme-mswitch", "persistent-memory-dimm", "plx-switch", "psu", "sas-exp-reg-fw", "sas-expander", "storage-controller", "storage-controller-onboard-device", "storage-controller-onboard-device-cpld", "storage-dev-bridge", "storage-node-controller", "switch", "switch-kernel", "switch-software", "system", "unspecified"], []),
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["adaptor", "blade-bios", "blade-controller", "board-controller", "catalog", "chassis-board-controller", "cmc", "cpld", "debug-plug-in", "diag", "fex", "fi-service-pack", "flexflash-controller", "graphics-card", "host-hba", "host-hba-optionrom", "host-nic", "host-nic-optionrom", "iocard", "local-disk", "mgmt-ext", "mgmt-service-pack", "nvme-mswitch", "persistent-memory-dimm", "plx-switch", "psu", "retimer", "sas-exp-reg-fw", "sas-expander", "storage-controller", "storage-controller-onboard-device", "storage-controller-onboard-device-cpld", "storage-dev-bridge", "storage-node-controller", "switch", "switch-kernel", "switch-software", "system", "ubm", "unspecified"], []),
     }
 
     prop_map = {

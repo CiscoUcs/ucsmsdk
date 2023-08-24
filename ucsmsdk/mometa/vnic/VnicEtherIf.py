@@ -11,6 +11,10 @@ class VnicEtherIfConsts:
     DEFAULT_NET_NO = "no"
     DEFAULT_NET_TRUE = "true"
     DEFAULT_NET_YES = "yes"
+    IS_QIN_QVLAN_FALSE = "false"
+    IS_QIN_QVLAN_NO = "no"
+    IS_QIN_QVLAN_TRUE = "true"
+    IS_QIN_QVLAN_YES = "yes"
     OPER_STATE_DOWN = "down"
     OPER_STATE_FAILED = "failed"
     OPER_STATE_INDETERMINATE = "indeterminate"
@@ -44,7 +48,7 @@ class VnicEtherIf(ManagedObject):
     consts = VnicEtherIfConsts()
     naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicEtherIf", "vnicEtherIf", "if-[name]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin"], ['extvmmVMNetworkDefinition', 'fabricFlowMonExporterProfile', 'vnicEther', 'vnicIpc', 'vnicLanConnTempl', 'vnicProfile'], ['fabricNetflowIPv4Addr', 'faultInst', 'vnicIPv4If'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicEtherIf", "vnicEtherIf", "if-[name]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin"], ['extvmmVMNetworkDefinition', 'fabricFlowMonExporterProfile', 'vnicEther', 'vnicIpc', 'vnicLanConnTempl', 'vnicProfile'], ['fabricNetflowIPv4Addr', 'faultInst', 'vnicIPv4If'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", ["derived"], []),
@@ -53,7 +57,8 @@ class VnicEtherIf(ManagedObject):
         "default_net": MoPropertyMeta("default_net", "defaultNet", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["false", "no", "true", "yes"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{1,32}""", [], []),
+        "is_qin_q_vlan": MoPropertyMeta("is_qin_q_vlan", "isQinQVlan", "string", VersionMeta.Version432b, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["false", "no", "true", "yes"], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20, None, None, r"""[\-\.:_a-zA-Z0-9]{1,32}""", [], []),
         "oper_primary_vnet_dn": MoPropertyMeta("oper_primary_vnet_dn", "operPrimaryVnetDn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "oper_primary_vnet_name": MoPropertyMeta("oper_primary_vnet_name", "operPrimaryVnetName", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["down", "failed", "indeterminate", "up"], []),
@@ -62,10 +67,10 @@ class VnicEtherIf(ManagedObject):
         "owner": MoPropertyMeta("owner", "owner", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["conn_policy", "initiator_policy", "logical", "physical", "policy", "unknown"], []),
         "prop_acl": MoPropertyMeta("prop_acl", "propAcl", "ulong", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "pub_nw_id": MoPropertyMeta("pub_nw_id", "pubNwId", "uint", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "sharing": MoPropertyMeta("sharing", "sharing", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["community", "isolated", "none", "primary"], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "A-B", "B", "B-A", "NONE", "dual"], []),
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ether", "fc", "ipc", "scsi", "unknown"], []),
         "vnet": MoPropertyMeta("vnet", "vnet", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-4093"]),
@@ -78,6 +83,7 @@ class VnicEtherIf(ManagedObject):
         "defaultNet": "default_net", 
         "dn": "dn", 
         "fltAggr": "flt_aggr", 
+        "isQinQVlan": "is_qin_q_vlan", 
         "name": "name", 
         "operPrimaryVnetDn": "oper_primary_vnet_dn", 
         "operPrimaryVnetName": "oper_primary_vnet_name", 
@@ -104,6 +110,7 @@ class VnicEtherIf(ManagedObject):
         self.config_qualifier = None
         self.default_net = None
         self.flt_aggr = None
+        self.is_qin_q_vlan = None
         self.oper_primary_vnet_dn = None
         self.oper_primary_vnet_name = None
         self.oper_state = None

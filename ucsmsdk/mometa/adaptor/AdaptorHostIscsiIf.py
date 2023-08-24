@@ -29,6 +29,15 @@ class AdaptorHostIscsiIfConsts:
     HOST_VISIBLE_NO = "no"
     HOST_VISIBLE_OS_DEPENDENT = "os-dependent"
     HOST_VISIBLE_YES = "yes"
+    HOTSWAP_THERMAL_LOWER_CRITICAL = "lower-critical"
+    HOTSWAP_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    HOTSWAP_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    HOTSWAP_THERMAL_NOT_SUPPORTED = "not-supported"
+    HOTSWAP_THERMAL_OK = "ok"
+    HOTSWAP_THERMAL_UNKNOWN = "unknown"
+    HOTSWAP_THERMAL_UPPER_CRITICAL = "upper-critical"
+    HOTSWAP_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    HOTSWAP_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
     IF_ROLE_FCOE_STORAGE = "fcoe-storage"
@@ -142,6 +151,15 @@ class AdaptorHostIscsiIfConsts:
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
     ORDER_UNSPECIFIED = "unspecified"
+    OUTLET_THERMAL_LOWER_CRITICAL = "lower-critical"
+    OUTLET_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    OUTLET_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    OUTLET_THERMAL_NOT_SUPPORTED = "not-supported"
+    OUTLET_THERMAL_OK = "ok"
+    OUTLET_THERMAL_UNKNOWN = "unknown"
+    OUTLET_THERMAL_UPPER_CRITICAL = "upper-critical"
+    OUTLET_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    OUTLET_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     PEER_CHASSIS_ID_N_A = "N/A"
     PERF_LOWER_CRITICAL = "lower-critical"
     PERF_LOWER_NON_CRITICAL = "lower-non-critical"
@@ -237,6 +255,7 @@ class AdaptorHostIscsiIf(ManagedObject):
         "eth_ep_dn": MoPropertyMeta("eth_ep_dn", "ethEpDn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "host_visible": MoPropertyMeta("host_visible", "hostVisible", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "os-dependent", "yes"], []),
+        "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []),
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []),
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []),
@@ -253,6 +272,7 @@ class AdaptorHostIscsiIf(ManagedObject):
         "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
         "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["unspecified"], ["0-65535"]),
         "original_mac": MoPropertyMeta("original_mac", "originalMac", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []),
+        "outlet_thermal": MoPropertyMeta("outlet_thermal", "outletThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "pci_addr": MoPropertyMeta("pci_addr", "pciAddr", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "pci_func": MoPropertyMeta("pci_func", "pciFunc", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
         "pci_slot": MoPropertyMeta("pci_slot", "pciSlot", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
@@ -294,6 +314,7 @@ class AdaptorHostIscsiIf(ManagedObject):
         "ethEpDn": "eth_ep_dn", 
         "fltAggr": "flt_aggr", 
         "hostVisible": "host_visible", 
+        "hotswapThermal": "hotswap_thermal", 
         "id": "id", 
         "ifRole": "if_role", 
         "ifType": "if_type", 
@@ -310,6 +331,7 @@ class AdaptorHostIscsiIf(ManagedObject):
         "operability": "operability", 
         "order": "order", 
         "originalMac": "original_mac", 
+        "outletThermal": "outlet_thermal", 
         "pciAddr": "pci_addr", 
         "pciFunc": "pci_func", 
         "pciSlot": "pci_slot", 
@@ -352,6 +374,7 @@ class AdaptorHostIscsiIf(ManagedObject):
         self.eth_ep_dn = None
         self.flt_aggr = None
         self.host_visible = None
+        self.hotswap_thermal = None
         self.if_role = None
         self.if_type = None
         self.initiator_name = None
@@ -367,6 +390,7 @@ class AdaptorHostIscsiIf(ManagedObject):
         self.operability = None
         self.order = None
         self.original_mac = None
+        self.outlet_thermal = None
         self.pci_addr = None
         self.pci_func = None
         self.pci_slot = None

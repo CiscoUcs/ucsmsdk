@@ -60,6 +60,15 @@ class StorageControllerConsts:
     DISPLAY_TYPE_UNKNOWN = "unknown"
     FAULT_MONITORING_NOT_SUPPORTED = "notSupported"
     FAULT_MONITORING_SUPPORTED = "supported"
+    HOTSWAP_THERMAL_LOWER_CRITICAL = "lower-critical"
+    HOTSWAP_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    HOTSWAP_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    HOTSWAP_THERMAL_NOT_SUPPORTED = "not-supported"
+    HOTSWAP_THERMAL_OK = "ok"
+    HOTSWAP_THERMAL_UNKNOWN = "unknown"
+    HOTSWAP_THERMAL_UPPER_CRITICAL = "upper-critical"
+    HOTSWAP_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    HOTSWAP_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     ID_COUNT_MIN = "min"
     ID_COUNT_UNKNOWN = "unknown"
     INLET2_THERMAL_LOWER_CRITICAL = "lower-critical"
@@ -85,6 +94,7 @@ class StorageControllerConsts:
     MODE_PHBA = "PHBA"
     MODE_PRAID = "PRAID"
     MODE_RAID = "RAID"
+    MODE_SAS4 = "SAS4"
     MODE_SWRAID = "SWRAID"
     MODE_XSDS = "XSDS"
     MODE_UNKNOWN = "unknown"
@@ -174,6 +184,15 @@ class StorageControllerConsts:
     OPROM_BOOT_STATUS_DISABLED = "disabled"
     OPROM_BOOT_STATUS_ENABLED = "enabled"
     OPROM_BOOT_STATUS_UNKNOWN = "unknown"
+    OUTLET_THERMAL_LOWER_CRITICAL = "lower-critical"
+    OUTLET_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    OUTLET_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    OUTLET_THERMAL_NOT_SUPPORTED = "not-supported"
+    OUTLET_THERMAL_OK = "ok"
+    OUTLET_THERMAL_UNKNOWN = "unknown"
+    OUTLET_THERMAL_UPPER_CRITICAL = "upper-critical"
+    OUTLET_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    OUTLET_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     PERF_LOWER_CRITICAL = "lower-critical"
     PERF_LOWER_NON_CRITICAL = "lower-non-critical"
     PERF_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -271,7 +290,7 @@ class StorageController(ManagedObject):
     consts = StorageControllerConsts()
     naming_props = set(['type', 'id'])
 
-    mo_meta = MoMeta("StorageController", "storageController", "storage-[type]-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['computeBoard', 'equipmentChassis'], ['equipmentInventoryStatus', 'faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'lstorageControllerDef', 'mgmtController', 'storageDrive', 'storageEmbeddedStorage', 'storageEnclosure', 'storageLocalDisk', 'storageLocalDiskConfigDef', 'storageLocalDiskEp', 'storageLocalLun', 'storageMezzFlashLife', 'storageNvmeStats', 'storageNvmeStorage', 'storageOnboardDevice', 'storageOperation', 'storageRaidBattery', 'storageVirtualDrive', 'storageVirtualDriveEp'], ["Get"])
+    mo_meta = MoMeta("StorageController", "storageController", "storage-[type]-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['computeBoard', 'equipmentChassis'], ['equipmentFruComponent', 'equipmentInventoryStatus', 'faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'lstorageControllerDef', 'mgmtController', 'storageDrive', 'storageEmbeddedStorage', 'storageEnclosure', 'storageLocalDisk', 'storageLocalDiskConfigDef', 'storageLocalDiskEp', 'storageLocalLun', 'storageMezzFlashLife', 'storageNvmeStats', 'storageNvmeStorage', 'storageOnboardDevice', 'storageOperation', 'storageRaidBattery', 'storageVirtualDrive', 'storageVirtualDriveEp'], ["Get"])
 
     prop_meta = {
         "admin_action": MoPropertyMeta("admin_action", "adminAction", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["clean-hx-state", "clear-boot-configuration", "clear-foreign-configuration", "disable-security", "enable-security", "import-foreign-configuration", "modify-key", "rescan-hx-inventory", "resend-hx-key", "secure-hx-drives", "skip-initial-config", "test-kmip-connectivity", "unlock-disk", "unpin-cache-all", "unspecified"], []),
@@ -292,14 +311,15 @@ class StorageController(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
         "err_description": MoPropertyMeta("err_description", "errDescription", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 64, None, [], []),
         "fault_monitoring": MoPropertyMeta("fault_monitoring", "faultMonitoring", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["notSupported", "supported"], []),
+        "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "hw_revision": MoPropertyMeta("hw_revision", "hwRevision", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
-        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80, None, None, None, [], ["1-64"]),
+        "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80, None, None, None, [], ["1-104"]),
         "id_count": MoPropertyMeta("id_count", "idCount", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["min", "unknown"], ["0-4294967295"]),
         "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "jbod_mode": MoPropertyMeta("jbod_mode", "jbodMode", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled", "unknown"], []),
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []),
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
-        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["AHCI", "HBA", "M2HWRAID", "NVME", "PHBA", "PRAID", "RAID", "SWRAID", "XSDS", "unknown"], []),
+        "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["AHCI", "HBA", "M2HWRAID", "NVME", "PHBA", "PRAID", "RAID", "SAS4", "SWRAID", "XSDS", "unknown"], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "on_board_memory_present": MoPropertyMeta("on_board_memory_present", "onBoardMemoryPresent", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "unknown", "yes"], []),
         "on_board_memory_size": MoPropertyMeta("on_board_memory_size", "onBoardMemorySize", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unknown"], ["0-18446744073709551615"]),
@@ -309,6 +329,7 @@ class StorageController(ManagedObject):
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
         "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
         "oprom_boot_status": MoPropertyMeta("oprom_boot_status", "opromBootStatus", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled", "unknown"], []),
+        "outlet_thermal": MoPropertyMeta("outlet_thermal", "outletThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "part_number": MoPropertyMeta("part_number", "partNumber", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "pci_addr": MoPropertyMeta("pci_addr", "pciAddr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "pci_slot": MoPropertyMeta("pci_slot", "pciSlot", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -361,6 +382,7 @@ class StorageController(ManagedObject):
         "dn": "dn", 
         "errDescription": "err_description", 
         "faultMonitoring": "fault_monitoring", 
+        "hotswapThermal": "hotswap_thermal", 
         "hwRevision": "hw_revision", 
         "id": "id", 
         "idCount": "id_count", 
@@ -378,6 +400,7 @@ class StorageController(ManagedObject):
         "operState": "oper_state", 
         "operability": "operability", 
         "opromBootStatus": "oprom_boot_status", 
+        "outletThermal": "outlet_thermal", 
         "partNumber": "part_number", 
         "pciAddr": "pci_addr", 
         "pciSlot": "pci_slot", 
@@ -432,6 +455,7 @@ class StorageController(ManagedObject):
         self.display_type = None
         self.err_description = None
         self.fault_monitoring = None
+        self.hotswap_thermal = None
         self.hw_revision = None
         self.id_count = None
         self.inlet2_thermal = None
@@ -448,6 +472,7 @@ class StorageController(ManagedObject):
         self.oper_state = None
         self.operability = None
         self.oprom_boot_status = None
+        self.outlet_thermal = None
         self.part_number = None
         self.pci_addr = None
         self.pci_slot = None

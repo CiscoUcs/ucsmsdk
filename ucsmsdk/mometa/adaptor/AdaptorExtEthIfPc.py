@@ -6,6 +6,14 @@ from ...ucsmeta import VersionMeta
 
 
 class AdaptorExtEthIfPcConsts:
+    ADMIN_SPEED_100GBPS = "100gbps"
+    ADMIN_SPEED_10GBPS = "10gbps"
+    ADMIN_SPEED_1GBPS = "1gbps"
+    ADMIN_SPEED_20GBPS = "20gbps"
+    ADMIN_SPEED_25GBPS = "25gbps"
+    ADMIN_SPEED_40GBPS = "40gbps"
+    ADMIN_SPEED_AUTO = "auto"
+    ADMIN_SPEED_INDETERMINATE = "indeterminate"
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
     IF_ROLE_FCOE_STORAGE = "fcoe-storage"
@@ -44,6 +52,9 @@ class AdaptorExtEthIfPcConsts:
     OPER_STATE_SOFTWARE_FAILURE = "software-failure"
     OPER_STATE_UDLD_AGGR_DOWN = "udld-aggr-down"
     OPER_STATE_UP = "up"
+    SW_AUTO_NEG_25G = "25g"
+    SW_AUTO_NEG_OFF = "off"
+    SW_AUTO_NEG_ON = "on"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -58,6 +69,7 @@ class AdaptorExtEthIfPc(ManagedObject):
     mo_meta = MoMeta("AdaptorExtEthIfPc", "adaptorExtEthIfPc", "pc-[port_id]", VersionMeta.Version201m, "InputOutput", 0x7f, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance"], ['adaptorUnit', 'fabricLocale'], ['adaptorExtEthIfPcEp', 'dcxVIf'], ["Get"])
 
     prop_meta = {
+        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
@@ -75,12 +87,14 @@ class AdaptorExtEthIfPc(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "state_qual": MoPropertyMeta("state_qual", "stateQual", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "sw_auto_neg": MoPropertyMeta("sw_auto_neg", "swAutoNeg", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["25g", "off", "on"], []),
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []),
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []),
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []),
     }
 
     prop_map = {
+        "adminSpeed": "admin_speed", 
         "childAction": "child_action", 
         "dn": "dn", 
         "epDn": "ep_dn", 
@@ -98,6 +112,7 @@ class AdaptorExtEthIfPc(ManagedObject):
         "sacl": "sacl", 
         "stateQual": "state_qual", 
         "status": "status", 
+        "swAutoNeg": "sw_auto_neg", 
         "switchId": "switch_id", 
         "transport": "transport", 
         "type": "type", 
@@ -106,6 +121,7 @@ class AdaptorExtEthIfPc(ManagedObject):
     def __init__(self, parent_mo_or_dn, port_id, **kwargs):
         self._dirty_mask = 0
         self.port_id = port_id
+        self.admin_speed = None
         self.child_action = None
         self.ep_dn = None
         self.flt_aggr = None
@@ -120,6 +136,7 @@ class AdaptorExtEthIfPc(ManagedObject):
         self.sacl = None
         self.state_qual = None
         self.status = None
+        self.sw_auto_neg = None
         self.switch_id = None
         self.transport = None
         self.type = None

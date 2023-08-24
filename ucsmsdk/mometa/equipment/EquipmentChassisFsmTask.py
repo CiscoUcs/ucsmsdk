@@ -18,6 +18,7 @@ class EquipmentChassisFsmTaskConsts:
     ITEM_FW_UPGRADE = "FwUpgrade"
     ITEM_OOB_STORAGE_ADMIN_CFG = "OobStorageAdminCfg"
     ITEM_POWER_CAP = "PowerCap"
+    ITEM_POWER_EXTENDED_POLICY_CONFIG = "PowerExtendedPolicyConfig"
     ITEM_POWER_SAVE_POLICY_CONFIG = "PowerSavePolicyConfig"
     ITEM_PSU_POLICY_CONFIG = "PsuPolicyConfig"
     ITEM_REMOVE_CHASSIS = "RemoveChassis"
@@ -37,7 +38,7 @@ class EquipmentChassisFsmTask(ManagedObject):
         "completion": MoPropertyMeta("completion", "completion", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cancelled", "completed", "processing", "scheduled"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []),
         "flags": MoPropertyMeta("flags", "flags", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""(defaultValue){0,1}""", [], []),
-        "item": MoPropertyMeta("item", "item", "string", VersionMeta.Version111j, MoPropertyMeta.NAMING, None, None, None, None, ["Associate", "ChassisUpgrade", "Disassociate", "DynamicReallocation", "FanPolicyConfig", "FwUpgrade", "OobStorageAdminCfg", "PowerCap", "PowerSavePolicyConfig", "PsuPolicyConfig", "RemoveChassis", "nop"], []),
+        "item": MoPropertyMeta("item", "item", "string", VersionMeta.Version111j, MoPropertyMeta.NAMING, None, None, None, None, ["Associate", "ChassisUpgrade", "Disassociate", "DynamicReallocation", "FanPolicyConfig", "FwUpgrade", "OobStorageAdminCfg", "PowerCap", "PowerExtendedPolicyConfig", "PowerSavePolicyConfig", "PsuPolicyConfig", "RemoveChassis", "nop"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "seq_id": MoPropertyMeta("seq_id", "seqId", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

@@ -11,6 +11,8 @@ class AdaptorCapSpecConsts:
     FW_VERSION_OPR_NONE = "none"
     FW_VERSION_OPR_RANGE = "range"
     MAXIMUM_UNSPECIFIED = "unspecified"
+    RETIMER_SUPPORT_NO = "no"
+    RETIMER_SUPPORT_YES = "yes"
     TYPE_CDN_SUPPORT = "cdn-support"
     TYPE_ETH_FLOW_MONITORING_NETFLOW = "eth-flow-monitoring-netflow"
     TYPE_ETH_NVGRE = "eth-nvgre"
@@ -61,6 +63,7 @@ class AdaptorCapSpec(ManagedObject):
         "fw_version_opr": MoPropertyMeta("fw_version_opr", "fwVersionOpr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["gt", "lt", "none", "range"], []),
         "maximum": MoPropertyMeta("maximum", "maximum", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unspecified"], ["0-4294967295"]),
         "nf_version_lo": MoPropertyMeta("nf_version_lo", "nfVersionLo", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "retimer_support": MoPropertyMeta("retimer_support", "retimerSupport", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
@@ -75,6 +78,7 @@ class AdaptorCapSpec(ManagedObject):
         "fwVersionOpr": "fw_version_opr", 
         "maximum": "maximum", 
         "nfVersionLo": "nf_version_lo", 
+        "retimerSupport": "retimer_support", 
         "rn": "rn", 
         "sacl": "sacl", 
         "status": "status", 
@@ -90,6 +94,7 @@ class AdaptorCapSpec(ManagedObject):
         self.fw_version_opr = None
         self.maximum = None
         self.nf_version_lo = None
+        self.retimer_support = None
         self.sacl = None
         self.status = None
 

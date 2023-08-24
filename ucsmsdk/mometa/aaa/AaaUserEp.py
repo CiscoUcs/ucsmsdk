@@ -153,6 +153,10 @@ class AaaUserEpConsts:
     FSM_STATUS_UPDATE_USER_EP_SET_USER_PEER = "updateUserEpSetUserPeer"
     FSM_STATUS_UPDATE_USER_EP_SUCCESS = "updateUserEpSuccess"
     INT_ID_NONE = "none"
+    IS_PASSWORD_ENCRYPTION_KEY_SET_FALSE = "false"
+    IS_PASSWORD_ENCRYPTION_KEY_SET_NO = "no"
+    IS_PASSWORD_ENCRYPTION_KEY_SET_TRUE = "true"
+    IS_PASSWORD_ENCRYPTION_KEY_SET_YES = "yes"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
@@ -168,7 +172,7 @@ class AaaUserEp(ManagedObject):
     consts = AaaUserEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AaaUserEp", "aaaUserEp", "user-ext", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["aaa", "admin"], ['topSystem'], ['aaaEpLogin', 'aaaExtMgmtCutThruTkn', 'aaaLocale', 'aaaLoginProfile', 'aaaPreLoginBanner', 'aaaPwdProfile', 'aaaRemoteUser', 'aaaRole', 'aaaShellLogin', 'aaaUser', 'aaaUserEpFsm', 'aaaUserEpFsmTask', 'aaaWebLogin', 'eventInst', 'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("AaaUserEp", "aaaUserEp", "user-ext", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["aaa", "admin"], ['topSystem'], ['aaaEpLogin', 'aaaExtMgmtCutThruTkn', 'aaaLocale', 'aaaLoginProfile', 'aaaPreLoginBanner', 'aaaPwdProfile', 'aaaRemoteUser', 'aaaRole', 'aaaShellLogin', 'aaaUser', 'aaaUserEpFsm', 'aaaUserEpFsmTask', 'aaaWebLogin', 'eventInst', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
@@ -185,13 +189,15 @@ class AaaUserEp(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "updateUserEpBegin", "updateUserEpFail", "updateUserEpSetUserLocal", "updateUserEpSetUserPeer", "updateUserEpSuccess"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
+        "is_password_encryption_key_set": MoPropertyMeta("is_password_encryption_key_set", "isPasswordEncryptionKeySet", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "password_encryption_key": MoPropertyMeta("password_encryption_key", "passwordEncryptionKey", "string", VersionMeta.Version432b, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[!""#%&'\(\)\*\+,\-\./:;<>@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{8,127}""", [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []),
-        "pwd_strength_check": MoPropertyMeta("pwd_strength_check", "pwdStrengthCheck", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["false", "no", "true", "yes"], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["local", "pending-policy", "policy"], []),
+        "pwd_strength_check": MoPropertyMeta("pwd_strength_check", "pwdStrengthCheck", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["false", "no", "true", "yes"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 
     prop_map = {
@@ -209,7 +215,9 @@ class AaaUserEp(ManagedObject):
         "fsmStatus": "fsm_status", 
         "fsmTry": "fsm_try", 
         "intId": "int_id", 
+        "isPasswordEncryptionKeySet": "is_password_encryption_key_set", 
         "name": "name", 
+        "passwordEncryptionKey": "password_encryption_key", 
         "policyLevel": "policy_level", 
         "policyOwner": "policy_owner", 
         "pwdStrengthCheck": "pwd_strength_check", 
@@ -233,7 +241,9 @@ class AaaUserEp(ManagedObject):
         self.fsm_status = None
         self.fsm_try = None
         self.int_id = None
+        self.is_password_encryption_key_set = None
         self.name = None
+        self.password_encryption_key = None
         self.policy_level = None
         self.policy_owner = None
         self.pwd_strength_check = None

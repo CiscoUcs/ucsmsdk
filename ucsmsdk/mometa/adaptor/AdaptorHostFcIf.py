@@ -190,6 +190,15 @@ class AdaptorHostFcIfConsts:
     HOST_PORT_2 = "2"
     HOST_PORT_ANY = "ANY"
     HOST_PORT_NONE = "NONE"
+    HOTSWAP_THERMAL_LOWER_CRITICAL = "lower-critical"
+    HOTSWAP_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    HOTSWAP_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    HOTSWAP_THERMAL_NOT_SUPPORTED = "not-supported"
+    HOTSWAP_THERMAL_OK = "ok"
+    HOTSWAP_THERMAL_UNKNOWN = "unknown"
+    HOTSWAP_THERMAL_UPPER_CRITICAL = "upper-critical"
+    HOTSWAP_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    HOTSWAP_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
     IF_ROLE_FCOE_STORAGE = "fcoe-storage"
@@ -303,6 +312,15 @@ class AdaptorHostFcIfConsts:
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
     ORDER_UNSPECIFIED = "unspecified"
+    OUTLET_THERMAL_LOWER_CRITICAL = "lower-critical"
+    OUTLET_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    OUTLET_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    OUTLET_THERMAL_NOT_SUPPORTED = "not-supported"
+    OUTLET_THERMAL_OK = "ok"
+    OUTLET_THERMAL_UNKNOWN = "unknown"
+    OUTLET_THERMAL_UPPER_CRITICAL = "upper-critical"
+    OUTLET_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    OUTLET_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     PEER_CHASSIS_ID_N_A = "N/A"
     PERF_LOWER_CRITICAL = "lower-critical"
     PERF_LOWER_NON_CRITICAL = "lower-non-critical"
@@ -409,6 +427,7 @@ class AdaptorHostFcIf(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["CircuitResetBegin", "CircuitResetDisableA", "CircuitResetDisableB", "CircuitResetEnableA", "CircuitResetEnableB", "CircuitResetFail", "CircuitResetSuccess", "ResetFcPersBindingBegin", "ResetFcPersBindingExecuteLocal", "ResetFcPersBindingExecutePeer", "ResetFcPersBindingFail", "ResetFcPersBindingSuccess", "nop"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "host_port": MoPropertyMeta("host_port", "hostPort", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["1", "2", "ANY", "NONE"], []),
+        "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []),
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []),
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []),
@@ -426,6 +445,7 @@ class AdaptorHostFcIf(ManagedObject):
         "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["unspecified"], ["0-65535"]),
         "original_node_wwn": MoPropertyMeta("original_node_wwn", "originalNodeWwn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""(([A-Fa-f0-9][A-Fa-f0-9]:){7}[A-Fa-f0-9][A-Fa-f0-9])|0""", [], []),
         "original_wwn": MoPropertyMeta("original_wwn", "originalWwn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""(([A-Fa-f0-9][A-Fa-f0-9]:){7}[A-Fa-f0-9][A-Fa-f0-9])|0""", [], []),
+        "outlet_thermal": MoPropertyMeta("outlet_thermal", "outletThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "pci_addr": MoPropertyMeta("pci_addr", "pciAddr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "pci_func": MoPropertyMeta("pci_func", "pciFunc", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
         "pci_slot": MoPropertyMeta("pci_slot", "pciSlot", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
@@ -477,6 +497,7 @@ class AdaptorHostFcIf(ManagedObject):
         "fsmStatus": "fsm_status", 
         "fsmTry": "fsm_try", 
         "hostPort": "host_port", 
+        "hotswapThermal": "hotswap_thermal", 
         "id": "id", 
         "ifRole": "if_role", 
         "ifType": "if_type", 
@@ -494,6 +515,7 @@ class AdaptorHostFcIf(ManagedObject):
         "order": "order", 
         "originalNodeWwn": "original_node_wwn", 
         "originalWwn": "original_wwn", 
+        "outletThermal": "outlet_thermal", 
         "pciAddr": "pci_addr", 
         "pciFunc": "pci_func", 
         "pciSlot": "pci_slot", 
@@ -546,6 +568,7 @@ class AdaptorHostFcIf(ManagedObject):
         self.fsm_status = None
         self.fsm_try = None
         self.host_port = None
+        self.hotswap_thermal = None
         self.if_role = None
         self.if_type = None
         self.inlet2_thermal = None
@@ -562,6 +585,7 @@ class AdaptorHostFcIf(ManagedObject):
         self.order = None
         self.original_node_wwn = None
         self.original_wwn = None
+        self.outlet_thermal = None
         self.pci_addr = None
         self.pci_func = None
         self.pci_slot = None

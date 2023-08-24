@@ -11,6 +11,8 @@ class ComputePsuControlConsts:
     CLUSTER_STATE_SLOT_1_MASTER = "slot-1-master"
     CLUSTER_STATE_SLOT_2_MASTER = "slot-2-master"
     CLUSTER_STATE_UNKNOWN = "unknown"
+    EXTENDED_MODE_DISABLE = "Disable"
+    EXTENDED_MODE_ENABLE = "Enable"
     INPUT_POWER_STATE_LOWER_CRITICAL = "lower-critical"
     INPUT_POWER_STATE_LOWER_NON_CRITICAL = "lower-non-critical"
     INPUT_POWER_STATE_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -41,6 +43,7 @@ class ComputePsuControlConsts:
     POLICY_OWNER_POLICY = "policy"
     REDUNDANCY_GRID = "grid"
     REDUNDANCY_N_1 = "n+1"
+    REDUNDANCY_N_2 = "n+2"
     REDUNDANCY_NON_REDUNDANT = "non-redundant"
     REDUNDANCY_UNKNOWN = "unknown"
 
@@ -58,6 +61,7 @@ class ComputePsuControl(ManagedObject):
         "cluster_state": MoPropertyMeta("cluster_state", "clusterState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A", "not-clustered", "slot-1-master", "slot-2-master", "unknown"], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "extended_mode": MoPropertyMeta("extended_mode", "extendedMode", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Disable", "Enable"], []),
         "input_power_state": MoPropertyMeta("input_power_state", "inputPowerState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
         "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version413a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Disable", "Enable"], []),
@@ -67,7 +71,7 @@ class ComputePsuControl(ManagedObject):
         "output_power_state": MoPropertyMeta("output_power_state", "outputPowerState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["local", "pending-policy", "policy"], []),
-        "redundancy": MoPropertyMeta("redundancy", "redundancy", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["grid", "n+1", "non-redundant", "unknown"], []),
+        "redundancy": MoPropertyMeta("redundancy", "redundancy", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["grid", "n+1", "n+2", "non-redundant", "unknown"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
@@ -78,6 +82,7 @@ class ComputePsuControl(ManagedObject):
         "clusterState": "cluster_state", 
         "descr": "descr", 
         "dn": "dn", 
+        "extendedMode": "extended_mode", 
         "inputPowerState": "input_power_state", 
         "intId": "int_id", 
         "mode": "mode", 
@@ -98,6 +103,7 @@ class ComputePsuControl(ManagedObject):
         self.child_action = None
         self.cluster_state = None
         self.descr = None
+        self.extended_mode = None
         self.input_power_state = None
         self.int_id = None
         self.mode = None
