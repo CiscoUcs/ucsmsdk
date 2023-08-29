@@ -1,7 +1,4 @@
-[![](https://img.shields.io/travis/CiscoUcs/ucsmsdk.svg)](https://travis-ci.org/CiscoUcs/ucsmsdk)
-[![](https://ucspython.herokuapp.com/badge.svg)](https://ucspython.herokuapp.com)
 [![](https://img.shields.io/pypi/v/ucsmsdk.svg)](https://pypi.python.org/pypi/ucsmsdk)
-[![Code Climate](https://codeclimate.com/github/CiscoUcs/ucsmsdk/badges/gpa.svg)](https://codeclimate.com/github/CiscoUcs/ucsmsdk)
 [![Documentation Status](https://readthedocs.org/projects/ucsmsdk/badge/?version=latest)](http://ucsmsdk.readthedocs.io/en/latest/?badge=latest)
 
 # Python SDK for Cisco UCS
