@@ -10,10 +10,13 @@ class NetworkOperLevelConsts:
     ID_B = "B"
     ID_NONE = "NONE"
     PRIMARY_VLAN_COUNT_STATUS_ABOVE_LIMIT = "above-limit"
+    PRIMARY_VLAN_COUNT_STATUS_ABOVE_THRESHOLD_LIMIT = "above-threshold-limit"
     PRIMARY_VLAN_COUNT_STATUS_WITHIN_LIMIT = "within-limit"
     SECONDARY_VLAN_COUNT_STATUS_ABOVE_LIMIT = "above-limit"
+    SECONDARY_VLAN_COUNT_STATUS_ABOVE_THRESHOLD_LIMIT = "above-threshold-limit"
     SECONDARY_VLAN_COUNT_STATUS_WITHIN_LIMIT = "within-limit"
     VIF_COUNT_STATUS_ABOVE_LIMIT = "above-limit"
+    VIF_COUNT_STATUS_ABOVE_THRESHOLD_LIMIT = "above-threshold-limit"
     VIF_COUNT_STATUS_WITHIN_LIMIT = "within-limit"
 
 
@@ -34,14 +37,14 @@ class NetworkOperLevel(ManagedObject):
         "max_secondary_vlan_count": MoPropertyMeta("max_secondary_vlan_count", "maxSecondaryVlanCount", "uint", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "max_vif_count": MoPropertyMeta("max_vif_count", "maxVifCount", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "primary_vlan_count": MoPropertyMeta("primary_vlan_count", "primaryVlanCount", "uint", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "primary_vlan_count_status": MoPropertyMeta("primary_vlan_count_status", "primaryVlanCountStatus", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "within-limit"], []),
+        "primary_vlan_count_status": MoPropertyMeta("primary_vlan_count_status", "primaryVlanCountStatus", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "above-threshold-limit", "within-limit"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "secondary_vlan_count": MoPropertyMeta("secondary_vlan_count", "secondaryVlanCount", "uint", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "secondary_vlan_count_status": MoPropertyMeta("secondary_vlan_count_status", "secondaryVlanCountStatus", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "within-limit"], []),
+        "secondary_vlan_count_status": MoPropertyMeta("secondary_vlan_count_status", "secondaryVlanCountStatus", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "above-threshold-limit", "within-limit"], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "vif_count": MoPropertyMeta("vif_count", "vifCount", "uint", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "vif_count_status": MoPropertyMeta("vif_count_status", "vifCountStatus", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "within-limit"], []),
+        "vif_count_status": MoPropertyMeta("vif_count_status", "vifCountStatus", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "above-threshold-limit", "within-limit"], []),
     }
 
     prop_map = {

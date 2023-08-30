@@ -15,7 +15,7 @@ class EquipmentAutoConfigMode(ManagedObject):
     consts = EquipmentAutoConfigModeConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentAutoConfigMode", "equipmentAutoConfigMode", "auto-config-mode", VersionMeta.Version421a, "InputOutput", 0x1f, [], ["read-only"], ['equipmentRackUnitCapProvider'], [], [None])
+    mo_meta = MoMeta("EquipmentAutoConfigMode", "equipmentAutoConfigMode", "auto-config-mode", VersionMeta.Version421a, "InputOutput", 0x1f, [], ["read-only"], ['equipmentBladeCapProvider', 'equipmentRackUnitCapProvider'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version421a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

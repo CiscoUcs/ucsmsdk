@@ -72,9 +72,9 @@ def to_python_propname(word):
 
     return re.sub('_+', '_',
                   re.sub('^_', '',
-                    re.sub('[/\-: +]', '_',
-                      re.sub('([A-Z]+)([A-Z])([a-z0-9])', '\g<1>_\g<2>\g<3>',
-                        re.sub('([a-z0-9])([A-Z])', '\g<1>_\g<2>',(word,
+                    re.sub(r'[/\-: +]', '_',
+                      re.sub('([A-Z]+)([A-Z])([a-z0-9])', r'\g<1>_\g<2>\g<3>',
+                        re.sub('([a-z0-9])([A-Z])', r'\g<1>_\g<2>',(word,
                           to_safe_prop(word))[is_python_reserved(word)])
                              )))).lower()
 

@@ -21,8 +21,11 @@ class FirmwareBootUnitConsts:
     OPER_STATE_AUTO_ACTIVATING = "auto-activating"
     OPER_STATE_AUTO_UPDATING = "auto-updating"
     OPER_STATE_BAD_IMAGE = "bad-image"
+    OPER_STATE_DOWNGRADE_NOT_SUPPORTED = "downgrade-not-supported"
+    OPER_STATE_DOWNLOAD_ERROR = "download-error"
     OPER_STATE_FAILED = "failed"
     OPER_STATE_FAULTY_STATE = "faulty-state"
+    OPER_STATE_OPERATION_NOT_SUPPORTED = "operation-not-supported"
     OPER_STATE_PENDING_NEXT_BOOT = "pending-next-boot"
     OPER_STATE_PENDING_POWER_CYCLE = "pending-power-cycle"
     OPER_STATE_READY = "ready"
@@ -33,6 +36,9 @@ class FirmwareBootUnitConsts:
     OPER_STATE_THROTTLED = "throttled"
     OPER_STATE_UPDATING = "updating"
     OPER_STATE_UPGRADING = "upgrading"
+    OPER_STATE_VESSEL_NOT_FOUND = "vessel-not-found"
+    OPER_STATE_VESSEL_VALIDATE_ERROR = "vessel-validate-error"
+    OPER_STATE_WAITING = "waiting"
     RESET_ON_ACTIVATE_FALSE = "false"
     RESET_ON_ACTIVATE_NO = "no"
     RESET_ON_ACTIVATE_TRUE = "true"
@@ -59,7 +65,7 @@ class FirmwareBootUnit(ManagedObject):
         "image": MoPropertyMeta("image", "image", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["backup", "running"], []),
         "inv_tag": MoPropertyMeta("inv_tag", "invTag", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["install", "upgrade"], []),
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["activating", "auto-activating", "auto-updating", "bad-image", "failed", "faulty-state", "pending-next-boot", "pending-power-cycle", "ready", "rebooting", "rebuilding", "scheduled", "set-startup", "throttled", "updating", "upgrading"], []),
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["activating", "auto-activating", "auto-updating", "bad-image", "downgrade-not-supported", "download-error", "failed", "faulty-state", "operation-not-supported", "pending-next-boot", "pending-power-cycle", "ready", "rebooting", "rebuilding", "scheduled", "set-startup", "throttled", "updating", "upgrading", "vessel-not-found", "vessel-validate-error", "waiting"], []),
         "prev_version": MoPropertyMeta("prev_version", "prevVersion", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "reset_on_activate": MoPropertyMeta("reset_on_activate", "resetOnActivate", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["false", "no", "true", "yes"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),

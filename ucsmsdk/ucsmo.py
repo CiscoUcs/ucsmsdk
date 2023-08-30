@@ -646,7 +646,7 @@ class GenericMo(UcsBase):
         import inspect
 
         mo_class = ucscoreutils.load_class(class_id)
-        mo_class_params = inspect.getargspec(mo_class.__init__)[0][2:]
+        mo_class_params = inspect.getfullargspec(mo_class.__init__)[0][2:]
         mo_class_param_dict = {}
         for param in mo_class_params:
             mo_param = mo_class.prop_meta[param].xml_attribute

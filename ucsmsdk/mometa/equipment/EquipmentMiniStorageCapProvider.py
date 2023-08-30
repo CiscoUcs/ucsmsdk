@@ -9,6 +9,7 @@ class EquipmentMiniStorageCapProviderConsts:
     CARD_TYPE_FLASH = "FLASH"
     CARD_TYPE_M2 = "M2"
     CARD_TYPE_NVME = "NVME"
+    CARD_TYPE_PT = "PT"
     CARD_TYPE_SAS = "SAS"
     CARD_TYPE_SD = "SD"
     DELETED_FALSE = "false"
@@ -30,7 +31,7 @@ class EquipmentMiniStorageCapProvider(ManagedObject):
     mo_meta = MoMeta("EquipmentMiniStorageCapProvider", "equipmentMiniStorageCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version321d, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentFruVariant', 'equipmentManufacturingDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get", "Set"])
 
     prop_meta = {
-        "card_type": MoPropertyMeta("card_type", "cardType", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FLASH", "M2", "NVME", "SAS", "SD"], []),
+        "card_type": MoPropertyMeta("card_type", "cardType", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FLASH", "M2", "NVME", "PT", "SAS", "SD"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version321d, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "deleted": MoPropertyMeta("deleted", "deleted", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "deprecated": MoPropertyMeta("deprecated", "deprecated", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

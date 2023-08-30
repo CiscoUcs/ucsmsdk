@@ -572,12 +572,15 @@ class MgmtControllerConsts:
     SUBJECT_BOARD_CONTROLLER = "board-controller"
     SUBJECT_CHASSIS = "chassis"
     SUBJECT_CMC = "cmc"
+    SUBJECT_CPLD = "cpld"
     SUBJECT_IOCARD = "iocard"
     SUBJECT_LOCAL_DISK = "local-disk"
+    SUBJECT_RETIMER = "retimer"
     SUBJECT_SAS_EXPANDER = "sas-expander"
     SUBJECT_SERVER_UNIT = "server-unit"
     SUBJECT_SWITCH = "switch"
     SUBJECT_SYSTEM = "system"
+    SUBJECT_UBM = "ubm"
     SUBJECT_UNKNOWN = "unknown"
     WEB_UIKVM_CONSOLE_SUPPORTED_FALSE = "false"
     WEB_UIKVM_CONSOLE_SUPPORTED_NO = "no"
@@ -591,7 +594,7 @@ class MgmtController(ManagedObject):
     consts = MgmtControllerConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtController", "mgmtController", "mgmt", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], ['adaptorUnit', 'computeBlade', 'computeBoardController', 'computeExtBoard', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFex', 'equipmentIOCard', 'equipmentSharedIOModule', 'equipmentSwitchIOCard', 'equipmentSystemIOController', 'networkElement', 'storageController', 'storageLocalDisk', 'storageSasExpander', 'topSystem'], ['cimcvmediaActualMountList', 'eventInst', 'fabricLocale', 'faultInst', 'firmwareBootDefinition', 'firmwareImage', 'firmwareRunning', 'firmwareUpdatable', 'mgmtCimcSecureBoot', 'mgmtCmcSecureBoot', 'mgmtConnection', 'mgmtControllerFsm', 'mgmtControllerFsmTask', 'mgmtHealthStatus', 'mgmtIf', 'mgmtInterface', 'mgmtKvmCertificate', 'mgmtProfDerivedInterface', 'mgmtSpdmCertificateInventory', 'mgmtSwPersonalities', 'mgmtSwPersonalitiesInventory', 'mgmtUsbNicMgmtIf', 'sysdebugMEpLog', 'vnicIpV4PooledAddr', 'vnicIpV4ProfDerivedAddr', 'vnicIpV4StaticAddr'], ["Get"])
+    mo_meta = MoMeta("MgmtController", "mgmtController", "mgmt", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], ['adaptorUnit', 'computeBlade', 'computeBoardController', 'computeExtBoard', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFex', 'equipmentFruComponent', 'equipmentIOCard', 'equipmentSharedIOModule', 'equipmentSwitchIOCard', 'equipmentSystemIOController', 'networkElement', 'storageController', 'storageLocalDisk', 'storageSasExpander', 'topSystem'], ['cimcvmediaActualMountList', 'eventInst', 'fabricLocale', 'faultInst', 'firmwareBootDefinition', 'firmwareImage', 'firmwareRunning', 'firmwareUpdatable', 'mgmtCimcSecureBoot', 'mgmtCmcSecureBoot', 'mgmtConnection', 'mgmtControllerFsm', 'mgmtControllerFsmTask', 'mgmtHealthStatus', 'mgmtIf', 'mgmtInterface', 'mgmtKvmCertificate', 'mgmtProfDerivedInterface', 'mgmtSpdmCertificateInventory', 'mgmtSwPersonalities', 'mgmtSwPersonalitiesInventory', 'mgmtUsbNicMgmtIf', 'sysdebugMEpLog', 'vnicIpV4PooledAddr', 'vnicIpV4ProfDerivedAddr', 'vnicIpV4StaticAddr'], ["Get"])
 
     prop_meta = {
         "admin_operation": MoPropertyMeta("admin_operation", "adminOperation", "string", VersionMeta.Version323a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cancel-all", "clear-kvm-cert", "none"], []),
@@ -631,7 +634,7 @@ class MgmtController(ManagedObject):
         "storage_oob_config_supported": MoPropertyMeta("storage_oob_config_supported", "storageOobConfigSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "storage_oob_interface_supported": MoPropertyMeta("storage_oob_interface_supported", "storageOobInterfaceSupported", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "storage_subsystem_state": MoPropertyMeta("storage_subsystem_state", "storageSubsystemState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["initialized", "initializing", "pending-reset", "uninitialized", "unknown", "unsupported"], []),
-        "subject": MoPropertyMeta("subject", "subject", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["adaptor", "blade", "board-controller", "chassis", "cmc", "iocard", "local-disk", "sas-expander", "server-unit", "switch", "system", "unknown"], []),
+        "subject": MoPropertyMeta("subject", "subject", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["adaptor", "blade", "board-controller", "chassis", "cmc", "cpld", "iocard", "local-disk", "retimer", "sas-expander", "server-unit", "switch", "system", "ubm", "unknown"], []),
         "supported_capability": MoPropertyMeta("supported_capability", "supportedCapability", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|modify-maintenance-mode|factory-reset|local-storage|usb-nic),){0,5}(defaultValue|none|modify-maintenance-mode|factory-reset|local-storage|usb-nic){0,1}""", [], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "web_ui_kvm_console_supported": MoPropertyMeta("web_ui_kvm_console_supported", "webUIKvmConsoleSupported", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

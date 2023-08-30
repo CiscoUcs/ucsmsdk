@@ -260,12 +260,15 @@ class MgmtIfConsts:
     SUBJECT_BOARD_CONTROLLER = "board-controller"
     SUBJECT_CHASSIS = "chassis"
     SUBJECT_CMC = "cmc"
+    SUBJECT_CPLD = "cpld"
     SUBJECT_IOCARD = "iocard"
     SUBJECT_LOCAL_DISK = "local-disk"
+    SUBJECT_RETIMER = "retimer"
     SUBJECT_SAS_EXPANDER = "sas-expander"
     SUBJECT_SERVER_UNIT = "server-unit"
     SUBJECT_SWITCH = "switch"
     SUBJECT_SYSTEM = "system"
+    SUBJECT_UBM = "ubm"
     SUBJECT_UNKNOWN = "unknown"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
@@ -325,7 +328,7 @@ class MgmtIf(ManagedObject):
         "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "state_qual": MoPropertyMeta("state_qual", "stateQual", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["misconnected", "unspecified", "valid"], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "subject": MoPropertyMeta("subject", "subject", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["adaptor", "blade", "board-controller", "chassis", "cmc", "iocard", "local-disk", "sas-expander", "server-unit", "switch", "system", "unknown"], []),
+        "subject": MoPropertyMeta("subject", "subject", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["adaptor", "blade", "board-controller", "chassis", "cmc", "cpld", "iocard", "local-disk", "retimer", "sas-expander", "server-unit", "switch", "system", "ubm", "unknown"], []),
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []),
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []),
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []),

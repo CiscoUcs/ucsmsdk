@@ -21,6 +21,7 @@ class TopMetaInf(ManagedObject):
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "ecode": MoPropertyMeta("ecode", "ecode", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8, 0, 8, None, [], []),
+        "everi": MoPropertyMeta("everi", "everi", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[a-zA-Z][a-zA-Z0-9-]{0,29}""", [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
@@ -31,6 +32,7 @@ class TopMetaInf(ManagedObject):
         "childAction": "child_action", 
         "dn": "dn", 
         "ecode": "ecode", 
+        "everi": "everi", 
         "name": "name", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -41,6 +43,7 @@ class TopMetaInf(ManagedObject):
         self._dirty_mask = 0
         self.child_action = None
         self.ecode = None
+        self.everi = None
         self.name = None
         self.sacl = None
         self.status = None

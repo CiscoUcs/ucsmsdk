@@ -58,6 +58,7 @@ class SwVlanConsts:
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
     SEC_VLAN_PER_PRIMARY_VLAN_COUNT_STATUS_ABOVE_LIMIT = "above-limit"
+    SEC_VLAN_PER_PRIMARY_VLAN_COUNT_STATUS_ABOVE_THRESHOLD_LIMIT = "above-threshold-limit"
     SEC_VLAN_PER_PRIMARY_VLAN_COUNT_STATUS_WITHIN_LIMIT = "within-limit"
     SHARING_COMMUNITY = "community"
     SHARING_ISOLATED = "isolated"
@@ -114,7 +115,7 @@ class SwVlan(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "sec_vlan_per_primary_vlan_count": MoPropertyMeta("sec_vlan_per_primary_vlan_count", "secVlanPerPrimaryVlanCount", "uint", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "sec_vlan_per_primary_vlan_count_status": MoPropertyMeta("sec_vlan_per_primary_vlan_count_status", "secVlanPerPrimaryVlanCountStatus", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "within-limit"], []),
+        "sec_vlan_per_primary_vlan_count_status": MoPropertyMeta("sec_vlan_per_primary_vlan_count_status", "secVlanPerPrimaryVlanCountStatus", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "above-threshold-limit", "within-limit"], []),
         "sharing": MoPropertyMeta("sharing", "sharing", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["community", "isolated", "none", "primary"], []),
         "snooping_enabled": MoPropertyMeta("snooping_enabled", "snoopingEnabled", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "source_ip_proxy_enabled": MoPropertyMeta("source_ip_proxy_enabled", "sourceIpProxyEnabled", "string", VersionMeta.Version422d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

@@ -6,6 +6,8 @@ from ...ucsmeta import VersionMeta
 
 
 class AdaptorHostEthIfConsts:
+    SRIOV_HPN_PREFERENCE_DISABLED = "disabled"
+    SRIOV_HPN_PREFERENCE_ENABLED = "enabled"
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_DISABLED_ACTIVE = "disabled-active"
     ADMIN_STATE_DISABLED_PASSIVE = "disabled-passive"
@@ -180,6 +182,15 @@ class AdaptorHostEthIfConsts:
     HOST_PORT_2 = "2"
     HOST_PORT_ANY = "ANY"
     HOST_PORT_NONE = "NONE"
+    HOTSWAP_THERMAL_LOWER_CRITICAL = "lower-critical"
+    HOTSWAP_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    HOTSWAP_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    HOTSWAP_THERMAL_NOT_SUPPORTED = "not-supported"
+    HOTSWAP_THERMAL_OK = "ok"
+    HOTSWAP_THERMAL_UNKNOWN = "unknown"
+    HOTSWAP_THERMAL_UPPER_CRITICAL = "upper-critical"
+    HOTSWAP_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    HOTSWAP_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
     IF_ROLE_FCOE_STORAGE = "fcoe-storage"
@@ -297,6 +308,15 @@ class AdaptorHostEthIfConsts:
     OPERABILITY_UPGRADE_PROBLEM = "upgrade-problem"
     OPERABILITY_VOLTAGE_PROBLEM = "voltage-problem"
     ORDER_UNSPECIFIED = "unspecified"
+    OUTLET_THERMAL_LOWER_CRITICAL = "lower-critical"
+    OUTLET_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
+    OUTLET_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
+    OUTLET_THERMAL_NOT_SUPPORTED = "not-supported"
+    OUTLET_THERMAL_OK = "ok"
+    OUTLET_THERMAL_UNKNOWN = "unknown"
+    OUTLET_THERMAL_UPPER_CRITICAL = "upper-critical"
+    OUTLET_THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
+    OUTLET_THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     PEER_CHASSIS_ID_N_A = "N/A"
     PERF_LOWER_CRITICAL = "lower-critical"
     PERF_LOWER_NON_CRITICAL = "lower-non-critical"
@@ -347,6 +367,10 @@ class AdaptorHostEthIfConsts:
     PURPOSE_OVERLAY = "overlay"
     PURPOSE_UNUSED = "unused"
     PURPOSE_UTILITY = "utility"
+    Q_IN_QENABLED_FALSE = "false"
+    Q_IN_QENABLED_NO = "no"
+    Q_IN_QENABLED_TRUE = "true"
+    Q_IN_QENABLED_YES = "yes"
     SIDE_LEFT = "left"
     SIDE_RIGHT = "right"
     SWITCH_ID_A = "A"
@@ -363,6 +387,7 @@ class AdaptorHostEthIfConsts:
     THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     VIRTUALIZATION_PREFERENCE_NONE = "NONE"
     VIRTUALIZATION_PREFERENCE_SRIOV = "SRIOV"
+    VIRTUALIZATION_PREFERENCE_SRIOV_HPN = "SRIOV-HPN"
     VIRTUALIZATION_PREFERENCE_SRIOV_USNIC = "SRIOV-USNIC"
     VIRTUALIZATION_PREFERENCE_SRIOV_VMFEX = "SRIOV-VMFEX"
     VIRTUALIZATION_PREFERENCE_VMMQ = "VMMQ"
@@ -384,9 +409,10 @@ class AdaptorHostEthIf(ManagedObject):
     consts = AdaptorHostEthIfConsts()
     naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorHostEthIf", "adaptorHostEthIf", "host-eth-[id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance", "read-only"], ['adaptorUnit'], ['adaptorAzureQosProfile', 'adaptorEthAdvFilterProfile', 'adaptorEthArfsProfile', 'adaptorEthCompQueueProfile', 'adaptorEthFailoverProfile', 'adaptorEthGENEVEProfile', 'adaptorEthInterruptProfile', 'adaptorEthInterruptScalingProfile', 'adaptorEthNVGREProfile', 'adaptorEthOffloadProfile', 'adaptorEthPortBySizeLargeStats', 'adaptorEthPortBySizeSmallStats', 'adaptorEthPortErrStats', 'adaptorEthPortMcastStats', 'adaptorEthPortOutsizedStats', 'adaptorEthPortStats', 'adaptorEthRecvQueueProfile', 'adaptorEthRoCEProfile', 'adaptorEthVxLANProfile', 'adaptorEthWorkQueueProfile', 'adaptorExtIpV6RssHashProfile', 'adaptorFcOEIf', 'adaptorHostEthIfFsm', 'adaptorHostEthIfFsmTask', 'adaptorIpV4RssHashProfile', 'adaptorIpV6RssHashProfile', 'adaptorPTP', 'adaptorRssProfile', 'adaptorUsnicConnDef', 'adaptorVlan', 'adaptorVmmqConnDef', 'adaptorVnicStats', 'dcxVIf', 'dhcpAcquired', 'eventInst', 'faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'mgmtIf', 'networkIfStats'], ["Get", "Set"])
+    mo_meta = MoMeta("AdaptorHostEthIf", "adaptorHostEthIf", "host-eth-[id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance", "read-only"], ['adaptorUnit'], ['adaptorAzureQosProfile', 'adaptorEthAdvFilterProfile', 'adaptorEthArfsProfile', 'adaptorEthCompQueueProfile', 'adaptorEthFailoverProfile', 'adaptorEthGENEVEProfile', 'adaptorEthInterruptProfile', 'adaptorEthInterruptScalingProfile', 'adaptorEthNVGREProfile', 'adaptorEthOffloadProfile', 'adaptorEthPortBySizeLargeStats', 'adaptorEthPortBySizeSmallStats', 'adaptorEthPortErrStats', 'adaptorEthPortMcastStats', 'adaptorEthPortOutsizedStats', 'adaptorEthPortStats', 'adaptorEthRecvQueueProfile', 'adaptorEthRoCEProfile', 'adaptorEthVxLANProfile', 'adaptorEthWorkQueueProfile', 'adaptorExtIpV6RssHashProfile', 'adaptorFcOEIf', 'adaptorHostEthIfFsm', 'adaptorHostEthIfFsmTask', 'adaptorIpV4RssHashProfile', 'adaptorIpV6RssHashProfile', 'adaptorPTP', 'adaptorQinQVlan', 'adaptorRssProfile', 'adaptorSriovHpnConnDef', 'adaptorUsnicConnDef', 'adaptorVlan', 'adaptorVmmqConnDef', 'adaptorVnicStats', 'dcxVIf', 'dhcpAcquired', 'eventInst', 'faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'mgmtIf', 'networkIfStats'], ["Get", "Set"])
 
     prop_meta = {
+        "sriov_hpn_preference": MoPropertyMeta("sriov_hpn_preference", "SriovHpnPreference", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "disabled-active", "disabled-passive", "enabled", "enabled-active", "enabled-passive", "reset-connectivity", "reset-connectivity-active", "reset-connectivity-passive"], []),
         "boot_dev": MoPropertyMeta("boot_dev", "bootDev", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["disabled", "enabled"], []),
         "cdn_name": MoPropertyMeta("cdn_name", "cdnName", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
@@ -407,6 +433,7 @@ class AdaptorHostEthIf(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["CircuitResetBegin", "CircuitResetDisableA", "CircuitResetDisableB", "CircuitResetEnableA", "CircuitResetEnableB", "CircuitResetFail", "CircuitResetSuccess", "nop"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "host_port": MoPropertyMeta("host_port", "hostPort", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["1", "2", "ANY", "NONE"], []),
+        "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []),
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []),
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []),
@@ -424,6 +451,7 @@ class AdaptorHostEthIf(ManagedObject):
         "operability": MoPropertyMeta("operability", "operability", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
         "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["unspecified"], ["0-65535"]),
         "original_mac": MoPropertyMeta("original_mac", "originalMac", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([0-9a-fA-F][0-9a-fA-F]:){5}([0-9a-fA-F][0-9a-fA-F]))|0""", [], []),
+        "outlet_thermal": MoPropertyMeta("outlet_thermal", "outletThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "pci_addr": MoPropertyMeta("pci_addr", "pciAddr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "pci_func": MoPropertyMeta("pci_func", "pciFunc", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
         "pci_slot": MoPropertyMeta("pci_slot", "pciSlot", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
@@ -437,6 +465,7 @@ class AdaptorHostEthIf(ManagedObject):
         "power": MoPropertyMeta("power", "power", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "error", "failed", "not-supported", "off", "offduty", "offline", "ok", "on", "online", "power-save", "test", "unknown"], []),
         "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []),
         "purpose": MoPropertyMeta("purpose", "purpose", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["crosslink", "general", "management", "overlay", "unused", "utility"], []),
+        "q_in_q_enabled": MoPropertyMeta("q_in_q_enabled", "qInQEnabled", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
@@ -449,12 +478,13 @@ class AdaptorHostEthIf(ManagedObject):
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []),
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
-        "virtualization_preference": MoPropertyMeta("virtualization_preference", "virtualizationPreference", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NONE", "SRIOV", "SRIOV-USNIC", "SRIOV-VMFEX", "VMMQ", "VMQ"], []),
+        "virtualization_preference": MoPropertyMeta("virtualization_preference", "virtualizationPreference", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NONE", "SRIOV", "SRIOV-HPN", "SRIOV-USNIC", "SRIOV-VMFEX", "VMMQ", "VMQ"], []),
         "vnic_dn": MoPropertyMeta("vnic_dn", "vnicDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "voltage": MoPropertyMeta("voltage", "voltage", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
     }
 
     prop_map = {
+        "SriovHpnPreference": "sriov_hpn_preference", 
         "adminState": "admin_state", 
         "bootDev": "boot_dev", 
         "cdnName": "cdn_name", 
@@ -475,6 +505,7 @@ class AdaptorHostEthIf(ManagedObject):
         "fsmStatus": "fsm_status", 
         "fsmTry": "fsm_try", 
         "hostPort": "host_port", 
+        "hotswapThermal": "hotswap_thermal", 
         "id": "id", 
         "ifRole": "if_role", 
         "ifType": "if_type", 
@@ -492,6 +523,7 @@ class AdaptorHostEthIf(ManagedObject):
         "operability": "operability", 
         "order": "order", 
         "originalMac": "original_mac", 
+        "outletThermal": "outlet_thermal", 
         "pciAddr": "pci_addr", 
         "pciFunc": "pci_func", 
         "pciSlot": "pci_slot", 
@@ -505,6 +537,7 @@ class AdaptorHostEthIf(ManagedObject):
         "power": "power", 
         "presence": "presence", 
         "purpose": "purpose", 
+        "qInQEnabled": "q_in_q_enabled", 
         "revision": "revision", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -525,6 +558,7 @@ class AdaptorHostEthIf(ManagedObject):
     def __init__(self, parent_mo_or_dn, id, **kwargs):
         self._dirty_mask = 0
         self.id = id
+        self.sriov_hpn_preference = None
         self.admin_state = None
         self.boot_dev = None
         self.cdn_name = None
@@ -544,6 +578,7 @@ class AdaptorHostEthIf(ManagedObject):
         self.fsm_status = None
         self.fsm_try = None
         self.host_port = None
+        self.hotswap_thermal = None
         self.if_role = None
         self.if_type = None
         self.inlet2_thermal = None
@@ -560,6 +595,7 @@ class AdaptorHostEthIf(ManagedObject):
         self.operability = None
         self.order = None
         self.original_mac = None
+        self.outlet_thermal = None
         self.pci_addr = None
         self.pci_func = None
         self.pci_slot = None
@@ -573,6 +609,7 @@ class AdaptorHostEthIf(ManagedObject):
         self.power = None
         self.presence = None
         self.purpose = None
+        self.q_in_q_enabled = None
         self.revision = None
         self.sacl = None
         self.serial = None
