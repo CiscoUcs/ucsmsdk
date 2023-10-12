@@ -36,7 +36,7 @@ setup(
     zip_safe=False,
     keywords='ucsmsdk',
     classifiers=[
-        'Development Status :: 5 - Production/Stable Development Status',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
