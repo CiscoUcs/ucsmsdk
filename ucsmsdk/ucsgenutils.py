@@ -267,7 +267,7 @@ def upload_firmware(driver, uri, file_dir, file_name, progress=Progress()):
     """
 
     content_path = os.path.join(file_dir, file_name)
-    content_size = os.stat(content_path).st_size
+    content_size = os.path.getsize(content_path)
 
     f = open(content_path,'rb')
     CHUNK_SIZE = 10*1024*1024
