@@ -226,6 +226,76 @@ def upload_file(driver, uri, file_dir, file_name, progress=Progress()):
         raise ValueError("File upload failed.")
 
 
+def read_in_chunks(file_object, chunk_size=10*1024*1024):
+    """(generator) to read a file piece by piece.
+    Default chunk size: 10MB."""
+    while True:
+        data = file_object.read(chunk_size)
+        if not data:
+            break
+        yield data
+
+
+def generate_uri_for_chunks(uri,counter,flag):
+    """(generator) to generate uri for chunks
+     and return URI"""
+    index = uri.rfind("/")
+    if flag == 0 :
+        res = uri[ : index ] + "/" + str(counter) + uri[index : ]
+        return res
+    else :
+        res = uri[ : index ] + "/merge-" + str(counter) + uri[index : ]
+        return res
+
+
+def upload_firmware(driver, uri, file_dir, file_name, progress=Progress()):
+    """
+    Uploads the file on web server
+
+    Args:
+        driver (UcsDriver)
+        uri (str): url to upload the file
+        file_dir (str): The directory to download to
+        file_name (str): The destination file name for the download
+
+    Returns:
+        None
+
+    Example:
+        driver = UcsDriver()\n
+        upload_firmware(driver=UcsDriver(), uri="http://fileurl", file_dir='/home/user/backup', file_name='my_config_backup.xml')
+    """
+
+    content_path = os.path.join(file_dir, file_name)
+    content_size = os.stat(content_path).st_size
+
+    f = open(content_path,'rb')
+    CHUNK_SIZE = 10*1024*1024
+    counter = 0
+    flag = 0
+
+    for chunk in read_in_chunks(f,CHUNK_SIZE):
+        if len(chunk) > 0:
+            try:
+                counter += 1
+                uri1 = generate_uri_for_chunks(uri,counter,flag)
+                response = driver.post(uri1, data = chunk)
+                progress.update(content_size,len(chunk))
+                if not response:
+                    raise ValueError("File upload failed.")
+            except Exception as e:
+                raise Exception(e)
+    try:
+        counter += 1
+        flag = 1
+        uri2 = generate_uri_for_chunks(uri,counter,flag)
+        response = driver.post(uri2)
+        if not response:
+            raise ValueError("File upload failed.")
+    except Exception as e:
+        raise Exception(e)
+
+
 def check_registry_key(java_key):
     """ Method checks for the java in the registry entries. """
 
