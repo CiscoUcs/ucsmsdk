@@ -236,7 +236,7 @@ def read_in_chunks(file_object, chunk_size=10*1024*1024):
         yield data
 
 
-def generate_uri_for_chunks(uri,counter,flag):
+def generate_uri_for_chunks(uri, counter, flag):
     """(generator) to generate uri for chunks
      and return URI"""
     index = uri.rfind("/")
@@ -269,18 +269,21 @@ def upload_firmware(driver, uri, file_dir, file_name, progress=Progress()):
     content_path = os.path.join(file_dir, file_name)
     content_size = os.path.getsize(content_path)
 
+    if not os.path.exists(content_path):
+        raise IOError("File does not exist")
+
     f = open(content_path,'rb')
-    CHUNK_SIZE = 10*1024*1024
+    chunk_size = 10*1024*1024
     counter = 0
     flag = 0
 
-    for chunk in read_in_chunks(f,CHUNK_SIZE):
+    for chunk in read_in_chunks(f, chunk_size):
         if len(chunk) > 0:
             try:
                 counter += 1
-                uri1 = generate_uri_for_chunks(uri,counter,flag)
-                response = driver.post(uri1, data = chunk)
-                progress.update(content_size,len(chunk))
+                chunk_uri = generate_uri_for_chunks(uri, counter, flag)
+                response = driver.post(chunk_uri, data = chunk)
+                progress.update(content_size, len(chunk))
                 if not response:
                     raise ValueError("File upload failed.")
             except Exception as e:
@@ -288,8 +291,8 @@ def upload_firmware(driver, uri, file_dir, file_name, progress=Progress()):
     try:
         counter += 1
         flag = 1
-        uri2 = generate_uri_for_chunks(uri,counter,flag)
-        response = driver.post(uri2)
+        merge_uri = generate_uri_for_chunks(uri, counter, flag)
+        response = driver.post(merge_uri)
         if not response:
             raise ValueError("File upload failed.")
     except Exception as e:
