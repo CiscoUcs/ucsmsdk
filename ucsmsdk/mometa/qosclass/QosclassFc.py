@@ -12,6 +12,10 @@ class QosclassFcConsts:
     COS_ANY = "any"
     DROP_DROP = "drop"
     DROP_NO_DROP = "no-drop"
+    FC_COS_CONFLICT_FALSE = "false"
+    FC_COS_CONFLICT_NO = "no"
+    FC_COS_CONFLICT_TRUE = "true"
+    FC_COS_CONFLICT_YES = "yes"
     MTU_FC = "fc"
     MTU_NORMAL = "normal"
     PRIORITY_BEST_EFFORT = "best-effort"
@@ -30,7 +34,7 @@ class QosclassFc(ManagedObject):
     consts = QosclassFcConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("QosclassFc", "qosclassFc", "class-fc", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ext-lan-qos", "ext-san-qos", "ls-network", "ls-network-policy", "ls-qos-policy"], ['qosclassDefinition'], [], ["Get", "Set"])
+    mo_meta = MoMeta("QosclassFc", "qosclassFc", "class-fc", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ext-lan-qos", "ext-san-qos", "ls-network", "ls-network-policy", "ls-qos-policy"], ['qosclassDefinition'], ['faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),
@@ -39,6 +43,7 @@ class QosclassFc(ManagedObject):
         "cos": MoPropertyMeta("cos", "cos", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["any"], ["0-6", "255-255"]),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "drop": MoPropertyMeta("drop", "drop", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["drop", "no-drop"], []),
+        "fc_cos_conflict": MoPropertyMeta("fc_cos_conflict", "fcCosConflict", "string", VersionMeta.Version433a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "mtu": MoPropertyMeta("mtu", "mtu", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["fc", "normal"], ["0-4294967295"]),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "priority": MoPropertyMeta("priority", "priority", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["best-effort", "bronze", "fc", "gold", "platinum", "silver"], []),
@@ -55,6 +60,7 @@ class QosclassFc(ManagedObject):
         "cos": "cos", 
         "dn": "dn", 
         "drop": "drop", 
+        "fcCosConflict": "fc_cos_conflict", 
         "mtu": "mtu", 
         "name": "name", 
         "priority": "priority", 
@@ -71,6 +77,7 @@ class QosclassFc(ManagedObject):
         self.child_action = None
         self.cos = None
         self.drop = None
+        self.fc_cos_conflict = None
         self.mtu = None
         self.name = None
         self.priority = None

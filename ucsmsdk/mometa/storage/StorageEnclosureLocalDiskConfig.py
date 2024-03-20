@@ -17,8 +17,13 @@ class StorageEnclosureLocalDiskConfigConsts:
     DEVICE_TYPE_UNSPECIFIED = "unspecified"
     LINK_SPEED_1_5_GBPS = "1-5-gbps"
     LINK_SPEED_12_GBPS = "12-gbps"
+    LINK_SPEED_16_GTPS = "16-gtps"
+    LINK_SPEED_2_5_GTPS = "2-5-gtps"
+    LINK_SPEED_24_GBPS = "24-gbps"
     LINK_SPEED_3_GBPS = "3-gbps"
+    LINK_SPEED_5_GTPS = "5-gtps"
     LINK_SPEED_6_GBPS = "6-gbps"
+    LINK_SPEED_8_GTPS = "8-gtps"
     LINK_SPEED_NA = "NA"
     LINK_SPEED_DISABLED = "disabled"
     LINK_SPEED_DOWN = "down"
@@ -118,7 +123,7 @@ class StorageEnclosureLocalDiskConfig(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "firmware_version": MoPropertyMeta("firmware_version", "firmwareVersion", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version312b, MoPropertyMeta.NAMING, 0x8, None, None, None, [], []),
-        "link_speed": MoPropertyMeta("link_speed", "linkSpeed", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["1-5-gbps", "12-gbps", "3-gbps", "6-gbps", "NA", "disabled", "down", "host-power-off", "unknown", "unsupported-device"], []),
+        "link_speed": MoPropertyMeta("link_speed", "linkSpeed", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["1-5-gbps", "12-gbps", "16-gtps", "2-5-gtps", "24-gbps", "3-gbps", "5-gtps", "6-gbps", "8-gtps", "NA", "disabled", "down", "host-power-off", "unknown", "unsupported-device"], []),
         "link_state": MoPropertyMeta("link_state", "linkState", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["misconnect", "optimal", "sub-optimal", "unknown"], []),
         "link_state_reason": MoPropertyMeta("link_state_reason", "linkStateReason", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

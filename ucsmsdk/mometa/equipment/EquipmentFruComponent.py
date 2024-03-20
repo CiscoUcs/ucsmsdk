@@ -35,6 +35,7 @@ class EquipmentFruComponent(ManagedObject):
         "startup_version": MoPropertyMeta("startup_version", "startupVersion", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version432b, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version432b, MoPropertyMeta.NAMING, 0x40, None, None, None, ["CPLD", "RETIMER", "UBM", "unknown"], []),
+        "type_string": MoPropertyMeta("type_string", "typeString", "string", VersionMeta.Version433a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "update_status": MoPropertyMeta("update_status", "updateStatus", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "vid": MoPropertyMeta("vid", "vid", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -55,6 +56,7 @@ class EquipmentFruComponent(ManagedObject):
         "startupVersion": "startup_version", 
         "status": "status", 
         "type": "type", 
+        "typeString": "type_string", 
         "updateStatus": "update_status", 
         "vendor": "vendor", 
         "vid": "vid", 
@@ -74,6 +76,7 @@ class EquipmentFruComponent(ManagedObject):
         self.serial = None
         self.startup_version = None
         self.status = None
+        self.type_string = None
         self.update_status = None
         self.vendor = None
         self.vid = None
