@@ -386,6 +386,7 @@ class UcsSession(object):
 
         self.__driver.remove_header('Cookie')
 
+
     def file_upload(
             self,
             url_suffix,
@@ -427,6 +428,49 @@ class UcsSession(object):
 
         self.__driver.remove_header('Cookie')
 
+
+    def firmware_upload(
+            self,
+            url_suffix,
+            file_dir,
+            file_name,
+            progress=Progress()):
+        """
+        Uploads the file on UCSM server.
+
+        Args:
+            url_suffix (str): suffix url to be appended to
+                http\https://host:port/ to locate the file on the server
+            source_dir (str): The directory to upload from
+            file_name (str): The destination file name for the download
+            progress (ucsgenutils.Progress): Class that has method to display progress
+
+        Returns:
+            None
+
+        Example:
+            source_dir = "/home/user/backup"\n
+            file_name = "config_backup.xml"\n
+            uri_suffix = "operations/file-%s/importconfig.txt" % file_name\n
+            firmware_upload(url_suffix=uri_suffix, source_dir=source_dir, file_name=file_name)
+        """
+
+        from .ucsgenutils import upload_firmware
+
+        file_url = "%s/%s" % (self.__uri, url_suffix)
+
+        self.__driver.add_header('Cookie', 'ucsm-cookie=%s'
+                                 % self.__cookie)
+
+        upload_firmware(self.__driver,
+                        uri=file_url,
+                        file_dir=file_dir,
+                        file_name=file_name,
+                        progress=progress)
+
+        self.__driver.remove_header('Cookie')
+
+    
     def __start_refresh_timer(self):
         """
         Internal method to support auto-refresh functionality.
