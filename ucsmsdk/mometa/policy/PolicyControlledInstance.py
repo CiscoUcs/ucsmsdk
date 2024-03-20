@@ -16,7 +16,7 @@ class PolicyControlledInstance(ManagedObject):
     consts = PolicyControlledInstanceConsts()
     naming_props = set(['type', 'name'])
 
-    mo_meta = MoMeta("PolicyControlledInstance", "policyControlledInstance", "ctrlled-[type]-inst-[name]", VersionMeta.Version211a, "InputOutput", 0x1ff, [], ["admin"], ['policyCommunication', 'policyConfigBackup', 'policyDateTime', 'policyDiscovery', 'policyDns', 'policyEquipment', 'policyFault', 'policyInfraFirmware', 'policyMEp', 'policyMonitoring', 'policyPortConfig', 'policyPowerMgmt', 'policyPsu', 'policySecurity', 'policyStorageAutoConfig'], [], [None])
+    mo_meta = MoMeta("PolicyControlledInstance", "policyControlledInstance", "ctrlled-[type]-inst-[name]", VersionMeta.Version211a, "InputOutput", 0x1ff, [], ["admin"], ['policyCommunication', 'policyConfigBackup', 'policyDateTime', 'policyDiscovery', 'policyDns', 'policyEquipment', 'policyFault', 'policyInfraFirmware', 'policyMEp', 'policyModularChassisFan', 'policyMonitoring', 'policyPortConfig', 'policyPowerExtended', 'policyPowerMgmt', 'policyPowerSave', 'policyPsu', 'policySecurity', 'policyStorageAutoConfig'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -6,6 +6,10 @@ from ...ucsmeta import VersionMeta
 
 
 class ComputeMbTempStatsConsts:
+    FM_TEMP_SEN_FRONT_R_NOT_APPLICABLE = "not-applicable"
+    FM_TEMP_SEN_FRONT_RAVG_NOT_APPLICABLE = "not-applicable"
+    FM_TEMP_SEN_FRONT_RMAX_NOT_APPLICABLE = "not-applicable"
+    FM_TEMP_SEN_FRONT_RMIN_NOT_APPLICABLE = "not-applicable"
     FM_TEMP_SEN_IO_NOT_APPLICABLE = "not-applicable"
     FM_TEMP_SEN_IO_AVG_NOT_APPLICABLE = "not-applicable"
     FM_TEMP_SEN_IO_MAX_NOT_APPLICABLE = "not-applicable"
@@ -39,6 +43,10 @@ class ComputeMbTempStats(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []),
+        "fm_temp_sen_front_r": MoPropertyMeta("fm_temp_sen_front_r", "fmTempSenFrontR", "string", VersionMeta.Version433a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["not-applicable"], ["0-4294967295"]),
+        "fm_temp_sen_front_r_avg": MoPropertyMeta("fm_temp_sen_front_r_avg", "fmTempSenFrontRAvg", "string", VersionMeta.Version433a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["not-applicable"], ["0-4294967295"]),
+        "fm_temp_sen_front_r_max": MoPropertyMeta("fm_temp_sen_front_r_max", "fmTempSenFrontRMax", "string", VersionMeta.Version433a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["not-applicable"], ["0-4294967295"]),
+        "fm_temp_sen_front_r_min": MoPropertyMeta("fm_temp_sen_front_r_min", "fmTempSenFrontRMin", "string", VersionMeta.Version433a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["not-applicable"], ["0-4294967295"]),
         "fm_temp_sen_io": MoPropertyMeta("fm_temp_sen_io", "fmTempSenIo", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["not-applicable"], ["0-4294967295"]),
         "fm_temp_sen_io_avg": MoPropertyMeta("fm_temp_sen_io_avg", "fmTempSenIoAvg", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["not-applicable"], ["0-4294967295"]),
         "fm_temp_sen_io_max": MoPropertyMeta("fm_temp_sen_io_max", "fmTempSenIoMax", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["not-applicable"], ["0-4294967295"]),
@@ -68,6 +76,10 @@ class ComputeMbTempStats(ManagedObject):
     prop_map = {
         "childAction": "child_action", 
         "dn": "dn", 
+        "fmTempSenFrontR": "fm_temp_sen_front_r", 
+        "fmTempSenFrontRAvg": "fm_temp_sen_front_r_avg", 
+        "fmTempSenFrontRMax": "fm_temp_sen_front_r_max", 
+        "fmTempSenFrontRMin": "fm_temp_sen_front_r_min", 
         "fmTempSenIo": "fm_temp_sen_io", 
         "fmTempSenIoAvg": "fm_temp_sen_io_avg", 
         "fmTempSenIoMax": "fm_temp_sen_io_max", 
@@ -97,6 +109,10 @@ class ComputeMbTempStats(ManagedObject):
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
         self.child_action = None
+        self.fm_temp_sen_front_r = None
+        self.fm_temp_sen_front_r_avg = None
+        self.fm_temp_sen_front_r_max = None
+        self.fm_temp_sen_front_r_min = None
         self.fm_temp_sen_io = None
         self.fm_temp_sen_io_avg = None
         self.fm_temp_sen_io_max = None

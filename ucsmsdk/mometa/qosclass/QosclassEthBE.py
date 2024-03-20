@@ -12,6 +12,10 @@ class QosclassEthBEConsts:
     COS_ANY = "any"
     DROP_DROP = "drop"
     DROP_NO_DROP = "no-drop"
+    FC_COS_CONFLICT_FALSE = "false"
+    FC_COS_CONFLICT_NO = "no"
+    FC_COS_CONFLICT_TRUE = "true"
+    FC_COS_CONFLICT_YES = "yes"
     MTU_FC = "fc"
     MTU_NORMAL = "normal"
     MULTICAST_OPTIMIZE_FALSE = "false"
@@ -34,7 +38,7 @@ class QosclassEthBE(ManagedObject):
     consts = QosclassEthBEConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("QosclassEthBE", "qosclassEthBE", "class-best-effort", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ext-lan-qos", "ext-san-qos", "ls-network", "ls-network-policy", "ls-qos-policy"], ['qosclassDefinition'], [], ["Get", "Set"])
+    mo_meta = MoMeta("QosclassEthBE", "qosclassEthBE", "class-best-effort", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin", "ext-lan-qos", "ext-san-qos", "ls-network", "ls-network-policy", "ls-qos-policy"], ['qosclassDefinition'], ['faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),
@@ -43,6 +47,7 @@ class QosclassEthBE(ManagedObject):
         "cos": MoPropertyMeta("cos", "cos", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["any"], ["0-6", "255-255"]),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "drop": MoPropertyMeta("drop", "drop", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["drop", "no-drop"], []),
+        "fc_cos_conflict": MoPropertyMeta("fc_cos_conflict", "fcCosConflict", "string", VersionMeta.Version433a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "mtu": MoPropertyMeta("mtu", "mtu", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["fc", "normal"], ["1500-9216"]),
         "multicast_optimize": MoPropertyMeta("multicast_optimize", "multicastOptimize", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["false", "no", "true", "yes"], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
@@ -60,6 +65,7 @@ class QosclassEthBE(ManagedObject):
         "cos": "cos", 
         "dn": "dn", 
         "drop": "drop", 
+        "fcCosConflict": "fc_cos_conflict", 
         "mtu": "mtu", 
         "multicastOptimize": "multicast_optimize", 
         "name": "name", 
@@ -77,6 +83,7 @@ class QosclassEthBE(ManagedObject):
         self.child_action = None
         self.cos = None
         self.drop = None
+        self.fc_cos_conflict = None
         self.mtu = None
         self.multicast_optimize = None
         self.name = None

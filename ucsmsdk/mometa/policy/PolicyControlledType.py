@@ -158,7 +158,7 @@ class PolicyControlledType(ManagedObject):
     consts = PolicyControlledTypeConsts()
     naming_props = set(['type'])
 
-    mo_meta = MoMeta("PolicyControlledType", "policyControlledType", "ctrlled-type-[type]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin"], ['policyCommunication', 'policyConfigBackup', 'policyDateTime', 'policyDiscovery', 'policyDns', 'policyEquipment', 'policyFault', 'policyInfraFirmware', 'policyMEp', 'policyMonitoring', 'policyPortConfig', 'policyPowerMgmt', 'policyPsu', 'policySecurity', 'policyStorageAutoConfig'], ['eventInst', 'faultInst', 'policyControlledTypeFsm', 'policyControlledTypeFsmTask'], [None])
+    mo_meta = MoMeta("PolicyControlledType", "policyControlledType", "ctrlled-type-[type]", VersionMeta.Version211a, "InputOutput", 0x7f, [], ["admin"], ['policyCommunication', 'policyConfigBackup', 'policyDateTime', 'policyDiscovery', 'policyDns', 'policyEquipment', 'policyFault', 'policyInfraFirmware', 'policyMEp', 'policyModularChassisFan', 'policyMonitoring', 'policyPortConfig', 'policyPowerExtended', 'policyPowerMgmt', 'policyPowerSave', 'policyPsu', 'policySecurity', 'policyStorageAutoConfig'], ['eventInst', 'faultInst', 'policyControlledTypeFsm', 'policyControlledTypeFsmTask'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

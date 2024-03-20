@@ -226,8 +226,13 @@ class StorageLocalDiskConsts:
     LC_REPURPOSED = "repurposed"
     LINK_SPEED_1_5_GBPS = "1-5-gbps"
     LINK_SPEED_12_GBPS = "12-gbps"
+    LINK_SPEED_16_GTPS = "16-gtps"
+    LINK_SPEED_2_5_GTPS = "2-5-gtps"
+    LINK_SPEED_24_GBPS = "24-gbps"
     LINK_SPEED_3_GBPS = "3-gbps"
+    LINK_SPEED_5_GTPS = "5-gtps"
     LINK_SPEED_6_GBPS = "6-gbps"
+    LINK_SPEED_8_GTPS = "8-gtps"
     LINK_SPEED_NA = "NA"
     LINK_SPEED_DISABLED = "disabled"
     LINK_SPEED_DOWN = "down"
@@ -358,7 +363,7 @@ class StorageLocalDisk(ManagedObject):
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x80, None, None, None, [], []),
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "repurposed"], []),
-        "link_speed": MoPropertyMeta("link_speed", "linkSpeed", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["1-5-gbps", "12-gbps", "3-gbps", "6-gbps", "NA", "disabled", "down", "host-power-off", "unknown", "unsupported-device"], []),
+        "link_speed": MoPropertyMeta("link_speed", "linkSpeed", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["1-5-gbps", "12-gbps", "16-gtps", "2-5-gtps", "24-gbps", "3-gbps", "5-gtps", "6-gbps", "8-gtps", "NA", "disabled", "down", "host-power-off", "unknown", "unsupported-device"], []),
         "link_state": MoPropertyMeta("link_state", "linkState", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["misconnect", "optimal", "sub-optimal", "unknown"], []),
         "link_state_reason": MoPropertyMeta("link_state_reason", "linkStateReason", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
