@@ -56,7 +56,7 @@ def ucs_gui_launch(handle, need_url=False):
 
     jnlp_file = None
     try:
-        ucsm_gui_url = "%s/ucsm/ucsm.jnlp" % handle.uri
+        ucsm_gui_url = "%s/app/ucsm/index.html" % handle.uri
         if handle:
             auth_token = handle.get_auth_token()
             log.debug("AuthToken: <%s>" % auth_token)
