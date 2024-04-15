@@ -20,7 +20,7 @@ class TestUCStoXML(unittest.TestCase):
     def test_001_mo_to_xml(self):
         from ucsmsdk.mometa.fabric.FabricVsan import FabricVsan
 
-        expected = b'<fabricVsan name="test" status="modified" dn="org-root/net-test" />'
+        expected = b'<fabricVsan dn="org-root/net-test" name="test" status="modified" />'
 
         mo = FabricVsan("org-root", "test")
         mo.status = "modified"
@@ -65,6 +65,6 @@ class TestUCStoXML(unittest.TestCase):
 
         response = xc.from_xml_str(response_str)
 
-        expected = b'<memoryUnitEnvStatsHist1 childAction="deleteNonPresent" id="1" mostRecent="no" rn="1" suspect="no" temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000" thresholded="" timeCollected="2015-09-07T09:43:53.262" dn="sys/chassis-1/blade-2/board/memarray-1/mem-9/dimm-env-stats/1"><memoryUnitEnvStatsHist2 rn="1" dn="sys/chassis-1/blade-2/board/memarray-1/mem-9/dimm-env-stats/1/1" childAction="deleteNonPresent" id="1" mostRecent="no" suspect="no" temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000" thresholded="" timeCollected="2015-09-07T09:43:53.262" /></memoryUnitEnvStatsHist1>'
+        expected = b'<memoryUnitEnvStatsHist1 childAction="deleteNonPresent" dn="sys/chassis-1/blade-2/board/memarray-1/mem-9/dimm-env-stats/1" id="1" mostRecent="no" rn="1" suspect="no" temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000" thresholded="" timeCollected="2015-09-07T09:43:53.262"><memoryUnitEnvStatsHist2 childAction="deleteNonPresent" dn="sys/chassis-1/blade-2/board/memarray-1/mem-9/dimm-env-stats/1/1" id="1" mostRecent="no" rn="1" suspect="no" temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000" thresholded="" timeCollected="2015-09-07T09:43:53.262" /></memoryUnitEnvStatsHist1>'
         obj = response.out_configs.child[0].child[0].child[0]
         self.assertEqual(xc.to_xml_str(obj.to_xml()), expected)

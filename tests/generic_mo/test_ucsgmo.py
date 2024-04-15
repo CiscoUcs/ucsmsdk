@@ -37,7 +37,7 @@ class TestUcsgMo(unittest.TestCase):
         elem = obj.to_xml()
         xml_str = xc.to_xml_str(elem)
 
-        expected = b'<testLsA a="1" b="2" c="3" rn="" dn=""><testLsB a="1" b="2" c="3" rn="" dn="" /></testLsA>'
+        expected = b'<testLsA a="1" b="2" c="3" dn="" rn=""><testLsB a="1" b="2" c="3" dn="" rn="" /></testLsA>'
 
         self.assertEqual(xml_str, expected)
 
@@ -49,7 +49,7 @@ class TestUcsgMo(unittest.TestCase):
         elem = obj.to_xml()
         xml_str = xc.to_xml_str(elem)
 
-        expected = b'<testLsA a="1" b="2" c="3" rn="parent" dn="org-root/parent"><testLsB rn="child" dn="org-root/parent/child" /></testLsA>'
+        expected = b'<testLsA a="1" b="2" c="3" dn="org-root/parent" rn="parent"><testLsB dn="org-root/parent/child" rn="child" /></testLsA>'
 
         self.assertEqual(xml_str, expected)
 
@@ -60,7 +60,7 @@ class TestUcsgMo(unittest.TestCase):
         elem = obj.to_xml()
         xml_str = xc.to_xml_str(elem)
 
-        expected = b'<testLsA a="1" b="2" c="3" rn="parent" dn="org-root/parent"><testLsB rn="child" dn="org-root/parent/child" /></testLsA>'
+        expected = b'<testLsA a="1" b="2" c="3" dn="org-root/parent" rn="parent"><testLsB dn="org-root/parent/child" rn="child" /></testLsA>'
 
         self.assertEqual(xml_str, expected)
 
