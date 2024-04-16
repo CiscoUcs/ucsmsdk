@@ -12,6 +12,7 @@
 # limitations under the License.
 
 import unittest
+import xml.etree.ElementTree as ET
 
 import ucsmsdk.ucsxmlcodec as xc
 import ucsmsdk.ucsmo as ucsmo
@@ -37,9 +38,9 @@ class TestUcsgMo(unittest.TestCase):
         elem = obj.to_xml()
         xml_str = xc.to_xml_str(elem)
 
-        expected = b'<testLsA a="1" b="2" c="3" dn="" rn=""><testLsB a="1" b="2" c="3" dn="" rn="" /></testLsA>'
-
-        self.assertEqual(xml_str, expected)
+        expected = b'<testLsA a="1" b="2" c="3" rn="" dn=""><testLsB a="1" b="2" c="3" rn="" dn="" /></testLsA>'
+        expected_xml_str = xc.to_xml_str(ET.fromstring(expected))
+        self.assertEqual(xml_str, expected_xml_str)
 
     def test_003_create_gmo_using_param_dict(self):
         args = {"a": 1, "b": 2, "c":3, "rn": "parent"}
@@ -49,9 +50,9 @@ class TestUcsgMo(unittest.TestCase):
         elem = obj.to_xml()
         xml_str = xc.to_xml_str(elem)
 
-        expected = b'<testLsA a="1" b="2" c="3" dn="org-root/parent" rn="parent"><testLsB dn="org-root/parent/child" rn="child" /></testLsA>'
-
-        self.assertEqual(xml_str, expected)
+        expected = b'<testLsA a="1" b="2" c="3" rn="parent" dn="org-root/parent"><testLsB rn="child" dn="org-root/parent/child" /></testLsA>'
+        expected_xml_str = xc.to_xml_str(ET.fromstring(expected))
+        self.assertEqual(xml_str, expected_xml_str)
 
     def test_004_create_gmo_using_parent_mo(self):
         args = {"a": 1, "b": 2, "c":3, "rn": "parent"}
@@ -60,9 +61,10 @@ class TestUcsgMo(unittest.TestCase):
         elem = obj.to_xml()
         xml_str = xc.to_xml_str(elem)
 
-        expected = b'<testLsA a="1" b="2" c="3" dn="org-root/parent" rn="parent"><testLsB dn="org-root/parent/child" rn="child" /></testLsA>'
-
-        self.assertEqual(xml_str, expected)
+        expected = b'<testLsA a="1" b="2" c="3" rn="parent" dn="org-root/parent"><testLsB rn="child" dn="org-root/parent/child" /></testLsA>'
+        expected_xml_str = xc.to_xml_str(ET.fromstring(expected))
+        self.assertEqual(xml_str, expected_xml_str)
+       
 
     def test_005_create_gmo_from_xml(self):
         xml_str = '''
