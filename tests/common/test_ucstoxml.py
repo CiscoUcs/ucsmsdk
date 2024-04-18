@@ -14,7 +14,7 @@
 import unittest
 
 import ucsmsdk.ucsxmlcodec as xc
-
+import xml.etree.ElementTree as ET
 
 class TestUCStoXML(unittest.TestCase):
     def test_001_mo_to_xml(self):
@@ -27,7 +27,9 @@ class TestUCStoXML(unittest.TestCase):
 
         elem = mo.to_xml()
         xml_str = xc.to_xml_str(elem)
-        self.assertEqual(xml_str, expected)
+        expected_xml_str = xc.to_xml_str(ET.fromstring(expected))
+        self.assertEqual(xml_str, expected_xml_str)
+
 
     def test_001_mo_heirarchy_to_xml(self):
         # first form the object from xml
@@ -67,4 +69,6 @@ class TestUCStoXML(unittest.TestCase):
 
         expected = b'<memoryUnitEnvStatsHist1 childAction="deleteNonPresent" id="1" mostRecent="no" rn="1" suspect="no" temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000" thresholded="" timeCollected="2015-09-07T09:43:53.262" dn="sys/chassis-1/blade-2/board/memarray-1/mem-9/dimm-env-stats/1"><memoryUnitEnvStatsHist2 rn="1" dn="sys/chassis-1/blade-2/board/memarray-1/mem-9/dimm-env-stats/1/1" childAction="deleteNonPresent" id="1" mostRecent="no" suspect="no" temperature="28.000000" temperatureAvg="25.599997" temperatureMax="28.000000" temperatureMin="24.000000" thresholded="" timeCollected="2015-09-07T09:43:53.262" /></memoryUnitEnvStatsHist1>'
         obj = response.out_configs.child[0].child[0].child[0]
-        self.assertEqual(xc.to_xml_str(obj.to_xml()), expected)
+        expected_xml_str = xc.to_xml_str(ET.fromstring(expected))
+        self.assertEqual(xc.to_xml_str(obj.to_xml()), expected_xml_str)
+

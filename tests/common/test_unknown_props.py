@@ -15,7 +15,7 @@ import unittest
 
 import ucsmsdk.ucsxmlcodec as xc
 from ucsmsdk.ucscoremeta import WriteXmlOption
-
+import xml.etree.ElementTree as ET
 
 class TestUnknownProps(unittest.TestCase):
     def test_001_knownmo_unknownprop(self):
@@ -32,7 +32,8 @@ class TestUnknownProps(unittest.TestCase):
         xml_element = obj.to_xml()
         expected = b'<lsServer name="ra11" agentPolicyName="" type="instance" usrLbl="b" unknownProps="known" dn="ls-ra11" />'
         result_str = xc.to_xml_str(xml_element)
-        self.assertEqual(result_str, expected)
+        expected_xml_str = xc.to_xml_str(ET.fromstring(expected))
+        self.assertEqual(result_str, expected_xml_str)
 
     def test_002_knownmo_unknownprop(self):
         xml_str = '''
