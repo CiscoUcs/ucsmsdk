@@ -3,6 +3,10 @@
 History
 -------
 
+0.9.17 (2024-04-19)
+---------------------
+* Support for UCSM release 4.3(3a)
+
 0.9.16 (2023-10-12)
 ---------------------
 * Fixes the issue where acknowledging a fault was not working via  ucsmsdk
