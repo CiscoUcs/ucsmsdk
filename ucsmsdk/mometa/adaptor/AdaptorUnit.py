@@ -214,6 +214,7 @@ class AdaptorUnit(ManagedObject):
         "discovery_status": MoPropertyMeta("discovery_status", "discoveryStatus", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|A|B),){0,3}(defaultValue|unknown|A|B){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "error_code": MoPropertyMeta("error_code", "errorCode", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["asic-fatal-error", "fcpu-error", "no-error", "pcie-unstable-link"], []),
+        "fault_value": MoPropertyMeta("fault_value", "faultValue", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|no-error|communication-errors|counterfeit|secure-boot-fail|backup-image|low-upgrades-remaining|fw-validation-failed|no-upgrades-remaining|alt-image|diag-image|not-rel-key-signed),){0,11}(defaultValue|no-error|communication-errors|counterfeit|secure-boot-fail|backup-image|low-upgrades-remaining|fw-validation-failed|no-upgrades-remaining|alt-image|diag-image|not-rel-key-signed){0,1}""", [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, None, None, None, [], ["1-5000"]),
@@ -262,6 +263,7 @@ class AdaptorUnit(ManagedObject):
         "discoveryStatus": "discovery_status", 
         "dn": "dn", 
         "errorCode": "error_code", 
+        "faultValue": "fault_value", 
         "fltAggr": "flt_aggr", 
         "hotswapThermal": "hotswap_thermal", 
         "id": "id", 
@@ -311,6 +313,7 @@ class AdaptorUnit(ManagedObject):
         self.conn_status = None
         self.discovery_status = None
         self.error_code = None
+        self.fault_value = None
         self.flt_aggr = None
         self.hotswap_thermal = None
         self.inlet2_thermal = None

@@ -273,6 +273,10 @@ class StorageControllerConsts:
     TYPE_SD = "SD"
     TYPE_EXTERNAL = "external"
     TYPE_UNKNOWN = "unknown"
+    UNKNOWN_CONTROLLER_FALSE = "false"
+    UNKNOWN_CONTROLLER_NO = "no"
+    UNKNOWN_CONTROLLER_TRUE = "true"
+    UNKNOWN_CONTROLLER_YES = "yes"
     VOLTAGE_LOWER_CRITICAL = "lower-critical"
     VOLTAGE_LOWER_NON_CRITICAL = "lower-non-critical"
     VOLTAGE_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -290,7 +294,7 @@ class StorageController(ManagedObject):
     consts = StorageControllerConsts()
     naming_props = set(['type', 'id'])
 
-    mo_meta = MoMeta("StorageController", "storageController", "storage-[type]-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['computeBoard', 'equipmentChassis'], ['equipmentFruComponent', 'equipmentInventoryStatus', 'faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'lstorageControllerDef', 'mgmtController', 'storageDrive', 'storageEmbeddedStorage', 'storageEnclosure', 'storageLocalDisk', 'storageLocalDiskConfigDef', 'storageLocalDiskEp', 'storageLocalLun', 'storageMezzFlashLife', 'storageNvmeStats', 'storageNvmeStorage', 'storageOnboardDevice', 'storageOperation', 'storageRaidBattery', 'storageVirtualDrive', 'storageVirtualDriveEp'], ["Get"])
+    mo_meta = MoMeta("StorageController", "storageController", "storage-[type]-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-compute", "ls-config", "ls-server", "ls-storage"], ['computeBoard', 'equipmentChassis'], ['equipmentFruComponent', 'equipmentInventoryStatus', 'faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'lstorageControllerDef', 'lstorageHybridDriveSlotConfig', 'mgmtController', 'storageDrive', 'storageEmbeddedStorage', 'storageEnclosure', 'storageLocalDisk', 'storageLocalDiskConfigDef', 'storageLocalDiskEp', 'storageLocalLun', 'storageMezzFlashLife', 'storageNvmeStats', 'storageNvmeStorage', 'storageOnboardDevice', 'storageOperation', 'storageRaidBattery', 'storageVirtualDrive', 'storageVirtualDriveEp'], ["Get"])
 
     prop_meta = {
         "admin_action": MoPropertyMeta("admin_action", "adminAction", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["clean-hx-state", "clear-boot-configuration", "clear-foreign-configuration", "disable-security", "enable-security", "import-foreign-configuration", "modify-key", "rescan-hx-inventory", "resend-hx-key", "secure-hx-drives", "skip-initial-config", "test-kmip-connectivity", "unlock-disk", "unpin-cache-all", "unspecified"], []),
@@ -356,6 +360,7 @@ class StorageController(ManagedObject):
         "supported_strip_sizes": MoPropertyMeta("supported_strip_sizes", "supportedStripSizes", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|not-applicable|8KB|16KB|32KB|64KB|128KB|256KB|512KB|1MB|2MB|4MB|8MB|16MB|32MB|64MB|128MB|256MB|512MB),){0,19}(defaultValue|unknown|not-applicable|8KB|16KB|32KB|64KB|128KB|256KB|512KB|1MB|2MB|4MB|8MB|16MB|32MB|64MB|128MB|256MB|512MB){0,1}""", [], []),
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x400, None, None, None, ["FCH", "FLASH", "HBA", "M2", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []),
+        "unknown_controller": MoPropertyMeta("unknown_controller", "unknownController", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "variant_type": MoPropertyMeta("variant_type", "variantType", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "vid": MoPropertyMeta("vid", "vid", "string", VersionMeta.Version223a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -427,6 +432,7 @@ class StorageController(ManagedObject):
         "supportedStripSizes": "supported_strip_sizes", 
         "thermal": "thermal", 
         "type": "type", 
+        "unknownController": "unknown_controller", 
         "variantType": "variant_type", 
         "vendor": "vendor", 
         "vid": "vid", 
@@ -497,6 +503,7 @@ class StorageController(ManagedObject):
         self.sub_type = None
         self.supported_strip_sizes = None
         self.thermal = None
+        self.unknown_controller = None
         self.variant_type = None
         self.vendor = None
         self.vid = None

@@ -265,6 +265,7 @@ class MemoryPersistentMemoryUnit(ManagedObject):
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "memory_capacity": MoPropertyMeta("memory_capacity", "memoryCapacity", "long", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([0-9]{1,15})$""", [], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
+        "model_with_mpn": MoPropertyMeta("model_with_mpn", "modelWithMpn", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "oper_qualifier": MoPropertyMeta("oper_qualifier", "operQualifier", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|uncorrectable-ecc-error|correctable-ecc-error|address-parity-error|memory-mismatch-error|dram-correctable-crc-error|dram-uncorrectable-crc-error|address-parity-error-correctable|address-parity-error-uncorrectable),){0,9}(defaultValue|none|uncorrectable-ecc-error|correctable-ecc-error|address-parity-error|memory-mismatch-error|dram-correctable-crc-error|dram-uncorrectable-crc-error|address-parity-error-correctable|address-parity-error-uncorrectable){0,1}""", [], []),
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version404a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
@@ -316,6 +317,7 @@ class MemoryPersistentMemoryUnit(ManagedObject):
         "locationDn": "location_dn", 
         "memoryCapacity": "memory_capacity", 
         "model": "model", 
+        "modelWithMpn": "model_with_mpn", 
         "operQualifier": "oper_qualifier", 
         "operQualifierReason": "oper_qualifier_reason", 
         "operState": "oper_state", 
@@ -367,6 +369,7 @@ class MemoryPersistentMemoryUnit(ManagedObject):
         self.location_dn = None
         self.memory_capacity = None
         self.model = None
+        self.model_with_mpn = None
         self.oper_qualifier = None
         self.oper_qualifier_reason = None
         self.oper_state = None

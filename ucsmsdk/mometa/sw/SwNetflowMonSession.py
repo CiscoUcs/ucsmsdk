@@ -16,6 +16,8 @@ class SwNetflowMonSessionConsts:
     LIFE_CYCLE_NEW = "new"
     LIFE_CYCLE_NORMAL = "normal"
     PROTOCOL_NETFLOW = "netflow"
+    SESSION_TYPE_ERSPAN_SOURCE = "erspan-source"
+    SESSION_TYPE_SPAN_LOCAL = "span-local"
     SPAN_CTRL_PKTS_DISABLED = "disabled"
     SPAN_CTRL_PKTS_ENABLED = "enabled"
     SWITCH_ID_A = "A"
@@ -29,7 +31,7 @@ class SwNetflowMonSession(ManagedObject):
     consts = SwNetflowMonSessionConsts()
     naming_props = set(['name'])
 
-    mo_meta = MoMeta("SwNetflowMonSession", "swNetflowMonSession", "flowmonsession-netflow-[name]", VersionMeta.Version221b, "InputOutput", 0x1ff, [], ["read-only"], ['swEthLanFlowMon'], ['swNetflowMonitor', 'swNetflowMonitorRef'], [None])
+    mo_meta = MoMeta("SwNetflowMonSession", "swNetflowMonSession", "flowmonsession-netflow-[name]", VersionMeta.Version221b, "InputOutput", 0x3ff, [], ["read-only"], ['swEthLanFlowMon'], ['swNetflowMonitor', 'swNetflowMonitorRef'], [None])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
@@ -43,9 +45,10 @@ class SwNetflowMonSession(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "session": MoPropertyMeta("session", "session", "uint", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-255"]),
-        "span_ctrl_pkts": MoPropertyMeta("span_ctrl_pkts", "spanCtrlPkts", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["disabled", "enabled"], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["A", "B", "NONE"], []),
+        "session_type": MoPropertyMeta("session_type", "sessionType", "string", VersionMeta.Version434a, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["erspan-source", "span-local"], []),
+        "span_ctrl_pkts": MoPropertyMeta("span_ctrl_pkts", "spanCtrlPkts", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["disabled", "enabled"], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["A", "B", "NONE"], []),
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []),
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []),
     }
@@ -62,6 +65,7 @@ class SwNetflowMonSession(ManagedObject):
         "rn": "rn", 
         "sacl": "sacl", 
         "session": "session", 
+        "sessionType": "session_type", 
         "spanCtrlPkts": "span_ctrl_pkts", 
         "status": "status", 
         "switchId": "switch_id", 
@@ -80,6 +84,7 @@ class SwNetflowMonSession(ManagedObject):
         self.protocol = None
         self.sacl = None
         self.session = None
+        self.session_type = None
         self.span_ctrl_pkts = None
         self.status = None
         self.switch_id = None

@@ -66,6 +66,7 @@ class SwSystemStats(ManagedObject):
         "suspect": MoPropertyMeta("suspect", "suspect", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "thresholded": MoPropertyMeta("thresholded", "thresholded", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "time_collected": MoPropertyMeta("time_collected", "timeCollected", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
+        "up_time": MoPropertyMeta("up_time", "upTime", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, r"""(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", [], []),
         "update": MoPropertyMeta("update", "update", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
     }
 
@@ -103,6 +104,7 @@ class SwSystemStats(ManagedObject):
         "suspect": "suspect", 
         "thresholded": "thresholded", 
         "timeCollected": "time_collected", 
+        "upTime": "up_time", 
         "update": "update", 
     }
 
@@ -139,6 +141,7 @@ class SwSystemStats(ManagedObject):
         self.suspect = None
         self.thresholded = None
         self.time_collected = None
+        self.up_time = None
         self.update = None
 
         ManagedObject.__init__(self, "SwSystemStats", parent_mo_or_dn, **kwargs)

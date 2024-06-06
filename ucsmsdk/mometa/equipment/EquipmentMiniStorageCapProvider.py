@@ -28,7 +28,7 @@ class EquipmentMiniStorageCapProvider(ManagedObject):
     consts = EquipmentMiniStorageCapProviderConsts()
     naming_props = set(['vendor', 'model', 'revision'])
 
-    mo_meta = MoMeta("EquipmentMiniStorageCapProvider", "equipmentMiniStorageCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version321d, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentFruVariant', 'equipmentManufacturingDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get", "Set"])
+    mo_meta = MoMeta("EquipmentMiniStorageCapProvider", "equipmentMiniStorageCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version321d, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentFirmwareUpdateRestriction', 'equipmentFruVariant', 'equipmentManufacturingDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get", "Set"])
 
     prop_meta = {
         "card_type": MoPropertyMeta("card_type", "cardType", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["FLASH", "M2", "NVME", "PT", "SAS", "SD"], []),

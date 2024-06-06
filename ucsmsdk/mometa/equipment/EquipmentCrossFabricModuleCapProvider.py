@@ -22,7 +22,7 @@ class EquipmentCrossFabricModuleCapProvider(ManagedObject):
     consts = EquipmentCrossFabricModuleCapProviderConsts()
     naming_props = set(['vendor', 'model', 'revision'])
 
-    mo_meta = MoMeta("EquipmentCrossFabricModuleCapProvider", "equipmentCrossFabricModuleCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version432b, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentFanModulesDef', 'equipmentFruVariant', 'equipmentManufacturingDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'firmwareType', 'firmwareUpgradeConstraint'], [None])
+    mo_meta = MoMeta("EquipmentCrossFabricModuleCapProvider", "equipmentCrossFabricModuleCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version432b, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentFanModulesDef', 'equipmentFirmwareUpdateRestriction', 'equipmentFruVariant', 'equipmentManufacturingDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'equipmentXFMTypeDef', 'firmwareType', 'firmwareUpgradeConstraint'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version432b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -47,7 +47,7 @@ class NetworkElement(ManagedObject):
     consts = NetworkElementConsts()
     naming_props = set(['id'])
 
-    mo_meta = MoMeta("NetworkElement", "networkElement", "switch-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config"], ['topSystem'], ['equipmentFan', 'equipmentFanModule', 'equipmentLocatorLed', 'equipmentPsu', 'equipmentSwitchCard', 'extmgmtIf', 'faultInst', 'fcpoolOuis', 'firmwareSecureFPGA', 'firmwareStatus', 'mgmtController', 'mgmtDbState', 'mgmtHealthStatus', 'mgmtIPv6IfConfig', 'networkLanNeighbors', 'networkLimit', 'networkLldpNeighbors', 'networkOperLevel', 'networkSanNeighbors', 'nfsMountInst', 'powerBudget', 'storageItem', 'swAccessDomain', 'swCardEnvStats', 'swEnvStats', 'swEthLanBorder', 'swEthLanFlowMon', 'swEthLanMon', 'swExtUtility', 'swFabricZoneNs', 'swFcSanBorder', 'swFcSanMon', 'swPhys', 'swPortDiscover', 'swSystemStats', 'swUtilityDomain', 'swVlanPortNs'], ["Get", "Set"])
+    mo_meta = MoMeta("NetworkElement", "networkElement", "switch-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config"], ['topSystem'], ['equipmentFan', 'equipmentFanModule', 'equipmentLocatorLed', 'equipmentPsu', 'equipmentSwitchCard', 'extmgmtIf', 'faultInst', 'fcpoolOuis', 'firmwareSecureFPGA', 'firmwareStatus', 'mgmtController', 'mgmtDbState', 'mgmtHealthStatus', 'mgmtIPv6IfConfig', 'networkLanNeighbors', 'networkLimit', 'networkLldpNeighbors', 'networkOperLevel', 'networkSanNeighbors', 'nfsMountInst', 'powerBudget', 'storageItem', 'swAccessDomain', 'swCardEnvStats', 'swEnvStats', 'swEthLanBorder', 'swEthLanFlowMon', 'swEthLanMon', 'swExtUtility', 'swFabricZoneNs', 'swFcSanBorder', 'swFcSanMon', 'swPhys', 'swPortDiscover', 'swRMonEp', 'swSystemStats', 'swUtilityDomain', 'swVlanPortNs'], ["Get", "Set"])
 
     prop_meta = {
         "admin_evac_state": MoPropertyMeta("admin_evac_state", "adminEvacState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["drain", "fill", "unknown"], []),
@@ -63,7 +63,8 @@ class NetworkElement(ManagedObject):
         "inband_if_ip": MoPropertyMeta("inband_if_ip", "inbandIfIp", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),
         "inband_if_mask": MoPropertyMeta("inband_if_mask", "inbandIfMask", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),
         "inband_if_vnet": MoPropertyMeta("inband_if_vnet", "inbandIfVnet", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4090"]),
-        "inventory_status": MoPropertyMeta("inventory_status", "inventoryStatus", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|up|remote-eth-port-inventory|fc-pc-inventory|fc-port-inventory|switch-fru|vlan-comp-grp-inventory|switch-inventory|vlan-port-count|mgmt-port-inventory|card-inventory|xcvr-inventory|eth-pc-inventory|eth-port-inventory),){0,13}(defaultValue|up|remote-eth-port-inventory|fc-pc-inventory|fc-port-inventory|switch-fru|vlan-comp-grp-inventory|switch-inventory|vlan-port-count|mgmt-port-inventory|card-inventory|xcvr-inventory|eth-pc-inventory|eth-port-inventory){0,1}""", [], []),
+        "inventory_status": MoPropertyMeta("inventory_status", "inventoryStatus", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|up|remote-eth-port-inventory|fc-pc-inventory|fc-port-inventory|switch-fru|vlan-comp-grp-inventory|switch-inventory|vlan-port-count|mgmt-port-inventory|macsec-state-inventory|card-inventory|xcvr-inventory|eth-pc-inventory|eth-port-inventory),){0,14}(defaultValue|up|remote-eth-port-inventory|fc-pc-inventory|fc-port-inventory|switch-fru|vlan-comp-grp-inventory|switch-inventory|vlan-port-count|mgmt-port-inventory|macsec-state-inventory|card-inventory|xcvr-inventory|eth-pc-inventory|eth-port-inventory){0,1}""", [], []),
+        "licensing_msg": MoPropertyMeta("licensing_msg", "licensingMsg", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "min_active_fan": MoPropertyMeta("min_active_fan", "minActiveFan", "ushort", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-65535"]),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "oob_if_gw": MoPropertyMeta("oob_if_gw", "oobIfGw", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),
@@ -98,6 +99,7 @@ class NetworkElement(ManagedObject):
         "inbandIfMask": "inband_if_mask", 
         "inbandIfVnet": "inband_if_vnet", 
         "inventoryStatus": "inventory_status", 
+        "licensingMsg": "licensing_msg", 
         "minActiveFan": "min_active_fan", 
         "model": "model", 
         "oobIfGw": "oob_if_gw", 
@@ -132,6 +134,7 @@ class NetworkElement(ManagedObject):
         self.inband_if_mask = None
         self.inband_if_vnet = None
         self.inventory_status = None
+        self.licensing_msg = None
         self.min_active_fan = None
         self.model = None
         self.oob_if_gw = None

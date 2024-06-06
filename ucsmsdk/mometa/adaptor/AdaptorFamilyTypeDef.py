@@ -22,6 +22,8 @@ class AdaptorFamilyTypeDefConsts:
     IS_RETIMER_REQUIRED_NO = "no"
     IS_RETIMER_REQUIRED_TRUE = "true"
     IS_RETIMER_REQUIRED_YES = "yes"
+    PCIE_NODE_SUPPORT_NO = "no"
+    PCIE_NODE_SUPPORT_YES = "yes"
     UBM_SUPPORT_NO = "no"
     UBM_SUPPORT_YES = "yes"
 
@@ -43,6 +45,7 @@ class AdaptorFamilyTypeDef(ManagedObject):
         "is_passthrough": MoPropertyMeta("is_passthrough", "isPassthrough", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["false", "no", "true", "yes"], []),
         "is_retimer_required": MoPropertyMeta("is_retimer_required", "isRetimerRequired", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["false", "no", "true", "yes"], []),
         "num_dce_ports": MoPropertyMeta("num_dce_ports", "numDcePorts", "uint", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, [], ["0-4294967295"]),
+        "pcie_node_support": MoPropertyMeta("pcie_node_support", "pcieNodeSupport", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "yes"], []),
         "port_family": MoPropertyMeta("port_family", "portFamily", "string", VersionMeta.Version202m, MoPropertyMeta.READ_WRITE, 0x100, 0, 510, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, 0x200, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
@@ -60,6 +63,7 @@ class AdaptorFamilyTypeDef(ManagedObject):
         "isPassthrough": "is_passthrough", 
         "isRetimerRequired": "is_retimer_required", 
         "numDcePorts": "num_dce_ports", 
+        "pcieNodeSupport": "pcie_node_support", 
         "portFamily": "port_family", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -77,6 +81,7 @@ class AdaptorFamilyTypeDef(ManagedObject):
         self.is_passthrough = None
         self.is_retimer_required = None
         self.num_dce_ports = None
+        self.pcie_node_support = None
         self.port_family = None
         self.sacl = None
         self.status = None

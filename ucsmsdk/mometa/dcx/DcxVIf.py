@@ -6,6 +6,8 @@ from ...ucsmeta import VersionMeta
 
 
 class DcxVIfConsts:
+    STATIC_MAC_LIMIT_STATUS_AVAILABLE = "available"
+    STATIC_MAC_LIMIT_STATUS_REACHED = "reached"
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
     IF_ROLE_DIAG = "diag"
@@ -78,6 +80,7 @@ class DcxVIf(ManagedObject):
     mo_meta = MoMeta("DcxVIf", "dcxVIf", "vif-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['adaptorExtEthIf', 'adaptorExtEthIfPc', 'adaptorFcOEIf', 'adaptorHostEthIf', 'adaptorHostFcIf', 'adaptorHostServiceEthIf'], ['faultInst'], ["Get"])
 
     prop_meta = {
+        "static_mac_limit_status": MoPropertyMeta("static_mac_limit_status", "StaticMacLimitStatus", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["available", "reached"], []),
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "cookie": MoPropertyMeta("cookie", "cookie", "ulong", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
@@ -108,6 +111,7 @@ class DcxVIf(ManagedObject):
     }
 
     prop_map = {
+        "StaticMacLimitStatus": "static_mac_limit_status", 
         "adminState": "admin_state", 
         "childAction": "child_action", 
         "cookie": "cookie", 
@@ -140,6 +144,7 @@ class DcxVIf(ManagedObject):
     def __init__(self, parent_mo_or_dn, id, **kwargs):
         self._dirty_mask = 0
         self.id = id
+        self.static_mac_limit_status = None
         self.admin_state = None
         self.child_action = None
         self.cookie = None
