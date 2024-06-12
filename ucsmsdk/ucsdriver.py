@@ -84,7 +84,7 @@ class TLSConnection(httplib.HTTPSConnection):
             ssl_context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
             ssl_context.options |= ssl.OP_NO_SSLv2
             ssl_context.options |= ssl.OP_NO_SSLv3
-            if self.key_file and self.cert_file:
+            if getattr(self, "key_file", None) and getattr(self, "cert_file", None):
                 ssl_context.load_cert_chain(keyfile=self.key_file,
                                             certfile=self.cert_file)
             self.sock = ssl_context.wrap_socket(sock)
