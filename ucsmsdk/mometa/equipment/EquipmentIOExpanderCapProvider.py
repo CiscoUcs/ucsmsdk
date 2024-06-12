@@ -22,7 +22,7 @@ class EquipmentIOExpanderCapProvider(ManagedObject):
     consts = EquipmentIOExpanderCapProviderConsts()
     naming_props = set(['vendor', 'model', 'revision'])
 
-    mo_meta = MoMeta("EquipmentIOExpanderCapProvider", "equipmentIOExpanderCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version312b, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentEmbeddedControllerConfig', 'equipmentFruVariant', 'equipmentManufacturingDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServiceDef', 'equipmentSlotArray', 'equipmentSlotArrayRef', 'equipmentStorageControllerConfig', 'firmwareConstraints', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get"])
+    mo_meta = MoMeta("EquipmentIOExpanderCapProvider", "equipmentIOExpanderCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version312b, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentEmbeddedControllerConfig', 'equipmentFirmwareUpdateRestriction', 'equipmentFruVariant', 'equipmentManufacturingDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServiceDef', 'equipmentSlotArray', 'equipmentSlotArrayRef', 'equipmentStorageControllerConfig', 'firmwareConstraints', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version312b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

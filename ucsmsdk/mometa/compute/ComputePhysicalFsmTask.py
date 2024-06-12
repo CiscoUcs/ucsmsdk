@@ -22,6 +22,7 @@ class ComputePhysicalFsmTaskConsts:
     ITEM_CONFIG_BOARD = "ConfigBoard"
     ITEM_CONFIG_SO_L = "ConfigSoL"
     ITEM_CONFIGURE_SERVER_PERSONALITY = "ConfigureServerPersonality"
+    ITEM_DATA_SANITIZATION = "DataSanitization"
     ITEM_DECOMMISSION = "Decommission"
     ITEM_DIAG = "Diag"
     ITEM_DIAGNOSTIC_INTERRUPT = "DiagnosticInterrupt"
@@ -70,7 +71,7 @@ class ComputePhysicalFsmTask(ManagedObject):
         "completion": MoPropertyMeta("completion", "completion", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cancelled", "completed", "processing", "scheduled"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []),
         "flags": MoPropertyMeta("flags", "flags", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""(defaultValue){0,1}""", [], []),
-        "item": MoPropertyMeta("item", "item", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateAdaptor", "ActivateBIOS", "Associate", "BiosPasswordReset", "BiosRecovery", "CimcSecurityConfig", "CimcSecurityUnconfig", "CimcSessionDelete", "CmosReset", "ConfigBoard", "ConfigSoL", "ConfigureServerPersonality", "Decommission", "Diag", "DiagnosticInterrupt", "Disassociate", "DiskZoningInventory", "EnableCimcSecureBoot", "ExecuteActions", "FlashController", "FwUpgrade", "HardShutdown", "Hardreset", "NvmeSwitchRecovery", "OobStorageAdminConfig", "PowerCap", "Powercycle", "ReinitializeVirtualDrive", "ResetBmc", "ResetIpmi", "ResetKvm", "ResetMemoryErrors", "ServiceInfraDeploy", "ServiceInfraWithdraw", "SoftShutdown", "Softreset", "SwConnUpd", "Turnup", "UnconfigSoL", "UpdateAdaptor", "UpdateBIOS", "UpdateBoardController", "clearTPM", "nop", "updateExtUsers"], []),
+        "item": MoPropertyMeta("item", "item", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, None, None, None, None, ["ActivateAdaptor", "ActivateBIOS", "Associate", "BiosPasswordReset", "BiosRecovery", "CimcSecurityConfig", "CimcSecurityUnconfig", "CimcSessionDelete", "CmosReset", "ConfigBoard", "ConfigSoL", "ConfigureServerPersonality", "DataSanitization", "Decommission", "Diag", "DiagnosticInterrupt", "Disassociate", "DiskZoningInventory", "EnableCimcSecureBoot", "ExecuteActions", "FlashController", "FwUpgrade", "HardShutdown", "Hardreset", "NvmeSwitchRecovery", "OobStorageAdminConfig", "PowerCap", "Powercycle", "ReinitializeVirtualDrive", "ResetBmc", "ResetIpmi", "ResetKvm", "ResetMemoryErrors", "ServiceInfraDeploy", "ServiceInfraWithdraw", "SoftShutdown", "Softreset", "SwConnUpd", "Turnup", "UnconfigSoL", "UpdateAdaptor", "UpdateBIOS", "UpdateBoardController", "clearTPM", "nop", "updateExtUsers"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "seq_id": MoPropertyMeta("seq_id", "seqId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

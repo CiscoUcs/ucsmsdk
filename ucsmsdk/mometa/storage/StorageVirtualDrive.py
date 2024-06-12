@@ -84,6 +84,10 @@ class StorageVirtualDriveConsts:
     LC_DEALLOCATED = "deallocated"
     LC_REPURPOSED = "repurposed"
     NUMBER_OF_BLOCKS_UNKNOWN = "unknown"
+    NVME_HYBRID_DISK_FALSE = "false"
+    NVME_HYBRID_DISK_NO = "no"
+    NVME_HYBRID_DISK_TRUE = "true"
+    NVME_HYBRID_DISK_YES = "yes"
     OPER_DEVICE_ID_UNSPECIFIED = "unspecified"
     OPER_STATE_COMPUTE_DEGRADED = "compute-degraded"
     OPER_STATE_COMPUTE_INOPERABLE = "compute-inoperable"
@@ -204,6 +208,7 @@ class StorageVirtualDrive(ManagedObject):
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "number_of_blocks": MoPropertyMeta("number_of_blocks", "numberOfBlocks", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unknown"], ["0-18446744073709551615"]),
+        "nvme_hybrid_disk": MoPropertyMeta("nvme_hybrid_disk", "nvmeHybridDisk", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "oper_device_id": MoPropertyMeta("oper_device_id", "operDeviceId", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unspecified"], ["0-4294967295"]),
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["compute-degraded", "compute-inoperable", "offline", "online", "undefined"], []),
@@ -256,6 +261,7 @@ class StorageVirtualDrive(ManagedObject):
         "model": "model", 
         "name": "name", 
         "numberOfBlocks": "number_of_blocks", 
+        "nvmeHybridDisk": "nvme_hybrid_disk", 
         "operDeviceId": "oper_device_id", 
         "operQualifierReason": "oper_qualifier_reason", 
         "operState": "oper_state", 
@@ -308,6 +314,7 @@ class StorageVirtualDrive(ManagedObject):
         self.model = None
         self.name = None
         self.number_of_blocks = None
+        self.nvme_hybrid_disk = None
         self.oper_device_id = None
         self.oper_qualifier_reason = None
         self.oper_state = None

@@ -224,7 +224,7 @@ class AdaptorExtEthIf(ManagedObject):
     consts = AdaptorExtEthIfConsts()
     naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorExtEthIf", "adaptorExtEthIf", "ext-eth-[id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance", "read-only"], ['adaptorUnit'], ['adaptorEthPortBySizeLargeStats', 'adaptorEthPortBySizeSmallStats', 'adaptorEthPortErrStats', 'adaptorEthPortMcastStats', 'adaptorEthPortOutsizedStats', 'adaptorEthPortStats', 'adaptorExtEthIfFsm', 'adaptorExtEthIfFsmTask', 'dcxVIf', 'eventInst', 'fabricEthMonSrcEp', 'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("AdaptorExtEthIf", "adaptorExtEthIf", "ext-eth-[id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance", "read-only"], ['adaptorUnit'], ['adaptorEthPortBySizeLargeStats', 'adaptorEthPortBySizeSmallStats', 'adaptorEthPortErrStats', 'adaptorEthPortMcastStats', 'adaptorEthPortOutsizedStats', 'adaptorEthPortPfcStats', 'adaptorEthPortStats', 'adaptorExtEthIfFsm', 'adaptorExtEthIfFsmTask', 'dcxVIf', 'eventInst', 'fabricEthMonSrcEp', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "adapter_id": MoPropertyMeta("adapter_id", "adapterId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

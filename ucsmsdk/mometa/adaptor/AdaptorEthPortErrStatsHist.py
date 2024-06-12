@@ -44,6 +44,11 @@ class AdaptorEthPortErrStatsHist(ManagedObject):
         "mac_discarded_packets_delta_max": MoPropertyMeta("mac_discarded_packets_delta_max", "macDiscardedPacketsDeltaMax", "ulong", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "mac_discarded_packets_delta_min": MoPropertyMeta("mac_discarded_packets_delta_min", "macDiscardedPacketsDeltaMin", "ulong", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "most_recent": MoPropertyMeta("most_recent", "mostRecent", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "no_buffer_drop_packets": MoPropertyMeta("no_buffer_drop_packets", "noBufferDropPackets", "ulong", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
+        "no_buffer_drop_packets_delta": MoPropertyMeta("no_buffer_drop_packets_delta", "noBufferDropPacketsDelta", "ulong", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
+        "no_buffer_drop_packets_delta_avg": MoPropertyMeta("no_buffer_drop_packets_delta_avg", "noBufferDropPacketsDeltaAvg", "ulong", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
+        "no_buffer_drop_packets_delta_max": MoPropertyMeta("no_buffer_drop_packets_delta_max", "noBufferDropPacketsDeltaMax", "ulong", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
+        "no_buffer_drop_packets_delta_min": MoPropertyMeta("no_buffer_drop_packets_delta_min", "noBufferDropPacketsDeltaMin", "ulong", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
@@ -72,6 +77,11 @@ class AdaptorEthPortErrStatsHist(ManagedObject):
         "macDiscardedPacketsDeltaMax": "mac_discarded_packets_delta_max", 
         "macDiscardedPacketsDeltaMin": "mac_discarded_packets_delta_min", 
         "mostRecent": "most_recent", 
+        "noBufferDropPackets": "no_buffer_drop_packets", 
+        "noBufferDropPacketsDelta": "no_buffer_drop_packets_delta", 
+        "noBufferDropPacketsDeltaAvg": "no_buffer_drop_packets_delta_avg", 
+        "noBufferDropPacketsDeltaMax": "no_buffer_drop_packets_delta_max", 
+        "noBufferDropPacketsDeltaMin": "no_buffer_drop_packets_delta_min", 
         "rn": "rn", 
         "sacl": "sacl", 
         "status": "status", 
@@ -100,6 +110,11 @@ class AdaptorEthPortErrStatsHist(ManagedObject):
         self.mac_discarded_packets_delta_max = None
         self.mac_discarded_packets_delta_min = None
         self.most_recent = None
+        self.no_buffer_drop_packets = None
+        self.no_buffer_drop_packets_delta = None
+        self.no_buffer_drop_packets_delta_avg = None
+        self.no_buffer_drop_packets_delta_max = None
+        self.no_buffer_drop_packets_delta_min = None
         self.sacl = None
         self.status = None
         self.suspect = None

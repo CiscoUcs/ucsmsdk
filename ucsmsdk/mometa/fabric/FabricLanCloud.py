@@ -174,7 +174,7 @@ class FabricLanCloud(ManagedObject):
     consts = FabricLanCloudConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FabricLanCloud", "fabricLanCloud", "lan", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEp'], ['eventInst', 'extvmmNetworkSets', 'extvmmVMNetworkSets', 'fabricEthLan', 'fabricEthLinkProfile', 'fabricLanCloudFsm', 'fabricLanCloudFsmTask', 'fabricLanPinGroup', 'fabricNetGroup', 'fabricReservedVlan', 'fabricUdldLinkPolicy', 'fabricVlan', 'faultInst', 'firmwareAck', 'flowctrlDefinition', 'mgmtInbandProfile', 'mgmtLeaderEntity', 'pfcWatchDog', 'qosclassDefinition', 'statsThresholdPolicy', 'vnicProfileSet'], ["Get", "Set"])
+    mo_meta = MoMeta("FabricLanCloud", "fabricLanCloud", "lan", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEp'], ['eventInst', 'extvmmNetworkSets', 'extvmmVMNetworkSets', 'fabricEthLan', 'fabricEthLinkProfile', 'fabricLanCloudFsm', 'fabricLanCloudFsmTask', 'fabricLanPinGroup', 'fabricMacSec', 'fabricNetGroup', 'fabricReservedVlan', 'fabricUdldLinkPolicy', 'fabricVlan', 'faultInst', 'firmwareAck', 'flowctrlDefinition', 'mgmtInbandProfile', 'mgmtLeaderEntity', 'pfcWatchDog', 'qosclassDefinition', 'statsThresholdPolicy', 'vnicProfileSet'], ["Get", "Set"])
 
     prop_meta = {
         "qin_q_forwarding": MoPropertyMeta("qin_q_forwarding", "QinQForwarding", "string", VersionMeta.Version423b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),

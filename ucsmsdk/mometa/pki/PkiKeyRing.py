@@ -37,6 +37,10 @@ class PkiKeyRingConsts:
     REGEN_NO = "no"
     REGEN_TRUE = "true"
     REGEN_YES = "yes"
+    RESTART_WEB_SERVICE_FALSE = "false"
+    RESTART_WEB_SERVICE_NO = "no"
+    RESTART_WEB_SERVICE_TRUE = "true"
+    RESTART_WEB_SERVICE_YES = "yes"
 
 
 class PkiKeyRing(ManagedObject):
@@ -63,6 +67,7 @@ class PkiKeyRing(ManagedObject):
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["local", "pending-policy", "policy"], []),
         "regen": MoPropertyMeta("regen", "regen", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["false", "no", "true", "yes"], []),
+        "restart_web_service": MoPropertyMeta("restart_web_service", "restartWebService", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x200, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
@@ -85,6 +90,7 @@ class PkiKeyRing(ManagedObject):
         "policyLevel": "policy_level", 
         "policyOwner": "policy_owner", 
         "regen": "regen", 
+        "restartWebService": "restart_web_service", 
         "rn": "rn", 
         "sacl": "sacl", 
         "status": "status", 
@@ -107,6 +113,7 @@ class PkiKeyRing(ManagedObject):
         self.policy_level = None
         self.policy_owner = None
         self.regen = None
+        self.restart_web_service = None
         self.sacl = None
         self.status = None
         self.tp = None

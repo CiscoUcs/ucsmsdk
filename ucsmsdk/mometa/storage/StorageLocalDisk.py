@@ -321,6 +321,10 @@ class StorageLocalDiskConsts:
     THERMAL_UPPER_CRITICAL = "upper-critical"
     THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
     THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
+    UNKNOWN_DRIVE_FALSE = "false"
+    UNKNOWN_DRIVE_NO = "no"
+    UNKNOWN_DRIVE_TRUE = "true"
+    UNKNOWN_DRIVE_YES = "yes"
 
 
 class StorageLocalDisk(ManagedObject):
@@ -381,6 +385,7 @@ class StorageLocalDisk(ManagedObject):
         "size": MoPropertyMeta("size", "size", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applicable"], ["0-18446744073709551615"]),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
+        "unknown_drive": MoPropertyMeta("unknown_drive", "unknownDrive", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "variant_type": MoPropertyMeta("variant_type", "variantType", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
     }
@@ -435,6 +440,7 @@ class StorageLocalDisk(ManagedObject):
         "size": "size", 
         "status": "status", 
         "thermal": "thermal", 
+        "unknownDrive": "unknown_drive", 
         "variantType": "variant_type", 
         "vendor": "vendor", 
     }
@@ -488,6 +494,7 @@ class StorageLocalDisk(ManagedObject):
         self.size = None
         self.status = None
         self.thermal = None
+        self.unknown_drive = None
         self.variant_type = None
         self.vendor = None
 

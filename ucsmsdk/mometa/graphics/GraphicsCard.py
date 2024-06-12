@@ -191,13 +191,14 @@ class GraphicsCard(ManagedObject):
     consts = GraphicsCardConsts()
     naming_props = set(['id'])
 
-    mo_meta = MoMeta("GraphicsCard", "graphicsCard", "graphics-card-[id]", VersionMeta.Version213a, "InputOutput", 0x3f, [], ["read-only"], ['computeBoard'], ['equipmentInventoryStatus', 'firmwareBootDefinition', 'firmwareRunning', 'graphicsController'], ["Get"])
+    mo_meta = MoMeta("GraphicsCard", "graphicsCard", "graphics-card-[id]", VersionMeta.Version213a, "InputOutput", 0x3f, [], ["read-only"], ['computeBoard'], ['equipmentFruComponent', 'equipmentInventoryStatus', 'faultInst', 'firmwareBootDefinition', 'firmwareRunning', 'graphicsController'], ["Get"])
 
     prop_meta = {
         "cec_present": MoPropertyMeta("cec_present", "cecPresent", "string", VersionMeta.Version422d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA", "No", "Yes"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version213a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "device_id": MoPropertyMeta("device_id", "deviceId", "uint", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version213a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
+        "enclosure_dn": MoPropertyMeta("enclosure_dn", "enclosureDn", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "expander_slot": MoPropertyMeta("expander_slot", "expanderSlot", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "firmware_version": MoPropertyMeta("firmware_version", "firmwareVersion", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
@@ -241,6 +242,7 @@ class GraphicsCard(ManagedObject):
         "childAction": "child_action", 
         "deviceId": "device_id", 
         "dn": "dn", 
+        "enclosureDn": "enclosure_dn", 
         "expanderSlot": "expander_slot", 
         "firmwareVersion": "firmware_version", 
         "hotswapThermal": "hotswap_thermal", 
@@ -285,6 +287,7 @@ class GraphicsCard(ManagedObject):
         self.cec_present = None
         self.child_action = None
         self.device_id = None
+        self.enclosure_dn = None
         self.expander_slot = None
         self.firmware_version = None
         self.hotswap_thermal = None

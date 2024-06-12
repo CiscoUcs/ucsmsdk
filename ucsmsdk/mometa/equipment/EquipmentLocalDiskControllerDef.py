@@ -90,6 +90,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         "hot_plug_supported": MoPropertyMeta("hot_plug_supported", "hotPlugSupported", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
         "jbod_sharing_supported": MoPropertyMeta("jbod_sharing_supported", "jbodSharingSupported", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "max_restricted_drives_for_raid1": MoPropertyMeta("max_restricted_drives_for_raid1", "maxRestrictedDrivesForRaid1", "ushort", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-65535"]),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "on_board_memory_check_needed": MoPropertyMeta("on_board_memory_check_needed", "onBoardMemoryCheckNeeded", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "oob_controller_class_identifier": MoPropertyMeta("oob_controller_class_identifier", "oobControllerClassIdentifier", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aero-mr", "avenger-rio", "avila-rock", "none", "nvme"], []),
@@ -116,6 +117,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         "hotPlugSupported": "hot_plug_supported", 
         "intId": "int_id", 
         "jbodSharingSupported": "jbod_sharing_supported", 
+        "maxRestrictedDrivesForRaid1": "max_restricted_drives_for_raid1", 
         "name": "name", 
         "onBoardMemoryCheckNeeded": "on_board_memory_check_needed", 
         "oobControllerClassIdentifier": "oob_controller_class_identifier", 
@@ -142,6 +144,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         self.hot_plug_supported = None
         self.int_id = None
         self.jbod_sharing_supported = None
+        self.max_restricted_drives_for_raid1 = None
         self.name = None
         self.on_board_memory_check_needed = None
         self.oob_controller_class_identifier = None

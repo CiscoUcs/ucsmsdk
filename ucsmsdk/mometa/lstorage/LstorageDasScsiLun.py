@@ -61,7 +61,7 @@ class LstorageDasScsiLun(ManagedObject):
         "local_disk_policy_name": MoPropertyMeta("local_disk_policy_name", "localDiskPolicyName", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "lun_dn": MoPropertyMeta("lun_dn", "lunDn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "lun_map_type": MoPropertyMeta("lun_map_type", "lunMapType", "string", VersionMeta.Version251a, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["non-shared", "shared", "unassigned"], []),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version224b, MoPropertyMeta.NAMING, 0x400, None, None, r"""[\-\.:_a-zA-Z0-9]{1,10}""", [], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version224b, MoPropertyMeta.NAMING, 0x400, None, None, r"""[\-_a-zA-Z0-9]{1,10}""", [], []),
         "oper_local_disk_policy_name": MoPropertyMeta("oper_local_disk_policy_name", "operLocalDiskPolicyName", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["compute-degraded", "compute-inoperable", "offline", "online", "undefined"], []),
         "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["not-applicable"], ["0-64"]),

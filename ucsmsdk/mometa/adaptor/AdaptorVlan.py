@@ -69,7 +69,7 @@ class AdaptorVlan(ManagedObject):
     consts = AdaptorVlanConsts()
     naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorVlan", "adaptorVlan", "vlan-[id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["read-only"], ['adaptorHostEthIf', 'adaptorHostIscsiIf', 'adaptorHostServiceEthIf'], ['adaptorEtherIfStats', 'fabricNetflowIPv4Addr', 'faultInst', 'vnicIPv4Dhcp', 'vnicIPv4Dns', 'vnicIPv4IscsiAddr', 'vnicIPv4PooledIscsiAddr', 'vnicIPv4StaticRoute', 'vnicIScsiAutoTargetIf', 'vnicIScsiStaticTargetIf', 'vnicIpV4MgmtPooledAddr', 'vnicIpV4PooledAddr', 'vnicIpV4ProfDerivedAddr', 'vnicIpV4StaticAddr'], ["Get"])
+    mo_meta = MoMeta("AdaptorVlan", "adaptorVlan", "vlan-[id]", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["read-only"], ['adaptorHostEthIf', 'adaptorHostIscsiIf', 'adaptorHostServiceEthIf'], ['adaptorEtherIfStats', 'fabricMonOriginIP', 'fabricNetflowIPv4Addr', 'faultInst', 'vnicIPv4Dhcp', 'vnicIPv4Dns', 'vnicIPv4IscsiAddr', 'vnicIPv4PooledIscsiAddr', 'vnicIPv4StaticRoute', 'vnicIScsiAutoTargetIf', 'vnicIScsiStaticTargetIf', 'vnicIpV4MgmtPooledAddr', 'vnicIpV4PooledAddr', 'vnicIpV4ProfDerivedAddr', 'vnicIpV4StaticAddr'], ["Get"])
 
     prop_meta = {
         "assoc_primary_vlan_state": MoPropertyMeta("assoc_primary_vlan_state", "assocPrimaryVlanState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["does-not-exists", "is-empty", "is-in-error-state", "is-not-primary-type", "ok"], []),
