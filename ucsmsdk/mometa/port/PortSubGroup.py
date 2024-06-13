@@ -34,6 +34,7 @@ class PortSubGroup(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "lic_gp": MoPropertyMeta("lic_gp", "licGP", "ulong", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "lic_state": MoPropertyMeta("lic_state", "licState", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["license-expired", "license-graceperiod", "license-insufficient", "license-ok", "not-applicable", "unknown"], []),
+        "licensing_msg": MoPropertyMeta("licensing_msg", "licensingMsg", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version302c, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
@@ -52,6 +53,7 @@ class PortSubGroup(ManagedObject):
         "dn": "dn", 
         "licGP": "lic_gp", 
         "licState": "lic_state", 
+        "licensingMsg": "licensing_msg", 
         "locale": "locale", 
         "name": "name", 
         "rn": "rn", 
@@ -70,6 +72,7 @@ class PortSubGroup(ManagedObject):
         self.config_state = None
         self.lic_gp = None
         self.lic_state = None
+        self.licensing_msg = None
         self.locale = None
         self.name = None
         self.sacl = None

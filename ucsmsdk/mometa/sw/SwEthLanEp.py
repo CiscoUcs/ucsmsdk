@@ -79,6 +79,7 @@ class SwEthLanEp(ManagedObject):
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []),
         "lc": MoPropertyMeta("lc", "lc", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["allocated", "available", "deallocated", "pending", "repurposed"], []),
         "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []),
+        "mac_sec_if_config_name": MoPropertyMeta("mac_sec_if_config_name", "macSecIfConfigName", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "pc_id": MoPropertyMeta("pc_id", "pcId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_aggr_port_id": MoPropertyMeta("peer_aggr_port_id", "peerAggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
@@ -114,6 +115,7 @@ class SwEthLanEp(ManagedObject):
         "ifType": "if_type", 
         "lc": "lc", 
         "locale": "locale", 
+        "macSecIfConfigName": "mac_sec_if_config_name", 
         "name": "name", 
         "pcId": "pc_id", 
         "peerAggrPortId": "peer_aggr_port_id", 
@@ -151,6 +153,7 @@ class SwEthLanEp(ManagedObject):
         self.if_type = None
         self.lc = None
         self.locale = None
+        self.mac_sec_if_config_name = None
         self.name = None
         self.pc_id = None
         self.peer_aggr_port_id = None

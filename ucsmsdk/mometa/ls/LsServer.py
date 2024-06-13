@@ -226,11 +226,14 @@ class LsServerConsts:
     INT_ID_NONE = "none"
     OPER_STATE_BIOS_PASSWORD_RESET = "bios-password-reset"
     OPER_STATE_BIOS_RESTORE = "bios-restore"
+    OPER_STATE_CLEAR_TPM = "clear-tpm"
     OPER_STATE_CMOS_RESET = "cmos-reset"
     OPER_STATE_COMPUTE_FAILED = "compute-failed"
     OPER_STATE_COMPUTE_MISMATCH = "compute-mismatch"
     OPER_STATE_CONFIG = "config"
     OPER_STATE_CONFIG_FAILURE = "config-failure"
+    OPER_STATE_DATA_SANITIZE = "data-sanitize"
+    OPER_STATE_DATA_SANITIZE_FAILED = "data-sanitize-failed"
     OPER_STATE_DECOMISSIONING = "decomissioning"
     OPER_STATE_DEGRADED = "degraded"
     OPER_STATE_DIAGNOSTICS = "diagnostics"
@@ -342,7 +345,7 @@ class LsServer(ManagedObject):
         "oper_sol_policy_name": MoPropertyMeta("oper_sol_policy_name", "operSolPolicyName", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "oper_spdm_certificate_policy_name": MoPropertyMeta("oper_spdm_certificate_policy_name", "operSpdmCertificatePolicyName", "string", VersionMeta.Version421a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "oper_src_templ_name": MoPropertyMeta("oper_src_templ_name", "operSrcTemplName", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["bios-password-reset", "bios-restore", "cmos-reset", "compute-failed", "compute-mismatch", "config", "config-failure", "decomissioning", "degraded", "diagnostics", "diagnostics-failed", "disabled", "discovery", "discovery-failed", "inaccessible", "indeterminate", "inoperable", "maintenance", "maintenance-failed", "ok", "pending-reassociation", "pending-reboot", "power-off", "power-problem", "removed", "restart", "svnic-not-present", "test", "test-failed", "thermal-problem", "unassociated", "unconfig", "unconfig-failed", "voltage-problem"], []),
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["bios-password-reset", "bios-restore", "clear-tpm", "cmos-reset", "compute-failed", "compute-mismatch", "config", "config-failure", "data-sanitize", "data-sanitize-failed", "decomissioning", "degraded", "diagnostics", "diagnostics-failed", "disabled", "discovery", "discovery-failed", "inaccessible", "indeterminate", "inoperable", "maintenance", "maintenance-failed", "ok", "pending-reassociation", "pending-reboot", "power-off", "power-problem", "removed", "restart", "svnic-not-present", "test", "test-failed", "thermal-problem", "unassociated", "unconfig", "unconfig-failed", "voltage-problem"], []),
         "oper_stats_policy_name": MoPropertyMeta("oper_stats_policy_name", "operStatsPolicyName", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "oper_vcon_profile_name": MoPropertyMeta("oper_vcon_profile_name", "operVconProfileName", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "oper_vmedia_policy_name": MoPropertyMeta("oper_vmedia_policy_name", "operVmediaPolicyName", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),

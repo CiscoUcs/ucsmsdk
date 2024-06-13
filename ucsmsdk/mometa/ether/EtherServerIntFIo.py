@@ -6,10 +6,6 @@ from ...ucsmeta import VersionMeta
 
 
 class EtherServerIntFIoConsts:
-    XCVR_SUPPORTED_FALSE = "false"
-    XCVR_SUPPORTED_NO = "no"
-    XCVR_SUPPORTED_TRUE = "true"
-    XCVR_SUPPORTED_YES = "yes"
     ADMIN_SPEED_100GBPS = "100gbps"
     ADMIN_SPEED_10GBPS = "10gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
@@ -323,6 +319,7 @@ class EtherServerIntFIoConsts:
     XCVR_TYPE_QSFP100GDR = "qsfp100gdr"
     XCVR_TYPE_QSFP100GFR = "qsfp100gfr"
     XCVR_TYPE_QSFP100GLR4S = "qsfp100glr4s"
+    XCVR_TYPE_QSFP100GPSM4S = "qsfp100gpsm4s"
     XCVR_TYPE_QSFP100GSL4 = "qsfp100gsl4"
     XCVR_TYPE_QSFP100GSMSR = "qsfp100gsmsr"
     XCVR_TYPE_QSFP100GSR1_2 = "qsfp100gsr1.2"
@@ -396,7 +393,6 @@ class EtherServerIntFIo(ManagedObject):
     mo_meta = MoMeta("EtherServerIntFIo", "etherServerIntFIo", "port-[port_id]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["admin"], ['diagSrvCtrl', 'portGroup'], ['equipmentXcvr', 'etherErrStats', 'etherLossStats', 'etherPauseStats', 'etherRxStats', 'etherServerIntFIoFsm', 'etherServerIntFIoFsmTask', 'etherTxStats', 'eventInst', 'faultInst', 'lldpAcquired', 'portDomainEp', 'portTrustMode', 'swUlan'], ["Get"])
 
     prop_meta = {
-        "xcvr_supported": MoPropertyMeta("xcvr_supported", "XcvrSupported", "string", VersionMeta.Version422d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["disabled", "enabled"], []),
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
@@ -450,11 +446,10 @@ class EtherServerIntFIo(ManagedObject):
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []),
         "user_recovery_operation": MoPropertyMeta("user_recovery_operation", "userRecoveryOperation", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["none", "reset"], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
-        "xcvr_type": MoPropertyMeta("xcvr_type", "xcvrType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["10/25Gbase", "10/25Gbaselrs", "1000basecx", "1000baselh", "1000baselx", "1000basesx", "1000baset", "1000baseunknown", "1000basevx", "1000basex", "1000basezx", "10gbaseer", "10gbaselr", "10gbaselrm", "10gbaselrs", "10gbasesr", "10gbasesrs", "10gbasezr", "10gbasezrs", "10gbx40di", "10gbx40ui", "10gbxdi", "10gbxui", "4x32gsw", "cwdm1471", "cwdm1531", "cwdm1551", "dwdmsfp", "fet", "h10gacu10m", "h10gacu15m", "h10gacu1m", "h10gacu3m", "h10gacu5m", "h10gacu7m", "h10gacuaoc10m", "h10gacuaoc15m", "h10gacuaoc1m", "h10gacuaoc2m", "h10gacuaoc3m", "h10gacuaoc5m", "h10gacuaoc7m", "h10gaoc10m", "h10gaoc15m", "h10gaoc1m", "h10gaoc2m", "h10gaoc3m", "h10gaoc5m", "h10gaoc7m", "h10gcu1-5m", "h10gcu10m", "h10gcu1m", "h10gcu2-5m", "h10gcu2m", "h10gcu3m", "h10gcu5m", "h10gcu7m", "h10glrmsm", "h10gtx", "h10gusr", "h25gaoc10m", "h25gaoc1m", "h25gaoc2m", "h25gaoc3m", "h25gaoc4m", "h25gaoc5m", "h25gaoc7m", "h25gcu1m", "h25gcu2m", "h25gcu3m", "h25gcu4m", "h25gcu5m", "h25glrs", "h25gsrs", "qsfp100g40gbidi", "qsfp100gaoc10m", "qsfp100gaoc15m", "qsfp100gaoc1m", "qsfp100gaoc20m", "qsfp100gaoc25m", "qsfp100gaoc2m", "qsfp100gaoc30m", "qsfp100gaoc3m", "qsfp100gaoc5m", "qsfp100gaoc7m", "qsfp100gcr4", "qsfp100gcu1m", "qsfp100gcu2m", "qsfp100gcu3m", "qsfp100gdr", "qsfp100gfr", "qsfp100glr4s", "qsfp100gsl4", "qsfp100gsmsr", "qsfp100gsr1.2", "qsfp100gsr4", "qsfp100gsr4s", "qsfp40gcr4", "qsfp40gcsr", "qsfp40gcsr4", "qsfp40ger4", "qsfp40gfet", "qsfp40glr4", "qsfp40gsr4", "qsfp40gsrbd", "qsfp4sfp10gcu1m", "qsfp4sfp10gcu2m", "qsfp4sfp10gcu3m", "qsfp4sfp10gcu5m", "qsfp4sfp25gcu1m", "qsfp4sfp25gcu2m", "qsfp4sfp25gcu3m", "qsfp4sfp25gcu5m", "qsfp4sfp25gunknown", "qsfp4x10ga0c10m", "qsfp4x10ga0c1m", "qsfp4x10ga0c2m", "qsfp4x10ga0c3m", "qsfp4x10ga0c5m", "qsfp4x10ga0c7m", "qsfp4x10ga0cunknown", "qsfp4x10gac10m", "qsfp4x10gac1m", "qsfp4x10gac3m", "qsfp4x10gac5m", "qsfp4x10gac7m", "qsfp4x10glr", "qsfp4x10glrs", "qsfph40gacu10m", "qsfph40gacu1m", "qsfph40gacu3m", "qsfph40gacu5m", "qsfph40gacu7m", "qsfph40gaoc10m", "qsfph40gaoc15m", "qsfph40gaoc1m", "qsfph40gaoc20m", "qsfph40gaoc2m", "qsfph40gaoc30m", "qsfph40gaoc3m", "qsfph40gaoc5m", "qsfph40gaoc7m", "qsfph40gaocunknown", "qsfph40gcu1m", "qsfph40gcu2m", "qsfph40gcu3m", "qsfph40gcu5m", "qsfploop", "qsfpqsa", "qsfpunknown", "sfp", "sfp25gsl", "unknown", "x2"], []),
+        "xcvr_type": MoPropertyMeta("xcvr_type", "xcvrType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["10/25Gbase", "10/25Gbaselrs", "1000basecx", "1000baselh", "1000baselx", "1000basesx", "1000baset", "1000baseunknown", "1000basevx", "1000basex", "1000basezx", "10gbaseer", "10gbaselr", "10gbaselrm", "10gbaselrs", "10gbasesr", "10gbasesrs", "10gbasezr", "10gbasezrs", "10gbx40di", "10gbx40ui", "10gbxdi", "10gbxui", "4x32gsw", "cwdm1471", "cwdm1531", "cwdm1551", "dwdmsfp", "fet", "h10gacu10m", "h10gacu15m", "h10gacu1m", "h10gacu3m", "h10gacu5m", "h10gacu7m", "h10gacuaoc10m", "h10gacuaoc15m", "h10gacuaoc1m", "h10gacuaoc2m", "h10gacuaoc3m", "h10gacuaoc5m", "h10gacuaoc7m", "h10gaoc10m", "h10gaoc15m", "h10gaoc1m", "h10gaoc2m", "h10gaoc3m", "h10gaoc5m", "h10gaoc7m", "h10gcu1-5m", "h10gcu10m", "h10gcu1m", "h10gcu2-5m", "h10gcu2m", "h10gcu3m", "h10gcu5m", "h10gcu7m", "h10glrmsm", "h10gtx", "h10gusr", "h25gaoc10m", "h25gaoc1m", "h25gaoc2m", "h25gaoc3m", "h25gaoc4m", "h25gaoc5m", "h25gaoc7m", "h25gcu1m", "h25gcu2m", "h25gcu3m", "h25gcu4m", "h25gcu5m", "h25glrs", "h25gsrs", "qsfp100g40gbidi", "qsfp100gaoc10m", "qsfp100gaoc15m", "qsfp100gaoc1m", "qsfp100gaoc20m", "qsfp100gaoc25m", "qsfp100gaoc2m", "qsfp100gaoc30m", "qsfp100gaoc3m", "qsfp100gaoc5m", "qsfp100gaoc7m", "qsfp100gcr4", "qsfp100gcu1m", "qsfp100gcu2m", "qsfp100gcu3m", "qsfp100gdr", "qsfp100gfr", "qsfp100glr4s", "qsfp100gpsm4s", "qsfp100gsl4", "qsfp100gsmsr", "qsfp100gsr1.2", "qsfp100gsr4", "qsfp100gsr4s", "qsfp40gcr4", "qsfp40gcsr", "qsfp40gcsr4", "qsfp40ger4", "qsfp40gfet", "qsfp40glr4", "qsfp40gsr4", "qsfp40gsrbd", "qsfp4sfp10gcu1m", "qsfp4sfp10gcu2m", "qsfp4sfp10gcu3m", "qsfp4sfp10gcu5m", "qsfp4sfp25gcu1m", "qsfp4sfp25gcu2m", "qsfp4sfp25gcu3m", "qsfp4sfp25gcu5m", "qsfp4sfp25gunknown", "qsfp4x10ga0c10m", "qsfp4x10ga0c1m", "qsfp4x10ga0c2m", "qsfp4x10ga0c3m", "qsfp4x10ga0c5m", "qsfp4x10ga0c7m", "qsfp4x10ga0cunknown", "qsfp4x10gac10m", "qsfp4x10gac1m", "qsfp4x10gac3m", "qsfp4x10gac5m", "qsfp4x10gac7m", "qsfp4x10glr", "qsfp4x10glrs", "qsfph40gacu10m", "qsfph40gacu1m", "qsfph40gacu3m", "qsfph40gacu5m", "qsfph40gacu7m", "qsfph40gaoc10m", "qsfph40gaoc15m", "qsfph40gaoc1m", "qsfph40gaoc20m", "qsfph40gaoc2m", "qsfph40gaoc30m", "qsfph40gaoc3m", "qsfph40gaoc5m", "qsfph40gaoc7m", "qsfph40gaocunknown", "qsfph40gcu1m", "qsfph40gcu2m", "qsfph40gcu3m", "qsfph40gcu5m", "qsfploop", "qsfpqsa", "qsfpunknown", "sfp", "sfp25gsl", "unknown", "x2"], []),
     }
 
     prop_map = {
-        "XcvrSupported": "xcvr_supported", 
         "adminSpeed": "admin_speed", 
         "adminState": "admin_state", 
         "aggrPortId": "aggr_port_id", 
@@ -514,7 +509,6 @@ class EtherServerIntFIo(ManagedObject):
     def __init__(self, parent_mo_or_dn, port_id, **kwargs):
         self._dirty_mask = 0
         self.port_id = port_id
-        self.xcvr_supported = None
         self.admin_speed = None
         self.admin_state = None
         self.aggr_port_id = None

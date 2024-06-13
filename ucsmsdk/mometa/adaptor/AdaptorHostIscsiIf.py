@@ -241,7 +241,7 @@ class AdaptorHostIscsiIf(ManagedObject):
     consts = AdaptorHostIscsiIfConsts()
     naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorHostIscsiIf", "adaptorHostIscsiIf", "host-iscsi-[id]", VersionMeta.Version201m, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance", "read-only"], ['adaptorUnit'], ['adaptorIscsiProt', 'adaptorIscsiTargetIf', 'adaptorProtocolProfile', 'adaptorVlan', 'adaptorVnicStats', 'fabricNetflowIPv4Addr', 'faultInst', 'networkIfStats', 'vnicIPv4Dhcp', 'vnicIPv4Dns', 'vnicIPv4IscsiAddr', 'vnicIPv4PooledIscsiAddr', 'vnicIPv4StaticRoute', 'vnicIpV4MgmtPooledAddr', 'vnicIpV4PooledAddr', 'vnicIpV4ProfDerivedAddr', 'vnicIpV4StaticAddr'], ["Get"])
+    mo_meta = MoMeta("AdaptorHostIscsiIf", "adaptorHostIscsiIf", "host-iscsi-[id]", VersionMeta.Version201m, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "pn-equipment", "pn-maintenance", "read-only"], ['adaptorUnit'], ['adaptorIscsiProt', 'adaptorIscsiTargetIf', 'adaptorProtocolProfile', 'adaptorVlan', 'adaptorVnicStats', 'fabricMonOriginIP', 'fabricNetflowIPv4Addr', 'faultInst', 'networkIfStats', 'vnicIPv4Dhcp', 'vnicIPv4Dns', 'vnicIPv4IscsiAddr', 'vnicIPv4PooledIscsiAddr', 'vnicIPv4StaticRoute', 'vnicIpV4MgmtPooledAddr', 'vnicIpV4PooledAddr', 'vnicIpV4ProfDerivedAddr', 'vnicIpV4StaticAddr'], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "disabled-active", "disabled-passive", "enabled", "enabled-active", "enabled-passive", "reset-connectivity", "reset-connectivity-active", "reset-connectivity-passive"], []),

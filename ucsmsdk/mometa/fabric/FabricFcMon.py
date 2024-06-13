@@ -19,19 +19,28 @@ class FabricFcMonConsts:
     OPER_STATE_ERROR = "error"
     OPER_STATE_UNKNOWN = "unknown"
     OPER_STATE_UP = "up"
+    OPER_STATE_REASON_ARP_NOT_RESOLVED = "ARP_Not_Resolved"
     OPER_STATE_REASON_ACTIVE = "Active"
+    OPER_STATE_REASON_EGRESS_IF_NOT_RESOLVED = "Egress_If_Not_Resolved"
     OPER_STATE_REASON_GENERIC_ERROR = "Generic_Error"
+    OPER_STATE_REASON_MULTI_DESTINATION_NOT_ALLOWED = "Multi_Destination_Not_Allowed"
     OPER_STATE_REASON_NO_DESTINATION_CONFIGURED = "No_Destination_Configured"
-    OPER_STATE_REASON_NO_FLOW_ID_SPECIFIED = "No_Flow-id_Specified"
+    OPER_STATE_REASON_NO_ERSPAN_ID = "No_Erspan_Id"
     OPER_STATE_REASON_NO_HARDWARE_RESOURCE = "No_Hardware_Resource"
     OPER_STATE_REASON_NO_OPERATIONAL_SRC_DST = "No_Operational_Src_Dst"
+    OPER_STATE_REASON_NO_ROUTE_TO_DEST_IP = "No_Route_To_Dest_IP"
     OPER_STATE_REASON_NO_SOURCE_DESTINATION_CONFIGURED = "No_Source_Destination_Configured"
     OPER_STATE_REASON_NO_SOURCES_CONFIGURED = "No_Sources_Configured"
+    OPER_STATE_REASON_NO_VALID_IP_ADDRESS = "No_Valid_IP_Address"
+    OPER_STATE_REASON_NO_VALID_ORIGIN_IP = "No_Valid_Origin_IP"
+    OPER_STATE_REASON_NO_VALID_VRF = "No_Valid_VRF"
+    OPER_STATE_REASON_SVI_NOT_RETRIVED = "SVI_Not_Retrived"
     OPER_STATE_REASON_SESSION_ADMIN_SHUT = "Session_Admin_Shut"
-    OPER_STATE_REASON_TUNNEL_MISCONF_DOWN = "Tunnel_Misconf_Down"
     OPER_STATE_REASON_UNKNOWN = "Unknown"
     OPER_STATE_REASON_WRONG_DESTINATION_MODE = "Wrong_Destination_Mode"
     OPER_STATE_REASON_WRONG_SOURCE_MODE = "Wrong_Source_Mode"
+    SESSION_TYPE_ERSPAN_SOURCE = "erspan-source"
+    SESSION_TYPE_SPAN_LOCAL = "span-local"
     SPAN_CTRL_PKTS_DISABLED = "disabled"
     SPAN_CTRL_PKTS_ENABLED = "enabled"
 
@@ -42,7 +51,7 @@ class FabricFcMon(ManagedObject):
     consts = FabricFcMonConsts()
     naming_props = set(['name'])
 
-    mo_meta = MoMeta("FabricFcMon", "fabricFcMon", "fc-mon-[name]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], ["admin", "ext-san-config", "ext-san-policy"], ['fabricFcMonSan'], ['fabricEthMonDestEp', 'fabricFcMonDestEp', 'fabricFcMonFiltRef', 'fabricFcMonSrcRef', 'fabricSubGroup', 'faultInst'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("FabricFcMon", "fabricFcMon", "fc-mon-[name]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["admin", "ext-san-config", "ext-san-policy"], ['fabricFcMonSan'], ['fabricEthMonDestEp', 'fabricFcMonDestEp', 'fabricFcMonFiltRef', 'fabricFcMonSrcRef', 'fabricRemoteConfig', 'fabricSubGroup', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
@@ -54,13 +63,14 @@ class FabricFcMon(ManagedObject):
         "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x20, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["down", "error", "unknown", "up"], []),
-        "oper_state_reason": MoPropertyMeta("oper_state_reason", "operStateReason", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Active", "Generic_Error", "No_Destination_Configured", "No_Flow-id_Specified", "No_Hardware_Resource", "No_Operational_Src_Dst", "No_Source_Destination_Configured", "No_Sources_Configured", "Session_Admin_Shut", "Tunnel_Misconf_Down", "Unknown", "Wrong_Destination_Mode", "Wrong_Source_Mode"], []),
+        "oper_state_reason": MoPropertyMeta("oper_state_reason", "operStateReason", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ARP_Not_Resolved", "Active", "Egress_If_Not_Resolved", "Generic_Error", "Multi_Destination_Not_Allowed", "No_Destination_Configured", "No_Erspan_Id", "No_Hardware_Resource", "No_Operational_Src_Dst", "No_Route_To_Dest_IP", "No_Source_Destination_Configured", "No_Sources_Configured", "No_Valid_IP_Address", "No_Valid_Origin_IP", "No_Valid_VRF", "SVI_Not_Retrived", "Session_Admin_Shut", "Unknown", "Wrong_Destination_Mode", "Wrong_Source_Mode"], []),
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "session": MoPropertyMeta("session", "session", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-255"]),
-        "span_ctrl_pkts": MoPropertyMeta("span_ctrl_pkts", "spanCtrlPkts", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["disabled", "enabled"], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "session_type": MoPropertyMeta("session_type", "sessionType", "string", VersionMeta.Version434a, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["erspan-source", "span-local"], []),
+        "span_ctrl_pkts": MoPropertyMeta("span_ctrl_pkts", "spanCtrlPkts", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["disabled", "enabled"], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "transport": MoPropertyMeta("transport", "transport", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|ether|dce|fc),){0,4}(defaultValue|unknown|ether|dce|fc){0,1}""", [], []),
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|lan|san|ipc),){0,4}(defaultValue|unknown|lan|san|ipc){0,1}""", [], []),
     }
@@ -80,6 +90,7 @@ class FabricFcMon(ManagedObject):
         "rn": "rn", 
         "sacl": "sacl", 
         "session": "session", 
+        "sessionType": "session_type", 
         "spanCtrlPkts": "span_ctrl_pkts", 
         "status": "status", 
         "transport": "transport", 
@@ -100,6 +111,7 @@ class FabricFcMon(ManagedObject):
         self.peer_dn = None
         self.sacl = None
         self.session = None
+        self.session_type = None
         self.span_ctrl_pkts = None
         self.status = None
         self.transport = None

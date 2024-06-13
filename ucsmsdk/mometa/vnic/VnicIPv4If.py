@@ -36,7 +36,7 @@ class VnicIPv4If(ManagedObject):
     consts = VnicIPv4IfConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicIPv4If", "vnicIPv4If", "ipv4", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server", "ls-storage"], ['vnicEtherIf', 'vnicIScsiBootVnic', 'vnicVlan'], ['fabricNetflowIPv4Addr', 'vnicIPv4Dhcp', 'vnicIPv4Dns', 'vnicIPv4IscsiAddr', 'vnicIPv4PooledIscsiAddr', 'vnicIPv4StaticRoute', 'vnicIpV4MgmtPooledAddr', 'vnicIpV4PooledAddr', 'vnicIpV4ProfDerivedAddr', 'vnicIpV4StaticAddr'], ["Add", "Get"])
+    mo_meta = MoMeta("VnicIPv4If", "vnicIPv4If", "ipv4", VersionMeta.Version101e, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server", "ls-storage"], ['vnicEtherIf', 'vnicIScsiBootVnic', 'vnicVlan'], ['fabricMonOriginIP', 'fabricNetflowIPv4Addr', 'vnicIPv4Dhcp', 'vnicIPv4Dns', 'vnicIPv4IscsiAddr', 'vnicIPv4PooledIscsiAddr', 'vnicIPv4StaticRoute', 'vnicIpV4MgmtPooledAddr', 'vnicIpV4PooledAddr', 'vnicIpV4ProfDerivedAddr', 'vnicIpV4StaticAddr'], ["Add", "Get"])
 
     prop_meta = {
         "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, r"""((([0-9]){1,3}\.){3}[0-9]{1,3})""", [], []),

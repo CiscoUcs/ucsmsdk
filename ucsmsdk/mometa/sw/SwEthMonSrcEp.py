@@ -44,14 +44,14 @@ class SwEthMonSrcEp(ManagedObject):
     """This is SwEthMonSrcEp class."""
 
     consts = SwEthMonSrcEpConsts()
-    naming_props = set(['chassisId', 'slotId', 'portId'])
+    naming_props = set(['slotId', 'portId'])
 
-    mo_meta = MoMeta("SwEthMonSrcEp", "swEthMonSrcEp", "mon-src-[chassis_id]-[slot_id]-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["read-only"], ['swEthMon', 'swSubGroup'], [], ["Get"])
+    mo_meta = MoMeta("SwEthMonSrcEp", "swEthMonSrcEp", "mon-src-[slot_id]-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ff, [], ["read-only"], ['swEthMon', 'swSubGroup'], [], ["Get"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x4, None, None, None, ["N/A"], ["0-255"]),
+        "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version141i, MoPropertyMeta.CREATE_ONLY, 0x4, None, None, None, ["N/A"], ["0-255"]),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
@@ -104,13 +104,13 @@ class SwEthMonSrcEp(ManagedObject):
         "type": "type", 
     }
 
-    def __init__(self, parent_mo_or_dn, chassis_id, slot_id, port_id, **kwargs):
+    def __init__(self, parent_mo_or_dn, slot_id, port_id, **kwargs):
         self._dirty_mask = 0
-        self.chassis_id = chassis_id
         self.slot_id = slot_id
         self.port_id = port_id
         self.admin_state = None
         self.aggr_port_id = None
+        self.chassis_id = None
         self.child_action = None
         self.ep_dn = None
         self.if_role = None

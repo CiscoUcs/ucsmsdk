@@ -6,6 +6,10 @@ from ...ucsmeta import VersionMeta
 
 
 class MgmtControllerConsts:
+    HYBRID_SLOT_SUPPORTED_FALSE = "false"
+    HYBRID_SLOT_SUPPORTED_NO = "no"
+    HYBRID_SLOT_SUPPORTED_TRUE = "true"
+    HYBRID_SLOT_SUPPORTED_YES = "yes"
     ADMIN_OPERATION_CANCEL_ALL = "cancel-all"
     ADMIN_OPERATION_CLEAR_KVM_CERT = "clear-kvm-cert"
     ADMIN_OPERATION_NONE = "none"
@@ -578,6 +582,7 @@ class MgmtControllerConsts:
     SUBJECT_CHASSIS = "chassis"
     SUBJECT_CMC = "cmc"
     SUBJECT_CPLD = "cpld"
+    SUBJECT_INTEL_AMC = "intel-amc"
     SUBJECT_IOCARD = "iocard"
     SUBJECT_LOCAL_DISK = "local-disk"
     SUBJECT_RETIMER = "retimer"
@@ -599,9 +604,10 @@ class MgmtController(ManagedObject):
     consts = MgmtControllerConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtController", "mgmtController", "mgmt", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], ['adaptorUnit', 'computeBlade', 'computeBoardController', 'computeExtBoard', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFex', 'equipmentFruComponent', 'equipmentIOCard', 'equipmentSharedIOModule', 'equipmentSwitchIOCard', 'equipmentSystemIOController', 'networkElement', 'storageController', 'storageLocalDisk', 'storageSasExpander', 'topSystem'], ['cimcvmediaActualMountList', 'eventInst', 'fabricLocale', 'faultInst', 'firmwareBootDefinition', 'firmwareImage', 'firmwareRunning', 'firmwareUpdatable', 'mgmtCimcSecureBoot', 'mgmtCmcSecureBoot', 'mgmtConnection', 'mgmtControllerFsm', 'mgmtControllerFsmTask', 'mgmtHealthStatus', 'mgmtIf', 'mgmtInterface', 'mgmtKvmCertificate', 'mgmtProfDerivedInterface', 'mgmtSpdmCertificateInventory', 'mgmtSwPersonalities', 'mgmtSwPersonalitiesInventory', 'mgmtUsbNicMgmtIf', 'sysdebugMEpLog', 'vnicIpV4PooledAddr', 'vnicIpV4ProfDerivedAddr', 'vnicIpV4StaticAddr'], ["Get"])
+    mo_meta = MoMeta("MgmtController", "mgmtController", "mgmt", VersionMeta.Version101e, "InputOutput", 0xff, [], ["admin", "ls-compute", "ls-config", "ls-network", "ls-server"], ['adaptorUnit', 'computeBlade', 'computeBoardController', 'computeExtBoard', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFex', 'equipmentFruComponent', 'equipmentIOCard', 'equipmentSharedIOModule', 'equipmentSwitchIOCard', 'equipmentSystemIOController', 'networkElement', 'storageController', 'storageLocalDisk', 'storageSasExpander', 'topSystem'], ['cimcvmediaActualMountList', 'eventInst', 'fabricLocale', 'faultInst', 'firmwareBootDefinition', 'firmwareImage', 'firmwareRunning', 'firmwareUpdatable', 'mgmtCimcSecureBoot', 'mgmtCmcSecureBoot', 'mgmtConnection', 'mgmtControllerFsm', 'mgmtControllerFsmTask', 'mgmtHealthStatus', 'mgmtHybridSlot', 'mgmtIf', 'mgmtInterface', 'mgmtKvmCertificate', 'mgmtProfDerivedInterface', 'mgmtSpdmCertificateInventory', 'mgmtSwPersonalities', 'mgmtSwPersonalitiesInventory', 'mgmtUsbNicMgmtIf', 'sysdebugMEpLog', 'vnicIpV4PooledAddr', 'vnicIpV4ProfDerivedAddr', 'vnicIpV4StaticAddr'], ["Get"])
 
     prop_meta = {
+        "hybrid_slot_supported": MoPropertyMeta("hybrid_slot_supported", "HybridSlotSupported", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "admin_operation": MoPropertyMeta("admin_operation", "adminOperation", "string", VersionMeta.Version323a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cancel-all", "clear-kvm-cert", "none"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "cmc_supported_storage_features": MoPropertyMeta("cmc_supported_storage_features", "cmcSupportedStorageFeatures", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((feature-unknown|feature-connection-management|feature-single-path),){0,2}(feature-unknown|feature-connection-management|feature-single-path){0,1}""", [], []),
@@ -625,6 +631,7 @@ class MgmtController(ManagedObject):
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "guid": MoPropertyMeta("guid", "guid", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "hostag_comm_method": MoPropertyMeta("hostag_comm_method", "hostagCommMethod", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["serial", "unknown", "usb-nic"], []),
+        "hybrid_slot_config_state": MoPropertyMeta("hybrid_slot_config_state", "hybridSlotConfigState", "ulong", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-18446744073709551615"]),
         "id": MoPropertyMeta("id", "id", "string", VersionMeta.Version251a, MoPropertyMeta.NAMING, 0x10, None, None, None, ["A", "B", "NONE"], []),
         "isc_kvm_supported": MoPropertyMeta("isc_kvm_supported", "iscKVMSupported", "string", VersionMeta.Version421a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "last_reboot_reason": MoPropertyMeta("last_reboot_reason", "lastRebootReason", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -640,13 +647,14 @@ class MgmtController(ManagedObject):
         "storage_oob_config_supported": MoPropertyMeta("storage_oob_config_supported", "storageOobConfigSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "storage_oob_interface_supported": MoPropertyMeta("storage_oob_interface_supported", "storageOobInterfaceSupported", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "storage_subsystem_state": MoPropertyMeta("storage_subsystem_state", "storageSubsystemState", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["initialized", "initializing", "pending-reset", "uninitialized", "unknown", "unsupported"], []),
-        "subject": MoPropertyMeta("subject", "subject", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["adaptor", "blade", "board-controller", "chassis", "cmc", "cpld", "iocard", "local-disk", "retimer", "sas-expander", "server-unit", "switch", "system", "ubm", "unknown"], []),
+        "subject": MoPropertyMeta("subject", "subject", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["adaptor", "blade", "board-controller", "chassis", "cmc", "cpld", "intel-amc", "iocard", "local-disk", "retimer", "sas-expander", "server-unit", "switch", "system", "ubm", "unknown"], []),
         "supported_capability": MoPropertyMeta("supported_capability", "supportedCapability", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|none|modify-maintenance-mode|factory-reset|local-storage|usb-nic),){0,5}(defaultValue|none|modify-maintenance-mode|factory-reset|local-storage|usb-nic){0,1}""", [], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "web_ui_kvm_console_supported": MoPropertyMeta("web_ui_kvm_console_supported", "webUIKvmConsoleSupported", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
     }
 
     prop_map = {
+        "HybridSlotSupported": "hybrid_slot_supported", 
         "adminOperation": "admin_operation", 
         "childAction": "child_action", 
         "cmcSupportedStorageFeatures": "cmc_supported_storage_features", 
@@ -670,6 +678,7 @@ class MgmtController(ManagedObject):
         "fsmTry": "fsm_try", 
         "guid": "guid", 
         "hostagCommMethod": "hostag_comm_method", 
+        "hybridSlotConfigState": "hybrid_slot_config_state", 
         "id": "id", 
         "iscKVMSupported": "isc_kvm_supported", 
         "lastRebootReason": "last_reboot_reason", 
@@ -693,6 +702,7 @@ class MgmtController(ManagedObject):
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.hybrid_slot_supported = None
         self.admin_operation = None
         self.child_action = None
         self.cmc_supported_storage_features = None
@@ -715,6 +725,7 @@ class MgmtController(ManagedObject):
         self.fsm_try = None
         self.guid = None
         self.hostag_comm_method = None
+        self.hybrid_slot_config_state = None
         self.id = None
         self.isc_kvm_supported = None
         self.last_reboot_reason = None

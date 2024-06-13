@@ -26,7 +26,7 @@ class EquipmentGraphicsCardCapProvider(ManagedObject):
     consts = EquipmentGraphicsCardCapProviderConsts()
     naming_props = set(['vendor', 'model', 'revision'])
 
-    mo_meta = MoMeta("EquipmentGraphicsCardCapProvider", "equipmentGraphicsCardCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version213a, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentFruVariant', 'equipmentManufacturingDef', 'equipmentPciDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get"])
+    mo_meta = MoMeta("EquipmentGraphicsCardCapProvider", "equipmentGraphicsCardCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version213a, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentFirmwareUpdateRestriction', 'equipmentFruVariant', 'equipmentManufacturingDef', 'equipmentPciDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version213a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

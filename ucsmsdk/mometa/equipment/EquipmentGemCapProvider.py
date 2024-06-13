@@ -22,7 +22,7 @@ class EquipmentGemCapProvider(ManagedObject):
     consts = EquipmentGemCapProviderConsts()
     naming_props = set(['vendor', 'model', 'revision'])
 
-    mo_meta = MoMeta("EquipmentGemCapProvider", "equipmentGemCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentBeaconCapProvider', 'equipmentFruVariant', 'equipmentGemPortCap', 'equipmentManufacturingDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServerPortCapProvider', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'equipmentUnifiedPortCapProvider', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get"])
+    mo_meta = MoMeta("EquipmentGemCapProvider", "equipmentGemCapProvider", "manufacturer-[vendor]-model-[model]-revision-[revision]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], [""], ['capabilityCatalogue', 'equipmentHwCapDerivativeProvider'], ['equipmentBeaconCapProvider', 'equipmentFirmwareUpdateRestriction', 'equipmentFruVariant', 'equipmentGemPortCap', 'equipmentManufacturingDef', 'equipmentPhysicalDef', 'equipmentPicture', 'equipmentServerPortCapProvider', 'equipmentServiceDef', 'equipmentSlotArrayRef', 'equipmentUnifiedPortCapProvider', 'firmwareType', 'firmwareUpgradeConstraint'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

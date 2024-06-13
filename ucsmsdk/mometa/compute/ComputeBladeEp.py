@@ -12,11 +12,14 @@ class ComputeBladeEpConsts:
     CHASSIS_ID_N_A = "N/A"
     OPER_STATE_BIOS_PASSWORD_RESET = "bios-password-reset"
     OPER_STATE_BIOS_RESTORE = "bios-restore"
+    OPER_STATE_CLEAR_TPM = "clear-tpm"
     OPER_STATE_CMOS_RESET = "cmos-reset"
     OPER_STATE_COMPUTE_FAILED = "compute-failed"
     OPER_STATE_COMPUTE_MISMATCH = "compute-mismatch"
     OPER_STATE_CONFIG = "config"
     OPER_STATE_CONFIG_FAILURE = "config-failure"
+    OPER_STATE_DATA_SANITIZE = "data-sanitize"
+    OPER_STATE_DATA_SANITIZE_FAILED = "data-sanitize-failed"
     OPER_STATE_DECOMISSIONING = "decomissioning"
     OPER_STATE_DEGRADED = "degraded"
     OPER_STATE_DIAGNOSTICS = "diagnostics"
@@ -94,7 +97,7 @@ class ComputeBladeEp(ManagedObject):
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version302c, MoPropertyMeta.NAMING, 0x8, None, None, None, [], ["1-2"]),
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["bios-password-reset", "bios-restore", "cmos-reset", "compute-failed", "compute-mismatch", "config", "config-failure", "decomissioning", "degraded", "diagnostics", "diagnostics-failed", "disabled", "discovery", "discovery-failed", "inaccessible", "indeterminate", "inoperable", "maintenance", "maintenance-failed", "ok", "pending-reassociation", "pending-reboot", "power-off", "power-problem", "removed", "restart", "svnic-not-present", "test", "test-failed", "thermal-problem", "unassociated", "unconfig", "unconfig-failed", "voltage-problem"], []),
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["bios-password-reset", "bios-restore", "clear-tpm", "cmos-reset", "compute-failed", "compute-mismatch", "config", "config-failure", "data-sanitize", "data-sanitize-failed", "decomissioning", "degraded", "diagnostics", "diagnostics-failed", "disabled", "discovery", "discovery-failed", "inaccessible", "indeterminate", "inoperable", "maintenance", "maintenance-failed", "ok", "pending-reassociation", "pending-reboot", "power-off", "power-problem", "removed", "restart", "svnic-not-present", "test", "test-failed", "thermal-problem", "unassociated", "unconfig", "unconfig-failed", "voltage-problem"], []),
         "peer_presence": MoPropertyMeta("peer_presence", "peerPresence", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "unauthorized", "unknown"], []),
         "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "unauthorized", "unknown"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
