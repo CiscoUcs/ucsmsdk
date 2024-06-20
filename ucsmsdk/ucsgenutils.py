@@ -462,7 +462,7 @@ def get_md5_sum(filename):
 
     import hashlib
 
-    md5_obj = hashlib.md5()
+    md5_obj = hashlib.md5(usedforsecurity=False)
     file_handler = open(filename, 'rb')
     for chunk in iter(lambda: file_handler.read(128 * md5_obj.block_size), b''):
         md5_obj.update(chunk)
@@ -481,7 +481,7 @@ def get_sha_hash(input_string):
 
     import hashlib
 
-    return hashlib.md5(input_string).digest()
+    return hashlib.sha256(input_string).digest()
 
 
 def expand_key(key, clen):
@@ -495,7 +495,7 @@ def expand_key(key, clen):
     x_key = []
     seed = key
     for i_cnt in range(blocks):
-        seed = hashlib.md5(key + seed).digest()
+        seed = hashlib.sha256(key + seed).digest()
         x_key.append(seed)
     j_str = ''.join(x_key)
     return array('L', j_str)
