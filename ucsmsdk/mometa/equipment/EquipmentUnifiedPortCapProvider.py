@@ -19,6 +19,7 @@ class EquipmentUnifiedPortCapProviderConsts:
     SUPPORTED_ALGORITHM_SLIDE_RULE_FC_FIRST_5GFI_ROW = "slide-rule-fc-first-5gfi-row"
     SUPPORTED_ALGORITHM_SLIDE_RULE_FC_FIRST_DOUBLE_ROW = "slide-rule-fc-first-double-row"
     SUPPORTED_ALGORITHM_SLIDE_RULE_FC_FIRST_SINGLE_ROW = "slide-rule-fc-first-single-row"
+    SUPPORTED_ALGORITHM_SLIDE_RULE_FC_FIRST_UCSX_DIRECT_ROW = "slide-rule-fc-first-ucsx-direct-row"
     SUPPORTED_ALGORITHM_UNRESTRICTED = "unrestricted"
 
 
@@ -44,7 +45,7 @@ class EquipmentUnifiedPortCapProvider(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "start_port_id": MoPropertyMeta("start_port_id", "startPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "supported_algorithm": MoPropertyMeta("supported_algorithm", "supportedAlgorithm", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["none", "slide-rule", "slide-rule-eth-first-double-row", "slide-rule-eth-first-single-row", "slide-rule-fc-first-3gfi-row", "slide-rule-fc-first-4gfi-row", "slide-rule-fc-first-5gfi-row", "slide-rule-fc-first-double-row", "slide-rule-fc-first-single-row", "unrestricted"], []),
+        "supported_algorithm": MoPropertyMeta("supported_algorithm", "supportedAlgorithm", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["none", "slide-rule", "slide-rule-eth-first-double-row", "slide-rule-eth-first-single-row", "slide-rule-fc-first-3gfi-row", "slide-rule-fc-first-4gfi-row", "slide-rule-fc-first-5gfi-row", "slide-rule-fc-first-double-row", "slide-rule-fc-first-single-row", "slide-rule-fc-first-ucsx-direct-row", "unrestricted"], []),
     }
 
     prop_map = {

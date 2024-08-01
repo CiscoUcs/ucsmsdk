@@ -6,6 +6,10 @@ from ...ucsmeta import VersionMeta
 
 
 class EquipmentPortGroupDefConsts:
+    BREAKOUT_FALSE = "false"
+    BREAKOUT_NO = "no"
+    BREAKOUT_TRUE = "true"
+    BREAKOUT_YES = "yes"
     INT_ID_NONE = "none"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
@@ -30,6 +34,7 @@ class EquipmentPortGroupDef(ManagedObject):
     mo_meta = MoMeta("EquipmentPortGroupDef", "equipmentPortGroupDef", "port-group-def[type]", VersionMeta.Version141i, "InputOutput", 0x1ff, [], [""], ['adaptorFruCapProvider', 'equipmentFexCapProvider', 'equipmentIOCardCapProvider', 'equipmentSwitchIOCardCapProvider'], [], ["Get"])
 
     prop_meta = {
+        "breakout": MoPropertyMeta("breakout", "breakout", "string", VersionMeta.Version434b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
@@ -46,6 +51,7 @@ class EquipmentPortGroupDef(ManagedObject):
     }
 
     prop_map = {
+        "breakout": "breakout", 
         "childAction": "child_action", 
         "descr": "descr", 
         "dn": "dn", 
@@ -64,6 +70,7 @@ class EquipmentPortGroupDef(ManagedObject):
     def __init__(self, parent_mo_or_dn, type, **kwargs):
         self._dirty_mask = 0
         self.type = type
+        self.breakout = None
         self.child_action = None
         self.descr = None
         self.int_id = None

@@ -18,7 +18,7 @@ class EquipmentFanModulesDef(ManagedObject):
     consts = EquipmentFanModulesDefConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("EquipmentFanModulesDef", "equipmentFanModulesDef", "fanmodules", VersionMeta.Version432b, "InputOutput", 0xff, [], [""], ['equipmentCrossFabricModuleCapProvider', 'equipmentIOCardCapProvider'], [], [None])
+    mo_meta = MoMeta("EquipmentFanModulesDef", "equipmentFanModulesDef", "fanmodules", VersionMeta.Version432b, "InputOutput", 0xff, [], [""], ['equipmentCrossFabricModuleCapProvider', 'equipmentIOCardCapProvider', 'equipmentSwitchIOCardCapProvider'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version432b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

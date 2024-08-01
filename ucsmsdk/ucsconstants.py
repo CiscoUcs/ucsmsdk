@@ -3069,6 +3069,7 @@ class NamingPropertyId:
     BORDER_SLOT_ID = "borderSlotId"
     BORDER_VFC_ID = "borderVfcId"
     BORDER_VLAN_PORT_COUNT = "borderVlanPortCount"
+    BREAKOUT = "breakout"
     BREAKOUT_PORT_SPEED_GB = "breakoutPortSpeedGb"
     BREAKOUT_TYPE = "breakoutType"
     BROADCAST_CONTROLLED_PACKETS = "broadcastControlledPackets"
