@@ -177,7 +177,7 @@ class EquipmentFanModule(ManagedObject):
     consts = EquipmentFanModuleConsts()
     naming_props = set(['tray', 'id'])
 
-    mo_meta = MoMeta("EquipmentFanModule", "equipmentFanModule", "fan-module-[tray]-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['computeRackUnit', 'equipmentChassis', 'equipmentCrossFabricModule', 'equipmentIOCard', 'equipmentRackEnclosure', 'networkElement'], ['equipmentBeaconLed', 'equipmentFan', 'equipmentFanModuleStats', 'equipmentHealthLed', 'equipmentIOCardFanModuleStats', 'equipmentIndicatorLed', 'equipmentLocatorLed', 'faultInst'], ["Get"])
+    mo_meta = MoMeta("EquipmentFanModule", "equipmentFanModule", "fan-module-[tray]-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["read-only"], ['computeRackUnit', 'equipmentChassis', 'equipmentCrossFabricModule', 'equipmentIOCard', 'equipmentRackEnclosure', 'equipmentSwitchIOCard', 'networkElement'], ['equipmentBeaconLed', 'equipmentFan', 'equipmentFanModuleStats', 'equipmentHealthLed', 'equipmentIOCardFanModuleStats', 'equipmentIndicatorLed', 'equipmentLocatorLed', 'faultInst'], ["Get"])
 
     prop_meta = {
         "asset_tag": MoPropertyMeta("asset_tag", "assetTag", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []),

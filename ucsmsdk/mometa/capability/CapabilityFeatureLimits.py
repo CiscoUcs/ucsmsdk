@@ -15,6 +15,7 @@ class CapabilityFeatureLimitsConsts:
     PLATFORM_UCS6324 = "ucs6324"
     PLATFORM_UCS6400 = "ucs6400"
     PLATFORM_UCS6500 = "ucs6500"
+    PLATFORM_UCSX9100 = "ucsx9100"
 
 
 class CapabilityFeatureLimits(ManagedObject):
@@ -33,7 +34,7 @@ class CapabilityFeatureLimits(ManagedObject):
         "limit": MoPropertyMeta("limit", "limit", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "min_ucsm_version": MoPropertyMeta("min_ucsm_version", "minUCSMVersion", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x8, 1, 510, None, [], []),
-        "platform": MoPropertyMeta("platform", "platform", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x10, None, None, None, ["ucs6100", "ucs6200", "ucs6300", "ucs6300UP", "ucs6324", "ucs6400", "ucs6500"], []),
+        "platform": MoPropertyMeta("platform", "platform", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x10, None, None, None, ["ucs6100", "ucs6200", "ucs6300", "ucs6300UP", "ucs6324", "ucs6400", "ucs6500", "ucsx9100"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),

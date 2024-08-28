@@ -7,6 +7,7 @@ from ...ucsmeta import VersionMeta
 
 class FabricEpMgrConsts:
     CONF_MODE_APPLY_PHYS_TRANS = "apply-phys-trans"
+    CONF_MODE_CONF_HIF_BREAKOUT = "conf-hif-breakout"
     CONF_MODE_CONF_SWITCH = "conf-switch"
     CONF_MODE_LOGICAL_CONFIG_INVALID = "logical-config-invalid"
     CONF_MODE_NONE = "none"
@@ -178,7 +179,7 @@ class FabricEpMgr(ManagedObject):
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
-        "conf_mode": MoPropertyMeta("conf_mode", "confMode", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["apply-phys-trans", "conf-switch", "logical-config-invalid", "none", "validating-conf"], []),
+        "conf_mode": MoPropertyMeta("conf_mode", "confMode", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["apply-phys-trans", "conf-hif-breakout", "conf-switch", "logical-config-invalid", "none", "validating-conf"], []),
         "conf_qual": MoPropertyMeta("conf_qual", "confQual", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "conf_state": MoPropertyMeta("conf_state", "confState", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["logical-config-invalid", "ok"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
