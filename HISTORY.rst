@@ -3,6 +3,10 @@
 History
 -------
 
+0.9.20 (2024-09-20)
+---------------------
+* Fixed issue for default encoding
+
 0.9.19 (2024-08-28)
 ---------------------
 * Support for UCSM release 4.3(4b)
