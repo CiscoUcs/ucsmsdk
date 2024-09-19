@@ -265,6 +265,9 @@ def upload_firmware(driver, uri, file_dir, file_name, progress=Progress()):
         driver = UcsDriver()\n
         upload_firmware(driver=UcsDriver(), uri="http://fileurl", file_dir='/home/user/backup', file_name='my_config_backup.xml')
     """
+    # Change encoding to ISO-8859-1 for python <=2.x
+    def_encoding = sys.getdefaultencoding() # Old encoding type : e.g ascii
+    set_default_encoding('ISO-8859-1')
 
     content_path = os.path.join(file_dir, file_name)
     content_size = os.path.getsize(content_path)
@@ -297,6 +300,9 @@ def upload_firmware(driver, uri, file_dir, file_name, progress=Progress()):
             raise ValueError("File upload failed.")
     except Exception as e:
         raise Exception(e)
+
+    # Reset to default encoding
+    set_default_encoding(def_encoding)
 
 
 def check_registry_key(java_key):
@@ -600,3 +606,10 @@ def remove_invalid_chars(xml_str):
     for each in to_repl:
         xml_str = xml_str.replace(each, to_repl[each])
     return xml_str
+
+
+def set_default_encoding(encoding_str):
+    if sys.version_info[:2] <= (2, 7):
+       # If Python 2.7 or older, then set 'ISO-8859-1' as default encoding
+        reload(sys)
+        sys.setdefaultencoding(encoding_str)
