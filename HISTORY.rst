@@ -5,7 +5,7 @@ History
 
 0.9.20 (2024-09-20)
 ---------------------
-* Fixed issue for default encoding
+* Fixes for encoding failure during firmware upload 
 
 0.9.19 (2024-08-28)
 ---------------------
