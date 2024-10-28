@@ -6,6 +6,8 @@ from ...ucsmeta import VersionMeta
 
 
 class FabricLifeTimeConsts:
+    INFINITE_DISABLED = "disabled"
+    INFINITE_ENABLED = "enabled"
     TIMEZONE_UTC = "UTC"
     TIMEZONE_LOCAL = "local"
 
@@ -16,18 +18,19 @@ class FabricLifeTime(ManagedObject):
     consts = FabricLifeTimeConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("FabricLifeTime", "fabricLifeTime", "lifetime", VersionMeta.Version434a, "InputOutput", 0x1ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricMacSecKey'], [], [None])
+    mo_meta = MoMeta("FabricLifeTime", "fabricLifeTime", "lifetime", VersionMeta.Version434a, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricMacSecKey'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version434a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "duration": MoPropertyMeta("duration", "duration", "uint", VersionMeta.Version434a, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], ["0-2147483646"]),
         "end_date_time": MoPropertyMeta("end_date_time", "endDateTime", "string", VersionMeta.Version434a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
+        "infinite": MoPropertyMeta("infinite", "infinite", "string", VersionMeta.Version435a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["disabled", "enabled"], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "start_date_time": MoPropertyMeta("start_date_time", "startDateTime", "string", VersionMeta.Version434a, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version434a, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "timezone": MoPropertyMeta("timezone", "timezone", "string", VersionMeta.Version434a, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["UTC", "local"], []),
+        "start_date_time": MoPropertyMeta("start_date_time", "startDateTime", "string", VersionMeta.Version434a, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version434a, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "timezone": MoPropertyMeta("timezone", "timezone", "string", VersionMeta.Version434a, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["UTC", "local"], []),
     }
 
     prop_map = {
@@ -35,6 +38,7 @@ class FabricLifeTime(ManagedObject):
         "dn": "dn", 
         "duration": "duration", 
         "endDateTime": "end_date_time", 
+        "infinite": "infinite", 
         "rn": "rn", 
         "sacl": "sacl", 
         "startDateTime": "start_date_time", 
@@ -47,6 +51,7 @@ class FabricLifeTime(ManagedObject):
         self.child_action = None
         self.duration = None
         self.end_date_time = None
+        self.infinite = None
         self.sacl = None
         self.start_date_time = None
         self.status = None

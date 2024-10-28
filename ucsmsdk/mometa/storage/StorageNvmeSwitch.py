@@ -13,6 +13,7 @@ class StorageNvmeSwitchConsts:
     DISASTER_RECOVERY_READY = "ready"
     DISASTER_RECOVERY_TRIGGERED = "triggered"
     DISASTER_RECOVERY_UNKNOWN = "unknown"
+    DISASTER_RECOVERY_UPDATING = "updating"
     HOTSWAP_THERMAL_LOWER_CRITICAL = "lower-critical"
     HOTSWAP_THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
     HOTSWAP_THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -221,7 +222,7 @@ class StorageNvmeSwitch(ManagedObject):
         "bus_address": MoPropertyMeta("bus_address", "busAddress", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version323a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "component_id": MoPropertyMeta("component_id", "componentId", "uint", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "disaster_recovery": MoPropertyMeta("disaster_recovery", "disasterRecovery", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["completed", "failed", "in-progress", "not-performed", "ready", "triggered", "unknown"], []),
+        "disaster_recovery": MoPropertyMeta("disaster_recovery", "disasterRecovery", "string", VersionMeta.Version404a, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["completed", "failed", "in-progress", "not-performed", "ready", "triggered", "unknown", "updating"], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "drive_count": MoPropertyMeta("drive_count", "driveCount", "uint", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),

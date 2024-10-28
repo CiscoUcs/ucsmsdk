@@ -13,6 +13,7 @@ class SwEthLanBorderFsmStageConsts:
     NAME_DEPLOY_UPDATE_CONNECTIVITY = "DeployUpdateConnectivity"
     NAME_DEPLOY_UPDATE_MACSEC = "DeployUpdateMacsec"
     NAME_DEPLOY_UPDATE_VLAN_GROUPS = "DeployUpdateVlanGroups"
+    NAME_DEPLOY_WAIT_FOR_UPDATE_ENCRYPTION_FSM = "DeployWaitForUpdateEncryptionFsm"
     NAME_DEPLOY_WAIT_ON_SW_CONFIG_HOST = "DeployWaitOnSwConfigHost"
     NAME_NOP = "nop"
     STAGE_STATUS_FAIL = "fail"
@@ -37,7 +38,7 @@ class SwEthLanBorderFsmStage(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []),
         "last_update_time": MoPropertyMeta("last_update_time", "lastUpdateTime", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["DeployBegin", "DeployFail", "DeploySuccess", "DeployUpdateConnectivity", "DeployUpdateMacsec", "DeployUpdateVlanGroups", "DeployWaitOnSwConfigHost", "nop"], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["DeployBegin", "DeployFail", "DeploySuccess", "DeployUpdateConnectivity", "DeployUpdateMacsec", "DeployUpdateVlanGroups", "DeployWaitForUpdateEncryptionFsm", "DeployWaitOnSwConfigHost", "nop"], []),
         "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "retry": MoPropertyMeta("retry", "retry", "byte", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),

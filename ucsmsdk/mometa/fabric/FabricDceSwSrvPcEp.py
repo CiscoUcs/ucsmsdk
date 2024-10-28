@@ -13,6 +13,7 @@ class FabricDceSwSrvPcEpConsts:
     CHASSIS_ID_N_A = "N/A"
     FEC_AUTO = "auto"
     FEC_CL74 = "cl74"
+    FEC_CL91 = "cl91"
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
     IF_ROLE_FCOE_STORAGE = "fcoe-storage"
@@ -72,7 +73,7 @@ class FabricDceSwSrvPcEp(ManagedObject):
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
-        "fec": MoPropertyMeta("fec", "fec", "string", VersionMeta.Version421a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["auto", "cl74"], []),
+        "fec": MoPropertyMeta("fec", "fec", "string", VersionMeta.Version421a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["auto", "cl74", "cl91"], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []),
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []),

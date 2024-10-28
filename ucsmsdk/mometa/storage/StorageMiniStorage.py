@@ -156,6 +156,7 @@ class StorageMiniStorageConsts:
     SUB_TYPE_NVME_M2 = "NVME-M2"
     SUB_TYPE_NVME_MEZZ = "NVME-MEZZ"
     SUB_TYPE_NVME_REAR = "NVME-REAR"
+    SUB_TYPE_RDE = "RDE"
     THERMAL_LOWER_CRITICAL = "lower-critical"
     THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
     THERMAL_LOWER_NON_RECOVERABLE = "lower-non-recoverable"
@@ -220,7 +221,7 @@ class StorageMiniStorage(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "sub_type": MoPropertyMeta("sub_type", "subType", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA", "NVME-FRONT", "NVME-HHHL", "NVME-M2", "NVME-MEZZ", "NVME-REAR"], []),
+        "sub_type": MoPropertyMeta("sub_type", "subType", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["NA", "NVME-FRONT", "NVME-HHHL", "NVME-M2", "NVME-MEZZ", "NVME-REAR", "RDE"], []),
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version321d, MoPropertyMeta.NAMING, 0x40, None, None, None, ["FCH", "FLASH", "HBA", "M2", "NVME", "PCH", "PT", "SAS", "SATA", "SD", "external", "unknown"], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

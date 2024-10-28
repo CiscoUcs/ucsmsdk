@@ -6,6 +6,9 @@ from ...ucsmeta import VersionMeta
 
 
 class SwVlanPortNsConsts:
+    COMPRESSED_OPTIMIZATION_SETS_COUNT_STATUS_ABOVE_LIMIT = "above-limit"
+    COMPRESSED_OPTIMIZATION_SETS_COUNT_STATUS_ABOVE_THRESHOLD_LIMIT = "above-threshold-limit"
+    COMPRESSED_OPTIMIZATION_SETS_COUNT_STATUS_WITHIN_LIMIT = "within-limit"
     ALLOC_STATUS_AVAILABLE = "available"
     ALLOC_STATUS_EXCEEDED = "exceeded"
     COMPRESSED_OPTIMIZATION_SETS_NA = "NA"
@@ -28,6 +31,7 @@ class SwVlanPortNs(ManagedObject):
     mo_meta = MoMeta("SwVlanPortNs", "swVlanPortNs", "vlan-port-ns", VersionMeta.Version131c, "InputOutput", 0x1f, [], ["read-only"], ['networkElement'], ['faultInst'], ["Get"])
 
     prop_meta = {
+        "compressed_optimization_sets_count_status": MoPropertyMeta("compressed_optimization_sets_count_status", "CompressedOptimizationSetsCountStatus", "string", VersionMeta.Version435a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["above-limit", "above-threshold-limit", "within-limit"], []),
         "access_vlan_port_count": MoPropertyMeta("access_vlan_port_count", "accessVlanPortCount", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
         "alloc_status": MoPropertyMeta("alloc_status", "allocStatus", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["available", "exceeded"], []),
         "border_vlan_port_count": MoPropertyMeta("border_vlan_port_count", "borderVlanPortCount", "uint", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
@@ -49,6 +53,7 @@ class SwVlanPortNs(ManagedObject):
     }
 
     prop_map = {
+        "CompressedOptimizationSetsCountStatus": "compressed_optimization_sets_count_status", 
         "accessVlanPortCount": "access_vlan_port_count", 
         "allocStatus": "alloc_status", 
         "borderVlanPortCount": "border_vlan_port_count", 
@@ -71,6 +76,7 @@ class SwVlanPortNs(ManagedObject):
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.compressed_optimization_sets_count_status = None
         self.access_vlan_port_count = None
         self.alloc_status = None
         self.border_vlan_port_count = None
