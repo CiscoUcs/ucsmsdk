@@ -50,6 +50,7 @@ class EquipmentLocalDiskControllerDefConsts:
     OOB_CONTROLLER_CLASS_IDENTIFIER_AERO_MR = "aero-mr"
     OOB_CONTROLLER_CLASS_IDENTIFIER_AVENGER_RIO = "avenger-rio"
     OOB_CONTROLLER_CLASS_IDENTIFIER_AVILA_ROCK = "avila-rock"
+    OOB_CONTROLLER_CLASS_IDENTIFIER_KNOX = "knox"
     OOB_CONTROLLER_CLASS_IDENTIFIER_NONE = "none"
     OOB_CONTROLLER_CLASS_IDENTIFIER_NVME = "nvme"
     OOB_INTERFACE_SUPPORTED_FALSE = "false"
@@ -93,7 +94,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         "max_restricted_drives_for_raid1": MoPropertyMeta("max_restricted_drives_for_raid1", "maxRestrictedDrivesForRaid1", "ushort", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-65535"]),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "on_board_memory_check_needed": MoPropertyMeta("on_board_memory_check_needed", "onBoardMemoryCheckNeeded", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
-        "oob_controller_class_identifier": MoPropertyMeta("oob_controller_class_identifier", "oobControllerClassIdentifier", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aero-mr", "avenger-rio", "avila-rock", "none", "nvme"], []),
+        "oob_controller_class_identifier": MoPropertyMeta("oob_controller_class_identifier", "oobControllerClassIdentifier", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aero-mr", "avenger-rio", "avila-rock", "knox", "none", "nvme"], []),
         "oob_interface_supported": MoPropertyMeta("oob_interface_supported", "oobInterfaceSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []),

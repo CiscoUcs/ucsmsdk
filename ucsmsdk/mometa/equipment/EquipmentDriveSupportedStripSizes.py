@@ -27,6 +27,7 @@ class EquipmentDriveSupportedStripSizes(ManagedObject):
         "hdd_supported_strip_sizes": MoPropertyMeta("hdd_supported_strip_sizes", "hddSupportedStripSizes", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|not-applicable|8KB|16KB|32KB|64KB|128KB|256KB|512KB|1MB|2MB|4MB|8MB|16MB|32MB|64MB|128MB|256MB|512MB),){0,19}(defaultValue|unknown|not-applicable|8KB|16KB|32KB|64KB|128KB|256KB|512KB|1MB|2MB|4MB|8MB|16MB|32MB|64MB|128MB|256MB|512MB){0,1}""", [], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version434a, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version434a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "nvme_ssd_supported_strip_sizes": MoPropertyMeta("nvme_ssd_supported_strip_sizes", "nvmeSsdSupportedStripSizes", "string", VersionMeta.Version435a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|not-applicable|8KB|16KB|32KB|64KB|128KB|256KB|512KB|1MB|2MB|4MB|8MB|16MB|32MB|64MB|128MB|256MB|512MB),){0,19}(defaultValue|unknown|not-applicable|8KB|16KB|32KB|64KB|128KB|256KB|512KB|1MB|2MB|4MB|8MB|16MB|32MB|64MB|128MB|256MB|512MB){0,1}""", [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version434a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
@@ -42,6 +43,7 @@ class EquipmentDriveSupportedStripSizes(ManagedObject):
         "hddSupportedStripSizes": "hdd_supported_strip_sizes", 
         "intId": "int_id", 
         "name": "name", 
+        "nvmeSsdSupportedStripSizes": "nvme_ssd_supported_strip_sizes", 
         "policyLevel": "policy_level", 
         "policyOwner": "policy_owner", 
         "rn": "rn", 
@@ -57,6 +59,7 @@ class EquipmentDriveSupportedStripSizes(ManagedObject):
         self.hdd_supported_strip_sizes = None
         self.int_id = None
         self.name = None
+        self.nvme_ssd_supported_strip_sizes = None
         self.policy_level = None
         self.policy_owner = None
         self.sacl = None
