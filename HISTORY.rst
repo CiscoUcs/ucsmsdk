@@ -3,6 +3,10 @@
 History
 -------
 
+0.9.21 (2024-11-05)
+---------------------
+* Support for UCSM release 4.3(5a)
+
 0.9.20 (2024-09-20)
 ---------------------
 * Fixes for encoding failure during firmware upload 
