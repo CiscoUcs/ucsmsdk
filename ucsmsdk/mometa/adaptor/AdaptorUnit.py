@@ -11,6 +11,7 @@ class AdaptorUnitConsts:
     CHASSIS_ID_N_A = "N/A"
     ERROR_CODE_ASIC_FATAL_ERROR = "asic-fatal-error"
     ERROR_CODE_FCPU_ERROR = "fcpu-error"
+    ERROR_CODE_LOW_MEMORY = "low-memory"
     ERROR_CODE_NO_ERROR = "no-error"
     ERROR_CODE_PCIE_UNSTABLE_LINK = "pcie-unstable-link"
     HOTSWAP_THERMAL_LOWER_CRITICAL = "lower-critical"
@@ -199,7 +200,7 @@ class AdaptorUnit(ManagedObject):
     consts = AdaptorUnitConsts()
     naming_props = set(['id'])
 
-    mo_meta = MoMeta("AdaptorUnit", "adaptorUnit", "adaptor-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-policy"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], ['adaptorExtEthIf', 'adaptorExtEthIfPc', 'adaptorHostEthIf', 'adaptorHostFcIf', 'adaptorHostIscsiIf', 'adaptorHostPort', 'adaptorHostScsiIf', 'adaptorHostServiceEthIf', 'adaptorMenloDcePortStats', 'adaptorMenloEthErrorStats', 'adaptorMenloEthStats', 'adaptorMenloFcErrorStats', 'adaptorMenloFcStats', 'adaptorMenloHostPortStats', 'adaptorMenloMcpuErrorStats', 'adaptorMenloMcpuStats', 'adaptorMenloNetEgStats', 'adaptorMenloNetInStats', 'adaptorMenloQErrorStats', 'adaptorMenloQStats', 'adaptorUnitExtn', 'dcxNs', 'equipmentFruComponent', 'equipmentInventoryStatus', 'equipmentPOST', 'equipmentPciDef', 'faultInst', 'mgmtController'], ["Get"])
+    mo_meta = MoMeta("AdaptorUnit", "adaptorUnit", "adaptor-[id]", VersionMeta.Version101e, "InputOutput", 0x7f, [], ["admin", "pn-equipment", "pn-policy"], ['computeBlade', 'computeRackUnit', 'computeServerUnit'], ['adaptorExtEthIf', 'adaptorExtEthIfPc', 'adaptorHostEthIf', 'adaptorHostFcIf', 'adaptorHostIscsiIf', 'adaptorHostPort', 'adaptorHostScsiIf', 'adaptorHostServiceEthIf', 'adaptorMenloDcePortStats', 'adaptorMenloEthErrorStats', 'adaptorMenloEthStats', 'adaptorMenloFcErrorStats', 'adaptorMenloFcStats', 'adaptorMenloHostPortStats', 'adaptorMenloMcpuErrorStats', 'adaptorMenloMcpuStats', 'adaptorMenloNetEgStats', 'adaptorMenloNetInStats', 'adaptorMenloQErrorStats', 'adaptorMenloQStats', 'adaptorTemperature', 'adaptorUnitExtn', 'dcxNs', 'equipmentFruComponent', 'equipmentInventoryStatus', 'equipmentPOST', 'equipmentPciDef', 'faultInst', 'mgmtController'], ["Get"])
 
     prop_meta = {
         "admin_power_state": MoPropertyMeta("admin_power_state", "adminPowerState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["none", "reset-power"], []),
@@ -213,8 +214,8 @@ class AdaptorUnit(ManagedObject):
         "conn_status": MoPropertyMeta("conn_status", "connStatus", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|A|B),){0,3}(defaultValue|unknown|A|B){0,1}""", [], []),
         "discovery_status": MoPropertyMeta("discovery_status", "discoveryStatus", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|A|B),){0,3}(defaultValue|unknown|A|B){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
-        "error_code": MoPropertyMeta("error_code", "errorCode", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["asic-fatal-error", "fcpu-error", "no-error", "pcie-unstable-link"], []),
-        "fault_value": MoPropertyMeta("fault_value", "faultValue", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|no-error|communication-errors|counterfeit|secure-boot-fail|backup-image|low-upgrades-remaining|fw-validation-failed|no-upgrades-remaining|alt-image|diag-image|not-rel-key-signed),){0,11}(defaultValue|no-error|communication-errors|counterfeit|secure-boot-fail|backup-image|low-upgrades-remaining|fw-validation-failed|no-upgrades-remaining|alt-image|diag-image|not-rel-key-signed){0,1}""", [], []),
+        "error_code": MoPropertyMeta("error_code", "errorCode", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["asic-fatal-error", "fcpu-error", "low-memory", "no-error", "pcie-unstable-link"], []),
+        "fault_value": MoPropertyMeta("fault_value", "faultValue", "string", VersionMeta.Version434a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|no-error|communication-errors|counterfeit|secure-boot-fail|backup-image|upgradable-count-low|fw-validation-failed|upgradable-count-zero|alt-image|diag-image|not-rel-key-signed),){0,11}(defaultValue|no-error|communication-errors|counterfeit|secure-boot-fail|backup-image|upgradable-count-low|fw-validation-failed|upgradable-count-zero|alt-image|diag-image|not-rel-key-signed){0,1}""", [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, None, None, None, [], ["1-5000"]),
