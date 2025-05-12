@@ -22,6 +22,9 @@ class FabricEthLanEpConsts:
     FEC_AUTO = "auto"
     FEC_CL74 = "cl74"
     FEC_CL91 = "cl91"
+    FEC_OFF = "off"
+    FEC_RS_CONS16 = "rs-cons16"
+    FEC_RS_IEEE = "rs-ieee"
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
     IF_ROLE_FCOE_STORAGE = "fcoe-storage"
@@ -84,7 +87,7 @@ class FabricEthLanEp(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "eth_link_profile_name": MoPropertyMeta("eth_link_profile_name", "ethLinkProfileName", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
-        "fec": MoPropertyMeta("fec", "fec", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["auto", "cl74", "cl91"], []),
+        "fec": MoPropertyMeta("fec", "fec", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["auto", "cl74", "cl91", "off", "rs-cons16", "rs-ieee"], []),
         "flow_ctrl_policy": MoPropertyMeta("flow_ctrl_policy", "flowCtrlPolicy", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []),

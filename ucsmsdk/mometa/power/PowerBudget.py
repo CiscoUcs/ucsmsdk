@@ -29,6 +29,7 @@ class PowerBudgetConsts:
     FAN_SPEED_ERR = "err"
     FAN_SPEED_HIGH_POWER = "high-power"
     FAN_SPEED_LOW_POWER = "low-power"
+    FAN_SPEED_MAX_COOLING = "max-cooling"
     FAN_SPEED_MAX_POWER = "max-power"
     FAN_SPEED_NA = "na"
     FAN_SPEED_NO_UPDATE = "no-update"
@@ -100,7 +101,7 @@ class PowerBudget(ManagedObject):
     consts = PowerBudgetConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PowerBudget", "powerBudget", "budget", VersionMeta.Version111j, "InputOutput", 0x7f, [], ["admin", "power-mgmt"], ['computeBlade', 'computeExtBoard', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFex', 'networkElement'], ['faultInst', 'powerProfiledPower'], ["Get", "Set"])
+    mo_meta = MoMeta("PowerBudget", "powerBudget", "budget", VersionMeta.Version111j, "InputOutput", 0x7f, [], ["admin", "power-mgmt"], ['computeBlade', 'computeExtBoard', 'computeRackUnit', 'computeServerUnit', 'equipmentChassis', 'equipmentFex', 'networkElement'], ['faultInst', 'powerPackagePowerLimit', 'powerProfiledPower'], ["Get", "Set"])
 
     prop_meta = {
         "admin_committed": MoPropertyMeta("admin_committed", "adminCommitted", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),
@@ -116,7 +117,7 @@ class PowerBudget(ManagedObject):
         "current_power": MoPropertyMeta("current_power", "currentPower", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "dyn_realloc": MoPropertyMeta("dyn_realloc", "dynRealloc", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["chassis", "none"], []),
-        "fan_speed": MoPropertyMeta("fan_speed", "fanSpeed", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["acoustic", "any", "balanced", "err", "high-power", "low-power", "max-power", "na", "no-update", "not-supported", "performance"], []),
+        "fan_speed": MoPropertyMeta("fan_speed", "fanSpeed", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["acoustic", "any", "balanced", "err", "high-power", "low-power", "max-cooling", "max-power", "na", "no-update", "not-supported", "performance"], []),
         "group_name": MoPropertyMeta("group_name", "groupName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "idle_power": MoPropertyMeta("idle_power", "idlePower", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),
         "max_power": MoPropertyMeta("max_power", "maxPower", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unbounded"], ["0-10000000", "4294967295-4294967295"]),

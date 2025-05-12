@@ -29,6 +29,9 @@ class FabricFcoeEstcEpConsts:
     FEC_AUTO = "auto"
     FEC_CL74 = "cl74"
     FEC_CL91 = "cl91"
+    FEC_OFF = "off"
+    FEC_RS_CONS16 = "rs-cons16"
+    FEC_RS_IEEE = "rs-ieee"
     IF_ROLE_DIAG = "diag"
     IF_ROLE_FCOE_NAS_STORAGE = "fcoe-nas-storage"
     IF_ROLE_FCOE_STORAGE = "fcoe-storage"
@@ -83,7 +86,7 @@ class FabricFcoeEstcEp(ManagedObject):
         "ep_dn": MoPropertyMeta("ep_dn", "epDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "fcoe_state": MoPropertyMeta("fcoe_state", "fcoeState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-down", "down", "error-disabled", "failed", "hardware-failure", "indeterminate", "link-down", "link-up", "no-license", "sfp-not-present", "software-failure", "udld-aggr-down", "up"], []),
         "fcoe_state_reason": MoPropertyMeta("fcoe_state_reason", "fcoeStateReason", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
-        "fec": MoPropertyMeta("fec", "fec", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["auto", "cl74", "cl91"], []),
+        "fec": MoPropertyMeta("fec", "fec", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["auto", "cl74", "cl91", "off", "rs-cons16", "rs-ieee"], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "if_role": MoPropertyMeta("if_role", "ifRole", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["diag", "fcoe-nas-storage", "fcoe-storage", "fcoe-uplink", "mgmt", "monitor", "nas-storage", "network", "network-fcoe-uplink", "server", "service", "storage", "unknown"], []),
         "if_type": MoPropertyMeta("if_type", "ifType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["aggregation", "physical", "unknown", "virtual"], []),
