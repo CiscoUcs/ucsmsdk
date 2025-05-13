@@ -12,6 +12,8 @@ class AaaLoginProfileConsts:
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
+    USER_BLOCKING_LEVEL_ALL_USERS = "all-users"
+    USER_BLOCKING_LEVEL_PER_USER = "per-user"
 
 
 class AaaLoginProfile(ManagedObject):
@@ -20,7 +22,7 @@ class AaaLoginProfile(ManagedObject):
     consts = AaaLoginProfileConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AaaLoginProfile", "aaaLoginProfile", "login-profile", VersionMeta.Version401a, "InputOutput", 0xfff, [], ["aaa", "admin"], ['aaaUserEp'], [], [None])
+    mo_meta = MoMeta("AaaLoginProfile", "aaaLoginProfile", "login-profile", VersionMeta.Version401a, "InputOutput", 0x1fff, [], ["aaa", "admin"], ['aaaUserEp'], [], [None])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disable", "enable"], []),
@@ -37,6 +39,7 @@ class AaaLoginProfile(ManagedObject):
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, 0x400, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version401a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "user_blocking_level": MoPropertyMeta("user_blocking_level", "userBlockingLevel", "string", VersionMeta.Version436a, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, ["all-users", "per-user"], []),
     }
 
     prop_map = {
@@ -54,6 +57,7 @@ class AaaLoginProfile(ManagedObject):
         "rn": "rn", 
         "sacl": "sacl", 
         "status": "status", 
+        "userBlockingLevel": "user_blocking_level", 
     }
 
     def __init__(self, parent_mo_or_dn, **kwargs):
@@ -70,5 +74,6 @@ class AaaLoginProfile(ManagedObject):
         self.policy_owner = None
         self.sacl = None
         self.status = None
+        self.user_blocking_level = None
 
         ManagedObject.__init__(self, "AaaLoginProfile", parent_mo_or_dn, **kwargs)

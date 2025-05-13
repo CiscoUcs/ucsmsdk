@@ -6,6 +6,10 @@ from ...ucsmeta import VersionMeta
 
 
 class CommSnmpTrapConsts:
+    NO_AUTH_V3_PRIVILEGE_SET_FALSE = "false"
+    NO_AUTH_V3_PRIVILEGE_SET_NO = "no"
+    NO_AUTH_V3_PRIVILEGE_SET_TRUE = "true"
+    NO_AUTH_V3_PRIVILEGE_SET_YES = "yes"
     NOTIFICATION_TYPE_INFORMS = "informs"
     NOTIFICATION_TYPE_TRAPS = "traps"
     V3_PRIVILEGE_AUTH = "auth"
@@ -22,20 +26,21 @@ class CommSnmpTrap(ManagedObject):
     consts = CommSnmpTrapConsts()
     naming_props = set(['hostname'])
 
-    mo_meta = MoMeta("CommSnmpTrap", "commSnmpTrap", "snmp-trap[hostname]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["aaa", "admin"], ['commSnmp'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("CommSnmpTrap", "commSnmpTrap", "snmp-trap[hostname]", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["aaa", "admin"], ['commSnmp'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "community": MoPropertyMeta("community", "community", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[!#$%\)\*\+,\-\./:<=\[\]\^_\{\}~a-zA-Z0-9]{0,32}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "hostname": MoPropertyMeta("hostname", "hostname", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, None, None, r"""^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,63}$|^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})$|^:((:[0-9a-fA-F]{1,4}){1,7}|:)$""", [], []),
-        "notification_type": MoPropertyMeta("notification_type", "notificationType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["informs", "traps"], []),
-        "port": MoPropertyMeta("port", "port", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, [], ["1-65535"]),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
+        "no_auth_v3_privilege_set": MoPropertyMeta("no_auth_v3_privilege_set", "noAuthV3PrivilegeSet", "string", VersionMeta.Version436a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["false", "no", "true", "yes"], []),
+        "notification_type": MoPropertyMeta("notification_type", "notificationType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["informs", "traps"], []),
+        "port": MoPropertyMeta("port", "port", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, [], ["1-65535"]),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "v3_privilege": MoPropertyMeta("v3_privilege", "v3Privilege", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["auth", "noauth", "priv"], []),
-        "version": MoPropertyMeta("version", "version", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["v1", "v2c", "v3"], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "v3_privilege": MoPropertyMeta("v3_privilege", "v3Privilege", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["auth", "noauth", "priv"], []),
+        "version": MoPropertyMeta("version", "version", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["v1", "v2c", "v3"], []),
     }
 
     prop_map = {
@@ -43,6 +48,7 @@ class CommSnmpTrap(ManagedObject):
         "community": "community", 
         "dn": "dn", 
         "hostname": "hostname", 
+        "noAuthV3PrivilegeSet": "no_auth_v3_privilege_set", 
         "notificationType": "notification_type", 
         "port": "port", 
         "rn": "rn", 
@@ -57,6 +63,7 @@ class CommSnmpTrap(ManagedObject):
         self.hostname = hostname
         self.child_action = None
         self.community = None
+        self.no_auth_v3_privilege_set = None
         self.notification_type = None
         self.port = None
         self.sacl = None

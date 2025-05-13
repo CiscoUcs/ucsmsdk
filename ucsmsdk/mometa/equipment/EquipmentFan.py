@@ -12,6 +12,7 @@ class EquipmentFanConsts:
     FAN_SPEED_POLICY_ADMIN_STATE_ERR = "err"
     FAN_SPEED_POLICY_ADMIN_STATE_HIGH_POWER = "high-power"
     FAN_SPEED_POLICY_ADMIN_STATE_LOW_POWER = "low-power"
+    FAN_SPEED_POLICY_ADMIN_STATE_MAX_COOLING = "max-cooling"
     FAN_SPEED_POLICY_ADMIN_STATE_MAX_POWER = "max-power"
     FAN_SPEED_POLICY_ADMIN_STATE_NA = "na"
     FAN_SPEED_POLICY_ADMIN_STATE_NO_UPDATE = "no-update"
@@ -23,6 +24,7 @@ class EquipmentFanConsts:
     FAN_SPEED_POLICY_OPER_STATE_ERR = "err"
     FAN_SPEED_POLICY_OPER_STATE_HIGH_POWER = "high-power"
     FAN_SPEED_POLICY_OPER_STATE_LOW_POWER = "low-power"
+    FAN_SPEED_POLICY_OPER_STATE_MAX_COOLING = "max-cooling"
     FAN_SPEED_POLICY_OPER_STATE_MAX_POWER = "max-power"
     FAN_SPEED_POLICY_OPER_STATE_NA = "na"
     FAN_SPEED_POLICY_OPER_STATE_NO_UPDATE = "no-update"
@@ -206,8 +208,8 @@ class EquipmentFan(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
-        "fan_speed_policy_admin_state": MoPropertyMeta("fan_speed_policy_admin_state", "fanSpeedPolicyAdminState", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["acoustic", "any", "balanced", "err", "high-power", "low-power", "max-power", "na", "no-update", "not-supported", "performance"], []),
-        "fan_speed_policy_oper_state": MoPropertyMeta("fan_speed_policy_oper_state", "fanSpeedPolicyOperState", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["acoustic", "any", "balanced", "err", "high-power", "low-power", "max-power", "na", "no-update", "not-supported", "performance"], []),
+        "fan_speed_policy_admin_state": MoPropertyMeta("fan_speed_policy_admin_state", "fanSpeedPolicyAdminState", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["acoustic", "any", "balanced", "err", "high-power", "low-power", "max-cooling", "max-power", "na", "no-update", "not-supported", "performance"], []),
+        "fan_speed_policy_oper_state": MoPropertyMeta("fan_speed_policy_oper_state", "fanSpeedPolicyOperState", "string", VersionMeta.Version226c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["acoustic", "any", "balanced", "err", "high-power", "low-power", "max-cooling", "max-power", "na", "no-update", "not-supported", "performance"], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, None, None, None, [], ["1-8"]),
