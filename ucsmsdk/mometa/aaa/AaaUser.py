@@ -12,6 +12,12 @@ class AaaUserConsts:
     CLEAR_PWD_HISTORY_YES = "yes"
     CONFIG_STATE_NOT_APPLIED = "not-applied"
     CONFIG_STATE_OK = "ok"
+    ENC_PWD_HASH_ALGO_BLOWFISH = "Blowfish"
+    ENC_PWD_HASH_ALGO_MD5 = "MD5"
+    ENC_PWD_HASH_ALGO_SHA_256 = "SHA-256"
+    ENC_PWD_HASH_ALGO_SHA_512 = "SHA-512"
+    ENC_PWD_HASH_ALGO_UNKNOWN = "Unknown"
+    ENC_PWD_HASH_ALGO_YESCRYPT = "Yescrypt"
     ENC_PWD_SET_FALSE = "false"
     ENC_PWD_SET_NO = "no"
     ENC_PWD_SET_TRUE = "true"
@@ -49,6 +55,7 @@ class AaaUser(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "email": MoPropertyMeta("email", "email", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, 0, 510, None, [], []),
         "enc_pwd": MoPropertyMeta("enc_pwd", "encPwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, 0, 256, None, [], []),
+        "enc_pwd_hash_algo": MoPropertyMeta("enc_pwd_hash_algo", "encPwdHashAlgo", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Blowfish", "MD5", "SHA-256", "SHA-512", "Unknown", "Yescrypt"], []),
         "enc_pwd_set": MoPropertyMeta("enc_pwd_set", "encPwdSet", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["false", "no", "true", "yes"], []),
         "expiration": MoPropertyMeta("expiration", "expiration", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []),
         "expires": MoPropertyMeta("expires", "expires", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["false", "no", "true", "yes"], []),
@@ -76,6 +83,7 @@ class AaaUser(ManagedObject):
         "dn": "dn", 
         "email": "email", 
         "encPwd": "enc_pwd", 
+        "encPwdHashAlgo": "enc_pwd_hash_algo", 
         "encPwdSet": "enc_pwd_set", 
         "expiration": "expiration", 
         "expires": "expires", 
@@ -104,6 +112,7 @@ class AaaUser(ManagedObject):
         self.descr = None
         self.email = None
         self.enc_pwd = None
+        self.enc_pwd_hash_algo = None
         self.enc_pwd_set = None
         self.expiration = None
         self.expires = None

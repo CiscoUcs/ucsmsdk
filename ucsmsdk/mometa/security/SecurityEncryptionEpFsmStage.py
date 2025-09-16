@@ -11,8 +11,6 @@ class SecurityEncryptionEpFsmStageConsts:
     NAME_UPDATE_ENCRYPTION_EP_BEGIN = "updateEncryptionEpBegin"
     NAME_UPDATE_ENCRYPTION_EP_CONFIGURE_LOCAL = "updateEncryptionEpConfigureLocal"
     NAME_UPDATE_ENCRYPTION_EP_CONFIGURE_PEER = "updateEncryptionEpConfigurePeer"
-    NAME_UPDATE_ENCRYPTION_EP_DELETE_AFTER_CONFIG_LOCAL = "updateEncryptionEpDeleteAfterConfigLocal"
-    NAME_UPDATE_ENCRYPTION_EP_DELETE_AFTER_CONFIG_PEER = "updateEncryptionEpDeleteAfterConfigPeer"
     NAME_UPDATE_ENCRYPTION_EP_FAIL = "updateEncryptionEpFail"
     NAME_UPDATE_ENCRYPTION_EP_SUCCESS = "updateEncryptionEpSuccess"
     STAGE_STATUS_FAIL = "fail"
@@ -37,7 +35,7 @@ class SecurityEncryptionEpFsmStage(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version435a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version435a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []),
         "last_update_time": MoPropertyMeta("last_update_time", "lastUpdateTime", "string", VersionMeta.Version435a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version435a, MoPropertyMeta.NAMING, None, None, None, None, ["nop", "updateEncryptionEpBegin", "updateEncryptionEpConfigureLocal", "updateEncryptionEpConfigurePeer", "updateEncryptionEpDeleteAfterConfigLocal", "updateEncryptionEpDeleteAfterConfigPeer", "updateEncryptionEpFail", "updateEncryptionEpSuccess"], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version435a, MoPropertyMeta.NAMING, None, None, None, None, ["nop", "updateEncryptionEpBegin", "updateEncryptionEpConfigureLocal", "updateEncryptionEpConfigurePeer", "updateEncryptionEpFail", "updateEncryptionEpSuccess"], []),
         "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version435a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "retry": MoPropertyMeta("retry", "retry", "byte", VersionMeta.Version435a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version435a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),

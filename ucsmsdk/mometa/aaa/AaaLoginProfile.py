@@ -22,7 +22,7 @@ class AaaLoginProfile(ManagedObject):
     consts = AaaLoginProfileConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AaaLoginProfile", "aaaLoginProfile", "login-profile", VersionMeta.Version401a, "InputOutput", 0x1fff, [], ["aaa", "admin"], ['aaaUserEp'], [], [None])
+    mo_meta = MoMeta("AaaLoginProfile", "aaaLoginProfile", "login-profile", VersionMeta.Version401a, "InputOutput", 0x1fff, [], ["aaa", "admin"], ['aaaUserEp'], ['faultInst'], [None])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version401a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disable", "enable"], []),

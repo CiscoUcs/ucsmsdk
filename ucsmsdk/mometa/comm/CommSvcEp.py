@@ -197,7 +197,7 @@ class CommSvcEp(ManagedObject):
     consts = CommSvcEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommSvcEp", "commSvcEp", "svc-ext", VersionMeta.Version101e, "InputOutput", 0xff, [], ["aaa", "admin"], ['topSystem'], ['commCimcWebService', 'commCimxml', 'commDateTime', 'commDns', 'commEvtChannel', 'commHttp', 'commHttps', 'commShellSvcLimits', 'commSmashCLP', 'commSnmp', 'commSsh', 'commSvcEpFsm', 'commSvcEpFsmTask', 'commSyslog', 'commTelnet', 'commWebChannel', 'commWebSvcLimits', 'commWsman', 'commXmlClConnPolicy', 'eventInst', 'faultInst'], ["Get"])
+    mo_meta = MoMeta("CommSvcEp", "commSvcEp", "svc-ext", VersionMeta.Version101e, "InputOutput", 0xff, [], ["aaa", "admin"], ['topSystem'], ['commCimcWebService', 'commCimxml', 'commDateTime', 'commDns', 'commEvtChannel', 'commFabricInterconnectAuditLogs', 'commHttp', 'commHttps', 'commShellSvcLimits', 'commSmashCLP', 'commSnmp', 'commSsh', 'commSvcEpFsm', 'commSvcEpFsmTask', 'commSyslog', 'commTelnet', 'commWebChannel', 'commWebSvcLimits', 'commWsman', 'commXmlClConnPolicy', 'eventInst', 'faultInst'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

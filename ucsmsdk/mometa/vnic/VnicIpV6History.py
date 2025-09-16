@@ -15,7 +15,7 @@ class VnicIpV6History(ManagedObject):
     consts = VnicIpV6HistoryConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicIpV6History", "vnicIpV6History", "ipv6-history", VersionMeta.Version221b, "InputOutput", 0x1f, [], ["read-only"], ['vnicIpV6MgmtPooledAddr'], [], [None])
+    mo_meta = MoMeta("VnicIpV6History", "vnicIpV6History", "ipv6-history", VersionMeta.Version221b, "InputOutput", 0x1f, [], ["read-only"], ['vnicIPv6PooledIscsiAddr', 'vnicIpV6MgmtPooledAddr'], [], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

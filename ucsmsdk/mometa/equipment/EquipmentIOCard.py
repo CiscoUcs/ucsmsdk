@@ -457,6 +457,7 @@ class EquipmentIOCard(ManagedObject):
     mo_meta = MoMeta("EquipmentIOCard", "equipmentIOCard", "slot-[id]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["admin", "ls-network", "ls-network-policy", "pn-equipment", "pn-maintenance", "pn-policy"], ['equipmentChassis', 'equipmentFex'], ['equipmentBeaconLed', 'equipmentFanModule', 'equipmentHealthLed', 'equipmentIOCardBaseFsm', 'equipmentIOCardBaseFsmTask', 'equipmentIOCardFsm', 'equipmentIOCardFsmTask', 'equipmentIOCardStats', 'equipmentIndicatorLed', 'equipmentLocatorLed', 'equipmentPOST', 'eventInst', 'faultInst', 'faultSuppressTask', 'firmwareStatus', 'mgmtController', 'portGroup'], ["Get", "Set"])
 
     prop_meta = {
+        "actual_reset_time": MoPropertyMeta("actual_reset_time", "actualResetTime", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
         "admin_peer_power_state": MoPropertyMeta("admin_peer_power_state", "adminPeerPowerState", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["cycle-immediate", "cycle-wait", "policy"], []),
         "admin_power_state": MoPropertyMeta("admin_power_state", "adminPowerState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["cycle-immediate", "cycle-wait", "policy"], []),
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["acknowledged", "auto-acknowledge", "decommission", "disable-port-channel", "enable-port-channel", "re-acknowledge", "remove"], []),
@@ -517,6 +518,7 @@ class EquipmentIOCard(ManagedObject):
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["A", "B", "NONE"], []),
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
+        "trigger_reset_time": MoPropertyMeta("trigger_reset_time", "triggerResetTime", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
         "upgrade_status": MoPropertyMeta("upgrade_status", "upgradeStatus", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unasserted|hw-change-detected|fw-change-detected|hw-incompatible|fw-incompatible|unsupported-hw-version|unsupported-fw-version|hw-change-success|fw-change-success),){0,9}(defaultValue|unasserted|hw-change-detected|fw-change-detected|hw-incompatible|fw-incompatible|unsupported-hw-version|unsupported-fw-version|hw-change-success|fw-change-success){0,1}""", [], []),
         "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -525,6 +527,7 @@ class EquipmentIOCard(ManagedObject):
     }
 
     prop_map = {
+        "actualResetTime": "actual_reset_time", 
         "adminPeerPowerState": "admin_peer_power_state", 
         "adminPowerState": "admin_power_state", 
         "adminState": "admin_state", 
@@ -585,6 +588,7 @@ class EquipmentIOCard(ManagedObject):
         "status": "status", 
         "switchId": "switch_id", 
         "thermal": "thermal", 
+        "triggerResetTime": "trigger_reset_time", 
         "upgradeStatus": "upgrade_status", 
         "usrLbl": "usr_lbl", 
         "vendor": "vendor", 
@@ -595,6 +599,7 @@ class EquipmentIOCard(ManagedObject):
     def __init__(self, parent_mo_or_dn, id, **kwargs):
         self._dirty_mask = 0
         self.id = id
+        self.actual_reset_time = None
         self.admin_peer_power_state = None
         self.admin_power_state = None
         self.admin_state = None
@@ -652,6 +657,7 @@ class EquipmentIOCard(ManagedObject):
         self.status = None
         self.switch_id = None
         self.thermal = None
+        self.trigger_reset_time = None
         self.upgrade_status = None
         self.usr_lbl = None
         self.vendor = None

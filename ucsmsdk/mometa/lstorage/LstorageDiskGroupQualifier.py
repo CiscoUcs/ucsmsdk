@@ -7,6 +7,7 @@ from ...ucsmeta import VersionMeta
 
 class LstorageDiskGroupQualifierConsts:
     DRIVE_TYPE_HDD = "HDD"
+    DRIVE_TYPE_NVME_SSD = "NVME-SSD"
     DRIVE_TYPE_SSD = "SSD"
     DRIVE_TYPE_UNSPECIFIED = "unspecified"
     MIN_DRIVE_SIZE_UNSPECIFIED = "unspecified"
@@ -32,7 +33,7 @@ class LstorageDiskGroupQualifier(ManagedObject):
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version224b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
-        "drive_type": MoPropertyMeta("drive_type", "driveType", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["HDD", "SSD", "unspecified"], []),
+        "drive_type": MoPropertyMeta("drive_type", "driveType", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["HDD", "NVME-SSD", "SSD", "unspecified"], []),
         "min_drive_size": MoPropertyMeta("min_drive_size", "minDriveSize", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["unspecified"], ["0-10240"]),
         "num_ded_hot_spares": MoPropertyMeta("num_ded_hot_spares", "numDedHotSpares", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["unspecified"], ["0-60"]),
         "num_drives": MoPropertyMeta("num_drives", "numDrives", "string", VersionMeta.Version224b, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["unspecified"], ["0-60"]),

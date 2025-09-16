@@ -24,7 +24,7 @@ class MgmtKmip(ManagedObject):
     consts = MgmtKmipConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("MgmtKmip", "mgmtKmip", "kmip", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], ['mgmtSecurity'], [], ["Get", "Set"])
+    mo_meta = MoMeta("MgmtKmip", "mgmtKmip", "kmip", VersionMeta.Version321d, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-storage", "ls-storage-policy"], ['mgmtSecurity'], ['faultInst'], ["Get", "Set"])
 
     prop_meta = {
         "ca_certificate": MoPropertyMeta("ca_certificate", "caCertificate", "string", VersionMeta.Version321d, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], []),

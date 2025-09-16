@@ -17,6 +17,7 @@ class EquipmentUnifiedPortCapProviderConsts:
     SUPPORTED_ALGORITHM_SLIDE_RULE_FC_FIRST_3GFI_ROW = "slide-rule-fc-first-3gfi-row"
     SUPPORTED_ALGORITHM_SLIDE_RULE_FC_FIRST_4GFI_ROW = "slide-rule-fc-first-4gfi-row"
     SUPPORTED_ALGORITHM_SLIDE_RULE_FC_FIRST_5GFI_ROW = "slide-rule-fc-first-5gfi-row"
+    SUPPORTED_ALGORITHM_SLIDE_RULE_FC_FIRST_6GFI_ROW = "slide-rule-fc-first-6gfi-row"
     SUPPORTED_ALGORITHM_SLIDE_RULE_FC_FIRST_DOUBLE_ROW = "slide-rule-fc-first-double-row"
     SUPPORTED_ALGORITHM_SLIDE_RULE_FC_FIRST_SINGLE_ROW = "slide-rule-fc-first-single-row"
     SUPPORTED_ALGORITHM_SLIDE_RULE_FC_FIRST_UCSX_DIRECT_ROW = "slide-rule-fc-first-ucsx-direct-row"
@@ -36,7 +37,7 @@ class EquipmentUnifiedPortCapProvider(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "end_port_id": MoPropertyMeta("end_port_id", "endPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "fc_speed_cap": MoPropertyMeta("fc_speed_cap", "fcSpeedCap", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((indeterminate|auto|defaultValue|1gbps|2gbps|16gbps|4gbps|32gbps|8gbps),){0,8}(indeterminate|auto|defaultValue|1gbps|2gbps|16gbps|4gbps|32gbps|8gbps){0,1}""", [], []),
+        "fc_speed_cap": MoPropertyMeta("fc_speed_cap", "fcSpeedCap", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, r"""((indeterminate|64gbps|auto|defaultValue|1gbps|2gbps|16gbps|4gbps|32gbps|8gbps),){0,9}(indeterminate|64gbps|auto|defaultValue|1gbps|2gbps|16gbps|4gbps|32gbps|8gbps){0,1}""", [], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version201m, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
@@ -45,7 +46,7 @@ class EquipmentUnifiedPortCapProvider(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "start_port_id": MoPropertyMeta("start_port_id", "startPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "supported_algorithm": MoPropertyMeta("supported_algorithm", "supportedAlgorithm", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["none", "slide-rule", "slide-rule-eth-first-double-row", "slide-rule-eth-first-single-row", "slide-rule-fc-first-3gfi-row", "slide-rule-fc-first-4gfi-row", "slide-rule-fc-first-5gfi-row", "slide-rule-fc-first-double-row", "slide-rule-fc-first-single-row", "slide-rule-fc-first-ucsx-direct-row", "unrestricted"], []),
+        "supported_algorithm": MoPropertyMeta("supported_algorithm", "supportedAlgorithm", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["none", "slide-rule", "slide-rule-eth-first-double-row", "slide-rule-eth-first-single-row", "slide-rule-fc-first-3gfi-row", "slide-rule-fc-first-4gfi-row", "slide-rule-fc-first-5gfi-row", "slide-rule-fc-first-6gfi-row", "slide-rule-fc-first-double-row", "slide-rule-fc-first-single-row", "slide-rule-fc-first-ucsx-direct-row", "unrestricted"], []),
     }
 
     prop_map = {

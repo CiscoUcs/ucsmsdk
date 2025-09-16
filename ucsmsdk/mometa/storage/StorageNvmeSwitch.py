@@ -41,6 +41,7 @@ class StorageNvmeSwitchConsts:
     LINK_STATUS_SEVERE_FAULT = "severe-fault"
     LINK_STATUS_UNKNOWN = "unknown"
     LINK_STATUS_UNRESPONSIVE = "unresponsive"
+    LINK_STATUS_UNSUPPORTED_DRIVE = "unsupported-drive"
     M_STATUS_DEGRADED = "degraded"
     M_STATUS_DELETED = "deleted"
     M_STATUS_FAILED = "failed"
@@ -50,6 +51,7 @@ class StorageNvmeSwitchConsts:
     M_STATUS_SEVERE_FAULT = "severe-fault"
     M_STATUS_UNKNOWN = "unknown"
     M_STATUS_UNRESPONSIVE = "unresponsive"
+    M_STATUS_UNSUPPORTED_DRIVE = "unsupported-drive"
     OPER_STATE_ACCESSIBILITY_PROBLEM = "accessibility-problem"
     OPER_STATE_AUTO_UPGRADE = "auto-upgrade"
     OPER_STATE_BACKPLANE_PORT_PROBLEM = "backplane-port-problem"
@@ -185,6 +187,7 @@ class StorageNvmeSwitchConsts:
     SWITCH_STATUS_SEVERE_FAULT = "severe-fault"
     SWITCH_STATUS_UNKNOWN = "unknown"
     SWITCH_STATUS_UNRESPONSIVE = "unresponsive"
+    SWITCH_STATUS_UNSUPPORTED_DRIVE = "unsupported-drive"
     TEMPERATURE_NOT_APPLICABLE = "not-applicable"
     THERMAL_LOWER_CRITICAL = "lower-critical"
     THERMAL_LOWER_NON_CRITICAL = "lower-non-critical"
@@ -228,9 +231,9 @@ class StorageNvmeSwitch(ManagedObject):
         "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "id": MoPropertyMeta("id", "id", "uint", VersionMeta.Version323a, MoPropertyMeta.NAMING, 0x10, None, None, None, [], ["0-4294967295"]),
         "inlet2_thermal": MoPropertyMeta("inlet2_thermal", "inlet2Thermal", "string", VersionMeta.Version423b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
-        "link_status": MoPropertyMeta("link_status", "linkStatus", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "flash-failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive"], []),
+        "link_status": MoPropertyMeta("link_status", "linkStatus", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "flash-failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive", "unsupported-drive"], []),
         "location_dn": MoPropertyMeta("location_dn", "locationDn", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
-        "m_status": MoPropertyMeta("m_status", "mStatus", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "flash-failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive"], []),
+        "m_status": MoPropertyMeta("m_status", "mStatus", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "flash-failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive", "unsupported-drive"], []),
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "oper_qualifier_reason": MoPropertyMeta("oper_qualifier_reason", "operQualifierReason", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accessibility-problem", "auto-upgrade", "backplane-port-problem", "bios-post-timeout", "chassis-intrusion", "chassis-limit-exceeded", "config", "decomissioning", "degraded", "dimm-disabled", "disabled", "discovery", "discovery-failed", "equipment-problem", "fabric-conn-problem", "fabric-unsupported-conn", "identify", "identity-unestablishable", "inoperable", "link-activate-blocked", "malformed-fru", "non-optimal", "non-optimal-severe", "not-supported", "operable", "peer-comm-problem", "peer-dimm-disabled", "performance-problem", "post-failure", "power-problem", "powered-off", "removed", "thermal-problem", "unknown", "unsupported-config", "upgrade-problem", "voltage-problem"], []),
@@ -247,7 +250,7 @@ class StorageNvmeSwitch(ManagedObject):
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version323a, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "switch_name": MoPropertyMeta("switch_name", "switchName", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
-        "switch_status": MoPropertyMeta("switch_status", "switchStatus", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "flash-failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive"], []),
+        "switch_status": MoPropertyMeta("switch_status", "switchStatus", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "deleted", "failed", "flash-failed", "moderate-fault", "optimal", "severe-fault", "unknown", "unresponsive", "unsupported-drive"], []),
         "temperature": MoPropertyMeta("temperature", "temperature", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, r"""^([\-]?)([123]?[1234]?)([0-9]{0,36})(([.])([0-9]{1,10}))?$""", ["not-applicable"], ["0-4294967295"]),
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version323a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["DIRECT-ATTACHED", "HHHL", "MSWITCH", "UNKNOWN"], []),

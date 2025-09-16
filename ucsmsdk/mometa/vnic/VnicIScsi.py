@@ -35,6 +35,8 @@ class VnicIScsiConsts:
     INST_TYPE_DYNAMIC = "dynamic"
     INST_TYPE_DYNAMIC_VF = "dynamic-vf"
     INST_TYPE_MANUAL = "manual"
+    IP_TYPE_IPV4 = "ipv4"
+    IP_TYPE_IPV6 = "ipv6"
     OPER_HOST_PORT_1 = "1"
     OPER_HOST_PORT_2 = "2"
     OPER_HOST_PORT_ANY = "ANY"
@@ -76,7 +78,7 @@ class VnicIScsi(ManagedObject):
     consts = VnicIScsiConsts()
     naming_props = set(['name'])
 
-    mo_meta = MoMeta("VnicIScsi", "vnicIScsi", "iscsi-[name]", VersionMeta.Version201m, "InputOutput", 0x1ffffff, [], ["admin", "ls-config", "ls-network", "ls-server", "ls-storage"], ['lsServer'], ['fabricEthMonSrcEp', 'fabricFcMonSrcEp', 'fabricNetflowMonSrcEp', 'faultInst', 'vnicIPv4IscsiAddr', 'vnicIScsiAutoTargetIf', 'vnicIScsiStaticTargetIf', 'vnicIqnHistory', 'vnicMacHistory', 'vnicVlan'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicIScsi", "vnicIScsi", "iscsi-[name]", VersionMeta.Version201m, "InputOutput", 0x3ffffff, [], ["admin", "ls-config", "ls-network", "ls-server", "ls-storage"], ['lsServer'], ['fabricEthMonSrcEp', 'fabricFcMonSrcEp', 'fabricNetflowMonSrcEp', 'faultInst', 'vnicIPv4IscsiAddr', 'vnicIScsiAutoTargetIf', 'vnicIScsiStaticTargetIf', 'vnicIqnHistory', 'vnicMacHistory', 'vnicVlan'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "adaptor_profile_name": MoPropertyMeta("adaptor_profile_name", "adaptorProfileName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
@@ -100,9 +102,10 @@ class VnicIScsi(ManagedObject):
         "init_name_suffix": MoPropertyMeta("init_name_suffix", "initNameSuffix", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "initiator_name": MoPropertyMeta("initiator_name", "initiatorName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2000, None, None, r"""[0-9a-zA-Z\.:-]{0,223}""", [], []),
         "inst_type": MoPropertyMeta("inst_type", "instType", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["default", "dynamic", "dynamic-vf", "manual"], []),
-        "iqn_ident_pool_name": MoPropertyMeta("iqn_ident_pool_name", "iqnIdentPoolName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x4000, None, None, None, [], []),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x8000, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []),
-        "nw_templ_name": MoPropertyMeta("nw_templ_name", "nwTemplName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x10000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "ip_type": MoPropertyMeta("ip_type", "ipType", "string", VersionMeta.Version601b, MoPropertyMeta.READ_WRITE, 0x4000, None, None, None, ["ipv4", "ipv6"], []),
+        "iqn_ident_pool_name": MoPropertyMeta("iqn_ident_pool_name", "iqnIdentPoolName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x8000, None, None, None, [], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x10000, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []),
+        "nw_templ_name": MoPropertyMeta("nw_templ_name", "nwTemplName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x20000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "oper_adaptor_profile_name": MoPropertyMeta("oper_adaptor_profile_name", "operAdaptorProfileName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "oper_auth_profile_name": MoPropertyMeta("oper_auth_profile_name", "operAuthProfileName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "oper_cdn_name": MoPropertyMeta("oper_cdn_name", "operCdnName", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -113,21 +116,21 @@ class VnicIScsi(ManagedObject):
         "oper_speed": MoPropertyMeta("oper_speed", "operSpeed", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["line-rate"], ["8-100000000"]),
         "oper_stats_policy_name": MoPropertyMeta("oper_stats_policy_name", "operStatsPolicyName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "oper_vcon": MoPropertyMeta("oper_vcon", "operVcon", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["1", "2", "3", "4", "any"], []),
-        "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x20000, None, None, None, ["unspecified"], ["0-256"]),
+        "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x40000, None, None, None, ["unspecified"], ["0-256"]),
         "owner": MoPropertyMeta("owner", "owner", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["conn_policy", "initiator_policy", "logical", "physical", "policy", "unknown"], []),
-        "pin_to_group_name": MoPropertyMeta("pin_to_group_name", "pinToGroupName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x40000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "pin_to_group_name": MoPropertyMeta("pin_to_group_name", "pinToGroupName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x80000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "prop_acl": MoPropertyMeta("prop_acl", "propAcl", "ulong", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "qos_policy_name": MoPropertyMeta("qos_policy_name", "qosPolicyName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x80000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "qos_policy_name": MoPropertyMeta("qos_policy_name", "qosPolicyName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x100000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "redundancy_pair_type": MoPropertyMeta("redundancy_pair_type", "redundancyPairType", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["none", "primary", "secondary"], []),
         "redundancy_peer": MoPropertyMeta("redundancy_peer", "redundancyPeer", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x100000, 0, 256, None, [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, 0x200000, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "stats_policy_name": MoPropertyMeta("stats_policy_name", "statsPolicyName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x200000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x400000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x800000, None, None, None, ["A", "B", "NONE"], []),
+        "stats_policy_name": MoPropertyMeta("stats_policy_name", "statsPolicyName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x400000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x800000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "switch_id": MoPropertyMeta("switch_id", "switchId", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x1000000, None, None, None, ["A", "B", "NONE"], []),
         "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ether", "fc", "ipc", "scsi", "unknown"], []),
         "vnic_def_type": MoPropertyMeta("vnic_def_type", "vnicDefType", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["dynamic-nw", "option17", "option43", "static"], []),
-        "vnic_name": MoPropertyMeta("vnic_name", "vnicName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x1000000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "vnic_name": MoPropertyMeta("vnic_name", "vnicName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2000000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
     }
 
     prop_map = {
@@ -152,6 +155,7 @@ class VnicIScsi(ManagedObject):
         "initNameSuffix": "init_name_suffix", 
         "initiatorName": "initiator_name", 
         "instType": "inst_type", 
+        "ipType": "ip_type", 
         "iqnIdentPoolName": "iqn_ident_pool_name", 
         "name": "name", 
         "nwTemplName": "nw_templ_name", 
@@ -205,6 +209,7 @@ class VnicIScsi(ManagedObject):
         self.init_name_suffix = None
         self.initiator_name = None
         self.inst_type = None
+        self.ip_type = None
         self.iqn_ident_pool_name = None
         self.nw_templ_name = None
         self.oper_adaptor_profile_name = None
