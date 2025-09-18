@@ -26,7 +26,7 @@ class AaaEpUser(ManagedObject):
     consts = AaaEpUserConsts()
     naming_props = set(['name'])
 
-    mo_meta = MoMeta("AaaEpUser", "aaaEpUser", "user-[name]", VersionMeta.Version101e, "InputOutput", 0x1ff, [], ["aaa", "admin", "ls-security", "ls-security-policy"], ['aaaEpAuthProfile', 'computeServerUnit'], ['aaaCimcSession'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AaaEpUser", "aaaEpUser", "user-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["aaa", "admin", "ls-security", "ls-security-policy"], ['aaaEpAuthProfile', 'computeServerUnit'], ['aaaCimcSession'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
@@ -34,14 +34,16 @@ class AaaEpUser(ManagedObject):
         "config_status_message": MoPropertyMeta("config_status_message", "configStatusMessage", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "ecode": MoPropertyMeta("ecode", "ecode", "string", VersionMeta.Version601b, MoPropertyMeta.READ_WRITE, 0x10, 0, 8, None, [], []),
+        "enc_key": MoPropertyMeta("enc_key", "encKey", "string", VersionMeta.Version601b, MoPropertyMeta.READ_WRITE, 0x20, 0, 256, None, [], []),
         "is_pwd_enc": MoPropertyMeta("is_pwd_enc", "isPwdEnc", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, None, None, r"""[a-zA-Z][a-zA-Z0-9_.@-]{0,15}""", [], []),
-        "priv": MoPropertyMeta("priv", "priv", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["admin", "readonly"], []),
-        "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[!""#%&'\(\)\*\+,\-\./:;<>@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{1,20}""", [], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x40, None, None, r"""[a-zA-Z][a-zA-Z0-9_.@-]{0,15}""", [], []),
+        "priv": MoPropertyMeta("priv", "priv", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["admin", "readonly"], []),
+        "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[!""#%&'\(\)\*\+,\-\./:;<>@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{1,20}""", [], []),
         "pwd_set": MoPropertyMeta("pwd_set", "pwdSet", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x200, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 
     prop_map = {
@@ -50,6 +52,8 @@ class AaaEpUser(ManagedObject):
         "configStatusMessage": "config_status_message", 
         "descr": "descr", 
         "dn": "dn", 
+        "ecode": "ecode", 
+        "encKey": "enc_key", 
         "isPwdEnc": "is_pwd_enc", 
         "name": "name", 
         "priv": "priv", 
@@ -67,6 +71,8 @@ class AaaEpUser(ManagedObject):
         self.config_state = None
         self.config_status_message = None
         self.descr = None
+        self.ecode = None
+        self.enc_key = None
         self.is_pwd_enc = None
         self.priv = None
         self.pwd = None

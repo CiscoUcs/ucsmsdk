@@ -14,7 +14,19 @@ class EquipmentSwitchCapConsts:
     FAN_MODULES_SUPPORTED_NO = "no"
     FAN_MODULES_SUPPORTED_TRUE = "true"
     FAN_MODULES_SUPPORTED_YES = "yes"
+    FI_AUDIT_LOGS_SUPPORTED_FALSE = "false"
+    FI_AUDIT_LOGS_SUPPORTED_NO = "no"
+    FI_AUDIT_LOGS_SUPPORTED_TRUE = "true"
+    FI_AUDIT_LOGS_SUPPORTED_YES = "yes"
     INT_ID_NONE = "none"
+    IS_CACHASSIS_SUPPORTED_FALSE = "false"
+    IS_CACHASSIS_SUPPORTED_NO = "no"
+    IS_CACHASSIS_SUPPORTED_TRUE = "true"
+    IS_CACHASSIS_SUPPORTED_YES = "yes"
+    IS_M5_SERVERS_AND_BELOW_SUPPORTED_FALSE = "false"
+    IS_M5_SERVERS_AND_BELOW_SUPPORTED_NO = "no"
+    IS_M5_SERVERS_AND_BELOW_SUPPORTED_TRUE = "true"
+    IS_M5_SERVERS_AND_BELOW_SUPPORTED_YES = "yes"
     LOCATOR_BEACON_SUPPORTED_FALSE = "false"
     LOCATOR_BEACON_SUPPORTED_NO = "no"
     LOCATOR_BEACON_SUPPORTED_TRUE = "true"
@@ -46,7 +58,10 @@ class EquipmentSwitchCap(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "dynamic_vifs_supported": MoPropertyMeta("dynamic_vifs_supported", "dynamicVifsSupported", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "fan_modules_supported": MoPropertyMeta("fan_modules_supported", "fanModulesSupported", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "fi_audit_logs_supported": MoPropertyMeta("fi_audit_logs_supported", "fiAuditLogsSupported", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
+        "is_ca_chassis_supported": MoPropertyMeta("is_ca_chassis_supported", "isCAChassisSupported", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "is_m5_servers_and_below_supported": MoPropertyMeta("is_m5_servers_and_below_supported", "isM5ServersAndBelowSupported", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "locator_beacon_supported": MoPropertyMeta("locator_beacon_supported", "locatorBeaconSupported", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "max_active_span_session_count": MoPropertyMeta("max_active_span_session_count", "maxActiveSpanSessionCount", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
         "max_eth1g_port": MoPropertyMeta("max_eth1g_port", "maxEth1gPort", "uint", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
@@ -76,7 +91,10 @@ class EquipmentSwitchCap(ManagedObject):
         "dn": "dn", 
         "dynamicVifsSupported": "dynamic_vifs_supported", 
         "fanModulesSupported": "fan_modules_supported", 
+        "fiAuditLogsSupported": "fi_audit_logs_supported", 
         "intId": "int_id", 
+        "isCAChassisSupported": "is_ca_chassis_supported", 
+        "isM5ServersAndBelowSupported": "is_m5_servers_and_below_supported", 
         "locatorBeaconSupported": "locator_beacon_supported", 
         "maxActiveSpanSessionCount": "max_active_span_session_count", 
         "maxEth1gPort": "max_eth1g_port", 
@@ -106,7 +124,10 @@ class EquipmentSwitchCap(ManagedObject):
         self.descr = None
         self.dynamic_vifs_supported = None
         self.fan_modules_supported = None
+        self.fi_audit_logs_supported = None
         self.int_id = None
+        self.is_ca_chassis_supported = None
+        self.is_m5_servers_and_below_supported = None
         self.locator_beacon_supported = None
         self.max_active_span_session_count = None
         self.max_eth1g_port = None

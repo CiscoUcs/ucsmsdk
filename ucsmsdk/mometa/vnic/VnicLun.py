@@ -18,7 +18,7 @@ class VnicLun(ManagedObject):
     consts = VnicLunConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicLun", "vnicLun", "lun", VersionMeta.Version201m, "InputOutput", 0x7f, [], ["admin", "ls-config", "ls-server", "ls-storage"], ['vnicIScsiStaticTargetIf'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("VnicLun", "vnicLun", "lun", VersionMeta.Version201m, "InputOutput", 0x7f, [], ["admin", "ls-config", "ls-server", "ls-storage"], ['vnicIPv6IScsiStaticTargetIf', 'vnicIScsiStaticTargetIf'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "bootable": MoPropertyMeta("bootable", "bootable", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["false", "no", "true", "yes"], []),

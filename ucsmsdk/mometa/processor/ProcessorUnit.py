@@ -173,6 +173,7 @@ class ProcessorUnitConsts:
     THERMAL_UPPER_NON_CRITICAL = "upper-non-critical"
     THERMAL_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     THREADS_UNSPECIFIED = "unspecified"
+    THREADS_ENABLED_UNSPECIFIED = "unspecified"
     VISIBILITY_NO = "no"
     VISIBILITY_UNKNOWN = "unknown"
     VISIBILITY_YES = "yes"
@@ -223,6 +224,7 @@ class ProcessorUnit(ManagedObject):
         "stepping": MoPropertyMeta("stepping", "stepping", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unspecified"], ["0-4294967295"]),
         "thermal": MoPropertyMeta("thermal", "thermal", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "threads": MoPropertyMeta("threads", "threads", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unspecified"], ["0-65535"]),
+        "threads_enabled": MoPropertyMeta("threads_enabled", "threadsEnabled", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unspecified"], ["0-65535"]),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "visibility": MoPropertyMeta("visibility", "visibility", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["no", "unknown", "yes"], []),
         "voltage": MoPropertyMeta("voltage", "voltage", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
@@ -256,6 +258,7 @@ class ProcessorUnit(ManagedObject):
         "stepping": "stepping", 
         "thermal": "thermal", 
         "threads": "threads", 
+        "threadsEnabled": "threads_enabled", 
         "vendor": "vendor", 
         "visibility": "visibility", 
         "voltage": "voltage", 
@@ -288,6 +291,7 @@ class ProcessorUnit(ManagedObject):
         self.stepping = None
         self.thermal = None
         self.threads = None
+        self.threads_enabled = None
         self.vendor = None
         self.visibility = None
         self.voltage = None
