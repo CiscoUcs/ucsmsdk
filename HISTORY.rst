@@ -3,6 +3,10 @@
 History
 -------
 
+0.9.23 (2025-09-19)
+---------------------
+* Support for UCSM release 6.0(1b)
+
 0.9.22 (2025-05-15)
 ---------------------
 * Support for UCSM release 4.3(6a)
@@ -13,7 +17,7 @@ History
 
 0.9.20 (2024-09-20)
 ---------------------
-* Fixes for encoding failure during firmware upload 
+* Fixes for encoding failure during firmware upload
 
 0.9.19 (2024-08-28)
 ---------------------
