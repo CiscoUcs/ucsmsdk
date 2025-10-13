@@ -10,6 +10,7 @@ class MemoryUnitConsts:
     ADMIN_STATE_RESET_ERRORS = "reset-errors"
     CAPACITY_UNSPECIFIED = "unspecified"
     CLOCK_UNSPECIFIED = "unspecified"
+    CONFIGURED_CLOCK_SPEED_UNSPECIFIED = "unspecified"
     FORM_FACTOR_DIMM = "DIMM"
     FORM_FACTOR_FB_DIMM = "FB-DIMM"
     FORM_FACTOR_OTHER = "Other"
@@ -231,6 +232,7 @@ class MemoryUnit(ManagedObject):
         "capacity": MoPropertyMeta("capacity", "capacity", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unspecified"], ["0-4294967295"]),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "clock": MoPropertyMeta("clock", "clock", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unspecified"], ["0-65535"]),
+        "configured_clock_speed": MoPropertyMeta("configured_clock_speed", "configuredClockSpeed", "string", VersionMeta.Version601c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["unspecified"], ["0-65535"]),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "form_factor": MoPropertyMeta("form_factor", "formFactor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["DIMM", "FB-DIMM", "Other", "RIMM", "SIMM", "SODIMM", "SRIMM", "TSOP", "Unknown", "undiscovered"], []),
         "hotswap_thermal": MoPropertyMeta("hotswap_thermal", "hotswapThermal", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
@@ -271,6 +273,7 @@ class MemoryUnit(ManagedObject):
         "capacity": "capacity", 
         "childAction": "child_action", 
         "clock": "clock", 
+        "configuredClockSpeed": "configured_clock_speed", 
         "dn": "dn", 
         "formFactor": "form_factor", 
         "hotswapThermal": "hotswap_thermal", 
@@ -313,6 +316,7 @@ class MemoryUnit(ManagedObject):
         self.capacity = None
         self.child_action = None
         self.clock = None
+        self.configured_clock_speed = None
         self.form_factor = None
         self.hotswap_thermal = None
         self.inlet2_thermal = None

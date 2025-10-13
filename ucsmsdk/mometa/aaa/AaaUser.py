@@ -55,7 +55,7 @@ class AaaUser(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "email": MoPropertyMeta("email", "email", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, 0, 510, None, [], []),
         "enc_pwd": MoPropertyMeta("enc_pwd", "encPwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, 0, 256, None, [], []),
-        "enc_pwd_hash_algo": MoPropertyMeta("enc_pwd_hash_algo", "encPwdHashAlgo", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Blowfish", "MD5", "SHA-256", "SHA-512", "Unknown", "Yescrypt"], []),
+        "enc_pwd_hash_algo": MoPropertyMeta("enc_pwd_hash_algo", "encPwdHashAlgo", "string", VersionMeta.Version601a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Blowfish", "MD5", "SHA-256", "SHA-512", "Unknown", "Yescrypt"], []),
         "enc_pwd_set": MoPropertyMeta("enc_pwd_set", "encPwdSet", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["false", "no", "true", "yes"], []),
         "expiration": MoPropertyMeta("expiration", "expiration", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []),
         "expires": MoPropertyMeta("expires", "expires", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["false", "no", "true", "yes"], []),

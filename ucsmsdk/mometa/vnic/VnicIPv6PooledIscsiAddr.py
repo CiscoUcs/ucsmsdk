@@ -15,21 +15,21 @@ class VnicIPv6PooledIscsiAddr(ManagedObject):
     consts = VnicIPv6PooledIscsiAddrConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("VnicIPv6PooledIscsiAddr", "vnicIPv6PooledIscsiAddr", "ipv6-pooled-iscsiaddr", VersionMeta.Version601b, "InputOutput", 0xff, [], ["admin", "ls-config", "ls-network", "ls-server", "ls-storage"], ['adaptorVlan', 'vnicIPv6If'], ['faultInst', 'vnicIpV6History'], [None])
+    mo_meta = MoMeta("VnicIPv6PooledIscsiAddr", "vnicIPv6PooledIscsiAddr", "ipv6-pooled-iscsiaddr", VersionMeta.Version601a, "InputOutput", 0xff, [], ["admin", "ls-config", "ls-network", "ls-server", "ls-storage"], ['adaptorVlan', 'vnicIPv6If'], ['faultInst', 'vnicIpV6History'], [None])
 
     prop_meta = {
-        "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version601b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
-        "def_gw": MoPropertyMeta("def_gw", "defGw", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
-        "ident_pool_name": MoPropertyMeta("ident_pool_name", "identPoolName", "string", VersionMeta.Version601b, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], []),
-        "oper_ident_pool_name": MoPropertyMeta("oper_ident_pool_name", "operIdentPoolName", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
-        "prefix": MoPropertyMeta("prefix", "prefix", "byte", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-127"]),
-        "prim_dns": MoPropertyMeta("prim_dns", "primDns", "string", VersionMeta.Version601b, MoPropertyMeta.READ_WRITE, 0x10, 0, 256, None, [], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
-        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "sec_dns": MoPropertyMeta("sec_dns", "secDns", "string", VersionMeta.Version601b, MoPropertyMeta.READ_WRITE, 0x40, 0, 256, None, [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version601b, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "addr": MoPropertyMeta("addr", "addr", "string", VersionMeta.Version601a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version601a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "def_gw": MoPropertyMeta("def_gw", "defGw", "string", VersionMeta.Version601a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version601a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
+        "ident_pool_name": MoPropertyMeta("ident_pool_name", "identPoolName", "string", VersionMeta.Version601a, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, [], []),
+        "oper_ident_pool_name": MoPropertyMeta("oper_ident_pool_name", "operIdentPoolName", "string", VersionMeta.Version601a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
+        "prefix": MoPropertyMeta("prefix", "prefix", "byte", VersionMeta.Version601a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-127"]),
+        "prim_dns": MoPropertyMeta("prim_dns", "primDns", "string", VersionMeta.Version601a, MoPropertyMeta.READ_WRITE, 0x10, 0, 256, None, [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version601a, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
+        "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version601a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
+        "sec_dns": MoPropertyMeta("sec_dns", "secDns", "string", VersionMeta.Version601a, MoPropertyMeta.READ_WRITE, 0x40, 0, 256, None, [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version601a, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 
     prop_map = {

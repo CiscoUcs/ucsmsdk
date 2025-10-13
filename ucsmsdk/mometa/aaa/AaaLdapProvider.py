@@ -35,7 +35,7 @@ class AaaLdapProvider(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "enable_ssl": MoPropertyMeta("enable_ssl", "enableSSL", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["false", "no", "true", "yes"], []),
         "enc_key": MoPropertyMeta("enc_key", "encKey", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, 1, 127, None, [], []),
-        "enc_key_type": MoPropertyMeta("enc_key_type", "encKeyType", "string", VersionMeta.Version601b, MoPropertyMeta.READ_WRITE, 0x100, 0, 8, None, [], []),
+        "enc_key_type": MoPropertyMeta("enc_key_type", "encKeyType", "string", VersionMeta.Version601a, MoPropertyMeta.READ_WRITE, 0x100, 0, 8, None, [], []),
         "filter": MoPropertyMeta("filter", "filter", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,127}""", [], []),
         "key": MoPropertyMeta("key", "key", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""[!""#$%&'\(\)\*\+,\-\./:;<>@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{0,127}""", [], []),
         "key_set": MoPropertyMeta("key_set", "keySet", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),

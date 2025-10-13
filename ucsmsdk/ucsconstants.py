@@ -3319,6 +3319,7 @@ class NamingPropertyId:
     CONFIG_STATUS_MESSAGE = "configStatusMessage"
     CONFIG_WARNINGS = "configWarnings"
     CONFIGURATION = "configuration"
+    CONFIGURED_CLOCK_SPEED = "configuredClockSpeed"
     CONFIGURED_MODE = "configuredMode"
     CONFIGURED_PPL = "configuredPpl"
     CONFIGURED_WRITE_CACHE_POLICY = "configuredWriteCachePolicy"
