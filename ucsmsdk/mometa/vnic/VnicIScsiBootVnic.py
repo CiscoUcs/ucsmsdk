@@ -29,7 +29,7 @@ class VnicIScsiBootVnic(ManagedObject):
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "initiator_name": MoPropertyMeta("initiator_name", "initiatorName", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[0-9a-zA-Z\.:-]{0,223}$""", [], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version211a, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
-        "ip_type": MoPropertyMeta("ip_type", "ipType", "string", VersionMeta.Version601b, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["ipv4", "ipv6"], []),
+        "ip_type": MoPropertyMeta("ip_type", "ipType", "string", VersionMeta.Version601a, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["ipv4", "ipv6"], []),
         "iqn_ident_pool_name": MoPropertyMeta("iqn_ident_pool_name", "iqnIdentPoolName", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []),
         "oper_auth_profile_name": MoPropertyMeta("oper_auth_profile_name", "operAuthProfileName", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),

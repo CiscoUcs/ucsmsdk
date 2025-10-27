@@ -26,7 +26,7 @@ class TopSystem(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "ipv6_addr": MoPropertyMeta("ipv6_addr", "ipv6Addr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x20, 0, 256, None, [], []),
-        "last_instance_id": MoPropertyMeta("last_instance_id", "lastInstanceId", "uint", VersionMeta.Version601b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
+        "last_instance_id": MoPropertyMeta("last_instance_id", "lastInstanceId", "uint", VersionMeta.Version601a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["cluster", "stand-alone", "unspecified"], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[a-zA-Z][a-zA-Z0-9-]{0,29}""", [], []),
         "owner": MoPropertyMeta("owner", "owner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []),

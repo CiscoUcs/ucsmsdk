@@ -102,7 +102,7 @@ class VnicIScsi(ManagedObject):
         "init_name_suffix": MoPropertyMeta("init_name_suffix", "initNameSuffix", "string", VersionMeta.Version202m, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "initiator_name": MoPropertyMeta("initiator_name", "initiatorName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x2000, None, None, r"""[0-9a-zA-Z\.:-]{0,223}""", [], []),
         "inst_type": MoPropertyMeta("inst_type", "instType", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["default", "dynamic", "dynamic-vf", "manual"], []),
-        "ip_type": MoPropertyMeta("ip_type", "ipType", "string", VersionMeta.Version601b, MoPropertyMeta.READ_WRITE, 0x4000, None, None, None, ["ipv4", "ipv6"], []),
+        "ip_type": MoPropertyMeta("ip_type", "ipType", "string", VersionMeta.Version601a, MoPropertyMeta.READ_WRITE, 0x4000, None, None, None, ["ipv4", "ipv6"], []),
         "iqn_ident_pool_name": MoPropertyMeta("iqn_ident_pool_name", "iqnIdentPoolName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x8000, None, None, None, [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version201m, MoPropertyMeta.NAMING, 0x10000, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []),
         "nw_templ_name": MoPropertyMeta("nw_templ_name", "nwTemplName", "string", VersionMeta.Version201m, MoPropertyMeta.READ_WRITE, 0x20000, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
