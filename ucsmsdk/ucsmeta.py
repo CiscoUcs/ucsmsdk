@@ -127,6 +127,7 @@ class VersionMeta:
     Version601a = UcsVersion("6.0(1a)")
     Version601c = UcsVersion("6.0(1c)")
     Version601d = UcsVersion("6.0(1d)")
+    Version601e = UcsVersion("6.0(1e)")
 
 MO_CLASS_ID = frozenset([
     "AaaAuthRealm",
