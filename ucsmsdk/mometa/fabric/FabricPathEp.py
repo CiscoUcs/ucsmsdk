@@ -51,6 +51,8 @@ class FabricPathEpConsts:
     PORT_GROUP_ROLE_MASTER_PC = "master-pc"
     PORT_GROUP_ROLE_MEMBER = "member"
     PORT_GROUP_ROLE_NONE = "none"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     SIDE_LEFT = "left"
     SIDE_RIGHT = "right"
     SWITCH_ID_A = "A"
@@ -86,6 +88,7 @@ class FabricPathEp(ManagedObject):
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "port_group_role": MoPropertyMeta("port_group_role", "portGroupRole", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["master", "master-pc", "member", "none"], ["0-255"]),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "side": MoPropertyMeta("side", "side", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["left", "right"], []),
@@ -116,6 +119,7 @@ class FabricPathEp(ManagedObject):
         "peerSlotId": "peer_slot_id", 
         "portGroupRole": "port_group_role", 
         "portId": "port_id", 
+        "portInternalState": "port_internal_state", 
         "rn": "rn", 
         "sacl": "sacl", 
         "side": "side", 
@@ -146,6 +150,7 @@ class FabricPathEp(ManagedObject):
         self.peer_slot_id = None
         self.port_group_role = None
         self.port_id = None
+        self.port_internal_state = None
         self.sacl = None
         self.side = None
         self.slot_id = None

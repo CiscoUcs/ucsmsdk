@@ -14,6 +14,7 @@ class ComputeModularChassisFanPolicyConsts:
     SPEED_BALANCED = "Balanced"
     SPEED_HIGH_POWER = "High Power"
     SPEED_LOW_POWER = "Low Power"
+    SPEED_MAX_COOLING = "Max Cooling"
     SPEED_MAX_POWER = "Max Power"
     SPEED_PERFORMANCE = "Performance"
 
@@ -36,7 +37,7 @@ class ComputeModularChassisFanPolicy(ManagedObject):
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version432b, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "speed": MoPropertyMeta("speed", "speed", "string", VersionMeta.Version432b, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["Acoustic", "Balanced", "High Power", "Low Power", "Max Power", "Performance"], []),
+        "speed": MoPropertyMeta("speed", "speed", "string", VersionMeta.Version432b, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["Acoustic", "Balanced", "High Power", "Low Power", "Max Cooling", "Max Power", "Performance"], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version432b, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 

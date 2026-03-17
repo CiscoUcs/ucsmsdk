@@ -64,6 +64,10 @@ class EquipmentLocalDiskControllerDefConsts:
     TFM_SUPPORTED_NO = "no"
     TFM_SUPPORTED_TRUE = "true"
     TFM_SUPPORTED_YES = "yes"
+    U3_DRIVE_FALSE = "false"
+    U3_DRIVE_NO = "no"
+    U3_DRIVE_TRUE = "true"
+    U3_DRIVE_YES = "yes"
     ZONING_SUPPORTED_FALSE = "false"
     ZONING_SUPPORTED_NO = "no"
     ZONING_SUPPORTED_TRUE = "true"
@@ -79,6 +83,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
     mo_meta = MoMeta("EquipmentLocalDiskControllerDef", "equipmentLocalDiskControllerDef", "disk-controller", VersionMeta.Version131c, "InputOutput", 0xff, [], [""], ['equipmentLocalDiskControllerCapProvider'], [], ["Get"])
 
     prop_meta = {
+        "min_version_bulk_v_ddel": MoPropertyMeta("min_version_bulk_v_ddel", "MinVersionBulkVDdel", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "auto_config_mode_supported": MoPropertyMeta("auto_config_mode_supported", "autoConfigModeSupported", "string", VersionMeta.Version421a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version131c, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "config_parm_mod_supported": MoPropertyMeta("config_parm_mod_supported", "configParmModSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
@@ -102,10 +107,12 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version131c, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "tfm_supported": MoPropertyMeta("tfm_supported", "tfmSupported", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "u3_drive": MoPropertyMeta("u3_drive", "u3Drive", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "zoning_supported": MoPropertyMeta("zoning_supported", "zoningSupported", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
     }
 
     prop_map = {
+        "MinVersionBulkVDdel": "min_version_bulk_v_ddel", 
         "autoConfigModeSupported": "auto_config_mode_supported", 
         "childAction": "child_action", 
         "configParmModSupported": "config_parm_mod_supported", 
@@ -129,11 +136,13 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         "sacl": "sacl", 
         "status": "status", 
         "tfmSupported": "tfm_supported", 
+        "u3Drive": "u3_drive", 
         "zoningSupported": "zoning_supported", 
     }
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.min_version_bulk_v_ddel = None
         self.auto_config_mode_supported = None
         self.child_action = None
         self.config_parm_mod_supported = None
@@ -155,6 +164,7 @@ class EquipmentLocalDiskControllerDef(ManagedObject):
         self.sacl = None
         self.status = None
         self.tfm_supported = None
+        self.u3_drive = None
         self.zoning_supported = None
 
         ManagedObject.__init__(self, "EquipmentLocalDiskControllerDef", parent_mo_or_dn, **kwargs)

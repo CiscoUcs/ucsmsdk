@@ -29,6 +29,8 @@ class FabricVsanEpConsts:
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -57,6 +59,7 @@ class FabricVsanEp(ManagedObject):
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["error-misconfigured", "error-reserved", "ok"], []),
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
@@ -79,6 +82,7 @@ class FabricVsanEp(ManagedObject):
         "operState": "oper_state", 
         "peerDn": "peer_dn", 
         "policyOwner": "policy_owner", 
+        "portInternalState": "port_internal_state", 
         "rn": "rn", 
         "sacl": "sacl", 
         "status": "status", 
@@ -101,6 +105,7 @@ class FabricVsanEp(ManagedObject):
         self.oper_state = None
         self.peer_dn = None
         self.policy_owner = None
+        self.port_internal_state = None
         self.sacl = None
         self.status = None
         self.switch_id = None

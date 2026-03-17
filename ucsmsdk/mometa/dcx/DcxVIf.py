@@ -49,6 +49,8 @@ class DcxVIfConsts:
     OPER_STATE_LINK_DOWN = "link-down"
     OPER_STATE_PASSIVE = "passive"
     OPER_STATE_UNKNOWN = "unknown"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     PROT_ROLE_BACKUP = "backup"
     PROT_ROLE_PRIMARY = "primary"
     PROT_ROLE_UNPROTECTED = "unprotected"
@@ -96,6 +98,7 @@ class DcxVIf(ManagedObject):
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "admin-down", "error", "link-down", "passive", "unknown"], []),
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "prot_peer_id": MoPropertyMeta("prot_peer_id", "protPeerId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
         "prot_role": MoPropertyMeta("prot_role", "protRole", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["backup", "primary", "unprotected"], []),
         "prot_state": MoPropertyMeta("prot_state", "protState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "no-protection", "passive"], []),
@@ -127,6 +130,7 @@ class DcxVIf(ManagedObject):
         "name": "name", 
         "operState": "oper_state", 
         "peerDn": "peer_dn", 
+        "portInternalState": "port_internal_state", 
         "protPeerId": "prot_peer_id", 
         "protRole": "prot_role", 
         "protState": "prot_state", 
@@ -158,6 +162,7 @@ class DcxVIf(ManagedObject):
         self.name = None
         self.oper_state = None
         self.peer_dn = None
+        self.port_internal_state = None
         self.prot_peer_id = None
         self.prot_role = None
         self.prot_state = None

@@ -32,6 +32,8 @@ class ExtmgmtIfConsts:
     OPER_STATE_DOWN = "down"
     OPER_STATE_UNKNOWN = "unknown"
     OPER_STATE_UP = "up"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
 
 
 class ExtmgmtIf(ManagedObject):
@@ -56,6 +58,7 @@ class ExtmgmtIf(ManagedObject):
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["down", "unknown", "up"], []),
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
@@ -77,6 +80,7 @@ class ExtmgmtIf(ManagedObject):
         "name": "name", 
         "operState": "oper_state", 
         "peerDn": "peer_dn", 
+        "portInternalState": "port_internal_state", 
         "rn": "rn", 
         "sacl": "sacl", 
         "status": "status", 
@@ -98,6 +102,7 @@ class ExtmgmtIf(ManagedObject):
         self.name = None
         self.oper_state = None
         self.peer_dn = None
+        self.port_internal_state = None
         self.sacl = None
         self.status = None
         self.transport = None

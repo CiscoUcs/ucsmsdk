@@ -6,6 +6,10 @@ from ...ucsmeta import VersionMeta
 
 
 class AaaLdapEpConsts:
+    ALLOW_INSECURE_CONFIG_FALSE = "false"
+    ALLOW_INSECURE_CONFIG_NO = "no"
+    ALLOW_INSECURE_CONFIG_TRUE = "true"
+    ALLOW_INSECURE_CONFIG_YES = "yes"
     FSM_PREV_NOP = "nop"
     FSM_PREV_UPDATE_EP_BEGIN = "updateEpBegin"
     FSM_PREV_UPDATE_EP_FAIL = "updateEpFail"
@@ -159,6 +163,10 @@ class AaaLdapEpConsts:
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
+    SECURE_TRANSPORT_FALSE = "false"
+    SECURE_TRANSPORT_NO = "no"
+    SECURE_TRANSPORT_TRUE = "true"
+    SECURE_TRANSPORT_YES = "yes"
 
 
 class AaaLdapEp(ManagedObject):
@@ -167,15 +175,16 @@ class AaaLdapEp(ManagedObject):
     consts = AaaLdapEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AaaLdapEp", "aaaLdapEp", "ldap-ext", VersionMeta.Version101e, "InputOutput", 0x1fff, [], ["aaa", "admin"], ['topSystem'], ['aaaEpFsm', 'aaaEpFsmTask', 'aaaLdapEpFsm', 'aaaLdapGroup', 'aaaLdapGroupRule', 'aaaLdapProvider', 'aaaProviderGroup', 'eventInst', 'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("AaaLdapEp", "aaaLdapEp", "ldap-ext", VersionMeta.Version101e, "InputOutput", 0x7fff, [], ["aaa", "admin"], ['topSystem'], ['aaaEpFsm', 'aaaEpFsmTask', 'aaaLdapEpFsm', 'aaaLdapGroup', 'aaaLdapGroupRule', 'aaaLdapProvider', 'aaaProviderGroup', 'eventInst', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
-        "attribute": MoPropertyMeta("attribute", "attribute", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,63}""", [], []),
-        "basedn": MoPropertyMeta("basedn", "basedn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b\x0c\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !""#$%&'\(\)\*\+,\-\./:;=\?@\[\\\]\^_`\{\|\}~\x7f\xc2\x80\xc2\x81\xc2\x82\xc2\x83\xc2\x84\xc2\x85\xc2\x86\xc2\x87\xc2\x88\xc2\x89\xc2\x8a\xc2\x8b\xc2\x8c\xc2\x8d\xc2\x8e\xc2\x8f\xc2\x90\xc2\x91\xc2\x92\xc2\x93\xc2\x94\xc2\x95\xc2\x96\xc2\x97\xc2\x98\xc2\x99\xc2\x9a\xc2\x9b\xc2\x9c\xc2\x9d\xc2\x9e\xc2\x9f\xc2\xa0\xc2\xa1\xc2\xa2\xc2\xa3\xc2\xa4\xc2\xa5\xc2\xa6\xc2\xa7\xc2\xa8\xc2\xa9\xc2\xaa\xc2\xab\xc2\xac\xc2\xad\xc2\xae\xc2\xaf\xc2\xb0\xc2\xb1\xc2\xb2\xc2\xb3\xc2\xb4\xc2\xb5\xc2\xb6\xc2\xb7\xc2\xb8\xc2\xb9\xc2\xba\xc2\xbb\xc2\xbc\xc2\xbd\xc2\xbe\xc2\xbf\xc3\x80\xc3\x81\xc3\x82\xc3\x83\xc3\x84\xc3\x85\xc3\x86\xc3\x87\xc3\x88\xc3\x89\xc3\x8a\xc3\x8b\xc3\x8c\xc3\x8d\xc3\x8e\xc3\x8f\xc3\x90\xc3\x91\xc3\x92\xc3\x93\xc3\x94\xc3\x95\xc3\x96\xc3\x97\xc3\x98\xc3\x99\xc3\x9a\xc3\x9b\xc3\x9c\xc3\x9d\xc3\x9e\xc3\x9f\xc3\xa0\xc3\xa1\xc3\xa2\xc3\xa3\xc3\xa4\xc3\xa5\xc3\xa6\xc3\xa7\xc3\xa8\xc3\xa9\xc3\xaa\xc3\xab\xc3\xac\xc3\xad\xc3\xae\xc3\xaf\xc3\xb0\xc3\xb1\xc3\xb2\xc3\xb3\xc3\xb4\xc3\xb5\xc3\xb6\xc3\xb7\xc3\xb8\xc3\xb9\xc3\xba\xc3\xbb\xc3\xbc\xc3\xbd\xc3\xbe\xc3\xbfa-zA-Z0-9]{0,255}""", [], []),
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
-        "filter": MoPropertyMeta("filter", "filter", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,127}""", [], []),
+        "allow_insecure_config": MoPropertyMeta("allow_insecure_config", "allowInsecureConfig", "string", VersionMeta.Version602a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["false", "no", "true", "yes"], []),
+        "attribute": MoPropertyMeta("attribute", "attribute", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,63}""", [], []),
+        "basedn": MoPropertyMeta("basedn", "basedn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b\x0c\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !""#$%&'\(\)\*\+,\-\./:;=\?@\[\\\]\^_`\{\|\}~\x7f\xc2\x80\xc2\x81\xc2\x82\xc2\x83\xc2\x84\xc2\x85\xc2\x86\xc2\x87\xc2\x88\xc2\x89\xc2\x8a\xc2\x8b\xc2\x8c\xc2\x8d\xc2\x8e\xc2\x8f\xc2\x90\xc2\x91\xc2\x92\xc2\x93\xc2\x94\xc2\x95\xc2\x96\xc2\x97\xc2\x98\xc2\x99\xc2\x9a\xc2\x9b\xc2\x9c\xc2\x9d\xc2\x9e\xc2\x9f\xc2\xa0\xc2\xa1\xc2\xa2\xc2\xa3\xc2\xa4\xc2\xa5\xc2\xa6\xc2\xa7\xc2\xa8\xc2\xa9\xc2\xaa\xc2\xab\xc2\xac\xc2\xad\xc2\xae\xc2\xaf\xc2\xb0\xc2\xb1\xc2\xb2\xc2\xb3\xc2\xb4\xc2\xb5\xc2\xb6\xc2\xb7\xc2\xb8\xc2\xb9\xc2\xba\xc2\xbb\xc2\xbc\xc2\xbd\xc2\xbe\xc2\xbf\xc3\x80\xc3\x81\xc3\x82\xc3\x83\xc3\x84\xc3\x85\xc3\x86\xc3\x87\xc3\x88\xc3\x89\xc3\x8a\xc3\x8b\xc3\x8c\xc3\x8d\xc3\x8e\xc3\x8f\xc3\x90\xc3\x91\xc3\x92\xc3\x93\xc3\x94\xc3\x95\xc3\x96\xc3\x97\xc3\x98\xc3\x99\xc3\x9a\xc3\x9b\xc3\x9c\xc3\x9d\xc3\x9e\xc3\x9f\xc3\xa0\xc3\xa1\xc3\xa2\xc3\xa3\xc3\xa4\xc3\xa5\xc3\xa6\xc3\xa7\xc3\xa8\xc3\xa9\xc3\xaa\xc3\xab\xc3\xac\xc3\xad\xc3\xae\xc3\xaf\xc3\xb0\xc3\xb1\xc3\xb2\xc3\xb3\xc3\xb4\xc3\xb5\xc3\xb6\xc3\xb7\xc3\xb8\xc3\xb9\xc3\xba\xc3\xbb\xc3\xbc\xc3\xbd\xc3\xbe\xc3\xbfa-zA-Z0-9]{0,255}""", [], []),
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x10, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
+        "filter": MoPropertyMeta("filter", "filter", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""[ !#$%&\(\)\*\+,\-\.:;=\?@\[\]_\{\|\}~a-zA-Z0-9]{0,127}""", [], []),
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "updateEpBegin", "updateEpFail", "updateEpSetEpLocal", "updateEpSetEpPeer", "updateEpSuccess"], []),
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]),
@@ -187,17 +196,19 @@ class AaaLdapEp(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "updateEpBegin", "updateEpFail", "updateEpSetEpLocal", "updateEpSetEpPeer", "updateEpSuccess"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x80, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["local", "pending-policy", "policy"], []),
-        "retries": MoPropertyMeta("retries", "retries", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, [], ["0-5"]),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x400, 0, 256, None, [], []),
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["local", "pending-policy", "policy"], []),
+        "retries": MoPropertyMeta("retries", "retries", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, [], ["0-5"]),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x800, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "timeout": MoPropertyMeta("timeout", "timeout", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, [], ["1-60"]),
+        "secure_transport": MoPropertyMeta("secure_transport", "secureTransport", "string", VersionMeta.Version602a, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, ["false", "no", "true", "yes"], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "timeout": MoPropertyMeta("timeout", "timeout", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000, None, None, None, [], ["1-60"]),
     }
 
     prop_map = {
+        "allowInsecureConfig": "allow_insecure_config", 
         "attribute": "attribute", 
         "basedn": "basedn", 
         "childAction": "child_action", 
@@ -221,12 +232,14 @@ class AaaLdapEp(ManagedObject):
         "retries": "retries", 
         "rn": "rn", 
         "sacl": "sacl", 
+        "secureTransport": "secure_transport", 
         "status": "status", 
         "timeout": "timeout", 
     }
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.allow_insecure_config = None
         self.attribute = None
         self.basedn = None
         self.child_action = None
@@ -248,6 +261,7 @@ class AaaLdapEp(ManagedObject):
         self.policy_owner = None
         self.retries = None
         self.sacl = None
+        self.secure_transport = None
         self.status = None
         self.timeout = None
 

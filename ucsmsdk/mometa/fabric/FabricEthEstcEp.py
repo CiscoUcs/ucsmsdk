@@ -9,9 +9,12 @@ class FabricEthEstcEpConsts:
     ADMIN_SPEED_100GBPS = "100gbps"
     ADMIN_SPEED_10GBPS = "10gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
+    ADMIN_SPEED_200GBPS = "200gbps"
     ADMIN_SPEED_20GBPS = "20gbps"
     ADMIN_SPEED_25GBPS = "25gbps"
+    ADMIN_SPEED_400GBPS = "400gbps"
     ADMIN_SPEED_40GBPS = "40gbps"
+    ADMIN_SPEED_50GBPS = "50gbps"
     ADMIN_SPEED_AUTO = "auto"
     ADMIN_SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
@@ -61,6 +64,8 @@ class FabricEthEstcEpConsts:
     OPER_STATE_UNKNOWN = "unknown"
     OPER_STATE_UP = "up"
     PEER_CHASSIS_ID_N_A = "N/A"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     PORT_MODE_ACCESS = "access"
     PORT_MODE_TRUNK = "trunk"
     PRIO_BEST_EFFORT = "best-effort"
@@ -83,7 +88,7 @@ class FabricEthEstcEp(ManagedObject):
     mo_meta = MoMeta("FabricEthEstcEp", "fabricEthEstcEp", "phys-eth-slot-[slot_id]-port-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ffff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEthEstc', 'fabricSubGroup'], ['fabricEthMonSrcEp', 'fabricEthTargetEp', 'fabricVlanEp', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
+        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["100gbps", "10gbps", "1gbps", "200gbps", "20gbps", "25gbps", "400gbps", "40gbps", "50gbps", "auto", "indeterminate"], []),
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["disabled", "enabled"], []),
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "auto_negotiate": MoPropertyMeta("auto_negotiate", "autoNegotiate", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x8, None, None, None, ["disabled", "enabled"], []),
@@ -113,6 +118,7 @@ class FabricEthEstcEp(ManagedObject):
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "pin_group_name": MoPropertyMeta("pin_group_name", "pinGroupName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400, 0, 510, None, [], []),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x800, None, None, None, [], ["1-108"]),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "port_mode": MoPropertyMeta("port_mode", "portMode", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, ["access", "trunk"], []),
         "prio": MoPropertyMeta("prio", "prio", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, ["best-effort", "bronze", "fc", "gold", "platinum", "silver"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x4000, 0, 256, None, [], []),
@@ -157,6 +163,7 @@ class FabricEthEstcEp(ManagedObject):
         "peerSlotId": "peer_slot_id", 
         "pinGroupName": "pin_group_name", 
         "portId": "port_id", 
+        "portInternalState": "port_internal_state", 
         "portMode": "port_mode", 
         "prio": "prio", 
         "rn": "rn", 
@@ -202,6 +209,7 @@ class FabricEthEstcEp(ManagedObject):
         self.peer_port_id = None
         self.peer_slot_id = None
         self.pin_group_name = None
+        self.port_internal_state = None
         self.port_mode = None
         self.prio = None
         self.sacl = None

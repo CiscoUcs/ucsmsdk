@@ -9,9 +9,12 @@ class FabricEthVlanPcConsts:
     ADMIN_SPEED_100GBPS = "100gbps"
     ADMIN_SPEED_10GBPS = "10gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
+    ADMIN_SPEED_200GBPS = "200gbps"
     ADMIN_SPEED_20GBPS = "20gbps"
     ADMIN_SPEED_25GBPS = "25gbps"
+    ADMIN_SPEED_400GBPS = "400gbps"
     ADMIN_SPEED_40GBPS = "40gbps"
+    ADMIN_SPEED_50GBPS = "50gbps"
     ADMIN_SPEED_AUTO = "auto"
     ADMIN_SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
@@ -40,9 +43,12 @@ class FabricEthVlanPcConsts:
     OPER_SPEED_100GBPS = "100gbps"
     OPER_SPEED_10GBPS = "10gbps"
     OPER_SPEED_1GBPS = "1gbps"
+    OPER_SPEED_200GBPS = "200gbps"
     OPER_SPEED_20GBPS = "20gbps"
     OPER_SPEED_25GBPS = "25gbps"
+    OPER_SPEED_400GBPS = "400gbps"
     OPER_SPEED_40GBPS = "40gbps"
+    OPER_SPEED_50GBPS = "50gbps"
     OPER_SPEED_AUTO = "auto"
     OPER_SPEED_INDETERMINATE = "indeterminate"
     OPER_STATE_ADMIN_DOWN = "admin-down"
@@ -58,6 +64,8 @@ class FabricEthVlanPcConsts:
     OPER_STATE_SOFTWARE_FAILURE = "software-failure"
     OPER_STATE_UDLD_AGGR_DOWN = "udld-aggr-down"
     OPER_STATE_UP = "up"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -72,7 +80,7 @@ class FabricEthVlanPc(ManagedObject):
     mo_meta = MoMeta("FabricEthVlanPc", "fabricEthVlanPc", "pc-switch-[switch_id]-pc-[port_id]", VersionMeta.Version141i, "InputOutput", 0x1fff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricNetGroup', 'fabricVlan'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
+        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["100gbps", "10gbps", "1gbps", "200gbps", "20gbps", "25gbps", "400gbps", "40gbps", "50gbps", "auto", "indeterminate"], []),
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["disabled", "enabled"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
@@ -84,10 +92,11 @@ class FabricEthVlanPc(ManagedObject):
         "is_native": MoPropertyMeta("is_native", "isNative", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["false", "no", "true", "yes"], []),
         "locale": MoPropertyMeta("locale", "locale", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|server|chassis|internal|external),){0,5}(defaultValue|unknown|server|chassis|internal|external){0,1}""", [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
-        "oper_speed": MoPropertyMeta("oper_speed", "operSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
+        "oper_speed": MoPropertyMeta("oper_speed", "operSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["100gbps", "10gbps", "1gbps", "200gbps", "20gbps", "25gbps", "400gbps", "40gbps", "50gbps", "auto", "indeterminate"], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-down", "down", "error-disabled", "failed", "hardware-failure", "indeterminate", "link-down", "link-up", "no-license", "sfp-not-present", "software-failure", "udld-aggr-down", "up"], []),
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x200, None, None, None, [], ["1-256"]),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x400, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "state_qual": MoPropertyMeta("state_qual", "stateQual", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
@@ -115,6 +124,7 @@ class FabricEthVlanPc(ManagedObject):
         "operState": "oper_state", 
         "peerDn": "peer_dn", 
         "portId": "port_id", 
+        "portInternalState": "port_internal_state", 
         "rn": "rn", 
         "sacl": "sacl", 
         "stateQual": "state_qual", 
@@ -143,6 +153,7 @@ class FabricEthVlanPc(ManagedObject):
         self.oper_speed = None
         self.oper_state = None
         self.peer_dn = None
+        self.port_internal_state = None
         self.sacl = None
         self.state_qual = None
         self.status = None

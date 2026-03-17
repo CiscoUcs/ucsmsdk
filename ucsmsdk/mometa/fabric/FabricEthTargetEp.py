@@ -41,6 +41,8 @@ class FabricEthTargetEpConsts:
     OPER_STATE_UNKNOWN = "unknown"
     OPER_STATE_UP = "up"
     PEER_CHASSIS_ID_N_A = "N/A"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -78,6 +80,7 @@ class FabricEthTargetEp(ManagedObject):
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-108"]),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "slot_id": MoPropertyMeta("slot_id", "slotId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-4"]),
@@ -113,6 +116,7 @@ class FabricEthTargetEp(ManagedObject):
         "peerPortId": "peer_port_id", 
         "peerSlotId": "peer_slot_id", 
         "portId": "port_id", 
+        "portInternalState": "port_internal_state", 
         "rn": "rn", 
         "sacl": "sacl", 
         "slotId": "slot_id", 
@@ -148,6 +152,7 @@ class FabricEthTargetEp(ManagedObject):
         self.peer_port_id = None
         self.peer_slot_id = None
         self.port_id = None
+        self.port_internal_state = None
         self.sacl = None
         self.slot_id = None
         self.status = None

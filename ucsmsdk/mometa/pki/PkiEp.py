@@ -171,7 +171,7 @@ class PkiEp(ManagedObject):
     consts = PkiEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("PkiEp", "pkiEp", "pki-ext", VersionMeta.Version101e, "InputOutput", 0xff, [], ["read-only"], ['topSystem'], ['eventInst', 'faultInst', 'mgmtKmipCertPolicy', 'pkiEpFsm', 'pkiEpFsmTask', 'pkiKeyRing', 'pkiTP'], ["Get"])
+    mo_meta = MoMeta("PkiEp", "pkiEp", "pki-ext", VersionMeta.Version101e, "InputOutput", 0xff, [], ["read-only"], ['topSystem'], ['eventInst', 'faultInst', 'mgmtKmipCertPolicy', 'pkiEpFsm', 'pkiEpFsmTask', 'pkiKeyRing', 'pkiNXOSTpDeletion', 'pkiTP'], ["Get"])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

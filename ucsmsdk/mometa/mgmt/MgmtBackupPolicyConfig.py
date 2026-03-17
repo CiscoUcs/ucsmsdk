@@ -35,6 +35,7 @@ class MgmtBackupPolicyConfigConsts:
     OPER_STATE_WAITING_FOR_DEPENDENCY = "waiting-for-dependency"
     OPER_STATE_WAITING_FOR_MAINT_WINDOW = "waiting-for-maint-window"
     OPER_STATE_WAITING_FOR_USER = "waiting-for-user"
+    OPER_STATE_WAITING_FOR_USER_SFP_UPGRADE = "waiting-for-user-sfp-upgrade"
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
@@ -60,7 +61,7 @@ class MgmtBackupPolicyConfig(ManagedObject):
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version222c, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "oper_scheduler": MoPropertyMeta("oper_scheduler", "operScheduler", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
-        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "applied", "apply-pending", "evaluated", "evaluation-pending", "expired", "none", "pending", "untriggered", "waiting-for-dependency", "waiting-for-maint-window", "waiting-for-user"], []),
+        "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "applied", "apply-pending", "evaluated", "evaluation-pending", "expired", "none", "pending", "untriggered", "waiting-for-dependency", "waiting-for-maint-window", "waiting-for-user", "waiting-for-user-sfp-upgrade"], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version222c, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["local", "pending-policy", "policy"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, 0x400, 0, 256, None, [], []),

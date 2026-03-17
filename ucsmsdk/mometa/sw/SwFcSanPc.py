@@ -37,6 +37,8 @@ class SwFcSanPcConsts:
     MON_TRAF_DIR_BOTH = "both"
     MON_TRAF_DIR_RX = "rx"
     MON_TRAF_DIR_TX = "tx"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -64,6 +66,7 @@ class SwFcSanPc(ManagedObject):
         "pc_id": MoPropertyMeta("pc_id", "pcId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "port_vsan_id": MoPropertyMeta("port_vsan_id", "portVsanId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-4093"]),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
@@ -87,6 +90,7 @@ class SwFcSanPc(ManagedObject):
         "pcId": "pc_id", 
         "peerDn": "peer_dn", 
         "portId": "port_id", 
+        "portInternalState": "port_internal_state", 
         "portVsanId": "port_vsan_id", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -110,6 +114,7 @@ class SwFcSanPc(ManagedObject):
         self.name = None
         self.pc_id = None
         self.peer_dn = None
+        self.port_internal_state = None
         self.port_vsan_id = None
         self.sacl = None
         self.status = None

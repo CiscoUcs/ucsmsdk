@@ -336,6 +336,8 @@ class AdaptorHostFcIfConsts:
     PERF_UPPER_NON_RECOVERABLE = "upper-non-recoverable"
     PERS_BIND_DISABLED = "disabled"
     PERS_BIND_ENABLED = "enabled"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     POWER_DEGRADED = "degraded"
     POWER_ERROR = "error"
     POWER_FAILED = "failed"
@@ -459,6 +461,7 @@ class AdaptorHostFcIf(ManagedObject):
         "perf": MoPropertyMeta("perf", "perf", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["lower-critical", "lower-non-critical", "lower-non-recoverable", "not-supported", "ok", "unknown", "upper-critical", "upper-non-critical", "upper-non-recoverable"], []),
         "pers_bind": MoPropertyMeta("pers_bind", "persBind", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["disabled", "enabled"], []),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "power": MoPropertyMeta("power", "power", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["degraded", "error", "failed", "not-supported", "off", "offduty", "offline", "ok", "on", "online", "power-save", "test", "unknown"], []),
         "presence": MoPropertyMeta("presence", "presence", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "equipped", "equipped-deprecated", "equipped-disc-error", "equipped-disc-in-progress", "equipped-disc-not-started", "equipped-disc-unknown", "equipped-identity-unestablishable", "equipped-not-primary", "equipped-slave", "equipped-unsupported", "equipped-with-malformed-fru", "inaccessible", "mismatch", "mismatch-identity-unestablishable", "mismatch-slave", "missing", "missing-slave", "not-supported", "unauthorized", "unknown"], []),
         "purpose": MoPropertyMeta("purpose", "purpose", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["crosslink", "general", "management", "overlay", "unused", "utility"], []),
@@ -529,6 +532,7 @@ class AdaptorHostFcIf(ManagedObject):
         "perf": "perf", 
         "persBind": "pers_bind", 
         "portId": "port_id", 
+        "portInternalState": "port_internal_state", 
         "power": "power", 
         "presence": "presence", 
         "purpose": "purpose", 
@@ -599,6 +603,7 @@ class AdaptorHostFcIf(ManagedObject):
         self.perf = None
         self.pers_bind = None
         self.port_id = None
+        self.port_internal_state = None
         self.power = None
         self.presence = None
         self.purpose = None

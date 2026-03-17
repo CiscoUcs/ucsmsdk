@@ -31,7 +31,7 @@ class FabricLanCloudPolicy(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version227b, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
-        "mac_aging": MoPropertyMeta("mac_aging", "macAging", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[0-9]{1,7}|(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["mode-default", "never"], ["0-4294967295"]),
+        "mac_aging": MoPropertyMeta("mac_aging", "macAging", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[0-9]{1,6}|(([1-9]*[0-9]{2}:)|)([0-1][0-9]||[2][0-3]):([0-5][0-9]):([0-5][0-9])||(([0-5][0-9]):|)([0-5][0-9])""", ["mode-default", "never"], ["0-4294967295"]),
         "mode": MoPropertyMeta("mode", "mode", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["end-host", "switch"], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version227b, MoPropertyMeta.READ_WRITE, 0x40, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version227b, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),

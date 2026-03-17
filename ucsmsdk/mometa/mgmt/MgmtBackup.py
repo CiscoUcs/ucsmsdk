@@ -8,6 +8,10 @@ from ...ucsmeta import VersionMeta
 class MgmtBackupConsts:
     ADMIN_STATE_DISABLED = "disabled"
     ADMIN_STATE_ENABLED = "enabled"
+    ALLOW_INSECURE_CONFIG_FALSE = "false"
+    ALLOW_INSECURE_CONFIG_NO = "no"
+    ALLOW_INSECURE_CONFIG_TRUE = "true"
+    ALLOW_INSECURE_CONFIG_YES = "yes"
     BACKUPSTATUS_FAIL = "fail"
     BACKUPSTATUS_IN_PROGRESS = "in-progress"
     BACKUPSTATUS_NONE = "none"
@@ -191,14 +195,15 @@ class MgmtBackup(ManagedObject):
     consts = MgmtBackupConsts()
     naming_props = set(['hostname'])
 
-    mo_meta = MoMeta("MgmtBackup", "mgmtBackup", "backup-[hostname]", VersionMeta.Version101e, "InputOutput", 0x1ffff, [], ["admin"], ['topSystem'], ['eventInst', 'faultInst', 'mgmtBackupFsm', 'mgmtBackupFsmTask'], ["Add", "Get", "Remove"])
+    mo_meta = MoMeta("MgmtBackup", "mgmtBackup", "backup-[hostname]", VersionMeta.Version101e, "InputOutput", 0x3ffff, [], ["admin"], ['topSystem'], ['eventInst', 'faultInst', 'mgmtBackupFsm', 'mgmtBackupFsmTask'], ["Add", "Get", "Remove"])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
+        "allow_insecure_config": MoPropertyMeta("allow_insecure_config", "allowInsecureConfig", "string", VersionMeta.Version602a, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["false", "no", "true", "yes"], []),
         "backupstatus": MoPropertyMeta("backupstatus", "backupstatus", "string", VersionMeta.Version224b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["fail", "in-progress", "none", "success"], []),
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "err_msg": MoPropertyMeta("err_msg", "errMsg", "string", VersionMeta.Version432b, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["backupBackupLocal", "backupBegin", "backupFail", "backupSuccess", "backupUpload", "nop"], []),
@@ -210,28 +215,29 @@ class MgmtBackup(ManagedObject):
         "fsm_stamp": MoPropertyMeta("fsm_stamp", "fsmStamp", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []),
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["backupBackupLocal", "backupBegin", "backupFail", "backupSuccess", "backupUpload", "nop"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
-        "hostname": MoPropertyMeta("hostname", "hostname", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []),
+        "hostname": MoPropertyMeta("hostname", "hostname", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x40, None, None, None, [], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
-        "job": MoPropertyMeta("job", "job", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x40, None, None, None, ["immediate"], []),
+        "job": MoPropertyMeta("job", "job", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x80, None, None, None, ["immediate"], []),
         "max_files": MoPropertyMeta("max_files", "maxFiles", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x80, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "owner_policy": MoPropertyMeta("owner_policy", "ownerPolicy", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["local", "pending-policy", "policy"], []),
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["local", "pending-policy", "policy"], []),
         "post_action": MoPropertyMeta("post_action", "postAction", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["none", "remove"], []),
-        "preserve_pooled_values": MoPropertyMeta("preserve_pooled_values", "preservePooledValues", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["false", "no", "true", "yes"], []),
-        "proto": MoPropertyMeta("proto", "proto", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["ftp", "http", "nfs-copy", "none", "scp", "sftp", "tftp"], []),
-        "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800, 0, 64, None, [], []),
-        "remote_file": MoPropertyMeta("remote_file", "remoteFile", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000, 1, 128, None, [], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x2000, 0, 256, None, [], []),
+        "preserve_pooled_values": MoPropertyMeta("preserve_pooled_values", "preservePooledValues", "string", VersionMeta.Version102d, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["false", "no", "true", "yes"], []),
+        "proto": MoPropertyMeta("proto", "proto", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, ["ftp", "http", "nfs-copy", "none", "scp", "sftp", "tftp"], []),
+        "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000, 0, 64, None, [], []),
+        "remote_file": MoPropertyMeta("remote_file", "remoteFile", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000, 1, 128, None, [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4000, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000, None, None, None, ["config-all", "config-logical", "config-system", "full-state"], []),
-        "user": MoPropertyMeta("user", "user", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10000, 0, 510, None, [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10000, None, None, None, ["config-all", "config-logical", "config-system", "full-state"], []),
+        "user": MoPropertyMeta("user", "user", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x20000, 0, 510, None, [], []),
     }
 
     prop_map = {
         "adminState": "admin_state", 
+        "allowInsecureConfig": "allow_insecure_config", 
         "backupstatus": "backupstatus", 
         "childAction": "child_action", 
         "descr": "descr", 
@@ -271,6 +277,7 @@ class MgmtBackup(ManagedObject):
         self._dirty_mask = 0
         self.hostname = hostname
         self.admin_state = None
+        self.allow_insecure_config = None
         self.backupstatus = None
         self.child_action = None
         self.descr = None

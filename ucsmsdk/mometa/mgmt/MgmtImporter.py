@@ -184,7 +184,7 @@ class MgmtImporter(ManagedObject):
     consts = MgmtImporterConsts()
     naming_props = set(['hostname'])
 
-    mo_meta = MoMeta("MgmtImporter", "mgmtImporter", "import-config-[hostname]", VersionMeta.Version101e, "InputOutput", 0x3fff, [], ["admin"], ['topSystem'], ['eventInst', 'faultInst', 'mgmtImporterFsm', 'mgmtImporterFsmTask'], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("MgmtImporter", "mgmtImporter", "import-config-[hostname]", VersionMeta.Version101e, "InputOutput", 0x7fff, [], ["admin"], ['topSystem'], ['eventInst', 'faultInst', 'mgmtImporterFsm', 'mgmtImporterFsmTask'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "action": MoPropertyMeta("action", "action", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["merge", "replace"], []),
@@ -205,18 +205,19 @@ class MgmtImporter(ManagedObject):
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "hostname": MoPropertyMeta("hostname", "hostname", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x40, None, None, None, [], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
+        "key": MoPropertyMeta("key", "key", "string", VersionMeta.Version602a, MoPropertyMeta.READ_WRITE, 0x80, 0, 64, None, [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "oper_status": MoPropertyMeta("oper_status", "operStatus", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|nop|download-success|config-success|verify-key-succeeded),){0,4}(defaultValue|nop|download-success|config-success|verify-key-succeeded){0,1}""", [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, ["local", "pending-policy", "policy"], []),
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["local", "pending-policy", "policy"], []),
         "post_action": MoPropertyMeta("post_action", "postAction", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["none", "remove"], []),
-        "proto": MoPropertyMeta("proto", "proto", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, None, ["ftp", "http", "nfs-copy", "none", "scp", "sftp", "tftp"], []),
-        "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, 0, 64, None, [], []),
-        "remote_file": MoPropertyMeta("remote_file", "remoteFile", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, 1, 128, None, [], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x800, 0, 256, None, [], []),
+        "proto": MoPropertyMeta("proto", "proto", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["ftp", "http", "nfs-copy", "none", "scp", "sftp", "tftp"], []),
+        "pwd": MoPropertyMeta("pwd", "pwd", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, 0, 64, None, [], []),
+        "remote_file": MoPropertyMeta("remote_file", "remoteFile", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800, 1, 128, None, [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x1000, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "user": MoPropertyMeta("user", "user", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000, 0, 510, None, [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "user": MoPropertyMeta("user", "user", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000, 0, 510, None, [], []),
     }
 
     prop_map = {
@@ -238,6 +239,7 @@ class MgmtImporter(ManagedObject):
         "fsmTry": "fsm_try", 
         "hostname": "hostname", 
         "intId": "int_id", 
+        "key": "key", 
         "name": "name", 
         "operStatus": "oper_status", 
         "policyLevel": "policy_level", 
@@ -271,6 +273,7 @@ class MgmtImporter(ManagedObject):
         self.fsm_status = None
         self.fsm_try = None
         self.int_id = None
+        self.key = None
         self.name = None
         self.oper_status = None
         self.policy_level = None

@@ -60,6 +60,8 @@ class FabricComputePhEpConsts:
     OPER_STATE_UNKNOWN = "unknown"
     OPER_STATE_UP = "up"
     PEER_CHASSIS_ID_N_A = "N/A"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -103,6 +105,7 @@ class FabricComputePhEp(ManagedObject):
         "peer_port_id": MoPropertyMeta("peer_port_id", "peerPortId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-108"]),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "profile_dn": MoPropertyMeta("profile_dn", "profileDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []),
@@ -148,6 +151,7 @@ class FabricComputePhEp(ManagedObject):
         "peerPortId": "peer_port_id", 
         "peerSlotId": "peer_slot_id", 
         "portId": "port_id", 
+        "portInternalState": "port_internal_state", 
         "profileDn": "profile_dn", 
         "revision": "revision", 
         "rn": "rn", 
@@ -195,6 +199,7 @@ class FabricComputePhEp(ManagedObject):
         self.peer_port_id = None
         self.peer_slot_id = None
         self.port_id = None
+        self.port_internal_state = None
         self.profile_dn = None
         self.revision = None
         self.sacl = None

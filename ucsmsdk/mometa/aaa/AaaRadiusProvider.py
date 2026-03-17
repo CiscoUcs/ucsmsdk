@@ -22,7 +22,7 @@ class AaaRadiusProvider(ManagedObject):
     consts = AaaRadiusProviderConsts()
     naming_props = set(['name'])
 
-    mo_meta = MoMeta("AaaRadiusProvider", "aaaRadiusProvider", "provider-[name]", VersionMeta.Version101e, "InputOutput", 0x3fff, [], ["aaa", "admin"], ['aaaRadiusEp'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("AaaRadiusProvider", "aaaRadiusProvider", "provider-[name]", VersionMeta.Version101e, "InputOutput", 0xffff, [], ["aaa", "admin"], ['aaaRadiusEp'], [], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
         "auth_port": MoPropertyMeta("auth_port", "authPort", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, [], ["1-65535"]),
@@ -33,14 +33,17 @@ class AaaRadiusProvider(ManagedObject):
         "enc_key_type": MoPropertyMeta("enc_key_type", "encKeyType", "string", VersionMeta.Version601a, MoPropertyMeta.READ_WRITE, 0x40, 0, 8, None, [], []),
         "key": MoPropertyMeta("key", "key", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""[!""#$%&'\(\)\*\+,\-\./:;<>@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{0,63}""", [], []),
         "key_set": MoPropertyMeta("key_set", "keySet", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x100, None, None, r"""^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,63}$|^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})$|^:((:[0-9a-fA-F]{1,4}){1,7}|:)$""", [], []),
-        "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["lowest-available"], ["0-16"]),
-        "retries": MoPropertyMeta("retries", "retries", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, [], ["0-5"]),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x800, 0, 256, None, [], []),
+        "keyring": MoPropertyMeta("keyring", "keyring", "string", VersionMeta.Version602a, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x200, None, None, r"""^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,63}$|^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,7}:$|^([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}$|^([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}$|^([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}$|^([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}$|^([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})$|^:((:[0-9a-fA-F]{1,4}){1,7}|:)$""", [], []),
+        "order": MoPropertyMeta("order", "order", "string", VersionMeta.Version111j, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["lowest-available"], ["0-16"]),
+        "radius_server_tp": MoPropertyMeta("radius_server_tp", "radiusServerTp", "string", VersionMeta.Version602a, MoPropertyMeta.READ_WRITE, 0x800, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "retries": MoPropertyMeta("retries", "retries", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x1000, None, None, None, [], ["0-5"]),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x2000, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
         "service": MoPropertyMeta("service", "service", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["accounting", "all", "authorization"], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x1000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "timeout": MoPropertyMeta("timeout", "timeout", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, [], ["0-60"]),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4000, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "timeout": MoPropertyMeta("timeout", "timeout", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x8000, None, None, None, [], ["0-60"]),
+        "tp": MoPropertyMeta("tp", "tp", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
     }
 
     prop_map = {
@@ -52,14 +55,17 @@ class AaaRadiusProvider(ManagedObject):
         "encKeyType": "enc_key_type", 
         "key": "key", 
         "keySet": "key_set", 
+        "keyring": "keyring", 
         "name": "name", 
         "order": "order", 
+        "radiusServerTp": "radius_server_tp", 
         "retries": "retries", 
         "rn": "rn", 
         "sacl": "sacl", 
         "service": "service", 
         "status": "status", 
         "timeout": "timeout", 
+        "tp": "tp", 
     }
 
     def __init__(self, parent_mo_or_dn, name, **kwargs):
@@ -72,11 +78,14 @@ class AaaRadiusProvider(ManagedObject):
         self.enc_key_type = None
         self.key = None
         self.key_set = None
+        self.keyring = None
         self.order = None
+        self.radius_server_tp = None
         self.retries = None
         self.sacl = None
         self.service = None
         self.status = None
         self.timeout = None
+        self.tp = None
 
         ManagedObject.__init__(self, "AaaRadiusProvider", parent_mo_or_dn, **kwargs)

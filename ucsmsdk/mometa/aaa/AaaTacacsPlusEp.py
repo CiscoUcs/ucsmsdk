@@ -6,6 +6,10 @@ from ...ucsmeta import VersionMeta
 
 
 class AaaTacacsPlusEpConsts:
+    ALLOW_INSECURE_CONFIG_FALSE = "false"
+    ALLOW_INSECURE_CONFIG_NO = "no"
+    ALLOW_INSECURE_CONFIG_TRUE = "true"
+    ALLOW_INSECURE_CONFIG_YES = "yes"
     FSM_PREV_NOP = "nop"
     FSM_PREV_UPDATE_EP_BEGIN = "updateEpBegin"
     FSM_PREV_UPDATE_EP_FAIL = "updateEpFail"
@@ -159,6 +163,10 @@ class AaaTacacsPlusEpConsts:
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
+    SECURE_TRANSPORT_FALSE = "false"
+    SECURE_TRANSPORT_NO = "no"
+    SECURE_TRANSPORT_TRUE = "true"
+    SECURE_TRANSPORT_YES = "yes"
 
 
 class AaaTacacsPlusEp(ManagedObject):
@@ -167,12 +175,13 @@ class AaaTacacsPlusEp(ManagedObject):
     consts = AaaTacacsPlusEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("AaaTacacsPlusEp", "aaaTacacsPlusEp", "tacacs-ext", VersionMeta.Version101e, "InputOutput", 0x3ff, [], ["aaa", "admin"], ['topSystem'], ['aaaEpFsm', 'aaaEpFsmTask', 'aaaProviderGroup', 'aaaTacacsPlusEpFsm', 'aaaTacacsPlusProvider', 'eventInst', 'faultInst'], ["Get", "Set"])
+    mo_meta = MoMeta("AaaTacacsPlusEp", "aaaTacacsPlusEp", "tacacs-ext", VersionMeta.Version101e, "InputOutput", 0xfff, [], ["aaa", "admin"], ['topSystem'], ['aaaEpFsm', 'aaaEpFsmTask', 'aaaProviderGroup', 'aaaTacacsPlusEpFsm', 'aaaTacacsPlusProvider', 'eventInst', 'faultInst'], ["Get", "Set"])
 
     prop_meta = {
-        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
-        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x4, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
-        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "allow_insecure_config": MoPropertyMeta("allow_insecure_config", "allowInsecureConfig", "string", VersionMeta.Version602a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["false", "no", "true", "yes"], []),
+        "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
+        "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
+        "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "fsm_prev": MoPropertyMeta("fsm_prev", "fsmPrev", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "updateEpBegin", "updateEpFail", "updateEpSetEpLocal", "updateEpSetEpPeer", "updateEpSuccess"], []),
         "fsm_progr": MoPropertyMeta("fsm_progr", "fsmProgr", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-100"]),
@@ -184,17 +193,19 @@ class AaaTacacsPlusEp(ManagedObject):
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "updateEpBegin", "updateEpFail", "updateEpSetEpLocal", "updateEpSetEpPeer", "updateEpSuccess"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.CREATE_ONLY, 0x20, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "policy_level": MoPropertyMeta("policy_level", "policyLevel", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
-        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []),
-        "retries": MoPropertyMeta("retries", "retries", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, [], ["0-5"]),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x80, 0, 256, None, [], []),
+        "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x40, None, None, None, ["local", "pending-policy", "policy"], []),
+        "retries": MoPropertyMeta("retries", "retries", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, None, [], ["0-5"]),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x100, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x100, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
-        "timeout": MoPropertyMeta("timeout", "timeout", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, [], ["1-60"]),
+        "secure_transport": MoPropertyMeta("secure_transport", "secureTransport", "string", VersionMeta.Version602a, MoPropertyMeta.READ_WRITE, 0x200, None, None, None, ["false", "no", "true", "yes"], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x400, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "timeout": MoPropertyMeta("timeout", "timeout", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x800, None, None, None, [], ["1-60"]),
     }
 
     prop_map = {
+        "allowInsecureConfig": "allow_insecure_config", 
         "childAction": "child_action", 
         "descr": "descr", 
         "dn": "dn", 
@@ -215,12 +226,14 @@ class AaaTacacsPlusEp(ManagedObject):
         "retries": "retries", 
         "rn": "rn", 
         "sacl": "sacl", 
+        "secureTransport": "secure_transport", 
         "status": "status", 
         "timeout": "timeout", 
     }
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.allow_insecure_config = None
         self.child_action = None
         self.descr = None
         self.fsm_descr = None
@@ -239,6 +252,7 @@ class AaaTacacsPlusEp(ManagedObject):
         self.policy_owner = None
         self.retries = None
         self.sacl = None
+        self.secure_transport = None
         self.status = None
         self.timeout = None
 
