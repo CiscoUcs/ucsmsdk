@@ -20,7 +20,7 @@ from .ucscoremeta import MoMeta
 
 
 def version():
-    return '6.0(2a)'
+    return '6.0(2b)'
 
 class VersionMeta:
     """ This class contains all the UcsVersion supported by this package."""
@@ -128,6 +128,7 @@ class VersionMeta:
     Version601c = UcsVersion("6.0(1c)")
     Version601d = UcsVersion("6.0(1d)")
     Version602a = UcsVersion("6.0(2a)")
+    Version602b = UcsVersion("6.0(2b)")
 
 MO_CLASS_ID = frozenset([
     "AaaAuthRealm",
