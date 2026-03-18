@@ -9,9 +9,12 @@ class SwEthLanPcConsts:
     ADMIN_SPEED_100GBPS = "100gbps"
     ADMIN_SPEED_10GBPS = "10gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
+    ADMIN_SPEED_200GBPS = "200gbps"
     ADMIN_SPEED_20GBPS = "20gbps"
     ADMIN_SPEED_25GBPS = "25gbps"
+    ADMIN_SPEED_400GBPS = "400gbps"
     ADMIN_SPEED_40GBPS = "40gbps"
+    ADMIN_SPEED_50GBPS = "50gbps"
     ADMIN_SPEED_AUTO = "auto"
     ADMIN_SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
@@ -44,6 +47,8 @@ class SwEthLanPcConsts:
     MON_TRAF_DIR_BOTH = "both"
     MON_TRAF_DIR_RX = "rx"
     MON_TRAF_DIR_TX = "tx"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     PRIORITY_FLOW_CTRL_AUTO = "auto"
     PRIORITY_FLOW_CTRL_ON = "on"
     RECV_FLOW_CTRL_OFF = "off"
@@ -64,7 +69,7 @@ class SwEthLanPc(ManagedObject):
     mo_meta = MoMeta("SwEthLanPc", "swEthLanPc", "pc-[port_id]", VersionMeta.Version101e, "InputOutput", 0xff, [], ["read-only"], ['swEthLanBorder', 'swEthMon'], ['swVlan'], ["Get"])
 
     prop_meta = {
-        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
+        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "200gbps", "20gbps", "25gbps", "400gbps", "40gbps", "50gbps", "auto", "indeterminate"], []),
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
@@ -78,6 +83,7 @@ class SwEthLanPc(ManagedObject):
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "priority_flow_ctrl": MoPropertyMeta("priority_flow_ctrl", "priorityFlowCtrl", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["auto", "on"], []),
         "recv_flow_ctrl": MoPropertyMeta("recv_flow_ctrl", "recvFlowCtrl", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["off", "on"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
@@ -104,6 +110,7 @@ class SwEthLanPc(ManagedObject):
         "name": "name", 
         "peerDn": "peer_dn", 
         "portId": "port_id", 
+        "portInternalState": "port_internal_state", 
         "priorityFlowCtrl": "priority_flow_ctrl", 
         "recvFlowCtrl": "recv_flow_ctrl", 
         "rn": "rn", 
@@ -130,6 +137,7 @@ class SwEthLanPc(ManagedObject):
         self.mon_traf_dir = None
         self.name = None
         self.peer_dn = None
+        self.port_internal_state = None
         self.priority_flow_ctrl = None
         self.recv_flow_ctrl = None
         self.sacl = None

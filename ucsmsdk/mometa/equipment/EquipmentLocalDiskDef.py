@@ -25,6 +25,10 @@ class EquipmentLocalDiskDefConsts:
     TECHNOLOGY_HDD = "HDD"
     TECHNOLOGY_SSD = "SSD"
     TECHNOLOGY_UNSPECIFIED = "unspecified"
+    U3_DRIVE_FALSE = "false"
+    U3_DRIVE_NO = "no"
+    U3_DRIVE_TRUE = "true"
+    U3_DRIVE_YES = "yes"
 
 
 class EquipmentLocalDiskDef(ManagedObject):
@@ -58,6 +62,7 @@ class EquipmentLocalDiskDef(ManagedObject):
         "self_encrypting_drive": MoPropertyMeta("self_encrypting_drive", "selfEncryptingDrive", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "technology": MoPropertyMeta("technology", "technology", "string", VersionMeta.Version131c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["HDD", "SSD", "unspecified"], []),
+        "u3_drive": MoPropertyMeta("u3_drive", "u3Drive", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
     }
 
     prop_map = {
@@ -83,6 +88,7 @@ class EquipmentLocalDiskDef(ManagedObject):
         "selfEncryptingDrive": "self_encrypting_drive", 
         "status": "status", 
         "technology": "technology", 
+        "u3Drive": "u3_drive", 
     }
 
     def __init__(self, parent_mo_or_dn, **kwargs):
@@ -107,5 +113,6 @@ class EquipmentLocalDiskDef(ManagedObject):
         self.self_encrypting_drive = None
         self.status = None
         self.technology = None
+        self.u3_drive = None
 
         ManagedObject.__init__(self, "EquipmentLocalDiskDef", parent_mo_or_dn, **kwargs)

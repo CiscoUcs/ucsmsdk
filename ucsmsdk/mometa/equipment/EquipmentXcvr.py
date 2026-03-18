@@ -87,6 +87,8 @@ class EquipmentXcvrConsts:
     TYPE_H25GCU5M = "h25gcu5m"
     TYPE_H25GLRS = "h25glrs"
     TYPE_H25GSRS = "h25gsrs"
+    TYPE_QDD2X100GCWDM4S = "qdd2x100gcwdm4s"
+    TYPE_QDD2X100GLR4S = "qdd2x100glr4s"
     TYPE_QSFP100G40GBIDI = "qsfp100g40gbidi"
     TYPE_QSFP100GAOC10M = "qsfp100gaoc10m"
     TYPE_QSFP100GAOC15M = "qsfp100gaoc15m"
@@ -105,6 +107,7 @@ class EquipmentXcvrConsts:
     TYPE_QSFP100GDR = "qsfp100gdr"
     TYPE_QSFP100GDRS = "qsfp100gdrs"
     TYPE_QSFP100GER4LS = "qsfp100ger4ls"
+    TYPE_QSFP100GERLS = "qsfp100gerls"
     TYPE_QSFP100GFR = "qsfp100gfr"
     TYPE_QSFP100GFRS = "qsfp100gfrs"
     TYPE_QSFP100GLR4S = "qsfp100glr4s"
@@ -116,6 +119,7 @@ class EquipmentXcvrConsts:
     TYPE_QSFP100GSR1_2 = "qsfp100gsr1.2"
     TYPE_QSFP100GSR4 = "qsfp100gsr4"
     TYPE_QSFP100GSR4S = "qsfp100gsr4s"
+    TYPE_QSFP100GZR4S = "qsfp100gzr4s"
     TYPE_QSFP40GCR4 = "qsfp40gcr4"
     TYPE_QSFP40GCSR = "qsfp40gcsr"
     TYPE_QSFP40GCSR4 = "qsfp40gcsr4"
@@ -150,6 +154,20 @@ class EquipmentXcvrConsts:
     TYPE_QSFP4X10GAC7M = "qsfp4x10gac7m"
     TYPE_QSFP4X10GLR = "qsfp4x10glr"
     TYPE_QSFP4X10GLRS = "qsfp4x10glrs"
+    TYPE_QSFPDD400GAOC1M = "qsfpdd400gaoc1m"
+    TYPE_QSFPDD400GAOC2M = "qsfpdd400gaoc2m"
+    TYPE_QSFPDD400GAOC3M = "qsfpdd400gaoc3m"
+    TYPE_QSFPDD400GCU1M = "qsfpdd400gcu1m"
+    TYPE_QSFPDD400GCU2M = "qsfpdd400gcu2m"
+    TYPE_QSFPDD400GCU3M = "qsfpdd400gcu3m"
+    TYPE_QSFPDD400GDR4 = "qsfpdd400gdr4"
+    TYPE_QSFPDD400GFR4 = "qsfpdd400gfr4"
+    TYPE_QSFPDD400GLR4 = "qsfpdd400glr4"
+    TYPE_QSFPDD400GLR8 = "qsfpdd400glr8"
+    TYPE_QSFPDD400GZRPS = "qsfpdd400gzrps"
+    TYPE_QSFPDD400GZRS = "qsfpdd400gzrs"
+    TYPE_QSFPDD4X100GFR = "qsfpdd4x100gfr"
+    TYPE_QSFPDD4X100GLRS = "qsfpdd4x100glrs"
     TYPE_QSFPH40GACU10M = "qsfph40gacu10m"
     TYPE_QSFPH40GACU1M = "qsfph40gacu1m"
     TYPE_QSFPH40GACU3M = "qsfph40gacu3m"
@@ -159,6 +177,7 @@ class EquipmentXcvrConsts:
     TYPE_QSFPH40GAOC15M = "qsfph40gaoc15m"
     TYPE_QSFPH40GAOC1M = "qsfph40gaoc1m"
     TYPE_QSFPH40GAOC20M = "qsfph40gaoc20m"
+    TYPE_QSFPH40GAOC25M = "qsfph40gaoc25m"
     TYPE_QSFPH40GAOC2M = "qsfph40gaoc2m"
     TYPE_QSFPH40GAOC30M = "qsfph40gaoc30m"
     TYPE_QSFPH40GAOC3M = "qsfph40gaoc3m"
@@ -168,12 +187,19 @@ class EquipmentXcvrConsts:
     TYPE_QSFPH40GCU1M = "qsfph40gcu1m"
     TYPE_QSFPH40GCU2M = "qsfph40gcu2m"
     TYPE_QSFPH40GCU3M = "qsfph40gcu3m"
+    TYPE_QSFPH40GCU4M = "qsfph40gcu4m"
     TYPE_QSFPH40GCU5M = "qsfph40gcu5m"
     TYPE_QSFPLOOP = "qsfploop"
+    TYPE_QSFPONSQC4X32GLW = "qsfponsqc4x32glw"
     TYPE_QSFPQSA = "qsfpqsa"
     TYPE_QSFPUNKNOWN = "qsfpunknown"
     TYPE_SFP = "sfp"
     TYPE_SFP25GSL = "sfp25gsl"
+    TYPE_SFP50GCU3M = "sfp50gcu3m"
+    TYPE_SFP50GCU5M = "sfp50gcu5m"
+    TYPE_SFP50GSL = "sfp50gsl"
+    TYPE_SFP50GSRS = "sfp50gsrs"
+    TYPE_SFPH10GBCU4M = "sfph10gbcu4m"
     TYPE_UNKNOWN = "unknown"
     TYPE_X2 = "x2"
 
@@ -197,7 +223,7 @@ class EquipmentXcvr(ManagedObject):
         "serial": MoPropertyMeta("serial", "serial", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
         "ts": MoPropertyMeta("ts", "ts", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [], []),
-        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["10/25Gbase", "10/25Gbasecsrs", "10/25Gbaselrs", "1000basecx", "1000baselh", "1000baselx", "1000basesx", "1000baset", "1000baseunknown", "1000basevx", "1000basex", "1000basezx", "10gbaseer", "10gbaselr", "10gbaselrm", "10gbaselrs", "10gbasesr", "10gbasesrs", "10gbasezr", "10gbasezrs", "10gbx40di", "10gbx40ui", "10gbxdi", "10gbxui", "4x32gsw", "cwdm1471", "cwdm1531", "cwdm1551", "dssfpfc16glw", "dssfpfc16gsw", "dssfpfc32glw", "dssfpfc32gsw", "dssfpfc64glw", "dssfpfc64gsw", "dwdmsfp", "fet", "h10gacu10m", "h10gacu15m", "h10gacu1m", "h10gacu3m", "h10gacu5m", "h10gacu7m", "h10gacuaoc10m", "h10gacuaoc15m", "h10gacuaoc1m", "h10gacuaoc2m", "h10gacuaoc3m", "h10gacuaoc5m", "h10gacuaoc7m", "h10gaoc10m", "h10gaoc15m", "h10gaoc1m", "h10gaoc2m", "h10gaoc3m", "h10gaoc5m", "h10gaoc7m", "h10gcu1-5m", "h10gcu10m", "h10gcu1m", "h10gcu2-5m", "h10gcu2m", "h10gcu3m", "h10gcu5m", "h10gcu7m", "h10glrmsm", "h10gtx", "h10gusr", "h25gaoc10m", "h25gaoc1m", "h25gaoc2m", "h25gaoc3m", "h25gaoc4m", "h25gaoc5m", "h25gaoc7m", "h25gcu1m", "h25gcu2m", "h25gcu3m", "h25gcu4m", "h25gcu5m", "h25glrs", "h25gsrs", "qsfp100g40gbidi", "qsfp100gaoc10m", "qsfp100gaoc15m", "qsfp100gaoc1m", "qsfp100gaoc20m", "qsfp100gaoc25m", "qsfp100gaoc2m", "qsfp100gaoc30m", "qsfp100gaoc3m", "qsfp100gaoc5m", "qsfp100gaoc7m", "qsfp100gcr4", "qsfp100gcu1m", "qsfp100gcu2m", "qsfp100gcu3m", "qsfp100gdr", "qsfp100gdrs", "qsfp100ger4ls", "qsfp100gfr", "qsfp100gfrs", "qsfp100glr4s", "qsfp100glrs", "qsfp100gpsm4", "qsfp100gpsm4s", "qsfp100gsl4", "qsfp100gsmsr", "qsfp100gsr1.2", "qsfp100gsr4", "qsfp100gsr4s", "qsfp40gcr4", "qsfp40gcsr", "qsfp40gcsr4", "qsfp40ger4", "qsfp40gfet", "qsfp40glr4", "qsfp40glr4s", "qsfp40gsr4", "qsfp40gsr4s", "qsfp40gsrbd", "qsfp4sfp10gcu1m", "qsfp4sfp10gcu2m", "qsfp4sfp10gcu3m", "qsfp4sfp10gcu4m", "qsfp4sfp10gcu5m", "qsfp4sfp25gcu1m", "qsfp4sfp25gcu2m", "qsfp4sfp25gcu3m", "qsfp4sfp25gcu5m", "qsfp4sfp25gunknown", "qsfp4x10ga0c10m", "qsfp4x10ga0c1m", "qsfp4x10ga0c2m", "qsfp4x10ga0c3m", "qsfp4x10ga0c5m", "qsfp4x10ga0c7m", "qsfp4x10ga0cunknown", "qsfp4x10gac10m", "qsfp4x10gac1m", "qsfp4x10gac3m", "qsfp4x10gac5m", "qsfp4x10gac7m", "qsfp4x10glr", "qsfp4x10glrs", "qsfph40gacu10m", "qsfph40gacu1m", "qsfph40gacu3m", "qsfph40gacu5m", "qsfph40gacu7m", "qsfph40gaoc10m", "qsfph40gaoc15m", "qsfph40gaoc1m", "qsfph40gaoc20m", "qsfph40gaoc2m", "qsfph40gaoc30m", "qsfph40gaoc3m", "qsfph40gaoc5m", "qsfph40gaoc7m", "qsfph40gaocunknown", "qsfph40gcu1m", "qsfph40gcu2m", "qsfph40gcu3m", "qsfph40gcu5m", "qsfploop", "qsfpqsa", "qsfpunknown", "sfp", "sfp25gsl", "unknown", "x2"], []),
+        "type": MoPropertyMeta("type", "type", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["10/25Gbase", "10/25Gbasecsrs", "10/25Gbaselrs", "1000basecx", "1000baselh", "1000baselx", "1000basesx", "1000baset", "1000baseunknown", "1000basevx", "1000basex", "1000basezx", "10gbaseer", "10gbaselr", "10gbaselrm", "10gbaselrs", "10gbasesr", "10gbasesrs", "10gbasezr", "10gbasezrs", "10gbx40di", "10gbx40ui", "10gbxdi", "10gbxui", "4x32gsw", "cwdm1471", "cwdm1531", "cwdm1551", "dssfpfc16glw", "dssfpfc16gsw", "dssfpfc32glw", "dssfpfc32gsw", "dssfpfc64glw", "dssfpfc64gsw", "dwdmsfp", "fet", "h10gacu10m", "h10gacu15m", "h10gacu1m", "h10gacu3m", "h10gacu5m", "h10gacu7m", "h10gacuaoc10m", "h10gacuaoc15m", "h10gacuaoc1m", "h10gacuaoc2m", "h10gacuaoc3m", "h10gacuaoc5m", "h10gacuaoc7m", "h10gaoc10m", "h10gaoc15m", "h10gaoc1m", "h10gaoc2m", "h10gaoc3m", "h10gaoc5m", "h10gaoc7m", "h10gcu1-5m", "h10gcu10m", "h10gcu1m", "h10gcu2-5m", "h10gcu2m", "h10gcu3m", "h10gcu5m", "h10gcu7m", "h10glrmsm", "h10gtx", "h10gusr", "h25gaoc10m", "h25gaoc1m", "h25gaoc2m", "h25gaoc3m", "h25gaoc4m", "h25gaoc5m", "h25gaoc7m", "h25gcu1m", "h25gcu2m", "h25gcu3m", "h25gcu4m", "h25gcu5m", "h25glrs", "h25gsrs", "qdd2x100gcwdm4s", "qdd2x100glr4s", "qsfp100g40gbidi", "qsfp100gaoc10m", "qsfp100gaoc15m", "qsfp100gaoc1m", "qsfp100gaoc20m", "qsfp100gaoc25m", "qsfp100gaoc2m", "qsfp100gaoc30m", "qsfp100gaoc3m", "qsfp100gaoc5m", "qsfp100gaoc7m", "qsfp100gcr4", "qsfp100gcu1m", "qsfp100gcu2m", "qsfp100gcu3m", "qsfp100gdr", "qsfp100gdrs", "qsfp100ger4ls", "qsfp100gerls", "qsfp100gfr", "qsfp100gfrs", "qsfp100glr4s", "qsfp100glrs", "qsfp100gpsm4", "qsfp100gpsm4s", "qsfp100gsl4", "qsfp100gsmsr", "qsfp100gsr1.2", "qsfp100gsr4", "qsfp100gsr4s", "qsfp100gzr4s", "qsfp40gcr4", "qsfp40gcsr", "qsfp40gcsr4", "qsfp40ger4", "qsfp40gfet", "qsfp40glr4", "qsfp40glr4s", "qsfp40gsr4", "qsfp40gsr4s", "qsfp40gsrbd", "qsfp4sfp10gcu1m", "qsfp4sfp10gcu2m", "qsfp4sfp10gcu3m", "qsfp4sfp10gcu4m", "qsfp4sfp10gcu5m", "qsfp4sfp25gcu1m", "qsfp4sfp25gcu2m", "qsfp4sfp25gcu3m", "qsfp4sfp25gcu5m", "qsfp4sfp25gunknown", "qsfp4x10ga0c10m", "qsfp4x10ga0c1m", "qsfp4x10ga0c2m", "qsfp4x10ga0c3m", "qsfp4x10ga0c5m", "qsfp4x10ga0c7m", "qsfp4x10ga0cunknown", "qsfp4x10gac10m", "qsfp4x10gac1m", "qsfp4x10gac3m", "qsfp4x10gac5m", "qsfp4x10gac7m", "qsfp4x10glr", "qsfp4x10glrs", "qsfpdd400gaoc1m", "qsfpdd400gaoc2m", "qsfpdd400gaoc3m", "qsfpdd400gcu1m", "qsfpdd400gcu2m", "qsfpdd400gcu3m", "qsfpdd400gdr4", "qsfpdd400gfr4", "qsfpdd400glr4", "qsfpdd400glr8", "qsfpdd400gzrps", "qsfpdd400gzrs", "qsfpdd4x100gfr", "qsfpdd4x100glrs", "qsfph40gacu10m", "qsfph40gacu1m", "qsfph40gacu3m", "qsfph40gacu5m", "qsfph40gacu7m", "qsfph40gaoc10m", "qsfph40gaoc15m", "qsfph40gaoc1m", "qsfph40gaoc20m", "qsfph40gaoc25m", "qsfph40gaoc2m", "qsfph40gaoc30m", "qsfph40gaoc3m", "qsfph40gaoc5m", "qsfph40gaoc7m", "qsfph40gaocunknown", "qsfph40gcu1m", "qsfph40gcu2m", "qsfph40gcu3m", "qsfph40gcu4m", "qsfph40gcu5m", "qsfploop", "qsfponsqc4x32glw", "qsfpqsa", "qsfpunknown", "sfp", "sfp25gsl", "sfp50gcu3m", "sfp50gcu5m", "sfp50gsl", "sfp50gsrs", "sfph10gbcu4m", "unknown", "x2"], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
     }
 

@@ -9,9 +9,12 @@ class FabricEthEstcPcConsts:
     ADMIN_SPEED_100GBPS = "100gbps"
     ADMIN_SPEED_10GBPS = "10gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
+    ADMIN_SPEED_200GBPS = "200gbps"
     ADMIN_SPEED_20GBPS = "20gbps"
     ADMIN_SPEED_25GBPS = "25gbps"
+    ADMIN_SPEED_400GBPS = "400gbps"
     ADMIN_SPEED_40GBPS = "40gbps"
+    ADMIN_SPEED_50GBPS = "50gbps"
     ADMIN_SPEED_AUTO = "auto"
     ADMIN_SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
@@ -36,9 +39,12 @@ class FabricEthEstcPcConsts:
     OPER_SPEED_100GBPS = "100gbps"
     OPER_SPEED_10GBPS = "10gbps"
     OPER_SPEED_1GBPS = "1gbps"
+    OPER_SPEED_200GBPS = "200gbps"
     OPER_SPEED_20GBPS = "20gbps"
     OPER_SPEED_25GBPS = "25gbps"
+    OPER_SPEED_400GBPS = "400gbps"
     OPER_SPEED_40GBPS = "40gbps"
+    OPER_SPEED_50GBPS = "50gbps"
     OPER_SPEED_AUTO = "auto"
     OPER_SPEED_INDETERMINATE = "indeterminate"
     OPER_STATE_ADMIN_DOWN = "admin-down"
@@ -54,6 +60,8 @@ class FabricEthEstcPcConsts:
     OPER_STATE_SOFTWARE_FAILURE = "software-failure"
     OPER_STATE_UDLD_AGGR_DOWN = "udld-aggr-down"
     OPER_STATE_UP = "up"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     PORT_MODE_ACCESS = "access"
     PORT_MODE_TRUNK = "trunk"
     PRIO_BEST_EFFORT = "best-effort"
@@ -78,7 +86,7 @@ class FabricEthEstcPc(ManagedObject):
     mo_meta = MoMeta("FabricEthEstcPc", "fabricEthEstcPc", "pc-[port_id]", VersionMeta.Version141i, "InputOutput", 0x3ffff, [], ["admin", "ext-lan-config", "ext-lan-policy"], ['fabricEthEstc'], ['etherErrStats', 'etherLossStats', 'etherPauseStats', 'etherRxStats', 'etherTxStats', 'fabricEthEstcPcEp', 'fabricEthMonSrcEp', 'fabricEthTargetEp', 'fabricSubGroup', 'fabricVlanEp', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
+        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["100gbps", "10gbps", "1gbps", "200gbps", "20gbps", "25gbps", "400gbps", "40gbps", "50gbps", "auto", "indeterminate"], []),
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4, None, None, None, ["disabled", "enabled"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version141i, MoPropertyMeta.INTERNAL, 0x8, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version221b, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
@@ -94,11 +102,12 @@ class FabricEthEstcPc(ManagedObject):
         "nw_ctrl_policy_name": MoPropertyMeta("nw_ctrl_policy_name", "nwCtrlPolicyName", "string", VersionMeta.Version142b, MoPropertyMeta.READ_WRITE, 0x200, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "oper_lacp_policy_name": MoPropertyMeta("oper_lacp_policy_name", "operLacpPolicyName", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "oper_nw_ctrl_policy_name": MoPropertyMeta("oper_nw_ctrl_policy_name", "operNwCtrlPolicyName", "string", VersionMeta.Version142b, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
-        "oper_speed": MoPropertyMeta("oper_speed", "operSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
+        "oper_speed": MoPropertyMeta("oper_speed", "operSpeed", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x400, None, None, None, ["100gbps", "10gbps", "1gbps", "200gbps", "20gbps", "25gbps", "400gbps", "40gbps", "50gbps", "auto", "indeterminate"], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-down", "down", "error-disabled", "failed", "hardware-failure", "indeterminate", "link-down", "link-up", "no-license", "sfp-not-present", "software-failure", "udld-aggr-down", "up"], []),
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "pin_group_name": MoPropertyMeta("pin_group_name", "pinGroupName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x800, 0, 510, None, [], []),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version141i, MoPropertyMeta.NAMING, 0x1000, None, None, None, [], ["1-256"]),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "port_mode": MoPropertyMeta("port_mode", "portMode", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x2000, None, None, None, ["access", "trunk"], []),
         "prio": MoPropertyMeta("prio", "prio", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x4000, None, None, None, ["best-effort", "bronze", "fc", "gold", "platinum", "silver"], []),
         "protocol": MoPropertyMeta("protocol", "protocol", "string", VersionMeta.Version142b, MoPropertyMeta.READ_WRITE, 0x8000, None, None, None, ["lacp", "static"], []),
@@ -134,6 +143,7 @@ class FabricEthEstcPc(ManagedObject):
         "peerDn": "peer_dn", 
         "pinGroupName": "pin_group_name", 
         "portId": "port_id", 
+        "portInternalState": "port_internal_state", 
         "portMode": "port_mode", 
         "prio": "prio", 
         "protocol": "protocol", 
@@ -169,6 +179,7 @@ class FabricEthEstcPc(ManagedObject):
         self.oper_state = None
         self.peer_dn = None
         self.pin_group_name = None
+        self.port_internal_state = None
         self.port_mode = None
         self.prio = None
         self.protocol = None

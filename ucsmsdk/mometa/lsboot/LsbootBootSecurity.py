@@ -6,6 +6,10 @@ from ...ucsmeta import VersionMeta
 
 
 class LsbootBootSecurityConsts:
+    ALLOW_INSECURE_CONFIG_FALSE = "false"
+    ALLOW_INSECURE_CONFIG_NO = "no"
+    ALLOW_INSECURE_CONFIG_TRUE = "true"
+    ALLOW_INSECURE_CONFIG_YES = "yes"
     SECURE_BOOT_FALSE = "false"
     SECURE_BOOT_NO = "no"
     SECURE_BOOT_TRUE = "true"
@@ -18,9 +22,10 @@ class LsbootBootSecurity(ManagedObject):
     consts = LsbootBootSecurityConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("LsbootBootSecurity", "lsbootBootSecurity", "boot-security", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], ['lsbootDef', 'lsbootPolicy'], [], ["Add", "Get", "Remove", "Set"])
+    mo_meta = MoMeta("LsbootBootSecurity", "lsbootBootSecurity", "boot-security", VersionMeta.Version221b, "InputOutput", 0x3f, [], ["admin", "ls-compute", "ls-config", "ls-config-policy", "ls-server", "ls-server-policy", "ls-storage", "ls-storage-policy"], ['lsbootDef', 'lsbootPolicy'], ['faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
+        "allow_insecure_config": MoPropertyMeta("allow_insecure_config", "allowInsecureConfig", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version221b, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version221b, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
@@ -30,6 +35,7 @@ class LsbootBootSecurity(ManagedObject):
     }
 
     prop_map = {
+        "allowInsecureConfig": "allow_insecure_config", 
         "childAction": "child_action", 
         "dn": "dn", 
         "rn": "rn", 
@@ -40,6 +46,7 @@ class LsbootBootSecurity(ManagedObject):
 
     def __init__(self, parent_mo_or_dn, **kwargs):
         self._dirty_mask = 0
+        self.allow_insecure_config = None
         self.child_action = None
         self.sacl = None
         self.secure_boot = None

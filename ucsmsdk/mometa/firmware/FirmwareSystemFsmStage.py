@@ -45,6 +45,30 @@ class FirmwareSystemFsmStageConsts:
     NAME_DEPLOY_UPDATE_IOM = "DeployUpdateIOM"
     NAME_DEPLOY_WAIT_FOR_DEPLOY = "DeployWaitForDeploy"
     NAME_DEPLOY_WAIT_FOR_USER_ACK = "DeployWaitForUserAck"
+    NAME_UPGRADE_SFP_FIRMWARE_ACTIVATE_SFP_FW_LOCAL_FI = "UpgradeSfpFirmwareActivateSfpFwLocalFI"
+    NAME_UPGRADE_SFP_FIRMWARE_ACTIVATE_SFP_FW_REMOTE_FI = "UpgradeSfpFirmwareActivateSfpFwRemoteFI"
+    NAME_UPGRADE_SFP_FIRMWARE_ADMIN_DOWN_FC_PORTS_LOCAL_FI = "UpgradeSfpFirmwareAdminDownFcPortsLocalFI"
+    NAME_UPGRADE_SFP_FIRMWARE_ADMIN_DOWN_FC_PORTS_REMOTE_FI = "UpgradeSfpFirmwareAdminDownFcPortsRemoteFI"
+    NAME_UPGRADE_SFP_FIRMWARE_ADMIN_UP_FC_PORTS_LOCAL_FI = "UpgradeSfpFirmwareAdminUpFcPortsLocalFI"
+    NAME_UPGRADE_SFP_FIRMWARE_ADMIN_UP_FC_PORTS_REMOTE_FI = "UpgradeSfpFirmwareAdminUpFcPortsRemoteFI"
+    NAME_UPGRADE_SFP_FIRMWARE_BEGIN = "UpgradeSfpFirmwareBegin"
+    NAME_UPGRADE_SFP_FIRMWARE_FAB_EVAC_OFF_REMOTE_FI = "UpgradeSfpFirmwareFabEvacOffRemoteFI"
+    NAME_UPGRADE_SFP_FIRMWARE_FAB_EVAC_ON_REMOTE_FI = "UpgradeSfpFirmwareFabEvacOnRemoteFI"
+    NAME_UPGRADE_SFP_FIRMWARE_FAIL = "UpgradeSfpFirmwareFail"
+    NAME_UPGRADE_SFP_FIRMWARE_FAIL_OVER_TO_REMOTE_FI = "UpgradeSfpFirmwareFailOverToRemoteFI"
+    NAME_UPGRADE_SFP_FIRMWARE_POLL_ACTIVATE_SFP_FW_LOCAL_FI = "UpgradeSfpFirmwarePollActivateSfpFwLocalFI"
+    NAME_UPGRADE_SFP_FIRMWARE_POLL_ACTIVATE_SFP_FW_REMOTE_FI = "UpgradeSfpFirmwarePollActivateSfpFwRemoteFI"
+    NAME_UPGRADE_SFP_FIRMWARE_POLL_FAB_EVAC_OFF_REMOTE_FI = "UpgradeSfpFirmwarePollFabEvacOffRemoteFI"
+    NAME_UPGRADE_SFP_FIRMWARE_POLL_FAB_EVAC_ON_REMOTE_FI = "UpgradeSfpFirmwarePollFabEvacOnRemoteFI"
+    NAME_UPGRADE_SFP_FIRMWARE_POLL_FAIL_OVER_TO_REMOTE_FI = "UpgradeSfpFirmwarePollFailOverToRemoteFI"
+    NAME_UPGRADE_SFP_FIRMWARE_POLL_REBOOT_LOCAL_FI = "UpgradeSfpFirmwarePollRebootLocalFI"
+    NAME_UPGRADE_SFP_FIRMWARE_POLL_REBOOT_REMOTE_FI = "UpgradeSfpFirmwarePollRebootRemoteFI"
+    NAME_UPGRADE_SFP_FIRMWARE_POLL_WAIT_FOR_USER_ACK = "UpgradeSfpFirmwarePollWaitForUserAck"
+    NAME_UPGRADE_SFP_FIRMWARE_REBOOT_LOCAL_FI = "UpgradeSfpFirmwareRebootLocalFI"
+    NAME_UPGRADE_SFP_FIRMWARE_REBOOT_REMOTE_FI = "UpgradeSfpFirmwareRebootRemoteFI"
+    NAME_UPGRADE_SFP_FIRMWARE_SUCCESS = "UpgradeSfpFirmwareSuccess"
+    NAME_UPGRADE_SFP_FIRMWARE_WAIT_FOR_SFP_FW_UPGRADE = "UpgradeSfpFirmwareWaitForSfpFwUpgrade"
+    NAME_UPGRADE_SFP_FIRMWARE_WAIT_FOR_USER_ACK = "UpgradeSfpFirmwareWaitForUserAck"
     NAME_NOP = "nop"
     STAGE_STATUS_FAIL = "fail"
     STAGE_STATUS_IN_PROGRESS = "inProgress"
@@ -68,7 +92,7 @@ class FirmwareSystemFsmStage(ManagedObject):
         "descr": MoPropertyMeta("descr", "descr", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,256}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x2, 0, 256, None, [], []),
         "last_update_time": MoPropertyMeta("last_update_time", "lastUpdateTime", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", [""], []),
-        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["ApplyCatalogPackActivateCatalog", "ApplyCatalogPackBegin", "ApplyCatalogPackFail", "ApplyCatalogPackResolveDistributable", "ApplyCatalogPackResolveDistributableNames", "ApplyCatalogPackResolveImages", "ApplyCatalogPackSuccess", "DeployActivateIOM", "DeployActivateLocalFI", "DeployActivateRemoteFI", "DeployActivateUCSM", "DeployActivateUCSMServicePack", "DeployBegin", "DeployCopyAllImagesToPeer", "DeployDownloadImages", "DeployFabEvacOffRemoteFI", "DeployFabEvacOnRemoteFI", "DeployFail", "DeployFailOverToRemoteFI", "DeployInternalBackup", "DeployPollActivateOfIOM", "DeployPollActivateOfLocalFI", "DeployPollActivateOfRemoteFI", "DeployPollActivateOfUCSM", "DeployPollActivateOfUCSMServicePack", "DeployPollFabEvacOffRemoteFI", "DeployPollFabEvacOnRemoteFI", "DeployPollFailOverToRemoteFI", "DeployPollInternalBackup", "DeployPollUpdateOfIOM", "DeployPollWaitForUserAck", "DeployResolveDistributable", "DeployResolveDistributableNames", "DeployResolveImages", "DeploySuccess", "DeployUpdateIOM", "DeployWaitForDeploy", "DeployWaitForUserAck", "nop"], []),
+        "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version211a, MoPropertyMeta.NAMING, None, None, None, None, ["ApplyCatalogPackActivateCatalog", "ApplyCatalogPackBegin", "ApplyCatalogPackFail", "ApplyCatalogPackResolveDistributable", "ApplyCatalogPackResolveDistributableNames", "ApplyCatalogPackResolveImages", "ApplyCatalogPackSuccess", "DeployActivateIOM", "DeployActivateLocalFI", "DeployActivateRemoteFI", "DeployActivateUCSM", "DeployActivateUCSMServicePack", "DeployBegin", "DeployCopyAllImagesToPeer", "DeployDownloadImages", "DeployFabEvacOffRemoteFI", "DeployFabEvacOnRemoteFI", "DeployFail", "DeployFailOverToRemoteFI", "DeployInternalBackup", "DeployPollActivateOfIOM", "DeployPollActivateOfLocalFI", "DeployPollActivateOfRemoteFI", "DeployPollActivateOfUCSM", "DeployPollActivateOfUCSMServicePack", "DeployPollFabEvacOffRemoteFI", "DeployPollFabEvacOnRemoteFI", "DeployPollFailOverToRemoteFI", "DeployPollInternalBackup", "DeployPollUpdateOfIOM", "DeployPollWaitForUserAck", "DeployResolveDistributable", "DeployResolveDistributableNames", "DeployResolveImages", "DeploySuccess", "DeployUpdateIOM", "DeployWaitForDeploy", "DeployWaitForUserAck", "UpgradeSfpFirmwareActivateSfpFwLocalFI", "UpgradeSfpFirmwareActivateSfpFwRemoteFI", "UpgradeSfpFirmwareAdminDownFcPortsLocalFI", "UpgradeSfpFirmwareAdminDownFcPortsRemoteFI", "UpgradeSfpFirmwareAdminUpFcPortsLocalFI", "UpgradeSfpFirmwareAdminUpFcPortsRemoteFI", "UpgradeSfpFirmwareBegin", "UpgradeSfpFirmwareFabEvacOffRemoteFI", "UpgradeSfpFirmwareFabEvacOnRemoteFI", "UpgradeSfpFirmwareFail", "UpgradeSfpFirmwareFailOverToRemoteFI", "UpgradeSfpFirmwarePollActivateSfpFwLocalFI", "UpgradeSfpFirmwarePollActivateSfpFwRemoteFI", "UpgradeSfpFirmwarePollFabEvacOffRemoteFI", "UpgradeSfpFirmwarePollFabEvacOnRemoteFI", "UpgradeSfpFirmwarePollFailOverToRemoteFI", "UpgradeSfpFirmwarePollRebootLocalFI", "UpgradeSfpFirmwarePollRebootRemoteFI", "UpgradeSfpFirmwarePollWaitForUserAck", "UpgradeSfpFirmwareRebootLocalFI", "UpgradeSfpFirmwareRebootRemoteFI", "UpgradeSfpFirmwareSuccess", "UpgradeSfpFirmwareWaitForSfpFwUpgrade", "UpgradeSfpFirmwareWaitForUserAck", "nop"], []),
         "order": MoPropertyMeta("order", "order", "ushort", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "retry": MoPropertyMeta("retry", "retry", "byte", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),

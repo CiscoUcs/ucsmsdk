@@ -6,6 +6,8 @@ from ...ucsmeta import VersionMeta
 
 
 class FabricBreakoutConsts:
+    BREAKOUT_TYPE_100G_2X = "100g-2x"
+    BREAKOUT_TYPE_100G_4X = "100g-4x"
     BREAKOUT_TYPE_10G_4X = "10g-4x"
     BREAKOUT_TYPE_25G_4X = "25g-4x"
     BREAKOUT_TYPE_UNKNOWN = "unknown"
@@ -26,7 +28,7 @@ class FabricBreakout(ManagedObject):
     mo_meta = MoMeta("FabricBreakout", "fabricBreakout", "breakout-slot-[slot_id]-port-[port_id]", VersionMeta.Version311e, "InputOutput", 0x3ff, [], ["admin", "ext-lan-config", "ext-lan-policy", "ext-san-config", "ext-san-policy"], ['fabricCablingSw'], [], ["Add", "Get", "Remove"])
 
     prop_meta = {
-        "breakout_type": MoPropertyMeta("breakout_type", "breakoutType", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["10g-4x", "25g-4x", "unknown"], []),
+        "breakout_type": MoPropertyMeta("breakout_type", "breakoutType", "string", VersionMeta.Version311e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["100g-2x", "100g-4x", "10g-4x", "25g-4x", "unknown"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version311e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "fc_breakout_type": MoPropertyMeta("fc_breakout_type", "fcBreakoutType", "string", VersionMeta.Version423b, MoPropertyMeta.READ_WRITE, 0x10, None, None, None, ["16g-4x", "32g-4x", "8g-4x", "unknown"], []),

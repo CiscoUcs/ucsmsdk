@@ -155,6 +155,14 @@ class SecurityEncryptionEpConsts:
     FSM_STATUS_UPDATE_ENCRYPTION_EP_CONFIGURE_PEER = "updateEncryptionEpConfigurePeer"
     FSM_STATUS_UPDATE_ENCRYPTION_EP_FAIL = "updateEncryptionEpFail"
     FSM_STATUS_UPDATE_ENCRYPTION_EP_SUCCESS = "updateEncryptionEpSuccess"
+    IS_MAC_SEC_ENABLED_FALSE = "false"
+    IS_MAC_SEC_ENABLED_NO = "no"
+    IS_MAC_SEC_ENABLED_TRUE = "true"
+    IS_MAC_SEC_ENABLED_YES = "yes"
+    IS_PRIMARY_KEY_SET_FALSE = "false"
+    IS_PRIMARY_KEY_SET_NO = "no"
+    IS_PRIMARY_KEY_SET_TRUE = "true"
+    IS_PRIMARY_KEY_SET_YES = "yes"
 
 
 class SecurityEncryptionEp(ManagedObject):
@@ -163,7 +171,7 @@ class SecurityEncryptionEp(ManagedObject):
     consts = SecurityEncryptionEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SecurityEncryptionEp", "securityEncryptionEp", "encryption", VersionMeta.Version435a, "InputOutput", 0x1f, [], ["aaa", "admin"], ['securityEp'], ['eventInst', 'faultInst', 'securityAesEncryption', 'securityDeployedAesEncryption', 'securityEncryptionEpFsm', 'securityEncryptionEpFsmTask'], [None])
+    mo_meta = MoMeta("SecurityEncryptionEp", "securityEncryptionEp", "encryption", VersionMeta.Version435a, "InputOutput", 0x3f, [], ["aaa", "admin"], ['securityEp'], ['eventInst', 'faultInst', 'securityEncryptionEpFsm', 'securityEncryptionEpFsmTask'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version435a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
@@ -178,9 +186,12 @@ class SecurityEncryptionEp(ManagedObject):
         "fsm_stamp": MoPropertyMeta("fsm_stamp", "fsmStamp", "string", VersionMeta.Version435a, MoPropertyMeta.INTERNAL, None, None, None, r"""([0-9]){4}-([0-9]){2}-([0-9]){2}T([0-9]){2}:([0-9]){2}:([0-9]){2}((\.([0-9]){3})){0,1}""", ["never"], []),
         "fsm_status": MoPropertyMeta("fsm_status", "fsmStatus", "string", VersionMeta.Version435a, MoPropertyMeta.INTERNAL, None, None, None, None, ["nop", "updateEncryptionEpBegin", "updateEncryptionEpConfigureLocal", "updateEncryptionEpConfigurePeer", "updateEncryptionEpFail", "updateEncryptionEpSuccess"], []),
         "fsm_try": MoPropertyMeta("fsm_try", "fsmTry", "byte", VersionMeta.Version435a, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
-        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version435a, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
+        "is_mac_sec_enabled": MoPropertyMeta("is_mac_sec_enabled", "isMacSecEnabled", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "is_primary_key_set": MoPropertyMeta("is_primary_key_set", "isPrimaryKeySet", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "primary_key": MoPropertyMeta("primary_key", "primaryKey", "string", VersionMeta.Version602a, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[ !""#$%&'\(\)\*\+,\-\./:;<=>\?@\[\\\]\^_`\{\|\}~a-zA-Z0-9]{0,64}""", [], []),
+        "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version435a, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version435a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
-        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version435a, MoPropertyMeta.READ_WRITE, 0x10, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
+        "status": MoPropertyMeta("status", "status", "string", VersionMeta.Version435a, MoPropertyMeta.READ_WRITE, 0x20, None, None, r"""((removed|created|modified|deleted),){0,3}(removed|created|modified|deleted){0,1}""", [], []),
     }
 
     prop_map = {
@@ -196,6 +207,9 @@ class SecurityEncryptionEp(ManagedObject):
         "fsmStamp": "fsm_stamp", 
         "fsmStatus": "fsm_status", 
         "fsmTry": "fsm_try", 
+        "isMacSecEnabled": "is_mac_sec_enabled", 
+        "isPrimaryKeySet": "is_primary_key_set", 
+        "primaryKey": "primary_key", 
         "rn": "rn", 
         "sacl": "sacl", 
         "status": "status", 
@@ -214,6 +228,9 @@ class SecurityEncryptionEp(ManagedObject):
         self.fsm_stamp = None
         self.fsm_status = None
         self.fsm_try = None
+        self.is_mac_sec_enabled = None
+        self.is_primary_key_set = None
+        self.primary_key = None
         self.sacl = None
         self.status = None
 

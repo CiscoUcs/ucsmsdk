@@ -46,6 +46,8 @@ class FabricBHVlanConsts:
     POLICY_OWNER_LOCAL = "local"
     POLICY_OWNER_PENDING_POLICY = "pending-policy"
     POLICY_OWNER_POLICY = "policy"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     SHARING_COMMUNITY = "community"
     SHARING_ISOLATED = "isolated"
     SHARING_NONE = "none"
@@ -80,6 +82,7 @@ class FabricBHVlan(ManagedObject):
         "overlap_state_for_b": MoPropertyMeta("overlap_state_for_b", "overlapStateForB", "string", VersionMeta.Version222c, MoPropertyMeta.READ_ONLY, None, None, None, None, ["active", "not-active", "ok", "primary-id-mismatch", "sharing-type-mismatch"], []),
         "peer_dn": MoPropertyMeta("peer_dn", "peerDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "policy_owner": MoPropertyMeta("policy_owner", "policyOwner", "string", VersionMeta.Version212a, MoPropertyMeta.READ_WRITE, 0x20, None, None, None, ["local", "pending-policy", "policy"], []),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "pub_nw_dn": MoPropertyMeta("pub_nw_dn", "pubNwDn", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "pub_nw_id": MoPropertyMeta("pub_nw_id", "pubNwId", "uint", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "pub_nw_name": MoPropertyMeta("pub_nw_name", "pubNwName", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x40, 0, 510, None, [], []),
@@ -108,6 +111,7 @@ class FabricBHVlan(ManagedObject):
         "overlapStateForB": "overlap_state_for_b", 
         "peerDn": "peer_dn", 
         "policyOwner": "policy_owner", 
+        "portInternalState": "port_internal_state", 
         "pubNwDn": "pub_nw_dn", 
         "pubNwId": "pub_nw_id", 
         "pubNwName": "pub_nw_name", 
@@ -136,6 +140,7 @@ class FabricBHVlan(ManagedObject):
         self.overlap_state_for_b = None
         self.peer_dn = None
         self.policy_owner = None
+        self.port_internal_state = None
         self.pub_nw_dn = None
         self.pub_nw_id = None
         self.pub_nw_name = None

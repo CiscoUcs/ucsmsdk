@@ -8,6 +8,9 @@ from ...ucsmeta import VersionMeta
 class StorageItemConsts:
     ALARM_TYPE_MAJOR = "major"
     ALARM_TYPE_MINOR = "minor"
+    INODE_USED_EMPTY = "empty"
+    INODE_USED_FULL = "full"
+    INODE_USED_NOT_APPLICABLE = "not-applicable"
     OPER_STATE_CLEAN = "clean"
     OPER_STATE_CLEAN_WITH_ERRORS = "clean-with-errors"
     OPER_STATE_MOUNTED = "mounted"
@@ -32,6 +35,7 @@ class StorageItem(ManagedObject):
         "alarm_type": MoPropertyMeta("alarm_type", "alarmType", "string", VersionMeta.Version312b, MoPropertyMeta.READ_ONLY, None, None, None, None, ["major", "minor"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x4, 0, 256, None, [], []),
+        "inode_used": MoPropertyMeta("inode_used", "inodeUsed", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["empty", "full", "not-applicable"], ["0-101"]),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x8, None, None, r"""[\-\.:_a-zA-Z0-9]{1,16}""", [], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version212a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["clean", "clean-with-errors", "mounted", "not-clean", "unknown", "unmounted"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x10, 0, 256, None, [], []),
@@ -45,6 +49,7 @@ class StorageItem(ManagedObject):
         "alarmType": "alarm_type", 
         "childAction": "child_action", 
         "dn": "dn", 
+        "inodeUsed": "inode_used", 
         "name": "name", 
         "operState": "oper_state", 
         "rn": "rn", 
@@ -59,6 +64,7 @@ class StorageItem(ManagedObject):
         self.name = name
         self.alarm_type = None
         self.child_action = None
+        self.inode_used = None
         self.oper_state = None
         self.sacl = None
         self.size = None

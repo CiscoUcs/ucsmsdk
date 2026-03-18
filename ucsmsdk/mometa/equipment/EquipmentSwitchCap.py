@@ -23,6 +23,10 @@ class EquipmentSwitchCapConsts:
     IS_CACHASSIS_SUPPORTED_NO = "no"
     IS_CACHASSIS_SUPPORTED_TRUE = "true"
     IS_CACHASSIS_SUPPORTED_YES = "yes"
+    IS_COLUSA_CHASSIS_SUPPORTED_FALSE = "false"
+    IS_COLUSA_CHASSIS_SUPPORTED_NO = "no"
+    IS_COLUSA_CHASSIS_SUPPORTED_TRUE = "true"
+    IS_COLUSA_CHASSIS_SUPPORTED_YES = "yes"
     IS_M5_SERVERS_AND_BELOW_SUPPORTED_FALSE = "false"
     IS_M5_SERVERS_AND_BELOW_SUPPORTED_NO = "no"
     IS_M5_SERVERS_AND_BELOW_SUPPORTED_TRUE = "true"
@@ -61,6 +65,7 @@ class EquipmentSwitchCap(ManagedObject):
         "fi_audit_logs_supported": MoPropertyMeta("fi_audit_logs_supported", "fiAuditLogsSupported", "string", VersionMeta.Version601a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "int_id": MoPropertyMeta("int_id", "intId", "string", VersionMeta.Version111j, MoPropertyMeta.INTERNAL, None, None, None, None, ["none"], ["0-4294967295"]),
         "is_ca_chassis_supported": MoPropertyMeta("is_ca_chassis_supported", "isCAChassisSupported", "string", VersionMeta.Version601a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
+        "is_colusa_chassis_supported": MoPropertyMeta("is_colusa_chassis_supported", "isColusaChassisSupported", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "is_m5_servers_and_below_supported": MoPropertyMeta("is_m5_servers_and_below_supported", "isM5ServersAndBelowSupported", "string", VersionMeta.Version601a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "locator_beacon_supported": MoPropertyMeta("locator_beacon_supported", "locatorBeaconSupported", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "max_active_span_session_count": MoPropertyMeta("max_active_span_session_count", "maxActiveSpanSessionCount", "uint", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["0-4294967295"]),
@@ -94,6 +99,7 @@ class EquipmentSwitchCap(ManagedObject):
         "fiAuditLogsSupported": "fi_audit_logs_supported", 
         "intId": "int_id", 
         "isCAChassisSupported": "is_ca_chassis_supported", 
+        "isColusaChassisSupported": "is_colusa_chassis_supported", 
         "isM5ServersAndBelowSupported": "is_m5_servers_and_below_supported", 
         "locatorBeaconSupported": "locator_beacon_supported", 
         "maxActiveSpanSessionCount": "max_active_span_session_count", 
@@ -127,6 +133,7 @@ class EquipmentSwitchCap(ManagedObject):
         self.fi_audit_logs_supported = None
         self.int_id = None
         self.is_ca_chassis_supported = None
+        self.is_colusa_chassis_supported = None
         self.is_m5_servers_and_below_supported = None
         self.locator_beacon_supported = None
         self.max_active_span_session_count = None

@@ -9,9 +9,12 @@ class SwFcoeSanEpConsts:
     ADMIN_SPEED_100GBPS = "100gbps"
     ADMIN_SPEED_10GBPS = "10gbps"
     ADMIN_SPEED_1GBPS = "1gbps"
+    ADMIN_SPEED_200GBPS = "200gbps"
     ADMIN_SPEED_20GBPS = "20gbps"
     ADMIN_SPEED_25GBPS = "25gbps"
+    ADMIN_SPEED_400GBPS = "400gbps"
     ADMIN_SPEED_40GBPS = "40gbps"
+    ADMIN_SPEED_50GBPS = "50gbps"
     ADMIN_SPEED_AUTO = "auto"
     ADMIN_SPEED_INDETERMINATE = "indeterminate"
     ADMIN_STATE_DISABLED = "disabled"
@@ -48,6 +51,8 @@ class SwFcoeSanEpConsts:
     PEER_CHASSIS_ID_N_A = "N/A"
     PEER_STATE_EXISTING = "existing"
     PEER_STATE_NONEXISTING = "nonexisting"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -66,7 +71,7 @@ class SwFcoeSanEp(ManagedObject):
     mo_meta = MoMeta("SwFcoeSanEp", "swFcoeSanEp", "fcoesan-ep-slot-[slot_id]port-[port_id]", VersionMeta.Version211a, "InputOutput", 0x1ff, [], ["read-only"], ['swFcSanBorder', 'swSubGroup'], ['dcxFcoeVifEp', 'dcxVifEp', 'swVlan'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
+        "admin_speed": MoPropertyMeta("admin_speed", "adminSpeed", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "200gbps", "20gbps", "25gbps", "400gbps", "40gbps", "50gbps", "auto", "indeterminate"], []),
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
         "aggr_port_id": MoPropertyMeta("aggr_port_id", "aggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "chassis_id": MoPropertyMeta("chassis_id", "chassisId", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]),
@@ -87,6 +92,7 @@ class SwFcoeSanEp(ManagedObject):
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_state": MoPropertyMeta("peer_state", "peerState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["existing", "nonexisting"], []),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version211a, MoPropertyMeta.NAMING, 0x20, None, None, None, [], []),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "port_vsan_id": MoPropertyMeta("port_vsan_id", "portVsanId", "uint", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, [], ["1-4093"]),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
@@ -121,6 +127,7 @@ class SwFcoeSanEp(ManagedObject):
         "peerSlotId": "peer_slot_id", 
         "peerState": "peer_state", 
         "portId": "port_id", 
+        "portInternalState": "port_internal_state", 
         "portVsanId": "port_vsan_id", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -156,6 +163,7 @@ class SwFcoeSanEp(ManagedObject):
         self.peer_port_id = None
         self.peer_slot_id = None
         self.peer_state = None
+        self.port_internal_state = None
         self.port_vsan_id = None
         self.sacl = None
         self.status = None

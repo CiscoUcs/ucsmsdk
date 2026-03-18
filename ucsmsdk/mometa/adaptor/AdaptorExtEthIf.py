@@ -208,6 +208,8 @@ class AdaptorExtEthIfConsts:
     OPER_STATE_UDLD_AGGR_DOWN = "udld-aggr-down"
     OPER_STATE_UP = "up"
     PEER_CHASSIS_ID_N_A = "N/A"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     PURPOSE_CROSSLINK = "crosslink"
     PURPOSE_GENERAL = "general"
     PURPOSE_MANAGEMENT = "management"
@@ -266,6 +268,7 @@ class AdaptorExtEthIf(ManagedObject):
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "phys_ep_dn": MoPropertyMeta("phys_ep_dn", "physEpDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "purpose": MoPropertyMeta("purpose", "purpose", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["crosslink", "general", "management", "overlay", "unused", "utility"], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x40, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
@@ -314,6 +317,7 @@ class AdaptorExtEthIf(ManagedObject):
         "peerSlotId": "peer_slot_id", 
         "physEpDn": "phys_ep_dn", 
         "portId": "port_id", 
+        "portInternalState": "port_internal_state", 
         "purpose": "purpose", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -362,6 +366,7 @@ class AdaptorExtEthIf(ManagedObject):
         self.peer_slot_id = None
         self.phys_ep_dn = None
         self.port_id = None
+        self.port_internal_state = None
         self.purpose = None
         self.sacl = None
         self.side = None

@@ -8,6 +8,7 @@ from ...ucsmeta import VersionMeta
 class CommSnmpUserConsts:
     AUTH_MD5 = "md5"
     AUTH_SHA = "sha"
+    AUTH_SHA2 = "sha2"
     CONFIG_STATE_NOT_APPLIED = "not-applied"
     CONFIG_STATE_OK = "ok"
     PRIV_PWD_SET_FALSE = "false"
@@ -33,7 +34,7 @@ class CommSnmpUser(ManagedObject):
     mo_meta = MoMeta("CommSnmpUser", "commSnmpUser", "snmpv3-user-[name]", VersionMeta.Version101e, "InputOutput", 0x7ff, [], ["aaa", "admin"], ['commSnmp'], ['aaaCimcSession', 'faultInst'], ["Add", "Get", "Remove", "Set"])
 
     prop_meta = {
-        "auth": MoPropertyMeta("auth", "auth", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["md5", "sha"], []),
+        "auth": MoPropertyMeta("auth", "auth", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["md5", "sha", "sha2"], []),
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, 0x4, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),
         "config_state": MoPropertyMeta("config_state", "configState", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["not-applied", "ok"], []),
         "config_status_message": MoPropertyMeta("config_status_message", "configStatusMessage", "string", VersionMeta.Version211a, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),

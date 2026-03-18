@@ -49,6 +49,7 @@ class EquipmentChassisConsts:
     FAN_SPEED_CONFIG_STATE_BALANCED = "Balanced"
     FAN_SPEED_CONFIG_STATE_HIGH_POWER = "High Power"
     FAN_SPEED_CONFIG_STATE_LOW_POWER = "Low Power"
+    FAN_SPEED_CONFIG_STATE_MAX_COOLING = "Max Cooling"
     FAN_SPEED_CONFIG_STATE_MAX_POWER = "Max Power"
     FAN_SPEED_CONFIG_STATE_PERFORMANCE = "Performance"
     FSM_PREV_ASSOCIATE_ACTIVATE_ADAPTOR = "AssociateActivateAdaptor"
@@ -616,7 +617,7 @@ class EquipmentChassis(ManagedObject):
         "discovery_status": MoPropertyMeta("discovery_status", "discoveryStatus", "string", VersionMeta.Version251a, MoPropertyMeta.READ_ONLY, None, None, None, r"""((defaultValue|unknown|A|B),){0,3}(defaultValue|unknown|A|B){0,1}""", [], []),
         "dn": MoPropertyMeta("dn", "dn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x8, 0, 256, None, [], []),
         "fabric_ep_dn": MoPropertyMeta("fabric_ep_dn", "fabricEpDn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 256, None, [], []),
-        "fan_speed_config_state": MoPropertyMeta("fan_speed_config_state", "fanSpeedConfigState", "string", VersionMeta.Version411a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Acoustic", "Balanced", "High Power", "Low Power", "Max Power", "Performance"], []),
+        "fan_speed_config_state": MoPropertyMeta("fan_speed_config_state", "fanSpeedConfigState", "string", VersionMeta.Version411a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["Acoustic", "Balanced", "High Power", "Low Power", "Max Cooling", "Max Power", "Performance"], []),
         "flt_aggr": MoPropertyMeta("flt_aggr", "fltAggr", "ulong", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "fsm_descr": MoPropertyMeta("fsm_descr", "fsmDescr", "string", VersionMeta.Version101e, MoPropertyMeta.INTERNAL, None, None, None, None, [], []),
         "fsm_flags": MoPropertyMeta("fsm_flags", "fsmFlags", "string", VersionMeta.Version251a, MoPropertyMeta.INTERNAL, None, None, None, None, [], ["0-4294967295"]),

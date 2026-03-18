@@ -226,9 +226,12 @@ class EtherPIoConsts:
     OPER_SPEED_100GBPS = "100gbps"
     OPER_SPEED_10GBPS = "10gbps"
     OPER_SPEED_1GBPS = "1gbps"
+    OPER_SPEED_200GBPS = "200gbps"
     OPER_SPEED_20GBPS = "20gbps"
     OPER_SPEED_25GBPS = "25gbps"
+    OPER_SPEED_400GBPS = "400gbps"
     OPER_SPEED_40GBPS = "40gbps"
+    OPER_SPEED_50GBPS = "50gbps"
     OPER_SPEED_AUTO = "auto"
     OPER_SPEED_INDETERMINATE = "indeterminate"
     OPER_STATE_ADMIN_DOWN = "admin-down"
@@ -251,6 +254,8 @@ class EtherPIoConsts:
     PORT_CAPABILITY_ETH_UPLINK_PORT = "ethUplinkPort"
     PORT_CAPABILITY_NOT_APPLICABLE = "notApplicable"
     PORT_CAPABILITY_UNKNOWN = "unknown"
+    PORT_INTERNAL_STATE_ADMIN_STATE_CHANGED = "admin-state-changed"
+    PORT_INTERNAL_STATE_NONE = "none"
     SWITCH_ID_A = "A"
     SWITCH_ID_B = "B"
     SWITCH_ID_NONE = "NONE"
@@ -339,6 +344,8 @@ class EtherPIoConsts:
     XCVR_TYPE_H25GCU5M = "h25gcu5m"
     XCVR_TYPE_H25GLRS = "h25glrs"
     XCVR_TYPE_H25GSRS = "h25gsrs"
+    XCVR_TYPE_QDD2X100GCWDM4S = "qdd2x100gcwdm4s"
+    XCVR_TYPE_QDD2X100GLR4S = "qdd2x100glr4s"
     XCVR_TYPE_QSFP100G40GBIDI = "qsfp100g40gbidi"
     XCVR_TYPE_QSFP100GAOC10M = "qsfp100gaoc10m"
     XCVR_TYPE_QSFP100GAOC15M = "qsfp100gaoc15m"
@@ -357,6 +364,7 @@ class EtherPIoConsts:
     XCVR_TYPE_QSFP100GDR = "qsfp100gdr"
     XCVR_TYPE_QSFP100GDRS = "qsfp100gdrs"
     XCVR_TYPE_QSFP100GER4LS = "qsfp100ger4ls"
+    XCVR_TYPE_QSFP100GERLS = "qsfp100gerls"
     XCVR_TYPE_QSFP100GFR = "qsfp100gfr"
     XCVR_TYPE_QSFP100GFRS = "qsfp100gfrs"
     XCVR_TYPE_QSFP100GLR4S = "qsfp100glr4s"
@@ -368,6 +376,7 @@ class EtherPIoConsts:
     XCVR_TYPE_QSFP100GSR1_2 = "qsfp100gsr1.2"
     XCVR_TYPE_QSFP100GSR4 = "qsfp100gsr4"
     XCVR_TYPE_QSFP100GSR4S = "qsfp100gsr4s"
+    XCVR_TYPE_QSFP100GZR4S = "qsfp100gzr4s"
     XCVR_TYPE_QSFP40GCR4 = "qsfp40gcr4"
     XCVR_TYPE_QSFP40GCSR = "qsfp40gcsr"
     XCVR_TYPE_QSFP40GCSR4 = "qsfp40gcsr4"
@@ -402,6 +411,20 @@ class EtherPIoConsts:
     XCVR_TYPE_QSFP4X10GAC7M = "qsfp4x10gac7m"
     XCVR_TYPE_QSFP4X10GLR = "qsfp4x10glr"
     XCVR_TYPE_QSFP4X10GLRS = "qsfp4x10glrs"
+    XCVR_TYPE_QSFPDD400GAOC1M = "qsfpdd400gaoc1m"
+    XCVR_TYPE_QSFPDD400GAOC2M = "qsfpdd400gaoc2m"
+    XCVR_TYPE_QSFPDD400GAOC3M = "qsfpdd400gaoc3m"
+    XCVR_TYPE_QSFPDD400GCU1M = "qsfpdd400gcu1m"
+    XCVR_TYPE_QSFPDD400GCU2M = "qsfpdd400gcu2m"
+    XCVR_TYPE_QSFPDD400GCU3M = "qsfpdd400gcu3m"
+    XCVR_TYPE_QSFPDD400GDR4 = "qsfpdd400gdr4"
+    XCVR_TYPE_QSFPDD400GFR4 = "qsfpdd400gfr4"
+    XCVR_TYPE_QSFPDD400GLR4 = "qsfpdd400glr4"
+    XCVR_TYPE_QSFPDD400GLR8 = "qsfpdd400glr8"
+    XCVR_TYPE_QSFPDD400GZRPS = "qsfpdd400gzrps"
+    XCVR_TYPE_QSFPDD400GZRS = "qsfpdd400gzrs"
+    XCVR_TYPE_QSFPDD4X100GFR = "qsfpdd4x100gfr"
+    XCVR_TYPE_QSFPDD4X100GLRS = "qsfpdd4x100glrs"
     XCVR_TYPE_QSFPH40GACU10M = "qsfph40gacu10m"
     XCVR_TYPE_QSFPH40GACU1M = "qsfph40gacu1m"
     XCVR_TYPE_QSFPH40GACU3M = "qsfph40gacu3m"
@@ -411,6 +434,7 @@ class EtherPIoConsts:
     XCVR_TYPE_QSFPH40GAOC15M = "qsfph40gaoc15m"
     XCVR_TYPE_QSFPH40GAOC1M = "qsfph40gaoc1m"
     XCVR_TYPE_QSFPH40GAOC20M = "qsfph40gaoc20m"
+    XCVR_TYPE_QSFPH40GAOC25M = "qsfph40gaoc25m"
     XCVR_TYPE_QSFPH40GAOC2M = "qsfph40gaoc2m"
     XCVR_TYPE_QSFPH40GAOC30M = "qsfph40gaoc30m"
     XCVR_TYPE_QSFPH40GAOC3M = "qsfph40gaoc3m"
@@ -420,12 +444,19 @@ class EtherPIoConsts:
     XCVR_TYPE_QSFPH40GCU1M = "qsfph40gcu1m"
     XCVR_TYPE_QSFPH40GCU2M = "qsfph40gcu2m"
     XCVR_TYPE_QSFPH40GCU3M = "qsfph40gcu3m"
+    XCVR_TYPE_QSFPH40GCU4M = "qsfph40gcu4m"
     XCVR_TYPE_QSFPH40GCU5M = "qsfph40gcu5m"
     XCVR_TYPE_QSFPLOOP = "qsfploop"
+    XCVR_TYPE_QSFPONSQC4X32GLW = "qsfponsqc4x32glw"
     XCVR_TYPE_QSFPQSA = "qsfpqsa"
     XCVR_TYPE_QSFPUNKNOWN = "qsfpunknown"
     XCVR_TYPE_SFP = "sfp"
     XCVR_TYPE_SFP25GSL = "sfp25gsl"
+    XCVR_TYPE_SFP50GCU3M = "sfp50gcu3m"
+    XCVR_TYPE_SFP50GCU5M = "sfp50gcu5m"
+    XCVR_TYPE_SFP50GSL = "sfp50gsl"
+    XCVR_TYPE_SFP50GSRS = "sfp50gsrs"
+    XCVR_TYPE_SFPH10GBCU4M = "sfph10gbcu4m"
     XCVR_TYPE_UNKNOWN = "unknown"
     XCVR_TYPE_X2 = "x2"
 
@@ -473,7 +504,7 @@ class EtherPIo(ManagedObject):
         "model": MoPropertyMeta("model", "model", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "name": MoPropertyMeta("name", "name", "string", VersionMeta.Version101e, MoPropertyMeta.READ_WRITE, 0x8, None, None, r"""[\-\.:_a-zA-Z0-9]{0,16}""", [], []),
         "non_c_r4": MoPropertyMeta("non_c_r4", "nonCR4", "string", VersionMeta.Version311e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
-        "oper_speed": MoPropertyMeta("oper_speed", "operSpeed", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "20gbps", "25gbps", "40gbps", "auto", "indeterminate"], []),
+        "oper_speed": MoPropertyMeta("oper_speed", "operSpeed", "string", VersionMeta.Version111j, MoPropertyMeta.READ_ONLY, None, None, None, None, ["100gbps", "10gbps", "1gbps", "200gbps", "20gbps", "25gbps", "400gbps", "40gbps", "50gbps", "auto", "indeterminate"], []),
         "oper_state": MoPropertyMeta("oper_state", "operState", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-down", "down", "error-disabled", "failed", "hardware-failure", "indeterminate", "link-down", "link-up", "no-license", "sfp-not-present", "software-failure", "udld-aggr-down", "up"], []),
         "peer_aggr_port_id": MoPropertyMeta("peer_aggr_port_id", "peerAggrPortId", "uint", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "peer_chassis_id": MoPropertyMeta("peer_chassis_id", "peerChassisId", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["N/A"], ["0-255"]),
@@ -482,6 +513,7 @@ class EtherPIo(ManagedObject):
         "peer_slot_id": MoPropertyMeta("peer_slot_id", "peerSlotId", "uint", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, None, None, None, [], []),
         "port_capability": MoPropertyMeta("port_capability", "portCapability", "string", VersionMeta.Version321d, MoPropertyMeta.READ_ONLY, None, None, None, None, ["ethAppliantPort", "ethFexServerPort", "ethRackServerPort", "ethUplinkPort", "notApplicable", "unknown"], []),
         "port_id": MoPropertyMeta("port_id", "portId", "uint", VersionMeta.Version101e, MoPropertyMeta.NAMING, 0x10, None, None, None, [], []),
+        "port_internal_state": MoPropertyMeta("port_internal_state", "portInternalState", "string", VersionMeta.Version602a, MoPropertyMeta.READ_ONLY, None, None, None, None, ["admin-state-changed", "none"], []),
         "revision": MoPropertyMeta("revision", "revision", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
         "rn": MoPropertyMeta("rn", "rn", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, 0x20, 0, 256, None, [], []),
         "sacl": MoPropertyMeta("sacl", "sacl", "string", VersionMeta.Version302c, MoPropertyMeta.READ_ONLY, None, None, None, r"""((none|del|mod|addchild|cascade),){0,4}(none|del|mod|addchild|cascade){0,1}""", [], []),
@@ -496,7 +528,7 @@ class EtherPIo(ManagedObject):
         "unified_port": MoPropertyMeta("unified_port", "unifiedPort", "string", VersionMeta.Version201m, MoPropertyMeta.READ_ONLY, None, None, None, None, ["false", "no", "true", "yes"], []),
         "usr_lbl": MoPropertyMeta("usr_lbl", "usrLbl", "string", VersionMeta.Version141i, MoPropertyMeta.READ_WRITE, 0x80, None, None, r"""[ !#$%&\(\)\*\+,\-\./:;\?@\[\]_\{\|\}~a-zA-Z0-9]{0,32}""", [], []),
         "vendor": MoPropertyMeta("vendor", "vendor", "string", VersionMeta.Version101e, MoPropertyMeta.READ_ONLY, None, 0, 510, None, [], []),
-        "xcvr_type": MoPropertyMeta("xcvr_type", "xcvrType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["10/25Gbase", "10/25Gbasecsrs", "10/25Gbaselrs", "1000basecx", "1000baselh", "1000baselx", "1000basesx", "1000baset", "1000baseunknown", "1000basevx", "1000basex", "1000basezx", "10gbaseer", "10gbaselr", "10gbaselrm", "10gbaselrs", "10gbasesr", "10gbasesrs", "10gbasezr", "10gbasezrs", "10gbx40di", "10gbx40ui", "10gbxdi", "10gbxui", "4x32gsw", "cwdm1471", "cwdm1531", "cwdm1551", "dssfpfc16glw", "dssfpfc16gsw", "dssfpfc32glw", "dssfpfc32gsw", "dssfpfc64glw", "dssfpfc64gsw", "dwdmsfp", "fet", "h10gacu10m", "h10gacu15m", "h10gacu1m", "h10gacu3m", "h10gacu5m", "h10gacu7m", "h10gacuaoc10m", "h10gacuaoc15m", "h10gacuaoc1m", "h10gacuaoc2m", "h10gacuaoc3m", "h10gacuaoc5m", "h10gacuaoc7m", "h10gaoc10m", "h10gaoc15m", "h10gaoc1m", "h10gaoc2m", "h10gaoc3m", "h10gaoc5m", "h10gaoc7m", "h10gcu1-5m", "h10gcu10m", "h10gcu1m", "h10gcu2-5m", "h10gcu2m", "h10gcu3m", "h10gcu5m", "h10gcu7m", "h10glrmsm", "h10gtx", "h10gusr", "h25gaoc10m", "h25gaoc1m", "h25gaoc2m", "h25gaoc3m", "h25gaoc4m", "h25gaoc5m", "h25gaoc7m", "h25gcu1m", "h25gcu2m", "h25gcu3m", "h25gcu4m", "h25gcu5m", "h25glrs", "h25gsrs", "qsfp100g40gbidi", "qsfp100gaoc10m", "qsfp100gaoc15m", "qsfp100gaoc1m", "qsfp100gaoc20m", "qsfp100gaoc25m", "qsfp100gaoc2m", "qsfp100gaoc30m", "qsfp100gaoc3m", "qsfp100gaoc5m", "qsfp100gaoc7m", "qsfp100gcr4", "qsfp100gcu1m", "qsfp100gcu2m", "qsfp100gcu3m", "qsfp100gdr", "qsfp100gdrs", "qsfp100ger4ls", "qsfp100gfr", "qsfp100gfrs", "qsfp100glr4s", "qsfp100glrs", "qsfp100gpsm4", "qsfp100gpsm4s", "qsfp100gsl4", "qsfp100gsmsr", "qsfp100gsr1.2", "qsfp100gsr4", "qsfp100gsr4s", "qsfp40gcr4", "qsfp40gcsr", "qsfp40gcsr4", "qsfp40ger4", "qsfp40gfet", "qsfp40glr4", "qsfp40glr4s", "qsfp40gsr4", "qsfp40gsr4s", "qsfp40gsrbd", "qsfp4sfp10gcu1m", "qsfp4sfp10gcu2m", "qsfp4sfp10gcu3m", "qsfp4sfp10gcu4m", "qsfp4sfp10gcu5m", "qsfp4sfp25gcu1m", "qsfp4sfp25gcu2m", "qsfp4sfp25gcu3m", "qsfp4sfp25gcu5m", "qsfp4sfp25gunknown", "qsfp4x10ga0c10m", "qsfp4x10ga0c1m", "qsfp4x10ga0c2m", "qsfp4x10ga0c3m", "qsfp4x10ga0c5m", "qsfp4x10ga0c7m", "qsfp4x10ga0cunknown", "qsfp4x10gac10m", "qsfp4x10gac1m", "qsfp4x10gac3m", "qsfp4x10gac5m", "qsfp4x10gac7m", "qsfp4x10glr", "qsfp4x10glrs", "qsfph40gacu10m", "qsfph40gacu1m", "qsfph40gacu3m", "qsfph40gacu5m", "qsfph40gacu7m", "qsfph40gaoc10m", "qsfph40gaoc15m", "qsfph40gaoc1m", "qsfph40gaoc20m", "qsfph40gaoc2m", "qsfph40gaoc30m", "qsfph40gaoc3m", "qsfph40gaoc5m", "qsfph40gaoc7m", "qsfph40gaocunknown", "qsfph40gcu1m", "qsfph40gcu2m", "qsfph40gcu3m", "qsfph40gcu5m", "qsfploop", "qsfpqsa", "qsfpunknown", "sfp", "sfp25gsl", "unknown", "x2"], []),
+        "xcvr_type": MoPropertyMeta("xcvr_type", "xcvrType", "string", VersionMeta.Version141i, MoPropertyMeta.READ_ONLY, None, None, None, None, ["10/25Gbase", "10/25Gbasecsrs", "10/25Gbaselrs", "1000basecx", "1000baselh", "1000baselx", "1000basesx", "1000baset", "1000baseunknown", "1000basevx", "1000basex", "1000basezx", "10gbaseer", "10gbaselr", "10gbaselrm", "10gbaselrs", "10gbasesr", "10gbasesrs", "10gbasezr", "10gbasezrs", "10gbx40di", "10gbx40ui", "10gbxdi", "10gbxui", "4x32gsw", "cwdm1471", "cwdm1531", "cwdm1551", "dssfpfc16glw", "dssfpfc16gsw", "dssfpfc32glw", "dssfpfc32gsw", "dssfpfc64glw", "dssfpfc64gsw", "dwdmsfp", "fet", "h10gacu10m", "h10gacu15m", "h10gacu1m", "h10gacu3m", "h10gacu5m", "h10gacu7m", "h10gacuaoc10m", "h10gacuaoc15m", "h10gacuaoc1m", "h10gacuaoc2m", "h10gacuaoc3m", "h10gacuaoc5m", "h10gacuaoc7m", "h10gaoc10m", "h10gaoc15m", "h10gaoc1m", "h10gaoc2m", "h10gaoc3m", "h10gaoc5m", "h10gaoc7m", "h10gcu1-5m", "h10gcu10m", "h10gcu1m", "h10gcu2-5m", "h10gcu2m", "h10gcu3m", "h10gcu5m", "h10gcu7m", "h10glrmsm", "h10gtx", "h10gusr", "h25gaoc10m", "h25gaoc1m", "h25gaoc2m", "h25gaoc3m", "h25gaoc4m", "h25gaoc5m", "h25gaoc7m", "h25gcu1m", "h25gcu2m", "h25gcu3m", "h25gcu4m", "h25gcu5m", "h25glrs", "h25gsrs", "qdd2x100gcwdm4s", "qdd2x100glr4s", "qsfp100g40gbidi", "qsfp100gaoc10m", "qsfp100gaoc15m", "qsfp100gaoc1m", "qsfp100gaoc20m", "qsfp100gaoc25m", "qsfp100gaoc2m", "qsfp100gaoc30m", "qsfp100gaoc3m", "qsfp100gaoc5m", "qsfp100gaoc7m", "qsfp100gcr4", "qsfp100gcu1m", "qsfp100gcu2m", "qsfp100gcu3m", "qsfp100gdr", "qsfp100gdrs", "qsfp100ger4ls", "qsfp100gerls", "qsfp100gfr", "qsfp100gfrs", "qsfp100glr4s", "qsfp100glrs", "qsfp100gpsm4", "qsfp100gpsm4s", "qsfp100gsl4", "qsfp100gsmsr", "qsfp100gsr1.2", "qsfp100gsr4", "qsfp100gsr4s", "qsfp100gzr4s", "qsfp40gcr4", "qsfp40gcsr", "qsfp40gcsr4", "qsfp40ger4", "qsfp40gfet", "qsfp40glr4", "qsfp40glr4s", "qsfp40gsr4", "qsfp40gsr4s", "qsfp40gsrbd", "qsfp4sfp10gcu1m", "qsfp4sfp10gcu2m", "qsfp4sfp10gcu3m", "qsfp4sfp10gcu4m", "qsfp4sfp10gcu5m", "qsfp4sfp25gcu1m", "qsfp4sfp25gcu2m", "qsfp4sfp25gcu3m", "qsfp4sfp25gcu5m", "qsfp4sfp25gunknown", "qsfp4x10ga0c10m", "qsfp4x10ga0c1m", "qsfp4x10ga0c2m", "qsfp4x10ga0c3m", "qsfp4x10ga0c5m", "qsfp4x10ga0c7m", "qsfp4x10ga0cunknown", "qsfp4x10gac10m", "qsfp4x10gac1m", "qsfp4x10gac3m", "qsfp4x10gac5m", "qsfp4x10gac7m", "qsfp4x10glr", "qsfp4x10glrs", "qsfpdd400gaoc1m", "qsfpdd400gaoc2m", "qsfpdd400gaoc3m", "qsfpdd400gcu1m", "qsfpdd400gcu2m", "qsfpdd400gcu3m", "qsfpdd400gdr4", "qsfpdd400gfr4", "qsfpdd400glr4", "qsfpdd400glr8", "qsfpdd400gzrps", "qsfpdd400gzrs", "qsfpdd4x100gfr", "qsfpdd4x100glrs", "qsfph40gacu10m", "qsfph40gacu1m", "qsfph40gacu3m", "qsfph40gacu5m", "qsfph40gacu7m", "qsfph40gaoc10m", "qsfph40gaoc15m", "qsfph40gaoc1m", "qsfph40gaoc20m", "qsfph40gaoc25m", "qsfph40gaoc2m", "qsfph40gaoc30m", "qsfph40gaoc3m", "qsfph40gaoc5m", "qsfph40gaoc7m", "qsfph40gaocunknown", "qsfph40gcu1m", "qsfph40gcu2m", "qsfph40gcu3m", "qsfph40gcu4m", "qsfph40gcu5m", "qsfploop", "qsfponsqc4x32glw", "qsfpqsa", "qsfpunknown", "sfp", "sfp25gsl", "sfp50gcu3m", "sfp50gcu5m", "sfp50gsl", "sfp50gsrs", "sfph10gbcu4m", "unknown", "x2"], []),
     }
 
     prop_map = {
@@ -543,6 +575,7 @@ class EtherPIo(ManagedObject):
         "peerSlotId": "peer_slot_id", 
         "portCapability": "port_capability", 
         "portId": "port_id", 
+        "portInternalState": "port_internal_state", 
         "revision": "revision", 
         "rn": "rn", 
         "sacl": "sacl", 
@@ -604,6 +637,7 @@ class EtherPIo(ManagedObject):
         self.peer_port_id = None
         self.peer_slot_id = None
         self.port_capability = None
+        self.port_internal_state = None
         self.revision = None
         self.sacl = None
         self.serial = None

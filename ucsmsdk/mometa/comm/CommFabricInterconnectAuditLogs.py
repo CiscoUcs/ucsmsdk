@@ -32,7 +32,7 @@ class CommFabricInterconnectAuditLogs(ManagedObject):
     consts = CommFabricInterconnectAuditLogsConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("CommFabricInterconnectAuditLogs", "commFabricInterconnectAuditLogs", "fabric-interconnect-audit-logs", VersionMeta.Version601a, "InputOutput", 0x7ff, [], ["admin", "operations"], ['commSvcEp'], [], [None])
+    mo_meta = MoMeta("CommFabricInterconnectAuditLogs", "commFabricInterconnectAuditLogs", "fabric-interconnect-audit-logs", VersionMeta.Version601a, "InputOutput", 0x7ff, [], ["admin", "operations"], ['commSvcEp'], ['commMonitor'], [None])
 
     prop_meta = {
         "admin_state": MoPropertyMeta("admin_state", "adminState", "string", VersionMeta.Version601a, MoPropertyMeta.READ_WRITE, 0x2, None, None, None, ["disabled", "enabled"], []),
