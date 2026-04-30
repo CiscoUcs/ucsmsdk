@@ -171,7 +171,7 @@ class SecurityEncryptionEp(ManagedObject):
     consts = SecurityEncryptionEpConsts()
     naming_props = set([])
 
-    mo_meta = MoMeta("SecurityEncryptionEp", "securityEncryptionEp", "encryption", VersionMeta.Version435a, "InputOutput", 0x3f, [], ["aaa", "admin"], ['securityEp'], ['eventInst', 'faultInst', 'securityEncryptionEpFsm', 'securityEncryptionEpFsmTask'], [None])
+    mo_meta = MoMeta("SecurityEncryptionEp", "securityEncryptionEp", "encryption", VersionMeta.Version435a, "InputOutput", 0x3f, [], ["aaa", "admin"], ['securityEp'], ['eventInst', 'faultInst', 'securityAesEncryption', 'securityEncryptionEpFsm', 'securityEncryptionEpFsmTask'], [None])
 
     prop_meta = {
         "child_action": MoPropertyMeta("child_action", "childAction", "string", VersionMeta.Version435a, MoPropertyMeta.INTERNAL, 0x2, None, None, r"""((deleteAll|ignore|deleteNonPresent),){0,2}(deleteAll|ignore|deleteNonPresent){0,1}""", [], []),

@@ -182,14 +182,18 @@ def download_file(driver, file_url, file_dir, file_name, progress=Progress()):
     response = driver.post(uri=file_url, read=False)
 
     if sys.version_info > (3, 0):
-        # Python 3 code in this block
-        file_size = int(response.headers['Content-Length'])
+        content_length = response.headers.get('Content-Length')
     else:
-        # Python 2 code in this block
-        file_size = int(response.info().getheaders("Content-Length")[0])
+        headers = response.info().getheaders("Content-Length")
+        content_length = headers[0] if headers else None
 
-    print("Downloading: %s Bytes: %s" % (file_name, file_size))
-
+    if content_length:
+        file_size = int(content_length)
+        print("Downloading: %s Bytes: %s" % (file_name, file_size))
+    else:
+        file_size = 100
+        print("Downloading: %s : %s" % (file_name, file_size)+"%")
+    
     file_handle = open(destination_file, 'wb')
     block_sz = 64
     while True:

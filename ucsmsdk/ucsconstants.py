@@ -1847,6 +1847,7 @@ class NamingId:
     QOSCLASS_SLOW_DRAIN_FSM_TASK = "qosclassSlowDrainFsmTask"
     QUERYRESULT_DEPENDENCY = "queryresultDependency"
     QUERYRESULT_USAGE = "queryresultUsage"
+    SECURITY_AES_ENCRYPTION = "securityAesEncryption"
     SECURITY_ENCRYPTION_EP = "securityEncryptionEp"
     SECURITY_ENCRYPTION_EP_FSM = "securityEncryptionEpFsm"
     SECURITY_ENCRYPTION_EP_FSM_STAGE = "securityEncryptionEpFsmStage"
