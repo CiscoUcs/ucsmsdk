@@ -91,6 +91,18 @@ class UcsVersion(object):
         if self._set_versions(match_obj):
             return
 
+        # handle spin builds "4.3(6.250037)" - short numeric spin build numbers (6-7 digits)
+        # e.g. 4.3(6.250037) is a spin build of 4.3(6x) branch, spin=250037
+        # (1-5 digit numbers are handled by the first pattern above as patch/interim builds,
+        #  8+ digit date-like numbers are handled by the special builds pattern below)
+        match_pattern = re.compile(r"^(?P<major>[1-9][0-9]{0,2})\."
+                                   r"(?P<minor>(([0-9])|([1-9][0-9]{0,1})))\("
+                                   r"(?P<mr>(([0-9])|([1-9][0-9]{0,2})))\."
+                                   r"(?P<spin>[1-9][0-9]{5,6})\)$")
+        match_obj = re.match(match_pattern, version)
+        if self._set_versions(match_obj):
+            return
+
         # handle de special builds "66.77(67.1582251418)"
         match_pattern = re.compile(r"^(?P<major>[1-9][0-9]{0,2})\."
                                    r"(?P<minor>(([0-9])|([1-9][0-9]{0,2})))\("
