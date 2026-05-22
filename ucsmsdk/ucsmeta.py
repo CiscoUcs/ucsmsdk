@@ -20,7 +20,7 @@ from .ucscoremeta import MoMeta
 
 
 def version():
-    return '6.0(2b)'
+    return '6.0(2c)'
 
 class VersionMeta:
     """ This class contains all the UcsVersion supported by this package."""
@@ -129,6 +129,7 @@ class VersionMeta:
     Version601d = UcsVersion("6.0(1d)")
     Version602a = UcsVersion("6.0(2a)")
     Version602b = UcsVersion("6.0(2b)")
+    Version602c = UcsVersion("6.0(2c)")
 
 MO_CLASS_ID = frozenset([
     "AaaAuthRealm",
@@ -1795,6 +1796,7 @@ MO_CLASS_ID = frozenset([
     "QosclassSlowDrainFsmTask",
     "QueryresultDependency",
     "QueryresultUsage",
+    "SecurityAesEncryption",
     "SecurityEncryptionEp",
     "SecurityEncryptionEpFsm",
     "SecurityEncryptionEpFsmStage",
@@ -3851,7 +3853,8 @@ MO_CLASS_META = {
     "QosclassSlowDrainFsmTask": MoMeta("QosclassSlowDrainFsmTask", "qosclassSlowDrainFsmTask", "task-[item]", VersionMeta.Version402a, "OutputOnly", 0x1, [], [""], ['qosclassSlowDrain'], [], [None]),
     "QueryresultDependency": MoMeta("QueryresultDependency", "queryresultDependency", "dependency-[ref_converted_dn]", VersionMeta.Version221b, "InputOutput", 0x1, [], ["admin"], [], [], [None]),
     "QueryresultUsage": MoMeta("QueryresultUsage", "queryresultUsage", "usage-[ref_converted_dn]", VersionMeta.Version221b, "InputOutput", 0x1, [], ["admin"], [], [], [None]),
-    "SecurityEncryptionEp": MoMeta("SecurityEncryptionEp", "securityEncryptionEp", "encryption", VersionMeta.Version435a, "InputOutput", 0x1, [], ["aaa", "admin"], ['securityEp'], ['eventInst', 'faultInst', 'securityEncryptionEpFsm', 'securityEncryptionEpFsmTask'], [None]),
+    "SecurityAesEncryption": MoMeta("SecurityAesEncryption", "securityAesEncryption", "aes", VersionMeta.Version435a, "InputOutput", 0x1, [], ["aaa", "admin"], ['securityEncryptionEp'], [], [None]),
+    "SecurityEncryptionEp": MoMeta("SecurityEncryptionEp", "securityEncryptionEp", "encryption", VersionMeta.Version435a, "InputOutput", 0x1, [], ["aaa", "admin"], ['securityEp'], ['eventInst', 'faultInst', 'securityAesEncryption', 'securityEncryptionEpFsm', 'securityEncryptionEpFsmTask'], [None]),
     "SecurityEncryptionEpFsm": MoMeta("SecurityEncryptionEpFsm", "securityEncryptionEpFsm", "fsm", VersionMeta.Version435a, "OutputOnly", 0x1, [], [""], ['securityEncryptionEp'], ['securityEncryptionEpFsmStage'], [None]),
     "SecurityEncryptionEpFsmStage": MoMeta("SecurityEncryptionEpFsmStage", "securityEncryptionEpFsmStage", "stage-[name]", VersionMeta.Version435a, "OutputOnly", 0x1, [], [""], ['securityEncryptionEpFsm'], [], [None]),
     "SecurityEncryptionEpFsmTask": MoMeta("SecurityEncryptionEpFsmTask", "securityEncryptionEpFsmTask", "task-[item]", VersionMeta.Version435a, "OutputOnly", 0x1, [], [""], ['securityEncryptionEp'], [], [None]),
