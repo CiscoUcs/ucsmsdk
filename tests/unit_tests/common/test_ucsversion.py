@@ -120,6 +120,7 @@ class TestVersion(unittest.TestCase):
             ("4.2(0.175a)", {"major": "4", "minor": "2", "mr": "0", "patch": "a", "spin": None, "build": "175"}),
             ("4.2(1.2021052301)", {"major": "4", "minor": "2", "mr": "2", "patch": "a", "spin": None, "build": None}),
             ("4.2(1a.2021052301)", {"major": "4", "minor": "2", "mr": "1", "patch": "b", "spin": "2021052301", "build": None}),
+            ("4.3(6.250037)", {"major": "4", "minor": "3", "mr": "6", "patch": "z", "spin": "250037", "build": None}),
         ]
 
         for version_str, expected in test_cases:
