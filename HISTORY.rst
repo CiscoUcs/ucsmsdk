@@ -3,6 +3,10 @@
 History
 -------
 
+0.9.27 (2026-07-29)
+---------------------
+* Support for UCSM release 6.0(2d)
+
 0.9.26 (2026-05-22)
 ---------------------
 * Support for UCSM release 6.0(2c)
